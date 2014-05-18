@@ -3,11 +3,12 @@
 # ----------------------- #
 
 url: http://ifyouseewendy.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: Wendi's Blog
+subtitle: Being cutting edge.
+author: Wendi
 simple_search: https://www.google.com/search
 description:
+  Just a place to note and share.
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
