@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Rails4Way - Environments and Configurations - Wendi's Blog</title>
+  <meta name="author" content="Wendi">
+
+  
+  <meta name="description" content="Bundler ref Bundler does gem dependency resolution based on Gemfile. The specifier ~&gt; has a special meaning, best shown by example. ~&gt; 2.0.3 is &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ifyouseewendy.github.io/blog/2014/05/18/rails4way-environments-and-configurations">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="header-inner">
+    <span class="first"><a href="/">Wendi's Blog</a></span>
+    <span><a href="/about">about</a></span>
+    <span><a href="http://www.github.com/">projects</a></span>
+    <span class="last"><a href="/atom.xml" title="subscribe via RSS">rss</a></span>
+  </div>
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Rails4Way - Environments and Configurations</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-18T16:10:42+08:00" pubdate data-updated="true">May 18<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Bundler <a href="http://bundler.io">ref</a></h2>
+
+<p>Bundler does gem dependency resolution based on Gemfile.</p>
+
+<ol>
+<li><p>The specifier <strong>~&gt;</strong> has a special meaning, best shown by example. <code>~&gt; 2.0.3</code> is identical to <code>&gt;= 2.0.3</code> and <code>&lt; 2.1</code>. <code>~&gt; 2.1</code> is identical to <code>&gt;= 2.1</code> and <code>&lt; 3.0</code>. <code>~&gt; 2.2.beta</code> will match prerelease versions like <code>2.2.beta.12</code>.</p>
+<div class="highlight"><pre><code class="text">gem &#39;thin&#39;,  &#39;~&gt;1.1&#39;
+</code></pre></div></li>
+<li><p>Occasionally, the name of the gem that should be used in a require statement is
+different than the name of that gem in the repository. In those cases, the <strong>:require</strong>
+option solves this simply and declaratively right in the Gemfile.</p>
+<div class="highlight"><pre><code class="text">gem &#39;sqlite3-ruby&#39;, :require =&gt; &#39;sqlite3&#39;
+</code></pre></div></li>
+<li><p><strong>group</strong></p>
+<div class="highlight"><pre><code class="text">gem &#39;wirble&#39;, :group =&gt; :development
+gem &#39;ruby-debug&#39;, :group =&gt; [:development, :test]
+
+group :test do
+  gem &#39;rspec&#39;
+end
+</code></pre></div></li>
+<li><p><strong>bundle install/update</strong></p>
+
+<p>-&gt; calculate a dependency tree -&gt; generate Gemfile.lock</p></li>
+<li><p><strong>bundle package</strong></p>
+
+<blockquote>
+<p>it will package up all your gems in <strong>vendor/cache</strong> directory. Running <strong>bundle install</strong> will use the gems in package and skip connecting to rubygems.org. use this to avoid external dependencies at deploy time, or if you depend on private gems that you are not available in any public repository.</p>
+</blockquote></li>
+<li><p><strong>bundle exec</strong></p>
+
+<p>Non-Rails scripts must be executed with this to get a properly initialized RubyGems environment.</p></li>
+<li><p><strong>bundle install &#8211;path vender/bundle &#8211;binstubs</strong></p>
+
+<p>The default location for gems installed by bundler is directory named <strong>.bundle</strong> in your user directory.</p>
+
+<p>This command will generate .bundle/config file:</p>
+<div class="highlight"><pre><code class="text"> ---
+ BUNDLE_BIN: bundler_stubs
+ BUNDLE_PATH: vendor/bundle
+ BUNDLE_DISABLE_SHARED_GEMS: &quot;1&quot;
+</code></pre></div>
+<p>gems in <strong>verdor/cache</strong>, and installed in <strong>vendor/bundle</strong>.</p></li>
+<li><p><strong>bundle install vendor &#8211;disable-shared-gems</strong></p>
+
+<blockquote>
+<p>This command tells Bundler to install gems even if they are already installed in the system. Normally Bunlder avoids that symlinks to already downloaded gems that exists in your system. This option is useful when you are trying to package up an application that all dependencies unpacked.</p>
+</blockquote></li>
+</ol>
+
+<h2>Startup and Application Settings</h2>
+
+<p><code>boot.rb</code></p>
+
+<ul>
+<li>sets up Bundler and load paths</li>
+</ul>
+
+<p><code>application.rb</code></p>
+
+<ul>
+<li>require &#39;boot&#39;</li>
+<li>load rails gems, gems for the specified Rail.env, and configures the application ( <strong>define Application class</strong> ).</li>
+</ul>
+
+<p><code>environment.rb</code></p>
+
+<ul>
+<li>require &#39;application&#39;</li>
+<li>runs all initializers ( <code>Application.initialize!</code> )</li>
+</ul>
+
+<p><code>environments/development.rb | test.rb | production.rb</code></p>
+
+<ul>
+<li>makes environmental configuraions.</li>
+<li>application.rb makes unenvironmental configurations, like time-zone, autoload_paths, encoding.</li>
+</ul>
+
+<h4>Some Configurations</h4>
+
+<ol>
+<li>Wrap Parameters</li>
+</ol>
+
+<p>Introduced in Rails 3.1, the <code>wrap_parameters.rb</code> initializer configures your application to work with JavaScript MVC frameworks.</p>
+
+<p>When submitting JSON parameters to a controller, Rails will wrap the parameters into a nested hash, with the controller’s name being set as the key. To illustrate, consider the following JSON:</p>
+<div class="highlight"><pre><code class="text">{&quot;title&quot;: &quot;TheRails4Way&quot;}
+</code></pre></div>
+<p>If a client submitted the above JSON to a controller named ArticlesController, Rails would nest the params hash under the key “article”. This ensures the setting of model attributes from request parameters is consistent with the convention used when submitting from Rails form helpers.</p>
+<div class="highlight"><pre><code class="text">{&quot;title&quot;: &quot;TheRails4Way&quot;, &quot;article&quot; =&gt; {&quot;title&quot;: &quot;TheRails4Way&quot;}}
+</code></pre></div>
+<ol>
+<li><p>Schema Dumper</p>
+
+<p>config.active<em>record.schema</em>format = :sql</p></li>
+</ol>
+
+<p>Every time you run tests, Rails dumps the schema of your development database and copies it to the test database using an auto generated <code>schema.rb</code> script. It looks very similar to an Active Record migration script; in fact, it uses the same API.</p>
+
+<ol>
+<li><p>Automatic Class Reloading</p>
+
+<p>config.cache_classes = false</p></li>
+</ol>
+
+<p>Without getting into too much nitty-gritty detail, when the config.cache_classes setting is true,Rails willuse Ruby’s <code>require</code> statement to do its class loading, and when it is false, it will use <code>load</code> instead.</p>
+
+<p>When you require a Ruby file, the interpreter executes and caches it. If the file is required again (as in subsequent requests), the interpreter ignores the require statement and moves on. When you load a Ruby file, the interpreter executes the file again, no matter how many times it has been loaded before.</p>
+
+<ol>
+<li>Auto-Loading Code</li>
+</ol>
+
+<p>By following the naming convention, Rails will search <code>$LOAD_PATH</code> to find the undefined constant. So when using Rails console, <strong>you never have to explicitly <code>require</code> anything!</strong></p>
+
+<p>Rails takes advantage of the fact that Ruby provides a callback mechanism for missing constants. When Rails encounters an undefined constant in the code, it uses a class loader routine based on file-naming conventions to find and require the needed Ruby script.</p>
+
+<ol>
+<li><p>Eager Load</p>
+
+<p>config.eager_load = false</p></li>
+</ol>
+
+<p>In your production environment, you will want this set to true, as it copies most of your application in memory. This provides a performance increase to web servers that copy on write, such as Unicorn.</p>
+
+<ol>
+<li><p>Explain for Slow Queries</p>
+
+<p>config.active<em>record.auto</em>explain<em>threshold</em>in_seconds = 0.5</p></li>
+</ol>
+
+<p>Introduced in Rails 3.2, Active Record now monitors the threshold of SQL queries being made. If any query takes longer than the specified threshold, the query plan is logged with a warning.</p>
+
+<ol>
+<li><p>Assets</p>
+
+<p>config.assets.debug = true</p></li>
+</ol>
+
+<p>Setting config.assets.debug to false, would result in Sprockets concatenating and running preprocessors on all assets.</p>
+<div class="highlight"><pre><code class="text">config.assets.compile = true
+</code></pre></div>
+<p>If an asset is requested that does not exist in the public/assets folder, Rails will throw an exception. To enable live asset compilation fallback on production, set config.assets.compile to true.</p>
+<div class="highlight"><pre><code class="text">config.assets.enable = false
+</code></pre></div>
+<p>Like most features in Rails, the usage of the Asset Pipeline is completely optional. To include assets in your project as it was done in Rails 3.0, set config.assets.enabled to false.</p>
+
+<ol>
+<li><p>Tagged Logging <a href="http://arun.im/2011/x-request-id-tracking-taggedlogging-rails">ref</a></p>
+
+<p>config.log_tags = [ :subdomain, :uuid ]</p></li>
+</ol>
+
+<p>Rails 3.2 introduced the ability to tag your log messages. <code>:subdomain</code> example by <em>www</em>, <code>:uuid</code> is a string to identify request, try <code>request.uuid</code>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Wendi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-18T16:10:42+08:00" pubdate data-updated="true">May 18<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>Rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ifyouseewendy.github.io/blog/2014/05/18/rails4way-environments-and-configurations/" data-via="" data-counturl="http://ifyouseewendy.github.io/blog/2014/05/18/rails4way-environments-and-configurations/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/18/rails4way-environments-and-configurations/">Rails4Way - Environments and Configurations</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Wendi -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
