@@ -82,9 +82,9 @@ option solves this simply and declaratively right in the Gemfile.
   - application.rb makes unenvironmental configurations, like time-zone, autoload_paths, encoding.
 
 
-#### Some Configurations
+### Some Configurations
 
-1. Wrap Parameters
+#### Wrap Parameters
 
   Introduced in Rails 3.1, the `wrap_parameters.rb` initializer configures your application to work with JavaScript MVC frameworks.
 
@@ -97,13 +97,13 @@ option solves this simply and declaratively right in the Gemfile.
 
     {"title": "TheRails4Way", "article" => {"title": "TheRails4Way"}}
 
-2. Schema Dumper
+#### Schema Dumper
 
     config.active_record.schema_format = :sql
 
   Every time you run tests, Rails dumps the schema of your development database and copies it to the test database using an auto generated `schema.rb` script. It looks very similar to an Active Record migration script; in fact, it uses the same API.
 
-3. Automatic Class Reloading
+#### Automatic Class Reloading
 
     config.cache_classes = false
 
@@ -111,27 +111,27 @@ option solves this simply and declaratively right in the Gemfile.
 
   When you require a Ruby file, the interpreter executes and caches it. If the file is required again (as in subsequent requests), the interpreter ignores the require statement and moves on. When you load a Ruby file, the interpreter executes the file again, no matter how many times it has been loaded before.
 
-4. Auto-Loading Code
+#### Auto-Loading Code
 
   By following the naming convention, Rails will search `$LOAD_PATH` to find the undefined constant. So when using Rails console, **you never have to explicitly `require` anything!**
 
   Rails takes advantage of the fact that Ruby provides a callback mechanism for missing constants. When Rails encounters an undefined constant in the code, it uses a class loader routine based on file-naming conventions to find and require the needed Ruby script.
 
-5. Eager Load
+#### Eager Load
 
     config.eager_load = false
 
   In your production environment, you will want this set to true, as it copies most of your application in memory. This provides a performance increase to web servers that copy on write, such as Unicorn.
 
 
-6. Explain for Slow Queries
+#### Explain for Slow Queries
 
     config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   Introduced in Rails 3.2, Active Record now monitors the threshold of SQL queries being made. If any query takes longer than the specified threshold, the query plan is logged with a warning.
 
 
-7. Assets
+#### Assets
 
     config.assets.debug = true
 
@@ -145,7 +145,7 @@ option solves this simply and declaratively right in the Gemfile.
 
   Like most features in Rails, the usage of the Asset Pipeline is completely optional. To include assets in your project as it was done in Rails 3.0, set config.assets.enabled to false.
 
-8. Tagged Logging [ref](http://arun.im/2011/x-request-id-tracking-taggedlogging-rails)
+#### Tagged Logging [ref](http://arun.im/2011/x-request-id-tracking-taggedlogging-rails)
 
     config.log_tags = [ :subdomain, :uuid ]
 
