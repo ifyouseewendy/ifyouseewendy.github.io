@@ -1,11 +1,21 @@
 ---
 layout: default
 ---
- 
+
 <div>
 {% assign index = true %}
 <article role="article">
 <div id="blog-archives">
+  <section>
+  <ul id="categories">
+    {% for category in site.categories %}
+    {% capture category_url %}{{ site.category_dir }}/{{ category | first | slugize | downcase | replace:' ','-' }}{% endcapture %}
+    {% capture full_category_url %}{{ category_url | append:'/index.html' }}{% endcapture %}
+    <li><a {% if full_category_url == page.url %}class="active"{% endif %} href="{{ root_url | append:'/' | append:category_url }}">{{ category | first }}</a></li>
+    {% endfor %}
+  </ul>
+  </section>
+
   {% for post in site.posts reverse %}
 
   {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
