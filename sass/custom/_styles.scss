@@ -169,3 +169,29 @@ aside.sidebar a {
 ul, ol {
     margin-left: 2em;
 }
+
+#categories {
+  list-style: none;
+
+  margin-left: 0;
+
+  li {
+    display: inline-block;
+
+    border-right: 2px solid;
+    padding-right: 5px;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  li:last-child {
+    border-right: 0;
+    padding-right: 0;
+  }
+}
+
+.category-header {
+  color: #aaa;
+}

@@ -5,10 +5,10 @@ layout: default
 <div>
 <article role="article">
   {% if page.title %}
-  <header>
-    <h1 class="entry-title">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
+  <section class='category-header'>
+    <p>{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</p>
     {% if page.date %}<p class="meta">{% include post/date.html %}{{ time }}</p>{% endif %}
-  </header>
+  </section>
   {% endif %}
   {{ content }}
   {% unless page.footer == false %}
