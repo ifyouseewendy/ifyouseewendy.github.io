@@ -3,7 +3,7 @@ layout: post
 title: "Inside ActiveSupport Notifications"
 date: 2014-06-03 00:45:35 +0800
 comments: true
-categories: [Ruby, Excerpts]
+categories: [Rails]
 ---
 
 + Read API doc first, [ActiveSupport::Notifications](ActiveSupport::Notifications).
