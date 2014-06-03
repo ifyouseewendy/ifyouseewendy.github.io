@@ -124,10 +124,11 @@ article > footer {
 }
 
 p code, li code {
-    background: #D1D1D1;
+    // background: #D1D1D1;
     border: 1px solid #C8C8C8;
     border-radius: 0;
-    color: $fgcolor2;
+    // color: $fgcolor2;
+    color: #000;
     font-size: 0.75em;
     line-height: 1.5em;
     margin: -1px 0;
