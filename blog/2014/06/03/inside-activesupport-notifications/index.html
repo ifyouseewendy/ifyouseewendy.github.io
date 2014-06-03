@@ -1,0 +1,615 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Inside ActiveSupport Notifications - Wendi's Notes</title>
+  <meta name="author" content="Wendi">
+
+  
+  <meta name="description" content="Read API doc first, ActiveSupport::Notifications.
+About hooks inside Rails for instrumentation, check the edge doc on Active Support Instrumentation &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ifyouseewendy.github.io/blog/2014/06/03/inside-activesupport-notifications">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Notes" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="header-inner">
+    <span class="first"><a href="/">Wendi's Notes</a></span>
+    <span><a href="/about">about</a></span>
+    <span><a href="http://www.github.com/ifyouseewendy">projects</a></span>
+    <span class="last"><a href="/atom.xml" title="subscribe via RSS">rss</a></span>
+  </div>
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Inside ActiveSupport Notifications</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-03T00:45:35+08:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2014</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><ul>
+<li>Read API doc first, <a href="ActiveSupport::Notifications">ActiveSupport::Notifications</a>.</li>
+<li>About hooks inside Rails for instrumentation, check the edge doc on <a href="http://edgeguides.rubyonrails.org/active_support_instrumentation.html">Active Support Instrumentation</a>.</li>
+</ul>
+
+<p>Then let&#39;s read through the <strong>ActiveSupport::Notifications</strong> source code.</p>
+
+<h2>ActiveSupport::Notifications</h2>
+
+<h3>File name</h3>
+
+<p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications.rb">activesupport/lib/active_support/notifications.rb</a></p>
+
+<h3>Dependency</h3>
+
+<ul>
+<li><code>active_support/notifications/instrumenter</code></li>
+<li><code>active_support/notifications/fanout</code></li>
+<li><code>active_support/per_thread_registry</code></li>
+</ul>
+
+<h3>Brief</h3>
+
+<ol>
+<li>A class attribute accessor <code>notifier</code>, which is initialized by <code>Fanout.new</code>.</li>
+<li>Several class methods as the interfaces exposed, which encapsulate <code>notifer</code> to do the real work.</li>
+<li>A class named <strong>InstrumentationRegistry</strong>.</li>
+</ol>
+
+<h3>Specification</h3>
+
+<h4>Class Variables</h4>
+
+<p><code>self.notifier = Fanout.new</code></p>
+
+<h4>Class Methods</h4>
+
+<ul>
+<li><p><code>subscribe</code>, <code>unsubscribe</code> and <code>publish</code> all delegate to <code>notifier</code>, like</p>
+<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="n">notifier</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></li>
+<li><p><code>subscribed(callback, *args, &amp;block)</code>, <code>subscribe</code> while <code>block</code> is running, and <code>unsubscribe</code> while running is over.</p>
+<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">subscribed</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="n">subscriber</span> <span class="o">=</span> <span class="n">subscribe</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">callback</span><span class="p">)</span>
+  <span class="k">yield</span>
+<span class="k">ensure</span>
+  <span class="n">unsubscribe</span><span class="p">(</span><span class="n">subscriber</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></li>
+<li><p><code>instrument(name, payload = {})</code></p>
+<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span> <span class="o">=</span> <span class="p">{})</span>
+  <span class="k">if</span> <span class="n">notifier</span><span class="o">.</span><span class="n">listening?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="n">instrumenter</span><span class="o">.</span><span class="n">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span> <span class="p">{</span> <span class="k">yield</span> <span class="n">payload</span> <span class="k">if</span> <span class="nb">block_given?</span> <span class="p">}</span>
+  <span class="k">else</span>
+    <span class="k">yield</span> <span class="n">payload</span> <span class="k">if</span> <span class="nb">block_given?</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></li>
+</ul>
+
+<p><code>notifier.listening?(name)</code> is checking if there are subscribers listening on the event name.</p>
+
+<p><strong><em>And what&#39;s an instrumenter?</em></strong></p>
+
+<p>Check out the <strong>ActiveSupport::Notifications::Instrumenter</strong> below or skip this part temporally.</p>
+
+<p>Let&#39;s talk about <strong>InstrumentationRegistry</strong> first, it is a sub-class defined in <strong>ActiveSupport::Notifications</strong>. It extends <strong>ActiveSupport::PerThreadRegistry</strong> to keep thread safe, and defines <code>#instrumenter_for</code> used for recording <strong>Instrumenter</strong> instance for specific <code>notifier</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># This class is a registry which holds all of the +Instrumenter+ objects</span>
+</span><span class='line'><span class="c1"># in a particular thread local. To access the +Instrumenter+ object for a</span>
+</span><span class='line'><span class="c1"># particular +notifier+, you can call the following method:</span>
+</span><span class='line'><span class="c1">#</span>
+</span><span class='line'><span class="c1">#   InstrumentationRegistry.instrumenter_for(notifier)</span>
+</span><span class='line'><span class="c1">#</span>
+</span><span class='line'><span class="c1"># The instrumenters for multiple notifiers are held in a single instance of</span>
+</span><span class='line'><span class="c1"># this class.</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">InstrumentationRegistry</span> <span class="c1"># :nodoc:</span>
+</span><span class='line'>  <span class="kp">extend</span> <span class="ss">ActiveSupport</span><span class="p">:</span><span class="ss">:PerThreadRegistry</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span>
+</span><span class='line'>    <span class="vi">@registry</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">instrumenter_for</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@registry</span><span class="o">[</span><span class="n">notifier</span><span class="o">]</span> <span class="o">||=</span> <span class="no">Instrumenter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Then look back in <strong>ActiveSupport::Notifications</strong> for its usage:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">instrumenter</span>
+</span><span class='line'>  <span class="no">InstrumentationRegistry</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">instrumenter_for</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Extending <strong>ActiveSupport::PerThreadRegistry</strong> gives <strong>InstrumentationRegistry</strong> the <code>instance</code> class methods, returns a thread local <strong>InstrumentationRegistry</strong> instance. Check the <strong>ActiveSupport::PerThreadRegistry</strong> <a href="http://api.rubyonrails.org/classes/ActiveSupport/PerThreadRegistry.html">api</a> for details.</p>
+
+<h2>ActiveSupport::Notifications::Fanout</h2>
+
+<h3>File name</h3>
+
+<p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications%2Ffanout.rb">activesupport/lib/active_support/notifications/fanout.rb</a></p>
+
+<h3>Dependency</h3>
+
+<ul>
+<li><code>mutex_m</code>, a Ruby Std-lib module. <a href="http://www.ruby-doc.org/stdlib-2.1.2//libdoc/mutex_m/rdoc/Mutex_m.html">api</a></li>
+<li><code>thread_safe</code>, a collection of thread-safe versions of common core Ruby classes. <a href="https://github.com/headius/thread_safe">api</a></li>
+</ul>
+
+<h3>Brief</h3>
+
+<p>This is a default queue implementation that ships with Notifications. It just pushes events to all registered log subscribers.</p>
+
+<p>This class is thread safe. All methods are reentrant.</p>
+
+<h3>Specification</h3>
+
+<h4>Instance Variables</h4>
+
+<p><code>@subscribers</code>, an array, records the subscribers.</p>
+
+<p><code>@listeners_for</code>, a reverse map(hash). It maps the event name to the subscribers. Initialized by <code>ThreadSafe::Cache.new</code>, <a href="https://github.com/headius/thread_safe">thread_safe</a> gem says:</p>
+
+<blockquote>
+<p><code>ThreadSafe::Cache</code> also exists, as a hash-like object, and should have
+much better performance characteristics esp. under high concurrency than
+<code>ThreadSafe::Hash</code>. However, <code>ThreadSafe::Cache</code> is not strictly semantically
+equivalent to a ruby <code>Hash</code> &#8211; for instance, it does not necessarily retain
+ordering by insertion time as <code>Hash</code> does. For most uses it should do fine
+though, and we recommend you consider <code>ThreadSafe::Cache</code> instead of
+<code>ThreadSafe::Hash</code> for your concurrency-safe hash needs. It understands some
+options when created (depending on your ruby platform) that control some of the
+internals.</p>
+</blockquote>
+
+<h4>Instance Methods</h4>
+
+<ul>
+<li><p><code>subscribe(pattern = nil, block = Proc.new)</code></p>
+
+<p><code>ActiveSupport::Notifications.subscribe</code> use this method on <code>notifier</code> to subscribe event name based on <code>pattern</code> and a <code>block</code> to do the instrumentation callback.</p>
+
+<p>It initialize a <em>subscriber</em> with <code>Subscribers.new pattern, block</code>, use <code>synchronize</code>(for thread safe) to record <em>subscriber</em> into <code>@subscribers</code>, and clear the <code>@listeners_for</code>, then returns the <em>subscriber</em>.</p>
+<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="n">pattern</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">,</span> <span class="n">block</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+  <span class="n">subscriber</span> <span class="o">=</span> <span class="no">Subscribers</span><span class="o">.</span><span class="n">new</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">block</span>
+  <span class="n">synchronize</span> <span class="k">do</span>
+    <span class="vi">@subscribers</span> <span class="o">&lt;&lt;</span> <span class="n">subscriber</span>
+    <span class="vi">@listeners_for</span><span class="o">.</span><span class="n">clear</span>
+  <span class="k">end</span>
+  <span class="n">subscriber</span>
+<span class="k">end</span>
+</code></pre></div></li>
+<li><p><code>unsubscribe(subscriber)</code></p>
+<div class="highlight"><pre><code class="ruby"><span class="n">synchronize</span> <span class="k">do</span>
+  <span class="vi">@subscribers</span><span class="o">.</span><span class="n">reject!</span> <span class="p">{</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span> <span class="n">s</span><span class="o">.</span><span class="n">matches?</span><span class="p">(</span><span class="n">subscriber</span><span class="p">)</span> <span class="p">}</span>
+    <span class="vi">@listeners_for</span><span class="o">.</span><span class="n">clear</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Note the <code>matches?</code> method on subscriber. Every subscriber object defines this method, <strong>Subscribers::Evented</strong> and <strong>Subscribers::Timed</strong> defines it like this:</p>
+<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">matches?</span><span class="p">(</span><span class="n">subscriber_or_name</span><span class="p">)</span>
+  <span class="nb">self</span> <span class="o">===</span> <span class="n">subscriber_or_name</span> <span class="o">||</span>
+    <span class="vi">@pattern</span> <span class="o">&amp;&amp;</span> <span class="vi">@pattern</span> <span class="o">===</span> <span class="n">subscriber_or_name</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Unsubscribe a subscriber object or unsubscribe based on the <code>@pattern</code> matching.</p>
+
+<p><strong>Subscribers::AllMessages</strong> alias <code>matches?</code> to <code>===</code>, just do the type matching.</p></li>
+<li><p><code>start</code>, <code>finish</code>, <code>publish(name, id, payload)</code></p>
+
+<p>just delegates to subscribers based on the event name.</p>
+<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+  <span class="n">listeners_for</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span> <span class="n">s</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></li>
+<li><p><code>listeners_for(name)</code></p>
+
+<p>a helper method, equals fetch or set on <code>@listeners_for</code>, returns the subscribers based on the event name.</p>
+<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">listeners_for</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="c1"># this is correctly done double-checked locking (ThreadSafe::Cache&#39;s lookups have volatile semantics)</span>
+  <span class="vi">@listeners_for</span><span class="o">[</span><span class="nb">name</span><span class="o">]</span> <span class="o">||</span> <span class="n">synchronize</span> <span class="k">do</span>
+    <span class="c1"># use synchronisation when accessing @subscribers</span>
+    <span class="vi">@listeners_for</span><span class="o">[</span><span class="nb">name</span><span class="o">]</span> <span class="o">||=</span> <span class="vi">@subscribers</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span> <span class="n">s</span><span class="o">.</span><span class="n">subscribed_to?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></li>
+<li><p><code>listening?(name)</code></p></li>
+</ul>
+
+<p>a helper method, checks if <code>listeners_for(name).any?</code>.</p>
+
+<ul>
+<li><code>wait</code></li>
+</ul>
+
+<p>as this is a sync queue, this method is left blank.</p>
+
+<h4>Modules</h4>
+
+<ul>
+<li><p><strong>Subscribers</strong></p>
+
+<p><strong>Subscribers</strong> defines a class method <code>new</code> and three sub-classes: <strong>Evented</strong>, <strong>Timed</strong>, and <strong>AllMessages</strong>. <strong>Timed</strong> inheritates <strong>Evented</strong>, and <strong>AllMessages</strong> encapsulates an <strong>Evented</strong> object.</p>
+
+<p>About <code>self.new(pattern, listener)</code>, remember where does <code>Subscribers.new</code> get called?</p>
+
+<p>It&#39;s in <code>Fanout#subscribe(pattern = nil, block = Proc.new)</code>. If the <code>block</code> can duck-typing <code>:start</code> and <code>:finish</code>, it&#39;ll initialize a subscriber by <strong>Evented</strong> with <code>pattern</code> and <code>block</code> recorded, otherwise by <strong>Timed</strong>. And if <code>pattern</code> is nil, which means calling <code>ActiveSupport::Notifications.subscribe</code> without event name, <code>Subscribers.new</code> returns an <strong>AllMessages</strong> object which initialized with a subscriber defined above. Otherwise(if <code>pattern</code> presents) returns a subscriber directly.</p>
+
+<p>Normally we use <code>ActiveSupport::Notifications.subscribe</code> in two ways:</p>
+
+<ul>
+<li>subscribe all events, which means no <code>pattern</code> passed, and a <strong>Subscribers::AllMessages</strong> instance saved.</li>
+<li>the <code>block</code> we pass to <code>ActiveSupport::Notifications.subscribe</code> won&#39;t respond to <code>start</code> and <code>finish</code>, which means a <strong>Subscribers::Timed</strong> instance saved.</li>
+</ul>
+
+<p>These two ways have no conflicts: if passing a nil pattern and a block, it just returns an <strong>Subscribers::AllMessages</strong> instance which has a <strong>Subscribers::Timed</strong> instance wrapped.</p>
+
+<p>So let&#39;s check it out what does a <strong>Subscribers::Timed</strong> instance respond?</p>
+<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+  <span class="n">timestack</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">current</span><span class="o">[</span><span class="ss">:_timestack</span><span class="o">]</span> <span class="o">||=</span> <span class="o">[]</span>
+  <span class="n">timestack</span><span class="o">.</span><span class="n">push</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+  <span class="n">timestack</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">current</span><span class="o">[</span><span class="ss">:_timestack</span><span class="o">]</span>
+  <span class="n">started</span> <span class="o">=</span> <span class="n">timestack</span><span class="o">.</span><span class="n">pop</span>
+  <span class="vi">@delegate</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">started</span><span class="p">,</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">publish</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+  <span class="vi">@delegate</span><span class="o">.</span><span class="n">call</span> <span class="nb">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">subscribed_to?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="vi">@pattern</span> <span class="o">===</span> <span class="nb">name</span><span class="o">.</span><span class="n">to_s</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">matches?</span><span class="p">(</span><span class="n">subscriber_or_name</span><span class="p">)</span>
+  <span class="nb">self</span> <span class="o">===</span> <span class="n">subscriber_or_name</span> <span class="o">||</span>
+    <span class="vi">@pattern</span> <span class="o">&amp;&amp;</span> <span class="vi">@pattern</span> <span class="o">===</span> <span class="n">subscriber_or_name</span>
+<span class="k">end</span>
+</code></pre></div></li>
+</ul>
+
+<h2>ActiveSupport::Notifications::Instrumenter</h2>
+
+<h3>File name</h3>
+
+<p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications%2Finstrumenter.rb">activesupport/lib/active_support/notifications/instrumenter.rb</a></p>
+
+<h3>Dependency</h3>
+
+<p><code>securerandom</code>, <a href="http://ruby-doc.org/stdlib-2.1.0/libdoc/securerandom/rdoc/SecureRandom.html">api</a></p>
+
+<h3>Brief</h3>
+
+<h3>Specification</h3>
+
+<h4>Instance Variables</h4>
+
+<p><code>@id</code>, with an <code>attr_reader</code>, generated by <code>SecureRandom.hex(10)</code>.</p>
+
+<p><code>@notifier</code>, records the <strong>Fanout</strong> instance.</p>
+
+<h4>Instance Methods</h4>
+
+<ul>
+<li><p><code>start(name, payload)</code>, <code>finish(name, payload)</code></p>
+<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+  <span class="vi">@notifier</span><span class="o">.</span><span class="n">start</span> <span class="nb">name</span><span class="p">,</span> <span class="vi">@id</span><span class="p">,</span> <span class="n">payload</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+  <span class="vi">@notifier</span><span class="o">.</span><span class="n">finish</span> <span class="nb">name</span><span class="p">,</span> <span class="vi">@id</span><span class="p">,</span> <span class="n">payload</span>
+<span class="k">end</span>
+</code></pre></div></li>
+<li><p><code>instrument(name, payload={})</code></p>
+<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="p">{})</span>
+  <span class="n">start</span> <span class="nb">name</span><span class="p">,</span> <span class="n">payload</span>
+  <span class="k">begin</span>
+    <span class="k">yield</span> <span class="n">payload</span>
+  <span class="k">rescue</span> <span class="no">Exception</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="n">payload</span><span class="o">[</span><span class="ss">:exception</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="o">]</span>
+    <span class="k">raise</span> <span class="n">e</span>
+  <span class="k">ensure</span>
+    <span class="n">finish</span> <span class="nb">name</span><span class="p">,</span> <span class="n">payload</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Where does this method get called? in <code>ActiveSupport::Notifications.instrument</code>:</p>
+<div class="highlight"><pre><code class="ruby"><span class="n">instrumenter</span><span class="o">.</span><span class="n">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span> <span class="p">{</span> <span class="k">yield</span> <span class="n">payload</span> <span class="k">if</span> <span class="nb">block_given?</span> <span class="p">}</span>
+</code></pre></div>
+<p>The processing begins with <code>start</code>, ends with <code>finish</code>, instrumenter delegates it to <code>@notifier</code>, and <code>notifier</code> turns to <code>@subscribers</code> which are listening for the event name. And what does <code>@subscribers</code> do with <code>start</code> and <code>finish</code>? Normally we use subscriber objects defined by <code>Subscribers::Timed</code>, which use <code>start</code> to save a beginning timestamp, and <code>finish</code> to save an ending timestamp, and calling the block user passed.</p>
+
+<p>Attention on the control flow, the events get sent even if an error occurs in the passed-in block.</p></li>
+</ul>
+
+<h2>ActiveSupport::Notifications::Event</h2>
+
+<h3>File name</h3>
+
+<p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications%2Finstrumenter.rb">activesupport/lib/active_support/notifications/instrumenter.rb</a></p>
+
+<h3>Dependency</h3>
+
+<h3>Specification</h3>
+
+<p>Note that this class has a <code>@children</code> instance variable recording associations between events, and these two methods:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">&lt;&lt;</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span><span class='line'>  <span class="vi">@children</span> <span class="o">&lt;&lt;</span> <span class="n">event</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">parent_of?</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span><span class='line'>  <span class="vi">@children</span><span class="o">.</span><span class="n">include?</span> <span class="n">event</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2>Main Working Flow</h2>
+
+<h3>ActiveSupport::Notifications.subscribe</h3>
+
+<ol>
+<li><code>ActiveSupport::Notifications.subscribe(name) {|*args| }</code>.</li>
+<li>in <strong>Notficiations.subscribe</strong>, <code>notifier.subscribe(*args, &amp;block)</code>.</li>
+<li>in <strong>Fanout#subscribe</strong>, <code>subscriber = Subscribers.new pattern, block</code>, then records subscriber into <code>@subscribers</code>.</li>
+</ol>
+
+<h3>ActiveSupport::Notifications.instrument</h3>
+
+<ol>
+<li><code>ActiveSupport::Notifications.instrument(name, payload) { }</code>.</li>
+<li>in <strong>Notficiations.instrument</strong>, <code>instrumenter.instrument(name, payload) { yield payload if block_given? }</code>.</li>
+<li>in <strong>Instrumenter#instrument</strong>, <code>@notifier.start</code>, <code>yield payload</code> and then <code>@notifier.finish</code>.</li>
+<li>in <strong>Fanout::Subscribers::Timed#start</strong>, records beginning time.</li>
+<li>in <strong>Fanout::Subscribers::Timed#finish</strong>, records ending time, and passing <code>name, start_time, end_time, id, payload</code> to the subscribers callbacks.</li>
+</ol>
+
+<h2>MISC</h2>
+
+<p><strong><em>How does ActiveSupport::Notifications keep thread safe?</em></strong></p>
+
+<p><code>extend</code> <strong>ActiveSupport::PerThreadRegistry</strong> in <strong>InstrumentationRegistry</strong>.</p>
+
+<h2>Reference</h2>
+
+<p>Unit test:</p>
+
+<ul>
+<li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications_test.rb">activesupport/test/notifications_test.rb</a></li>
+<li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications%2Fevented_notification_test.rb">activesupport/test/notifications/evented<em>notification</em>test.rb</a></li>
+<li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications%2Finstrumenter_test.rb">activesupport/test/notifications/instrumenter_test.rb</a></li>
+</ul>
+
+<p><a href="http://www.paperplanes.de/2012/3/14/on-notifications-logsubscribers-and-bringing-sanity-to-rails-logging.html">On Notifications, Log Subscribers, and Bringing Sanity to Rails&#39; Logging</a><br>
+<a href="http://railscasts.com/episodes/249-notifications-in-rails-3">#249 Notifications in Rails 3</a><br>
+<a href="https://speakerdeck.com/nextmat/digging-deep-with-activesupportnotifications">Digging Deep with ActiveSupport::Notifications</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Wendi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-03T00:45:35+08:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/excerpts/'>Excerpts</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ifyouseewendy.github.io/blog/2014/06/03/inside-activesupport-notifications/" data-via="" data-counturl="http://ifyouseewendy.github.io/blog/2014/06/03/inside-activesupport-notifications/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/03/rubymeta-callables/" title="Previous Post: RubyMeta - Callables">&laquo; RubyMeta - Callables</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/06/03/inside-activesupport-notifications/">Inside ActiveSupport Notifications</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/03/rubymeta-callables/">RubyMeta - Callables</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/03/rubymeta-class-definitions/">RubyMeta - Class Definitions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/03/rubymeta-eval-and-binding/">RubyMeta - Eval and Binding</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/03/rubymeta-methods/">RubyMeta - Methods</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Wendi -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ifyouseewendy.github.io/blog/2014/06/03/inside-activesupport-notifications/';
+        var disqus_url = 'http://ifyouseewendy.github.io/blog/2014/06/03/inside-activesupport-notifications/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

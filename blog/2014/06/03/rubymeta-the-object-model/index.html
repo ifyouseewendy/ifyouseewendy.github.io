@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>RubyMeta - The Object Model - Wendi's Notes</title>
+  <meta name="author" content="Wendi">
+
+  
+  <meta name="description" content="An object contains its instance variables and a reference to a class. Instance variable Instance variables just spring into existence when you &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ifyouseewendy.github.io/blog/2014/06/03/rubymeta-the-object-model">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Notes" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="header-inner">
+    <span class="first"><a href="/">Wendi's Notes</a></span>
+    <span><a href="/about">about</a></span>
+    <span><a href="http://www.github.com/ifyouseewendy">projects</a></span>
+    <span class="last"><a href="/atom.xml" title="subscribe via RSS">rss</a></span>
+  </div>
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">RubyMeta - the Object Model</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-03T00:39:43+08:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2014</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img src="https://dl.dropboxusercontent.com/s/a6qc1yd1cd57pkp/the_object_model.png?dl=1&amp;token_hash=AAEBXb4OJ73P3xWWbPmIMOferP8_YHxQlS9d8l0hjEq2wQ&amp;expiry=1400078501" alt="the_object_model"></p>
+
+<p>An object contains its instance variables and a reference to a class.</p>
+
+<h2>Instance variable</h2>
+
+<p>Instance variables just spring into existence when you assign them a value, so you can have objects of the same class that carry different instance variables.</p>
+
+<h2>Instance method</h2>
+
+<p>You can get a list of an object’s methods by calling <code>Object#methods</code>.</p>
+
+<p>When you talk about the class, you call it an instance method, and when you talk about the object, you simply call it a method.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">String</span><span class="o">.</span><span class="n">instance_methods</span> <span class="o">==</span> <span class="s2">&quot;abc&quot;</span><span class="o">.</span><span class="n">methods</span> <span class="c1"># =&gt; true</span>
+</span><span class='line'><span class="nb">String</span><span class="o">.</span><span class="n">methods</span> <span class="o">==</span> <span class="s2">&quot;abc&quot;</span><span class="o">.</span><span class="n">methods</span> <span class="c1"># =&gt; false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>An object’s instance variables live in the object itself, and an object’s methods live in the object’s class. That’s why objects of the same class share methods but don’t share instance variables.</p>
+
+<h2>Truth about classes</h2>
+
+<p>The truth about classes: classes themselves are nothing but objects.</p>
+
+<p>The methods of an object are also the instance methods of its class. In turn, this means that the methods of a class are the instance methods of <code>Class</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Class</span><span class="o">.</span><span class="n">instance_methods</span><span class="p">(</span><span class="kp">false</span><span class="p">)</span> <span class="c1"># =&gt; [:allocate, :new, :superclass]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p><strong>What&#39;s the difference between <code>class</code> and <code>superclass</code>?</strong></p>
+
+<ul>
+<li><code>class</code> is about the type which an object belongs to.</li>
+<li><code>superclass</code> is about inheritance, between classes.</li>
+</ul>
+
+<p>The <code>superclass</code> of Class is Module—which is to say, every class is also a module. To be precise, a class is a module with three additional instance methods (new, allocate, and superclass) that allow you to create objects or arrange classes into hierarchies.</p>
+
+<p><strong>Which to pick between Class and Module?</strong></p>
+
+<p>Usually, you pick a module when you mean it to be included somewhere, and you pick a class when you mean it to be instantiated or inherited.</p>
+
+<p><strong>What&#39;s an Object, and what&#39;s a Class?</strong></p>
+
+<ul>
+<li><p>What’s an object? It’s a bunch of instance variables, plus a link to a class. The object’s methods don’t live in the object—they live in the object’s class, where they’re called the instance methods of the class.</p></li>
+<li><p>What’s a class? It’s an object (an instance of Class), plus a list of instance methods and a link to a superclass. Class is a subclass of Module, so a class is also a module.</p></li>
+</ul>
+
+<p><strong>What&#39;s the difference between <code>load</code> and <code>require</code>?</strong></p>
+
+<p>You use load to execute code, and you use require to import libraries.</p>
+
+<p>That’s why require has no second argument: those leftover class names are probably the reason why you imported the file in the first place. Also, that’s why require only tries to load each file once, while load executes the file again every time you call it.</p>
+
+<p><strong>As <code>load</code> executes codes, how does <code>load</code> avoid conlicts?</strong></p>
+
+<p><code>load(&#39;motd.rb&#39;, true)</code></p>
+
+<p>If you load a file this way, Ruby creates an anonymous module, uses that module as a Namespace to contain all the constants from motd.rb, and then destroys the module.</p>
+
+<h2>Constant</h2>
+
+<p>classes are nothing but objects, class names are nothing but constants.</p>
+
+<p><strong>How is a constant really different from a variable?</strong></p>
+
+<p>The one important difference has to do with their scope.</p>
+
+<p>Constants are arranged in a tree similar to a file system, where the names of modules and classes play the part of directories and regular constants play the part of files.</p>
+
+<h2>Method lookup</h2>
+
+<p><strong>What does Ruby do, when you call a method?</strong></p>
+
+<ol>
+<li>It finds the method. This is a process called method lookup.</li>
+<li>It executes the method. To do that, Ruby needs something called <code>self</code>.</li>
+</ol>
+
+<p><strong>How dos Ruby lookup methods?</strong></p>
+
+<p><em>“one step to the right, then up”</em> rule: go one step to the right into the receiver’s class, and then go up the ancestors chain until you find the method.</p>
+
+<p><strong>What does ancestor chain look like, when <code>prepend</code> or <code>include</code> multiple modules?</strong></p>
+
+<p>The <code>prepend</code> method. It works like <code>include</code>, but it inserts the module below the including class.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">C</span>
+</span><span class='line'>    <span class="kp">include</span> <span class="no">M1</span>
+</span><span class='line'>    <span class="kp">include</span> <span class="no">M2</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">prepend</span> <span class="no">M3</span>
+</span><span class='line'>    <span class="n">prepend</span> <span class="no">M4</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">D</span> <span class="o">&lt;</span> <span class="n">C</span><span class="p">;</span> <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">D</span><span class="o">.</span><span class="n">ancestors</span> <span class="c1"># =&gt; [&#39;M4&#39;, &#39;M3&#39;, &#39;C&#39;, &#39;M2&#39;, &#39;M1&#39;]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p><strong>What does Ruby do, when <code>prepend</code> or <code>include</code> a module multiple times?</strong></p>
+
+<p>If that module is already in the chain, Ruby silently ignores the second inclusion. As a result, a module can only appear once in the same chain of ancestors.</p>
+
+<p><strong>Basic ancestor chain</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">MyClass</span><span class="p">;</span> <span class="k">end</span>
+</span><span class='line'><span class="no">MyClass</span><span class="o">.</span><span class="n">ancestors</span> <span class="c1"># =&gt; [MyClass, Object, Kernel, BasicObject]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p><strong>What <code>private</code> really means?</strong></p>
+
+<p><code>private</code> methods come from two rules working together:</p>
+
+<ol>
+<li>you need an explicit receiver to call a method on an object that is not yourself.</li>
+<li><code>private</code> methods can be called only with an <strong>implicit <code>self</code></strong>.</li>
+</ol>
+
+<p>Put these two rules together, and you’ll see that you can only call a <code>private</code> method on yourself. You can call this the “private rule.“</p>
+
+<p><strong>What&#39;s the env when you start the <code>irb</code>?</strong></p>
+
+<p>As soon as you start a Ruby program, you’re sitting within an object named <code>main</code> that the Ruby interpreter created for you.</p>
+
+<h2>Refinement</h2>
+
+<p>Refinements are similar to Monkeypatches, but they’re not global. A Refinement is only active in two places:</p>
+
+<ul>
+<li>The <code>refine</code> block itself.</li>
+<li>The code starting from the place where you call <code>using</code> until the end of the module definition (if you’re in a module definition) or the end of the file (if you’re at the top level).</li>
+</ul>
+
+<p><strong>Which has the precedence, Refinement or Method lookup?</strong></p>
+
+<p>Refinements are like pieces of code patched right over a class, and they override normal method lookup. On the other hand, a Refinement works in a limited area of the program: the lines of code between the call to using and the end of the file, or the end of the module definition.</p>
+
+<p>Code in an active Refinement takes precedence over code in the refined class, and also over code in modules that are included or prepended by the class. Refining a class is like slapping a patch right onto the original code of the class.</p>
+
+<p>A trivia example about Refinement:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">my_method</span>
+</span><span class='line'>      <span class="s2">&quot;original my_method()&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">another_method</span>
+</span><span class='line'>    <span class="n">my_method</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">module</span> <span class="nn">MyClassRefinement</span>
+</span><span class='line'>  <span class="n">refine</span> <span class="no">MyClass</span> <span class="k">do</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">my_method</span>
+</span><span class='line'>    <span class="s2">&quot;refined my_method()&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">using</span> <span class="no">MyClassRefinement</span>
+</span><span class='line'><span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">my_method</span>     <span class="c1"># =&gt; &quot;refine my_method()&quot;</span>
+</span><span class='line'><span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">another_method</span> <span class="c1"># =&gt; &quot;original my_method()&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Even if you call <code>another_method</code> after the <code>using</code>, the call to <code>my_method</code> itself happens before the <code>using</code>—so it calls the original, unrefined version of the method.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Wendi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-03T00:39:43+08:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/excerpts/'>Excerpts</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ifyouseewendy.github.io/blog/2014/06/03/rubymeta-the-object-model/" data-via="" data-counturl="http://ifyouseewendy.github.io/blog/2014/06/03/rubymeta-the-object-model/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/03/jiang-xin-chang-fa-fei-yang-de-ri-zi/" title="Previous Post: 姜昕 - 长发飞扬的日子">&laquo; 姜昕 - 长发飞扬的日子</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/06/03/rubymeta-methods/" title="Next Post: RubyMeta - Methods">RubyMeta - Methods &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/06/03/inside-activesupport-notifications/">Inside ActiveSupport Notifications</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/03/rubymeta-callables/">RubyMeta - Callables</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/03/rubymeta-class-definitions/">RubyMeta - Class Definitions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/03/rubymeta-eval-and-binding/">RubyMeta - Eval and Binding</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/03/rubymeta-methods/">RubyMeta - Methods</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Wendi -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ifyouseewendy.github.io/blog/2014/06/03/rubymeta-the-object-model/';
+        var disqus_url = 'http://ifyouseewendy.github.io/blog/2014/06/03/rubymeta-the-object-model/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
