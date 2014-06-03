@@ -3,7 +3,7 @@ layout: post
 title: "Rails4Way - Environments and Configurations"
 date: 2014-05-18 16:10:42 +0800
 comments: true
-categories: [Rails]
+categories: [Rails, Excerpts]
 ---
 
 ## Bundler [ref](http://bundler.io)
@@ -14,7 +14,7 @@ Bundler does gem dependency resolution based on Gemfile.
 
 The specifier **~>** has a special meaning, best shown by example. `~> 2.0.3` is identical to `>= 2.0.3` and `< 2.1`. `~> 2.1` is identical to `>= 2.1` and `< 3.0`. `~> 2.2.beta` will match prerelease versions like `2.2.beta.12`.
 
-```ruby
+``` ruby hello linenos:false
 gem 'thin',  '~>1.1'
 ```
 
@@ -59,7 +59,7 @@ The default location for gems installed by bundler is directory named **.bundle*
 
 This command will generate **.bundle/config** file:
 
-```ruby
+```ruby .bundle/config
 ---
 BUNDLE_BIN: bundler_stubs
 BUNDLE_PATH: vendor/bundle

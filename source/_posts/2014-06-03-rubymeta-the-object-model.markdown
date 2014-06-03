@@ -6,34 +6,36 @@ comments: true
 categories:  [Ruby, Excerpts]
 ---
 
-## The Object Model
-
 ![the_object_model](https://dl.dropboxusercontent.com/s/a6qc1yd1cd57pkp/the_object_model.png?dl=1&token_hash=AAEBXb4OJ73P3xWWbPmIMOferP8_YHxQlS9d8l0hjEq2wQ&expiry=1400078501)
 
 An object contains its instance variables and a reference to a class.
 
-### Instance variable
+## Instance variable
 
 Instance variables just spring into existence when you assign them a value, so you can have objects of the same class that carry different instance variables.
 
-### Instance method
+## Instance method
 
 You can get a list of an object’s methods by calling `Object#methods`.
 
 When you talk about the class, you call it an instance method, and when you talk about the object, you simply call it a method.
 
-  String.instance_methods == "abc".methods # => true
-  String.methods == "abc".methods # => false
+```ruby
+String.instance_methods == "abc".methods # => true
+String.methods == "abc".methods # => false
+```
 
 An object’s instance variables live in the object itself, and an object’s methods live in the object’s class. That’s why objects of the same class share methods but don’t share instance variables.
 
-### Truth about classes
+## Truth about classes
 
 The truth about classes: classes themselves are nothing but objects.
 
 The methods of an object are also the instance methods of its class. In turn, this means that the methods of a class are the instance methods of `Class`:
 
-  Class.instance_methods(false) # => [:allocate, :new, :superclass]
+```ruby
+Class.instance_methods(false) # => [:allocate, :new, :superclass]
+```
 
 **What's the difference between `class` and `superclass`?**
 
@@ -64,7 +66,7 @@ That’s why require has no second argument: those leftover class names are prob
 
 If you load a file this way, Ruby creates an anonymous module, uses that module as a Namespace to contain all the constants from motd.rb, and then destroys the module.
 
-### Constant
+## Constant
 
 classes are nothing but objects, class names are nothing but constants.
 
@@ -75,7 +77,7 @@ The one important difference has to do with their scope.
 Constants are arranged in a tree similar to a file system, where the names of modules and classes play the part of directories and regular constants play the part of files.
 
 
-### Method lookup
+## Method lookup
 
 
 **What does Ruby do, when you call a method?**
@@ -91,17 +93,19 @@ Constants are arranged in a tree similar to a file system, where the names of mo
 
 The `prepend` method. It works like `include`, but it inserts the module below the including class.
 
-  class C
-      include M1
-      include M2
+```ruby
+class C
+    include M1
+    include M2
 
-      prepend M3
-      prepend M4
-  end
+    prepend M3
+    prepend M4
+end
 
-  class D < C; end
+class D < C; end
 
-  D.ancestors # => ['M4', 'M3', 'C', 'M2', 'M1']
+D.ancestors # => ['M4', 'M3', 'C', 'M2', 'M1']
+```
 
 **What does Ruby do, when `prepend` or `include` a module multiple times?**
 
@@ -109,8 +113,10 @@ If that module is already in the chain, Ruby silently ignores the second inclusi
 
 **Basic ancestor chain**
 
-  class MyClass; end
-  MyClass.ancestors # => [MyClass, Object, Kernel, BasicObject]
+```ruby
+class MyClass; end
+MyClass.ancestors # => [MyClass, Object, Kernel, BasicObject]
+```
 
 **What `private` really means?**
 
@@ -125,7 +131,7 @@ Put these two rules together, and you’ll see that you can only call a `private
 
 As soon as you start a Ruby program, you’re sitting within an object named `main` that the Ruby interpreter created for you.
 
-### Refinement
+## Refinement
 
 Refinements are similar to Monkeypatches, but they’re not global. A Refinement is only active in two places:
 
@@ -140,31 +146,32 @@ Code in an active Refinement takes precedence over code in the refined class, an
 
 A trivia example about Refinement:
 
+```ruby
+class MyClass
 
-  class MyClass
-
-    def my_method
-        "original my_method()"
-    end
-
-
-    def another_method
-      my_method
-    end
-
+  def my_method
+      "original my_method()"
   end
 
-  module MyClassRefinement
-    refine MyClass do
-    def my_method
-      "refined my_method()"
-    end
-    end
+
+  def another_method
+    my_method
   end
 
-  using MyClassRefinement
-  MyClass.new.my_method     # => "refine my_method()"
-  MyClass.new.another_method # => "original my_method()"
+end
+
+module MyClassRefinement
+  refine MyClass do
+  def my_method
+    "refined my_method()"
+  end
+  end
+end
+
+using MyClassRefinement
+MyClass.new.my_method     # => "refine my_method()"
+MyClass.new.another_method # => "original my_method()"
+```
 
 Even if you call `another_method` after the `using`, the call to `my_method` itself happens before the `using`—so it calls the original, unrefined version of the method.
 

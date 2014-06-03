@@ -19,19 +19,17 @@ Eager load the included associations into memory. Fire two queries:
 Sometimes,`includes` will load many redundant fields in association table, `joins` help to control what columns after `SELECT`.
 
  
-*Reference*
+####Reference
 
-[ruby - Rails :include vs. :joins - Stack Overflow](http://stackoverflow.com/questions/1208636/rails-include-vs-joins/10129946)
++ [ruby - Rails :include vs. :joins - Stack Overflow](http://stackoverflow.com/questions/1208636/rails-include-vs-joins/10129946)
++ [#181 Include vs Joins - RailsCasts](http://railscasts.com/episodes/181-include-vs-joins?language=zh&view=asciicast)
++ [N+1 Benchmark Gist - IBM Developer Works](https://gist.github.com/ifyouseewendy/6d0feb90d76fb894814a)
 
-[#181 Include vs Joins - RailsCasts](http://railscasts.com/episodes/181-include-vs-joins?language=zh&view=asciicast)
+- - -
 
-[N+1 Benchmark Gist - IBM Developer Works](https://gist.github.com/ifyouseewendy/6d0feb90d76fb894814a)
+**Does query with `includes` and `joins` return the same count?**
 
-- - - 
-
-**Does query with `includes` and `joins` return the same count?** [gist](https://gist.github.com/ifyouseewendy/429544e5b8f49a347e95)
-
-```
+```ruby activerecord-includes-joins-query-count  https://gist.github.com/ifyouseewendy/429544e5b8f49a347e95
 class Post < ActiveRecord::Base
   has_many :comments
 end
@@ -68,7 +66,6 @@ end
 Check list:
 
 + [N+1 problem in mongoid - Stack Overflow](http://stackoverflow.com/questions/3912706/n1-problem-in-mongoid)
-
 + [Eager Loading - Mongoid Doc](http://mongoid.org/en/mongoid/docs/querying.html#queries)
 
 By now ( *2014-05-08* ) the latest version *4.0.0.beta1* behaves much better than last stable version *3.1.6*, check the [gist](https://gist.github.com/ifyouseewendy/0069c0498274d2dd5a6d).

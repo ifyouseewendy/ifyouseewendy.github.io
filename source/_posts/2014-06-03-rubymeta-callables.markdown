@@ -6,7 +6,7 @@ comments: true
 categories: [Ruby, Excerpts]
 ---
 
-### the Callables
+## the Callables
 
 > Package code, and call it later
 
@@ -17,20 +17,21 @@ categories: [Ruby, Excerpts]
 
  **block** is not an object, while **proc** and **lambda** are Proc objects, and **method** is [in question](http://stackoverflow.com/questions/2602340/methods-in-ruby-objects-or-not).
 
-### Blocks
+## Blocks
 
 The main point about blocks is that they are all inclusive and come ready to run. They contain both the **code** and **a set of bindings**.
 
 **When you define the block, it simply grabs the bindings that are there at that moment**, and then it carries those bindings along when you pass the block into a method.
 
-  def my_method
-    x = "Goodbye"
-    yield("cruel")
-  end
+```ruby
+def my_method
+  x = "Goodbye"
+  yield("cruel")
+end
 
-  x = "Hello"
-  my_method {|y| "#{x}, #{y} world" } # => "Hello, cruel world"
-
+x = "Hello"
+my_method {|y| "#{x}, #{y} world" } # => "Hello, cruel world"
+```
 
 **What if I define additional bindings inside a block?**
 
@@ -78,25 +79,27 @@ Use `Class.new`, `Module.new` and `define_method`.
 
 **What is Shared Scope?**
 
-  # use `def` to do seperate
-  def define_methods
-    shared = 0
+```ruby
+# use `def` to do seperate
+def define_methods
+  shared = 0
 
-    Kernel.send :define_method, :counter do
-    shared
-    end
-
-    Kernel.send :define_method, :inc do |x|
-    shared += x
-    end
+  Kernel.send :define_method, :counter do
+  shared
   end
 
-  define_methods
+  Kernel.send :define_method, :inc do |x|
+  shared += x
+  end
+end
+
+define_methods
 
 
-  counter # => 0
-  inc(4)
-  counter # => 4
+counter # => 0
+inc(4)
+counter # => 4
+```
 
 If you define multiple methods in the same Flat Scope, maybe protected by a Scope Gate, all those methods can share bindings. That’s called a **Shared Scope**.
 
@@ -104,20 +107,22 @@ If you define multiple methods in the same Flat Scope, maybe protected by a Scop
 
 `instance_eval` has a slightly more flexible twin brother named `instance_exec`, that allows you to pass arguments to the block.
 
-  class C
-    def initialize
-    @x = 1
-    end
+```ruby
+class C
+  def initialize
+  @x = 1
   end
+end
 
-  class D
-    def twisted_method
-    @y = 2
-    C.new.instance_eval { "@x: #{@x}, @y: #{@y}" }
-    end
+class D
+  def twisted_method
+  @y = 2
+  C.new.instance_eval { "@x: #{@x}, @y: #{@y}" }
   end
+end
 
-  D.new.twisted_method # => "@x: 1, @y: "
+D.new.twisted_method # => "@x: 1, @y: "
+```
 
 However, instance variables depend on `self`, so when `instance_eval` switches `self` to the receiver, all the instance variables in the caller fall out of scope.
 
@@ -133,42 +138,44 @@ You might think of using a `BasicObject` instead of an Object for your Clean Roo
 
 *Shared Scope* is used in definition, to make variables(bindings) shared between methods, while *Clean Room* is used to run code, to help reduce the modifications on shared variables(like instance variables).
 
-    # lambda which is called immediatley is the Shared Scope
-  lambda {
-      setups = []
-      events = []
+```ruby
+# lambda which is called immediatley is the Shared Scope
+lambda {
+  setups = []
+  events = []
 
-    Kernel.send :define_method, :event do |description, &block|
-        events << {:description => description, :condition => block}
-      end
+Kernel.send :define_method, :event do |description, &block|
+    events << {:description => description, :condition => block}
+  end
 
-      Kernel.send :define_method, :setup do |&block|
-        setups << block
-      end
+  Kernel.send :define_method, :setup do |&block|
+    setups << block
+  end
 
-      Kernel.send :define_method, :each_event do |&block|
-        events.each do |event|
-          block.call event
-        end
-      end
-
-      Kernel.send :define_method, :each_setup do |&block|
-        setups.each do |setup|
-          block.call setup
-        end
-      end
-    }.call
-
-    load 'events.rb'
-
-    # env is created for each event to be a Clean Room
-    each_event do |event|
-      env = Object.new
-      each_setup do |setup|
-        env.instance_eval &setup
-      end
-      puts "ALERT: #{event[:description]}" if env.instance_eval &(event[:condition])
+  Kernel.send :define_method, :each_event do |&block|
+    events.each do |event|
+      block.call event
     end
+  end
+
+  Kernel.send :define_method, :each_setup do |&block|
+    setups.each do |setup|
+      block.call setup
+    end
+  end
+}.call
+
+load 'events.rb'
+
+# env is created for each event to be a Clean Room
+each_event do |event|
+  env = Object.new
+  each_setup do |setup|
+    env.instance_eval &setup
+  end
+  puts "ALERT: #{event[:description]}" if env.instance_eval &(event[:condition])
+end
+```
 
 **When is `yield` not enough to use?**
 
@@ -176,58 +183,70 @@ You might think of using a `BasicObject` instead of an Object for your Clean Roo
 + You want to convert the block to a `Proc`.
 
 
-### Proc Objects
+## Proc Objects
 
 as blocks are not objects, Ruby provides the standard library class `Proc`. A `Proc` is a block that has been turned into an object. You can create a `Proc` by passing the block to `Proc.new`. Later, you can evaluate the block-turned-object with `Proc#call`.
 
 **Deferred Evaluation**
 
-  inc = Proc.new {|x| x + 1 }
-  # more code...
-  inc.call(2) # => 3
+```ruby
+inc = Proc.new {|x| x + 1 }
+# more code...
+inc.call(2) # => 3
+```
 
-**4 ways to create Procs *explicitly***
+**4 ways to create Procs +explicitly+**
 
+```ruby
   Proc.new { |x| x + 1 }
-      proc { |x| x + 1 }
-      lambda { |x| x + 1 }
-        -> x { x + 1 } # stabby lambda
+proc { |x| x + 1 }
+lambda { |x| x + 1 }
+  -> x { x + 1 } # stabby lambda
+```
 
 **Ways to create Procs implicitly**
 
 use `&` to convert block into a proc:
 
-  def make_proc(&p)
-    p
-  end
+```ruby
+def make_proc(&p)
+  p
+end
 
-  make_proc {|x| x + 1 }
+make_proc {|x| x + 1 }
+```
 
 **4 ways to call Procs**
 
-  p.call(41)
-  p[41]
-  p === 41
-  p.(41)
+```ruby
+p.call(41)
+p[41]
+p === 41
+p.(41)
+```
 
 **Use `&` to convert a block to Proc**
 
-  def my_method(&the_proc)
-    the_proc
-  end
+```ruby
+def my_method(&the_proc)
+  the_proc
+end
 
-  p = my_method {|name| "Hello, #{name}!" }
-  p.class     # => Proc
-  p.call("Bill")  # => "Hello, Bill!"
+p = my_method {|name| "Hello, #{name}!" }
+p.class     # => Proc
+p.call("Bill")  # => "Hello, Bill!"
+```
 
 **Use `&` to convert a Proc to block**
 
-  def my_method(greeting)
-      "#{greeting}, #{yield}!"
-  end
+```ruby
+def my_method(greeting)
+    "#{greeting}, #{yield}!"
+end
 
-  my_proc = proc { "Bill" }
-  my_method("Hello", &my_proc)
+my_proc = proc { "Bill" }
+my_method("Hello", &my_proc)
+```
 
 **What's a lambda?**
 
@@ -246,7 +265,7 @@ Procs created with `lambda` are called *lambdas*, while the others are simply ca
 
 Generally speaking, `lambdas` are more intuitive than procs because they’re more similar to methods. They’re pretty strict about arity, and they simply exit when you call `return`.
 
-**About the tolerance on arguments **
+**About the tolerance on arguments**
 
 method == lambda < proc == block
 
@@ -274,20 +293,24 @@ a `lambda` is evaluated in the scope it’s defined in (it’s a closure, rememb
 
 + use `Method#unbind`
 
-    def foo; end
-    unbound = method(:foo).unbind
-    unbound.class   # => UnboundMethod
+```ruby
+def foo; end
+unbound = method(:foo).unbind
+unbound.class   # => UnboundMethod
+```
 
 + use `Module#instance_method`
 
-    module MyModule
-      def my_method
-      42
-      end
-    end
+```ruby
+module MyModule
+  def my_method
+  42
+  end
+end
 
-    unbound = MyModule.instance_method(:my_method)
-    unbound.class   # => UnboundMethod
+unbound = MyModule.instance_method(:my_method)
+unbound.class   # => UnboundMethod
+```
 
   *Note:* `instance_methods` is totally different, it's like `methods`, just return an array of symbols.
 
@@ -296,11 +319,13 @@ a `lambda` is evaluated in the scope it’s defined in (it’s a closure, rememb
 + bind the UnboundMethod to an object with `UnboundMethod#bind`. UnboundMethods that come from a class can only be bound to objects of the same class (or a subclass), while UnboundMethods that come from a module have no such limitation from Ruby 2.0 onwards.
 + use an UnboundMethod to define a brand new method by passing it to `Module#define_method`.
 
-    String.class_eval do
-    define_method :another_method, unbound
-    end
+```ruby
+String.class_eval do
+define_method :another_method, unbound
+end
 
-    "abc".another_method # => 42
+"abc".another_method # => 42
+```
 
 **example**
 
@@ -308,9 +333,10 @@ In ActiveSupport, the 'autoloading' system includes a `Loadable` module, which r
 
 And what if you want to stop using `Loadable#load` and go back to the plain vanilla `Kernel#load`?
 
-  # gems/activesupport-4.0.2/lib/active_support/dependencies.rb
-  module Loadable
-    def exclude_from(base)
-      base.class_eval { define_method :load, Kernel.instance_method(:load) }
-    end
+```ruby # gems/activesupport-4.0.2/lib/active_support/dependencies.rb
+module Loadable
+  def exclude_from(base)
+    base.class_eval { define_method :load, Kernel.instance_method(:load) }
   end
+end
+```

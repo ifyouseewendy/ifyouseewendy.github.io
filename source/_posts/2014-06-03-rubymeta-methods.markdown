@@ -6,36 +6,35 @@ comments: true
 categories:  [Ruby, Excerpts]
 ---
 
-## Methods
-
-### Dynamic Dispatch
+## Dynamic Dispatch
 
 Why would you use `send` instead of the plain old dot notation? Because with `send`, the name of the method that you want to call becomes just a regular argument. You can wait literally until the very last moment to decide which method to call, while the code is running. This technique is called Dynamic Dispatch.
 
 **An example of Dynamic Dispatch**
 
-  # gems/pry-0.9.12.2/lib/pry/pry_instance.rb
-  def refresh(options={})
-    defaults = {}
-    attributes = [
-            :input, :output, :commands, :print, :quiet,
-            :exception_handler, :hooks, :custom_completions,
-            :prompt, :memory_size, :extra_sticky_locals
+```ruby gems/pry-0.9.12.2/lib/pry/pry_instance.rb
+def refresh(options={})
+  defaults = {}
+  attributes = [
+          :input, :output, :commands, :print, :quiet,
+          :exception_handler, :hooks, :custom_completions,
+          :prompt, :memory_size, :extra_sticky_locals
 
-          ]
+        ]
 
-    attributes.each do |attribute|
-      defaults[attribute] = Pry.send attribute
-    end
-
-    # ...
-
-    defaults.merge!(options).each do |key, value|
-    send("#{key}=", value) if respond_to?("#{key}=")
-    end
-
-    true
+  attributes.each do |attribute|
+    defaults[attribute] = Pry.send attribute
   end
+
+  # ...
+
+  defaults.merge!(options).each do |key, value|
+  send("#{key}=", value) if respond_to?("#{key}=")
+  end
+
+  true
+end
+```
 
 **What's the concern about `send`?**
 
@@ -43,11 +42,11 @@ You can call any method with `send`, including private methods.
 
 You can use `public_send` instead. It’s like send, but it makes a point of respecting the receiver’s privacy.
 
-### Dynamic Method
+## Dynamic Method
 
 There is one important reason to use `Module#define_method`(***private***) over the more familiar def keyword: `define_method` allows you to decide the name of the defined method at runtime.
 
-### Ghost Method
+## Ghost Method
 
 `BasicObject#method_missing` (***private***)
 
@@ -57,11 +56,13 @@ Ghost Methods are usually icing on the cake, but some objects actually rely almo
 
 `respond_to?` calls a method named `respond_to_missing?`, that is supposed to return true if a method is a Ghost Method. To prevent `respond_to?` from lying, override `respond_to_missing?` every time you override method_missing:
 
-  class Computer
-    # ...
-    def respond_to_missing?(method, include_private = false)    @data_source.respond_to?("get_#{method}_info") || super
-    end
+```ruby
+class Computer
+  # ...
+  def respond_to_missing?(method, include_private = false)    @data_source.respond_to?("get_#{method}_info") || super
   end
+end
+```
 
 
 **What about the constant missing?**
@@ -81,8 +82,10 @@ Remove methods from an object to turn them into Ghost Methods.
 
 + Inheriting from `BasicObject` is the quicker way to define a Blank Slate in Ruby.
 
-    im = BasicObject.instance_methods
-    im # => [:==, :equal?, :!, :!=, :instance_eval, :instance_exec, :__send__, :__id__]
+```ruby
+im = BasicObject.instance_methods
+im # => [:==, :equal?, :!, :!=, :instance_eval, :instance_exec, :__send__, :__id__]
+```
 
 + Inheriting from `Object` by default, and remove method inherited.
 
