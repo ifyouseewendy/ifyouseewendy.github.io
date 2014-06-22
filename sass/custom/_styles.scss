@@ -145,7 +145,7 @@ p code, li code {
 }
 
 h1 {
-    font-size: 1.2em;
+    font-size: 1.8em;
     line-height: 1.5em;
 }
 
@@ -196,3 +196,16 @@ ul, ol {
 .category-header {
   color: #aaa;
 }
+
+article h2 {
+  background: none;
+}
+
+article h1 {
+  padding-top: 0.8em;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') bottom left repeat-x;
+}
+article .entry-title {
+  background: none;
+}
+
