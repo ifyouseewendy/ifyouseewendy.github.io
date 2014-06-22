@@ -197,15 +197,15 @@ ul, ol {
   color: #aaa;
 }
 
-article h2 {
+.hentry h2 {
   background: none;
 }
 
-article h1 {
+.hentry h1 {
   padding-top: 0.8em;
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') bottom left repeat-x;
 }
-article .entry-title {
+.hentry .entry-title {
   background: none;
 }
 
