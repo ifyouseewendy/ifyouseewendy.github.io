@@ -40,9 +40,10 @@
       <div>
         <article role="article">
           {% if page.title %}
-          <section class='category-header'>
-            <p>{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</p>
-            {% if page.date %}<p class="meta">{% include post/date.html %}{{ time }}</p>{% endif %}
+          <section class='category-header cf'>
+            <p class='title'>{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</p>
+
+            {% if page.date %}<p class="meta date">{% include post/date.html %}{{ time }}</p>{% endif %}
           </section>
           {% endif %}
           {{ content }}
