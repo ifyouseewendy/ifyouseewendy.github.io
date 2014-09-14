@@ -1,5 +1,5 @@
 <!-- <h3>Tags</h3> -->
-{% if page.url == '/index.html' %}
+{% if page.url == '/index.html' or page.url contains 'categories'  %}
 <ul>
   {% for category in site.categories %}
     {% capture category_url %}{{ site.category_dir }}/{{ category | first | slugize | downcase | replace:' ','-' }}{% endcapture %}
