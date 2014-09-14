@@ -1,0 +1,33 @@
+<!-- <h3>Tags</h3> -->
+{% if page.url == '/index.html' %}
+<ul>
+  {% for category in site.categories %}
+    {% capture category_url %}{{ site.category_dir }}/{{ category | first | slugize | downcase | replace:' ','-' }}{% endcapture %}
+    {% capture full_category_url %}{{ category_url | append:'/index.html' }}{% endcapture %}
+
+    <li>
+      <a {% if full_category_url == page.url %}class="active"{% endif %} href="{{ root_url | append:'/' | append:category_url }}">- {{ category | first }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+{% else %}
+
+<h3>
+  {% for category in page.categories %}
+    {% capture category_url %}{{ site.category_dir }}/{{ category | slugize | downcase | replace:' ','-' }}{% endcapture %}
+    {% capture full_category_url %}{{ category_url | append:'/index.html' }}{% endcapture %}
+
+    <a {% if full_category_url == page.url %}class="active"{% endif %} href="{{ root_url | append:'/' | append:category_url }}"> #{{ category }}</a>
+  {% endfor %}
+
+</h3>
+<h3>Recent Posts</h3>
+<ul>
+	{% for post in site.posts limit: 5 %}
+    <li>
+    	<a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
