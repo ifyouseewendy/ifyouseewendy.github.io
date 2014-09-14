@@ -13,15 +13,6 @@
 
 {% else %}
 
-<h3>
-  {% for category in page.categories %}
-    {% capture category_url %}{{ site.category_dir }}/{{ category | slugize | downcase | replace:' ','-' }}{% endcapture %}
-    {% capture full_category_url %}{{ category_url | append:'/index.html' }}{% endcapture %}
-
-    <a {% if full_category_url == page.url %}class="active"{% endif %} href="{{ root_url | append:'/' | append:category_url }}"> #{{ category }}</a>
-  {% endfor %}
-
-</h3>
 <h3>Recent Posts</h3>
 <ul>
 	{% for post in site.posts limit: 5 %}
