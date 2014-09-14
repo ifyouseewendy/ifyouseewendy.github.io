@@ -1,7 +1,4 @@
 <header>
-  <div class="article-tags">
-      {% include post/categories.html %}
-  </div>
   {% if index %}
     <h1><a href="{{ root_url }}{{ post.url }}">
       {% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}
@@ -13,7 +10,7 @@
   {% endif %}
 </header>
 {% if index %}
-  <section>{{ content | excerpt }}</section>
+  <section>{{ excerpt }}</section>
   {% capture excerpted %}{{ content | has_excerpt }}{% endcapture %}
   {% if excerpted == 'true' %}
   <footer>
