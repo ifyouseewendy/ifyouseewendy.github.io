@@ -1,13 +1,15 @@
 ---
 layout: default
 ---
-{% assign index = true %}
+{% assign index = (page.url == '/index.html') %}
+
 {% for post in paginator.posts %}
 {% assign content = post.content %}
 <article>
 	{% include article.html %}
 </article>
 {% endfor %}
+
 <article class="pagination">
 {% if paginator.next_page %}
   <a class="prev" href="{{paginator.next_page}}">&larr; Older</a>

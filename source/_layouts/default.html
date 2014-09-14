@@ -1,9 +1,11 @@
+{% assign index = (page.url == '/index.html') %}
+
 {% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
 {% include head.html %}
 <body {% if page.body_id %} id="{{ page.body_id }}" {% endif %} {% if page.sidebar == false %} class="no-sidebar" {% endif %} {% if page.sidebar == 'collapse' or site.sidebar == 'collapse' %} class="collapse-sidebar sidebar-footer" {% endif %}>
   {% include header.html %}
   <div class="main-container">
-    <div class="main wrapper clearfix">
+    <div class="main wrapper clearfix" {% if index %} id="index-main" {% endif %}>
     	{% unless page.sidebar == false %}
     	<aside>
         {% if site.simple_search %}
