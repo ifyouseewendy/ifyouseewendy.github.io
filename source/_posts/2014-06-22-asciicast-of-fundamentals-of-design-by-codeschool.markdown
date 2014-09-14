@@ -6,7 +6,7 @@ comments: true
 categories: ['Web']
 ---
 
-# Typeface Classifications
+## Typeface Classifications
 
 Content is king.
 
@@ -14,7 +14,7 @@ What’s your audience?
 
 Find the typeface suits the content well.
 
-## Typefaces
+### Typefaces
 
 **Serif**
 
@@ -57,7 +57,7 @@ Difficult to read, don’t use in body copy.
 
 *Comic Sans* is a script font, not a Sans Serif font. Maybe don’t use it everywhere.
 
-## Principles
+### Principles
 
 Don’t choose two fonts from the same style.
 
@@ -77,7 +77,7 @@ Contrast over Harmony. Keep it the same or change it a lot, look for emphatic di
 
 ![p5](https://www.dropbox.com/s/ji0zx7v0kif5buc/vlcsnap-2014-06-13-14h48m52s15.png?dl=1)
 
-# Font Size, Leading & Weights
+## Font Size, Leading & Weights
 
 
 ![Establish Visual Hierarchy](https://www.dropbox.com/s/26lvgz1uyheudam/vlcsnap-2014-06-13-16h19m36s197.png?dl=1)
@@ -92,9 +92,9 @@ Leading is around 120% to 150% of the body copy size.
 
 ![Leading](https://www.dropbox.com/s/1nnn9pnvqj3rma1/vlcsnap-2014-06-13-16h22m48s94.png?dl=1)
 
-# Line-Width & Widows
+## Line-Width & Widows
 
-## Line Width Is Measured in CPL
+### Line Width Is Measured in CPL
 
 > Robert Bringhurst in "The elements of Typographic style" recommends 45 to 75 characters per line, 66 characters per line is widely considered the ideal. A width of 600px will hold around 75 characters of 18px text.
 
@@ -102,7 +102,7 @@ Use `max-width` to control CPL.
 
 ![CPL](https://www.dropbox.com/s/3lmavcczrk9s41r/vlcsnap-2014-06-13-16h40m13s48.png?dl=1)
 
-## Save the Orphans & Widows.
+### Save the Orphans & Widows.
 
 ![widow](https://www.dropbox.com/s/nrromwg0ozc5b16/vlcsnap-2014-06-13-16h56m47s155.png?dl=1)
 
@@ -112,7 +112,7 @@ No perfect solution.
 
 Try tweaking with the font size, weight, line width, and leading to fix the problem.
 
-# Color Theory
+## Color Theory
 
 + Subtractive Color, using CMYK (Cyan, Megenta, Yellow) color space.
 
@@ -122,7 +122,7 @@ Try tweaking with the font size, weight, line width, and leading to fix the prob
 
   ![RGB](https://www.dropbox.com/s/easxunlr4c64opi/vlcsnap-2014-06-15-08h25m57s202.png?dl=1)
   
-## HSL
+### HSL
 
 RGB is hard, while human process HSL. Hue, Saturation, Lightness.
 
@@ -154,7 +154,7 @@ Example
 
 ![hsb](https://www.dropbox.com/s/btfl63w63dgvxkk/vlcsnap-2014-06-15-08h29m45s191.png?dl=1)
 
-# Color Scheme
+## Color Scheme
 
 Start by selecting a Base Color.
 
@@ -162,11 +162,11 @@ Keep Culture in Mind.
 
 Build Scheme around Base Color.
 
-## Colors
+### Colors
 
 ![colors](https://www.dropbox.com/s/c0xlct808u0egfs/%E6%9C%AA%E5%91%BD%E5%90%8D_meitu_0.jpg?dl=1)
 
-## Schemes
+### Schemes
 
 **Monochromatic**
 
@@ -187,7 +187,7 @@ Analogous color schemes require you have colors with hues that both ascend and d
 Don't have to be perfect. Use the methods to tweak as needed to fit your project.
 
 
-# Color & Type
+## Color & Type
 
 Typography must have a high degree of contrast between it and its background.
 
@@ -225,7 +225,7 @@ Dont' be tacky. And treat the image behind the text to make it stand out.
 
 ![Treat image behind text](https://www.dropbox.com/s/ujn4xfnha8kcq9e/vlcsnap-2014-06-15-21h29m29s200.png?dl=1)
 
-# Basic Layout
+## Basic Layout
 
 ![layout1](https://www.dropbox.com/s/7kk0h969n7deob1/vlcsnap-2014-06-17-13h40m49s203.png?dl=1)
 
@@ -241,7 +241,7 @@ Reinforces the **Visual Hierarchy**.
 
 ![layout6](https://www.dropbox.com/s/uum2iooo7ko6bn3/vlcsnap-2014-06-17-13h47m26s72.png?dl=1)
 
-# The Grid
+## The Grid
 
 It is made up of a system of horizontal and vetical lines.
 
@@ -259,19 +259,19 @@ It is made up of a system of horizontal and vetical lines.
   
 Use them in Photoshop or another graphics software as a reference when designing.
 
-## Fixed or Fluid
+### Fixed or Fluid
 
 + With a fixed grid, the browser can get bigger or smaller, and the grid will remain constant.
 
 + With a fluid grid, it grows or shrinks with the browser window. And columns are either added or dropped to better serve that size.
 
-## Example
+### Example
 
 ![the grid1](https://www.dropbox.com/s/ndabm6ddf0sd6ts/vlcsnap-2014-06-21-02h38m41s189.png?dl=1 )
 
 ![the grid2](https://www.dropbox.com/s/00mrqaelqww8qdi/vlcsnap-2014-06-21-02h38m44s7.png?dl=1)
 
-# Whitespce & Balance
+## Whitespce & Balance
 
  Balance all the things.
  
