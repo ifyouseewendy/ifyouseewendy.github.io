@@ -2,73 +2,57 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>
-            http://ifyouseewendy.github.io/blog/2014/05/18/rails4way-environments-and-configurations/
+            http://ifyouseewendy.github.io/blog/2014/05/18/the-rails-4-way-environments-and-configurations/
         </loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
+        <lastmod>2014-09-15T04:58:10+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://ifyouseewendy.github.io/blog/2014/05/18/han-han-wo-suo-li-jie-de-sheng-huo/
         </loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
+        <lastmod>2014-09-15T03:59:46+08:00</lastmod>
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/blog/2014/06/03/rails-includes-vs-joins/</loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
+        <lastmod>2014-09-15T03:59:46+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://ifyouseewendy.github.io/blog/2014/06/03/jiang-xin-chang-fa-fei-yang-de-ri-zi/
         </loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
+        <lastmod>2014-09-15T04:55:14+08:00</lastmod>
     </url>
     <url>
-        <loc>http://ifyouseewendy.github.io/blog/2014/06/03/rubymeta-the-object-model/</loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://ifyouseewendy.github.io/blog/2014/06/03/rubymeta-methods/</loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://ifyouseewendy.github.io/blog/2014/06/03/rubymeta-eval-and-binding/</loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://ifyouseewendy.github.io/blog/2014/06/03/rubymeta-class-definitions/</loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://ifyouseewendy.github.io/blog/2014/06/03/rubymeta-callables/</loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
+        <loc>http://ifyouseewendy.github.io/blog/2014/06/03/metaprogrammingi-ruby/</loc>
+        <lastmod>2014-09-15T04:57:10+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://ifyouseewendy.github.io/blog/2014/06/03/inside-activesupport-notifications/
         </loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
+        <lastmod>2014-09-15T03:59:46+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://ifyouseewendy.github.io/blog/2014/06/22/asciicast-of-fundamentals-of-design-by-codeschool/
         </loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
+        <lastmod>2014-09-15T04:03:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/about/</loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
+        <lastmod>2014-09-15T03:59:46+08:00</lastmod>
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/archives/</loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
+        <lastmod>2014-09-15T04:58:10+08:00</lastmod>
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/blog/archives/</loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
+        <lastmod>2014-09-15T04:58:10+08:00</lastmod>
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/blog/</loc>
-        <lastmod>2014-09-14T23:40:29+08:00</lastmod>
+        <lastmod>2014-09-15T04:58:10+08:00</lastmod>
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/fz/</loc>
@@ -76,7 +60,7 @@
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/</loc>
-        <lastmod>2014-09-14T23:43:06+08:00</lastmod>
+        <lastmod>2014-09-15T04:58:10+08:00</lastmod>
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/robots.txt</loc>

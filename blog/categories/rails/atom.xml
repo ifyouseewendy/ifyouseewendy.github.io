@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | Wendi's Notes]]></title>
   <link href="http://ifyouseewendy.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://ifyouseewendy.github.io/"/>
-  <updated>2014-09-15T00:55:49+08:00</updated>
+  <updated>2014-09-15T05:06:48+08:00</updated>
   <id>http://ifyouseewendy.github.io/</id>
   <author>
     <name><![CDATA[Wendi]]></name>
@@ -446,10 +446,10 @@ By now ( *2014-05-08* ) the latest version *4.0.0.beta1* behaves much better tha
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Rails4Way - Environments and Configurations]]></title>
-    <link href="http://ifyouseewendy.github.io/blog/2014/05/18/rails4way-environments-and-configurations/"/>
+    <title type="html"><![CDATA[The Rails 4 Way - Environments and Configurations]]></title>
+    <link href="http://ifyouseewendy.github.io/blog/2014/05/18/the-rails-4-way-environments-and-configurations/"/>
     <updated>2014-05-18T16:10:42+08:00</updated>
-    <id>http://ifyouseewendy.github.io/blog/2014/05/18/rails4way-environments-and-configurations</id>
+    <id>http://ifyouseewendy.github.io/blog/2014/05/18/the-rails-4-way-environments-and-configurations</id>
     <content type="html"><![CDATA[<h2>Bundler <a href="http://bundler.io">ref</a></h2>
 
 <p>Bundler does gem dependency resolution based on Gemfile.</p>
