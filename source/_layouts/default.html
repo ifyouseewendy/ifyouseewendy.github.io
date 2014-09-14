@@ -1,4 +1,7 @@
-{% assign index = (page.url == '/index.html') %}
+{% assign index = false %}
+{% if page.url == "/index.html" %}
+  {% assign index = true %}
+{% endif %}
 
 {% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
 {% include head.html %}

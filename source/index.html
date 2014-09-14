@@ -1,7 +1,10 @@
 ---
 layout: default
 ---
-{% assign index = (page.url == '/index.html') %}
+{% assign index = false %}
+{% if page.url == "/index.html" %}
+  {% assign index = true %}
+{% endif %}
 
 {% for post in paginator.posts %}
 {% assign content = post.content %}
