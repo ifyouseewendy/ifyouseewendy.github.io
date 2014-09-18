@@ -60,7 +60,8 @@ Usually, you pick a module when you mean it to be included somewhere, and you pi
 
 You use load to execute code, and you use require to import libraries.
 
-That’s why require has no second argument: those leftover class names are probably the reason why you imported the file in the first place. Also, that’s why require only tries to load each file once, while load executes the file again every time you call it.
+1. use `require`, no need to appends '.rb'.
+2. `require` loads only once.
 
 ***As `load` executes codes, how does `load` avoid conlicts?***
 
@@ -142,7 +143,7 @@ Refinements are similar to Monkeypatches, but they’re not global. A Refinement
 
 ***Which has the precedence, Refinement or Method lookup?***
 
-Refinements are like pieces of code patched right over a class, and they override normal method lookup. On the other hand, a Refinement works in a limited area of the program: the lines of code between the call to using and the end of the file, or the end of the module definition.
+Refinements are like pieces of code patched right over a class, and they override normal method lookup. On the other hand, a Refinement works in a limited area of the program: the lines of code between the call to `using` and the end of the file, or the end of the module definition.
 
 Code in an active Refinement takes precedence over code in the refined class, and also over code in modules that are included or prepended by the class. Refining a class is like slapping a patch right onto the original code of the class.
 
@@ -152,7 +153,7 @@ A trivia example about Refinement:
 class MyClass
 
   def my_method
-      "original my_method()"
+    "original my_method()"
   end
 
 
@@ -164,9 +165,9 @@ end
 
 module MyClassRefinement
   refine MyClass do
-  def my_method
-    "refined my_method()"
-  end
+    def my_method
+      "refined my_method()"
+    end
   end
 end
 
@@ -176,6 +177,8 @@ MyClass.new.another_method # => "original my_method()"
 ```
 
 Even if you call `another_method` after the `using`, the call to `my_method` itself happens before the `using`—so it calls the original, unrefined version of the method.
+
+A help reference, [Refinements in Ruby](http://timelessrepo.com/refinements-in-ruby) by The timeless repository.
 
 # Methods
 
@@ -202,7 +205,7 @@ def refresh(options={})
   # ...
 
   defaults.merge!(options).each do |key, value|
-  send("#{key}=", value) if respond_to?("#{key}=")
+    send("#{key}=", value) if respond_to?("#{key}=")
   end
 
   true
@@ -227,20 +230,75 @@ Ghost Methods are usually icing on the cake, but some objects actually rely almo
 
 ***How can `respond_to?` missing methods?***
 
-`respond_to?` calls a method named `respond_to_missing?`, that is supposed to return true if a method is a Ghost Method. To prevent `respond_to?` from lying, override `respond_to_missing?` every time you override method_missing:
+refernced from [Method_missing, Politely](http://blog.marc-andre.ca/2010/11/15/methodmissing-politely/) by Marc Andre.
 
 ```ruby
-class Computer
-  # ...
-  def respond_to_missing?(method, include_private = false)    @data_source.respond_to?("get_#{method}_info") || super
+class StereoPlayer
+  def method_missing(method, *args, &block)
+    if method.to_s =~ /play_(\w+)/
+      puts "Here's #{$1}"
+    else
+      super
+    end
   end
 end
+
+p = StereoPlayer.new
+# ok:
+p.play_some_Beethoven # => "Here's some_Beethoven"
+# not very polite:
+p.respond_to? :play_some_Beethoven # => false
+
+class StereoPlayer
+  # def method_missing ...
+  #   ...
+  # end
+
+  def respond_to?(method, *)
+    method.to_s =~ /play_(\w+)/ || super
+  end
+end
+p.respond_to? :play_some_Beethoven # => true
+
+```
+
+You can specialize `respond_to?`, but it doesnot make a missing method behaves exactly like a method.
+
+```ruby
+p.method :play_some_Beethoven
+# => NameError: undefined method `play_some_Beethoven'
+#               for class `StereoPlayer'
+```
+
+Ruby 1.9.2 introduces `respond_to_missing?` that provides for a clean solution to the problem. Instead of specializing `respond_to?` one specializes `respond_to_missing?`.
+
+```ruby
+class StereoPlayer
+  # def method_missing ...
+  #   ...
+  # end
+
+  def respond_to_missing?(method, *)
+    method =~ /play_(\w+)/ || super
+  end
+end
+
+p = StereoPlayer.new
+p.play_some_Beethoven # => "Here's some_Beethoven"
+p.respond_to? :play_some_Beethoven # => true
+m = p.method(:play_some_Beethoven) # => #<Method: StereoPlayer#play_some_Beethoven>
+# m acts like any other method:
+m.call # => "Here's some_Beethoven"
+m == p.method(:play_some_Beethoven) # => true
+m.name # => :play_some_Beethoven
+StereoPlayer.send :define_method, :ludwig, m
+p.ludwig # => "Here's some_Beethoven"
 ```
 
 
 ***What about the constant missing?***
 
- `Module#const_missing`(***public***)
+ `Module#const_missing`(**public**)
 
 ***What's the concern about `method_missing`?***
 
@@ -249,7 +307,9 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 
 Ghost Methods can be dangerous. You can avoid most of their problems by following a few basic recommendations (always call `super`, always redefine `respond_to_missing?`)
 
-**How to solve it? Blank Slate!**
+And you may call some methods `Object` or some others classes in ancestor chain defined.
+
+***How to solve it? Blank Slate!***
 
 Remove methods from an object to turn them into Ghost Methods.
 
@@ -262,7 +322,32 @@ im # => [:==, :equal?, :!, :!=, :instance_eval, :instance_exec, :__send__, :__id
 
 + Inheriting from `Object` by default, and remove method inherited.
 
-  Don't hide `instance_eval` or any method beginning with `__`.One example of a reserved method is `BasicObject#__send__`, that behaves the same as send, but gives you a scary warning when you try to remove it.
+  Don't hide `instance_eval` or any method beginning with `__`. One example of a reserved method is `BasicObject#__send__`, that behaves the same as send, but gives you a scary warning when you try to remove it.
+
+```ruby
+class Compter
+  instance_methods.each do |m|
+    undef_method m unless m.to_s =~ /^__|method_missing|respond_to/
+  end
+end
+```
+
++ Or you can write a BlankSlate class to inherit.
+
+```ruby
+class BlankSlate
+
+  def self.hide(name)
+    return unless instance_methods.include? name.to_s
+    return if name.to_s =~ /^__|method_missing|respond_to/
+    @hidden_methods ||= {}
+    @hidden_methods[name.to_sym] = instance_method(name)
+    undef_method name
+  end
+
+  instance_methods.each{|m| hide m }
+end
+```
 
 ***What's the difference between `undef_method` and `remove_method`?***
 
