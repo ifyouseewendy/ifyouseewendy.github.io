@@ -220,11 +220,11 @@ You can use `public_send` instead. It’s like send, but it makes a point of res
 
 ## Dynamic Method
 
-There is one important reason to use `Module#define_method`(***private***) over the more familiar def keyword: `define_method` allows you to decide the name of the defined method at runtime.
+There is one important reason to use `Module#define_method`(**private**) over the more familiar def keyword: `define_method` allows you to decide the name of the defined method at runtime.
 
 ## Ghost Method
 
-`BasicObject#method_missing` (***private***)
+`BasicObject#method_missing` (**private**)
 
 Ghost Methods are usually icing on the cake, but some objects actually rely almost exclusively on them. They collect method calls through `method_missing` and forward them to the wrapped object.
 
@@ -427,9 +427,9 @@ You can access a top-level instance variable whenever `main` takes the role of s
 
 ***How to cross the Scope Gate, and Why?***
 
-Basicly use `Class.new`, `Module.new`, and `define_method`. You can also use these techniques:
+You can use these techniques:
 
-+ Use Flat Scope
++ Use Flat Scope (`Class.new`, `Module.new`, and `define_method`)
 + Use Shared Scope
 + Use Context Probe (`BasicObject#instance_eval`)
 
@@ -449,11 +449,11 @@ def define_methods
   shared = 0
 
   Kernel.send :define_method, :counter do
-  shared
+    shared
   end
 
   Kernel.send :define_method, :inc do |x|
-  shared += x
+    shared += x
   end
 end
 
@@ -465,7 +465,7 @@ inc(4)
 counter # => 4
 ```
 
-If you define multiple methods in the same Flat Scope, maybe protected by a Scope Gate, all those methods can share bindings. That’s called a **Shared Scope**.
+If you define multiple methods in the same Flat Scope, maybe protected by a Scope Gate, all those methods can share bindings. That’s called a **Shared Scope**
 
 ***What is Context Probe?***
 
@@ -474,14 +474,14 @@ If you define multiple methods in the same Flat Scope, maybe protected by a Scop
 ```ruby
 class C
   def initialize
-  @x = 1
+    @x = 1
   end
 end
 
 class D
   def twisted_method
-  @y = 2
-  C.new.instance_eval { "@x: #{@x}, @y: #{@y}" }
+    @y = 2
+    C.new.instance_eval { "@x: #{@x}, @y: #{@y}" }
   end
 end
 
@@ -508,7 +508,7 @@ lambda {
   setups = []
   events = []
 
-Kernel.send :define_method, :event do |description, &block|
+  Kernel.send :define_method, :event do |description, &block|
     events << {:description => description, :condition => block}
   end
 
@@ -559,13 +559,13 @@ inc = Proc.new {|x| x + 1 }
 inc.call(2) # => 3
 ```
 
-**4 ways to create Procs +explicitly+**
+**4 ways to create Procs explicitly**
 
 ```ruby
-  Proc.new { |x| x + 1 }
+Proc.new { |x| x + 1 }
 proc { |x| x + 1 }
 lambda { |x| x + 1 }
-  -> x { x + 1 } # stabby lambda
+-> x { x + 1 } # stabby lambda
 ```
 
 **Ways to create Procs implicitly**
@@ -621,17 +621,19 @@ Procs created with `lambda` are called *lambdas*, while the others are simply ca
 
 + `return`
 
-  `lambda` returns just returns from the lambda, while a proc returns from the scope where the proc itself was defined.
+    `lambda` returns just returns from the lambda, while a proc returns from the scope where the proc itself was defined.
 
 + **arity**
 
-  Call a `lambda` with the wrong arity, and it fails with an `ArgumentError`, while if there are too many arguments, a proc drops the excess arguments. If there are too few arguments, it assigns `nil` to the missing arguments.
+    Call a `lambda` with the wrong arity, and it fails with an `ArgumentError`, while if there are too many arguments, a proc drops the excess arguments. If there are too few arguments, it assigns `nil` to the missing arguments.
 
 Generally speaking, `lambdas` are more intuitive than procs because they’re more similar to methods. They’re pretty strict about arity, and they simply exit when you call `return`.
 
 **About the tolerance on arguments**
 
 method == lambda < proc == block
+
+
 
 ### Methods
 
