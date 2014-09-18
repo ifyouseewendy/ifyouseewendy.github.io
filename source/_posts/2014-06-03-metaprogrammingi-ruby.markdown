@@ -562,9 +562,9 @@ inc.call(2) # => 3
 **4 ways to create Procs explicitly**
 
 ```ruby
-Proc.new { |x| x + 1 }
-proc { |x| x + 1 }
-lambda { |x| x + 1 }
+Proc.new {|x| x + 1 }
+proc {|x| x + 1 }
+lambda {|x| x + 1 }
 -> x { x + 1 } # stabby lambda
 ```
 
@@ -725,9 +725,33 @@ Although you can get a reference to the current object through `self`, there’s
 + At the top level of your program, the current class is `Object`, the class of `main`. (That’s why, if you define a method at the top level, that method becomes an instance method of `Object`).
 
 ```ruby
-def foo; end
+def foo; puts 'foo'; end
 Object.instance_methods.grep(:foo)      # => []
 Object.private_instance_methods.grep(:foo) # => [:foo]
+```
+
+```ruby
+[6] pry(main)> def foo; puts 'foo'; end
+=> nil
+[7] pry(main)> cd Object
+[8] pry(Object):1> show-method foo
+
+From: (pry) @ line 4:
+Owner: Object
+Visibility: private
+Number of lines: 1
+
+def foo; puts 'foo'; end
+[9] pry(Object):1> cd ..
+```
+
+```ruby
+# foo.rb
+def foo; puts 'foo'; end
+p Object.private_instance_methods.grep(:foo) # => [:foo]
+
+# console
+$ ruby foo.rb # => [:foo]
 ```
 
 + In a method, the current class is the class of the current object.
@@ -749,7 +773,7 @@ Use `instance_eval` to open an object that is not a class, and `class_eval` to o
 
 ***What's the difference between `class_eval` and `instance_eval`?***
 
-Both changes `self`, and `class_eval` changes the current_class to the caller's class, while `instance_eval` changes the current_class to the caller's singleton class.
+Both changes `self`, and `class_eval` changes the current class to the caller's class, while `instance_eval` changes the current class to the caller's singleton class.
 
 **An interesting knowledge about `Class.new`**
 
@@ -804,6 +828,19 @@ def obj.my_singleton_method; end
 class << obj; instance_methods.grep(/my_/); end
 ```
 
+```ruby
+class Foo
+  class << self
+    def bar; puts 'Foo.bar'; end
+  end
+end
+
+foo = Foo.new
+class << foo
+  def bar; puts 'foo.bar'; end
+end
+```
+
 + Use `Object#singleton_class`
 
 ```ruby
@@ -816,7 +853,7 @@ obj.singleton_class.instance_methods.grep(/my_/)
 
 **7 rules of the Ruby object model**
 
-> The Ruby object model is a beautiful place,” Bill notes, with a dreamy expres- sion on his face. “There are classes, singleton classes, and modules. There are instance methods, class methods, and Singleton Methods.
+> The Ruby object model is a beautiful place,” Bill notes, with a dreamy expres- sion on his face. “There are classes, singleton classes, and modules. There are instance methods, class methods, and singleton methods.
 
 1. There is only one kind of object—be it a regular object or a module.
 2. There is only one kind of module—be it a regular module, a class, or a singleton class.
@@ -898,7 +935,7 @@ C.foo # => 'foo'
 
 Selection: Prepended Wrapper > Refinement Wrapper > Around Alias
 
-## Around Alias
+### Around Alias
 
 **`alias` vs. `alias_method`**
 
@@ -934,8 +971,8 @@ Yes!
 class MyClass
   alias_method :new_foo, :foo
 
-    private
-      def foo; puts 'foo'; end
+  private
+    def foo; puts 'foo'; end
   end
 
   MyClass.new.foo     # => NoMethodError: private method `foo' called
@@ -963,10 +1000,10 @@ If you call `super` from a refined method, you will call the original, unrefined
 
 ```ruby
 module StringRefinement
-    refine String do
+  refine String do
     def length
-    super > 5 ? 'long' : 'short'
-  end
+      super > 5 ? 'long' : 'short'
+    end
   end
 end
 
@@ -981,7 +1018,7 @@ A method in a prepended module can override a method in the includer, and call t
 ```ruby
 module ExplicitString
   def length
-  super > 5 ? 'long' : 'short'
+    super > 5 ? 'long' : 'short'
   end
 end
 
@@ -1042,6 +1079,19 @@ def get_proc(str)
 end
 
 eval "str + 'Fred'", get_proc('bye').binding # => "bye Fred"
+```
+
+```ruby
+l = -> { name = 'wendi' }
+eval "puts name", l.binding
+# => NameError: undefined local variable or method `name' for main:Object`
+
+def bar
+  name = 'wendi'
+  -> {}
+end
+eval "puts name", bar.binding
+# => wendi
 ```
 
 ***What's to concern when using `eval`?***
