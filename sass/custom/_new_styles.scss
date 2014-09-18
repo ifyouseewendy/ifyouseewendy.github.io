@@ -12,7 +12,7 @@
     header {
       margin-bottom: 0px;
       h1 {
-        font-size: 1.2em;
+        font-size: 26px;
         a {
           font-weight: normal;
         }
@@ -43,6 +43,7 @@
     }
     h1 {
      margin-top: 0px;
+     font-size: 30px;
     }
   }
 
@@ -50,34 +51,33 @@
 
   h1, h2, h3, h4, h5, h6 {
      line-height: 36px;
+     font-weight: bold;
+     color: #da3e10;
   }
   h1 {
      margin-top: 30px;
      margin-bottom: 18px;
-     font-size: 30px;
-     font-weight: bold;
-     color: #da3e10;
+
+     font-size: 26px;
   }
   h2 {
-     font-size: 24px;
-     font-weight: bold;
-     color: #da3e10;
-
      margin-top: 30px;
      margin-bottom: 15px;
-     border-bottom: 1px solid #ccc;
      padding-bottom: 5px;
+     border-bottom: 1px solid #ccc;
+
+     font-size: 24px;
 
      a {
        font-weight: normal;
      }
   }
   h3 {
-     font-size: 18px;
+     font-size: 20px;
+     margin-bottom: 15px;
   }
   h4 {
      font-size: 14px;
-     font-weight: bold;
   }
   h5 {
      font-size: 14px;
