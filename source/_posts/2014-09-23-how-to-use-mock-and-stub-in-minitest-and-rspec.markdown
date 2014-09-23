@@ -3,7 +3,7 @@ layout: post
 title: "How to use Mock and Stub in Minitest and Rspec?"
 date: 2014-09-23 20:14:24 +0800
 comments: true
-categories: ['Ruby']
+categories: Ruby
 ---
 
 Referenced in [Minimalicious testing in Ruby 1.9 with MiniTest](http://blog.arvidandersson.se/2012/03/28/minimalicous-testing-in-ruby-1-9)
