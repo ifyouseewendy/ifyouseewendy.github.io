@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Notes]]></title>
   <link href="http://ifyouseewendy.github.io/atom.xml" rel="self"/>
   <link href="http://ifyouseewendy.github.io/"/>
-  <updated>2014-09-18T22:34:24+08:00</updated>
+  <updated>2014-09-23T20:22:24+08:00</updated>
   <id>http://ifyouseewendy.github.io/</id>
   <author>
     <name><![CDATA[Wendi]]></name>
@@ -12,6 +12,111 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to use Mock and Stub in Minitest and Rspec?]]></title>
+    <link href="http://ifyouseewendy.github.io/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec/"/>
+    <updated>2014-09-23T20:14:24+08:00</updated>
+    <id>http://ifyouseewendy.github.io/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec</id>
+    <content type="html"><![CDATA[<p>Referenced in <a href="http://blog.arvidandersson.se/2012/03/28/minimalicous-testing-in-ruby-1-9">Minimalicious testing in Ruby 1.9 with MiniTest</a></p>
+
+<ul>
+<li>A <strong>stub object</strong> is a pretend object that implement some of the interface of the object it pretends to be and returns predefined responses. </li>
+<li>A <strong>mock object</strong> is similair to a stub but has another use case: <em>it helps decide if the test case it is used in passes by verifying if it&#39;s methods has been called or not.</em></li>
+</ul>
+
+<h2>Minitest::Mock</h2>
+
+<p><code>require &#39;minitest/mock&#39;</code></p>
+
+<p><em>stub</em></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="ss">Minitest</span><span class="p">:</span><span class="ss">:Mock</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x82ff7b5c&gt;</span>
+</span><span class='line'><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="ss">:hi</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x82ff7b5c&gt;</span>
+</span><span class='line'><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">hi</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;hello&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p><em>mock</em></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span> <span class="o">=</span> <span class="ss">Minitest</span><span class="p">:</span><span class="ss">:Mock</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x821763e4&gt;</span>
+</span><span class='line'><span class="o">[</span><span class="mi">6</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="ss">:hi</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="o">[</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;arg2&#39;</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x821763e4&gt;</span>
+</span><span class='line'><span class="o">[</span><span class="mi">7</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span><span class="o">.</span><span class="n">verify</span>
+</span><span class='line'><span class="ss">MockExpectationError</span><span class="p">:</span> <span class="n">expected</span> <span class="n">hi</span><span class="p">(</span><span class="s2">&quot;arg1&quot;</span><span class="p">,</span> <span class="s2">&quot;arg2&quot;</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="n">got</span> <span class="o">[]</span>
+</span><span class='line'><span class="o">[</span><span class="mi">8</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span><span class="o">.</span><span class="n">hi</span><span class="p">(</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;arg2&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;hello&quot;</span>
+</span><span class='line'><span class="o">[</span><span class="mi">9</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span><span class="o">.</span><span class="n">verify</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2>RSpec::Mocks</h2>
+
+<p><code>require &#39;rspec/mocks/standalone&#39;</code></p>
+
+<p><em>stub</em></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">double</span><span class="p">()</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="c1">#&lt;RSpec::Mocks::Mock:0x82c66b78 @name=nil&gt;</span>
+</span><span class='line'><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">stub</span><span class="p">(</span><span class="ss">:hi</span><span class="p">)</span><span class="o">.</span><span class="n">and_return</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span><span class='line'><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">hi</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;hello&quot;</span>
+</span><span class='line'><span class="o">[</span><span class="mi">7</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">stub</span><span class="p">(</span><span class="ss">:hi</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">and_return</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span><span class='line'><span class="o">[</span><span class="mi">9</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">hi</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;hello world&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p><em>mock</em></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="mi">18</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">double</span><span class="p">()</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="c1">#&lt;RSpec::Mocks::Mock:0x82c66b78 @name=nil&gt;</span>
+</span><span class='line'><span class="o">[</span><span class="mi">19</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">should_receive</span><span class="p">(</span><span class="ss">:hi</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="c1">#&lt;RSpec::Mocks::MessageExpectation:0x818c11f4&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h3>Reference</h3>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/stdlib-2.0/libdoc/minitest/rdoc/MiniTest/Mock.html">Minitest::Mock</a></li>
+<li><a href="https://www.relishapp.com/rspec/rspec-mocks/v/2-3/docs/method-stubs">Rspec Mocks</a></li>
+</ul>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ASCIIcast of Fundamentals of Design by CodeSchool]]></title>
@@ -806,7 +911,7 @@ internals.</p>
 <li>It executes the method. To do that, Ruby needs something called <code>self</code>.</li>
 </ol>
 
-<p><strong><em>How dos Ruby lookup methods?</em></strong></p>
+<p><strong><em>How does Ruby lookup methods?</em></strong></p>
 
 <p><em>“one step to the right, then up”</em> rule: go one step to the right into the receiver’s class, and then go up the ancestors chain until you find the method.</p>
 
@@ -826,11 +931,11 @@ internals.</p>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">C</span>
-</span><span class='line'>    <span class="kp">include</span> <span class="no">M1</span>
-</span><span class='line'>    <span class="kp">include</span> <span class="no">M2</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">M1</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">M2</span>
 </span><span class='line'>
-</span><span class='line'>    <span class="n">prepend</span> <span class="no">M3</span>
-</span><span class='line'>    <span class="n">prepend</span> <span class="no">M4</span>
+</span><span class='line'>  <span class="n">prepend</span> <span class="no">M3</span>
+</span><span class='line'>  <span class="n">prepend</span> <span class="no">M4</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">class</span> <span class="nc">D</span> <span class="o">&lt;</span> <span class="n">C</span><span class="p">;</span> <span class="k">end</span>
@@ -1491,9 +1596,9 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
-</span><span class='line'><span class="nb">proc</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
-</span><span class='line'><span class="nb">lambda</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
+</span><span class='line'><span class="nb">proc</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
+</span><span class='line'><span class="nb">lambda</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
 </span><span class='line'><span class="o">-&gt;</span> <span class="n">x</span> <span class="p">{</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span> <span class="c1"># stabby lambda</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1652,7 +1757,7 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">String</span><span class="o">.</span><span class="n">class_eval</span> <span class="k">do</span>
-</span><span class='line'><span class="n">define_method</span> <span class="ss">:another_method</span><span class="p">,</span> <span class="n">unbound</span>
+</span><span class='line'>  <span class="n">define_method</span> <span class="ss">:another_method</span><span class="p">,</span> <span class="n">unbound</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="s2">&quot;abc&quot;</span><span class="o">.</span><span class="n">another_method</span> <span class="c1"># =&gt; 42</span>
@@ -1697,9 +1802,49 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="k">end</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
 </span><span class='line'><span class="no">Object</span><span class="o">.</span><span class="n">instance_methods</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="ss">:foo</span><span class="p">)</span>      <span class="c1"># =&gt; []</span>
 </span><span class='line'><span class="no">Object</span><span class="o">.</span><span class="n">private_instance_methods</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="ss">:foo</span><span class="p">)</span> <span class="c1"># =&gt; [:foo]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="mi">6</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span><span class='line'><span class="o">[</span><span class="mi">7</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">cd</span> <span class="no">Object</span>
+</span><span class='line'><span class="o">[</span><span class="mi">8</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="no">Object</span><span class="p">):</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">show</span><span class="o">-</span><span class="nb">method</span> <span class="n">foo</span>
+</span><span class='line'>
+</span><span class='line'><span class="ss">From</span><span class="p">:</span> <span class="p">(</span><span class="n">pry</span><span class="p">)</span> <span class="err">@</span> <span class="n">line</span> <span class="mi">4</span><span class="p">:</span>
+</span><span class='line'><span class="ss">Owner</span><span class="p">:</span> <span class="no">Object</span>
+</span><span class='line'><span class="ss">Visibility</span><span class="p">:</span> <span class="kp">private</span>
+</span><span class='line'><span class="no">Number</span> <span class="n">of</span> <span class="ss">lines</span><span class="p">:</span> <span class="mi">1</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
+</span><span class='line'><span class="o">[</span><span class="mi">9</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="no">Object</span><span class="p">):</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">cd</span> <span class="o">.</span><span class="n">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># foo.rb</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
+</span><span class='line'><span class="nb">p</span> <span class="no">Object</span><span class="o">.</span><span class="n">private_instance_methods</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="ss">:foo</span><span class="p">)</span> <span class="c1"># =&gt; [:foo]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># console</span>
+</span><span class='line'><span class="err">$</span> <span class="n">ruby</span> <span class="n">foo</span><span class="o">.</span><span class="n">rb</span> <span class="c1"># =&gt; [:foo]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 <ul>
@@ -1724,7 +1869,7 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 
 <p><strong><em>What&#39;s the difference between <code>class_eval</code> and <code>instance_eval</code>?</em></strong></p>
 
-<p>Both changes <code>self</code>, and <code>class_eval</code> changes the current<em>class to the caller&#39;s class, while `instance</em>eval` changes the current_class to the caller&#39;s singleton class.</p>
+<p>Both changes <code>self</code>, and <code>class_eval</code> changes the current class to the caller&#39;s class, while <code>instance_eval</code> changes the current class to the caller&#39;s singleton class.</p>
 
 <p><strong>An interesting knowledge about <code>Class.new</code></strong></p>
 
@@ -1790,6 +1935,28 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 </span><span class='line'><span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">obj</span><span class="p">;</span> <span class="nb">instance_methods</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/my_/</span><span class="p">);</span> <span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Foo</span>
+</span><span class='line'>  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">bar</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;Foo.bar&#39;</span><span class="p">;</span> <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">foo</span> <span class="o">=</span> <span class="no">Foo</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">foo</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">bar</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo.bar&#39;</span><span class="p">;</span> <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 <ul>
 <li>Use <code>Object#singleton_class</code></li>
 </ul>
@@ -1805,7 +1972,7 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 <p><strong>7 rules of the Ruby object model</strong></p>
 
 <blockquote>
-<p>The Ruby object model is a beautiful place,” Bill notes, with a dreamy expres- sion on his face. “There are classes, singleton classes, and modules. There are instance methods, class methods, and Singleton Methods.</p>
+<p>The Ruby object model is a beautiful place,” Bill notes, with a dreamy expres- sion on his face. “There are classes, singleton classes, and modules. There are instance methods, class methods, and singleton methods.</p>
 </blockquote>
 
 <ol>
@@ -1933,7 +2100,7 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 
 <p>Selection: Prepended Wrapper &gt; Refinement Wrapper &gt; Around Alias</p>
 
-<h2>Around Alias</h2>
+<h3>Around Alias</h3>
 
 <p><strong><code>alias</code> vs. <code>alias_method</code></strong></p>
 
@@ -1986,8 +2153,8 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
 </span><span class='line'>  <span class="n">alias_method</span> <span class="ss">:new_foo</span><span class="p">,</span> <span class="ss">:foo</span>
 </span><span class='line'>
-</span><span class='line'>    <span class="kp">private</span>
-</span><span class='line'>      <span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
+</span><span class='line'>  <span class="kp">private</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">foo</span>     <span class="c1"># =&gt; NoMethodError: private method `foo&#39; called</span>
@@ -2028,10 +2195,10 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">StringRefinement</span>
-</span><span class='line'>    <span class="n">refine</span> <span class="nb">String</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">refine</span> <span class="nb">String</span> <span class="k">do</span>
 </span><span class='line'>    <span class="k">def</span> <span class="nf">length</span>
-</span><span class='line'>    <span class="k">super</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">?</span> <span class="s1">&#39;long&#39;</span> <span class="p">:</span> <span class="s1">&#39;short&#39;</span>
-</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>      <span class="k">super</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">?</span> <span class="s1">&#39;long&#39;</span> <span class="p">:</span> <span class="s1">&#39;short&#39;</span>
+</span><span class='line'>    <span class="k">end</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
@@ -2056,7 +2223,7 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 <span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">ExplicitString</span>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">length</span>
-</span><span class='line'>  <span class="k">super</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">?</span> <span class="s1">&#39;long&#39;</span> <span class="p">:</span> <span class="s1">&#39;short&#39;</span>
+</span><span class='line'>    <span class="k">super</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">?</span> <span class="s1">&#39;long&#39;</span> <span class="p">:</span> <span class="s1">&#39;short&#39;</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
@@ -2133,6 +2300,28 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="nb">eval</span> <span class="s2">&quot;str + &#39;Fred&#39;&quot;</span><span class="p">,</span> <span class="n">get_proc</span><span class="p">(</span><span class="s1">&#39;bye&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">binding</span> <span class="c1"># =&gt; &quot;bye Fred&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">l</span> <span class="o">=</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="nb">name</span> <span class="o">=</span> <span class="s1">&#39;wendi&#39;</span> <span class="p">}</span>
+</span><span class='line'><span class="nb">eval</span> <span class="s2">&quot;puts name&quot;</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">binding</span>
+</span><span class='line'><span class="c1"># =&gt; NameError: undefined local variable or method `name&#39; for main:Object`</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">bar</span>
+</span><span class='line'>  <span class="nb">name</span> <span class="o">=</span> <span class="s1">&#39;wendi&#39;</span>
+</span><span class='line'>  <span class="o">-&gt;</span> <span class="p">{}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="nb">eval</span> <span class="s2">&quot;puts name&quot;</span><span class="p">,</span> <span class="n">bar</span><span class="o">.</span><span class="n">binding</span>
+</span><span class='line'><span class="c1"># =&gt; wendi</span>
 </span></code></pre></td></tr></table></div></figure>
 
 <p><strong><em>What&#39;s to concern when using <code>eval</code>?</em></strong></p>

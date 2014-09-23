@@ -24,7 +24,7 @@
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/blog/2014/06/03/metaprogrammingi-ruby/</loc>
-        <lastmod>2014-09-18T22:34:24+08:00</lastmod>
+        <lastmod>2014-09-19T14:05:02+08:00</lastmod>
     </url>
     <url>
         <loc>
@@ -39,20 +39,26 @@
         <lastmod>2014-09-18T20:56:41+08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://ifyouseewendy.github.io/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec/
+        </loc>
+        <lastmod>2014-09-23T20:20:04+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://ifyouseewendy.github.io/about/</loc>
         <lastmod>2014-09-18T20:56:41+08:00</lastmod>
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/archives/</loc>
-        <lastmod>2014-09-18T22:34:24+08:00</lastmod>
+        <lastmod>2014-09-23T20:20:04+08:00</lastmod>
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/blog/archives/</loc>
-        <lastmod>2014-09-18T22:34:24+08:00</lastmod>
+        <lastmod>2014-09-23T20:20:04+08:00</lastmod>
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/blog/</loc>
-        <lastmod>2014-09-18T22:34:24+08:00</lastmod>
+        <lastmod>2014-09-23T20:20:04+08:00</lastmod>
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/fz/</loc>
@@ -60,7 +66,7 @@
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/</loc>
-        <lastmod>2014-09-18T22:34:24+08:00</lastmod>
+        <lastmod>2014-09-23T20:20:04+08:00</lastmod>
     </url>
     <url>
         <loc>http://ifyouseewendy.github.io/robots.txt</loc>
