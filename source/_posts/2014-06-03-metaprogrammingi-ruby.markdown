@@ -88,7 +88,7 @@ Constants are arranged in a tree similar to a file system, where the names of mo
 1. It finds the method. This is a process called method lookup.
 2. It executes the method. To do that, Ruby needs something called `self`.
 
-***How dos Ruby lookup methods?***
+***How does Ruby lookup methods?***
 
 *“one step to the right, then up”* rule: go one step to the right into the receiver’s class, and then go up the ancestors chain until you find the method.
 
@@ -98,11 +98,11 @@ The `prepend` method. It works like `include`, but it inserts the module below t
 
 ```ruby
 class C
-    include M1
-    include M2
+  include M1
+  include M2
 
-    prepend M3
-    prepend M4
+  prepend M3
+  prepend M4
 end
 
 class D < C; end
@@ -687,7 +687,7 @@ unbound.class   # => UnboundMethod
 
 ```ruby
 String.class_eval do
-define_method :another_method, unbound
+  define_method :another_method, unbound
 end
 
 "abc".another_method # => 42
