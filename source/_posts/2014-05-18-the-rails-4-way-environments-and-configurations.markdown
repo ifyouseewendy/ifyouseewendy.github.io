@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Rails 4 Way - Environments and Configurations"
+title: "[Review] The Rails 4 Way - Environments and Configurations"
 date: 2014-05-18 16:10:42 +0800
 comments: true
 categories: [Rails, Books]
