@@ -24,7 +24,10 @@ Work flow diagram
 ## 1. Zero to “It Works!”
 
 ```ruby
-gem.add_development_dependency "rspec"gem.add_runtime_dependency "rest-client"gem.add_runtime_dependency "some_gem", "1.3.0"gem.add_runtime_dependency "other_gem", ">0.8.2"
+gem.add_development_dependency "rspec"
+gem.add_runtime_dependency "rest-client"
+gem.add_runtime_dependency "some_gem", "1.3.0"
+gem.add_runtime_dependency "other_gem", ">0.8.2"
 ```
 
 Each of these adds a runtime dependency (needed to run the gem at all) or a development dependency (needed to develop or test the gem).
@@ -41,39 +44,84 @@ Youʼll need to go into the rulers directory and `git add .` before you rebuild 
 
 + **ActionPack** (*ActionDispatch, ActionController, Actionview*) does routing - the mapping of an incoming URL to a controller and action in Rails. It also sets up your controllers and views, and shepherds a request through its controller action and then through rendering the view. For some of it, ActionPack uses Rack. The template rendering itself is done through an external gem like Erubis for .erb templates, or Haml for .haml templates. ActionPack also handles action- or view-centered functionality like view caching.
 
-+ **ActionMailer** is used to send out email, especially email based on templates. It works a lot like you'd hope Rails email would, with controllers, actions and "views" - which for email are text- based templates, not regular web-page templates.## 2. Your First ControllerRails encapsulated the Rack information into a “request” object rather than just including the hash right into the controller. Thatʼs a good idea when you want to abstract it a bit -- normalize values for certain variables, for instance, or read and set cookies to store session data.
-## 3. Rails Automatic Loading
++ **ActionMailer** is used to send out email, especially email based on templates. It works a lot like you'd hope Rails email would, with controllers, actions and "views" - which for email are text- based templates, not regular web-page templates.
+
+
+## 2. Your First Controller
+
+Rails encapsulated the Rack information into a “request” object rather than just including the hash right into the controller. Thatʼs a good idea when you want to abstract it a bit -- normalize values for certain variables, for instance, or read and set cookies to store session data.
+
+
+## 3. Rails Automatic Loading
 
 When debugging or printing error messages I like to use STDERR because itʼs a bit harder to redirect than a normal “puts” and so youʼre more likely to see it even when using a log file, background process or similar.
-For simple structures, “inspect” shows them exactly as youʼd type them into Ruby -- strings with quotes, numbers bare, symbols with a leading colon and so on.
+
+For simple structures, “inspect” shows them exactly as youʼd type them into Ruby -- strings with quotes, numbers bare, symbols with a leading colon and so on.
 
 **Reloading Means Convenience**
-`gem "rulers", :path => "../rulers"` This trick actually relies on deep Bundler trickery and requires you to always “bundle exec” before running things like rackup. If you forget that, it can look like the gem isnʼt there or (worse) look like an old version.**CamelCase and snake_case**```ruby
-# rulers/lib/rulers/util.rbmodule Rulers  def self.to_underscore(string)    string.gsub(/::/, '/').    gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').    gsub(/([a-z\d])([A-Z])/,'\1_\2').    tr("-", "_").    downcase
-  endend
+
+`gem "rulers", :path => "../rulers"` This trick actually relies on deep Bundler trickery and requires you to always “bundle exec” before running things like rackup. If you forget that, it can look like the gem isnʼt there or (worse) look like an old version.
+
+**CamelCase and snake_case**
+
+```ruby
+# rulers/lib/rulers/util.rb
+module Rulers
+  def self.to_underscore(string)
+    string.gsub(/::/, '/').
+    gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+    gsub(/([a-z\d])([A-Z])/,'\1_\2').
+    tr("-", "_").
+    downcase
+  end
+end
 
 # 'HTTPController' -> 'http_controller'
 # 'MD5Controller' -> 'md5_controller'
-# 'HomeController' -> 'home_controller'```
-**Put it together**
+# 'HomeController' -> 'home_controller'
+```
+
+**Put it together**
 
 ```ruby
 # rulers/lib/rulers/dependencies.rb
-class Object  def self.const_missing(c)    require Rulers.to_underscore(c.to_s)    Object.const_get(c)  end
+class Object
+  def self.const_missing(c)
+    require Rulers.to_underscore(c.to_s)
+    Object.const_get(c)
+  end
 end
 ```
 
 ```ruby
-# rulers/lib/rulers/controller.rbdef controller_name  klass = self.class  klass = klass.to_s.gsub /Controller$/, ""  Rulers.to_underscore klassend
-```**Did it work?**
+# rulers/lib/rulers/controller.rb
+def controller_name
+  klass = self.class
+  klass = klass.to_s.gsub /Controller$/, ""
+  Rulers.to_underscore klass
+end
+```
+
+**Did it work?**
 
 When you load a file called whatever_class.rb, youʼre not actually guaranteed that it contains WhateverClass, or that the constant WhateverClass is actually a class. How would you check?
-You might try calling const_get(:WhateverClass)... Except that you just made const_get try to load automatically. If you call it on an unloaded class inside the method call where you try to load, youʼll recurse forever and get a “stack level too deep” and a crash. So const_get isnʼt the full answer.```ruby
-# rulers/lib/rulers/dependencies.rbclass Object  def self.const_missing(c)
+
+You might try calling const_get(:WhateverClass)... Except that you just made const_get try to load automatically. If you call it on an unloaded class inside the method call where you try to load, youʼll recurse forever and get a “stack level too deep” and a crash. So const_get isnʼt the full answer.
+
+```ruby
+# rulers/lib/rulers/dependencies.rb
+class Object
+  def self.const_missing(c)
     return nil if @calling_const_missing
-        @calling_const_missing = true    require Rulers.to_underscore(c.to_s)    klass = Object.const_get(c)    @calling_const_missing = false
-        klass
-  endend
+    
+    @calling_const_missing = true
+    require Rulers.to_underscore(c.to_s)
+    klass = Object.const_get(c)
+    @calling_const_missing = false
+    
+    klass
+  end
+end
 ```
 
 But thereʼs a reason I say “hideously hacky.” Think about ways this could break. For instance -- think about what would happen if you hit this in multiple threads at once. Oops!
@@ -83,26 +131,60 @@ But thereʼs a reason I say “hideously hacky.” Think about ways this could b
 [rerun](https://github.com/alexch/rerun)
 
 ```ruby
-# best_quotes/Gemfilesource 'https://rubygems.org'gem 'rulers', :path => "../rulers"    
-group :development do  gem 'rerun'  gem 'listen', '=1.3.1' # for older Rubyend
+# best_quotes/Gemfile
+source 'https://rubygems.org'
+gem 'rulers', :path => "../rulers"
+    
+group :development do
+  gem 'rerun'
+  gem 'listen', '=1.3.1' # for older Ruby
+end
 ```
 
 Running by `bundle exec rerun -- rackup -p 3001`. The “--” is an old Unix trick. It means “thatʼs all the arguments you get, the rest belong to somebody else.” Specifically, it tells rerun to ignore the “-p” later.
 
-[shotgun](https://github.com/rtomayko/shotgun)reloading rack development server, forking version of rackup.
+[shotgun](https://github.com/rtomayko/shotgun)
+
+reloading rack development server, forking version of rackup.
 
 **In Rails**
-1. [rails/activesupport/lib/active_support/dependencies.rb](https://github.com/rails/rails/blob/master/activesupport/lib/active_support/dependencies.rb) Rails uses ActiveSupport for its const_missing support. Most of the code is installing a const_missing that can call through to non-Rails versions of const_missing in other classes, and can be removed or re-added and is appropriately modular. It also works hard to support nested modules like MyLibrary::SubModule::SomeClass.2. [Rails autoloading — how it works, and when it doesn't](http://urbanautomaton.com/blog/2013/08/27/rails-autoloading-hell/#fn1) by Simon Coffey.## 4. Rendering Views**Erb and Erubis**
-```ruby# some_directory/erb_test.rbrequire "erubis"
-template = <<TEMPLATEHello! This is a template.It has <%= whatever %>.TEMPLATE
-eruby = Erubis::Eruby.new(template)puts eruby.srcputs "=========="puts eruby.result(:whatever => "ponies!")
-```Run it with `ruby erb_test.rb`
+
+1. [rails/activesupport/lib/active_support/dependencies.rb](https://github.com/rails/rails/blob/master/activesupport/lib/active_support/dependencies.rb) Rails uses ActiveSupport for its const_missing support. Most of the code is installing a const_missing that can call through to non-Rails versions of const_missing in other classes, and can be removed or re-added and is appropriately modular. It also works hard to support nested modules like MyLibrary::SubModule::SomeClass.
+
+2. [Rails autoloading — how it works, and when it doesn't](http://urbanautomaton.com/blog/2013/08/27/rails-autoloading-hell/#fn1) by Simon Coffey.
+
+## 4. Rendering Views
+
+**Erb and Erubis**
 
 ```ruby
-bash-3.2$ ruby erb_test.rb_buf = ''; _buf << 'Hello!   This is a template. It has ';
-_buf << ( whatever ).to_s; _buf << '.';_buf.to_s==========Hello! This is a template.It has ponies!.
+# some_directory/erb_test.rb
+require "erubis"
+
+template = <<TEMPLATE
+Hello! This is a template.
+It has <%= whatever %>.
+TEMPLATE
+
+eruby = Erubis::Eruby.new(template)
+puts eruby.src
+puts "=========="
+puts eruby.result(:whatever => "ponies!")
 ```
-The few lines starting with `_buf` are interesting. Erubis takes apart our string, appends it to `_buf` piece by piece, and adds the variables in as well after calling `.to_s` on them. Then it just returns `_buf`.
+
+Run it with `ruby erb_test.rb`
+
+```ruby
+bash-3.2$ ruby erb_test.rb
+_buf = ''; _buf << 'Hello!   This is a template. It has ';
+_buf << ( whatever ).to_s; _buf << '.';
+_buf.to_s
+==========
+Hello! This is a template.
+It has ponies!.
+```
+
+The few lines starting with `_buf` are interesting. Erubis takes apart our string, appends it to `_buf` piece by piece, and adds the variables in as well after calling `.to_s` on them. Then it just returns `_buf`.
 
 **Rack test example**
 
@@ -113,17 +195,30 @@ _buf << ( whatever ).to_s; _buf << '.';_buf.to_s==========Hello! This is a te
 require_relative "test_helper"
 
 class TestApp < Rulers::Application
-  def get_controller_and_action(env)    [TestController, "index"]  end
+  def get_controller_and_action(env)
+    [TestController, "index"]
+  end
 end
 
 class TestController < Rulers::Controlle
-  def index    "Hello!"  # Not rendering a view  end
+  def index
+    "Hello!"  # Not rendering a view
+  end
 end
 
-class RulersAppTest < Test::Unit::TestCase include Rack::Test::Methods 
-  def app    TestApp.new  end
+class RulersAppTest < Test::Unit::TestCase
+ include Rack::Test::Methods
+ 
+  def app
+    TestApp.new
+  end
   
-  def test_request    get "/example/route"    assert last_response.ok?    body = last_response.body    assert body["Hello"]  end
+  def test_request
+    get "/example/route"
+    assert last_response.ok?
+    body = last_response.body
+    assert body["Hello"]
+  end
 end
 ```
 
@@ -132,7 +227,16 @@ end
 Rake actually ships with a “Rake::TestTask”.
 
 ```ruby
-# Rakefilerequire "bundler/gem_tasks"require "rake/testtask"Rake::TestTask.new do |t|  t.name = "test"  # this is the default  t.libs << "test"  # load the test dir  t.test_files = Dir['test/*test*.rb']  t.verbose = trueend
+# Rakefile
+require "bundler/gem_tasks"
+require "rake/testtask"
+
+Rake::TestTask.new do |t|
+  t.name = "test"  # this is the default
+  t.libs << "test"  # load the test dir
+  t.test_files = Dir['test/*test*.rb']
+  t.verbose = true
+end
 ```
 
 *A word of caution*: Rake will always run your tests by loading them into the same Ruby process, then running each one in turn. This is a lot faster than running them in individual processes, but it means that your tests can mess with each other in annoying ways. If you find yourself saying, “but I didnʼt set that global variable in this test!” think about whether some other test might have done it. For extra fun, the tests donʼt always run in any predictable order.
@@ -157,22 +261,52 @@ For a good overview of ActiveModel, have a look at a blog post from Yehuda Katz 
 
 
 ```ruby
-# rulers/lib/rulers/controller.rbmodule Rulers  class Controller    def response(text, status = 200, headers = {})
-      raise "Already responded!" if @response      a = [text].flatten      @response = Rack::Response.new(a, status, headers)    end
-        def get_response  # Only for Rulers      @response    end
-        def render_response(*args)      response(render(*args))    end
-  endend
+# rulers/lib/rulers/controller.rb
+module Rulers
+  class Controller
+    def response(text, status = 200, headers = {})
+      raise "Already responded!" if @response
+      a = [text].flatten
+      @response = Rack::Response.new(a, status, headers)
+    end
+    
+    def get_response  # Only for Rulers
+      @response
+    end
+    
+    def render_response(*args)
+      response(render(*args))
+    end
+  end
+end
 
-# rulers/lib/rulers.rbmodule Ruler
-  class Application    def call(env)   # Redefine      if env['PATH_INFO'] == '/favicon.ico'        return [404,          {'Content-Type' => 'text/html'}, []]      end
-            klass, act = get_controller_and_action(env)      controller = klass.new(env)      text = controller.send(act)      if controller.get_response
-        # ensure the code after render_response works        st, hd, rs = controller.get_response.to_a
-        [st, hd, [rs.body].flatten]      else
+# rulers/lib/rulers.rb
+module Ruler
+  class Application
+    def call(env)   # Redefine
+      if env['PATH_INFO'] == '/favicon.ico'
+        return [404,
+          {'Content-Type' => 'text/html'}, []]
+      end
+      
+      klass, act = get_controller_and_action(env)
+      controller = klass.new(env)
+      text = controller.send(act)
+      if controller.get_response
+        # ensure the code after render_response works
+        st, hd, rs = controller.get_response.to_a
+        [st, hd, [rs.body].flatten]
+      else
         # without explicitly render_response in action,
-        # you can add auto render here        [200, {'Content-Type' => 'text/html'}, [text]]      end
-    end  end
-end```
-In Rails, the return value from the controller is ignored. Instead if you donʼt call render (Railsʼ equivalent of render_response), it will automatically call it for you with the same controller name, and the viewʼs name set to the same name as your action.
+        # you can add auto render here
+        [200, {'Content-Type' => 'text/html'}, [text]]
+      end
+    end
+  end
+end
+```
+
+In Rails, the return value from the controller is ignored. Instead if you donʼt call render (Railsʼ equivalent of render_response), it will automatically call it for you with the same controller name, and the viewʼs name set to the same name as your action.
 
 Rails doesnʼt return the string when you call “render” (well, usually - some calls to render do!). Instead, it keeps track of the fact that you called render and what you called it on. Then it gives you an error if you call it again, or uses the defaults if you get to the end of a controller action without calling it
 
@@ -181,7 +315,9 @@ Rails doesnʼt return the string when you call “render” (well, usually - som
 The Rails answer is to set instance variables in the controller, then use them in the view. Try creating a new view object, mostly just to use Erubis to evaluate the view file. Then, make it easy to pass in a hash of instance variables which youʼll set on the view object before doing the evaluation.
 
 ```ruby
-# rulers/lib/rulers/controller.rbmodule Rulers  class Controller
+# rulers/lib/rulers/controller.rb
+module Rulers
+  class Controller
     def render(view_name, locals = {})
       filename = File.join 'app', 'views', controller_name, "#{view_name}.html.erb"
       ivars = instance_variables.reduce({}) {|ha, iv| ha[iv] = instance_variable_get(iv); ha }
@@ -196,21 +332,36 @@ end
 Rails (more specifically, ActionPack) uses Rack in a very similar way, even exposing the Rack Request object with the “request” method. Especially [metal.rb ](https://github.com/rails/rails/blob/master/actionpack%2Flib%2Faction_controller%2Fmetal.rb)and metal/*.rb. “Rails Metal” is a name for the lower-level Rails which goes mostly straight through to the “bare metal” -- that is, to Rack.
 
 You can find a lot of the Rails implementation of Rack in these directories -- for instance, metal/redirecting.rb is the implementation of the redirect_to() helper which returns status 302 (redirect) and a location to Rack. You could steal the code and add a redirect_to to Rulers, if you wanted.
-You can also find things like forgery (CSRF) protection, multiple renderers (i.e. Erb vs Haml), forcing SSL if requested and cookies in this directory. Some are complex, while others call to Rack very simply and you could move right over to Rulers.
+
+You can also find things like forgery (CSRF) protection, multiple renderers (i.e. Erb vs Haml), forcing SSL if requested and cookies in this directory. Some are complex, while others call to Rack very simply and you could move right over to Rulers.
 
 ## 7. The Littlest ORM
 
 migration
 
 ```ruby
-# best_quotes/mini_migration.rbrequire "sqlite3"conn = SQLite3::Database.new "test.db"conn.execute <<SQLcreate table my_table (
-  id INTEGER PRIMARY KEY,  posted INTEGER,  title VARCHAR(30),  body VARCHAR(32000));SQL
+# best_quotes/mini_migration.rb
+require "sqlite3"
+conn = SQLite3::Database.new "test.db"
+conn.execute <<SQL
+create table my_table (
+  id INTEGER PRIMARY KEY,
+  posted INTEGER,
+  title VARCHAR(30),
+  body VARCHAR(32000));
+SQL
 ```
 
 sqlite model
 
 ```ruby
-# rulers/lib/rulers/sqlite_model.rbrequire "sqlite3"require "rulers/util"DB = SQLite3::Database.new "test.db"module Rulers
+# rulers/lib/rulers/sqlite_model.rb
+require "sqlite3"
+require "rulers/util"
+
+DB = SQLite3::Database.new "test.db"
+
+module Rulers
   module Model
     class SQLite
 
@@ -308,7 +459,8 @@ SQL
 
     end
   end
-end```
+end
+```
 
 You can add a method to the SQLite model that takes a column name and a type, and then when saving and loading that column, does something type-dependent to it, like the boolean or JSON fields above.
 
@@ -325,11 +477,27 @@ With any Ruby web framework, you can modify how it works by adding Rack componen
 **Built-in middlewares**
 
 + **Rack::Auth::Basic** - HTTP Basic authentication.
-+ **Rack::Auth::Digest** - HTTP Digest authentication.+ **Rack::Cascade** - Pass a request to a series of Rack apps, and use the first request that comes back as good. Itʼs a way to mount one Rack app “on top of” another (or many).+ **Rack::Chunked** - A Rack interface to HTTP Chunked transfer.
-+ **Rack::CommonLogger** - Request logging.+ **Rack::ConditionalGet** - Implement HTTP If-None-Match and If- Modified-Since with ETags and dates.+ **Rack::Config** - Call a given block before each request.
++ **Rack::Auth::Digest** - HTTP Digest authentication.
++ **Rack::Cascade** - Pass a request to a series of Rack apps, and use the first request that comes back as good. Itʼs a way to mount one Rack app “on top of” another (or many).
++ **Rack::Chunked** - A Rack interface to HTTP Chunked transfer.
++ **Rack::CommonLogger** - Request logging.
++ **Rack::ConditionalGet** - Implement HTTP If-None-Match and If- Modified-Since with ETags and dates.
++ **Rack::Config** - Call a given block before each request.
 + **Rack::ContentLength** - Set Content-Length automatically.
-+ **Rack::ContentType** - Try to guess Content-Type and set it. Rack::Deflater - Compress the response with gzip/deflate.+ **Rack::Directory** - Add Apache-style directory listings. This is an endpoint not an intermediate layer, so use it with “run.”+ **Rack::ETag** - Generate ETags from MD5s of the content.+ **Rack::Head** - Remove response body for HEAD requests.+ **Rack::Lint** - Check your responses for correctness.+ **Rack::Lock** - Only allow one thread in at once.+ **Rack::Reloader** - Reload your app when files change.+ **Rack::Runtime** - Times the request, sets X-Runtime in response.+ **Rack::Sendfile** - Use the X-Sendfile header to ask your web server to send a file much faster than Ruby can.+ **Rack::ShowExceptions** - Show a nice exception page if something breaks.+ **Rack::ShowStatus** - Show a pretty page if the result is empty.
-+ **Rack::Static** - Serve from certain directories as static files insteadof calling your framework.+ **Rack::URLMap** - Route different directories to different apps or different stacks. You can also use this with a “map” block in config.ru.
++ **Rack::ContentType** - Try to guess Content-Type and set it. Rack::Deflater - Compress the response with gzip/deflate.
++ **Rack::Directory** - Add Apache-style directory listings. This is an endpoint not an intermediate layer, so use it with “run.”
++ **Rack::ETag** - Generate ETags from MD5s of the content.
++ **Rack::Head** - Remove response body for HEAD requests.
++ **Rack::Lint** - Check your responses for correctness.
++ **Rack::Lock** - Only allow one thread in at once.
++ **Rack::Reloader** - Reload your app when files change.
++ **Rack::Runtime** - Times the request, sets X-Runtime in response.
++ **Rack::Sendfile** - Use the X-Sendfile header to ask your web server to send a file much faster than Ruby can.
++ **Rack::ShowExceptions** - Show a nice exception page if something breaks.
++ **Rack::ShowStatus** - Show a pretty page if the result is empty.
++ **Rack::Static** - Serve from certain directories as static files instead
+of calling your framework.
++ **Rack::URLMap** - Route different directories to different apps or different stacks. You can also use this with a “map” block in config.ru.
 
 Rack::URLMap is a way to tell Rack what paths go to what Rack apps - and if thereʼs could be two that match, the longer path always takes precedence.
 
