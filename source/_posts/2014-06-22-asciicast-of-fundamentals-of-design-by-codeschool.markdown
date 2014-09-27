@@ -3,7 +3,7 @@ layout: post
 title: "ASCIIcast of Fundamentals of Design by CodeSchool"
 date: 2014-06-22 23:35:39 +0800
 comments: true
-categories: ['Web']
+categories: Web
 ---
 
 ## Typeface Classifications

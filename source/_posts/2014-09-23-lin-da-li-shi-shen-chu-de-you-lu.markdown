@@ -3,7 +3,7 @@ layout: post
 title: "林达 - 历史深处的忧虑"
 date: 2014-09-23 22:25:49 +0800
 comments: true
-categories: [Excerpts]
+categories: Book
 ---
 
 中国人的“虐待”概念，带有很强的主观性和主动性。但是在美国，这只是一个法律概念，它是不考虑冬季，只察看行为和后果的。

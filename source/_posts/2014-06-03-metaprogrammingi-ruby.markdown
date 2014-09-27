@@ -3,7 +3,7 @@ layout: post
 title: "Metaprogramming Ruby"
 date: 2014-06-03 00:44:28 +0800
 comments: true
-categories: [Ruby, Excerpts]
+categories: [Ruby, Book]
 ---
 
 # The Object Model
