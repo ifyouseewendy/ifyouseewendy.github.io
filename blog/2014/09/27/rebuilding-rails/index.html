@@ -1,0 +1,1420 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>[Review] Rebuilding Rails - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="Books, Rails Sep 27th, 2014 [Review] Rebuilding Rails Book Rebuilding Rails Author Noah Gibbs Link rebuilding-rails.com My re-building source code &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2014/09/27/rebuilding-rails">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2014/09/27/rebuilding-rails/">[Review] Rebuilding Rails</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/09/27/git-community-book/">[Review] Git Community Book</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/09/23/lin-da-li-shi-shen-chu-de-you-lu/">[Review] 历史深处的忧虑</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec/">How to Use Mock and Stub in Minitest and Rspec?</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/06/22/asciicast-of-fundamentals-of-design-by-codeschool/">ASCIIcast of Fundamentals of Design by CodeSchool</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/books/'>Books</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Sep 27<span>th</span>, 2014</a>
+</span>
+
+    </div>
+    <h1>
+      [Review] Rebuilding Rails
+    </h1>
+  
+</header>
+
+
+  <section><table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>Rebuilding Rails</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td>Noah Gibbs</td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="http://rebuilding-rails.com/">rebuilding-rails.com</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>My re-building source code</p>
+
+<ul>
+  <li><a href="https://github.com/ifyouseewendy/rulers">rulers</a></li>
+  <li><a href="https://github.com/ifyouseewendy/best_quotes">best_quotes</a></li>
+</ul>
+
+<p>Work flow diagram</p>
+
+<p><img src="https://raw.githubusercontent.com/ifyouseewendy/best_quotes/master/rebuilding-rails.png" alt="img texrebuilding-rails" style="width:562px" /></p>
+
+<h2 id="zero-to-it-works">1. Zero to “It Works!”</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">gem</span><span class="o">.</span><span class="n">add_development_dependency</span> <span class="s2">&quot;rspec&quot;</span>
+</span><span class="line"><span class="n">gem</span><span class="o">.</span><span class="n">add_runtime_dependency</span> <span class="s2">&quot;rest-client&quot;</span>
+</span><span class="line"><span class="n">gem</span><span class="o">.</span><span class="n">add_runtime_dependency</span> <span class="s2">&quot;some_gem&quot;</span><span class="p">,</span> <span class="s2">&quot;1.3.0&quot;</span>
+</span><span class="line"><span class="n">gem</span><span class="o">.</span><span class="n">add_runtime_dependency</span> <span class="s2">&quot;other_gem&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;0.8.2&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Each of these adds a runtime dependency (needed to run the gem at all) or a development dependency (needed to develop or test the gem).</p>
+
+<p>Youʼll need to go into the rulers directory and <code>git add .</code> before you rebuild the gem (<code>git add .; gem build rulers.gemspec; gem install rulers-0.0.1.gem</code>). Thatʼs because rulers.gemspec is actually calling git to find out what files to include in your gem.</p>
+
+<p><strong>Rails structure</strong></p>
+
+<ul>
+  <li>
+    <p><strong>ActiveSupport</strong> is a compatibility library including methods that aren’t necessarily specific to Rails. You’ll see ActiveSupport used by non-Rails libraries because it contains such a lot of useful baseline functionality. ActiveSupport includes methods like how Rails changes words from single to plural, or CamelCase to snake_case. It also includes significantly better time and date support than the Ruby standard library.</p>
+  </li>
+  <li>
+    <p><strong>ActiveModel</strong> hooks into features of your models that aren’t really about the database - for instance, if you want a URL for a given model, ActiveModel helps you there. It’s a thin wrapper around many different ActiveModel implementations to tell Rails how to use them. Most commonly, ActiveModel implementations are ORMs (see ActiveRecord, below), but they can also use non-relational storage like MongoDB, Redis, Memcached or even just local machine memory.</p>
+  </li>
+  <li>
+    <p><strong>ActiveRecord</strong> is an Object-Relational Mapper (ORM). That means that it maps between Ruby objects and tables in a SQL database. When you query from or write to the SQL database in Rails, you do it through ActiveRecord. ActiveRecord also implements ActiveModel. ActiveRecord supports MySQL and SQLite, plus JDBC, Oracle, PostgreSQL and many others.</p>
+  </li>
+  <li>
+    <p><strong>ActionPack</strong> (<em>ActionDispatch, ActionController, Actionview</em>) does routing - the mapping of an incoming URL to a controller and action in Rails. It also sets up your controllers and views, and shepherds a request through its controller action and then through rendering the view. For some of it, ActionPack uses Rack. The template rendering itself is done through an external gem like Erubis for .erb templates, or Haml for .haml templates. ActionPack also handles action- or view-centered functionality like view caching.</p>
+  </li>
+  <li>
+    <p><strong>ActionMailer</strong> is used to send out email, especially email based on templates. It works a lot like you’d hope Rails email would, with controllers, actions and “views” - which for email are text- based templates, not regular web-page templates.</p>
+  </li>
+</ul>
+
+<h2 id="your-first-controller">2. Your First Controller</h2>
+
+<p>Rails encapsulated the Rack information into a “request” object rather than just including the hash right into the controller. Thatʼs a good idea when you want to abstract it a bit – normalize values for certain variables, for instance, or read and set cookies to store session data.</p>
+
+<h2 id="rails-automatic-loading">3. Rails Automatic Loading</h2>
+
+<p>When debugging or printing error messages I like to use STDERR because itʼs a bit harder to redirect than a normal “puts” and so youʼre more likely to see it even when using a log file, background process or similar.</p>
+
+<p>For simple structures, “inspect” shows them exactly as youʼd type them into Ruby – strings with quotes, numbers bare, symbols with a leading colon and so on.</p>
+
+<p><strong>Reloading Means Convenience</strong></p>
+
+<p><code>gem "rulers", :path =&gt; "../rulers"</code> This trick actually relies on deep Bundler trickery and requires you to always “bundle exec” before running things like rackup. If you forget that, it can look like the gem isnʼt there or (worse) look like an old version.</p>
+
+<p><strong>CamelCase and snake_case</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/util.rb</span>
+</span><span class="line"><span class="k">module</span> <span class="nn">Rulers</span>
+</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">to_underscore</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</span><span class="line">    <span class="n">string</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/::/</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">.</span>
+</span><span class="line">    <span class="nb">gsub</span><span class="p">(</span><span class="sr">/([A-Z]+)([A-Z][a-z])/</span><span class="p">,</span><span class="s1">&#39;\1_\2&#39;</span><span class="p">)</span><span class="o">.</span>
+</span><span class="line">    <span class="nb">gsub</span><span class="p">(</span><span class="sr">/([a-z\d])([A-Z])/</span><span class="p">,</span><span class="s1">&#39;\1_\2&#39;</span><span class="p">)</span><span class="o">.</span>
+</span><span class="line">    <span class="n">tr</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span>
+</span><span class="line">    <span class="n">downcase</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># &#39;HTTPController&#39; -&gt; &#39;http_controller&#39;</span>
+</span><span class="line"><span class="c1"># &#39;MD5Controller&#39; -&gt; &#39;md5_controller&#39;</span>
+</span><span class="line"><span class="c1"># &#39;HomeController&#39; -&gt; &#39;home_controller&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>Put it together</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/dependencies.rb</span>
+</span><span class="line"><span class="k">class</span> <span class="nc">Object</span>
+</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">const_missing</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</span><span class="line">    <span class="nb">require</span> <span class="no">Rulers</span><span class="o">.</span><span class="n">to_underscore</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span>
+</span><span class="line">    <span class="no">Object</span><span class="o">.</span><span class="n">const_get</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/controller.rb</span>
+</span><span class="line"><span class="k">def</span> <span class="nf">controller_name</span>
+</span><span class="line">  <span class="n">klass</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">class</span>
+</span><span class="line">  <span class="n">klass</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">gsub</span> <span class="sr">/Controller$/</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+</span><span class="line">  <span class="no">Rulers</span><span class="o">.</span><span class="n">to_underscore</span> <span class="n">klass</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>Did it work?</strong></p>
+
+<p>When you load a file called whatever_class.rb, youʼre not actually guaranteed that it contains WhateverClass, or that the constant WhateverClass is actually a class. How would you check?</p>
+
+<p>You might try calling const_get(:WhateverClass)… Except that you just made const_get try to load automatically. If you call it on an unloaded class inside the method call where you try to load, youʼll recurse forever and get a “stack level too deep” and a crash. So const_get isnʼt the full answer.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/dependencies.rb</span>
+</span><span class="line"><span class="k">class</span> <span class="nc">Object</span>
+</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">const_missing</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</span><span class="line">    <span class="k">return</span> <span class="kp">nil</span> <span class="k">if</span> <span class="vi">@calling_const_missing</span>
+</span><span class="line">
+</span><span class="line">    <span class="vi">@calling_const_missing</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class="line">    <span class="nb">require</span> <span class="no">Rulers</span><span class="o">.</span><span class="n">to_underscore</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span>
+</span><span class="line">    <span class="n">klass</span> <span class="o">=</span> <span class="no">Object</span><span class="o">.</span><span class="n">const_get</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</span><span class="line">    <span class="vi">@calling_const_missing</span> <span class="o">=</span> <span class="kp">false</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">klass</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>But thereʼs a reason I say “hideously hacky.” Think about ways this could break. For instance – think about what would happen if you hit this in multiple threads at once. Oops!</p>
+
+<p><strong>Re-re-reloading</strong></p>
+
+<p><a href="https://github.com/alexch/rerun">rerun</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># best_quotes/Gemfile</span>
+</span><span class="line"><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+</span><span class="line"><span class="n">gem</span> <span class="s1">&#39;rulers&#39;</span><span class="p">,</span> <span class="ss">:path</span> <span class="o">=&gt;</span> <span class="s2">&quot;../rulers&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+</span><span class="line">  <span class="n">gem</span> <span class="s1">&#39;rerun&#39;</span>
+</span><span class="line">  <span class="n">gem</span> <span class="s1">&#39;listen&#39;</span><span class="p">,</span> <span class="s1">&#39;=1.3.1&#39;</span> <span class="c1"># for older Ruby</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Running by <code>bundle exec rerun -- rackup -p 3001</code>. The “–” is an old Unix trick. It means “thatʼs all the arguments you get, the rest belong to somebody else.” Specifically, it tells rerun to ignore the “-p” later.</p>
+
+<p><a href="https://github.com/rtomayko/shotgun">shotgun</a></p>
+
+<p>reloading rack development server, forking version of rackup.</p>
+
+<p><strong>In Rails</strong></p>
+
+<ol>
+  <li>
+    <p><a href="https://github.com/rails/rails/blob/master/activesupport/lib/active_support/dependencies.rb">rails/activesupport/lib/active_support/dependencies.rb</a> Rails uses ActiveSupport for its const_missing support. Most of the code is installing a const_missing that can call through to non-Rails versions of const_missing in other classes, and can be removed or re-added and is appropriately modular. It also works hard to support nested modules like MyLibrary::SubModule::SomeClass.</p>
+  </li>
+  <li>
+    <p><a href="http://urbanautomaton.com/blog/2013/08/27/rails-autoloading-hell/#fn1">Rails autoloading — how it works, and when it doesn’t</a> by Simon Coffey.</p>
+  </li>
+</ol>
+
+<h2 id="rendering-views">4. Rendering Views</h2>
+
+<p><strong>Erb and Erubis</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># some_directory/erb_test.rb</span>
+</span><span class="line"><span class="nb">require</span> <span class="s2">&quot;erubis&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">template</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">TEMPLATE</span>
+</span><span class="line"><span class="sh">Hello! This is a template.</span>
+</span><span class="line"><span class="sh">It has &lt;%= whatever %&gt;.</span>
+</span><span class="line"><span class="no">TEMPLATE</span>
+</span><span class="line">
+</span><span class="line"><span class="n">eruby</span> <span class="o">=</span> <span class="ss">Erubis</span><span class="p">:</span><span class="ss">:Eruby</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+</span><span class="line"><span class="nb">puts</span> <span class="n">eruby</span><span class="o">.</span><span class="n">src</span>
+</span><span class="line"><span class="nb">puts</span> <span class="s2">&quot;==========&quot;</span>
+</span><span class="line"><span class="nb">puts</span> <span class="n">eruby</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="ss">:whatever</span> <span class="o">=&gt;</span> <span class="s2">&quot;ponies!&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Run it with <code>ruby erb_test.rb</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">bash</span><span class="o">-</span><span class="mi">3</span><span class="o">.</span><span class="mi">2</span><span class="err">$</span> <span class="n">ruby</span> <span class="n">erb_test</span><span class="o">.</span><span class="n">rb</span>
+</span><span class="line"><span class="n">_buf</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span> <span class="n">_buf</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;Hello!   This is a template. It has &#39;</span><span class="p">;</span>
+</span><span class="line"><span class="n">_buf</span> <span class="o">&lt;&lt;</span> <span class="p">(</span> <span class="n">whatever</span> <span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="p">;</span> <span class="n">_buf</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;.&#39;</span><span class="p">;</span>
+</span><span class="line"><span class="n">_buf</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class="line"><span class="o">==========</span>
+</span><span class="line"><span class="no">Hello</span><span class="o">!</span> <span class="no">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">template</span><span class="o">.</span>
+</span><span class="line"><span class="no">It</span> <span class="n">has</span> <span class="n">ponies!</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The few lines starting with <code>_buf</code> are interesting. Erubis takes apart our string, appends it to <code>_buf</code> piece by piece, and adds the variables in as well after calling <code>.to_s</code> on them. Then it just returns <code>_buf</code>.</p>
+
+<p><strong>Rack test example</strong></p>
+
+<p><a href="https://github.com/brynary/rack-test">rack-test</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">require_relative</span> <span class="s2">&quot;test_helper&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">TestApp</span> <span class="o">&lt;</span> <span class="ss">Rulers</span><span class="p">:</span><span class="ss">:Application</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">get_controller_and_action</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class="line">    <span class="o">[</span><span class="no">TestController</span><span class="p">,</span> <span class="s2">&quot;index&quot;</span><span class="o">]</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">TestController</span> <span class="o">&lt;</span> <span class="ss">Rulers</span><span class="p">:</span><span class="ss">:Controlle</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">index</span>
+</span><span class="line">    <span class="s2">&quot;Hello!&quot;</span>  <span class="c1"># Not rendering a view</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">RulersAppTest</span> <span class="o">&lt;</span> <span class="ss">Test</span><span class="p">:</span><span class="ss">:Unit</span><span class="o">::</span><span class="no">TestCase</span>
+</span><span class="line"> <span class="kp">include</span> <span class="ss">Rack</span><span class="p">:</span><span class="ss">:Test</span><span class="o">::</span><span class="no">Methods</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">app</span>
+</span><span class="line">    <span class="no">TestApp</span><span class="o">.</span><span class="n">new</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">test_request</span>
+</span><span class="line">    <span class="n">get</span> <span class="s2">&quot;/example/route&quot;</span>
+</span><span class="line">    <span class="n">assert</span> <span class="n">last_response</span><span class="o">.</span><span class="n">ok?</span>
+</span><span class="line">    <span class="n">body</span> <span class="o">=</span> <span class="n">last_response</span><span class="o">.</span><span class="n">body</span>
+</span><span class="line">    <span class="n">assert</span> <span class="n">body</span><span class="o">[</span><span class="s2">&quot;Hello&quot;</span><span class="o">]</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>Rake test example</strong></p>
+
+<p>Rake actually ships with a “Rake::TestTask”.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># Rakefile</span>
+</span><span class="line"><span class="nb">require</span> <span class="s2">&quot;bundler/gem_tasks&quot;</span>
+</span><span class="line"><span class="nb">require</span> <span class="s2">&quot;rake/testtask&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="ss">Rake</span><span class="p">:</span><span class="ss">:TestTask</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+</span><span class="line">  <span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>  <span class="c1"># this is the default</span>
+</span><span class="line">  <span class="n">t</span><span class="o">.</span><span class="n">libs</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;test&quot;</span>  <span class="c1"># load the test dir</span>
+</span><span class="line">  <span class="n">t</span><span class="o">.</span><span class="n">test_files</span> <span class="o">=</span> <span class="no">Dir</span><span class="o">[</span><span class="s1">&#39;test/*test*.rb&#39;</span><span class="o">]</span>
+</span><span class="line">  <span class="n">t</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><em>A word of caution</em>: Rake will always run your tests by loading them into the same Ruby process, then running each one in turn. This is a lot faster than running them in individual processes, but it means that your tests can mess with each other in annoying ways. If you find yourself saying, “but I didnʼt set that global variable in this test!” think about whether some other test might have done it. For extra fun, the tests donʼt always run in any predictable order.</p>
+
+<p><strong>In Rails</strong></p>
+
+<p>Rails actually allows registering a number of different template engines at once with a number of different extensions so that Erb files are rendered with Erubis, but .haml files are rendered with the HAML templating engine.</p>
+
+<p>You can find the top-level view code in <a href="https://github.com/rails/rails/blob/master/actionview/lib/action_view.rb">actionpack/lib/action_view.rb</a>, and the whole big chunk of Rails view code in actionpack/lib/action_view/. From there, look in <a href="https://github.com/rails/rails/blob/master/actionview/lib/action_view/template/handlers/erb.rb">template/handlers/erb.rb</a> for a pretty compact description of exactly how Rails uses Erubis to render Erb templates. You can see that most of the bulk of Railsʼ version is setup, interface and dealing with string encodings. You save a lot of trouble by knowing that youʼre basically only dealing with ASCII and/or UTF-8 strings.</p>
+
+<h2 id="basic-models">5. Basic Models</h2>
+
+<p>Use <a href="https://github.com/intridea/multi_json">multi_json</a> (a generic swappable back-end for JSON handling) to built a simple system of models based on JSON files.</p>
+
+<p><strong>In Rails</strong></p>
+
+<p>ActiveRecord is an Object-Relational Mapper so that each of your objects represents a database row. ActiveModel is the interface that Rails uses to all of storage including non-relational stores like Cassandra or MongoDB, to fit particular object types into Rails.</p>
+
+<p>For a good overview of ActiveModel, have a look at a blog post from Yehuda Katz on that topic: <a href="http://yehudakatz.com/2010/01/10/activemodel-make-any-ruby-object-feel-like-activerecord/">ActiveModel: Make Any Ruby Object Feel Like ActiveRecord</a></p>
+
+<h2 id="request-response">6. Request, Response</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/controller.rb</span>
+</span><span class="line"><span class="k">module</span> <span class="nn">Rulers</span>
+</span><span class="line">  <span class="k">class</span> <span class="nc">Controller</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">response</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">{})</span>
+</span><span class="line">      <span class="k">raise</span> <span class="s2">&quot;Already responded!&quot;</span> <span class="k">if</span> <span class="vi">@response</span>
+</span><span class="line">      <span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="n">text</span><span class="o">].</span><span class="n">flatten</span>
+</span><span class="line">      <span class="vi">@response</span> <span class="o">=</span> <span class="ss">Rack</span><span class="p">:</span><span class="ss">:Response</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">def</span> <span class="nf">get_response</span>  <span class="c1"># Only for Rulers</span>
+</span><span class="line">      <span class="vi">@response</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">def</span> <span class="nf">render_response</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</span><span class="line">      <span class="n">response</span><span class="p">(</span><span class="n">render</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">))</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># rulers/lib/rulers.rb</span>
+</span><span class="line"><span class="k">module</span> <span class="nn">Ruler</span>
+</span><span class="line">  <span class="k">class</span> <span class="nc">Application</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>   <span class="c1"># Redefine</span>
+</span><span class="line">      <span class="k">if</span> <span class="n">env</span><span class="o">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;/favicon.ico&#39;</span>
+</span><span class="line">        <span class="k">return</span> <span class="o">[</span><span class="mi">404</span><span class="p">,</span>
+</span><span class="line">          <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;text/html&#39;</span><span class="p">},</span> <span class="o">[]]</span>
+</span><span class="line">      <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">      <span class="n">klass</span><span class="p">,</span> <span class="n">act</span> <span class="o">=</span> <span class="n">get_controller_and_action</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class="line">      <span class="n">controller</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class="line">      <span class="n">text</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">act</span><span class="p">)</span>
+</span><span class="line">      <span class="k">if</span> <span class="n">controller</span><span class="o">.</span><span class="n">get_response</span>
+</span><span class="line">        <span class="c1"># ensure the code after render_response works</span>
+</span><span class="line">        <span class="n">st</span><span class="p">,</span> <span class="n">hd</span><span class="p">,</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">get_response</span><span class="o">.</span><span class="n">to_a</span>
+</span><span class="line">        <span class="o">[</span><span class="n">st</span><span class="p">,</span> <span class="n">hd</span><span class="p">,</span> <span class="o">[</span><span class="n">rs</span><span class="o">.</span><span class="n">body</span><span class="o">].</span><span class="n">flatten</span><span class="o">]</span>
+</span><span class="line">      <span class="k">else</span>
+</span><span class="line">        <span class="c1"># without explicitly render_response in action,</span>
+</span><span class="line">        <span class="c1"># you can add auto render here</span>
+</span><span class="line">        <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;text/html&#39;</span><span class="p">},</span> <span class="o">[</span><span class="n">text</span><span class="o">]]</span>
+</span><span class="line">      <span class="k">end</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>In Rails, the return value from the controller is ignored. Instead if you donʼt call render (Railsʼ equivalent of render_response), it will automatically call it for you with the same controller name, and the viewʼs name set to the same name as your action.</p>
+
+<p>Rails doesnʼt return the string when you call “render” (well, usually - some calls to render do!). Instead, it keeps track of the fact that you called render and what you called it on. Then it gives you an error if you call it again, or uses the defaults if you get to the end of a controller action without calling it</p>
+
+<p><strong>Instance Variables</strong></p>
+
+<p>The Rails answer is to set instance variables in the controller, then use them in the view. Try creating a new view object, mostly just to use Erubis to evaluate the view file. Then, make it easy to pass in a hash of instance variables which youʼll set on the view object before doing the evaluation.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/controller.rb</span>
+</span><span class="line"><span class="k">module</span> <span class="nn">Rulers</span>
+</span><span class="line">  <span class="k">class</span> <span class="nc">Controller</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">view_name</span><span class="p">,</span> <span class="n">locals</span> <span class="o">=</span> <span class="p">{})</span>
+</span><span class="line">      <span class="n">filename</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span> <span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="n">controller_name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">view_name</span><span class="si">}</span><span class="s2">.html.erb&quot;</span>
+</span><span class="line">      <span class="n">ivars</span> <span class="o">=</span> <span class="nb">instance_variables</span><span class="o">.</span><span class="n">reduce</span><span class="p">({})</span> <span class="p">{</span><span class="o">|</span><span class="n">ha</span><span class="p">,</span> <span class="n">iv</span><span class="o">|</span> <span class="n">ha</span><span class="o">[</span><span class="n">iv</span><span class="o">]</span> <span class="o">=</span> <span class="nb">instance_variable_get</span><span class="p">(</span><span class="n">iv</span><span class="p">);</span> <span class="n">ha</span> <span class="p">}</span>
+</span><span class="line">      <span class="ss">Rulers</span><span class="p">:</span><span class="ss">:View</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">ivars</span><span class="p">,</span> <span class="n">locals</span><span class="p">)</span><span class="o">.</span><span class="n">result</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>In Rails</strong></p>
+
+<p>Rails (more specifically, ActionPack) uses Rack in a very similar way, even exposing the Rack Request object with the “request” method. Especially <a href="https://github.com/rails/rails/blob/master/actionpack%2Flib%2Faction_controller%2Fmetal.rb">metal.rb </a>and metal/*.rb. “Rails Metal” is a name for the lower-level Rails which goes mostly straight through to the “bare metal” – that is, to Rack.</p>
+
+<p>You can find a lot of the Rails implementation of Rack in these directories – for instance, metal/redirecting.rb is the implementation of the redirect_to() helper which returns status 302 (redirect) and a location to Rack. You could steal the code and add a redirect_to to Rulers, if you wanted.</p>
+
+<p>You can also find things like forgery (CSRF) protection, multiple renderers (i.e. Erb vs Haml), forcing SSL if requested and cookies in this directory. Some are complex, while others call to Rack very simply and you could move right over to Rulers.</p>
+
+<h2 id="the-littlest-orm">7. The Littlest ORM</h2>
+
+<p>migration</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># best_quotes/mini_migration.rb</span>
+</span><span class="line"><span class="nb">require</span> <span class="s2">&quot;sqlite3&quot;</span>
+</span><span class="line"><span class="n">conn</span> <span class="o">=</span> <span class="ss">SQLite3</span><span class="p">:</span><span class="ss">:Database</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;test.db&quot;</span>
+</span><span class="line"><span class="n">conn</span><span class="o">.</span><span class="n">execute</span> <span class="o">&lt;&lt;</span><span class="no">SQL</span>
+</span><span class="line"><span class="sh">create table my_table (</span>
+</span><span class="line"><span class="sh">  id INTEGER PRIMARY KEY,</span>
+</span><span class="line"><span class="sh">  posted INTEGER,</span>
+</span><span class="line"><span class="sh">  title VARCHAR(30),</span>
+</span><span class="line"><span class="sh">  body VARCHAR(32000));</span>
+</span><span class="line"><span class="no">SQL</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>sqlite model</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+<span class="line-number">73</span>
+<span class="line-number">74</span>
+<span class="line-number">75</span>
+<span class="line-number">76</span>
+<span class="line-number">77</span>
+<span class="line-number">78</span>
+<span class="line-number">79</span>
+<span class="line-number">80</span>
+<span class="line-number">81</span>
+<span class="line-number">82</span>
+<span class="line-number">83</span>
+<span class="line-number">84</span>
+<span class="line-number">85</span>
+<span class="line-number">86</span>
+<span class="line-number">87</span>
+<span class="line-number">88</span>
+<span class="line-number">89</span>
+<span class="line-number">90</span>
+<span class="line-number">91</span>
+<span class="line-number">92</span>
+<span class="line-number">93</span>
+<span class="line-number">94</span>
+<span class="line-number">95</span>
+<span class="line-number">96</span>
+<span class="line-number">97</span>
+<span class="line-number">98</span>
+<span class="line-number">99</span>
+<span class="line-number">100</span>
+<span class="line-number">101</span>
+<span class="line-number">102</span>
+<span class="line-number">103</span>
+<span class="line-number">104</span>
+<span class="line-number">105</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/sqlite_model.rb</span>
+</span><span class="line"><span class="nb">require</span> <span class="s2">&quot;sqlite3&quot;</span>
+</span><span class="line"><span class="nb">require</span> <span class="s2">&quot;rulers/util&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="no">DB</span> <span class="o">=</span> <span class="ss">SQLite3</span><span class="p">:</span><span class="ss">:Database</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;test.db&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="k">module</span> <span class="nn">Rulers</span>
+</span><span class="line">  <span class="k">module</span> <span class="nn">Model</span>
+</span><span class="line">    <span class="k">class</span> <span class="nc">SQLite</span>
+</span><span class="line">
+</span><span class="line">      <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+</span><span class="line">        <span class="k">def</span> <span class="nf">table</span>
+</span><span class="line">          <span class="no">Rulers</span><span class="o">.</span><span class="n">to_underscore</span> <span class="nb">name</span>
+</span><span class="line">        <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">def</span> <span class="nf">schema</span>
+</span><span class="line">          <span class="k">return</span> <span class="vi">@schema</span> <span class="k">if</span> <span class="vi">@schema</span>
+</span><span class="line">          <span class="vi">@schema</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class="line">          <span class="no">DB</span><span class="o">.</span><span class="n">table_info</span><span class="p">(</span><span class="n">table</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span>
+</span><span class="line">            <span class="vi">@schema</span><span class="o">[</span> <span class="n">row</span><span class="o">[</span><span class="s1">&#39;name&#39;</span><span class="o">]</span> <span class="o">]</span> <span class="o">=</span> <span class="n">row</span><span class="o">[</span><span class="s1">&#39;type&#39;</span><span class="o">]</span>
+</span><span class="line">          <span class="k">end</span>
+</span><span class="line">          <span class="vi">@schema</span>
+</span><span class="line">        <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">def</span> <span class="nf">to_sql</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+</span><span class="line">          <span class="k">case</span> <span class="n">val</span>
+</span><span class="line">          <span class="k">when</span> <span class="no">Numeric</span>
+</span><span class="line">            <span class="n">val</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class="line">          <span class="k">when</span> <span class="nb">String</span>
+</span><span class="line">            <span class="s2">&quot;&#39;</span><span class="si">#{</span><span class="n">val</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+</span><span class="line">          <span class="k">else</span>
+</span><span class="line">            <span class="k">raise</span> <span class="s2">&quot;Can&#39;t change </span><span class="si">#{</span><span class="n">val</span><span class="o">.</span><span class="n">class</span><span class="si">}</span><span class="s2"> to SQL!&quot;</span>
+</span><span class="line">          <span class="k">end</span>
+</span><span class="line">        <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</span><span class="line">          <span class="n">values</span><span class="o">.</span><span class="n">delete</span> <span class="s1">&#39;id&#39;</span>
+</span><span class="line">          <span class="n">keys</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">keys</span> <span class="o">-</span> <span class="o">[</span><span class="s1">&#39;id&#39;</span><span class="o">]</span>
+</span><span class="line">          <span class="n">vals</span> <span class="o">=</span> <span class="n">keys</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="o">|</span>
+</span><span class="line">            <span class="n">values</span><span class="o">[</span><span class="n">key</span><span class="o">]</span> <span class="p">?</span> <span class="n">to_sql</span><span class="p">(</span><span class="n">values</span><span class="o">[</span><span class="n">key</span><span class="o">]</span><span class="p">)</span> <span class="p">:</span> <span class="s1">&#39;null&#39;</span>
+</span><span class="line">          <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">          <span class="no">DB</span><span class="o">.</span><span class="n">execute</span> <span class="o">&lt;&lt;</span><span class="no">SQL</span>
+</span><span class="line"><span class="sh">            INSERT INTO #{table} (#{keys.join(&#39;,&#39;)})</span>
+</span><span class="line"><span class="sh">            VALUES (#{vals.join(&#39;,&#39;)});</span>
+</span><span class="line"><span class="no">SQL</span>
+</span><span class="line">
+</span><span class="line">          <span class="n">data</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">[</span><span class="n">keys</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span><span class="o">]</span>
+</span><span class="line">          <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT last_insert_rowid();&quot;</span>
+</span><span class="line">          <span class="n">data</span><span class="o">[</span><span class="s1">&#39;id&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="no">DB</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
+</span><span class="line">          <span class="nb">self</span><span class="o">.</span><span class="n">new</span> <span class="n">data</span>
+</span><span class="line">        <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">def</span> <span class="nf">count</span>
+</span><span class="line">          <span class="no">DB</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&lt;&lt;</span><span class="no">SQL</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
+</span><span class="line"><span class="sh">            SELECT COUNT(*) FROM #{table}</span>
+</span><span class="line"><span class="no">SQL</span>
+</span><span class="line">        <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+</span><span class="line">          <span class="n">row</span> <span class="o">=</span> <span class="no">DB</span><span class="o">.</span><span class="n">execute</span> <span class="o">&lt;&lt;</span><span class="no">SQL</span>
+</span><span class="line"><span class="sh">            SELECT #{schema.keys.join(&#39;,&#39;)} from #{table} where id=#{id}</span>
+</span><span class="line"><span class="no">SQL</span>
+</span><span class="line">          <span class="n">data</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">[</span> <span class="n">schema</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">zip</span> <span class="n">row</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">]</span>
+</span><span class="line">          <span class="nb">self</span><span class="o">.</span><span class="n">new</span> <span class="n">data</span>
+</span><span class="line">        <span class="k">end</span>
+</span><span class="line">      <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">      <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>
+</span><span class="line">        <span class="vi">@hash</span> <span class="o">=</span> <span class="n">data</span>
+</span><span class="line">      <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">      <span class="k">def</span> <span class="nf">[]</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+</span><span class="line">        <span class="vi">@hash</span><span class="o">[</span><span class="nb">name</span><span class="o">.</span><span class="n">to_s</span><span class="o">]</span>
+</span><span class="line">      <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">      <span class="k">def</span> <span class="nf">[]=</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span class="line">        <span class="vi">@hash</span><span class="o">[</span><span class="nb">name</span><span class="o">.</span><span class="n">to_s</span><span class="o">]</span> <span class="o">=</span> <span class="n">value</span>
+</span><span class="line">      <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">      <span class="k">def</span> <span class="nf">save!</span>
+</span><span class="line">        <span class="k">unless</span> <span class="vi">@hash</span><span class="o">[</span><span class="s1">&#39;id&#39;</span><span class="o">]</span>
+</span><span class="line">          <span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">create</span>
+</span><span class="line">          <span class="k">return</span> <span class="kp">true</span>
+</span><span class="line">        <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">fields</span> <span class="o">=</span> <span class="vi">@hash</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span>
+</span><span class="line">          <span class="s2">&quot;</span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2">=</span><span class="si">#{</span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class="line">        <span class="k">end</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">        <span class="no">DB</span><span class="o">.</span><span class="n">execute</span> <span class="o">&lt;&lt;</span><span class="no">SQL</span>
+</span><span class="line"><span class="sh">          UPDATE #{self.class.table}</span>
+</span><span class="line"><span class="sh">          SET #{fields}</span>
+</span><span class="line"><span class="sh">          WHERE id=&quot;#{@hash[&#39;id&#39;]}&quot;</span>
+</span><span class="line"><span class="no">SQL</span>
+</span><span class="line">        <span class="kp">true</span>
+</span><span class="line">      <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">      <span class="k">def</span> <span class="nf">save</span>
+</span><span class="line">        <span class="n">save!</span> <span class="k">rescue</span> <span class="kp">false</span>
+</span><span class="line">      <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You can add a method to the SQLite model that takes a column name and a type, and then when saving and loading that column, does something type-dependent to it, like the boolean or JSON fields above.</p>
+
+<p>ActiveRecord allows both ways – you can research the <code>before_save</code> and <code>after_initialize</code> callbacks for how to do it on save/ load.</p>
+
+<p><strong>In Rails</strong></p>
+
+<p>ActiveRecord contains mappings of operations like our gem, but also migrations, cross-database compatibility and a huge amount of optimization and general complexity. And thatʼs even though they use the ARel gem for most of the heavy lifting!</p>
+
+<h2 id="rack-middleware">Rack Middleware</h2>
+
+<p>With any Ruby web framework, you can modify how it works by adding Rack components around it. I like thinking of them as pancakes, because Rack lets you build your framework and your application like a stack of pancakes.</p>
+
+<p><strong>Built-in middlewares</strong></p>
+
+<ul>
+  <li><strong>Rack::Auth::Basic</strong> - HTTP Basic authentication.</li>
+  <li><strong>Rack::Auth::Digest</strong> - HTTP Digest authentication.</li>
+  <li><strong>Rack::Cascade</strong> - Pass a request to a series of Rack apps, and use the first request that comes back as good. Itʼs a way to mount one Rack app “on top of” another (or many).</li>
+  <li><strong>Rack::Chunked</strong> - A Rack interface to HTTP Chunked transfer.</li>
+  <li><strong>Rack::CommonLogger</strong> - Request logging.</li>
+  <li><strong>Rack::ConditionalGet</strong> - Implement HTTP If-None-Match and If- Modified-Since with ETags and dates.</li>
+  <li><strong>Rack::Config</strong> - Call a given block before each request.</li>
+  <li><strong>Rack::ContentLength</strong> - Set Content-Length automatically.</li>
+  <li><strong>Rack::ContentType</strong> - Try to guess Content-Type and set it. Rack::Deflater - Compress the response with gzip/deflate.</li>
+  <li><strong>Rack::Directory</strong> - Add Apache-style directory listings. This is an endpoint not an intermediate layer, so use it with “run.”</li>
+  <li><strong>Rack::ETag</strong> - Generate ETags from MD5s of the content.</li>
+  <li><strong>Rack::Head</strong> - Remove response body for HEAD requests.</li>
+  <li><strong>Rack::Lint</strong> - Check your responses for correctness.</li>
+  <li><strong>Rack::Lock</strong> - Only allow one thread in at once.</li>
+  <li><strong>Rack::Reloader</strong> - Reload your app when files change.</li>
+  <li><strong>Rack::Runtime</strong> - Times the request, sets X-Runtime in response.</li>
+  <li><strong>Rack::Sendfile</strong> - Use the X-Sendfile header to ask your web server to send a file much faster than Ruby can.</li>
+  <li><strong>Rack::ShowExceptions</strong> - Show a nice exception page if something breaks.</li>
+  <li><strong>Rack::ShowStatus</strong> - Show a pretty page if the result is empty.</li>
+  <li><strong>Rack::Static</strong> - Serve from certain directories as static files instead
+of calling your framework.</li>
+  <li><strong>Rack::URLMap</strong> - Route different directories to different apps or different stacks. You can also use this with a “map” block in config.ru.</li>
+</ul>
+
+<p>Rack::URLMap is a way to tell Rack what paths go to what Rack apps - and if thereʼs could be two that match, the longer path always takes precedence.</p>
+
+<p>Rack::ContentType is to set the default HTML content type for everything. Since itʼs at the top, outside the blocks, it applies to all the blocks.</p>
+
+<p>The lobster, by the way, is a simple test app built into Rack. Youʼll see it as an example in many places.</p>
+
+<p><strong>Thrid-party middlewares</strong></p>
+
+<ul>
+  <li><a href="https://github.com/rack/rack-contrib">rack-contrib</a></li>
+  <li><a href="https://github.com/rack/rack/wiki/List-of-Middleware">middlewares listed in rack wiki</a></li>
+</ul>
+
+<p><strong>In Rails</strong></p>
+
+<p>The primary Rack application object in Rails is called ActionController::Dispatcher.</p>
+
+<p>ActionController::Base allows you to get mini-Rack-apps for each controller action because it inherits from Metal, the basic Rails Rack class. So you can call MyController.action(:myaction) and get a Rack app for that action in your controller.</p>
+
+<p><strong>Calling order of Rack middlewares</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Foo</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">arg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Foo#init&#39;</span>
+</span><span class="line">    <span class="vi">@app</span> <span class="o">=</span> <span class="n">app</span>
+</span><span class="line">    <span class="vi">@arg</span> <span class="o">=</span> <span class="n">arg</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Foo#initend&#39;</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Foo#call&#39;</span>
+</span><span class="line">    <span class="n">status</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="vi">@app</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class="line">    <span class="n">content</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@arg</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Foo#callend&#39;</span>
+</span><span class="line">    <span class="o">[</span> <span class="n">status</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">content</span> <span class="o">]</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">Bar</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">arg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Bar#init&#39;</span>
+</span><span class="line">    <span class="vi">@app</span> <span class="o">=</span> <span class="n">app</span>
+</span><span class="line">    <span class="vi">@arg</span> <span class="o">=</span> <span class="n">arg</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Bar#initend&#39;</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Bar#call&#39;</span>
+</span><span class="line">    <span class="n">status</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="vi">@app</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class="line">    <span class="n">content</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@arg</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Bar#callend&#39;</span>
+</span><span class="line">    <span class="o">[</span> <span class="n">status</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">content</span> <span class="o">]</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">use</span> <span class="no">Foo</span><span class="p">,</span> <span class="s1">&#39;, foo&#39;</span>
+</span><span class="line"><span class="n">use</span> <span class="no">Bar</span><span class="p">,</span> <span class="s1">&#39;, bar&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">run</span> <span class="nb">proc</span> <span class="p">{</span>
+</span><span class="line">  <span class="nb">puts</span> <span class="s1">&#39;--&gt; main#call&#39;</span>
+</span><span class="line">  <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;text/html&#39;</span><span class="p">},</span> <span class="o">[</span><span class="s1">&#39;Hello, world&#39;</span><span class="o">]]</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># $ rackup</span>
+</span><span class="line"><span class="c1"># --&gt; Bar#init</span>
+</span><span class="line"><span class="c1"># --&gt; Bar#initend</span>
+</span><span class="line"><span class="c1"># --&gt; Foo#init</span>
+</span><span class="line"><span class="c1"># --&gt; Foo#initend</span>
+</span><span class="line"><span class="c1"># Thin web server (v1.6.1 codename Death Proof)</span>
+</span><span class="line"><span class="c1"># Maximum connections set to 1024</span>
+</span><span class="line"><span class="c1"># Listening on 0.0.0.0:9292, CTRL+C to stop</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1"># --&gt; Foo#call</span>
+</span><span class="line"><span class="c1"># --&gt; Bar#call</span>
+</span><span class="line"><span class="c1"># --&gt; main#call</span>
+</span><span class="line"><span class="c1"># --&gt; Bar#callend</span>
+</span><span class="line"><span class="c1"># --&gt; Foo#callend</span>
+</span><span class="line"><span class="c1"># 127.0.0.1 - wendi [23/Sep/2014 15:56:20] &quot;GET / HTTP/1.1&quot; 200 - 0.0013</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Other samples:</p>
+
+<ul>
+  <li><a href="https://gist.github.com/ifyouseewendy/15dd511d2d939e432068#file-config-lobster-ru">lobster</a></li>
+  <li><a href="https://gist.github.com/ifyouseewendy/15dd511d2d939e432068#file-config-auth-ru">auth</a></li>
+  <li><a href="https://gist.github.com/ifyouseewendy/15dd511d2d939e432068#file-config-benchmark-ru">benchmark</a></li>
+</ul>
+
+<h2 id="real-routing">9. Real Routing</h2>
+
+<p>Rails 3 takes this a half-step farther and makes every action on every controller a full-on Rack app that you can extract and use.</p>
+
+<p>Add RouteObject class.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+<span class="line-number">73</span>
+<span class="line-number">74</span>
+<span class="line-number">75</span>
+<span class="line-number">76</span>
+<span class="line-number">77</span>
+<span class="line-number">78</span>
+<span class="line-number">79</span>
+<span class="line-number">80</span>
+<span class="line-number">81</span>
+<span class="line-number">82</span>
+<span class="line-number">83</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">RouteObject</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span>
+</span><span class="line">    <span class="vi">@rules</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1"># save routing rules</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</span><span class="line">    <span class="n">options</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class="line">    <span class="n">options</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">pop</span> <span class="k">if</span> <span class="n">args</span><span class="o">[-</span><span class="mi">1</span><span class="o">].</span><span class="n">is_a?</span><span class="p">(</span><span class="no">Hash</span><span class="p">)</span>
+</span><span class="line">    <span class="n">options</span><span class="o">[</span><span class="ss">:default</span><span class="o">]</span> <span class="o">||=</span> <span class="p">{}</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">dest</span> <span class="o">=</span> <span class="kp">nil</span>
+</span><span class="line">    <span class="n">dest</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">pop</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</span><span class="line">    <span class="k">raise</span> <span class="s1">&#39;Too many args!&#39;</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">parts</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span><span class="line">    <span class="n">parts</span><span class="o">.</span><span class="n">select!</span><span class="p">{</span><span class="o">|</span><span class="nb">p</span><span class="o">|</span> <span class="o">!</span><span class="nb">p</span><span class="o">.</span><span class="n">empty?</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">vars</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class="line">    <span class="n">regexp_parts</span> <span class="o">=</span> <span class="n">parts</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">part</span><span class="o">|</span>
+</span><span class="line">      <span class="k">if</span> <span class="n">part</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;:&#39;</span>
+</span><span class="line">        <span class="n">vars</span> <span class="o">&lt;&lt;</span> <span class="n">part</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class="line">        <span class="s2">&quot;([a-zA-Z0-9_]+)&quot;</span>
+</span><span class="line">      <span class="k">elsif</span> <span class="n">part</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span>
+</span><span class="line">        <span class="n">vars</span> <span class="o">&lt;&lt;</span> <span class="n">part</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class="line">        <span class="s2">&quot;(.*)&quot;</span>
+</span><span class="line">      <span class="k">else</span>
+</span><span class="line">        <span class="n">part</span>
+</span><span class="line">      <span class="k">end</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">regexp</span> <span class="o">=</span> <span class="n">regexp_parts</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span><span class="line">    <span class="vi">@rules</span><span class="o">.</span><span class="n">push</span><span class="p">({</span>
+</span><span class="line">      <span class="ss">:regexp</span> <span class="o">=&gt;</span> <span class="no">Regexp</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;^/</span><span class="si">#{</span><span class="n">regexp</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">),</span>
+</span><span class="line">      <span class="ss">:vars</span> <span class="o">=&gt;</span> <span class="n">vars</span><span class="p">,</span>
+</span><span class="line">      <span class="ss">:dest</span> <span class="o">=&gt;</span> <span class="n">dest</span><span class="p">,</span>
+</span><span class="line">      <span class="ss">:options</span> <span class="o">=&gt;</span> <span class="n">options</span>
+</span><span class="line">    <span class="p">})</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1"># match rules to url and route to specific controller action.</span>
+</span><span class="line">  <span class="c1"># </span>
+</span><span class="line">  <span class="c1"># 1. the router just applies them in order -- if more than</span>
+</span><span class="line">  <span class="c1">#    one rule matches, the first one wins.</span>
+</span><span class="line">  <span class="c1"># 2. the second argument can be a Rack application, </span>
+</span><span class="line">  <span class="c1">#    which Rails then calls.</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">check_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span><span class="line">    <span class="vi">@rules</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span>
+</span><span class="line">      <span class="n">m</span> <span class="o">=</span> <span class="n">r</span><span class="o">[</span><span class="ss">:regexp</span><span class="o">].</span><span class="n">match</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">      <span class="k">if</span> <span class="n">m</span>
+</span><span class="line">        <span class="n">options</span> <span class="o">=</span> <span class="n">r</span><span class="o">[</span><span class="ss">:options</span><span class="o">]</span>
+</span><span class="line">        <span class="n">params</span> <span class="o">=</span> <span class="n">options</span><span class="o">[</span><span class="ss">:default</span><span class="o">].</span><span class="n">dup</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">r</span><span class="o">[</span><span class="ss">:vars</span><span class="o">].</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">v</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+</span><span class="line">          <span class="n">params</span><span class="o">[</span><span class="n">v</span><span class="o">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">captures</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+</span><span class="line">        <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">if</span> <span class="n">r</span><span class="o">[</span><span class="ss">:dest</span><span class="o">]</span>
+</span><span class="line">          <span class="k">return</span> <span class="n">get_dest</span><span class="p">(</span><span class="n">r</span><span class="o">[</span><span class="ss">:dest</span><span class="o">]</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</span><span class="line">        <span class="k">else</span>
+</span><span class="line">          <span class="n">controller</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="s1">&#39;controller&#39;</span><span class="o">]</span>
+</span><span class="line">          <span class="n">action</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="s1">&#39;action&#39;</span><span class="o">]</span>
+</span><span class="line">          <span class="k">return</span> <span class="n">get_dest</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">controller</span><span class="si">}</span><span class="s2">#</span><span class="si">#{</span><span class="n">action</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</span><span class="line">        <span class="k">end</span>
+</span><span class="line">      <span class="k">end</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">    <span class="kp">nil</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">get_dest</span><span class="p">(</span><span class="n">dest</span><span class="p">,</span> <span class="n">routing_params</span> <span class="o">=</span> <span class="p">{})</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">dest</span> <span class="k">if</span> <span class="n">dest</span><span class="o">.</span><span class="n">respond_to?</span><span class="p">(</span><span class="ss">:call</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">if</span> <span class="n">dest</span> <span class="o">=~</span> <span class="sr">/^([^#]+)#([^#]+)$/</span>
+</span><span class="line">      <span class="nb">name</span> <span class="o">=</span> <span class="vg">$1</span><span class="o">.</span><span class="n">capitalize</span>
+</span><span class="line">      <span class="n">cont</span> <span class="o">=</span> <span class="no">Object</span><span class="o">.</span><span class="n">const_get</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">Controller&quot;</span><span class="p">)</span>
+</span><span class="line">      <span class="k">return</span> <span class="n">cont</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="vg">$2</span><span class="p">,</span> <span class="n">routing_params</span><span class="p">)</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">raise</span> <span class="s2">&quot;No destination: </span><span class="si">#{</span><span class="n">dest</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2">!&quot;</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Define <code>route</code> to save rules in an instance of RouteObject, and use <code>get_rack_app</code> to route to controller actions. </p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">Rulers</span>
+</span><span class="line">  <span class="k">class</span> <span class="nc">Application</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">      <span class="vi">@route_obj</span> <span class="o">||=</span> <span class="no">RouteObject</span><span class="o">.</span><span class="n">new</span>
+</span><span class="line">      <span class="vi">@route_obj</span><span class="o">.</span><span class="n">instance_eval</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">def</span> <span class="nf">get_rack_app</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class="line">      <span class="k">raise</span> <span class="s1">&#39;No routes!&#39;</span> <span class="k">unless</span> <span class="vi">@route_obj</span>
+</span><span class="line">      <span class="vi">@route_obj</span><span class="o">.</span><span class="n">check_url</span> <span class="n">env</span><span class="o">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="o">]</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Update Rulers::Controller to use <code>self.action</code> to initialize rack app, and <code>dispatch</code> to specific action.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/controller.rb</span>
+</span><span class="line"><span class="k">module</span> <span class="nn">Rulers</span>
+</span><span class="line">  <span class="k">class</span> <span class="nc">Controller</span>
+</span><span class="line">    <span class="kp">include</span> <span class="ss">Rulers</span><span class="p">:</span><span class="ss">:Model</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</span><span class="line">      <span class="vi">@env</span> <span class="o">=</span> <span class="n">env</span>
+</span><span class="line">      <span class="vi">@routing_params</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">def</span> <span class="nf">env</span>
+</span><span class="line">      <span class="vi">@env</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">action</span><span class="p">(</span><span class="n">act</span><span class="p">,</span> <span class="nb">p</span> <span class="o">=</span> <span class="p">{})</span>
+</span><span class="line">      <span class="nb">proc</span> <span class="p">{</span><span class="o">|</span><span class="n">e</span><span class="o">|</span> <span class="nb">self</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">act</span><span class="p">,</span> <span class="nb">p</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">routing_params</span> <span class="o">=</span> <span class="p">{})</span>
+</span><span class="line">      <span class="vi">@routing_params</span> <span class="o">=</span> <span class="n">routing_params</span>
+</span><span class="line">
+</span><span class="line">      <span class="nb">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</span><span class="line">      <span class="n">render_response</span> <span class="n">action</span><span class="o">.</span><span class="n">to_sym</span> <span class="k">unless</span> <span class="n">get_response</span>
+</span><span class="line">      <span class="n">st</span><span class="p">,</span> <span class="n">hd</span><span class="p">,</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">get_response</span><span class="o">.</span><span class="n">to_a</span>
+</span><span class="line">      <span class="o">[</span><span class="n">st</span><span class="p">,</span> <span class="n">hd</span><span class="p">,</span> <span class="o">[</span><span class="n">rs</span><span class="o">.</span><span class="n">body</span><span class="o">].</span><span class="n">flatten</span><span class="o">]</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">def</span> <span class="nf">params</span>
+</span><span class="line">      <span class="n">request</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">merge</span> <span class="vi">@routing_params</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>In Rails</strong></p>
+
+<p>Rails connects lots of tiny Rack applications into a single overall application. Itʼs a complicated, multi-layered construction.</p>
+
+<p>Each Rails controller keeps track of a mini-Rack stack of middleware which can be specified per-action like before_filters.</p>
+
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme of <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2014/09/27/rebuilding-rails/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2014/09/27/rebuilding-rails/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>

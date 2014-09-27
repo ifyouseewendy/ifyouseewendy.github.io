@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Ruby | Wendi's Notes]]></title>
-  <link href="http://ifyouseewendy.github.io/blog/categories/ruby/atom.xml" rel="self"/>
-  <link href="http://ifyouseewendy.github.io/"/>
-  <updated>2014-09-23T22:31:49+08:00</updated>
-  <id>http://ifyouseewendy.github.io/</id>
+  <title><![CDATA[Category: Ruby | Wendi's Blog]]></title>
+  <link href="http://blog.ifyouseewendy.com/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://blog.ifyouseewendy.com/"/>
+  <updated>2014-09-27T16:40:33+08:00</updated>
+  <id>http://blog.ifyouseewendy.com/</id>
   <author>
-    <name><![CDATA[Wendi]]></name>
+    <name><![CDATA[wendi]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -15,108 +15,143 @@
   
   <entry>
     <title type="html"><![CDATA[How to use Mock and Stub in Minitest and Rspec?]]></title>
-    <link href="http://ifyouseewendy.github.io/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec/"/>
+    <link href="http://blog.ifyouseewendy.com/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec/"/>
     <updated>2014-09-23T20:14:24+08:00</updated>
-    <id>http://ifyouseewendy.github.io/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec</id>
+    <id>http://blog.ifyouseewendy.com/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec</id>
     <content type="html"><![CDATA[<p>Referenced in <a href="http://blog.arvidandersson.se/2012/03/28/minimalicous-testing-in-ruby-1-9">Minimalicious testing in Ruby 1.9 with MiniTest</a></p>
 
 <ul>
-<li>A <strong>stub object</strong> is a pretend object that implement some of the interface of the object it pretends to be and returns predefined responses. </li>
-<li>A <strong>mock object</strong> is similair to a stub but has another use case: <em>it helps decide if the test case it is used in passes by verifying if it&#39;s methods has been called or not.</em></li>
+  <li>A <strong>stub object</strong> is a pretend object that implement some of the interface of the object it pretends to be and returns predefined responses. </li>
+  <li>A <strong>mock object</strong> is similair to a stub but has another use case: <em>it helps decide if the test case it is used in passes by verifying if it’s methods has been called or not.</em></li>
 </ul>
 
-<h2>Minitest::Mock</h2>
+<h2 id="minitestmock">Minitest::Mock</h2>
 
-<p><code>require &#39;minitest/mock&#39;</code></p>
-
-<p><em>stub</em></p>
-<div class="highlight"><pre><code class="ruby"><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="ss">Minitest</span><span class="p">:</span><span class="ss">:Mock</span><span class="o">.</span><span class="n">new</span>
-<span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x82ff7b5c&gt;</span>
-<span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="ss">:hi</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">)</span>
-<span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x82ff7b5c&gt;</span>
-<span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">hi</span>
-<span class="o">=&gt;</span> <span class="s2">&quot;hello&quot;</span>
-</code></pre></div>
-<p><em>mock</em></p>
-<div class="highlight"><pre><code class="ruby"><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span> <span class="o">=</span> <span class="ss">Minitest</span><span class="p">:</span><span class="ss">:Mock</span><span class="o">.</span><span class="n">new</span>
-<span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x821763e4&gt;</span>
-<span class="o">[</span><span class="mi">6</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="ss">:hi</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="o">[</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;arg2&#39;</span><span class="o">]</span><span class="p">)</span>
-<span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x821763e4&gt;</span>
-<span class="o">[</span><span class="mi">7</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span><span class="o">.</span><span class="n">verify</span>
-<span class="ss">MockExpectationError</span><span class="p">:</span> <span class="n">expected</span> <span class="n">hi</span><span class="p">(</span><span class="s2">&quot;arg1&quot;</span><span class="p">,</span> <span class="s2">&quot;arg2&quot;</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="n">got</span> <span class="o">[]</span>
-<span class="o">[</span><span class="mi">8</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span><span class="o">.</span><span class="n">hi</span><span class="p">(</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;arg2&#39;</span><span class="p">)</span>
-<span class="o">=&gt;</span> <span class="s2">&quot;hello&quot;</span>
-<span class="o">[</span><span class="mi">9</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span><span class="o">.</span><span class="n">verify</span>
-<span class="o">=&gt;</span> <span class="kp">true</span>
-</code></pre></div>
-<h2>RSpec::Mocks</h2>
-
-<p><code>require &#39;rspec/mocks/standalone&#39;</code></p>
+<p><code>require 'minitest/mock'</code></p>
 
 <p><em>stub</em></p>
-<div class="highlight"><pre><code class="ruby"><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">double</span><span class="p">()</span>
-<span class="o">=&gt;</span> <span class="c1">#&lt;RSpec::Mocks::Mock:0x82c66b78 @name=nil&gt;</span>
-<span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">stub</span><span class="p">(</span><span class="ss">:hi</span><span class="p">)</span><span class="o">.</span><span class="n">and_return</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
-<span class="o">=&gt;</span> <span class="kp">nil</span>
-<span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">hi</span>
-<span class="o">=&gt;</span> <span class="s2">&quot;hello&quot;</span>
-<span class="o">[</span><span class="mi">7</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">stub</span><span class="p">(</span><span class="ss">:hi</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">and_return</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
-<span class="o">=&gt;</span> <span class="kp">nil</span>
-<span class="o">[</span><span class="mi">9</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">hi</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
-<span class="o">=&gt;</span> <span class="s2">&quot;hello world&quot;</span>
-</code></pre></div>
+
+<p><code>ruby
+[2] pry(main)&gt; foo = Minitest::Mock.new
+=&gt; #&lt;Minitest::Mock:0x82ff7b5c&gt;
+[3] pry(main)&gt; foo.expect(:hi, 'hello')
+=&gt; #&lt;Minitest::Mock:0x82ff7b5c&gt;
+[4] pry(main)&gt; foo.hi
+=&gt; "hello"
+</code></p>
+
 <p><em>mock</em></p>
-<div class="highlight"><pre><code class="ruby"><span class="o">[</span><span class="mi">18</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">double</span><span class="p">()</span>
-<span class="o">=&gt;</span> <span class="c1">#&lt;RSpec::Mocks::Mock:0x82c66b78 @name=nil&gt;</span>
-<span class="o">[</span><span class="mi">19</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">should_receive</span><span class="p">(</span><span class="ss">:hi</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
-<span class="o">=&gt;</span> <span class="c1">#&lt;RSpec::Mocks::MessageExpectation:0x818c11f4&gt;</span>
-</code></pre></div>
-<h3>Reference</h3>
+
+<p><code>ruby
+[5] pry(main)&gt; bar = Minitest::Mock.new
+=&gt; #&lt;Minitest::Mock:0x821763e4&gt;
+[6] pry(main)&gt; bar.expect(:hi, 'hello', ['arg1', 'arg2'])
+=&gt; #&lt;Minitest::Mock:0x821763e4&gt;
+[7] pry(main)&gt; bar.verify
+MockExpectationError: expected hi("arg1", "arg2") =&gt; "hello", got []
+[8] pry(main)&gt; bar.hi('arg1', 'arg2')
+=&gt; "hello"
+[9] pry(main)&gt; bar.verify
+=&gt; true
+</code></p>
+
+<h2 id="rspecmocks">RSpec::Mocks</h2>
+
+<p><code>require 'rspec/mocks/standalone'</code></p>
+
+<p><em>stub</em></p>
+
+<p><code>ruby
+[2] pry(main)&gt; foo = double()
+=&gt; #&lt;RSpec::Mocks::Mock:0x82c66b78 @name=nil&gt;
+[3] pry(main)&gt; foo.stub(:hi).and_return('hello')
+=&gt; nil
+[4] pry(main)&gt; foo.hi
+=&gt; "hello"
+[7] pry(main)&gt; foo.stub(:hi).with('world').and_return('hello world')
+=&gt; nil
+[9] pry(main)&gt; foo.hi('world')
+=&gt; "hello world"
+</code></p>
+
+<p><em>mock</em></p>
+
+<p><code>ruby
+[18] pry(main)&gt; foo = double()
+=&gt; #&lt;RSpec::Mocks::Mock:0x82c66b78 @name=nil&gt;
+[19] pry(main)&gt; foo.should_receive(:hi).with('world')
+=&gt; #&lt;RSpec::Mocks::MessageExpectation:0x818c11f4&gt;
+</code></p>
+
+<h3 id="reference">Reference</h3>
 
 <ul>
-<li><a href="http://www.ruby-doc.org/stdlib-2.0/libdoc/minitest/rdoc/MiniTest/Mock.html">Minitest::Mock</a></li>
-<li><a href="https://www.relishapp.com/rspec/rspec-mocks/v/2-3/docs/method-stubs">Rspec Mocks</a></li>
+  <li><a href="http://www.ruby-doc.org/stdlib-2.0/libdoc/minitest/rdoc/MiniTest/Mock.html">Minitest::Mock</a></li>
+  <li><a href="https://www.relishapp.com/rspec/rspec-mocks/v/2-3/docs/method-stubs">Rspec Mocks</a></li>
 </ul>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Metaprogramming Ruby]]></title>
-    <link href="http://ifyouseewendy.github.io/blog/2014/06/03/metaprogrammingi-ruby/"/>
+    <title type="html"><![CDATA[[Review] Metaprogramming Ruby]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2014/06/03/metaprogrammingi-ruby/"/>
     <updated>2014-06-03T00:44:28+08:00</updated>
-    <id>http://ifyouseewendy.github.io/blog/2014/06/03/metaprogrammingi-ruby</id>
-    <content type="html"><![CDATA[<h1>The Object Model</h1>
+    <id>http://blog.ifyouseewendy.com/blog/2014/06/03/metaprogrammingi-ruby</id>
+    <content type="html"><![CDATA[<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>Metaprogramming Ruby 2: Program Like the Ruby Pros</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td>Paolo Perrotta</td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="https://pragprog.com/book/ppmetr2/metaprogramming-ruby-2">pragprog.com/book/ppmetr2/metaprogramming-ruby-2</a></td>
+    </tr>
+  </tbody>
+</table>
 
-<p><img src="https://dl.dropboxusercontent.com/s/a6qc1yd1cd57pkp/the_object_model.png?dl=1&amp;token_hash=AAEBXb4OJ73P3xWWbPmIMOferP8_YHxQlS9d8l0hjEq2wQ&amp;expiry=1400078501" alt="the_object_model"></p>
+<h1 id="the-object-model">The Object Model</h1>
+
+<p><img src="https://dl.dropboxusercontent.com/s/a6qc1yd1cd57pkp/the_object_model.png?dl=1&amp;token_hash=AAEBXb4OJ73P3xWWbPmIMOferP8_YHxQlS9d8l0hjEq2wQ&amp;expiry=1400078501" alt="the_object_model" /></p>
 
 <p>An object contains its instance variables and a reference to a class.</p>
 
-<h2>Instance variable</h2>
+<h2 id="instance-variable">Instance variable</h2>
 
 <p>Instance variables just spring into existence when you assign them a value, so you can have objects of the same class that carry different instance variables.</p>
 
-<h2>Instance method</h2>
+<h2 id="instance-method">Instance method</h2>
 
 <p>You can get a list of an object’s methods by calling <code>Object#methods</code>.</p>
 
 <p>When you talk about the class, you call it an instance method, and when you talk about the object, you simply call it a method.</p>
-<div class="highlight"><pre><code class="ruby"><span class="nb">String</span><span class="o">.</span><span class="n">instance_methods</span> <span class="o">==</span> <span class="s2">&quot;abc&quot;</span><span class="o">.</span><span class="n">methods</span> <span class="c1"># =&gt; true</span>
-<span class="nb">String</span><span class="o">.</span><span class="n">methods</span> <span class="o">==</span> <span class="s2">&quot;abc&quot;</span><span class="o">.</span><span class="n">methods</span> <span class="c1"># =&gt; false</span>
-</code></pre></div>
+
+<p><code>ruby
+String.instance_methods == "abc".methods # =&gt; true
+String.methods == "abc".methods # =&gt; false
+</code></p>
+
 <p>An object’s instance variables live in the object itself, and an object’s methods live in the object’s class. That’s why objects of the same class share methods but don’t share instance variables.</p>
 
-<h2>Truth about classes</h2>
+<h2 id="truth-about-classes">Truth about classes</h2>
 
 <p>The truth about classes: classes themselves are nothing but objects.</p>
 
 <p>The methods of an object are also the instance methods of its class. In turn, this means that the methods of a class are the instance methods of <code>Class</code>:</p>
-<div class="highlight"><pre><code class="ruby"><span class="no">Class</span><span class="o">.</span><span class="n">instance_methods</span><span class="p">(</span><span class="kp">false</span><span class="p">)</span> <span class="c1"># =&gt; [:allocate, :new, :superclass]</span>
-</code></pre></div>
-<p><strong><em>What&#39;s the difference between <code>class</code> and <code>superclass</code>?</em></strong></p>
+
+<p><code>ruby
+Class.instance_methods(false) # =&gt; [:allocate, :new, :superclass]
+</code></p>
+
+<p><strong><em>What’s the difference between <code>class</code> and <code>superclass</code>?</em></strong></p>
 
 <ul>
-<li><code>class</code> is about the type which an object belongs to.</li>
-<li><code>superclass</code> is about inheritance, between classes.</li>
+  <li><code>class</code> is about the type which an object belongs to.</li>
+  <li><code>superclass</code> is about inheritance, between classes.</li>
 </ul>
 
 <p>The <code>superclass</code> of Class is Module—which is to say, every class is also a module. To be precise, a class is a module with three additional instance methods (new, allocate, and superclass) that allow you to create objects or arrange classes into hierarchies.</p>
@@ -125,29 +160,33 @@
 
 <p>Usually, you pick a module when you mean it to be included somewhere, and you pick a class when you mean it to be instantiated or inherited.</p>
 
-<p><strong><em>What&#39;s an Object, and what&#39;s a Class?</em></strong></p>
+<p><strong><em>What’s an Object, and what’s a Class?</em></strong></p>
 
 <ul>
-<li><p>What’s an object? It’s a bunch of instance variables, plus a link to a class. The object’s methods don’t live in the object—they live in the object’s class, where they’re called the instance methods of the class.</p></li>
-<li><p>What’s a class? It’s an object (an instance of Class), plus a list of instance methods and a link to a superclass. Class is a subclass of Module, so a class is also a module.</p></li>
+  <li>
+    <p>What’s an object? It’s a bunch of instance variables, plus a link to a class. The object’s methods don’t live in the object—they live in the object’s class, where they’re called the instance methods of the class.</p>
+  </li>
+  <li>
+    <p>What’s a class? It’s an object (an instance of Class), plus a list of instance methods and a link to a superclass. Class is a subclass of Module, so a class is also a module.</p>
+  </li>
 </ul>
 
-<p><strong><em>What&#39;s the difference between <code>load</code> and <code>require</code>?</em></strong></p>
+<p><strong><em>What’s the difference between <code>load</code> and <code>require</code>?</em></strong></p>
 
 <p>You use load to execute code, and you use require to import libraries.</p>
 
 <ol>
-<li>use <code>require</code>, no need to appends &#39;.rb&#39;.</li>
-<li><code>require</code> loads only once.</li>
+  <li>use <code>require</code>, no need to appends ‘.rb’.</li>
+  <li><code>require</code> loads only once.</li>
 </ol>
 
 <p><strong><em>As <code>load</code> executes codes, how does <code>load</code> avoid conlicts?</em></strong></p>
 
-<p><code>load(&#39;motd.rb&#39;, true)</code></p>
+<p><code>load('motd.rb', true)</code></p>
 
 <p>If you load a file this way, Ruby creates an anonymous module, uses that module as a Namespace to contain all the constants from motd.rb, and then destroys the module.</p>
 
-<h2>Constant</h2>
+<h2 id="constant">Constant</h2>
 
 <p>classes are nothing but objects, class names are nothing but constants.</p>
 
@@ -157,13 +196,13 @@
 
 <p>Constants are arranged in a tree similar to a file system, where the names of modules and classes play the part of directories and regular constants play the part of files.</p>
 
-<h2>Method lookup</h2>
+<h2 id="method-lookup">Method lookup</h2>
 
 <p><strong><em>What does Ruby do, when you call a method?</em></strong></p>
 
 <ol>
-<li>It finds the method. This is a process called method lookup.</li>
-<li>It executes the method. To do that, Ruby needs something called <code>self</code>.</li>
+  <li>It finds the method. This is a process called method lookup.</li>
+  <li>It executes the method. To do that, Ruby needs something called <code>self</code>.</li>
 </ol>
 
 <p><strong><em>How does Ruby lookup methods?</em></strong></p>
@@ -173,48 +212,54 @@
 <p><strong><em>What does ancestor chain look like, when <code>prepend</code> or <code>include</code> multiple modules?</em></strong></p>
 
 <p>The <code>prepend</code> method. It works like <code>include</code>, but it inserts the module below the including class.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">C</span>
-  <span class="kp">include</span> <span class="no">M1</span>
-  <span class="kp">include</span> <span class="no">M2</span>
 
-  <span class="n">prepend</span> <span class="no">M3</span>
-  <span class="n">prepend</span> <span class="no">M4</span>
-<span class="k">end</span>
+<p>```ruby
+class C
+  include M1
+  include M2</p>
 
-<span class="k">class</span> <span class="nc">D</span> <span class="o">&lt;</span> <span class="n">C</span><span class="p">;</span> <span class="k">end</span>
+<p>prepend M3
+  prepend M4
+end</p>
 
-<span class="n">D</span><span class="o">.</span><span class="n">ancestors</span> <span class="c1"># =&gt; [&#39;M4&#39;, &#39;M3&#39;, &#39;C&#39;, &#39;M2&#39;, &#39;M1&#39;]</span>
-</code></pre></div>
+<p>class D &lt; C; end</p>
+
+<p>D.ancestors # =&gt; [‘M4’, ‘M3’, ‘C’, ‘M2’, ‘M1’]
+```</p>
+
 <p><strong><em>What does Ruby do, when <code>prepend</code> or <code>include</code> a module multiple times?</em></strong></p>
 
 <p>If that module is already in the chain, Ruby silently ignores the second inclusion. As a result, a module can only appear once in the same chain of ancestors.</p>
 
 <p><strong>Basic ancestor chain</strong></p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">MyClass</span><span class="p">;</span> <span class="k">end</span>
-<span class="no">MyClass</span><span class="o">.</span><span class="n">ancestors</span> <span class="c1"># =&gt; [MyClass, Object, Kernel, BasicObject]</span>
-</code></pre></div>
+
+<p><code>ruby
+class MyClass; end
+MyClass.ancestors # =&gt; [MyClass, Object, Kernel, BasicObject]
+</code></p>
+
 <p><strong><em>What <code>private</code> really means?</em></strong></p>
 
 <p><code>private</code> methods come from two rules working together:</p>
 
 <ol>
-<li>you need an explicit receiver to call a method on an object that is not yourself.</li>
-<li><code>private</code> methods can be called only with an <strong>implicit <code>self</code></strong>.</li>
+  <li>you need an explicit receiver to call a method on an object that is not yourself.</li>
+  <li><code>private</code> methods can be called only with an <strong>implicit <code>self</code></strong>.</li>
 </ol>
 
 <p>Put these two rules together, and you’ll see that you can only call a <code>private</code> method on yourself. You can call this the “private rule.“</p>
 
-<p><strong><em>What&#39;s the env when you start the <code>irb</code>?</em></strong></p>
+<p><strong><em>What’s the env when you start the <code>irb</code>?</em></strong></p>
 
 <p>As soon as you start a Ruby program, you’re sitting within an object named <code>main</code> that the Ruby interpreter created for you.</p>
 
-<h2>Refinement</h2>
+<h2 id="refinement">Refinement</h2>
 
 <p>Refinements are similar to Monkeypatches, but they’re not global. A Refinement is only active in two places:</p>
 
 <ul>
-<li>The <code>refine</code> block itself.</li>
-<li>The code starting from the place where you call <code>using</code> until the end of the module definition (if you’re in a module definition) or the end of the file (if you’re at the top level).</li>
+  <li>The <code>refine</code> block itself.</li>
+  <li>The code starting from the place where you call <code>using</code> until the end of the module definition (if you’re in a module definition) or the end of the file (if you’re at the top level).</li>
 </ul>
 
 <p><strong><em>Which has the precedence, Refinement or Method lookup?</em></strong></p>
@@ -224,77 +269,81 @@
 <p>Code in an active Refinement takes precedence over code in the refined class, and also over code in modules that are included or prepended by the class. Refining a class is like slapping a patch right onto the original code of the class.</p>
 
 <p>A trivia example about Refinement:</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">MyClass</span>
 
-  <span class="k">def</span> <span class="nf">my_method</span>
-    <span class="s2">&quot;original my_method()&quot;</span>
-  <span class="k">end</span>
+<p>```ruby
+class MyClass</p>
 
+<p>def my_method
+    “original my_method()”
+  end</p>
 
-  <span class="k">def</span> <span class="nf">another_method</span>
-    <span class="n">my_method</span>
-  <span class="k">end</span>
+<p>def another_method
+    my_method
+  end</p>
 
-<span class="k">end</span>
+<p>end</p>
 
-<span class="k">module</span> <span class="nn">MyClassRefinement</span>
-  <span class="n">refine</span> <span class="no">MyClass</span> <span class="k">do</span>
-    <span class="k">def</span> <span class="nf">my_method</span>
-      <span class="s2">&quot;refined my_method()&quot;</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
+<p>module MyClassRefinement
+  refine MyClass do
+    def my_method
+      “refined my_method()”
+    end
+  end
+end</p>
 
-<span class="n">using</span> <span class="no">MyClassRefinement</span>
-<span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">my_method</span>     <span class="c1"># =&gt; &quot;refine my_method()&quot;</span>
-<span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">another_method</span> <span class="c1"># =&gt; &quot;original my_method()&quot;</span>
-</code></pre></div>
+<p>using MyClassRefinement
+MyClass.new.my_method     # =&gt; “refine my_method()”
+MyClass.new.another_method # =&gt; “original my_method()”
+```</p>
+
 <p>Even if you call <code>another_method</code> after the <code>using</code>, the call to <code>my_method</code> itself happens before the <code>using</code>—so it calls the original, unrefined version of the method.</p>
 
 <p>A help reference, <a href="http://timelessrepo.com/refinements-in-ruby">Refinements in Ruby</a> by The timeless repository.</p>
 
-<h1>Methods</h1>
+<h1 id="methods">Methods</h1>
 
-<h2>Dynamic Dispatch</h2>
+<h2 id="dynamic-dispatch">Dynamic Dispatch</h2>
 
 <p>Why would you use <code>send</code> instead of the plain old dot notation? Because with <code>send</code>, the name of the method that you want to call becomes just a regular argument. You can wait literally until the very last moment to decide which method to call, while the code is running. This technique is called Dynamic Dispatch.</p>
 
 <p><strong>An example of Dynamic Dispatch</strong></p>
 
-<p>```ruby gems/pry-0.9.12.2/lib/pry/pry<em>instance.rb
+<p>```ruby gems/pry-0.9.12.2/lib/pry/pry_instance.rb
 def refresh(options={})
   defaults = {}
   attributes = [
           :input, :output, :commands, :print, :quiet,
-          :exception</em>handler, :hooks, :custom<em>completions,
-          :prompt, :memory</em>size, :extra<em>sticky</em>locals</p>
-<div class="highlight"><pre><code class="text">    ]
-</code></pre></div>
+          :exception_handler, :hooks, :custom_completions,
+          :prompt, :memory_size, :extra_sticky_locals</p>
+
+<pre><code>    ]
+</code></pre>
+
 <p>attributes.each do |attribute|
     defaults[attribute] = Pry.send attribute
   end</p>
 
-<p># ...</p>
+<p># …</p>
 
 <p>defaults.merge!(options).each do |key, value|
-    send(&quot;#{key}=&quot;, value) if respond_to?(&quot;#{key}=&quot;)
+    send(“#{key}=”, value) if respond_to?(“#{key}=”)
   end</p>
 
 <p>true
 end
 ```</p>
 
-<p><strong><em>What&#39;s the concern about <code>send</code>?</em></strong></p>
+<p><strong><em>What’s the concern about <code>send</code>?</em></strong></p>
 
 <p>You can call any method with <code>send</code>, including private methods.</p>
 
 <p>You can use <code>public_send</code> instead. It’s like send, but it makes a point of respecting the receiver’s privacy.</p>
 
-<h2>Dynamic Method</h2>
+<h2 id="dynamic-method">Dynamic Method</h2>
 
 <p>There is one important reason to use <code>Module#define_method</code>(<strong>private</strong>) over the more familiar def keyword: <code>define_method</code> allows you to decide the name of the defined method at runtime.</p>
 
-<h2>Ghost Method</h2>
+<h2 id="ghost-method">Ghost Method</h2>
 
 <p><code>BasicObject#method_missing</code> (<strong>private</strong>)</p>
 
@@ -303,65 +352,75 @@ end
 <p><strong><em>How can <code>respond_to?</code> missing methods?</em></strong></p>
 
 <p>refernced from <a href="http://blog.marc-andre.ca/2010/11/15/methodmissing-politely/">Method_missing, Politely</a> by Marc Andre.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">StereoPlayer</span>
-  <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">method</span><span class="o">.</span><span class="n">to_s</span> <span class="o">=~</span> <span class="sr">/play_(\w+)/</span>
-      <span class="nb">puts</span> <span class="s2">&quot;Here&#39;s </span><span class="si">#{</span><span class="vg">$1</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="k">else</span>
-      <span class="k">super</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
 
-<span class="nb">p</span> <span class="o">=</span> <span class="no">StereoPlayer</span><span class="o">.</span><span class="n">new</span>
-<span class="c1"># ok:</span>
-<span class="nb">p</span><span class="o">.</span><span class="n">play_some_Beethoven</span> <span class="c1"># =&gt; &quot;Here&#39;s some_Beethoven&quot;</span>
-<span class="c1"># not very polite:</span>
-<span class="nb">p</span><span class="o">.</span><span class="n">respond_to?</span> <span class="ss">:play_some_Beethoven</span> <span class="c1"># =&gt; false</span>
+<p>```ruby
+class StereoPlayer
+  def method_missing(method, *args, &amp;block)
+    if method.to_s =~ /play_(\w+)/
+      puts “Here’s #{$1}”
+    else
+      super
+    end
+  end
+end</p>
 
-<span class="k">class</span> <span class="nc">StereoPlayer</span>
-  <span class="c1"># def method_missing ...</span>
-  <span class="c1">#   ...</span>
-  <span class="c1"># end</span>
+<p>p = StereoPlayer.new
+# ok:
+p.play_some_Beethoven # =&gt; “Here’s some_Beethoven”
+# not very polite:
+p.respond_to? :play_some_Beethoven # =&gt; false</p>
 
-  <span class="k">def</span> <span class="nf">respond_to?</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span>
-    <span class="nb">method</span><span class="o">.</span><span class="n">to_s</span> <span class="o">=~</span> <span class="sr">/play_(\w+)/</span> <span class="o">||</span> <span class="k">super</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-<span class="nb">p</span><span class="o">.</span><span class="n">respond_to?</span> <span class="ss">:play_some_Beethoven</span> <span class="c1"># =&gt; true</span>
-</code></pre></div>
+<p>class StereoPlayer
+  # def method_missing …
+  #   …
+  # end</p>
+
+<p>def respond_to?(method, *)
+    method.to_s =~ /play_(\w+)/ || super
+  end
+end
+p.respond_to? :play_some_Beethoven # =&gt; true</p>
+
+<p>```</p>
+
 <p>You can specialize <code>respond_to?</code>, but it doesnot make a missing method behaves exactly like a method.</p>
-<div class="highlight"><pre><code class="ruby"><span class="nb">p</span><span class="o">.</span><span class="n">method</span> <span class="ss">:play_some_Beethoven</span>
-<span class="c1"># =&gt; NameError: undefined method `play_some_Beethoven&#39;</span>
-<span class="c1">#               for class `StereoPlayer&#39;</span>
-</code></pre></div>
+
+<p><code>ruby
+p.method :play_some_Beethoven
+# =&gt; NameError: undefined method `play_some_Beethoven'
+#               for class `StereoPlayer'
+</code></p>
+
 <p>Ruby 1.9.2 introduces <code>respond_to_missing?</code> that provides for a clean solution to the problem. Instead of specializing <code>respond_to?</code> one specializes <code>respond_to_missing?</code>.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">StereoPlayer</span>
-  <span class="c1"># def method_missing ...</span>
-  <span class="c1">#   ...</span>
-  <span class="c1"># end</span>
 
-  <span class="k">def</span> <span class="nf">respond_to_missing?</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span>
-    <span class="nb">method</span> <span class="o">=~</span> <span class="sr">/play_(\w+)/</span> <span class="o">||</span> <span class="k">super</span>
-  <span class="k">end</span>
-<span class="k">end</span>
+<p>```ruby
+class StereoPlayer
+  # def method_missing …
+  #   …
+  # end</p>
 
-<span class="nb">p</span> <span class="o">=</span> <span class="no">StereoPlayer</span><span class="o">.</span><span class="n">new</span>
-<span class="nb">p</span><span class="o">.</span><span class="n">play_some_Beethoven</span> <span class="c1"># =&gt; &quot;Here&#39;s some_Beethoven&quot;</span>
-<span class="nb">p</span><span class="o">.</span><span class="n">respond_to?</span> <span class="ss">:play_some_Beethoven</span> <span class="c1"># =&gt; true</span>
-<span class="n">m</span> <span class="o">=</span> <span class="nb">p</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="ss">:play_some_Beethoven</span><span class="p">)</span> <span class="c1"># =&gt; #&lt;Method: StereoPlayer#play_some_Beethoven&gt;</span>
-<span class="c1"># m acts like any other method:</span>
-<span class="n">m</span><span class="o">.</span><span class="n">call</span> <span class="c1"># =&gt; &quot;Here&#39;s some_Beethoven&quot;</span>
-<span class="n">m</span> <span class="o">==</span> <span class="nb">p</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="ss">:play_some_Beethoven</span><span class="p">)</span> <span class="c1"># =&gt; true</span>
-<span class="n">m</span><span class="o">.</span><span class="n">name</span> <span class="c1"># =&gt; :play_some_Beethoven</span>
-<span class="no">StereoPlayer</span><span class="o">.</span><span class="n">send</span> <span class="ss">:define_method</span><span class="p">,</span> <span class="ss">:ludwig</span><span class="p">,</span> <span class="n">m</span>
-<span class="nb">p</span><span class="o">.</span><span class="n">ludwig</span> <span class="c1"># =&gt; &quot;Here&#39;s some_Beethoven&quot;</span>
-</code></pre></div>
+<p>def respond_to_missing?(method, *)
+    method =~ /play_(\w+)/ || super
+  end
+end</p>
+
+<p>p = StereoPlayer.new
+p.play_some_Beethoven # =&gt; “Here’s some_Beethoven”
+p.respond_to? :play_some_Beethoven # =&gt; true
+m = p.method(:play_some_Beethoven) # =&gt; #&lt;Method: StereoPlayer#play_some_Beethoven&gt;
+# m acts like any other method:
+m.call # =&gt; “Here’s some_Beethoven”
+m == p.method(:play_some_Beethoven) # =&gt; true
+m.name # =&gt; :play_some_Beethoven
+StereoPlayer.send :define_method, :ludwig, m
+p.ludwig # =&gt; “Here’s some_Beethoven”
+```</p>
+
 <p><strong><em>What about the constant missing?</em></strong></p>
 
 <p><code>Module#const_missing</code>(<strong>public</strong>)</p>
 
-<p><strong><em>What&#39;s the concern about <code>method_missing</code>?</em></strong></p>
+<p><strong><em>What’s the concern about <code>method_missing</code>?</em></strong></p>
 
 <p>This is a common problem with Ghost Methods: since unknown calls become calls to <code>method_missing</code>, your object might accept a call that’s just plain wrong. Finding a bug like this one in a large program can be pretty painful.
 To avoid this kind of trouble, take care not to introduce too many Ghost Methods.</p>
@@ -375,95 +434,109 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 <p>Remove methods from an object to turn them into Ghost Methods.</p>
 
 <ul>
-<li>Inheriting from <code>BasicObject</code> is the quicker way to define a Blank Slate in Ruby.</li>
-</ul>
-<div class="highlight"><pre><code class="ruby"><span class="n">im</span> <span class="o">=</span> <span class="no">BasicObject</span><span class="o">.</span><span class="n">instance_methods</span>
-<span class="n">im</span> <span class="c1"># =&gt; [:==, :equal?, :!, :!=, :instance_eval, :instance_exec, :__send__, :__id__]</span>
-</code></pre></div>
-<ul>
-<li>Inheriting from <code>Object</code> by default, and remove method inherited.</li>
+  <li>Inheriting from <code>BasicObject</code> is the quicker way to define a Blank Slate in Ruby.</li>
 </ul>
 
-<p>Don&#39;t hide <code>instance_eval</code> or any method beginning with <code>__</code>. One example of a reserved method is <code>BasicObject#__send__</code>, that behaves the same as send, but gives you a scary warning when you try to remove it.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Compter</span>
-  <span class="nb">instance_methods</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span>
-    <span class="n">undef_method</span> <span class="n">m</span> <span class="k">unless</span> <span class="n">m</span><span class="o">.</span><span class="n">to_s</span> <span class="o">=~</span> <span class="sr">/^__|method_missing|respond_to/</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
-<ul>
-<li>Or you can write a BlankSlate class to inherit.</li>
-</ul>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">BlankSlate</span>
-
-  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">hide</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-    <span class="k">return</span> <span class="k">unless</span> <span class="nb">instance_methods</span><span class="o">.</span><span class="n">include?</span> <span class="nb">name</span><span class="o">.</span><span class="n">to_s</span>
-    <span class="k">return</span> <span class="k">if</span> <span class="nb">name</span><span class="o">.</span><span class="n">to_s</span> <span class="o">=~</span> <span class="sr">/^__|method_missing|respond_to/</span>
-    <span class="vi">@hidden_methods</span> <span class="o">||=</span> <span class="p">{}</span>
-    <span class="vi">@hidden_methods</span><span class="o">[</span><span class="nb">name</span><span class="o">.</span><span class="n">to_sym</span><span class="o">]</span> <span class="o">=</span> <span class="nb">instance_method</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-    <span class="n">undef_method</span> <span class="nb">name</span>
-  <span class="k">end</span>
-
-  <span class="nb">instance_methods</span><span class="o">.</span><span class="n">each</span><span class="p">{</span><span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="n">hide</span> <span class="n">m</span> <span class="p">}</span>
-<span class="k">end</span>
-</code></pre></div>
-<p><strong><em>What&#39;s the difference between <code>undef_method</code> and <code>remove_method</code>?</em></strong></p>
+<p><code>ruby
+im = BasicObject.instance_methods
+im # =&gt; [:==, :equal?, :!, :!=, :instance_eval, :instance_exec, :__send__, :__id__]
+</code></p>
 
 <ul>
-<li>The drastic <code>undef_method</code> removes any method, including the inherited ones.</li>
-<li>The kinder <code>remove_method</code> removes the method from the receiver, but it leaves inherited methods alone.</li>
+  <li>
+    <p>Inheriting from <code>Object</code> by default, and remove method inherited.</p>
+
+    <p>Don’t hide <code>instance_eval</code> or any method beginning with <code>__</code>. One example of a reserved method is <code>BasicObject#__send__</code>, that behaves the same as send, but gives you a scary warning when you try to remove it.</p>
+  </li>
 </ul>
 
-<p><strong><em>What&#39;s the boiling down facts between Ghost Method and really methods?</em></strong></p>
+<p><code>ruby
+class Compter
+  instance_methods.each do |m|
+    undef_method m unless m.to_s =~ /^__|method_missing|respond_to/
+  end
+end
+</code></p>
+
+<ul>
+  <li>Or you can write a BlankSlate class to inherit.</li>
+</ul>
+
+<p>```ruby
+class BlankSlate</p>
+
+<p>def self.hide(name)
+    return unless instance_methods.include? name.to_s
+    return if name.to_s =~ /^__|method_missing|respond_to/
+    @hidden_methods ||= {}
+    @hidden_methods[name.to_sym] = instance_method(name)
+    undef_method name
+  end</p>
+
+<p>instance_methods.each{|m| hide m }
+end
+```</p>
+
+<p><strong><em>What’s the difference between <code>undef_method</code> and <code>remove_method</code>?</em></strong></p>
+
+<ul>
+  <li>The drastic <code>undef_method</code> removes any method, including the inherited ones.</li>
+  <li>The kinder <code>remove_method</code> removes the method from the receiver, but it leaves inherited methods alone.</li>
+</ul>
+
+<p><strong><em>What’s the boiling down facts between Ghost Method and really methods?</em></strong></p>
 
 <p>Ghost Method are just a way to intercept method calls. Because of this fact, they behave different than actual methods.</p>
 
-<p><strong><em>What&#39;s the choice between <code>define_method</code> and <code>method_missing</code>?</em></strong></p>
+<p><strong><em>What’s the choice between <code>define_method</code> and <code>method_missing</code>?</em></strong></p>
 
 <p>There are times when Ghost Methods are your only viable option. This usually happens</p>
 
 <ul>
-<li>When you have a large number of method calls.</li>
-<li>When you don’t know what method calls you might need at runtime.</li>
+  <li>When you have a large number of method calls.</li>
+  <li>When you don’t know what method calls you might need at runtime.</li>
 </ul>
 
 <p><em>Use Dynamic Methods if you can, and Ghost Methods if you have to.</em></p>
 
-<h1>Callables</h1>
+<h1 id="callables">Callables</h1>
 
-<h2>the Callables</h2>
+<h2 id="the-callables">the Callables</h2>
 
 <blockquote>
-<p>Package code, and call it later</p>
+  <p>Package code, and call it later</p>
 </blockquote>
 
 <ul>
-<li><strong>block</strong>, evaluated in the scope which they&#39;re defined.</li>
-<li><strong>proc</strong>, which is basically a block turned object, and evaluated in the scope which they&#39;re defined.</li>
-<li><strong>lambda</strong>, which is a slight variation on a proc.</li>
-<li><strong>method</strong>, bound to an object, which are evaluated in that object’s scope. They can also be unbound from their scope and rebound to another object or class.</li>
+  <li><strong>block</strong>, evaluated in the scope which they’re defined.</li>
+  <li><strong>proc</strong>, which is basically a block turned object, and evaluated in the scope which they’re defined.</li>
+  <li><strong>lambda</strong>, which is a slight variation on a proc.</li>
+  <li><strong>method</strong>, bound to an object, which are evaluated in that object’s scope. They can also be unbound from their scope and rebound to another object or class.</li>
 </ul>
 
 <p><strong>block</strong> is not an object, while <strong>proc</strong> and <strong>lambda</strong> are Proc objects, and <strong>method</strong> is <a href="http://stackoverflow.com/questions/2602340/methods-in-ruby-objects-or-not">in question</a>.</p>
 
-<h2>Blocks</h2>
+<h2 id="blocks">Blocks</h2>
 
 <p>The main point about blocks is that they are all inclusive and come ready to run. They contain both the <strong>code</strong> and <strong>a set of bindings</strong>.</p>
 
 <p><strong>When you define the block, it simply grabs the bindings that are there at that moment</strong>, and then it carries those bindings along when you pass the block into a method.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">my_method</span>
-  <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Goodbye&quot;</span>
-  <span class="k">yield</span><span class="p">(</span><span class="s2">&quot;cruel&quot;</span><span class="p">)</span>
-<span class="k">end</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
-<span class="n">my_method</span> <span class="p">{</span><span class="o">|</span><span class="n">y</span><span class="o">|</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="s2"> world&quot;</span> <span class="p">}</span> <span class="c1"># =&gt; &quot;Hello, cruel world&quot;</span>
-</code></pre></div>
+<p>```ruby
+def my_method
+  x = “Goodbye”
+  yield(“cruel”)
+end</p>
+
+<p>x = “Hello”
+my_method {|y| “#{x}, #{y} world” } # =&gt; “Hello, cruel world”
+```</p>
+
 <p><strong><em>What if I define additional bindings inside a block?</em></strong></p>
 
 <p>They disappear after the block ends.</p>
 
-<p><strong><em>What&#39;s the meaning of &quot;a block is a closure&quot;?</em></strong></p>
+<p><strong><em>What’s the meaning of “a block is a closure”?</em></strong></p>
 
 <p>a block is a closure, this means a block captures the local bindings and carries them along with it.</p>
 
@@ -479,9 +552,9 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 
 <p><strong><em>Whenever the program changes scope, some bindings are replaced by a new set of bindings. RIGHT?</em></strong></p>
 
-<p>For <code>local_varialbes</code>, that&#39;s right, but <code>instance_variables</code>, <code>class_variables</code> and <code>global_variables</code> can go through the Scope Gate.</p>
+<p>For <code>local_varialbes</code>, that’s right, but <code>instance_variables</code>, <code>class_variables</code> and <code>global_variables</code> can go through the Scope Gate.</p>
 
-<p><strong><em>What&#39;s the difference between Global Variables and Top-Level Instance Variables?</em></strong></p>
+<p><strong><em>What’s the difference between Global Variables and Top-Level Instance Variables?</em></strong></p>
 
 <p>when it comes to global variables, use them sparingly, if ever.</p>
 
@@ -492,9 +565,9 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 <p>You can use these techniques:</p>
 
 <ul>
-<li>Use Flat Scope (<code>Class.new</code>, <code>Module.new</code>, and <code>define_method</code>)</li>
-<li>Use Shared Scope</li>
-<li>Use Context Probe (<code>BasicObject#instance_eval</code>)</li>
+  <li>Use Flat Scope (<code>Class.new</code>, <code>Module.new</code>, and <code>define_method</code>)</li>
+  <li>Use Shared Scope</li>
+  <li>Use Context Probe (<code>BasicObject#instance_eval</code>)</li>
 </ul>
 
 <p>to mix code and bindings at will.</p>
@@ -506,46 +579,51 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 <p>Use <code>Class.new</code>, <code>Module.new</code> and <code>define_method</code>.</p>
 
 <p><strong><em>What is Shared Scope?</em></strong></p>
-<div class="highlight"><pre><code class="ruby"><span class="c1"># use `def` to do seperate</span>
-<span class="k">def</span> <span class="nf">define_methods</span>
-  <span class="n">shared</span> <span class="o">=</span> <span class="mi">0</span>
 
-  <span class="no">Kernel</span><span class="o">.</span><span class="n">send</span> <span class="ss">:define_method</span><span class="p">,</span> <span class="ss">:counter</span> <span class="k">do</span>
-    <span class="n">shared</span>
-  <span class="k">end</span>
+<p>```ruby
+# use <code>def</code> to do seperate
+def define_methods
+  shared = 0</p>
 
-  <span class="no">Kernel</span><span class="o">.</span><span class="n">send</span> <span class="ss">:define_method</span><span class="p">,</span> <span class="ss">:inc</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
-    <span class="n">shared</span> <span class="o">+=</span> <span class="n">x</span>
-  <span class="k">end</span>
-<span class="k">end</span>
+<p>Kernel.send :define_method, :counter do
+    shared
+  end</p>
 
-<span class="n">define_methods</span>
+<p>Kernel.send :define_method, :inc do |x|
+    shared += x
+  end
+end</p>
 
+<p>define_methods</p>
 
-<span class="n">counter</span> <span class="c1"># =&gt; 0</span>
-<span class="n">inc</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">counter</span> <span class="c1"># =&gt; 4</span>
-</code></pre></div>
+<p>counter # =&gt; 0
+inc(4)
+counter # =&gt; 4
+```</p>
+
 <p>If you define multiple methods in the same Flat Scope, maybe protected by a Scope Gate, all those methods can share bindings. That’s called a <strong>Shared Scope</strong></p>
 
 <p><strong><em>What is Context Probe?</em></strong></p>
 
 <p><code>instance_eval</code> has a slightly more flexible twin brother named <code>instance_exec</code>, that allows you to pass arguments to the block.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">C</span>
-  <span class="k">def</span> <span class="nf">initialize</span>
-    <span class="vi">@x</span> <span class="o">=</span> <span class="mi">1</span>
-  <span class="k">end</span>
-<span class="k">end</span>
 
-<span class="k">class</span> <span class="nc">D</span>
-  <span class="k">def</span> <span class="nf">twisted_method</span>
-    <span class="vi">@y</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="n">C</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">instance_eval</span> <span class="p">{</span> <span class="s2">&quot;@x: </span><span class="si">#{</span><span class="vi">@x</span><span class="si">}</span><span class="s2">, @y: </span><span class="si">#{</span><span class="vi">@y</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
-  <span class="k">end</span>
-<span class="k">end</span>
+<p>```ruby
+class C
+  def initialize
+    @x = 1
+  end
+end</p>
 
-<span class="n">D</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">twisted_method</span> <span class="c1"># =&gt; &quot;@x: 1, @y: &quot;</span>
-</code></pre></div>
+<p>class D
+  def twisted_method
+    @y = 2
+    C.new.instance_eval { “@x: #{@x}, @y: #{@y}” }
+  end
+end</p>
+
+<p>D.new.twisted_method # =&gt; “@x: 1, @y: “
+```</p>
+
 <p>However, instance variables depend on <code>self</code>, so when <code>instance_eval</code> switches <code>self</code> to the receiver, all the instance variables in the caller fall out of scope.</p>
 
 <p><strong>Clean Room</strong></p>
@@ -556,113 +634,138 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 
 <p>You might think of using a <code>BasicObject</code> instead of an Object for your Clean Room. However, remember that <code>BasicObject</code> is also a Blank Slate, and as such it lacks some common methods such as puts.</p>
 
-<p><strong><em>What&#39;s the different use for Shared Scope and Clean Room?</em></strong></p>
+<p><strong><em>What’s the different use for Shared Scope and Clean Room?</em></strong></p>
 
 <p><em>Shared Scope</em> is used in definition, to make variables(bindings) shared between methods, while <em>Clean Room</em> is used to run code, to help reduce the modifications on shared variables(like instance variables).</p>
-<div class="highlight"><pre><code class="ruby"><span class="c1"># lambda which is called immediatley is the Shared Scope</span>
-<span class="nb">lambda</span> <span class="p">{</span>
-  <span class="n">setups</span> <span class="o">=</span> <span class="o">[]</span>
-  <span class="n">events</span> <span class="o">=</span> <span class="o">[]</span>
 
-  <span class="no">Kernel</span><span class="o">.</span><span class="n">send</span> <span class="ss">:define_method</span><span class="p">,</span> <span class="ss">:event</span> <span class="k">do</span> <span class="o">|</span><span class="n">description</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="o">|</span>
-    <span class="n">events</span> <span class="o">&lt;&lt;</span> <span class="p">{</span><span class="ss">:description</span> <span class="o">=&gt;</span> <span class="n">description</span><span class="p">,</span> <span class="ss">:condition</span> <span class="o">=&gt;</span> <span class="n">block</span><span class="p">}</span>
-  <span class="k">end</span>
+<p>```ruby
+# lambda which is called immediatley is the Shared Scope
+lambda {
+  setups = []
+  events = []</p>
 
-  <span class="no">Kernel</span><span class="o">.</span><span class="n">send</span> <span class="ss">:define_method</span><span class="p">,</span> <span class="ss">:setup</span> <span class="k">do</span> <span class="o">|&amp;</span><span class="n">block</span><span class="o">|</span>
-    <span class="n">setups</span> <span class="o">&lt;&lt;</span> <span class="n">block</span>
-  <span class="k">end</span>
+<p>Kernel.send :define_method, :event do |description, &amp;block|
+    events « 
+  end</p>
 
-  <span class="no">Kernel</span><span class="o">.</span><span class="n">send</span> <span class="ss">:define_method</span><span class="p">,</span> <span class="ss">:each_event</span> <span class="k">do</span> <span class="o">|&amp;</span><span class="n">block</span><span class="o">|</span>
-    <span class="n">events</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
-      <span class="n">block</span><span class="o">.</span><span class="n">call</span> <span class="n">event</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
+<p>Kernel.send :define_method, :setup do |&amp;block|
+    setups « block
+  end</p>
 
-  <span class="no">Kernel</span><span class="o">.</span><span class="n">send</span> <span class="ss">:define_method</span><span class="p">,</span> <span class="ss">:each_setup</span> <span class="k">do</span> <span class="o">|&amp;</span><span class="n">block</span><span class="o">|</span>
-    <span class="n">setups</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">setup</span><span class="o">|</span>
-      <span class="n">block</span><span class="o">.</span><span class="n">call</span> <span class="n">setup</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="p">}</span><span class="o">.</span><span class="n">call</span>
+<p>Kernel.send :define_method, :each_event do |&amp;block|
+    events.each do |event|
+      block.call event
+    end
+  end</p>
 
-<span class="nb">load</span> <span class="s1">&#39;events.rb&#39;</span>
+<p>Kernel.send :define_method, :each_setup do |&amp;block|
+    setups.each do |setup|
+      block.call setup
+    end
+  end
+}.call</p>
 
-<span class="c1"># env is created for each event to be a Clean Room</span>
-<span class="n">each_event</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
-  <span class="n">env</span> <span class="o">=</span> <span class="no">Object</span><span class="o">.</span><span class="n">new</span>
-  <span class="n">each_setup</span> <span class="k">do</span> <span class="o">|</span><span class="n">setup</span><span class="o">|</span>
-    <span class="n">env</span><span class="o">.</span><span class="n">instance_eval</span> <span class="o">&amp;</span><span class="n">setup</span>
-  <span class="k">end</span>
-  <span class="nb">puts</span> <span class="s2">&quot;ALERT: </span><span class="si">#{</span><span class="n">event</span><span class="o">[</span><span class="ss">:description</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">instance_eval</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">event</span><span class="o">[</span><span class="ss">:condition</span><span class="o">]</span><span class="p">)</span>
-<span class="k">end</span>
-</code></pre></div>
+<p>load ‘events.rb’</p>
+
+<h1 id="env-is-created-for-each-event-to-be-a-clean-room">env is created for each event to be a Clean Room</h1>
+<p>each_event do |event|
+  env = Object.new
+  each_setup do |setup|
+    env.instance_eval &amp;setup
+  end
+  puts “ALERT: #{event[:description]}” if env.instance_eval &amp;(event[:condition])
+end
+```</p>
+
 <p><strong><em>When is <code>yield</code> not enough to use?</em></strong></p>
 
 <ul>
-<li>You want to pass the block to another method (or even another block).</li>
-<li>You want to convert the block to a <code>Proc</code>.</li>
+  <li>You want to pass the block to another method (or even another block).</li>
+  <li>You want to convert the block to a <code>Proc</code>.</li>
 </ul>
 
-<h2>Proc Objects</h2>
+<h2 id="proc-objects">Proc Objects</h2>
 
 <p>as blocks are not objects, Ruby provides the standard library class <code>Proc</code>. A <code>Proc</code> is a block that has been turned into an object. You can create a <code>Proc</code> by passing the block to <code>Proc.new</code>. Later, you can evaluate the block-turned-object with <code>Proc#call</code>.</p>
 
 <p><strong>Deferred Evaluation</strong></p>
-<div class="highlight"><pre><code class="ruby"><span class="n">inc</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
-<span class="c1"># more code...</span>
-<span class="n">inc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; 3</span>
-</code></pre></div>
+
+<p><code>ruby
+inc = Proc.new {|x| x + 1 }
+# more code...
+inc.call(2) # =&gt; 3
+</code></p>
+
 <p><strong>4 ways to create Procs explicitly</strong></p>
-<div class="highlight"><pre><code class="ruby"><span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
-<span class="nb">proc</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
-<span class="nb">lambda</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
-<span class="o">-&gt;</span> <span class="n">x</span> <span class="p">{</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span> <span class="c1"># stabby lambda</span>
-</code></pre></div>
+
+<p><code>ruby
+Proc.new {|x| x + 1 }
+proc {|x| x + 1 }
+lambda {|x| x + 1 }
+-&gt; x { x + 1 } # stabby lambda
+</code></p>
+
 <p><strong>Ways to create Procs implicitly</strong></p>
 
 <p>use <code>&amp;</code> to convert block into a proc:</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">make_proc</span><span class="p">(</span><span class="o">&amp;</span><span class="nb">p</span><span class="p">)</span>
-  <span class="nb">p</span>
-<span class="k">end</span>
 
-<span class="n">make_proc</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
-</code></pre></div>
+<p>```ruby
+def make_proc(&amp;p)
+  p
+end</p>
+
+<p>make_proc {|x| x + 1 }
+```</p>
+
 <p><strong>4 ways to call Procs</strong></p>
-<div class="highlight"><pre><code class="ruby"><span class="nb">p</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="mi">41</span><span class="p">)</span>
-<span class="nb">p</span><span class="o">[</span><span class="mi">41</span><span class="o">]</span>
-<span class="nb">p</span> <span class="o">===</span> <span class="mi">41</span>
-<span class="nb">p</span><span class="o">.</span><span class="p">(</span><span class="mi">41</span><span class="p">)</span>
-</code></pre></div>
+
+<p><code>ruby
+p.call(41)
+p[41]
+p === 41
+p.(41)
+</code></p>
+
 <p><strong>Use <code>&amp;</code> to convert a block to Proc</strong></p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span><span class="o">&amp;</span><span class="n">the_proc</span><span class="p">)</span>
-  <span class="n">the_proc</span>
-<span class="k">end</span>
 
-<span class="nb">p</span> <span class="o">=</span> <span class="n">my_method</span> <span class="p">{</span><span class="o">|</span><span class="nb">name</span><span class="o">|</span> <span class="s2">&quot;Hello, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">!&quot;</span> <span class="p">}</span>
-<span class="nb">p</span><span class="o">.</span><span class="n">class</span>     <span class="c1"># =&gt; Proc</span>
-<span class="nb">p</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;Bill&quot;</span><span class="p">)</span>  <span class="c1"># =&gt; &quot;Hello, Bill!&quot;</span>
-</code></pre></div>
+<p>```ruby
+def my_method(&amp;the_proc)
+  the_proc
+end</p>
+
+<p>p = my_method {|name| “Hello, #{name}!” }
+p.class     # =&gt; Proc
+p.call(“Bill”)  # =&gt; “Hello, Bill!”
+```</p>
+
 <p><strong>Use <code>&amp;</code> to convert a Proc to block</strong></p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
-    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">greeting</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="k">yield</span><span class="si">}</span><span class="s2">!&quot;</span>
-<span class="k">end</span>
 
-<span class="n">my_proc</span> <span class="o">=</span> <span class="nb">proc</span> <span class="p">{</span> <span class="s2">&quot;Bill&quot;</span> <span class="p">}</span>
-<span class="n">my_method</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">my_proc</span><span class="p">)</span>
-</code></pre></div>
-<p><strong><em>What&#39;s a lambda?</em></strong></p>
+<p>```ruby
+def my_method(greeting)
+    “#{greeting}, #{yield}!”
+end</p>
+
+<p>my_proc = proc { “Bill” }
+my_method(“Hello”, &amp;my_proc)
+```</p>
+
+<p><strong><em>What’s a lambda?</em></strong></p>
 
 <p>Procs created with <code>lambda</code> are called <em>lambdas</em>, while the others are simply called <em>procs</em>. (You can use the <code>Proc#lambda?</code> method to check whether the <code>Proc</code> is a lambda).</p>
 
 <p><strong>Procs vs. Lambdas</strong></p>
 
 <ul>
-<li><p><code>return</code></p>
+  <li>
+    <p><code>return</code></p>
 
-<p><code>lambda</code> returns just returns from the lambda, while a proc returns from the scope where the proc itself was defined.</p></li>
-<li><p><strong>arity</strong></p>
+    <p><code>lambda</code> returns just returns from the lambda, while a proc returns from the scope where the proc itself was defined.</p>
+  </li>
+  <li>
+    <p><strong>arity</strong></p>
 
-<p>Call a <code>lambda</code> with the wrong arity, and it fails with an <code>ArgumentError</code>, while if there are too many arguments, a proc drops the excess arguments. If there are too few arguments, it assigns <code>nil</code> to the missing arguments.</p></li>
+    <p>Call a <code>lambda</code> with the wrong arity, and it fails with an <code>ArgumentError</code>, while if there are too many arguments, a proc drops the excess arguments. If there are too few arguments, it assigns <code>nil</code> to the missing arguments.</p>
+  </li>
 </ul>
 
 <p>Generally speaking, <code>lambdas</code> are more intuitive than procs because they’re more similar to methods. They’re pretty strict about arity, and they simply exit when you call <code>return</code>.</p>
@@ -671,22 +774,22 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 
 <p>method == lambda &lt; proc == block</p>
 
-<h3>Methods</h3>
+<h3 id="methods-1">Methods</h3>
 
 <p>By calling <code>Kernel#method</code>, you get the method itself as a Method object, which you can later execute with <code>Method#call</code>. In Ruby 2.1, you also have <code>Kernel#singleton_method</code>, that converts the name of a Singleton Method to a Method object.</p>
 
 <p><strong>Conversions between methods and procs</strong></p>
 
 <ul>
-<li>Use <code>Method#to_proc</code> to convert a method into proc.</li>
-<li>Use <code>define_method</code> to convert a proc into method.</li>
+  <li>Use <code>Method#to_proc</code> to convert a method into proc.</li>
+  <li>Use <code>define_method</code> to convert a proc into method.</li>
 </ul>
 
 <p><strong>An important difference between methods and procs</strong></p>
 
 <p>a <code>lambda</code> is evaluated in the scope it’s defined in (it’s a closure, remember?), while a <code>Method</code> is evaluated in the scope of its object.</p>
 
-<h3>Unbound Methods</h3>
+<h3 id="unbound-methods">Unbound Methods</h3>
 
 <p><code>UnboundMethods</code> are like <code>Methods</code> that have been detached from their original class or module.</p>
 
@@ -695,41 +798,50 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 <p><strong>generate</strong></p>
 
 <ul>
-<li>use <code>Method#unbind</code></li>
+  <li>use <code>Method#unbind</code></li>
 </ul>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="k">end</span>
-<span class="n">unbound</span> <span class="o">=</span> <span class="nb">method</span><span class="p">(</span><span class="ss">:foo</span><span class="p">)</span><span class="o">.</span><span class="n">unbind</span>
-<span class="n">unbound</span><span class="o">.</span><span class="n">class</span>   <span class="c1"># =&gt; UnboundMethod</span>
-</code></pre></div>
-<ul>
-<li>use <code>Module#instance_method</code></li>
-</ul>
-<div class="highlight"><pre><code class="ruby"><span class="k">module</span> <span class="nn">MyModule</span>
-  <span class="k">def</span> <span class="nf">my_method</span>
-  <span class="mi">42</span>
-  <span class="k">end</span>
-<span class="k">end</span>
 
-<span class="n">unbound</span> <span class="o">=</span> <span class="no">MyModule</span><span class="o">.</span><span class="n">instance_method</span><span class="p">(</span><span class="ss">:my_method</span><span class="p">)</span>
-<span class="n">unbound</span><span class="o">.</span><span class="n">class</span>   <span class="c1"># =&gt; UnboundMethod</span>
-</code></pre></div>
-<p><em>Note:</em> <code>instance_methods</code> is totally different, it&#39;s like <code>methods</code>, just return an array of symbols.</p>
+<p><code>ruby
+def foo; end
+unbound = method(:foo).unbind
+unbound.class   # =&gt; UnboundMethod
+</code></p>
+
+<ul>
+  <li>use <code>Module#instance_method</code></li>
+</ul>
+
+<p>```ruby
+module MyModule
+  def my_method
+  42
+  end
+end</p>
+
+<p>unbound = MyModule.instance_method(:my_method)
+unbound.class   # =&gt; UnboundMethod
+```</p>
+
+<p><em>Note:</em> <code>instance_methods</code> is totally different, it’s like <code>methods</code>, just return an array of symbols.</p>
 
 <p><strong>usage</strong></p>
 
 <ul>
-<li>bind the UnboundMethod to an object with <code>UnboundMethod#bind</code>. UnboundMethods that come from a class can only be bound to objects of the same class (or a subclass), while UnboundMethods that come from a module have no such limitation from Ruby 2.0 onwards.</li>
-<li>use an UnboundMethod to define a brand new method by passing it to <code>Module#define_method</code>.</li>
+  <li>bind the UnboundMethod to an object with <code>UnboundMethod#bind</code>. UnboundMethods that come from a class can only be bound to objects of the same class (or a subclass), while UnboundMethods that come from a module have no such limitation from Ruby 2.0 onwards.</li>
+  <li>use an UnboundMethod to define a brand new method by passing it to <code>Module#define_method</code>.</li>
 </ul>
-<div class="highlight"><pre><code class="ruby"><span class="nb">String</span><span class="o">.</span><span class="n">class_eval</span> <span class="k">do</span>
-  <span class="n">define_method</span> <span class="ss">:another_method</span><span class="p">,</span> <span class="n">unbound</span>
-<span class="k">end</span>
 
-<span class="s2">&quot;abc&quot;</span><span class="o">.</span><span class="n">another_method</span> <span class="c1"># =&gt; 42</span>
-</code></pre></div>
+<p>```ruby
+String.class_eval do
+  define_method :another_method, unbound
+end</p>
+
+<p>“abc”.another_method # =&gt; 42
+```</p>
+
 <p><strong>example</strong></p>
 
-<p>In ActiveSupport, the &#39;autoloading&#39; system includes a <code>Loadable</code> module, which redefines the standard <code>Kernel#load</code>. If a class includes <code>Loadable</code>, then <code>Loadable#load</code> gets lower then <code>Kernel#load</code> on its chain of ancestors.</p>
+<p>In ActiveSupport, the ‘autoloading’ system includes a <code>Loadable</code> module, which redefines the standard <code>Kernel#load</code>. If a class includes <code>Loadable</code>, then <code>Loadable#load</code> gets lower then <code>Kernel#load</code> on its chain of ancestors.</p>
 
 <p>And what if you want to stop using <code>Loadable#load</code> and go back to the plain vanilla <code>Kernel#load</code>?</p>
 
@@ -741,13 +853,13 @@ module Loadable
 end
 </code></p>
 
-<h1>Class Definitions</h1>
+<h1 id="class-definitions">Class Definitions</h1>
 
 <p>In Java and C#, defining a class is like making a deal between you and the compiler.</p>
 
 <p>In Ruby, class definitions are different. When you use the class keyword, you aren’t just dictating how objects will behave in the future. On the contrary, you’re actually running code.</p>
 
-<h2>The Current Class</h2>
+<h2 id="the-current-class">The Current Class</h2>
 
 <p>Wherever you are in a Ruby program, you always have a current object: <code>self</code>. Likewise, you always have a current class (or module). As The Ruby interpreter always keeps a reference to the current class (or module), when you define a method, that method becomes an instance method of the current class.</p>
 
@@ -756,370 +868,449 @@ end
 <p><strong><em>How to keep track of the current class?</em></strong></p>
 
 <ul>
-<li>At the top level of your program, the current class is <code>Object</code>, the class of <code>main</code>. (That’s why, if you define a method at the top level, that method becomes an instance method of <code>Object</code>).</li>
+  <li>At the top level of your program, the current class is <code>Object</code>, the class of <code>main</code>. (That’s why, if you define a method at the top level, that method becomes an instance method of <code>Object</code>).</li>
 </ul>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
-<span class="no">Object</span><span class="o">.</span><span class="n">instance_methods</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="ss">:foo</span><span class="p">)</span>      <span class="c1"># =&gt; []</span>
-<span class="no">Object</span><span class="o">.</span><span class="n">private_instance_methods</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="ss">:foo</span><span class="p">)</span> <span class="c1"># =&gt; [:foo]</span>
-</code></pre></div><div class="highlight"><pre><code class="ruby"><span class="o">[</span><span class="mi">6</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
-<span class="o">=&gt;</span> <span class="kp">nil</span>
-<span class="o">[</span><span class="mi">7</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">cd</span> <span class="no">Object</span>
-<span class="o">[</span><span class="mi">8</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="no">Object</span><span class="p">):</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">show</span><span class="o">-</span><span class="nb">method</span> <span class="n">foo</span>
 
-<span class="ss">From</span><span class="p">:</span> <span class="p">(</span><span class="n">pry</span><span class="p">)</span> <span class="err">@</span> <span class="n">line</span> <span class="mi">4</span><span class="p">:</span>
-<span class="ss">Owner</span><span class="p">:</span> <span class="no">Object</span>
-<span class="ss">Visibility</span><span class="p">:</span> <span class="kp">private</span>
-<span class="no">Number</span> <span class="n">of</span> <span class="ss">lines</span><span class="p">:</span> <span class="mi">1</span>
+<p><code>ruby
+def foo; puts 'foo'; end
+Object.instance_methods.grep(:foo)      # =&gt; []
+Object.private_instance_methods.grep(:foo) # =&gt; [:foo]
+</code></p>
 
-<span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
-<span class="o">[</span><span class="mi">9</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="no">Object</span><span class="p">):</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">cd</span> <span class="o">.</span><span class="n">.</span>
-</code></pre></div><div class="highlight"><pre><code class="ruby"><span class="c1"># foo.rb</span>
-<span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
-<span class="nb">p</span> <span class="no">Object</span><span class="o">.</span><span class="n">private_instance_methods</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="ss">:foo</span><span class="p">)</span> <span class="c1"># =&gt; [:foo]</span>
+<p>```ruby
+[6] pry(main)&gt; def foo; puts ‘foo’; end
+=&gt; nil
+[7] pry(main)&gt; cd Object
+[8] pry(Object):1&gt; show-method foo</p>
 
-<span class="c1"># console</span>
-<span class="err">$</span> <span class="n">ruby</span> <span class="n">foo</span><span class="o">.</span><span class="n">rb</span> <span class="c1"># =&gt; [:foo]</span>
-</code></pre></div>
+<p>From: (pry) @ line 4:
+Owner: Object
+Visibility: private
+Number of lines: 1</p>
+
+<p>def foo; puts ‘foo’; end
+[9] pry(Object):1&gt; cd ..
+```</p>
+
+<p>```ruby
+# foo.rb
+def foo; puts ‘foo’; end
+p Object.private_instance_methods.grep(:foo) # =&gt; [:foo]</p>
+
+<h1 id="console">console</h1>
+<p>$ ruby foo.rb # =&gt; [:foo]
+```</p>
+
 <ul>
-<li><p>In a method, the current class is the class of the current object.</p></li>
-<li><p>When you open a class with the <code>class</code> keyword (or a module with the <code>module</code> keyword), that class becomes the current class.</p></li>
+  <li>
+    <p>In a method, the current class is the class of the current object.</p>
+  </li>
+  <li>
+    <p>When you open a class with the <code>class</code> keyword (or a module with the <code>module</code> keyword), that class becomes the current class.</p>
+  </li>
 </ul>
 
 <p><strong><em>How can you open the class if you don’t know its name?</em></strong></p>
 
 <p>Use <code>Module#class_eval</code>.</p>
 
-<p><strong><em>What&#39;s the advantage of <code>Module#class_eval</code> other than <code>class</code>?</em></strong></p>
+<p><strong><em>What’s the advantage of <code>Module#class_eval</code> other than <code>class</code>?</em></strong></p>
 
 <ul>
-<li><code>Module#class_eval</code> is actually more flexible than class. You can use <code>class_eval</code> on any variable that references the class, while <code>class</code> requires a constant.</li>
-<li><code>class</code> opens a new scope, losing sight of the current bindings, while <code>class_eval</code> has a <em>Flat Scope</em>.</li>
+  <li><code>Module#class_eval</code> is actually more flexible than class. You can use <code>class_eval</code> on any variable that references the class, while <code>class</code> requires a constant.</li>
+  <li><code>class</code> opens a new scope, losing sight of the current bindings, while <code>class_eval</code> has a <em>Flat Scope</em>.</li>
 </ul>
 
 <p><strong><em>When to use <code>class_eval</code>, and when <code>instance_eval</code>?</em></strong></p>
 
 <p>Use <code>instance_eval</code> to open an object that is not a class, and <code>class_eval</code> to open a class definition and define methods with <code>def</code>.</p>
 
-<p><strong><em>What&#39;s the difference between <code>class_eval</code> and <code>instance_eval</code>?</em></strong></p>
+<p><strong><em>What’s the difference between <code>class_eval</code> and <code>instance_eval</code>?</em></strong></p>
 
-<p>Both changes <code>self</code>, and <code>class_eval</code> changes the current class to the caller&#39;s class, while <code>instance_eval</code> changes the current class to the caller&#39;s singleton class.</p>
+<p>Both changes <code>self</code>, and <code>class_eval</code> changes the current class to the caller’s class, while <code>instance_eval</code> changes the current class to the caller’s singleton class.</p>
 
 <p><strong>An interesting knowledge about <code>Class.new</code></strong></p>
-<div class="highlight"><pre><code class="ruby"><span class="n">c</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">Array</span><span class="p">)</span> <span class="k">do</span>
-  <span class="k">def</span> <span class="nf">my_method</span>
-    <span class="s1">&#39;Hello!&#39;</span>
-  <span class="k">end</span>
-<span class="k">end</span>
 
-<span class="no">MyClass</span> <span class="o">=</span> <span class="n">c</span>
-<span class="n">c</span><span class="o">.</span><span class="n">name</span>  <span class="c1"># =&gt; &#39;MyClass&#39;</span>
-</code></pre></div>
+<p>```ruby
+c = Class.new(Array) do
+  def my_method
+    ‘Hello!’
+  end
+end</p>
+
+<p>MyClass = c
+c.name  # =&gt; ‘MyClass’
+```</p>
+
 <p>When you assign an anonymous class to a constant, Ruby understands that you’re trying to give a name to the class, and it does something special: it turns around to the class and says, “Here’s your new name.” Now the constant references the Class, and the Class also references the constant. If it weren’t for this trick, a class wouldn’t be able to know its own name</p>
 
-<h2>Class Instance Variables</h2>
+<h2 id="class-instance-variables">Class Instance Variables</h2>
 
 <p>They’re just regular instance variables that happen to belong to an object of class <code>Class</code>. Because of that, a Class Instance Variable can be accessed only by the class itself— not by an instance or by a subclass.</p>
 
 <p>No weird behaviors like Class Variables, which subclass and class share the same variable.</p>
 
-<h2>Singleton Methods</h2>
-<div class="highlight"><pre><code class="ruby"><span class="n">obj</span> <span class="o">=</span> <span class="no">Object</span><span class="o">.</span><span class="n">new</span>
-<span class="k">def</span> <span class="nc">obj</span><span class="o">.</span><span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
-</code></pre></div>
+<h2 id="singleton-methods">Singleton Methods</h2>
+
+<p><code>ruby
+obj = Object.new
+def obj.foo; puts 'foo'; end
+</code></p>
+
 <p>A method which is specific to a single object, is called Singleton Methods.</p>
 
 <p>You can also use <code>Object#define_singleton_method</code>: (Remeber <code>Module#define_method</code>?)</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">obj</span><span class="o">.</span><span class="n">define_singleton_method</span> <span class="ss">:bar</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s1">&#39;bar&#39;</span> <span class="p">}</span>
-</code></pre></div>
+
+<p><code>ruby
+obj.define_singleton_method :bar { puts 'bar' }
+</code></p>
+
 <p><strong><em>What is the Class Macro?</em></strong></p>
 
 <p>A method such as <code>attr_accessor</code> is called a Class Macro. Class Macros look like keywords, but they’re just regular class methods that are meant to be used in a class definition.</p>
 
-<h2>Singleton Class</h2>
+<h2 id="singleton-class">Singleton Class</h2>
 
 <p>A singleton class is where an object’s Singleton Methods live</p>
 
 <p><strong><em>How to get?</em></strong></p>
 
 <ul>
-<li>Use the <code>&lt;&lt;</code> syntax.</li>
+  <li>Use the <code>&lt;&lt;</code> syntax.</li>
 </ul>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nc">obj</span><span class="o">.</span><span class="nf">my_singleton_method</span><span class="p">;</span> <span class="k">end</span>
-<span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">obj</span><span class="p">;</span> <span class="nb">instance_methods</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/my_/</span><span class="p">);</span> <span class="k">end</span>
-</code></pre></div><div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Foo</span>
-  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
-    <span class="k">def</span> <span class="nf">bar</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;Foo.bar&#39;</span><span class="p">;</span> <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
 
-<span class="n">foo</span> <span class="o">=</span> <span class="no">Foo</span><span class="o">.</span><span class="n">new</span>
-<span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">foo</span>
-  <span class="k">def</span> <span class="nf">bar</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo.bar&#39;</span><span class="p">;</span> <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
+<p><code>ruby
+def obj.my_singleton_method; end
+class &lt;&lt; obj; instance_methods.grep(/my_/); end
+</code></p>
+
+<p>```ruby
+class Foo
+  class « self
+    def bar; puts ‘Foo.bar’; end
+  end
+end</p>
+
+<p>foo = Foo.new
+class « foo
+  def bar; puts ‘foo.bar’; end
+end
+```</p>
+
 <ul>
-<li>Use <code>Object#singleton_class</code></li>
+  <li>Use <code>Object#singleton_class</code></li>
 </ul>
-<div class="highlight"><pre><code class="ruby"><span class="n">obj</span><span class="o">.</span><span class="n">singleton_class</span><span class="o">.</span><span class="n">instance_methods</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/my_/</span><span class="p">)</span>
-</code></pre></div>
+
+<p><code>ruby
+obj.singleton_class.instance_methods.grep(/my_/)
+</code></p>
+
 <p><strong>Singleton classes and inheritance</strong></p>
 
-<p><img src="https://dl.dropboxusercontent.com/s/leu6dh1ro55u149/singleton_classes_and_inheritance.png?dl=1&amp;token_hash=AAFdcu5UXq5RMpm7nkaQf_B5Und9FjuPF85b35aIWXjC1g&amp;expiry=1400340965" alt="singleton_classes_and_inheritance"></p>
+<p><img src="https://dl.dropboxusercontent.com/s/leu6dh1ro55u149/singleton_classes_and_inheritance.png?dl=1&amp;token_hash=AAFdcu5UXq5RMpm7nkaQf_B5Und9FjuPF85b35aIWXjC1g&amp;expiry=1400340965" alt="singleton_classes_and_inheritance" /></p>
 
 <p><strong>7 rules of the Ruby object model</strong></p>
 
 <blockquote>
-<p>The Ruby object model is a beautiful place,” Bill notes, with a dreamy expres- sion on his face. “There are classes, singleton classes, and modules. There are instance methods, class methods, and singleton methods.</p>
+  <p>The Ruby object model is a beautiful place,” Bill notes, with a dreamy expres- sion on his face. “There are classes, singleton classes, and modules. There are instance methods, class methods, and singleton methods.</p>
 </blockquote>
 
 <ol>
-<li>There is only one kind of object—be it a regular object or a module.</li>
-<li>There is only one kind of module—be it a regular module, a class, or a singleton class.</li>
-<li>There is only one kind of method, and it lives in a module—most often in a class.</li>
-<li>Every object, classes included, has its own “real class,” be it a regular class or a singleton class.</li>
-<li>Every class, with the exception of <code>BasicObject</code>, has exactly one ancestor— either a superclass, or a module. This means you have a single chain of ancestors from any class up to <code>BasicObject</code>.</li>
-<li>The superclass of the singleton class of an object is the object’s class. The superclass of the singleton class of a class is the singleton class of the class’s superclass.</li>
-<li>When you call a method, Ruby goes “right” in the receiver’s real class and then “up” the ancestors chain. That’s all there is to know about the way Ruby finds methods.</li>
+  <li>There is only one kind of object—be it a regular object or a module.</li>
+  <li>There is only one kind of module—be it a regular module, a class, or a singleton class.</li>
+  <li>There is only one kind of method, and it lives in a module—most often in a class.</li>
+  <li>Every object, classes included, has its own “real class,” be it a regular class or a singleton class.</li>
+  <li>Every class, with the exception of <code>BasicObject</code>, has exactly one ancestor— either a superclass, or a module. This means you have a single chain of ancestors from any class up to <code>BasicObject</code>.</li>
+  <li>The superclass of the singleton class of an object is the object’s class. The superclass of the singleton class of a class is the singleton class of the class’s superclass.</li>
+  <li>When you call a method, Ruby goes “right” in the receiver’s real class and then “up” the ancestors chain. That’s all there is to know about the way Ruby finds methods.</li>
 </ol>
 
-<p><strong><em>Can object&#39;s Singleton Class touch the its Instance Variable?</em></strong></p>
-<div class="highlight"><pre><code class="ruby"><span class="c1"># exampel 1</span>
+<p><strong><em>Can object’s Singleton Class touch the its Instance Variable?</em></strong></p>
 
-<span class="k">class</span> <span class="nc">MyClass</span>
-  <span class="k">def</span> <span class="nf">name</span><span class="p">;</span> <span class="vi">@name</span><span class="p">;</span> <span class="k">end</span>
-  <span class="k">def</span> <span class="nf">name</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="vi">@name</span><span class="o">=</span><span class="n">n</span><span class="p">;</span> <span class="k">end</span>
-<span class="k">end</span>
+<p>```ruby
+# exampel 1</p>
 
-<span class="n">obj</span> <span class="o">=</span> <span class="no">MyClass</span><span class="o">.</span><span class="n">new</span>
-<span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span>
-<span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="c1"># =&gt; &#39;foo&#39;</span>
+<p>class MyClass
+  def name; @name; end
+  def name=(n); @name=n; end
+end</p>
 
-<span class="n">obj</span><span class="o">.</span><span class="n">instance_eval</span> <span class="p">{</span> <span class="k">def</span> <span class="nf">to_s</span><span class="p">;</span> <span class="s2">&quot;My name is </span><span class="si">#@name</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">end</span> <span class="p">}</span>
-<span class="n">obj</span><span class="o">.</span><span class="n">to_s</span> <span class="c1"># =&gt; &quot;My name is foo&quot;</span>
+<p>obj = MyClass.new
+obj.name = ‘foo’
+obj.name # =&gt; ‘foo’</p>
 
-<span class="c1"># example2</span>
+<p>obj.instance_eval { def to_s; “My name is #@name”; end }
+obj.to_s # =&gt; “My name is foo”</p>
 
-<span class="k">class</span> <span class="nc">MyClass</span>
-  <span class="vi">@age</span> <span class="o">=</span> <span class="mi">42</span>
-  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
-    <span class="k">def</span> <span class="nf">age</span><span class="p">;</span> <span class="vi">@age</span><span class="p">;</span> <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
+<h1 id="example2">example2</h1>
 
-<span class="no">MyClass</span><span class="o">.</span><span class="n">age</span> <span class="c1"># =&gt; 42</span>
-</code></pre></div>
-<p>Yes, it can. So I can assume the obj&#39;s Instance Variable lives in its Singleton Class.</p>
+<p>class MyClass
+  @age = 42
+  class « self
+    def age; @age; end
+  end
+end</p>
 
-<p><strong><em>Can a module&#39;s singleton methods be included?</em></strong></p>
+<p>MyClass.age # =&gt; 42
+```</p>
+
+<p>Yes, it can. So I can assume the obj’s Instance Variable lives in its Singleton Class.</p>
+
+<p><strong><em>Can a module’s singleton methods be included?</em></strong></p>
 
 <p>No!</p>
 
 <p>When a class includes a module, it gets the module’s instance methods—not the class methods. Class methods stay out of reach, in the module’s singleton class.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">module</span> <span class="nn">M</span>
-  <span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
-  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">bar</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;bar&#39;</span><span class="p">;</span> <span class="k">end</span>
-<span class="k">end</span>
 
-<span class="k">class</span> <span class="nc">C</span>
-  <span class="kp">include</span> <span class="n">M</span>
-<span class="k">end</span>
+<p>```ruby
+module M
+  def foo; puts ‘foo’; end
+  def self.bar; puts ‘bar’; end
+end</p>
 
-<span class="n">C</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">foo</span> <span class="c1"># =&gt; &#39;foo&#39;</span>
-<span class="n">C</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">bar</span> <span class="c1"># =&gt; NoMethodError</span>
+<p>class C
+  include M
+end</p>
 
-<span class="k">class</span> <span class="nc">C</span>
-  <span class="kp">extend</span> <span class="n">M</span>
-<span class="k">end</span>
+<p>C.new.foo # =&gt; ‘foo’
+C.new.bar # =&gt; NoMethodError</p>
 
-<span class="n">C</span><span class="o">.</span><span class="n">bar</span> <span class="c1"># =&gt; NoMethodError</span>
-<span class="n">C</span><span class="o">.</span><span class="n">foo</span> <span class="c1"># =&gt; &#39;foo&#39;</span>
-</code></pre></div>
-<p><strong><em>What&#39;s the difference between <code>Module#include</code> and <code>Object#extend</code>?</em></strong></p>
+<p>class C
+  extend M
+end</p>
+
+<p>C.bar # =&gt; NoMethodError
+C.foo # =&gt; ‘foo’
+```</p>
+
+<p><strong><em>What’s the difference between <code>Module#include</code> and <code>Object#extend</code>?</em></strong></p>
 
 <ul>
-<li><code>Module#include</code> includes a module in the receiver&#39;s class.</li>
-<li><code>Object#extend</code> includes a module in the receiver&#39;s singleton class.</li>
+  <li><code>Module#include</code> includes a module in the receiver’s class.</li>
+  <li><code>Object#extend</code> includes a module in the receiver’s singleton class.</li>
 </ul>
 
-<h2>Method Wrapper</h2>
+<h2 id="method-wrapper">Method Wrapper</h2>
 
 <ul>
-<li>Around Alias</li>
-<li>Refinement Wrapper</li>
-<li>Prepended Wrapper(<code>Module#prepend</code>)</li>
+  <li>Around Alias</li>
+  <li>Refinement Wrapper</li>
+  <li>Prepended Wrapper(<code>Module#prepend</code>)</li>
 </ul>
 
 <p>Selection: Prepended Wrapper &gt; Refinement Wrapper &gt; Around Alias</p>
 
-<h3>Around Alias</h3>
+<h3 id="around-alias">Around Alias</h3>
 
 <p><strong><code>alias</code> vs. <code>alias_method</code></strong></p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">MyClass</span>
-  <span class="k">alias</span> <span class="ss">:new_foo</span> <span class="ss">:foo</span>
-  <span class="n">alias_method</span> <span class="ss">:another_new_foo</span><span class="p">,</span> <span class="ss">:foo</span>
-<span class="k">end</span>
-</code></pre></div>
+
+<p><code>ruby
+class MyClass
+  alias :new_foo :foo
+  alias_method :another_new_foo, :foo
+end
+</code></p>
+
 <ul>
-<li><code>alias</code> is a keyword.</li>
-<li><code>alias_method</code> is an instance method of Module. <code>Module#alias_method</code></li>
+  <li><code>alias</code> is a keyword.</li>
+  <li><code>alias_method</code> is an instance method of Module. <code>Module#alias_method</code></li>
 </ul>
 
 <p><strong><em>Can you alias a method before it defined?</em></strong></p>
 
 <p>No!</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">MyClass</span>
-  <span class="n">alias_method</span> <span class="ss">:new_foo</span><span class="p">,</span> <span class="ss">:foo</span>
-  <span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
-<span class="k">end</span>
 
-<span class="c1"># =&gt; NameError: undefined method `foo&#39; for class `MyClass&#39;</span>
-</code></pre></div>
-<p><strong><em>Can aliases break the class&#39;s encapsulation?</em></strong></p>
+<p>```ruby
+class MyClass
+  alias_method :new_foo, :foo
+  def foo; puts ‘foo’; end
+end</p>
+
+<h1 id="nameerror-undefined-method-foo-for-class-myclass">=&gt; NameError: undefined method <code>foo' for class </code>MyClass’</h1>
+<p>```</p>
+
+<p><strong><em>Can aliases break the class’s encapsulation?</em></strong></p>
 
 <p>Yes!</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">MyClass</span>
-  <span class="n">alias_method</span> <span class="ss">:new_foo</span><span class="p">,</span> <span class="ss">:foo</span>
 
-  <span class="kp">private</span>
-    <span class="k">def</span> <span class="nf">foo</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span> <span class="k">end</span>
-  <span class="k">end</span>
+<p>```ruby
+class MyClass
+  alias_method :new_foo, :foo</p>
 
-  <span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">foo</span>     <span class="c1"># =&gt; NoMethodError: private method `foo&#39; called</span>
-  <span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">new_foo</span> <span class="c1"># =&gt; &#39;foo&#39;</span>
-</code></pre></div>
+<p>private
+    def foo; puts ‘foo’; end
+  end</p>
+
+<p>MyClass.new.foo     # =&gt; NoMethodError: private method <code>foo' called
+  MyClass.new.new_foo # =&gt; 'foo'
+</code>``</p>
+
 <p><strong><em>How to write an Around Alias?</em></strong></p>
 
 <ol>
-<li>You alias a method.</li>
-<li>You redefine it.</li>
-<li>You call the old method from the new method.</li>
+  <li>You alias a method.</li>
+  <li>You redefine it.</li>
+  <li>You call the old method from the new method.</li>
 </ol>
 
 <p><strong>Downsides</strong></p>
 
 <ul>
-<li>They pollute your classes with one additional method name. You can fix this small problem somehow by making the old version of the method <code>private</code> after you alias it.</li>
-<li>The loading issue. You should never load an Around Alias twice, unless you want to end up with an exception when you call the method.</li>
+  <li>They pollute your classes with one additional method name. You can fix this small problem somehow by making the old version of the method <code>private</code> after you alias it.</li>
+  <li>The loading issue. You should never load an Around Alias twice, unless you want to end up with an exception when you call the method.</li>
 </ul>
 
 <p>The main issue with Around Aliases, however, is that they are a form of Monkeypatching. Like all Monkeypatches, they can break existing code that wasn’t expecting the method to change.</p>
 
-<h3>Refinement Wrapper</h3>
+<h3 id="refinement-wrapper">Refinement Wrapper</h3>
 
 <p><strong>Advantage over Around Alias</strong></p>
 
 <p>If you call <code>super</code> from a refined method, you will call the original, unrefined method.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">module</span> <span class="nn">StringRefinement</span>
-  <span class="n">refine</span> <span class="nb">String</span> <span class="k">do</span>
-    <span class="k">def</span> <span class="nf">length</span>
-      <span class="k">super</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">?</span> <span class="s1">&#39;long&#39;</span> <span class="p">:</span> <span class="s1">&#39;short&#39;</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
 
-<span class="n">using</span> <span class="no">StringRefinement</span>
-<span class="s2">&quot;War and Peace&quot;</span><span class="o">.</span><span class="n">length</span> <span class="c1"># =&gt; &quot;long&quot;</span>
-</code></pre></div>
-<h3>Prepended Wrapper</h3>
+<p>```ruby
+module StringRefinement
+  refine String do
+    def length
+      super &gt; 5 ? ‘long’ : ‘short’
+    end
+  end
+end</p>
+
+<p>using StringRefinement
+“War and Peace”.length # =&gt; “long”
+```</p>
+
+<h3 id="prepended-wrapper">Prepended Wrapper</h3>
 
 <p>A method in a prepended module can override a method in the includer, and call the non- overridden version with <code>super</code>.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">module</span> <span class="nn">ExplicitString</span>
-  <span class="k">def</span> <span class="nf">length</span>
-    <span class="k">super</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">?</span> <span class="s1">&#39;long&#39;</span> <span class="p">:</span> <span class="s1">&#39;short&#39;</span>
-  <span class="k">end</span>
-<span class="k">end</span>
 
-<span class="nb">String</span><span class="o">.</span><span class="n">class_eval</span> <span class="k">do</span>
-  <span class="n">prepend</span> <span class="no">ExplicitString</span>
-<span class="k">end</span>
+<p>```ruby
+module ExplicitString
+  def length
+    super &gt; 5 ? ‘long’ : ‘short’
+  end
+end</p>
 
-<span class="s2">&quot;War and Peace&quot;</span><span class="o">.</span><span class="n">length</span> <span class="c1"># =&gt; &quot;long&quot;</span>
-</code></pre></div>
+<p>String.class_eval do
+  prepend ExplicitString
+end</p>
+
+<p>“War and Peace”.length # =&gt; “long”
+```</p>
+
 <p><strong><em>Advantage over Refinement Wrapper and Around Alias?</em></strong></p>
 
 <p>It’s generally considered cleaner and more explicit than both a Refinement Wrapper and an Around Alias.</p>
 
-<h3>An interesting quiz solving by Around Alias</h3>
+<h3 id="an-interesting-quiz-solving-by-around-alias">An interesting quiz solving by Around Alias</h3>
 
 <p>Make it work:</p>
-<div class="highlight"><pre><code class="ruby"><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># =&gt; 3</span>
-</code></pre></div>
-<p>You can solve this quiz with an Open Class. Just reopen <code>Fixnum</code>, and redefine <code>+</code> so that <code>(x+y)</code> becomes <code>(x+y+1)</code>. This is not as easy as it seems, however. The new version of + relies on the old version of +, so you need to wrap your old version with the new version.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Fixnum</span>
-  <span class="n">alias_method</span> <span class="ss">:old_plus</span><span class="p">,</span> <span class="ss">:+</span>
 
-  <span class="k">def</span> <span class="nf">+</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-    <span class="nb">self</span><span class="o">.</span><span class="n">old_plus</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">old_plus</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
-<h1>Eval and Binding</h1>
+<p><code>ruby
+1 + 1 # =&gt; 3
+</code></p>
+
+<p>You can solve this quiz with an Open Class. Just reopen <code>Fixnum</code>, and redefine <code>+</code> so that <code>(x+y)</code> becomes <code>(x+y+1)</code>. This is not as easy as it seems, however. The new version of + relies on the old version of +, so you need to wrap your old version with the new version.</p>
+
+<p>```ruby
+class Fixnum
+  alias_method :old_plus, :+</p>
+
+<p>def +(value)
+    self.old_plus(value).old_plus(1)
+  end
+end
+```</p>
+
+<h1 id="eval-and-binding">Eval and Binding</h1>
 
 <p><code>Kernel#eval</code> Evaluates the Ruby expression(s) in string. If binding is given, which must be a <code>Binding</code> object, the evaluation is performed in its context.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">get_binding</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
-  <span class="nb">binding</span>
-<span class="k">end</span>
 
-<span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
-<span class="nb">eval</span> <span class="s2">&quot;str + &#39; Fred&#39;&quot;</span>                     <span class="c1"># =&gt; &quot;hello Fred&quot;</span>
-<span class="nb">eval</span> <span class="s2">&quot;str + &#39; Fred&#39;&quot;</span><span class="p">,</span> <span class="n">get_binding</span><span class="p">(</span><span class="s1">&#39;bye&#39;</span><span class="p">)</span> <span class="c1"># =&gt; &quot;bye Fred&quot;</span>
-</code></pre></div>
+<p>```ruby
+def get_binding(str)
+  binding
+end</p>
+
+<p>str = ‘hello’
+eval “str + ‘ Fred’”                     # =&gt; “hello Fred”
+eval “str + ‘ Fred’”, get_binding(‘bye’) # =&gt; “bye Fred”
+```</p>
+
 <p><code>Kernel#binding</code> Returns a <code>Binding</code> object, describing the variable and method bindings at the point of call. This object can be used when calling eval to execute the evaluated command in this environment.</p>
 
 <p>Ruby also provides a predefined constant named <code>TOPLEVEL_BINDING</code>, which is just a Binding of the top-level scope.</p>
 
 <p>You can also use <code>Proc#binding</code> to return a <code>Binding</code> object.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">get_proc</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="p">{}</span>
-<span class="k">end</span>
 
-<span class="nb">eval</span> <span class="s2">&quot;str + &#39;Fred&#39;&quot;</span><span class="p">,</span> <span class="n">get_proc</span><span class="p">(</span><span class="s1">&#39;bye&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">binding</span> <span class="c1"># =&gt; &quot;bye Fred&quot;</span>
-</code></pre></div><div class="highlight"><pre><code class="ruby"><span class="n">l</span> <span class="o">=</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="nb">name</span> <span class="o">=</span> <span class="s1">&#39;wendi&#39;</span> <span class="p">}</span>
-<span class="nb">eval</span> <span class="s2">&quot;puts name&quot;</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">binding</span>
-<span class="c1"># =&gt; NameError: undefined local variable or method `name&#39; for main:Object`</span>
+<p>```ruby
+def get_proc(str)
+  -&gt; {}
+end</p>
 
-<span class="k">def</span> <span class="nf">bar</span>
-  <span class="nb">name</span> <span class="o">=</span> <span class="s1">&#39;wendi&#39;</span>
-  <span class="o">-&gt;</span> <span class="p">{}</span>
-<span class="k">end</span>
-<span class="nb">eval</span> <span class="s2">&quot;puts name&quot;</span><span class="p">,</span> <span class="n">bar</span><span class="o">.</span><span class="n">binding</span>
-<span class="c1"># =&gt; wendi</span>
-</code></pre></div>
-<p><strong><em>What&#39;s to concern when using <code>eval</code>?</em></strong></p>
+<p>eval “str + ‘Fred’”, get_proc(‘bye’).binding # =&gt; “bye Fred”
+```</p>
+
+<p>```ruby
+l = -&gt; { name = ‘wendi’ }
+eval “puts name”, l.binding
+# =&gt; NameError: undefined local variable or method <code>name' for main:Object</code></p>
+
+<p>def bar
+  name = ‘wendi’
+  -&gt; {}
+end
+eval “puts name”, bar.binding
+# =&gt; wendi
+```</p>
+
+<p><strong><em>What’s to concern when using <code>eval</code>?</em></strong></p>
 
 <ul>
-<li><p>As it only accepts strings of codes but not blocks, it&#39;s not editor friendly(syntax highlighting) and hard to trace syntax errors.</p></li>
-<li><p>Code Injection.</p></li>
+  <li>
+    <p>As it only accepts strings of codes but not blocks, it’s not editor friendly(syntax highlighting) and hard to trace syntax errors.</p>
+  </li>
+  <li>
+    <p>Code Injection.</p>
+  </li>
 </ul>
 
-<p><strong><em>What&#39;s the soluction Ruby provided for <code>eval</code> insecurity?</em></strong></p>
+<p><strong><em>What’s the soluction Ruby provided for <code>eval</code> insecurity?</em></strong></p>
 
 <ul>
-<li><p>Tainted Objects, <code>Object#tainted?</code>, <code>Object#untaint</code></p></li>
-<li><p>Safe Levels, <code>$SAFE</code></p>
+  <li>
+    <p>Tainted Objects, <code>Object#tainted?</code>, <code>Object#untaint</code></p>
+  </li>
+  <li>
+    <p>Safe Levels, <code>$SAFE</code></p>
 
-<ul>
-<li>0, “hippie commune&quot;, where you can hug trees and format hard disks.</li>
-<li>Any safe level greater than 0 also causes Ruby to flat-out refuse to evaluate tainted string.</li>
-<li>2, disallows most file-related operations.</li>
-<li>3, “military dictatorship,” where every object you create is tainted by default.</li>
-</ul></li>
+    <ul>
+      <li>0, “hippie commune”, where you can hug trees and format hard disks.</li>
+      <li>Any safe level greater than 0 also causes Ruby to flat-out refuse to evaluate tainted string.</li>
+      <li>2, disallows most file-related operations.</li>
+      <li>3, “military dictatorship,” where every object you create is tainted by default.</li>
+    </ul>
+  </li>
 </ul>
 
 <p><strong><em>How to write a Sandbox for <code>eval</code>?</em></strong></p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">ERB</span>
-  <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">new_toplevel</span><span class="p">)</span>
-    <span class="k">if</span> <span class="vi">@safe_level</span>
-      <span class="nb">proc</span> <span class="p">{</span>
-        <span class="vg">$SAFE</span> <span class="o">=</span> <span class="vi">@safe_level</span>
-        <span class="nb">eval</span><span class="p">(</span><span class="vi">@src</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="p">(</span><span class="vi">@filename</span> <span class="o">||</span> <span class="s1">&#39;(erb)&#39;</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">}</span><span class="o">.</span><span class="n">call</span>
-    <span class="k">else</span>
-      <span class="nb">eval</span><span class="p">(</span><span class="vi">@src</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="p">(</span><span class="vi">@filename</span> <span class="o">||</span> <span class="s1">&#39;(erb)&#39;</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>]]></content>
+
+<p><code>ruby
+class ERB
+  def result(b=new_toplevel)
+    if @safe_level
+      proc {
+        $SAFE = @safe_level
+        eval(@src, b, (@filename || '(erb)'), 0)
+      }.call
+    else
+      eval(@src, b, (@filename || '(erb)'), 0)
+    end
+  end
+end
+</code></p>
+
+]]></content>
   </entry>
   
 </feed>

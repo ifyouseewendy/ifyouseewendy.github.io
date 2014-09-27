@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://ifyouseewendy.github.io/sitemap.xml 
+Sitemap: http://blog.ifyouseewendy.com/sitemap.xml 

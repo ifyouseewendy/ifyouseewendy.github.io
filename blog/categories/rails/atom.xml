@@ -1,151 +1,923 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Rails | Wendi's Notes]]></title>
-  <link href="http://ifyouseewendy.github.io/blog/categories/rails/atom.xml" rel="self"/>
-  <link href="http://ifyouseewendy.github.io/"/>
-  <updated>2014-09-23T22:31:49+08:00</updated>
-  <id>http://ifyouseewendy.github.io/</id>
+  <title><![CDATA[Category: Rails | Wendi's Blog]]></title>
+  <link href="http://blog.ifyouseewendy.com/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://blog.ifyouseewendy.com/"/>
+  <updated>2014-09-27T16:40:33+08:00</updated>
+  <id>http://blog.ifyouseewendy.com/</id>
   <author>
-    <name><![CDATA[Wendi]]></name>
+    <name><![CDATA[wendi]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
-    <title type="html"><![CDATA[Inside ActiveSupport Notifications]]></title>
-    <link href="http://ifyouseewendy.github.io/blog/2014/06/03/inside-activesupport-notifications/"/>
-    <updated>2014-06-03T00:45:35+08:00</updated>
-    <id>http://ifyouseewendy.github.io/blog/2014/06/03/inside-activesupport-notifications</id>
-    <content type="html"><![CDATA[<ul>
-<li>Read API doc first, <a href="ActiveSupport::Notifications">ActiveSupport::Notifications</a>.</li>
-<li>About hooks inside Rails for instrumentation, check the edge doc on <a href="http://edgeguides.rubyonrails.org/active_support_instrumentation.html">Active Support Instrumentation</a>.</li>
+    <title type="html"><![CDATA[[Review] Rebuilding Rails]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2014/09/27/rebuilding-rails/"/>
+    <updated>2014-09-27T14:48:48+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2014/09/27/rebuilding-rails</id>
+    <content type="html"><![CDATA[<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>Rebuilding Rails</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td>Noah Gibbs</td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="http://rebuilding-rails.com/">rebuilding-rails.com</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>My re-building source code</p>
+
+<ul>
+  <li><a href="https://github.com/ifyouseewendy/rulers">rulers</a></li>
+  <li><a href="https://github.com/ifyouseewendy/best_quotes">best_quotes</a></li>
 </ul>
 
-<p>Then let&#39;s read through the <strong>ActiveSupport::Notifications</strong> source code.</p>
+<p>Work flow diagram</p>
 
-<h2>ActiveSupport::Notifications</h2>
+<p><img src="https://raw.githubusercontent.com/ifyouseewendy/best_quotes/master/rebuilding-rails.png" alt="img texrebuilding-rails" style="width:562px" /></p>
 
-<h3>File name</h3>
+<h2 id="zero-to-it-works">1. Zero to “It Works!”</h2>
+
+<p><code>ruby
+gem.add_development_dependency "rspec"
+gem.add_runtime_dependency "rest-client"
+gem.add_runtime_dependency "some_gem", "1.3.0"
+gem.add_runtime_dependency "other_gem", "&gt;0.8.2"
+</code></p>
+
+<p>Each of these adds a runtime dependency (needed to run the gem at all) or a development dependency (needed to develop or test the gem).</p>
+
+<p>Youʼll need to go into the rulers directory and <code>git add .</code> before you rebuild the gem (<code>git add .; gem build rulers.gemspec; gem install rulers-0.0.1.gem</code>). Thatʼs because rulers.gemspec is actually calling git to find out what files to include in your gem.</p>
+
+<p><strong>Rails structure</strong></p>
+
+<ul>
+  <li>
+    <p><strong>ActiveSupport</strong> is a compatibility library including methods that aren’t necessarily specific to Rails. You’ll see ActiveSupport used by non-Rails libraries because it contains such a lot of useful baseline functionality. ActiveSupport includes methods like how Rails changes words from single to plural, or CamelCase to snake_case. It also includes significantly better time and date support than the Ruby standard library.</p>
+  </li>
+  <li>
+    <p><strong>ActiveModel</strong> hooks into features of your models that aren’t really about the database - for instance, if you want a URL for a given model, ActiveModel helps you there. It’s a thin wrapper around many different ActiveModel implementations to tell Rails how to use them. Most commonly, ActiveModel implementations are ORMs (see ActiveRecord, below), but they can also use non-relational storage like MongoDB, Redis, Memcached or even just local machine memory.</p>
+  </li>
+  <li>
+    <p><strong>ActiveRecord</strong> is an Object-Relational Mapper (ORM). That means that it maps between Ruby objects and tables in a SQL database. When you query from or write to the SQL database in Rails, you do it through ActiveRecord. ActiveRecord also implements ActiveModel. ActiveRecord supports MySQL and SQLite, plus JDBC, Oracle, PostgreSQL and many others.</p>
+  </li>
+  <li>
+    <p><strong>ActionPack</strong> (<em>ActionDispatch, ActionController, Actionview</em>) does routing - the mapping of an incoming URL to a controller and action in Rails. It also sets up your controllers and views, and shepherds a request through its controller action and then through rendering the view. For some of it, ActionPack uses Rack. The template rendering itself is done through an external gem like Erubis for .erb templates, or Haml for .haml templates. ActionPack also handles action- or view-centered functionality like view caching.</p>
+  </li>
+  <li>
+    <p><strong>ActionMailer</strong> is used to send out email, especially email based on templates. It works a lot like you’d hope Rails email would, with controllers, actions and “views” - which for email are text- based templates, not regular web-page templates.</p>
+  </li>
+</ul>
+
+<h2 id="your-first-controller">2. Your First Controller</h2>
+
+<p>Rails encapsulated the Rack information into a “request” object rather than just including the hash right into the controller. Thatʼs a good idea when you want to abstract it a bit – normalize values for certain variables, for instance, or read and set cookies to store session data.</p>
+
+<h2 id="rails-automatic-loading">3. Rails Automatic Loading</h2>
+
+<p>When debugging or printing error messages I like to use STDERR because itʼs a bit harder to redirect than a normal “puts” and so youʼre more likely to see it even when using a log file, background process or similar.</p>
+
+<p>For simple structures, “inspect” shows them exactly as youʼd type them into Ruby – strings with quotes, numbers bare, symbols with a leading colon and so on.</p>
+
+<p><strong>Reloading Means Convenience</strong></p>
+
+<p><code>gem "rulers", :path =&gt; "../rulers"</code> This trick actually relies on deep Bundler trickery and requires you to always “bundle exec” before running things like rackup. If you forget that, it can look like the gem isnʼt there or (worse) look like an old version.</p>
+
+<p><strong>CamelCase and snake_case</strong></p>
+
+<p>```ruby
+# rulers/lib/rulers/util.rb
+module Rulers
+  def self.to_underscore(string)
+    string.gsub(/::/, ‘/’).
+    gsub(/([A-Z]+)([A-Z][a-z])/,’\1<em>\2’).
+    gsub(/([a-z\d])([A-Z])/,’\1</em>\2’).
+    tr(“-“, “_”).
+    downcase
+  end
+end</p>
+
+<h1 id="httpcontroller---httpcontroller">‘HTTPController’ -&gt; ‘http_controller’</h1>
+<p># ‘MD5Controller’ -&gt; ‘md5_controller’
+# ‘HomeController’ -&gt; ‘home_controller’
+```</p>
+
+<p><strong>Put it together</strong></p>
+
+<p><code>ruby
+# rulers/lib/rulers/dependencies.rb
+class Object
+  def self.const_missing(c)
+    require Rulers.to_underscore(c.to_s)
+    Object.const_get(c)
+  end
+end
+</code></p>
+
+<p><code>ruby
+# rulers/lib/rulers/controller.rb
+def controller_name
+  klass = self.class
+  klass = klass.to_s.gsub /Controller$/, ""
+  Rulers.to_underscore klass
+end
+</code></p>
+
+<p><strong>Did it work?</strong></p>
+
+<p>When you load a file called whatever_class.rb, youʼre not actually guaranteed that it contains WhateverClass, or that the constant WhateverClass is actually a class. How would you check?</p>
+
+<p>You might try calling const_get(:WhateverClass)… Except that you just made const_get try to load automatically. If you call it on an unloaded class inside the method call where you try to load, youʼll recurse forever and get a “stack level too deep” and a crash. So const_get isnʼt the full answer.</p>
+
+<p>```ruby
+# rulers/lib/rulers/dependencies.rb
+class Object
+  def self.const_missing(c)
+    return nil if @calling_const_missing</p>
+
+<pre><code>@calling_const_missing = true
+require Rulers.to_underscore(c.to_s)
+klass = Object.const_get(c)
+@calling_const_missing = false
+
+klass   end end ```
+</code></pre>
+
+<p>But thereʼs a reason I say “hideously hacky.” Think about ways this could break. For instance – think about what would happen if you hit this in multiple threads at once. Oops!</p>
+
+<p><strong>Re-re-reloading</strong></p>
+
+<p><a href="https://github.com/alexch/rerun">rerun</a></p>
+
+<p>```ruby
+# best_quotes/Gemfile
+source ‘https://rubygems.org’
+gem ‘rulers’, :path =&gt; “../rulers”</p>
+
+<p>group :development do
+  gem ‘rerun’
+  gem ‘listen’, ‘=1.3.1’ # for older Ruby
+end
+```</p>
+
+<p>Running by <code>bundle exec rerun -- rackup -p 3001</code>. The “–” is an old Unix trick. It means “thatʼs all the arguments you get, the rest belong to somebody else.” Specifically, it tells rerun to ignore the “-p” later.</p>
+
+<p><a href="https://github.com/rtomayko/shotgun">shotgun</a></p>
+
+<p>reloading rack development server, forking version of rackup.</p>
+
+<p><strong>In Rails</strong></p>
+
+<ol>
+  <li>
+    <p><a href="https://github.com/rails/rails/blob/master/activesupport/lib/active_support/dependencies.rb">rails/activesupport/lib/active_support/dependencies.rb</a> Rails uses ActiveSupport for its const_missing support. Most of the code is installing a const_missing that can call through to non-Rails versions of const_missing in other classes, and can be removed or re-added and is appropriately modular. It also works hard to support nested modules like MyLibrary::SubModule::SomeClass.</p>
+  </li>
+  <li>
+    <p><a href="http://urbanautomaton.com/blog/2013/08/27/rails-autoloading-hell/#fn1">Rails autoloading — how it works, and when it doesn’t</a> by Simon Coffey.</p>
+  </li>
+</ol>
+
+<h2 id="rendering-views">4. Rendering Views</h2>
+
+<p><strong>Erb and Erubis</strong></p>
+
+<p>```ruby
+# some_directory/erb_test.rb
+require “erubis”</p>
+
+<p>template = «TEMPLATE
+Hello! This is a template.
+It has &lt;%= whatever %&gt;.
+TEMPLATE</p>
+
+<p>eruby = Erubis::Eruby.new(template)
+puts eruby.src
+puts “==========”
+puts eruby.result(:whatever =&gt; “ponies!”)
+```</p>
+
+<p>Run it with <code>ruby erb_test.rb</code></p>
+
+<p><code>ruby
+bash-3.2$ ruby erb_test.rb
+_buf = ''; _buf &lt;&lt; 'Hello!   This is a template. It has ';
+_buf &lt;&lt; ( whatever ).to_s; _buf &lt;&lt; '.';
+_buf.to_s
+==========
+Hello! This is a template.
+It has ponies!.
+</code></p>
+
+<p>The few lines starting with <code>_buf</code> are interesting. Erubis takes apart our string, appends it to <code>_buf</code> piece by piece, and adds the variables in as well after calling <code>.to_s</code> on them. Then it just returns <code>_buf</code>.</p>
+
+<p><strong>Rack test example</strong></p>
+
+<p><a href="https://github.com/brynary/rack-test">rack-test</a></p>
+
+<p>```ruby
+require_relative “test_helper”</p>
+
+<p>class TestApp &lt; Rulers::Application
+  def get_controller_and_action(env)
+    [TestController, “index”]
+  end
+end</p>
+
+<p>class TestController &lt; Rulers::Controlle
+  def index
+    “Hello!”  # Not rendering a view
+  end
+end</p>
+
+<p>class RulersAppTest &lt; Test::Unit::TestCase
+ include Rack::Test::Methods</p>
+
+<p>def app
+    TestApp.new
+  end</p>
+
+<p>def test_request
+    get “/example/route”
+    assert last_response.ok?
+    body = last_response.body
+    assert body[“Hello”]
+  end
+end
+```</p>
+
+<p><strong>Rake test example</strong></p>
+
+<p>Rake actually ships with a “Rake::TestTask”.</p>
+
+<p>```ruby
+# Rakefile
+require “bundler/gem_tasks”
+require “rake/testtask”</p>
+
+<p>Rake::TestTask.new do |t|
+  t.name = “test”  # this is the default
+  t.libs « “test”  # load the test dir
+  t.test_files = Dir[‘test/<em>test</em>.rb’]
+  t.verbose = true
+end
+```</p>
+
+<p><em>A word of caution</em>: Rake will always run your tests by loading them into the same Ruby process, then running each one in turn. This is a lot faster than running them in individual processes, but it means that your tests can mess with each other in annoying ways. If you find yourself saying, “but I didnʼt set that global variable in this test!” think about whether some other test might have done it. For extra fun, the tests donʼt always run in any predictable order.</p>
+
+<p><strong>In Rails</strong></p>
+
+<p>Rails actually allows registering a number of different template engines at once with a number of different extensions so that Erb files are rendered with Erubis, but .haml files are rendered with the HAML templating engine.</p>
+
+<p>You can find the top-level view code in <a href="https://github.com/rails/rails/blob/master/actionview/lib/action_view.rb">actionpack/lib/action_view.rb</a>, and the whole big chunk of Rails view code in actionpack/lib/action_view/. From there, look in <a href="https://github.com/rails/rails/blob/master/actionview/lib/action_view/template/handlers/erb.rb">template/handlers/erb.rb</a> for a pretty compact description of exactly how Rails uses Erubis to render Erb templates. You can see that most of the bulk of Railsʼ version is setup, interface and dealing with string encodings. You save a lot of trouble by knowing that youʼre basically only dealing with ASCII and/or UTF-8 strings.</p>
+
+<h2 id="basic-models">5. Basic Models</h2>
+
+<p>Use <a href="https://github.com/intridea/multi_json">multi_json</a> (a generic swappable back-end for JSON handling) to built a simple system of models based on JSON files.</p>
+
+<p><strong>In Rails</strong></p>
+
+<p>ActiveRecord is an Object-Relational Mapper so that each of your objects represents a database row. ActiveModel is the interface that Rails uses to all of storage including non-relational stores like Cassandra or MongoDB, to fit particular object types into Rails.</p>
+
+<p>For a good overview of ActiveModel, have a look at a blog post from Yehuda Katz on that topic: <a href="http://yehudakatz.com/2010/01/10/activemodel-make-any-ruby-object-feel-like-activerecord/">ActiveModel: Make Any Ruby Object Feel Like ActiveRecord</a></p>
+
+<h2 id="request-response">6. Request, Response</h2>
+
+<p>```ruby
+# rulers/lib/rulers/controller.rb
+module Rulers
+  class Controller
+    def response(text, status = 200, headers = {})
+      raise “Already responded!” if @response
+      a = [text].flatten
+      @response = Rack::Response.new(a, status, headers)
+    end</p>
+
+<pre><code>def get_response  # Only for Rulers
+  @response
+end
+
+def render_response(*args)
+  response(render(*args))
+end   end end
+</code></pre>
+
+<h1 id="rulerslibrulersrb">rulers/lib/rulers.rb</h1>
+<p>module Ruler
+  class Application
+    def call(env)   # Redefine
+      if env[‘PATH_INFO’] == ‘/favicon.ico’
+        return [404,
+          {‘Content-Type’ =&gt; ‘text/html’}, []]
+      end</p>
+
+<pre><code>  klass, act = get_controller_and_action(env)
+  controller = klass.new(env)
+  text = controller.send(act)
+  if controller.get_response
+    # ensure the code after render_response works
+    st, hd, rs = controller.get_response.to_a
+    [st, hd, [rs.body].flatten]
+  else
+    # without explicitly render_response in action,
+    # you can add auto render here
+    [200, {'Content-Type' =&gt; 'text/html'}, [text]]
+  end
+end   end end ```
+</code></pre>
+
+<p>In Rails, the return value from the controller is ignored. Instead if you donʼt call render (Railsʼ equivalent of render_response), it will automatically call it for you with the same controller name, and the viewʼs name set to the same name as your action.</p>
+
+<p>Rails doesnʼt return the string when you call “render” (well, usually - some calls to render do!). Instead, it keeps track of the fact that you called render and what you called it on. Then it gives you an error if you call it again, or uses the defaults if you get to the end of a controller action without calling it</p>
+
+<p><strong>Instance Variables</strong></p>
+
+<p>The Rails answer is to set instance variables in the controller, then use them in the view. Try creating a new view object, mostly just to use Erubis to evaluate the view file. Then, make it easy to pass in a hash of instance variables which youʼll set on the view object before doing the evaluation.</p>
+
+<p><code>ruby
+# rulers/lib/rulers/controller.rb
+module Rulers
+  class Controller
+    def render(view_name, locals = {})
+      filename = File.join 'app', 'views', controller_name, "#{view_name}.html.erb"
+      ivars = instance_variables.reduce({}) {|ha, iv| ha[iv] = instance_variable_get(iv); ha }
+      Rulers::View.new(filename, ivars, locals).result
+    end
+  end
+end
+</code></p>
+
+<p><strong>In Rails</strong></p>
+
+<p>Rails (more specifically, ActionPack) uses Rack in a very similar way, even exposing the Rack Request object with the “request” method. Especially <a href="https://github.com/rails/rails/blob/master/actionpack%2Flib%2Faction_controller%2Fmetal.rb">metal.rb </a>and metal/*.rb. “Rails Metal” is a name for the lower-level Rails which goes mostly straight through to the “bare metal” – that is, to Rack.</p>
+
+<p>You can find a lot of the Rails implementation of Rack in these directories – for instance, metal/redirecting.rb is the implementation of the redirect_to() helper which returns status 302 (redirect) and a location to Rack. You could steal the code and add a redirect_to to Rulers, if you wanted.</p>
+
+<p>You can also find things like forgery (CSRF) protection, multiple renderers (i.e. Erb vs Haml), forcing SSL if requested and cookies in this directory. Some are complex, while others call to Rack very simply and you could move right over to Rulers.</p>
+
+<h2 id="the-littlest-orm">7. The Littlest ORM</h2>
+
+<p>migration</p>
+
+<p><code>ruby
+# best_quotes/mini_migration.rb
+require "sqlite3"
+conn = SQLite3::Database.new "test.db"
+conn.execute &lt;&lt;SQL
+create table my_table (
+  id INTEGER PRIMARY KEY,
+  posted INTEGER,
+  title VARCHAR(30),
+  body VARCHAR(32000));
+SQL
+</code></p>
+
+<p>sqlite model</p>
+
+<p>```ruby
+# rulers/lib/rulers/sqlite_model.rb
+require “sqlite3”
+require “rulers/util”</p>
+
+<p>DB = SQLite3::Database.new “test.db”</p>
+
+<p>module Rulers
+  module Model
+    class SQLite</p>
+
+<pre><code>  class &lt;&lt; self
+    def table
+      Rulers.to_underscore name
+    end
+
+    def schema
+      return @schema if @schema
+      @schema = {}
+      DB.table_info(table) do |row|
+        @schema[ row['name'] ] = row['type']
+      end
+      @schema
+    end
+
+    def to_sql(val)
+      case val
+      when Numeric
+        val.to_s
+      when String
+        "'#{val}'"
+      else
+        raise "Can't change #{val.class} to SQL!"
+      end
+    end
+
+    def create(values)
+      values.delete 'id'
+      keys = schema.keys - ['id']
+      vals = keys.map do |key|
+        values[key] ? to_sql(values[key]) : 'null'
+      end
+
+      DB.execute &lt;&lt;SQL
+        INSERT INTO #{table} (#{keys.join(',')})
+        VALUES (#{vals.join(',')}); SQL
+
+      data = Hash[keys.zip(vals)]
+      sql = "SELECT last_insert_rowid();"
+      data['id'] = DB.execute(sql)[0][0]
+      self.new data
+    end
+
+    def count
+      DB.execute(&lt;&lt;SQL)[0][0]
+        SELECT COUNT(*) FROM #{table} SQL
+    end
+
+    def find(id)
+      row = DB.execute &lt;&lt;SQL
+        SELECT #{schema.keys.join(',')} from #{table} where id=#{id} SQL
+      data = Hash[ schema.keys.zip row[0] ]
+      self.new data
+    end
+  end
+
+  def initialize(data = nil)
+    @hash = data
+  end
+
+  def [](name)
+    @hash[name.to_s]
+  end
+
+  def []=(name, value)
+    @hash[name.to_s] = value
+  end
+
+  def save!
+    unless @hash['id']
+      self.class.create
+      return true
+    end
+
+    fields = @hash.map do |k,v|
+      "#{k}=#{self.class.to_sql(v)}"
+    end.join(',')
+
+    DB.execute &lt;&lt;SQL
+      UPDATE #{self.class.table}
+      SET #{fields}
+      WHERE id="#{@hash['id']}" SQL
+    true
+  end
+
+  def save
+    save! rescue false
+  end
+
+end   end end ```
+</code></pre>
+
+<p>You can add a method to the SQLite model that takes a column name and a type, and then when saving and loading that column, does something type-dependent to it, like the boolean or JSON fields above.</p>
+
+<p>ActiveRecord allows both ways – you can research the <code>before_save</code> and <code>after_initialize</code> callbacks for how to do it on save/ load.</p>
+
+<p><strong>In Rails</strong></p>
+
+<p>ActiveRecord contains mappings of operations like our gem, but also migrations, cross-database compatibility and a huge amount of optimization and general complexity. And thatʼs even though they use the ARel gem for most of the heavy lifting!</p>
+
+<h2 id="rack-middleware">Rack Middleware</h2>
+
+<p>With any Ruby web framework, you can modify how it works by adding Rack components around it. I like thinking of them as pancakes, because Rack lets you build your framework and your application like a stack of pancakes.</p>
+
+<p><strong>Built-in middlewares</strong></p>
+
+<ul>
+  <li><strong>Rack::Auth::Basic</strong> - HTTP Basic authentication.</li>
+  <li><strong>Rack::Auth::Digest</strong> - HTTP Digest authentication.</li>
+  <li><strong>Rack::Cascade</strong> - Pass a request to a series of Rack apps, and use the first request that comes back as good. Itʼs a way to mount one Rack app “on top of” another (or many).</li>
+  <li><strong>Rack::Chunked</strong> - A Rack interface to HTTP Chunked transfer.</li>
+  <li><strong>Rack::CommonLogger</strong> - Request logging.</li>
+  <li><strong>Rack::ConditionalGet</strong> - Implement HTTP If-None-Match and If- Modified-Since with ETags and dates.</li>
+  <li><strong>Rack::Config</strong> - Call a given block before each request.</li>
+  <li><strong>Rack::ContentLength</strong> - Set Content-Length automatically.</li>
+  <li><strong>Rack::ContentType</strong> - Try to guess Content-Type and set it. Rack::Deflater - Compress the response with gzip/deflate.</li>
+  <li><strong>Rack::Directory</strong> - Add Apache-style directory listings. This is an endpoint not an intermediate layer, so use it with “run.”</li>
+  <li><strong>Rack::ETag</strong> - Generate ETags from MD5s of the content.</li>
+  <li><strong>Rack::Head</strong> - Remove response body for HEAD requests.</li>
+  <li><strong>Rack::Lint</strong> - Check your responses for correctness.</li>
+  <li><strong>Rack::Lock</strong> - Only allow one thread in at once.</li>
+  <li><strong>Rack::Reloader</strong> - Reload your app when files change.</li>
+  <li><strong>Rack::Runtime</strong> - Times the request, sets X-Runtime in response.</li>
+  <li><strong>Rack::Sendfile</strong> - Use the X-Sendfile header to ask your web server to send a file much faster than Ruby can.</li>
+  <li><strong>Rack::ShowExceptions</strong> - Show a nice exception page if something breaks.</li>
+  <li><strong>Rack::ShowStatus</strong> - Show a pretty page if the result is empty.</li>
+  <li><strong>Rack::Static</strong> - Serve from certain directories as static files instead
+of calling your framework.</li>
+  <li><strong>Rack::URLMap</strong> - Route different directories to different apps or different stacks. You can also use this with a “map” block in config.ru.</li>
+</ul>
+
+<p>Rack::URLMap is a way to tell Rack what paths go to what Rack apps - and if thereʼs could be two that match, the longer path always takes precedence.</p>
+
+<p>Rack::ContentType is to set the default HTML content type for everything. Since itʼs at the top, outside the blocks, it applies to all the blocks.</p>
+
+<p>The lobster, by the way, is a simple test app built into Rack. Youʼll see it as an example in many places.</p>
+
+<p><strong>Thrid-party middlewares</strong></p>
+
+<ul>
+  <li><a href="https://github.com/rack/rack-contrib">rack-contrib</a></li>
+  <li><a href="https://github.com/rack/rack/wiki/List-of-Middleware">middlewares listed in rack wiki</a></li>
+</ul>
+
+<p><strong>In Rails</strong></p>
+
+<p>The primary Rack application object in Rails is called ActionController::Dispatcher.</p>
+
+<p>ActionController::Base allows you to get mini-Rack-apps for each controller action because it inherits from Metal, the basic Rails Rack class. So you can call MyController.action(:myaction) and get a Rack app for that action in your controller.</p>
+
+<p><strong>Calling order of Rack middlewares</strong></p>
+
+<p>```ruby
+class Foo
+  def initialize(app, arg = ‘’)
+    puts ‘–&gt; Foo#init’
+    @app = app
+    @arg = arg
+    puts ‘–&gt; Foo#initend’
+  end</p>
+
+<p>def call(env)
+    puts ‘–&gt; Foo#call’
+    status, headers, content = @app.call(env)
+    content[0] += “#{@arg}”
+    puts ‘–&gt; Foo#callend’
+    [ status, headers, content ]
+  end
+end</p>
+
+<p>class Bar
+  def initialize(app, arg = ‘’)
+    puts ‘–&gt; Bar#init’
+    @app = app
+    @arg = arg
+    puts ‘–&gt; Bar#initend’
+  end</p>
+
+<p>def call(env)
+    puts ‘–&gt; Bar#call’
+    status, headers, content = @app.call(env)
+    content[0] += “#{@arg}”
+    puts ‘–&gt; Bar#callend’
+    [ status, headers, content ]
+  end
+end</p>
+
+<p>use Foo, ‘, foo’
+use Bar, ‘, bar’</p>
+
+<p>run proc {
+  puts ‘–&gt; main#call’
+  [200, {‘Content-Type’ =&gt; ‘text/html’}, [‘Hello, world’]]
+}</p>
+
+<h1 id="rackup">$ rackup</h1>
+<p># –&gt; Bar#init
+# –&gt; Bar#initend
+# –&gt; Foo#init
+# –&gt; Foo#initend
+# Thin web server (v1.6.1 codename Death Proof)
+# Maximum connections set to 1024
+# Listening on 0.0.0.0:9292, CTRL+C to stop
+#
+# –&gt; Foo#call
+# –&gt; Bar#call
+# –&gt; main#call
+# –&gt; Bar#callend
+# –&gt; Foo#callend
+# 127.0.0.1 - wendi [23/Sep/2014 15:56:20] “GET / HTTP/1.1” 200 - 0.0013
+```</p>
+
+<p>Other samples:</p>
+
+<ul>
+  <li><a href="https://gist.github.com/ifyouseewendy/15dd511d2d939e432068#file-config-lobster-ru">lobster</a></li>
+  <li><a href="https://gist.github.com/ifyouseewendy/15dd511d2d939e432068#file-config-auth-ru">auth</a></li>
+  <li><a href="https://gist.github.com/ifyouseewendy/15dd511d2d939e432068#file-config-benchmark-ru">benchmark</a></li>
+</ul>
+
+<h2 id="real-routing">9. Real Routing</h2>
+
+<p>Rails 3 takes this a half-step farther and makes every action on every controller a full-on Rack app that you can extract and use.</p>
+
+<p>Add RouteObject class.</p>
+
+<p>```ruby
+class RouteObject
+  def initialize
+    @rules = []
+  end</p>
+
+<p># save routing rules
+  def match(url, *args)
+    options = {}
+    options = args.pop if args[-1].is_a?(Hash)
+    options[:default] ||= {}</p>
+
+<pre><code>dest = nil
+dest = args.pop if args.size &gt; 0
+raise 'Too many args!' if args.size &gt; 0
+
+parts = url.split('/')
+parts.select!{|p| !p.empty? }
+
+vars = []
+regexp_parts = parts.map do |part|
+  if part[0] == ':'
+    vars &lt;&lt; part[1..-1]
+    "([a-zA-Z0-9_]+)"
+  elsif part[0] == '*'
+    vars &lt;&lt; part[1..-1]
+    "(.*)"
+  else
+    part
+  end
+end
+
+regexp = regexp_parts.join('/')
+@rules.push({
+  :regexp =&gt; Regexp.new("^/#{regexp}$"),
+  :vars =&gt; vars,
+  :dest =&gt; dest,
+  :options =&gt; options
+})   end
+</code></pre>
+
+<p># match rules to url and route to specific controller action.
+  # 
+  # 1. the router just applies them in order – if more than
+  #    one rule matches, the first one wins.
+  # 2. the second argument can be a Rack application, 
+  #    which Rails then calls.
+  def check_url(url)
+    @rules.each do |r|
+      m = r[:regexp].match(url)</p>
+
+<pre><code>  if m
+    options = r[:options]
+    params = options[:default].dup
+
+    r[:vars].each_with_index do |v, i|
+      params[v] = m.captures[i]
+    end
+
+    if r[:dest]
+      return get_dest(r[:dest], params)
+    else
+      controller = params['controller']
+      action = params['action']
+      return get_dest("#{controller}##{action}", params)
+    end
+  end
+end
+
+nil   end
+</code></pre>
+
+<p>def get_dest(dest, routing_params = {})
+    return dest if dest.respond_to?(:call)</p>
+
+<pre><code>if dest =~ /^([^#]+)#([^#]+)$/
+  name = $1.capitalize
+  cont = Object.const_get("#{name}Controller")
+  return cont.action($2, routing_params)
+end
+
+raise "No destination: #{dest.inspect}!"   end end ```
+</code></pre>
+
+<p>Define <code>route</code> to save rules in an instance of RouteObject, and use <code>get_rack_app</code> to route to controller actions. </p>
+
+<p>```ruby
+module Rulers
+  class Application
+    def route(&amp;block)
+      @route_obj ||= RouteObject.new
+      @route_obj.instance_eval(&amp;block)
+    end</p>
+
+<pre><code>def get_rack_app(env)
+  raise 'No routes!' unless @route_obj
+  @route_obj.check_url env['PATH_INFO']
+end   end end ```
+</code></pre>
+
+<p>Update Rulers::Controller to use <code>self.action</code> to initialize rack app, and <code>dispatch</code> to specific action.</p>
+
+<p>```ruby
+# rulers/lib/rulers/controller.rb
+module Rulers
+  class Controller
+    include Rulers::Model</p>
+
+<pre><code>def initialize(env)
+  @env = env
+  @routing_params = {}
+end
+
+def env
+  @env
+end
+
+def self.action(act, p = {})
+  proc {|e| self.new(e).dispatch(act, p) }
+end
+
+def dispatch(action, routing_params = {})
+  @routing_params = routing_params
+
+  self.send(action)
+  render_response action.to_sym unless get_response
+  st, hd, rs = get_response.to_a
+  [st, hd, [rs.body].flatten]
+end
+
+def params
+  request.params.merge @routing_params
+end
+</code></pre>
+
+<p>end
+end
+```</p>
+
+<p><strong>In Rails</strong></p>
+
+<p>Rails connects lots of tiny Rack applications into a single overall application. Itʼs a complicated, multi-layered construction.</p>
+
+<p>Each Rails controller keeps track of a mini-Rack stack of middleware which can be specified per-action like before_filters.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Inside ActiveSupport Notifications]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2014/06/03/inside-activesupport-notifications/"/>
+    <updated>2014-06-03T00:45:35+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2014/06/03/inside-activesupport-notifications</id>
+    <content type="html"><![CDATA[<ul>
+  <li>Read API doc first, <a href="ActiveSupport::Notifications">ActiveSupport::Notifications</a>.</li>
+  <li>About hooks inside Rails for instrumentation, check the edge doc on <a href="http://edgeguides.rubyonrails.org/active_support_instrumentation.html">Active Support Instrumentation</a>.</li>
+</ul>
+
+<p>Then let’s read through the <strong>ActiveSupport::Notifications</strong> source code.</p>
+
+<h2 id="activesupportnotifications">ActiveSupport::Notifications</h2>
+
+<h3 id="file-name">File name</h3>
 
 <p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications.rb">activesupport/lib/active_support/notifications.rb</a></p>
 
-<h3>Dependency</h3>
+<h3 id="dependency">Dependency</h3>
 
 <ul>
-<li><code>active_support/notifications/instrumenter</code></li>
-<li><code>active_support/notifications/fanout</code></li>
-<li><code>active_support/per_thread_registry</code></li>
+  <li><code>active_support/notifications/instrumenter</code></li>
+  <li><code>active_support/notifications/fanout</code></li>
+  <li><code>active_support/per_thread_registry</code></li>
 </ul>
 
-<h3>Brief</h3>
+<h3 id="brief">Brief</h3>
 
 <ol>
-<li>A class attribute accessor <code>notifier</code>, which is initialized by <code>Fanout.new</code>.</li>
-<li>Several class methods as the interfaces exposed, which encapsulate <code>notifer</code> to do the real work.</li>
-<li>A class named <strong>InstrumentationRegistry</strong>.</li>
+  <li>A class attribute accessor <code>notifier</code>, which is initialized by <code>Fanout.new</code>.</li>
+  <li>Several class methods as the interfaces exposed, which encapsulate <code>notifer</code> to do the real work.</li>
+  <li>A class named <strong>InstrumentationRegistry</strong>.</li>
 </ol>
 
-<h3>Specification</h3>
+<h3 id="specification">Specification</h3>
 
-<h4>Class Variables</h4>
+<h4 id="class-variables">Class Variables</h4>
 
 <p><code>self.notifier = Fanout.new</code></p>
 
-<h4>Class Methods</h4>
+<h4 id="class-methods">Class Methods</h4>
 
 <ul>
-<li><p><code>subscribe</code>, <code>unsubscribe</code> and <code>publish</code> all delegate to <code>notifier</code>, like</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-  <span class="n">notifier</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-<span class="k">end</span>
-</code></pre></div></li>
-<li><p><code>subscribed(callback, *args, &amp;block)</code>, <code>subscribe</code> while <code>block</code> is running, and <code>unsubscribe</code> while running is over.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">subscribed</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-  <span class="n">subscriber</span> <span class="o">=</span> <span class="n">subscribe</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">callback</span><span class="p">)</span>
-  <span class="k">yield</span>
-<span class="k">ensure</span>
-  <span class="n">unsubscribe</span><span class="p">(</span><span class="n">subscriber</span><span class="p">)</span>
-<span class="k">end</span>
-</code></pre></div></li>
-<li><p><code>instrument(name, payload = {})</code></p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span> <span class="o">=</span> <span class="p">{})</span>
-  <span class="k">if</span> <span class="n">notifier</span><span class="o">.</span><span class="n">listening?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-    <span class="n">instrumenter</span><span class="o">.</span><span class="n">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span> <span class="p">{</span> <span class="k">yield</span> <span class="n">payload</span> <span class="k">if</span> <span class="nb">block_given?</span> <span class="p">}</span>
-  <span class="k">else</span>
-    <span class="k">yield</span> <span class="n">payload</span> <span class="k">if</span> <span class="nb">block_given?</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></li>
+  <li>
+    <p><code>subscribe</code>, <code>unsubscribe</code> and <code>publish</code> all delegate to <code>notifier</code>, like</p>
+
+    <p><code>ruby
+  def subscribe(*args, &amp;block)
+    notifier.subscribe(*args, &amp;block)
+  end
+ </code></p>
+  </li>
+  <li>
+    <p><code>subscribed(callback, *args, &amp;block)</code>, <code>subscribe</code> while <code>block</code> is running, and <code>unsubscribe</code> while running is over.</p>
+
+    <p><code>ruby
+  def subscribed(callback, *args, &amp;block)
+    subscriber = subscribe(*args, &amp;callback)
+    yield
+  ensure
+    unsubscribe(subscriber)
+  end
+ </code></p>
+  </li>
+  <li>
+    <p><code>instrument(name, payload = {})</code></p>
+
+    <p><code>ruby
+  def instrument(name, payload = {})
+    if notifier.listening?(name)
+      instrumenter.instrument(name, payload) { yield payload if block_given? }
+    else
+      yield payload if block_given?
+    end
+  end
+ </code></p>
+  </li>
 </ul>
 
 <p><code>notifier.listening?(name)</code> is checking if there are subscribers listening on the event name.</p>
 
-<p><strong><em>And what&#39;s an instrumenter?</em></strong></p>
+<p><strong><em>And what’s an instrumenter?</em></strong></p>
 
 <p>Check out the <strong>ActiveSupport::Notifications::Instrumenter</strong> below or skip this part temporally.</p>
 
-<p>Let&#39;s talk about <strong>InstrumentationRegistry</strong> first, it is a sub-class defined in <strong>ActiveSupport::Notifications</strong>. It extends <strong>ActiveSupport::PerThreadRegistry</strong> to keep thread safe, and defines <code>#instrumenter_for</code> used for recording <strong>Instrumenter</strong> instance for specific <code>notifier</code>.</p>
-<div class="highlight"><pre><code class="ruby"><span class="c1"># This class is a registry which holds all of the +Instrumenter+ objects</span>
-<span class="c1"># in a particular thread local. To access the +Instrumenter+ object for a</span>
-<span class="c1"># particular +notifier+, you can call the following method:</span>
-<span class="c1">#</span>
-<span class="c1">#   InstrumentationRegistry.instrumenter_for(notifier)</span>
-<span class="c1">#</span>
-<span class="c1"># The instrumenters for multiple notifiers are held in a single instance of</span>
-<span class="c1"># this class.</span>
-<span class="k">class</span> <span class="nc">InstrumentationRegistry</span> <span class="c1"># :nodoc:</span>
-  <span class="kp">extend</span> <span class="ss">ActiveSupport</span><span class="p">:</span><span class="ss">:PerThreadRegistry</span>
+<p>Let’s talk about <strong>InstrumentationRegistry</strong> first, it is a sub-class defined in <strong>ActiveSupport::Notifications</strong>. It extends <strong>ActiveSupport::PerThreadRegistry</strong> to keep thread safe, and defines <code>#instrumenter_for</code> used for recording <strong>Instrumenter</strong> instance for specific <code>notifier</code>.</p>
 
-  <span class="k">def</span> <span class="nf">initialize</span>
-    <span class="vi">@registry</span> <span class="o">=</span> <span class="p">{}</span>
-  <span class="k">end</span>
+<p>```ruby
+# This class is a registry which holds all of the +Instrumenter+ objects
+# in a particular thread local. To access the +Instrumenter+ object for a
+# particular +notifier+, you can call the following method:
+#
+#   InstrumentationRegistry.instrumenter_for(notifier)
+#
+# The instrumenters for multiple notifiers are held in a single instance of
+# this class.
+class InstrumentationRegistry # :nodoc:
+  extend ActiveSupport::PerThreadRegistry</p>
 
-  <span class="k">def</span> <span class="nf">instrumenter_for</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
-    <span class="vi">@registry</span><span class="o">[</span><span class="n">notifier</span><span class="o">]</span> <span class="o">||=</span> <span class="no">Instrumenter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
+<p>def initialize
+    @registry = {}
+  end</p>
+
+<p>def instrumenter_for(notifier)
+    @registry[notifier] ||= Instrumenter.new(notifier)
+  end
+end
+```</p>
+
 <p>Then look back in <strong>ActiveSupport::Notifications</strong> for its usage:</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">instrumenter</span>
-  <span class="no">InstrumentationRegistry</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">instrumenter_for</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
-<span class="k">end</span>
-</code></pre></div>
+
+<p><code>ruby
+def instrumenter
+  InstrumentationRegistry.instance.instrumenter_for(notifier)
+end
+</code></p>
+
 <p>Extending <strong>ActiveSupport::PerThreadRegistry</strong> gives <strong>InstrumentationRegistry</strong> the <code>instance</code> class methods, returns a thread local <strong>InstrumentationRegistry</strong> instance. Check the <strong>ActiveSupport::PerThreadRegistry</strong> <a href="http://api.rubyonrails.org/classes/ActiveSupport/PerThreadRegistry.html">api</a> for details.</p>
 
-<h2>ActiveSupport::Notifications::Fanout</h2>
+<h2 id="activesupportnotificationsfanout">ActiveSupport::Notifications::Fanout</h2>
 
-<h3>File name</h3>
+<h3 id="file-name-1">File name</h3>
 
 <p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications%2Ffanout.rb">activesupport/lib/active_support/notifications/fanout.rb</a></p>
 
-<h3>Dependency</h3>
+<h3 id="dependency-1">Dependency</h3>
 
 <ul>
-<li><code>mutex_m</code>, a Ruby Std-lib module. <a href="http://www.ruby-doc.org/stdlib-2.1.2//libdoc/mutex_m/rdoc/Mutex_m.html">api</a></li>
-<li><code>thread_safe</code>, a collection of thread-safe versions of common core Ruby classes. <a href="https://github.com/headius/thread_safe">api</a></li>
+  <li><code>mutex_m</code>, a Ruby Std-lib module. <a href="http://www.ruby-doc.org/stdlib-2.1.2//libdoc/mutex_m/rdoc/Mutex_m.html">api</a></li>
+  <li><code>thread_safe</code>, a collection of thread-safe versions of common core Ruby classes. <a href="https://github.com/headius/thread_safe">api</a></li>
 </ul>
 
-<h3>Brief</h3>
+<h3 id="brief-1">Brief</h3>
 
 <p>This is a default queue implementation that ships with Notifications. It just pushes events to all registered log subscribers.</p>
 
 <p>This class is thread safe. All methods are reentrant.</p>
 
-<h3>Specification</h3>
+<h3 id="specification-1">Specification</h3>
 
-<h4>Instance Variables</h4>
+<h4 id="instance-variables">Instance Variables</h4>
 
 <p><code>@subscribers</code>, an array, records the subscribers.</p>
 
 <p><code>@listeners_for</code>, a reverse map(hash). It maps the event name to the subscribers. Initialized by <code>ThreadSafe::Cache.new</code>, <a href="https://github.com/headius/thread_safe">thread_safe</a> gem says:</p>
 
 <blockquote>
-<p><code>ThreadSafe::Cache</code> also exists, as a hash-like object, and should have
+  <p><code>ThreadSafe::Cache</code> also exists, as a hash-like object, and should have
 much better performance characteristics esp. under high concurrency than
 <code>ThreadSafe::Hash</code>. However, <code>ThreadSafe::Cache</code> is not strictly semantically
-equivalent to a ruby <code>Hash</code> -- for instance, it does not necessarily retain
+equivalent to a ruby <code>Hash</code> – for instance, it does not necessarily retain
 ordering by insertion time as <code>Hash</code> does. For most uses it should do fine
 though, and we recommend you consider <code>ThreadSafe::Cache</code> instead of
 <code>ThreadSafe::Hash</code> for your concurrency-safe hash needs. It understands some
@@ -153,254 +925,295 @@ options when created (depending on your ruby platform) that control some of the
 internals.</p>
 </blockquote>
 
-<h4>Instance Methods</h4>
+<h4 id="instance-methods">Instance Methods</h4>
 
 <ul>
-<li><p><code>subscribe(pattern = nil, block = Proc.new)</code></p>
+  <li>
+    <p><code>subscribe(pattern = nil, block = Proc.new)</code></p>
 
-<p><code>ActiveSupport::Notifications.subscribe</code> use this method on <code>notifier</code> to subscribe event name based on <code>pattern</code> and a <code>block</code> to do the instrumentation callback.</p>
+    <p><code>ActiveSupport::Notifications.subscribe</code> use this method on <code>notifier</code> to subscribe event name based on <code>pattern</code> and a <code>block</code> to do the instrumentation callback.</p>
 
-<p>It initialize a <em>subscriber</em> with <code>Subscribers.new pattern, block</code>, use <code>synchronize</code>(for thread safe) to record <em>subscriber</em> into <code>@subscribers</code>, and clear the <code>@listeners_for</code>, then returns the <em>subscriber</em>.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="n">pattern</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">,</span> <span class="n">block</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
-  <span class="n">subscriber</span> <span class="o">=</span> <span class="no">Subscribers</span><span class="o">.</span><span class="n">new</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">block</span>
-  <span class="n">synchronize</span> <span class="k">do</span>
-    <span class="vi">@subscribers</span> <span class="o">&lt;&lt;</span> <span class="n">subscriber</span>
-    <span class="vi">@listeners_for</span><span class="o">.</span><span class="n">clear</span>
-  <span class="k">end</span>
-  <span class="n">subscriber</span>
-<span class="k">end</span>
-</code></pre></div></li>
-<li><p><code>unsubscribe(subscriber)</code></p>
-<div class="highlight"><pre><code class="ruby"><span class="n">synchronize</span> <span class="k">do</span>
-  <span class="vi">@subscribers</span><span class="o">.</span><span class="n">reject!</span> <span class="p">{</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span> <span class="n">s</span><span class="o">.</span><span class="n">matches?</span><span class="p">(</span><span class="n">subscriber</span><span class="p">)</span> <span class="p">}</span>
-    <span class="vi">@listeners_for</span><span class="o">.</span><span class="n">clear</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
-<p>Note the <code>matches?</code> method on subscriber. Every subscriber object defines this method, <strong>Subscribers::Evented</strong> and <strong>Subscribers::Timed</strong> defines it like this:</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">matches?</span><span class="p">(</span><span class="n">subscriber_or_name</span><span class="p">)</span>
-  <span class="nb">self</span> <span class="o">===</span> <span class="n">subscriber_or_name</span> <span class="o">||</span>
-    <span class="vi">@pattern</span> <span class="o">&amp;&amp;</span> <span class="vi">@pattern</span> <span class="o">===</span> <span class="n">subscriber_or_name</span>
-<span class="k">end</span>
-</code></pre></div>
-<p>Unsubscribe a subscriber object or unsubscribe based on the <code>@pattern</code> matching.</p>
+    <p>It initialize a <em>subscriber</em> with <code>Subscribers.new pattern, block</code>, use <code>synchronize</code>(for thread safe) to record <em>subscriber</em> into <code>@subscribers</code>, and clear the <code>@listeners_for</code>, then returns the <em>subscriber</em>.</p>
 
-<p><strong>Subscribers::AllMessages</strong> alias <code>matches?</code> to <code>===</code>, just do the type matching.</p></li>
-<li><p><code>start</code>, <code>finish</code>, <code>publish(name, id, payload)</code></p>
+    <p><code>ruby
+  def subscribe(pattern = nil, block = Proc.new)
+    subscriber = Subscribers.new pattern, block
+    synchronize do
+      @subscribers &lt;&lt; subscriber
+      @listeners_for.clear
+    end
+    subscriber
+  end
+ </code></p>
+  </li>
+  <li>
+    <p><code>unsubscribe(subscriber)</code></p>
 
-<p>just delegates to subscribers based on the event name.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
-  <span class="n">listeners_for</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span> <span class="n">s</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span> <span class="p">}</span>
-<span class="k">end</span>
-</code></pre></div></li>
-<li><p><code>listeners_for(name)</code></p>
+    <p><code>ruby
+  synchronize do
+    @subscribers.reject! { |s| s.matches?(subscriber) }
+      @listeners_for.clear
+    end
+  end
+ </code></p>
 
-<p>a helper method, equals fetch or set on <code>@listeners_for</code>, returns the subscribers based on the event name.</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">listeners_for</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="c1"># this is correctly done double-checked locking (ThreadSafe::Cache&#39;s lookups have volatile semantics)</span>
-  <span class="vi">@listeners_for</span><span class="o">[</span><span class="nb">name</span><span class="o">]</span> <span class="o">||</span> <span class="n">synchronize</span> <span class="k">do</span>
-    <span class="c1"># use synchronisation when accessing @subscribers</span>
-    <span class="vi">@listeners_for</span><span class="o">[</span><span class="nb">name</span><span class="o">]</span> <span class="o">||=</span> <span class="vi">@subscribers</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span> <span class="n">s</span><span class="o">.</span><span class="n">subscribed_to?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="p">}</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></li>
-<li><p><code>listening?(name)</code></p></li>
+    <p>Note the <code>matches?</code> method on subscriber. Every subscriber object defines this method, <strong>Subscribers::Evented</strong> and <strong>Subscribers::Timed</strong> defines it like this:</p>
+
+    <p><code>ruby
+  def matches?(subscriber_or_name)
+    self === subscriber_or_name ||
+      @pattern &amp;&amp; @pattern === subscriber_or_name
+  end
+ </code></p>
+
+    <p>Unsubscribe a subscriber object or unsubscribe based on the <code>@pattern</code> matching.</p>
+
+    <p><strong>Subscribers::AllMessages</strong> alias <code>matches?</code> to <code>===</code>, just do the type matching.</p>
+  </li>
+  <li>
+    <p><code>start</code>, <code>finish</code>, <code>publish(name, id, payload)</code></p>
+
+    <p>just delegates to subscribers based on the event name.</p>
+
+    <p><code>ruby
+  def start(name, id, payload)
+    listeners_for(name).each { |s| s.start(name, id, payload) }
+  end
+ </code></p>
+  </li>
+  <li>
+    <p><code>listeners_for(name)</code></p>
+
+    <p>a helper method, equals fetch or set on <code>@listeners_for</code>, returns the subscribers based on the event name.</p>
+
+    <p><code>ruby
+  def listeners_for(name)
+    # this is correctly done double-checked locking (ThreadSafe::Cache's lookups have volatile semantics)
+    @listeners_for[name] || synchronize do
+      # use synchronisation when accessing @subscribers
+      @listeners_for[name] ||= @subscribers.select { |s| s.subscribed_to?(name) }
+    end
+  end
+ </code></p>
+  </li>
+  <li>
+    <p><code>listening?(name)</code></p>
+
+    <p>a helper method, checks if <code>listeners_for(name).any?</code>.</p>
+  </li>
+  <li>
+    <p><code>wait</code></p>
+
+    <p>as this is a sync queue, this method is left blank.</p>
+  </li>
 </ul>
 
-<p>a helper method, checks if <code>listeners_for(name).any?</code>.</p>
+<h4 id="modules">Modules</h4>
 
 <ul>
-<li><code>wait</code></li>
+  <li>
+    <p><strong>Subscribers</strong></p>
+
+    <p><strong>Subscribers</strong> defines a class method <code>new</code> and three sub-classes: <strong>Evented</strong>, <strong>Timed</strong>, and <strong>AllMessages</strong>. <strong>Timed</strong> inheritates <strong>Evented</strong>, and <strong>AllMessages</strong> encapsulates an <strong>Evented</strong> object.</p>
+
+    <p>About <code>self.new(pattern, listener)</code>, remember where does <code>Subscribers.new</code> get called?</p>
+
+    <p>It’s in <code>Fanout#subscribe(pattern = nil, block = Proc.new)</code>. If the <code>block</code> can duck-typing <code>:start</code> and <code>:finish</code>, it’ll initialize a subscriber by <strong>Evented</strong> with <code>pattern</code> and <code>block</code> recorded, otherwise by <strong>Timed</strong>. And if <code>pattern</code> is nil, which means calling <code>ActiveSupport::Notifications.subscribe</code> without event name, <code>Subscribers.new</code> returns an <strong>AllMessages</strong> object which initialized with a subscriber defined above. Otherwise(if <code>pattern</code> presents) returns a subscriber directly.</p>
+
+    <p>Normally we use <code>ActiveSupport::Notifications.subscribe</code> in two ways:</p>
+
+    <ul>
+      <li>subscribe all events, which means no <code>pattern</code> passed, and a <strong>Subscribers::AllMessages</strong> instance saved.</li>
+      <li>the <code>block</code> we pass to <code>ActiveSupport::Notifications.subscribe</code> won’t respond to <code>start</code> and <code>finish</code>, which means a <strong>Subscribers::Timed</strong> instance saved.</li>
+    </ul>
+
+    <p>These two ways have no conflicts: if passing a nil pattern and a block, it just returns an <strong>Subscribers::AllMessages</strong> instance which has a <strong>Subscribers::Timed</strong> instance wrapped.</p>
+
+    <p>So let’s check it out what does a <strong>Subscribers::Timed</strong> instance respond?</p>
+
+    <p>```ruby
+  def start(name, id, payload)
+    timestack = Thread.current[:_timestack] ||= []
+    timestack.push Time.now
+  end</p>
+
+    <p>def finish(name, id, payload)
+    timestack = Thread.current[:_timestack]
+    started = timestack.pop
+    @delegate.call(name, started, Time.now, id, payload)
+  end</p>
+
+    <p>def publish(name, *args)
+    @delegate.call name, *args
+  end</p>
+
+    <p>def subscribed_to?(name)
+    @pattern === name.to_s
+  end</p>
+
+    <p>def matches?(subscriber_or_name)
+    self === subscriber_or_name ||
+      @pattern &amp;&amp; @pattern === subscriber_or_name
+  end
+  ```</p>
+  </li>
 </ul>
 
-<p>as this is a sync queue, this method is left blank.</p>
+<h2 id="activesupportnotificationsinstrumenter">ActiveSupport::Notifications::Instrumenter</h2>
 
-<h4>Modules</h4>
-
-<ul>
-<li><p><strong>Subscribers</strong></p>
-
-<p><strong>Subscribers</strong> defines a class method <code>new</code> and three sub-classes: <strong>Evented</strong>, <strong>Timed</strong>, and <strong>AllMessages</strong>. <strong>Timed</strong> inheritates <strong>Evented</strong>, and <strong>AllMessages</strong> encapsulates an <strong>Evented</strong> object.</p>
-
-<p>About <code>self.new(pattern, listener)</code>, remember where does <code>Subscribers.new</code> get called?</p>
-
-<p>It&#39;s in <code>Fanout#subscribe(pattern = nil, block = Proc.new)</code>. If the <code>block</code> can duck-typing <code>:start</code> and <code>:finish</code>, it&#39;ll initialize a subscriber by <strong>Evented</strong> with <code>pattern</code> and <code>block</code> recorded, otherwise by <strong>Timed</strong>. And if <code>pattern</code> is nil, which means calling <code>ActiveSupport::Notifications.subscribe</code> without event name, <code>Subscribers.new</code> returns an <strong>AllMessages</strong> object which initialized with a subscriber defined above. Otherwise(if <code>pattern</code> presents) returns a subscriber directly.</p>
-
-<p>Normally we use <code>ActiveSupport::Notifications.subscribe</code> in two ways:</p>
-
-<ul>
-<li>subscribe all events, which means no <code>pattern</code> passed, and a <strong>Subscribers::AllMessages</strong> instance saved.</li>
-<li>the <code>block</code> we pass to <code>ActiveSupport::Notifications.subscribe</code> won&#39;t respond to <code>start</code> and <code>finish</code>, which means a <strong>Subscribers::Timed</strong> instance saved.</li>
-</ul>
-
-<p>These two ways have no conflicts: if passing a nil pattern and a block, it just returns an <strong>Subscribers::AllMessages</strong> instance which has a <strong>Subscribers::Timed</strong> instance wrapped.</p>
-
-<p>So let&#39;s check it out what does a <strong>Subscribers::Timed</strong> instance respond?</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
-  <span class="n">timestack</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">current</span><span class="o">[</span><span class="ss">:_timestack</span><span class="o">]</span> <span class="o">||=</span> <span class="o">[]</span>
-  <span class="n">timestack</span><span class="o">.</span><span class="n">push</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
-<span class="k">end</span>
-
-<span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
-  <span class="n">timestack</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">current</span><span class="o">[</span><span class="ss">:_timestack</span><span class="o">]</span>
-  <span class="n">started</span> <span class="o">=</span> <span class="n">timestack</span><span class="o">.</span><span class="n">pop</span>
-  <span class="vi">@delegate</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">started</span><span class="p">,</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
-<span class="k">end</span>
-
-<span class="k">def</span> <span class="nf">publish</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
-  <span class="vi">@delegate</span><span class="o">.</span><span class="n">call</span> <span class="nb">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span>
-<span class="k">end</span>
-
-<span class="k">def</span> <span class="nf">subscribed_to?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="vi">@pattern</span> <span class="o">===</span> <span class="nb">name</span><span class="o">.</span><span class="n">to_s</span>
-<span class="k">end</span>
-
-<span class="k">def</span> <span class="nf">matches?</span><span class="p">(</span><span class="n">subscriber_or_name</span><span class="p">)</span>
-  <span class="nb">self</span> <span class="o">===</span> <span class="n">subscriber_or_name</span> <span class="o">||</span>
-    <span class="vi">@pattern</span> <span class="o">&amp;&amp;</span> <span class="vi">@pattern</span> <span class="o">===</span> <span class="n">subscriber_or_name</span>
-<span class="k">end</span>
-</code></pre></div></li>
-</ul>
-
-<h2>ActiveSupport::Notifications::Instrumenter</h2>
-
-<h3>File name</h3>
+<h3 id="file-name-2">File name</h3>
 
 <p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications%2Finstrumenter.rb">activesupport/lib/active_support/notifications/instrumenter.rb</a></p>
 
-<h3>Dependency</h3>
+<h3 id="dependency-2">Dependency</h3>
 
 <p><code>securerandom</code>, <a href="http://ruby-doc.org/stdlib-2.1.0/libdoc/securerandom/rdoc/SecureRandom.html">api</a></p>
 
-<h3>Brief</h3>
+<h3 id="brief-2">Brief</h3>
 
-<h3>Specification</h3>
+<h3 id="specification-2">Specification</h3>
 
-<h4>Instance Variables</h4>
+<h4 id="instance-variables-1">Instance Variables</h4>
 
 <p><code>@id</code>, with an <code>attr_reader</code>, generated by <code>SecureRandom.hex(10)</code>.</p>
 
 <p><code>@notifier</code>, records the <strong>Fanout</strong> instance.</p>
 
-<h4>Instance Methods</h4>
+<h4 id="instance-methods-1">Instance Methods</h4>
 
 <ul>
-<li><p><code>start(name, payload)</code>, <code>finish(name, payload)</code></p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
-  <span class="vi">@notifier</span><span class="o">.</span><span class="n">start</span> <span class="nb">name</span><span class="p">,</span> <span class="vi">@id</span><span class="p">,</span> <span class="n">payload</span>
-<span class="k">end</span>
+  <li>
+    <p><code>start(name, payload)</code>, <code>finish(name, payload)</code></p>
 
-<span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
-  <span class="vi">@notifier</span><span class="o">.</span><span class="n">finish</span> <span class="nb">name</span><span class="p">,</span> <span class="vi">@id</span><span class="p">,</span> <span class="n">payload</span>
-<span class="k">end</span>
-</code></pre></div></li>
-<li><p><code>instrument(name, payload={})</code></p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="p">{})</span>
-  <span class="n">start</span> <span class="nb">name</span><span class="p">,</span> <span class="n">payload</span>
-  <span class="k">begin</span>
-    <span class="k">yield</span> <span class="n">payload</span>
-  <span class="k">rescue</span> <span class="no">Exception</span> <span class="o">=&gt;</span> <span class="n">e</span>
-    <span class="n">payload</span><span class="o">[</span><span class="ss">:exception</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="o">]</span>
-    <span class="k">raise</span> <span class="n">e</span>
-  <span class="k">ensure</span>
-    <span class="n">finish</span> <span class="nb">name</span><span class="p">,</span> <span class="n">payload</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
-<p>Where does this method get called? in <code>ActiveSupport::Notifications.instrument</code>:</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">instrumenter</span><span class="o">.</span><span class="n">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span> <span class="p">{</span> <span class="k">yield</span> <span class="n">payload</span> <span class="k">if</span> <span class="nb">block_given?</span> <span class="p">}</span>
-</code></pre></div>
-<p>The processing begins with <code>start</code>, ends with <code>finish</code>, instrumenter delegates it to <code>@notifier</code>, and <code>notifier</code> turns to <code>@subscribers</code> which are listening for the event name. And what does <code>@subscribers</code> do with <code>start</code> and <code>finish</code>? Normally we use subscriber objects defined by <code>Subscribers::Timed</code>, which use <code>start</code> to save a beginning timestamp, and <code>finish</code> to save an ending timestamp, and calling the block user passed.</p>
+    <p>```ruby
+  def start(name, payload)
+    @notifier.start name, @id, payload
+  end</p>
 
-<p>Attention on the control flow, the events get sent even if an error occurs in the passed-in block.</p></li>
+    <p>def finish(name, payload)
+    @notifier.finish name, @id, payload
+  end
+  ```</p>
+  </li>
+  <li>
+    <p><code>instrument(name, payload={})</code></p>
+
+    <p><code>ruby
+  def instrument(name, payload={})
+    start name, payload
+    begin
+      yield payload
+    rescue Exception =&gt; e
+      payload[:exception] = [e.class.name, e.message]
+      raise e
+    ensure
+      finish name, payload
+    end
+  end
+ </code></p>
+
+    <p>Where does this method get called? in <code>ActiveSupport::Notifications.instrument</code>:</p>
+
+    <p><code>ruby
+  instrumenter.instrument(name, payload) { yield payload if block_given? }
+ </code></p>
+
+    <p>The processing begins with <code>start</code>, ends with <code>finish</code>, instrumenter delegates it to <code>@notifier</code>, and <code>notifier</code> turns to <code>@subscribers</code> which are listening for the event name. And what does <code>@subscribers</code> do with <code>start</code> and <code>finish</code>? Normally we use subscriber objects defined by <code>Subscribers::Timed</code>, which use <code>start</code> to save a beginning timestamp, and <code>finish</code> to save an ending timestamp, and calling the block user passed.</p>
+
+    <p>Attention on the control flow, the events get sent even if an error occurs in the passed-in block.</p>
+  </li>
 </ul>
 
-<h2>ActiveSupport::Notifications::Event</h2>
+<h2 id="activesupportnotificationsevent">ActiveSupport::Notifications::Event</h2>
 
-<h3>File name</h3>
+<h3 id="file-name-3">File name</h3>
 
 <p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications%2Finstrumenter.rb">activesupport/lib/active_support/notifications/instrumenter.rb</a></p>
 
-<h3>Dependency</h3>
+<h3 id="dependency-3">Dependency</h3>
 
-<h3>Specification</h3>
+<h3 id="specification-3">Specification</h3>
 
 <p>Note that this class has a <code>@children</code> instance variable recording associations between events, and these two methods:</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">&lt;&lt;</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-  <span class="vi">@children</span> <span class="o">&lt;&lt;</span> <span class="n">event</span>
-<span class="k">end</span>
 
-<span class="k">def</span> <span class="nf">parent_of?</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-  <span class="vi">@children</span><span class="o">.</span><span class="n">include?</span> <span class="n">event</span>
-<span class="k">end</span>
-</code></pre></div>
-<h2>Main Working Flow</h2>
+<p>```ruby
+def «(event)
+  @children « event
+end</p>
 
-<h3>ActiveSupport::Notifications.subscribe</h3>
+<p>def parent_of?(event)
+  @children.include? event
+end
+```</p>
 
-<ol>
-<li><code>ActiveSupport::Notifications.subscribe(name) {|*args| }</code>.</li>
-<li>in <strong>Notficiations.subscribe</strong>, <code>notifier.subscribe(*args, &amp;block)</code>.</li>
-<li>in <strong>Fanout#subscribe</strong>, <code>subscriber = Subscribers.new pattern, block</code>, then records subscriber into <code>@subscribers</code>.</li>
-</ol>
+<h2 id="main-working-flow">Main Working Flow</h2>
 
-<h3>ActiveSupport::Notifications.instrument</h3>
+<h3 id="activesupportnotificationssubscribe">ActiveSupport::Notifications.subscribe</h3>
 
 <ol>
-<li><code>ActiveSupport::Notifications.instrument(name, payload) { }</code>.</li>
-<li>in <strong>Notficiations.instrument</strong>, <code>instrumenter.instrument(name, payload) { yield payload if block_given? }</code>.</li>
-<li>in <strong>Instrumenter#instrument</strong>, <code>@notifier.start</code>, <code>yield payload</code> and then <code>@notifier.finish</code>.</li>
-<li>in <strong>Fanout::Subscribers::Timed#start</strong>, records beginning time.</li>
-<li>in <strong>Fanout::Subscribers::Timed#finish</strong>, records ending time, and passing <code>name, start_time, end_time, id, payload</code> to the subscribers callbacks.</li>
+  <li><code>ActiveSupport::Notifications.subscribe(name) {|*args| }</code>.</li>
+  <li>in <strong>Notficiations.subscribe</strong>, <code>notifier.subscribe(*args, &amp;block)</code>.</li>
+  <li>in <strong>Fanout#subscribe</strong>, <code>subscriber = Subscribers.new pattern, block</code>, then records subscriber into <code>@subscribers</code>.</li>
 </ol>
 
-<h2>MISC</h2>
+<h3 id="activesupportnotificationsinstrument">ActiveSupport::Notifications.instrument</h3>
+
+<ol>
+  <li><code>ActiveSupport::Notifications.instrument(name, payload) { }</code>.</li>
+  <li>in <strong>Notficiations.instrument</strong>, <code>instrumenter.instrument(name, payload) { yield payload if block_given? }</code>.</li>
+  <li>in <strong>Instrumenter#instrument</strong>, <code>@notifier.start</code>, <code>yield payload</code> and then <code>@notifier.finish</code>.</li>
+  <li>in <strong>Fanout::Subscribers::Timed#start</strong>, records beginning time.</li>
+  <li>in <strong>Fanout::Subscribers::Timed#finish</strong>, records ending time, and passing <code>name, start_time, end_time, id, payload</code> to the subscribers callbacks.</li>
+</ol>
+
+<h2 id="misc">MISC</h2>
 
 <p><strong><em>How does ActiveSupport::Notifications keep thread safe?</em></strong></p>
 
 <p><code>extend</code> <strong>ActiveSupport::PerThreadRegistry</strong> in <strong>InstrumentationRegistry</strong>.</p>
 
-<h2>Reference</h2>
+<h2 id="reference">Reference</h2>
 
 <p>Unit test:</p>
 
 <ul>
-<li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications_test.rb">activesupport/test/notifications_test.rb</a></li>
-<li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications%2Fevented_notification_test.rb">activesupport/test/notifications/evented<em>notification</em>test.rb</a></li>
-<li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications%2Finstrumenter_test.rb">activesupport/test/notifications/instrumenter_test.rb</a></li>
+  <li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications_test.rb">activesupport/test/notifications_test.rb</a></li>
+  <li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications%2Fevented_notification_test.rb">activesupport/test/notifications/evented_notification_test.rb</a></li>
+  <li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications%2Finstrumenter_test.rb">activesupport/test/notifications/instrumenter_test.rb</a></li>
 </ul>
 
-<p><a href="http://www.paperplanes.de/2012/3/14/on-notifications-logsubscribers-and-bringing-sanity-to-rails-logging.html">On Notifications, Log Subscribers, and Bringing Sanity to Rails&#39; Logging</a><br>
-<a href="http://railscasts.com/episodes/249-notifications-in-rails-3">#249 Notifications in Rails 3</a><br>
+<p><a href="http://www.paperplanes.de/2012/3/14/on-notifications-logsubscribers-and-bringing-sanity-to-rails-logging.html">On Notifications, Log Subscribers, and Bringing Sanity to Rails’ Logging</a><br />
+<a href="http://railscasts.com/episodes/249-notifications-in-rails-3">#249 Notifications in Rails 3</a><br />
 <a href="https://speakerdeck.com/nextmat/digging-deep-with-activesupportnotifications">Digging Deep with ActiveSupport::Notifications</a></p>
+
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Rails - includes vs. joins]]></title>
-    <link href="http://ifyouseewendy.github.io/blog/2014/06/03/rails-includes-vs-joins/"/>
+    <title type="html"><![CDATA[includes vs. joins in Rails]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2014/06/03/rails-includes-vs-joins/"/>
     <updated>2014-06-03T00:32:18+08:00</updated>
-    <id>http://ifyouseewendy.github.io/blog/2014/06/03/rails-includes-vs-joins</id>
+    <id>http://blog.ifyouseewendy.com/blog/2014/06/03/rails-includes-vs-joins</id>
     <content type="html"><![CDATA[<p><code>includes</code></p>
 
 <p>Eager load the included associations into memory. Fire two queries:</p>
 
-<p>SELECT &quot;products&quot;.* FROM &quot;products&quot; ORDER BY name
-    SELECT &quot;categories&quot;.* FROM &quot;categories&quot; WHERE &quot;categories&quot;.&quot;id&quot; IN (2, 1, 5, 4, 3)</p>
+<p>SELECT “products”.* FROM “products” ORDER BY name
+    SELECT “categories”.* FROM “categories” WHERE “categories”.”id” IN (2, 1, 5, 4, 3)</p>
 
 <p><code>joins</code></p>
 
 <p>Sometimes,<code>includes</code> will load many redundant fields in association table, <code>joins</code> help to control what columns after <code>SELECT</code>.</p>
 
-<h4>Reference</h4>
+<h4 id="reference">Reference</h4>
 
 <ul>
-<li><a href="http://stackoverflow.com/questions/1208636/rails-include-vs-joins/10129946">ruby - Rails :include vs. :joins - Stack Overflow</a></li>
-<li><a href="http://railscasts.com/episodes/181-include-vs-joins?language=zh&amp;view=asciicast">#181 Include vs Joins - RailsCasts</a></li>
-<li><a href="https://gist.github.com/ifyouseewendy/6d0feb90d76fb894814a">N+1 Benchmark Gist - IBM Developer Works</a></li>
+  <li><a href="http://stackoverflow.com/questions/1208636/rails-include-vs-joins/10129946">ruby - Rails :include vs. :joins - Stack Overflow</a></li>
+  <li><a href="http://railscasts.com/episodes/181-include-vs-joins?language=zh&amp;view=asciicast">#181 Include vs Joins - RailsCasts</a></li>
+  <li><a href="https://gist.github.com/ifyouseewendy/6d0feb90d76fb894814a">N+1 Benchmark Gist - IBM Developer Works</a></li>
 </ul>
 
-<hr>
+<hr />
 
 <p><strong>Does query with <code>includes</code> and <code>joins</code> return the same count?</strong></p>
 
@@ -414,186 +1227,249 @@ end</p>
 end</p>
 
 <p>class BugTest &lt; Minitest::Test
-  def test<em>association</em>stuff
+  def test_association_stuff
     post1 = Post.create!
     post2 = Post.create!</p>
-<div class="highlight"><pre><code class="text">post1.comments &lt;&lt; Comment.create!
+
+<pre><code>post1.comments &lt;&lt; Comment.create!
 post1.comments &lt;&lt; Comment.create!
 post2.comments &lt;&lt; Comment.create!
 post2.comments &lt;&lt; Comment.create!
 post2.comments &lt;&lt; Comment.create!
 
 assert_equal 2, Post.includes(:comments).find(post1.id, post2.id).count
-# =&gt; SELECT &quot;posts&quot;.* FROM &quot;posts&quot; WHERE &quot;posts&quot;.&quot;id&quot; IN (1, 2)
-# =&gt; SELECT &quot;comments&quot;.* FROM &quot;comments&quot; WHERE &quot;comments&quot;.&quot;post_id&quot; IN (1, 2)
+# =&gt; SELECT "posts".* FROM "posts" WHERE "posts"."id" IN (1, 2)
+# =&gt; SELECT "comments".* FROM "comments" WHERE "comments"."post_id" IN (1, 2)
 
 assert_equal 5, Post.joins(:comments).where(id: [post1.id, post2.id]).count
-# =&gt; SELECT COUNT(*) FROM &quot;posts&quot; INNER JOIN &quot;comments&quot; ON &quot;comments&quot;.&quot;post_id&quot; = &quot;posts&quot;.&quot;id&quot; WHERE &quot;posts&quot;.&quot;id&quot; IN (1, 2)
-</code></pre></div>
+# =&gt; SELECT COUNT(*) FROM "posts" INNER JOIN "comments" ON "comments"."post_id" = "posts"."id" WHERE "posts"."id" IN (1, 2)
+</code></pre>
+
 <p>end
 end</p>
-<div class="highlight"><pre><code class="text">**Does `includes` work with Mongoid?** 
 
-Check list:
+<p>```</p>
 
-+ [N+1 problem in mongoid - Stack Overflow](http://stackoverflow.com/questions/3912706/n1-problem-in-mongoid)
-+ [Eager Loading - Mongoid Doc](http://mongoid.org/en/mongoid/docs/querying.html#queries)
+<p><strong>Does <code>includes</code> work with Mongoid?</strong> </p>
 
-By now ( *2014-05-08* ) the latest version *4.0.0.beta1* behaves much better than last stable version *3.1.6*, check the [gist](https://gist.github.com/ifyouseewendy/0069c0498274d2dd5a6d).
+<p>Check list:</p>
 
-![rails-includes_vs_joins](https://dl.dropboxusercontent.com/s/ol5lajw9z9hwaca/rails-includes_vs_joins_selected.png?dl=1&amp;token_hash=AAE9IXia0UGrhtp5vqQRQHLWGOydmyjeTXuuek6Kg-CtOA&amp;expiry=1399564547)
-</code></pre></div>]]></content>
+<ul>
+  <li><a href="http://stackoverflow.com/questions/3912706/n1-problem-in-mongoid">N+1 problem in mongoid - Stack Overflow</a></li>
+  <li><a href="http://mongoid.org/en/mongoid/docs/querying.html#queries">Eager Loading - Mongoid Doc</a></li>
+</ul>
+
+<p>By now ( <em>2014-05-08</em> ) the latest version <em>4.0.0.beta1</em> behaves much better than last stable version <em>3.1.6</em>, check the <a href="https://gist.github.com/ifyouseewendy/0069c0498274d2dd5a6d">gist</a>.</p>
+
+<p><img src="https://dl.dropboxusercontent.com/s/ol5lajw9z9hwaca/rails-includes_vs_joins_selected.png?dl=1&amp;token_hash=AAE9IXia0UGrhtp5vqQRQHLWGOydmyjeTXuuek6Kg-CtOA&amp;expiry=1399564547" alt="rails-includes_vs_joins" /></p>
+
+]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[The Rails 4 Way - Environments and Configurations]]></title>
-    <link href="http://ifyouseewendy.github.io/blog/2014/05/18/the-rails-4-way-environments-and-configurations/"/>
+    <title type="html"><![CDATA[[Review] The Rails 4 Way - Environments and Configurations]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2014/05/18/the-rails-4-way-environments-and-configurations/"/>
     <updated>2014-05-18T16:10:42+08:00</updated>
-    <id>http://ifyouseewendy.github.io/blog/2014/05/18/the-rails-4-way-environments-and-configurations</id>
-    <content type="html"><![CDATA[<h2>Bundler <a href="http://bundler.io">ref</a></h2>
+    <id>http://blog.ifyouseewendy.com/blog/2014/05/18/the-rails-4-way-environments-and-configurations</id>
+    <content type="html"><![CDATA[<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>The Rails 4 Way</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td>Obie Fernandez, Kevin Faustino, Vitaly Kushner</td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="http://amzn.com/0321944275">amzn.com/0321944275</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="bundler-refhttpbundlerio">Bundler <a href="http://bundler.io">ref</a></h2>
 
 <p>Bundler does gem dependency resolution based on Gemfile.</p>
 
-<h4><code>~&gt;</code> operator</h4>
+<h4 id="operator"><code>~&gt;</code> operator</h4>
 
 <p>The specifier <strong>~&gt;</strong> has a special meaning, best shown by example. <code>~&gt; 2.0.3</code> is identical to <code>&gt;= 2.0.3</code> and <code>&lt; 2.1</code>. <code>~&gt; 2.1</code> is identical to <code>&gt;= 2.1</code> and <code>&lt; 3.0</code>. <code>~&gt; 2.2.beta</code> will match prerelease versions like <code>2.2.beta.12</code>.</p>
 
 <p><code>ruby hello linenos:false
-gem &#39;thin&#39;,  &#39;~&gt;1.1&#39;
+gem 'thin',  '~&gt;1.1'
 </code></p>
 
-<h4><code>require</code></h4>
+<h4 id="require"><code>require</code></h4>
 
 <p>Occasionally, the name of the gem that should be used in a require statement is
 different than the name of that gem in the repository. In those cases, the <strong>:require</strong>
 option solves this simply and declaratively right in the Gemfile.</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">gem</span> <span class="s1">&#39;sqlite3-ruby&#39;</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="s1">&#39;sqlite3&#39;</span>
-</code></pre></div>
-<h4>group</h4>
-<div class="highlight"><pre><code class="ruby"><span class="n">gem</span> <span class="s1">&#39;wirble&#39;</span><span class="p">,</span> <span class="ss">:group</span> <span class="o">=&gt;</span> <span class="ss">:development</span>
-<span class="n">gem</span> <span class="s1">&#39;ruby-debug&#39;</span><span class="p">,</span> <span class="ss">:group</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span><span class="o">]</span>
 
-<span class="n">group</span> <span class="ss">:test</span> <span class="k">do</span>
-  <span class="n">gem</span> <span class="s1">&#39;rspec&#39;</span>
-<span class="k">end</span>
-</code></pre></div>
-<h4>bundle install/update</h4>
-<div class="highlight"><pre><code class="ruby"><span class="o">-&gt;</span> <span class="n">calculate</span> <span class="n">a</span> <span class="n">dependency</span> <span class="n">tree</span> <span class="o">-&gt;</span> <span class="n">generate</span> <span class="no">Gemfile</span><span class="o">.</span><span class="n">lock</span>
-</code></pre></div>
-<h4>bundle package</h4>
+<p><code>ruby
+gem 'sqlite3-ruby', :require =&gt; 'sqlite3'
+</code></p>
+
+<h4 id="group">group</h4>
+
+<p>```ruby
+gem ‘wirble’, :group =&gt; :development
+gem ‘ruby-debug’, :group =&gt; [:development, :test]</p>
+
+<p>group :test do
+  gem ‘rspec’
+end
+```</p>
+
+<h4 id="bundle-installupdate">bundle install/update</h4>
+
+<p><code>ruby
+-&gt; calculate a dependency tree -&gt; generate Gemfile.lock
+</code></p>
+
+<h4 id="bundle-package">bundle package</h4>
 
 <blockquote>
-<p>it will package up all your gems in <strong>vendor/cache</strong> directory. Running <strong>bundle install</strong> will use the gems in package and skip connecting to rubygems.org. use this to avoid external dependencies at deploy time, or if you depend on private gems that you are not available in any public repository.</p>
+  <p>it will package up all your gems in <strong>vendor/cache</strong> directory. Running <strong>bundle install</strong> will use the gems in package and skip connecting to rubygems.org. use this to avoid external dependencies at deploy time, or if you depend on private gems that you are not available in any public repository.</p>
 </blockquote>
 
-<h4>bundle exec</h4>
+<h4 id="bundle-exec">bundle exec</h4>
 
 <p>Non-Rails scripts must be executed with this to get a properly initialized RubyGems environment.</p>
 
-<h4>bundle install --path vender/bundle --binstubs</h4>
+<h4 id="bundle-install---path-venderbundle---binstubs">bundle install –path vender/bundle –binstubs</h4>
 
 <p>The default location for gems installed by bundler is directory named <strong>.bundle</strong> in your user directory.</p>
 
 <p>This command will generate <strong>.bundle/config</strong> file:</p>
 
-<h2>```ruby .bundle/config</h2>
-
-<p>BUNDLE<em>BIN: bundler</em>stubs
-BUNDLE<em>PATH: vendor/bundle
-BUNDLE</em>DISABLE<em>SHARED</em>GEMS: &quot;1&quot;
+<h2 id="ruby-bundleconfig">```ruby .bundle/config</h2>
+<p>BUNDLE_BIN: bundler_stubs
+BUNDLE_PATH: vendor/bundle
+BUNDLE_DISABLE_SHARED_GEMS: “1”
 ```</p>
 
 <p>gems in <strong>verdor/cache</strong>, and installed in <strong>vendor/bundle</strong>.</p>
 
-<h4>bundle install vendor --disable-shared-gems</h4>
+<h4 id="bundle-install-vendor---disable-shared-gems">bundle install vendor –disable-shared-gems</h4>
 
 <blockquote>
-<p>This command tells Bundler to install gems even if they are already installed in the system. Normally Bunlder avoids that symlinks to already downloaded gems that exists in your system. This option is useful when you are trying to package up an application that all dependencies unpacked.</p>
+  <p>This command tells Bundler to install gems even if they are already installed in the system. Normally Bunlder avoids that symlinks to already downloaded gems that exists in your system. This option is useful when you are trying to package up an application that all dependencies unpacked.</p>
 </blockquote>
 
-<h2>Startup and Application Settings</h2>
+<h2 id="startup-and-application-settings">Startup and Application Settings</h2>
 
 <p><code>boot.rb</code></p>
 
 <ul>
-<li>sets up Bundler and load paths</li>
+  <li>sets up Bundler and load paths</li>
 </ul>
 
 <p><code>application.rb</code></p>
 
 <ul>
-<li>require &#39;boot&#39;</li>
-<li>load rails gems, gems for the specified Rail.env, and configures the application ( <strong>define Application class</strong> ).</li>
+  <li>require ‘boot’</li>
+  <li>load rails gems, gems for the specified Rail.env, and configures the application ( <strong>define Application class</strong> ).</li>
 </ul>
 
 <p><code>environment.rb</code></p>
 
 <ul>
-<li>require &#39;application&#39;</li>
-<li>runs all initializers ( <code>Application.initialize!</code> )</li>
+  <li>require ‘application’</li>
+  <li>runs all initializers ( <code>Application.initialize!</code> )</li>
 </ul>
 
 <p><code>environments/development.rb | test.rb | production.rb</code></p>
 
 <ul>
-<li>makes environmental configuraions.</li>
-<li>application.rb makes unenvironmental configurations, like time-zone, autoload_paths, encoding.</li>
+  <li>makes environmental configuraions.</li>
+  <li>application.rb makes unenvironmental configurations, like time-zone, autoload_paths, encoding.</li>
 </ul>
 
-<h2>Configurations</h2>
+<h2 id="configurations">Configurations</h2>
 
-<h4>Wrap Parameters</h4>
+<h4 id="wrap-parameters">Wrap Parameters</h4>
 
 <p>Introduced in Rails 3.1, the <code>wrap_parameters.rb</code> initializer configures your application to work with JavaScript MVC frameworks.</p>
 
 <p>When submitting JSON parameters to a controller, Rails will wrap the parameters into a nested hash, with the controller’s name being set as the key. To illustrate, consider the following JSON:</p>
-<div class="highlight"><pre><code class="ruby"><span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;TheRails4Way&quot;</span><span class="p">}</span>
-</code></pre></div>
+
+<p><code>ruby
+{"title": "TheRails4Way"}
+</code></p>
+
 <p>If a client submitted the above JSON to a controller named ArticlesController, Rails would nest the params hash under the key “article”. This ensures the setting of model attributes from request parameters is consistent with the convention used when submitting from Rails form helpers.</p>
-<div class="highlight"><pre><code class="ruby"><span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;TheRails4Way&quot;</span><span class="p">,</span> <span class="s2">&quot;article&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;TheRails4Way&quot;</span><span class="p">}}</span>
-</code></pre></div>
-<h4>Schema Dumper</h4>
-<div class="highlight"><pre><code class="ruby"><span class="n">config</span><span class="o">.</span><span class="n">active_record</span><span class="o">.</span><span class="n">schema_format</span> <span class="o">=</span> <span class="ss">:sql</span>
-</code></pre></div>
+
+<p><code>ruby
+{"title": "TheRails4Way", "article" =&gt; {"title": "TheRails4Way"}}
+</code></p>
+
+<h4 id="schema-dumper">Schema Dumper</h4>
+
+<p><code>ruby
+config.active_record.schema_format = :sql
+</code></p>
+
 <p>Every time you run tests, Rails dumps the schema of your development database and copies it to the test database using an auto generated <code>schema.rb</code> script. It looks very similar to an Active Record migration script; in fact, it uses the same API.</p>
 
-<h4>Automatic Class Reloading</h4>
-<div class="highlight"><pre><code class="ruby"><span class="n">config</span><span class="o">.</span><span class="n">cache_classes</span> <span class="o">=</span> <span class="kp">false</span>
-</code></pre></div>
+<h4 id="automatic-class-reloading">Automatic Class Reloading</h4>
+
+<p><code>ruby
+config.cache_classes = false
+</code></p>
+
 <p>Without getting into too much nitty-gritty detail, when the config.cache_classes setting is true,Rails willuse Ruby’s <code>require</code> statement to do its class loading, and when it is false, it will use <code>load</code> instead.</p>
 
 <p>When you require a Ruby file, the interpreter executes and caches it. If the file is required again (as in subsequent requests), the interpreter ignores the require statement and moves on. When you load a Ruby file, the interpreter executes the file again, no matter how many times it has been loaded before.</p>
 
-<h4>Auto-Loading Code</h4>
+<h4 id="auto-loading-code">Auto-Loading Code</h4>
 
 <p>By following the naming convention, Rails will search <code>$LOAD_PATH</code> to find the undefined constant. So when using Rails console, <strong>you never have to explicitly <code>require</code> anything!</strong></p>
 
 <p>Rails takes advantage of the fact that Ruby provides a callback mechanism for missing constants. When Rails encounters an undefined constant in the code, it uses a class loader routine based on file-naming conventions to find and require the needed Ruby script.</p>
 
-<h4>Eager Load</h4>
-<div class="highlight"><pre><code class="ruby"><span class="n">config</span><span class="o">.</span><span class="n">eager_load</span> <span class="o">=</span> <span class="kp">false</span>
-</code></pre></div>
+<h4 id="eager-load">Eager Load</h4>
+
+<p><code>ruby
+config.eager_load = false
+</code></p>
+
 <p>In your production environment, you will want this set to true, as it copies most of your application in memory. This provides a performance increase to web servers that copy on write, such as Unicorn.</p>
 
-<h4>Explain for Slow Queries</h4>
-<div class="highlight"><pre><code class="ruby"><span class="n">config</span><span class="o">.</span><span class="n">active_record</span><span class="o">.</span><span class="n">auto_explain_threshold_in_seconds</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.</span><span class="mi">5</span>
-</code></pre></div>
+<h4 id="explain-for-slow-queries">Explain for Slow Queries</h4>
+
+<p><code>ruby
+config.active_record.auto_explain_threshold_in_seconds = 0.5
+</code></p>
+
 <p>Introduced in Rails 3.2, Active Record now monitors the threshold of SQL queries being made. If any query takes longer than the specified threshold, the query plan is logged with a warning.</p>
 
-<h4>Assets</h4>
-<div class="highlight"><pre><code class="ruby"><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="kp">true</span>
-</code></pre></div>
+<h4 id="assets">Assets</h4>
+
+<p><code>ruby
+config.assets.debug = true
+</code></p>
+
 <p>Setting config.assets.debug to false, would result in Sprockets concatenating and running preprocessors on all assets.</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">compile</span> <span class="o">=</span> <span class="kp">true</span>
-</code></pre></div>
+
+<p><code>ruby
+config.assets.compile = true
+</code></p>
+
 <p>If an asset is requested that does not exist in the public/assets folder, Rails will throw an exception. To enable live asset compilation fallback on production, set config.assets.compile to true.</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kp">false</span>
-</code></pre></div>
+
+<p><code>ruby
+config.assets.enable = false
+</code></p>
+
 <p>Like most features in Rails, the usage of the Asset Pipeline is completely optional. To include assets in your project as it was done in Rails 3.0, set config.assets.enabled to false.</p>
 
-<h4>Tagged Logging <a href="http://arun.im/2011/x-request-id-tracking-taggedlogging-rails">ref</a></h4>
-<div class="highlight"><pre><code class="ruby"><span class="n">config</span><span class="o">.</span><span class="n">log_tags</span> <span class="o">=</span> <span class="o">[</span> <span class="ss">:subdomain</span><span class="p">,</span> <span class="ss">:uuid</span> <span class="o">]</span>
-</code></pre></div>
+<h4 id="tagged-logging-refhttparunim2011x-request-id-tracking-taggedlogging-rails">Tagged Logging <a href="http://arun.im/2011/x-request-id-tracking-taggedlogging-rails">ref</a></h4>
+
+<p><code>ruby
+config.log_tags = [ :subdomain, :uuid ]
+</code></p>
+
 <p>Rails 3.2 introduced the ability to tag your log messages. <code>:subdomain</code> example by <em>www</em>, <code>:uuid</code> is a string to identify request, try <code>request.uuid</code>.</p>
 ]]></content>
   </entry>
