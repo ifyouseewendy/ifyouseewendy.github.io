@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Rails - includes vs. joins"
+title: "includes vs. joins in Rails"
 date: 2014-06-03 00:32:18 +0800
 comments: true
 categories: Rails

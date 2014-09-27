@@ -1,10 +1,15 @@
 ---
 layout: post
-title: "Metaprogramming Ruby"
+title: "[Review] Metaprogramming Ruby"
 date: 2014-06-03 00:44:28 +0800
 comments: true
-categories: [Ruby, Book]
+categories: [Ruby, Books]
 ---
+
+{:.custom}
+| **Book**    | Metaprogramming Ruby 2: Program Like the Ruby Pros
+| **Author**  | Paolo Perrotta
+| **Link**    | [pragprog.com/book/ppmetr2/metaprogramming-ruby-2](https://pragprog.com/book/ppmetr2/metaprogramming-ruby-2)
 
 # The Object Model
 

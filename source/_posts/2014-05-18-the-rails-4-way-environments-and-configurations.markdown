@@ -3,8 +3,14 @@ layout: post
 title: "The Rails 4 Way - Environments and Configurations"
 date: 2014-05-18 16:10:42 +0800
 comments: true
-categories: [Rails, Book]
+categories: [Rails, Books]
 ---
+
+{:.custom}
+| **Book**    | The Rails 4 Way
+| **Author**  | Obie Fernandez, Kevin Faustino, Vitaly Kushner
+| **Link**    | [amzn.com/0321944275](http://amzn.com/0321944275)
+
 
 ## Bundler [ref](http://bundler.io)
 

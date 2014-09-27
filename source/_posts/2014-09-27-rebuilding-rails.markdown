@@ -1,15 +1,15 @@
 ---
 layout: post
-title: "Rebuilding Rails"
+title: "[Review] Rebuilding Rails"
 date: 2014-09-27 14:48:48 +0800
 comments: true
-categories: ['Book', 'Rails']
+categories: ['Books', 'Rails']
 ---
 
 {:.custom}
 | **Book**    | Rebuilding Rails
 | **Author**  | Noah Gibbs
-| **Website** | [rebuilding-rails.com](http://rebuilding-rails.com/)
+| **Link**    | [rebuilding-rails.com](http://rebuilding-rails.com/)
 
 
 My re-building source code

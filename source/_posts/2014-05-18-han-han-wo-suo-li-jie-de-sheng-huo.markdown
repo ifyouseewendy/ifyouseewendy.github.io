@@ -1,10 +1,15 @@
 ---
 layout: post
-title: "韩寒 - 我所理解的生活"
+title: "[Review]  我所理解的生活"
 date: 2014-05-18 18:00:46 +0800
 comments: true
-categories: Book
+categories: Books
 ---
+
+{:.custom}
+| **Book**    | 我所理解的生活
+| **Author**  | 韩寒
+| **Link**    | [book.douban.com/subject/20425053](http://book.douban.com/subject/20425053/)
 
 这世道觉得文绉绉的诬陷没问题，这世道让那些不说粗话但最缺德的人能做道德评判家，这世道让那些话不脏但心眼脏、手段脏的人当道，这世道能任意颠倒黑白、混淆是非，这世道觉得公众人物或者随便谁说一个“操”字就不应该，那就操翻这世道。
 

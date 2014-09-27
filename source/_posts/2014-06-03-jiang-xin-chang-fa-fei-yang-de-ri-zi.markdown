@@ -1,10 +1,15 @@
 ---
 layout: post
-title: "姜昕 - 长发飞扬的日子"
+title: "[Review]  长发飞扬的日子"
 date: 2014-06-03 00:34:18 +0800
 comments: true
-categories: Book
+categories: Books
 ---
+
+{:.custom}
+| **Book**    | 长发飞扬的日子
+| **Author**  | 姜昕
+| **Link**    | [book.douban.com/subject/6189764](http://book.douban.com/subject/6189764/)
 
 阴雨连绵会让我觉得他是，好天气反而会让我坐立不安。
 

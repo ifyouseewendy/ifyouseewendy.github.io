@@ -1,15 +1,15 @@
 ---
 layout: post
-title: "Git Community Book"
+title: "[Review] Git Community Book"
 date: 2014-09-27 13:51:25 +0800
 comments: true
-categories:  Book
+categories:  Books
 ---
 
 {:.custom}
-| **Book** | Git Community Book
-| **Author** | people in the Git community
-| **Website** | [alx.github.io/gitbook](http://alx.github.io/gitbook/)
+| **Book**    | Git Community Book
+| **Author**  | people in the Git community
+| **Link**    | [alx.github.io/gitbook](http://alx.github.io/gitbook/)
 
 
 ## Git Object Model
