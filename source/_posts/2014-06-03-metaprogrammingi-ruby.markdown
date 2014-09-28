@@ -1133,4 +1133,22 @@ class ERB
 end
 ```
 
+*Updated 2014-09-28*
+
+As I was looking API and fiddling around, I found 3 new methods only supported by Ruby 2.1.
+
+```ruby
+def foo
+  a = 1
+
+  binding.local_variable_defined?(:a) # => true
+  # binding.eval("defined?(#{symbol}) == 'local-variable'")
+
+  binding.local_variable_get(:a) #=> 1
+  # binding.eval("#{symbol}")
+
+  binding.local_variable_set(:a, 2) #=> 2
+  # binding.eval("#{symbol} = #{obj}")
+end
+```
 
