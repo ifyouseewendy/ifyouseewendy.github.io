@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-09-27T17:29:12+08:00</updated>
+  <updated>2014-09-28T15:24:10+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -4346,6 +4346,36 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 </span><span class="line">      <span class="nb">eval</span><span class="p">(</span><span class="vi">@src</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="p">(</span><span class="vi">@filename</span> <span class="o">||</span> <span class="s1">&#39;(erb)&#39;</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 </span><span class="line">    <span class="k">end</span>
 </span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><em>Updated 2014-09-28</em></p>
+
+<p>As I was looking API and fiddling around, I found 3 new methods only supported by Ruby 2.1.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">foo</span>
+</span><span class="line">  <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="line">
+</span><span class="line">  <span class="nb">binding</span><span class="o">.</span><span class="n">local_variable_defined?</span><span class="p">(</span><span class="ss">:a</span><span class="p">)</span> <span class="c1"># =&gt; true</span>
+</span><span class="line">  <span class="c1"># binding.eval(&quot;defined?(#{symbol}) == &#39;local-variable&#39;&quot;)</span>
+</span><span class="line">
+</span><span class="line">  <span class="nb">binding</span><span class="o">.</span><span class="n">local_variable_get</span><span class="p">(</span><span class="ss">:a</span><span class="p">)</span> <span class="c1">#=&gt; 1</span>
+</span><span class="line">  <span class="c1"># binding.eval(&quot;#{symbol}&quot;)</span>
+</span><span class="line">
+</span><span class="line">  <span class="nb">binding</span><span class="o">.</span><span class="n">local_variable_set</span><span class="p">(</span><span class="ss">:a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">#=&gt; 2</span>
+</span><span class="line">  <span class="c1"># binding.eval(&quot;#{symbol} = #{obj}&quot;)</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 

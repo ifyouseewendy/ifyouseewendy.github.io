@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-09-27T17:29:12+08:00</updated>
+  <updated>2014-09-28T15:24:10+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -1309,6 +1309,25 @@ class ERB
   end
 end
 </code></p>
+
+<p><em>Updated 2014-09-28</em></p>
+
+<p>As I was looking API and fiddling around, I found 3 new methods only supported by Ruby 2.1.</p>
+
+<p>```ruby
+def foo
+  a = 1</p>
+
+<p>binding.local_variable_defined?(:a) # =&gt; true
+  # binding.eval(“defined?(#{symbol}) == ‘local-variable’”)</p>
+
+<p>binding.local_variable_get(:a) #=&gt; 1
+  # binding.eval(“#{symbol}”)</p>
+
+<p>binding.local_variable_set(:a, 2) #=&gt; 2
+  # binding.eval(“#{symbol} = #{obj}”)
+end
+```</p>
 
 ]]></content>
   </entry>
