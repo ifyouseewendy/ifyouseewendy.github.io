@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-09-28T15:24:10+08:00</updated>
+  <updated>2014-09-29T18:37:36+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,403 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Things I Learnt from Owning Rails Class]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2014/09/29/things-i-learnt-from-owning-rails-class/"/>
+    <updated>2014-09-29T18:36:28+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2014/09/29/things-i-learnt-from-owning-rails-class</id>
+    <content type="html"><![CDATA[<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Teacher</strong></td>
+      <td><a href="http://macournoyer.com/">Marc-André Cournoy</a></td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="http://owningrails.com/">Owning Rails</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>I’ve participated Marc’s Owning Rails online class recently. AWESOME!</p>
+
+<p>The class has two parts. Marc led us to build a minimal version of Rails on first day, Marc focused on the structure and design pattern behind Rails. Trully I think it’s a live version of <a href="http://blog.ifyouseewendy.com/blog/2014/09/27/rebuilding-rails/">Rebuilding Rails</a>, maybe you can read it as a substitution. Second day is the excellent part, took us diving into the real Rails source. Marc gave us a clear clue on what each part do and how they work, and also some practical introductions on how and where to keep on digging after class. </p>
+
+<p>Beside professional, I should also mention that Marc is a really kind and patient guy.</p>
+
+<p>Thanks a lot, Marc.</p>
+
+<hr />
+
+<p>Following are some specific questions I’ve noted on class.</p>
+
+<p><strong><em>Is <code>yield</code> still available after passing <code>&amp;block</code>?</em></strong></p>
+
+<p>yes.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line"><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">*</span>   <span class="nb">p</span> <span class="n">block</span>
+</span><span class="line"><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">*</span>   <span class="k">yield</span>
+</span><span class="line"><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">*</span> <span class="k">end</span>
+</span><span class="line"><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span> <span class="p">}</span>
+</span><span class="line"><span class="c1">#&lt;Proc:0x000001053e7f28@(pry):6&gt;</span>
+</span><span class="line"><span class="n">foo</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span><span class="line"><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line"><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">*</span>   <span class="n">block</span><span class="o">.</span><span class="n">call</span>
+</span><span class="line"><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">*</span>   <span class="k">yield</span>
+</span><span class="line"><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">*</span> <span class="k">end</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span><span class="line"><span class="o">[</span><span class="mi">6</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s1">&#39;bar&#39;</span> <span class="p">}</span>
+</span><span class="line"><span class="n">bar</span>
+</span><span class="line"><span class="n">bar</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Passing block directly will omit the block-to-proc process, it can be more efficient.</p>
+
+<p><strong><em>How to make bindings of block get understood in object, which differs the environment the block defines?</em></strong></p>
+
+<blockquote>
+  <p>When you define the block, it simply grabs the bindings that are there at that moment, and then it carries those bindings along when you pass the block into a method. </p>
+</blockquote>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="o">=</span><span class="k">class</span> <span class="nc">Router</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span>
+</span><span class="line">    <span class="vi">@routes</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">route</span><span class="p">)</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;#match from Router instance&#39;</span>
+</span><span class="line">    <span class="vi">@routes</span><span class="o">.</span><span class="n">update</span> <span class="n">route</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="o">=</span>  <span class="k">def</span> <span class="nf">routes</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">    <span class="k">yield</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">route</span><span class="p">)</span>
+</span><span class="line">  <span class="nb">puts</span> <span class="s1">&#39;#match from main object&#39;</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">Router</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">routes</span> <span class="k">do</span>
+</span><span class="line">  <span class="n">match</span> <span class="s1">&#39;/user&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;users#index&#39;</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># =&gt; #match in main object</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Use <code>instance_eval</code> to eval the new bindings.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">route</span><span class="p">)</span>
+</span><span class="line">  <span class="nb">puts</span> <span class="s1">&#39;#match in main object&#39;</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">Router</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">routes</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">    <span class="nb">instance_eval</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">Router</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">routes</span> <span class="k">do</span>
+</span><span class="line">  <span class="n">match</span> <span class="s1">&#39;/user&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;users#index&#39;</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># =&gt; match from Router instance</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong><em>Why using <code>::File</code> in <code>config.ru</code>?</em></strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># config.ru</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">require</span> <span class="o">::</span><span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;../config/environment&#39;</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
+</span><span class="line"><span class="n">run</span> <span class="no">Rails</span><span class="o">.</span><span class="n">application</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Actually the code above is defined in module Rack, where <code>Rack::File</code> already exists.</p>
+
+<p><strong><em>How to use <code>include</code> to construct a method chain?</em></strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">A</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">foo</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;foo from A&#39;</span>
+</span><span class="line">    <span class="k">super</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">module</span> <span class="nn">B</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">foo</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;foo from B&#39;</span>
+</span><span class="line">    <span class="k">super</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">Base</span>
+</span><span class="line">  <span class="kp">include</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">foo</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;foo from Base&#39;</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">Base</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">foo</span>
+</span><span class="line"><span class="c1"># =&gt; foo from Base</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>One way to solve is to use <code>prepend</code> instead of <code>include</code>, introduced by Ruby 2.0.</p>
+
+<p>Considering the compatibility, Rails may not start to use it. Here is the Rails way to solve</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">A</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">foo</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;foo from A&#39;</span>
+</span><span class="line">    <span class="k">super</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">module</span> <span class="nn">B</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">foo</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;foo from B&#39;</span>
+</span><span class="line">    <span class="k">super</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">Metal</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">foo</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;foo from Base&#39;</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">Base</span>
+</span><span class="line">  <span class="kp">include</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">Base</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">foo</span>
+</span><span class="line"><span class="c1"># =&gt; foo from A</span>
+</span><span class="line"><span class="c1"># =&gt; foo from B</span>
+</span><span class="line"><span class="c1"># =&gt; foo from Base</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong><em>How instance variables shared betweet controller and view?</em></strong></p>
+
+<p>One way is to use <code>instance_varialbles</code> and <code>instance_variable_set/get</code>, to passing instance varaibles defined in action to the view object.</p>
+
+<p>The other way is passing <code>binding</code> directly.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">template</span> <span class="o">=</span> <span class="no">ERB</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="p">)</span>
+</span><span class="line"><span class="n">template</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="nb">binding</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># eval(template.src, binding)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong><em>Truth about binding</em></strong></p>
+
+<ol>
+  <li>
+    <p><code>Binding.new</code> doesn’t work, you can only call <code>Kernel.binding</code> or <code>Proc#binding</code>.</p>
+  </li>
+  <li>
+    <p>You can only use <code>binding</code> with <code>eval</code>. <code>eval('', binding)</code> or <code>binding.eval('')</code></p>
+  </li>
+</ol>
+
+<p><strong><em>When we create custom middleware is it a good practise to add new keys and values to env variable to transfer it between middlewares?</em></strong></p>
+
+<blockquote>
+  <p>[02:35] &lt;wawka&gt; macournoyer: When we create custom middleware is it a good practise to add new keys and values to env variable to transfer it between middlewares ?<br />
+[02:36] &lt;macournoyer&gt;  Rack specs recommend namespacing everything you put in the env var<br />
+[02:36] &lt;macournoyer&gt; eg.: Rails will do env[“action_controller.request_id”] = “…” <br />
+[02:36] &lt;macournoyer&gt; “action_controller.” is the namespace<br />
+[02:36] &lt;wawka&gt; macournoyer: ok</p>
+</blockquote>
+
+<p><strong><em>How to check a gem’s dependency and dive into the source code?</em></strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>gem dep rails -v<span class="o">=</span>4.1.6
+</span><span class="line">Gem rails-4.1.6
+</span><span class="line">  actionmailer <span class="o">(=</span> 4.1.6<span class="o">)</span>
+</span><span class="line">  actionpack <span class="o">(=</span> 4.1.6<span class="o">)</span>
+</span><span class="line">  actionview <span class="o">(=</span> 4.1.6<span class="o">)</span>
+</span><span class="line">  activemodel <span class="o">(=</span> 4.1.6<span class="o">)</span>
+</span><span class="line">  activerecord <span class="o">(=</span> 4.1.6<span class="o">)</span>
+</span><span class="line">  activesupport <span class="o">(=</span> 4.1.6<span class="o">)</span>
+</span><span class="line">  bundler <span class="o">(</span>&lt; 2.0, &gt;<span class="o">=</span> 1.3.0<span class="o">)</span>
+</span><span class="line">  railties <span class="o">(=</span> 4.1.6<span class="o">)</span>
+</span><span class="line">  sprockets-rails <span class="o">(</span>~&gt; 2.0<span class="o">)</span>
+</span><span class="line">
+</span><span class="line"><span class="nv">$ </span>bundle open activerecord
+</span><span class="line">
+</span><span class="line"><span class="c"># open the latest version on system, a little bit dangerous </span>
+</span><span class="line"><span class="nv">$ </span>gem edit activerecord
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong><em>How to get the source location of the method calling?</em></strong></p>
+
+<p>In Rails, <em>guess</em> the logic part(activerecord, activesupport..) based on the method function, then use <code>bundle open</code> to dive in.</p>
+
+<p>Ruby supports <code>Method#source_location</code>, <code>Proc#source_location</code> to provides some information, not accurate though. Use it like this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># chech where defined respond_with</span>
+</span><span class="line"><span class="k">raise</span> <span class="nb">method</span><span class="p">(</span><span class="ss">:respond_with</span><span class="p">)</span><span class="o">.</span><span class="n">source_location</span><span class="o">.</span><span class="n">inspect</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<hr />
+
+<h3 id="other-stuffs">Other stuffs</h3>
+
+<ol>
+  <li>
+    <p>Marc’s <a href="https://gist.github.com/macournoyer/1878273">gitconfig</a></p>
+  </li>
+  <li>
+    <p>Don’t try to understand everything.</p>
+  </li>
+  <li>
+    <p>Read concern, callbacks, core_ext and other ActiveSupport parts as a start.</p>
+  </li>
+  <li>
+    <p>Nice word learnt, <strong>Base</strong>ics</p>
+  </li>
+  <li>
+    <p>Try <code>mount</code> a rack-based app in Rails.</p>
+  </li>
+</ol>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Review] Rebuilding Rails]]></title>
