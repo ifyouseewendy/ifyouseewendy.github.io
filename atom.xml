@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-10-11T22:37:34+08:00</updated>
+  <updated>2014-10-11T22:41:37+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -440,7 +440,7 @@
   <li><a href="#basic-models">5. Basic Models</a></li>
   <li><a href="#request-response">6. Request, Response</a></li>
   <li><a href="#the-littlest-orm">7. The Littlest ORM</a></li>
-  <li><a href="#rack-middleware">Rack Middleware</a></li>
+  <li><a href="#rack-middleware">8. Rack Middleware</a></li>
   <li><a href="#real-routing">9. Real Routing</a></li>
 </ul>
 
@@ -1176,7 +1176,7 @@
 
 <p>ActiveRecord contains mappings of operations like our gem, but also migrations, cross-database compatibility and a huge amount of optimization and general complexity. And thatʼs even though they use the ARel gem for most of the heavy lifting!</p>
 
-<h2 id="rack-middleware">Rack Middleware</h2>
+<h2 id="rack-middleware">8. Rack Middleware</h2>
 
 <p>With any Ruby web framework, you can modify how it works by adding Rack components around it. I like thinking of them as pancakes, because Rack lets you build your framework and your application like a stack of pancakes.</p>
 
