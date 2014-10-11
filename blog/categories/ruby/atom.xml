@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-09-29T18:37:36+08:00</updated>
+  <updated>2014-10-11T22:37:34+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -386,6 +386,61 @@ MockExpectationError: expected hi("arg1", "arg2") =&gt; "hello", got []
     </tr>
   </tbody>
 </table>
+
+<ul id="markdown-toc">
+  <li><a href="#the-object-model">The Object Model</a>    <ul>
+      <li><a href="#instance-variable">Instance variable</a></li>
+      <li><a href="#instance-method">Instance method</a></li>
+      <li><a href="#truth-about-classes">Truth about classes</a></li>
+      <li><a href="#constant">Constant</a></li>
+      <li><a href="#method-lookup">Method lookup</a></li>
+      <li><a href="#refinement">Refinement</a></li>
+    </ul>
+  </li>
+  <li><a href="#methods">Methods</a>    <ul>
+      <li><a href="#dynamic-dispatch">Dynamic Dispatch</a></li>
+      <li><a href="#dynamic-method">Dynamic Method</a></li>
+      <li><a href="#ghost-method">Ghost Method</a></li>
+    </ul>
+  </li>
+  <li><a href="#callables">Callables</a>    <ul>
+      <li><a href="#the-callables">the Callables</a></li>
+      <li><a href="#blocks">Blocks</a></li>
+    </ul>
+  </li>
+  <li><a href="#env-is-created-for-each-event-to-be-a-clean-room">env is created for each event to be a Clean Room</a>    <ul>
+      <li><a href="#proc-objects">Proc Objects</a>        <ul>
+          <li><a href="#methods-1">Methods</a></li>
+          <li><a href="#unbound-methods">Unbound Methods</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#class-definitions">Class Definitions</a>    <ul>
+      <li><a href="#the-current-class">The Current Class</a></li>
+    </ul>
+  </li>
+  <li><a href="#console">console</a>    <ul>
+      <li><a href="#class-instance-variables">Class Instance Variables</a></li>
+      <li><a href="#singleton-methods">Singleton Methods</a></li>
+      <li><a href="#singleton-class">Singleton Class</a></li>
+    </ul>
+  </li>
+  <li><a href="#example2">example2</a>    <ul>
+      <li><a href="#method-wrapper">Method Wrapper</a>        <ul>
+          <li><a href="#around-alias">Around Alias</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#nameerror-undefined-method-foo-for-class-myclass">=&gt; NameError: undefined method <code>foo' for class </code>MyClass’</a>    <ul>
+      <li><a href="#refinement-wrapper">Refinement Wrapper</a></li>
+      <li><a href="#prepended-wrapper">Prepended Wrapper</a></li>
+      <li><a href="#an-interesting-quiz-solving-by-around-alias">An interesting quiz solving by Around Alias</a></li>
+    </ul>
+  </li>
+  <li><a href="#eval-and-binding">Eval and Binding</a></li>
+</ul>
 
 <h1 id="the-object-model">The Object Model</h1>
 

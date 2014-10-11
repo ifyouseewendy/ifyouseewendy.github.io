@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-09-29T18:37:36+08:00</updated>
+  <updated>2014-10-11T22:37:34+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -18,7 +18,38 @@
     <link href="http://blog.ifyouseewendy.com/blog/2014/06/22/asciicast-of-fundamentals-of-design-by-codeschool/"/>
     <updated>2014-06-22T23:35:39+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2014/06/22/asciicast-of-fundamentals-of-design-by-codeschool</id>
-    <content type="html"><![CDATA[<h2 id="typeface-classifications">Typeface Classifications</h2>
+    <content type="html"><![CDATA[<ul id="markdown-toc">
+  <li><a href="#typeface-classifications">Typeface Classifications</a>    <ul>
+      <li><a href="#typefaces">Typefaces</a></li>
+      <li><a href="#principles">Principles</a></li>
+    </ul>
+  </li>
+  <li><a href="#font-size-leading--weights">Font Size, Leading &amp; Weights</a></li>
+  <li><a href="#line-width--widows">Line-Width &amp; Widows</a>    <ul>
+      <li><a href="#line-width-is-measured-in-cpl">Line Width Is Measured in CPL</a></li>
+      <li><a href="#save-the-orphans--widows">Save the Orphans &amp; Widows.</a></li>
+    </ul>
+  </li>
+  <li><a href="#color-theory">Color Theory</a>    <ul>
+      <li><a href="#hsl">HSL</a></li>
+    </ul>
+  </li>
+  <li><a href="#color-scheme">Color Scheme</a>    <ul>
+      <li><a href="#colors">Colors</a></li>
+      <li><a href="#schemes">Schemes</a></li>
+    </ul>
+  </li>
+  <li><a href="#color--type">Color &amp; Type</a></li>
+  <li><a href="#basic-layout">Basic Layout</a></li>
+  <li><a href="#the-grid">The Grid</a>    <ul>
+      <li><a href="#fixed-or-fluid">Fixed or Fluid</a></li>
+      <li><a href="#example">Example</a></li>
+    </ul>
+  </li>
+  <li><a href="#whitespce--balance">Whitespce &amp; Balance</a></li>
+</ul>
+
+<h2 id="typeface-classifications">Typeface Classifications</h2>
 
 <p>Content is king.</p>
 

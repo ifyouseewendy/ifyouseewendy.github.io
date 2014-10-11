@@ -13,7 +13,7 @@
   <meta name="author" content="wendi">
 
   
-  <meta name="description" content="Rails Jun 3rd, 2014 Inside ActiveSupport Notifications Read API doc first, ActiveSupport::Notifications. About hooks inside Rails for &hellip;">
+  <meta name="description" content="Rails Jun 3rd, 2014 Inside ActiveSupport Notifications Preparation ActiveSupport::Notifications File name Dependency Brief Specification Class &hellip;">
   <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
   
 
@@ -167,7 +167,60 @@
 </header>
 
 
-  <section><ul>
+  <section><ul id="markdown-toc">
+  <li><a href="#preparation">Preparation</a></li>
+  <li><a href="#activesupportnotifications">ActiveSupport::Notifications</a>    <ul>
+      <li><a href="#file-name">File name</a></li>
+      <li><a href="#dependency">Dependency</a></li>
+      <li><a href="#brief">Brief</a></li>
+      <li><a href="#specification">Specification</a>        <ul>
+          <li><a href="#class-variables">Class Variables</a></li>
+          <li><a href="#class-methods">Class Methods</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#activesupportnotificationsfanout">ActiveSupport::Notifications::Fanout</a>    <ul>
+      <li><a href="#file-name-1">File name</a></li>
+      <li><a href="#dependency-1">Dependency</a></li>
+      <li><a href="#brief-1">Brief</a></li>
+      <li><a href="#specification-1">Specification</a>        <ul>
+          <li><a href="#instance-variables">Instance Variables</a></li>
+          <li><a href="#instance-methods">Instance Methods</a></li>
+          <li><a href="#modules">Modules</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#activesupportnotificationsinstrumenter">ActiveSupport::Notifications::Instrumenter</a>    <ul>
+      <li><a href="#file-name-2">File name</a></li>
+      <li><a href="#dependency-2">Dependency</a></li>
+      <li><a href="#brief-2">Brief</a></li>
+      <li><a href="#specification-2">Specification</a>        <ul>
+          <li><a href="#instance-variables-1">Instance Variables</a></li>
+          <li><a href="#instance-methods-1">Instance Methods</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#activesupportnotificationsevent">ActiveSupport::Notifications::Event</a>    <ul>
+      <li><a href="#file-name-3">File name</a></li>
+      <li><a href="#dependency-3">Dependency</a></li>
+      <li><a href="#specification-3">Specification</a></li>
+    </ul>
+  </li>
+  <li><a href="#main-working-flow">Main Working Flow</a>    <ul>
+      <li><a href="#activesupportnotificationssubscribe">ActiveSupport::Notifications.subscribe</a></li>
+      <li><a href="#activesupportnotificationsinstrument">ActiveSupport::Notifications.instrument</a></li>
+    </ul>
+  </li>
+  <li><a href="#misc">MISC</a></li>
+  <li><a href="#reference">Reference</a></li>
+</ul>
+
+<h2 id="preparation">Preparation</h2>
+
+<ul>
   <li>Read API doc first, <a href="ActiveSupport::Notifications">ActiveSupport::Notifications</a>.</li>
   <li>About hooks inside Rails for instrumentation, check the edge doc on <a href="http://edgeguides.rubyonrails.org/active_support_instrumentation.html">Active Support Instrumentation</a>.</li>
 </ul>
