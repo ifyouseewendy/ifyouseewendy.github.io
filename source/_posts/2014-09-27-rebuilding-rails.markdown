@@ -472,7 +472,7 @@ ActiveRecord allows both ways -- you can research the `before_save` and `after_i
 
 ActiveRecord contains mappings of operations like our gem, but also migrations, cross-database compatibility and a huge amount of optimization and general complexity. And thatʼs even though they use the ARel gem for most of the heavy lifting!
 
-## Rack Middleware
+## 8. Rack Middleware
 
 With any Ruby web framework, you can modify how it works by adding Rack components around it. I like thinking of them as pancakes, because Rack lets you build your framework and your application like a stack of pancakes.
 
