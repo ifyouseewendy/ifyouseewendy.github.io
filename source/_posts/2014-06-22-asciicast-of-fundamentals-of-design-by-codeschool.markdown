@@ -6,6 +6,9 @@ comments: true
 categories: Web
 ---
 
+* TOC
+{:toc}
+
 ## Typeface Classifications
 
 Content is king.

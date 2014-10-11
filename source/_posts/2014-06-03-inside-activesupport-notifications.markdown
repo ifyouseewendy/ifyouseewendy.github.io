@@ -6,6 +6,11 @@ comments: true
 categories: [Rails]
 ---
 
+* TOC
+{:toc}
+
+## Preparation
+
 + Read API doc first, [ActiveSupport::Notifications](ActiveSupport::Notifications).
 + About hooks inside Rails for instrumentation, check the edge doc on [Active Support Instrumentation](http://edgeguides.rubyonrails.org/active_support_instrumentation.html).
 

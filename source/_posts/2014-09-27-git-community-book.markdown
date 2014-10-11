@@ -11,6 +11,8 @@ categories:  Books
 | **Author**  | people in the Git community
 | **Link**    | [alx.github.io/gitbook](http://alx.github.io/gitbook/)
 
+* TOC
+{:toc}
 
 ## Git Object Model
 

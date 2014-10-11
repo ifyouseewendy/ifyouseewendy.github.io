@@ -11,6 +11,9 @@ categories: [Ruby, Books]
 | **Author**  | Paolo Perrotta
 | **Link**    | [pragprog.com/book/ppmetr2/metaprogramming-ruby-2](https://pragprog.com/book/ppmetr2/metaprogramming-ruby-2)
 
+* TOC
+{:toc}
+
 # The Object Model
 
 ![the_object_model](https://dl.dropboxusercontent.com/s/a6qc1yd1cd57pkp/the_object_model.png?dl=1&token_hash=AAEBXb4OJ73P3xWWbPmIMOferP8_YHxQlS9d8l0hjEq2wQ&expiry=1400078501)

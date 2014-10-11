@@ -11,6 +11,8 @@ categories: ['Books', 'Rails']
 | **Author**  | Noah Gibbs
 | **Link**    | [rebuilding-rails.com](http://rebuilding-rails.com/)
 
+* TOC
+{:toc}
 
 My re-building source code
 
