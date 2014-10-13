@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Things I Learnt from Owning Rails Class"
+title: "Things I Learn from Owning Rails Class"
 date: 2014-09-29 18:36:28 +0800
 comments: true
 categories:  [Ruby, Rails]
