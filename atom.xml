@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-10-17T18:14:32+08:00</updated>
+  <updated>2014-11-20T01:00:07+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,134 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Encoding and Encryption in Ruby]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2014/11/20/encoding-and-encryption-in-ruby/"/>
+    <updated>2014-11-20T00:53:44+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2014/11/20/encoding-and-encryption-in-ruby</id>
+    <content type="html"><![CDATA[<h2 id="encode-and-decode">Encode and decode</h2>
+
+<p>Use Base64</p>
+
+<ul>
+  <li>Unreadable.</li>
+  <li>Translates any binary data into purely printable characters. Eg. in HTTP transmission(MIME).</li>
+  <li>Use <code>a-zA-Z0-9+/</code>. When encode URL, use <code>a-zA-Z0-9_-</code></li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;base64&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="no">Base64</span><span class="o">.</span><span class="n">encode64</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;aGVsbG8gd29ybGQ=\n&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="no">Base64</span><span class="o">.</span><span class="n">decode64</span><span class="p">(</span><span class="s2">&quot;aGVsbG8gd29ybGQ=</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;hello world&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="no">Base64</span><span class="o">.</span><span class="n">urlsafe_encode64</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;aGVsbG8gd29ybGQ=&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="digest">Digest</h2>
+
+<p>Use <strong>SHA</strong>(Secure Hash Algorithm) to generate digest and encrypt.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;digest&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Binary presentation.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="ss">Digest</span><span class="p">:</span><span class="ss">:SHA1</span><span class="o">.</span><span class="n">digest</span> <span class="s1">&#39;hello world&#39;</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;*\xAEl5\xC9O\xCF\xB4\x15\xDB\xE9_@\x8B\x9C\xE9\x1E\xE8F\xED&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Hex presentation.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="ss">Digest</span><span class="p">:</span><span class="ss">:SHA1</span><span class="o">.</span><span class="n">hexdigest</span> <span class="s1">&#39;hello world&#39;</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;2aae6c35c94fcfb415dbe95f408b9ce91ee846ed&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Base64 presentation.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="ss">Digest</span><span class="p">:</span><span class="ss">:SHA1</span><span class="o">.</span><span class="n">base64digest</span> <span class="s1">&#39;hello world&#39;</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;Kq5sNclPz7QV2+lfQIuc6R7oRu0=&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Bubble-babble (recognizable and pronounceable) presentation</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;digest/bubblebabble&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="ss">Digest</span><span class="p">:</span><span class="ss">:SHA1</span><span class="o">.</span><span class="n">bubblebabble</span> <span class="s1">&#39;hello world&#39;</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;xepip-varaf-hodig-zefor-gyhyt-rupih-zubym-rulyv-nolov-micyv-taxyx&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Use <strong>SHA2</strong>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="ss">Digest</span><span class="p">:</span><span class="ss">:SHA256</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Use <strong>MD5</strong>.(<em>abandoned</em>)</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="ss">Digest</span><span class="p">:</span><span class="ss">:MD5</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="s2">&quot;5eb63bbbe01eeed093cb22bb8f5acdc3&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="hmac">HMAC</h2>
+
+<p>Hash-based Message Authentication Code. Use key to sign data.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
+</span><span class="line"><span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;hello world&#39;</span>
+</span><span class="line"><span class="ss">OpenSSL</span><span class="p">:</span><span class="ss">:HMAC</span><span class="o">.</span><span class="n">digest</span><span class="p">(</span><span class="s1">&#39;sha1&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;Hs\xE8\v2\bv\xFE\xF9\x8B\xD5\x85zqF\xDBA \a\xC7&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="ss">OpenSSL</span><span class="p">:</span><span class="ss">:HMAC</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="s1">&#39;sha1&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;4873e80b320876fef98bd5857a7146db412007c7&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Use Base64 to encode</span>
+</span><span class="line"><span class="no">Base64</span><span class="o">.</span><span class="n">encode64</span> <span class="ss">OpenSSL</span><span class="p">:</span><span class="ss">:HMAC</span><span class="o">.</span><span class="n">digest</span><span class="p">(</span><span class="s1">&#39;sha1&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;SHPoCzIIdv75i9WFenFG20EgB8c=\n&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Review] Design Patterns in Ruby]]></title>
