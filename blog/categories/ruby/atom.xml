@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-11-20T22:20:34+08:00</updated>
+  <updated>2014-11-20T22:23:33+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -54,8 +54,9 @@ require ‘base64’</p>
 require 'securerandom'
 </code></p>
 
-<p>Hex presentation. 
-```ruby
+<p>Hex presentation.</p>
+
+<p>```ruby
 # 10 is the length of random number to be generated.
 # The resulting string has twice length.
 SecureRandom.hex(10)
