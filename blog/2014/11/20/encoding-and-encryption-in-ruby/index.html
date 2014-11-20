@@ -13,7 +13,7 @@
   <meta name="author" content="wendi">
 
   
-  <meta name="description" content="Ruby Nov 20th, 2014 Encoding and Encryption in Ruby Encode and decode Use Base64 Unreadable. Translates any binary data into purely printable &hellip;">
+  <meta name="description" content="Ruby Nov 20th, 2014 Encoding and Encryption in Ruby Encode and decode Use Base64. API Unreadable. Translates any binary data into purely printable &hellip;">
   <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
   
 
@@ -169,7 +169,7 @@
 
   <section><h2 id="encode-and-decode">Encode and decode</h2>
 
-<p>Use Base64</p>
+<p>Use <strong>Base64</strong>. <a href="http://ruby-doc.org/stdlib-2.1.5/libdoc/base64/rdoc/Base64.html">API</a></p>
 
 <ul>
   <li>Unreadable.</li>
@@ -199,9 +199,49 @@
 </span><span class="line"><span class="c1"># =&gt; &quot;aGVsbG8gd29ybGQ=&quot;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<h2 id="secure-random-string">Secure Random String</h2>
+
+<p>Use <strong>SecureRandom</strong>, an interface for secure random number generator. <a href="http://ruby-doc.org/stdlib-2.1.2/libdoc/securerandom/rdoc/SecureRandom.html">API</a></p>
+
+<ul>
+  <li>Generate session key in HTTP cookies.</li>
+  <li>Generate OAuth nonce.</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;securerandom&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Hex presentation. 
+&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;figcaption&gt;<span></span>&lt;/figcaption&gt;&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class="ruby"><span class="line"><span class="c1"># 10 is the length of random number to be generated.</span>
+</span><span class="line"><span class="c1"># The resulting string has twice length.</span>
+</span><span class="line"><span class="no">SecureRandom</span><span class="o">.</span><span class="n">hex</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;91a9e990d11e1b546b5a&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Default is 16, resulting a 32 length string.</span>
+</span><span class="line"><span class="no">SecureRandom</span><span class="o">.</span><span class="n">hex</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;263e8681a7241ca3dfb43e482f5a26b1&quot;</span>
+</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;</p>
+
+<p>Base64 presentation.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">SecureRandom</span><span class="o">.</span><span class="n">base64</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;0Wl1NAxZi+kk6JhJERKd/Q==&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
 <h2 id="digest">Digest</h2>
 
-<p>Use <strong>SHA</strong>(Secure Hash Algorithm) to generate digest and encrypt.</p>
+<p>Use <strong>SHA</strong>(Secure Hash Algorithm) to generate digest and encrypt. <a href="http://ruby-doc.org/stdlib-2.1.0/libdoc/digest/rdoc/Digest.html">API</a></p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;digest&#39;</span>
@@ -261,7 +301,14 @@
 
 <h2 id="hmac">HMAC</h2>
 
-<p>Hash-based Message Authentication Code. Use key to sign data.</p>
+<p>Use <strong>OpenSSL::HMAC</strong>. <a href="http://ruby-doc.org/stdlib-2.1.2/libdoc/openssl/rdoc/OpenSSL/HMAC.html">API</a></p>
+
+<p>Hash-based Message Authentication Code. </p>
+
+<ol>
+  <li>Generate digest message.</li>
+  <li>Sign it.</li>
+</ol>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -287,6 +334,97 @@
 </span><span class="line"><span class="c1"># =&gt; &quot;SHPoCzIIdv75i9WFenFG20EgB8c=\n&quot;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<h2 id="symmetric-encryption-and-decryption">Symmetric Encryption and Decryption</h2>
+
+<p>Use <strong>OpenSSL::Cipher</strong>. <a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/openssl/rdoc/OpenSSL/Cipher.html">API</a></p>
+
+<p>List all supported algorithms.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="ss">OpenSSL</span><span class="p">:</span><span class="ss">:Cipher</span><span class="o">.</span><span class="n">ciphers</span>
+</span><span class="line"><span class="c1"># =&gt; [</span>
+</span><span class="line"><span class="c1">#  [  0] &quot;AES-128-CBC&quot;,</span>
+</span><span class="line"><span class="c1">#  [  1] &quot;AES-128-CBC-HMAC-SHA1&quot;,</span>
+</span><span class="line"><span class="c1">#  [  2] &quot;AES-128-CFB&quot;,</span>
+</span><span class="line"><span class="c1">#  [  3] &quot;AES-128-CFB1&quot;,</span>
+</span><span class="line"><span class="c1">#  ...</span>
+</span><span class="line"><span class="c1"># ]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Encrytion.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;hello world&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">cipher</span> <span class="o">=</span> <span class="ss">OpenSSL</span><span class="p">:</span><span class="ss">:Cipher</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;aes-128-cbc&#39;</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Choose a mode</span>
+</span><span class="line"><span class="n">cipher</span><span class="o">.</span><span class="n">encrypt</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Choose a key</span>
+</span><span class="line"><span class="n">key</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">random_key</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;8\f\x1F\xEA\x15T\xACM\x84Q\xD8o\xD3cxv&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Choose an IV, a nonce</span>
+</span><span class="line"><span class="n">iv</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">random_iv</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;$\xF8$1&gt;\xE8%!\x1D\xE1\x882\xAE\xDC\f\xE5&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Finalization</span>
+</span><span class="line"><span class="n">encrypted</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">cipher</span><span class="o">.</span><span class="n">final</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;^\x93\xDD\x11\xBC&gt;x\f\xE1\v\x19\xD7\xEF\xB6\xE5\x8D&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Decryption.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">decipher</span> <span class="o">=</span> <span class="ss">OpenSSL</span><span class="p">:</span><span class="ss">:Cipher</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;aes-128-cbc&#39;</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Choose a mode</span>
+</span><span class="line"><span class="n">decipher</span><span class="o">.</span><span class="n">decrypt</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Setup key and IV</span>
+</span><span class="line"><span class="n">decipher</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
+</span><span class="line"><span class="n">decipher</span><span class="o">.</span><span class="n">iv</span> <span class="o">=</span> <span class="n">iv</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Finalization</span>
+</span><span class="line"><span class="n">plain</span> <span class="o">=</span> <span class="n">decipher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">encrypted</span><span class="p">)</span> <span class="o">+</span> <span class="n">decipher</span><span class="o">.</span><span class="n">final</span>
+</span><span class="line"><span class="c1"># =&gt; &quot;hello world&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 </section>
 
 

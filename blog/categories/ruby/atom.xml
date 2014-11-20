@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-11-20T01:00:07+08:00</updated>
+  <updated>2014-11-20T22:20:34+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -20,7 +20,7 @@
     <id>http://blog.ifyouseewendy.com/blog/2014/11/20/encoding-and-encryption-in-ruby</id>
     <content type="html"><![CDATA[<h2 id="encode-and-decode">Encode and decode</h2>
 
-<p>Use Base64</p>
+<p>Use <strong>Base64</strong>. <a href="http://ruby-doc.org/stdlib-2.1.5/libdoc/base64/rdoc/Base64.html">API</a></p>
 
 <ul>
   <li>Unreadable.</li>
@@ -41,9 +41,41 @@ require ‘base64’</p>
 # =&gt; “aGVsbG8gd29ybGQ=”
 ```</p>
 
+<h2 id="secure-random-string">Secure Random String</h2>
+
+<p>Use <strong>SecureRandom</strong>, an interface for secure random number generator. <a href="http://ruby-doc.org/stdlib-2.1.2/libdoc/securerandom/rdoc/SecureRandom.html">API</a></p>
+
+<ul>
+  <li>Generate session key in HTTP cookies.</li>
+  <li>Generate OAuth nonce.</li>
+</ul>
+
+<p><code>ruby
+require 'securerandom'
+</code></p>
+
+<p>Hex presentation. 
+```ruby
+# 10 is the length of random number to be generated.
+# The resulting string has twice length.
+SecureRandom.hex(10)
+# =&gt; “91a9e990d11e1b546b5a”</p>
+
+<h1 id="default-is-16-resulting-a-32-length-string">Default is 16, resulting a 32 length string.</h1>
+<p>SecureRandom.hex
+# =&gt; “263e8681a7241ca3dfb43e482f5a26b1”
+```</p>
+
+<p>Base64 presentation.</p>
+
+<p><code>ruby
+SecureRandom.base64
+# =&gt; "0Wl1NAxZi+kk6JhJERKd/Q=="
+</code></p>
+
 <h2 id="digest">Digest</h2>
 
-<p>Use <strong>SHA</strong>(Secure Hash Algorithm) to generate digest and encrypt.</p>
+<p>Use <strong>SHA</strong>(Secure Hash Algorithm) to generate digest and encrypt. <a href="http://ruby-doc.org/stdlib-2.1.0/libdoc/digest/rdoc/Digest.html">API</a></p>
 
 <p><code>ruby
 require 'digest'
@@ -95,7 +127,14 @@ Digest::MD5.hexdigest('hello world')
 
 <h2 id="hmac">HMAC</h2>
 
-<p>Hash-based Message Authentication Code. Use key to sign data.</p>
+<p>Use <strong>OpenSSL::HMAC</strong>. <a href="http://ruby-doc.org/stdlib-2.1.2/libdoc/openssl/rdoc/OpenSSL/HMAC.html">API</a></p>
+
+<p>Hash-based Message Authentication Code. </p>
+
+<ol>
+  <li>Generate digest message.</li>
+  <li>Sign it.</li>
+</ol>
 
 <p>```ruby
 key = ‘123456’
@@ -111,6 +150,62 @@ OpenSSL::HMAC.digest(‘sha1’, key, data)
 # =&gt; “SHPoCzIIdv75i9WFenFG20EgB8c=\n”
 ```</p>
 
+<h2 id="symmetric-encryption-and-decryption">Symmetric Encryption and Decryption</h2>
+
+<p>Use <strong>OpenSSL::Cipher</strong>. <a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/openssl/rdoc/OpenSSL/Cipher.html">API</a></p>
+
+<p>List all supported algorithms.</p>
+
+<p><code>ruby
+OpenSSL::Cipher.ciphers
+# =&gt; [
+#  [  0] "AES-128-CBC",
+#  [  1] "AES-128-CBC-HMAC-SHA1",
+#  [  2] "AES-128-CFB",
+#  [  3] "AES-128-CFB1",
+#  ...
+# ]
+</code></p>
+
+<p>Encrytion.</p>
+
+<p>```ruby
+data = ‘hello world’</p>
+
+<p>cipher = OpenSSL::Cipher.new(‘aes-128-cbc’)</p>
+
+<h1 id="choose-a-mode">Choose a mode</h1>
+<p>cipher.encrypt</p>
+
+<h1 id="choose-a-key">Choose a key</h1>
+<p>key = cipher.random_key
+# =&gt; “8\f\x1F\xEA\x15T\xACM\x84Q\xD8o\xD3cxv”</p>
+
+<h1 id="choose-an-iv-a-nonce">Choose an IV, a nonce</h1>
+<p>iv = cipher.random_iv
+# =&gt; “$\xF8$1&gt;\xE8%!\x1D\xE1\x882\xAE\xDC\f\xE5”</p>
+
+<h1 id="finalization">Finalization</h1>
+<p>encrypted = cipher.update(data) + cipher.final
+# =&gt; “^\x93\xDD\x11\xBC&gt;x\f\xE1\v\x19\xD7\xEF\xB6\xE5\x8D”
+```</p>
+
+<p>Decryption.</p>
+
+<p>```ruby
+decipher = OpenSSL::Cipher.new(‘aes-128-cbc’)</p>
+
+<h1 id="choose-a-mode-1">Choose a mode</h1>
+<p>decipher.decrypt</p>
+
+<h1 id="setup-key-and-iv">Setup key and IV</h1>
+<p>decipher.key = key
+decipher.iv = iv</p>
+
+<h1 id="finalization-1">Finalization</h1>
+<p>plain = decipher.update(encrypted) + decipher.final
+# =&gt; “hello world”
+```</p>
 ]]></content>
   </entry>
   
