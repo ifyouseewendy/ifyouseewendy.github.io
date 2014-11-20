@@ -8,7 +8,7 @@ categories: ['Ruby']
 
 ## Encode and decode
 
-Use Base64
+Use **Base64**. [API](http://ruby-doc.org/stdlib-2.1.5/libdoc/base64/rdoc/Base64.html)
 
 + Unreadable.
 + Translates any binary data into purely printable characters. Eg. in HTTP transmission(MIME).
@@ -27,9 +27,40 @@ Base64.urlsafe_encode64('hello world')
 # => "aGVsbG8gd29ybGQ="
 ```
 
+## Secure Random String
+
+Use **SecureRandom**, an interface for secure random number generator. [API](http://ruby-doc.org/stdlib-2.1.2/libdoc/securerandom/rdoc/SecureRandom.html)
+
++ Generate session key in HTTP cookies.
++ Generate OAuth nonce.
+
+```ruby
+require 'securerandom'
+```
+
+Hex presentation.
+
+```ruby
+# 10 is the length of random number to be generated.
+# The resulting string has twice length.
+SecureRandom.hex(10)
+# => "91a9e990d11e1b546b5a"
+
+# Default is 16, resulting a 32 length string.
+SecureRandom.hex
+# => "263e8681a7241ca3dfb43e482f5a26b1"
+```
+
+Base64 presentation.
+
+```ruby
+SecureRandom.base64
+# => "0Wl1NAxZi+kk6JhJERKd/Q=="
+```
+
 ## Digest
 
-Use **SHA**(Secure Hash Algorithm) to generate digest and encrypt.
+Use **SHA**(Secure Hash Algorithm) to generate digest and encrypt. [API](http://ruby-doc.org/stdlib-2.1.0/libdoc/digest/rdoc/Digest.html)
 
 ```ruby
 require 'digest'
@@ -81,7 +112,12 @@ Digest::MD5.hexdigest('hello world')
 
 ## HMAC
 
-Hash-based Message Authentication Code. Use key to sign data.
+Use **OpenSSL::HMAC**. [API](http://ruby-doc.org/stdlib-2.1.2/libdoc/openssl/rdoc/OpenSSL/HMAC.html)
+
+Hash-based Message Authentication Code. 
+
+1. Generate digest message.
+2. Sign it.
 
 ```ruby
 key = '123456'
@@ -97,3 +133,60 @@ Base64.encode64 OpenSSL::HMAC.digest('sha1', key, data)
 # => "SHPoCzIIdv75i9WFenFG20EgB8c=\n"
 ```
 
+
+## Symmetric Encryption and Decryption
+
+Use **OpenSSL::Cipher**. [API](http://ruby-doc.org/stdlib-1.9.3/libdoc/openssl/rdoc/OpenSSL/Cipher.html)
+
+List all supported algorithms.
+
+```ruby
+OpenSSL::Cipher.ciphers
+# => [
+#  [  0] "AES-128-CBC",
+#  [  1] "AES-128-CBC-HMAC-SHA1",
+#  [  2] "AES-128-CFB",
+#  [  3] "AES-128-CFB1",
+#  ...
+# ]
+```
+
+Encrytion.
+
+```ruby
+data = 'hello world'
+
+cipher = OpenSSL::Cipher.new('aes-128-cbc')
+
+# Choose a mode
+cipher.encrypt
+
+# Choose a key
+key = cipher.random_key
+# => "8\f\x1F\xEA\x15T\xACM\x84Q\xD8o\xD3cxv"
+
+# Choose an IV, a nonce
+iv = cipher.random_iv
+# => "$\xF8$1>\xE8%!\x1D\xE1\x882\xAE\xDC\f\xE5"
+
+# Finalization
+encrypted = cipher.update(data) + cipher.final
+# => "^\x93\xDD\x11\xBC>x\f\xE1\v\x19\xD7\xEF\xB6\xE5\x8D"
+```
+
+Decryption.
+
+```ruby
+decipher = OpenSSL::Cipher.new('aes-128-cbc')
+
+# Choose a mode
+decipher.decrypt
+
+# Setup key and IV
+decipher.key = key
+decipher.iv = iv
+
+# Finalization
+plain = decipher.update(encrypted) + decipher.final
+# => "hello world"
+```
