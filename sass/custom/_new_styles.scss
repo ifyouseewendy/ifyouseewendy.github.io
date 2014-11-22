@@ -189,3 +189,43 @@
   }
 }
 
+// blockquote {
+//   border-left: 4px solid #dddddd;
+//   padding: 0 15px;
+//   color: #777777;
+//   margin-bottom: 14px;
+// }
+// blockquote > :first-child {
+//   margin-top: 0;
+// }
+// blockquote > :last-child {
+//   margin-bottom: 0;
+// }
+// 
+
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#b8d6e0;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 0;
+    font-style: italic;
+    line-height:25px;
+}
+
