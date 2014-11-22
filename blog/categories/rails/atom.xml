@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-11-20T22:23:33+08:00</updated>
+  <updated>2014-11-22T18:19:32+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[From irb to Rails console]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2014/11/22/from-irb-to-rails-console/"/>
+    <updated>2014-11-22T18:09:51+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2014/11/22/from-irb-to-rails-console</id>
+    <content type="html"><![CDATA[<p>From Justing Weiss’s article:</p>
+
+<p><a href="http://www.justinweiss.com/blog/2014/11/17/what-are-the-differences-between-irb/?utm_source=Weissblog+Subscribers&amp;utm_campaign=dc22dc3715-What_are_the_differences_between_irb_11_17_2014&amp;utm_medium=email&amp;utm_term=0_2494b7d197-dc22dc3715-120246897">What’s the Difference Between <em>irb</em>, <em>bundle exec irb</em>, <em>bundle console</em>, and <em>rails console</em>?</a></p>
+
+<ul>
+  <li><code>irb</code></li>
+</ul>
+
+<p>It can’t easily load gems that Bundler installs outside of RubyGems’ load path. Eg. <code>bundle install --path=vendor/bundle</code></p>
+
+<ul>
+  <li><code>bundle exec irb</code></li>
+</ul>
+
+<p>It can easily load <em>Gemfile</em> gems by Bundler.</p>
+
+<p><code>ruby
+$ irb
+&gt;&gt; require 'bundler/setup'
+=&gt; true
+</code></p>
+
+<ul>
+  <li><code>bundle exec console</code></li>
+</ul>
+
+<p>Find and auto-require <em>Gemfile</em> gems.</p>
+
+<p><code>ruby
+$ irb
+&gt;&gt; require 'bundler/setup'
+=&gt; true
+&gt;&gt; Rails.version
+NameError: uninitialized constant Rails
+        from (irb):2
+        from /Users/wendi/.rvm/rubies/ruby-2.0.0-p353/bin/irb:12:in '&lt;main&gt;'
+&gt;&gt; Bundler.require
+=&gt; [&lt;Bundler::Dependency type=:runtime name="rails" requirements="= 4.1.6"&gt;, ... ]
+&gt;&gt; Rails.version
+=&gt; "4.1.6"
+</code></p>
+
+<ul>
+  <li><code>rails console</code></li>
+</ul>
+
+<p>Find, auto-require <em>Gemfile</em> gems and load Rails Application env.</p>
+
+<p><code>ruby
+$ irb
+&gt;&gt; require 'bundler/setup'
+=&gt; true
+&gt;&gt; Rails.version
+NameError: uninitialized constant Rails
+        from (irb):2
+        from /Users/wendi/.rvm/rubies/ruby-2.0.0-p353/bin/irb:12:in '&lt;main&gt;'
+&gt;&gt; Bundler.require
+=&gt; [&lt;Bundler::Dependency type=:runtime name="rails" requirements="= 4.1.6"&gt;, ... ]
+&gt;&gt; Rails.version
+=&gt; "4.1.6"
+&gt;&gt; require_relative 'config/environment.rb'
+=&gt; true
+</code></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Things I Learn from Owning Rails Class]]></title>
@@ -1610,214 +1682,6 @@ end</p>
 
 <p><img src="https://dl.dropboxusercontent.com/s/ol5lajw9z9hwaca/rails-includes_vs_joins_selected.png?dl=1&amp;token_hash=AAE9IXia0UGrhtp5vqQRQHLWGOydmyjeTXuuek6Kg-CtOA&amp;expiry=1399564547" alt="rails-includes_vs_joins" /></p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Review] The Rails 4 Way - Environments and Configurations]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/05/18/the-rails-4-way-environments-and-configurations/"/>
-    <updated>2014-05-18T16:10:42+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/05/18/the-rails-4-way-environments-and-configurations</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Book</strong></td>
-      <td>The Rails 4 Way</td>
-    </tr>
-    <tr>
-      <td><strong>Author</strong></td>
-      <td>Obie Fernandez, Kevin Faustino, Vitaly Kushner</td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="http://amzn.com/0321944275">amzn.com/0321944275</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="bundler-refhttpbundlerio">Bundler <a href="http://bundler.io">ref</a></h2>
-
-<p>Bundler does gem dependency resolution based on Gemfile.</p>
-
-<h4 id="operator"><code>~&gt;</code> operator</h4>
-
-<p>The specifier <strong>~&gt;</strong> has a special meaning, best shown by example. <code>~&gt; 2.0.3</code> is identical to <code>&gt;= 2.0.3</code> and <code>&lt; 2.1</code>. <code>~&gt; 2.1</code> is identical to <code>&gt;= 2.1</code> and <code>&lt; 3.0</code>. <code>~&gt; 2.2.beta</code> will match prerelease versions like <code>2.2.beta.12</code>.</p>
-
-<p><code>ruby hello linenos:false
-gem 'thin',  '~&gt;1.1'
-</code></p>
-
-<h4 id="require"><code>require</code></h4>
-
-<p>Occasionally, the name of the gem that should be used in a require statement is
-different than the name of that gem in the repository. In those cases, the <strong>:require</strong>
-option solves this simply and declaratively right in the Gemfile.</p>
-
-<p><code>ruby
-gem 'sqlite3-ruby', :require =&gt; 'sqlite3'
-</code></p>
-
-<h4 id="group">group</h4>
-
-<p>```ruby
-gem ‘wirble’, :group =&gt; :development
-gem ‘ruby-debug’, :group =&gt; [:development, :test]</p>
-
-<p>group :test do
-  gem ‘rspec’
-end
-```</p>
-
-<h4 id="bundle-installupdate">bundle install/update</h4>
-
-<p><code>ruby
--&gt; calculate a dependency tree -&gt; generate Gemfile.lock
-</code></p>
-
-<h4 id="bundle-package">bundle package</h4>
-
-<blockquote>
-  <p>it will package up all your gems in <strong>vendor/cache</strong> directory. Running <strong>bundle install</strong> will use the gems in package and skip connecting to rubygems.org. use this to avoid external dependencies at deploy time, or if you depend on private gems that you are not available in any public repository.</p>
-</blockquote>
-
-<h4 id="bundle-exec">bundle exec</h4>
-
-<p>Non-Rails scripts must be executed with this to get a properly initialized RubyGems environment.</p>
-
-<h4 id="bundle-install---path-venderbundle---binstubs">bundle install –path vender/bundle –binstubs</h4>
-
-<p>The default location for gems installed by bundler is directory named <strong>.bundle</strong> in your user directory.</p>
-
-<p>This command will generate <strong>.bundle/config</strong> file:</p>
-
-<h2 id="ruby-bundleconfig">```ruby .bundle/config</h2>
-<p>BUNDLE_BIN: bundler_stubs
-BUNDLE_PATH: vendor/bundle
-BUNDLE_DISABLE_SHARED_GEMS: “1”
-```</p>
-
-<p>gems in <strong>verdor/cache</strong>, and installed in <strong>vendor/bundle</strong>.</p>
-
-<h4 id="bundle-install-vendor---disable-shared-gems">bundle install vendor –disable-shared-gems</h4>
-
-<blockquote>
-  <p>This command tells Bundler to install gems even if they are already installed in the system. Normally Bunlder avoids that symlinks to already downloaded gems that exists in your system. This option is useful when you are trying to package up an application that all dependencies unpacked.</p>
-</blockquote>
-
-<h2 id="startup-and-application-settings">Startup and Application Settings</h2>
-
-<p><code>boot.rb</code></p>
-
-<ul>
-  <li>sets up Bundler and load paths</li>
-</ul>
-
-<p><code>application.rb</code></p>
-
-<ul>
-  <li>require ‘boot’</li>
-  <li>load rails gems, gems for the specified Rail.env, and configures the application ( <strong>define Application class</strong> ).</li>
-</ul>
-
-<p><code>environment.rb</code></p>
-
-<ul>
-  <li>require ‘application’</li>
-  <li>runs all initializers ( <code>Application.initialize!</code> )</li>
-</ul>
-
-<p><code>environments/development.rb | test.rb | production.rb</code></p>
-
-<ul>
-  <li>makes environmental configuraions.</li>
-  <li>application.rb makes unenvironmental configurations, like time-zone, autoload_paths, encoding.</li>
-</ul>
-
-<h2 id="configurations">Configurations</h2>
-
-<h4 id="wrap-parameters">Wrap Parameters</h4>
-
-<p>Introduced in Rails 3.1, the <code>wrap_parameters.rb</code> initializer configures your application to work with JavaScript MVC frameworks.</p>
-
-<p>When submitting JSON parameters to a controller, Rails will wrap the parameters into a nested hash, with the controller’s name being set as the key. To illustrate, consider the following JSON:</p>
-
-<p><code>ruby
-{"title": "TheRails4Way"}
-</code></p>
-
-<p>If a client submitted the above JSON to a controller named ArticlesController, Rails would nest the params hash under the key “article”. This ensures the setting of model attributes from request parameters is consistent with the convention used when submitting from Rails form helpers.</p>
-
-<p><code>ruby
-{"title": "TheRails4Way", "article" =&gt; {"title": "TheRails4Way"}}
-</code></p>
-
-<h4 id="schema-dumper">Schema Dumper</h4>
-
-<p><code>ruby
-config.active_record.schema_format = :sql
-</code></p>
-
-<p>Every time you run tests, Rails dumps the schema of your development database and copies it to the test database using an auto generated <code>schema.rb</code> script. It looks very similar to an Active Record migration script; in fact, it uses the same API.</p>
-
-<h4 id="automatic-class-reloading">Automatic Class Reloading</h4>
-
-<p><code>ruby
-config.cache_classes = false
-</code></p>
-
-<p>Without getting into too much nitty-gritty detail, when the config.cache_classes setting is true,Rails willuse Ruby’s <code>require</code> statement to do its class loading, and when it is false, it will use <code>load</code> instead.</p>
-
-<p>When you require a Ruby file, the interpreter executes and caches it. If the file is required again (as in subsequent requests), the interpreter ignores the require statement and moves on. When you load a Ruby file, the interpreter executes the file again, no matter how many times it has been loaded before.</p>
-
-<h4 id="auto-loading-code">Auto-Loading Code</h4>
-
-<p>By following the naming convention, Rails will search <code>$LOAD_PATH</code> to find the undefined constant. So when using Rails console, <strong>you never have to explicitly <code>require</code> anything!</strong></p>
-
-<p>Rails takes advantage of the fact that Ruby provides a callback mechanism for missing constants. When Rails encounters an undefined constant in the code, it uses a class loader routine based on file-naming conventions to find and require the needed Ruby script.</p>
-
-<h4 id="eager-load">Eager Load</h4>
-
-<p><code>ruby
-config.eager_load = false
-</code></p>
-
-<p>In your production environment, you will want this set to true, as it copies most of your application in memory. This provides a performance increase to web servers that copy on write, such as Unicorn.</p>
-
-<h4 id="explain-for-slow-queries">Explain for Slow Queries</h4>
-
-<p><code>ruby
-config.active_record.auto_explain_threshold_in_seconds = 0.5
-</code></p>
-
-<p>Introduced in Rails 3.2, Active Record now monitors the threshold of SQL queries being made. If any query takes longer than the specified threshold, the query plan is logged with a warning.</p>
-
-<h4 id="assets">Assets</h4>
-
-<p><code>ruby
-config.assets.debug = true
-</code></p>
-
-<p>Setting config.assets.debug to false, would result in Sprockets concatenating and running preprocessors on all assets.</p>
-
-<p><code>ruby
-config.assets.compile = true
-</code></p>
-
-<p>If an asset is requested that does not exist in the public/assets folder, Rails will throw an exception. To enable live asset compilation fallback on production, set config.assets.compile to true.</p>
-
-<p><code>ruby
-config.assets.enable = false
-</code></p>
-
-<p>Like most features in Rails, the usage of the Asset Pipeline is completely optional. To include assets in your project as it was done in Rails 3.0, set config.assets.enabled to false.</p>
-
-<h4 id="tagged-logging-refhttparunim2011x-request-id-tracking-taggedlogging-rails">Tagged Logging <a href="http://arun.im/2011/x-request-id-tracking-taggedlogging-rails">ref</a></h4>
-
-<p><code>ruby
-config.log_tags = [ :subdomain, :uuid ]
-</code></p>
-
-<p>Rails 3.2 introduced the ability to tag your log messages. <code>:subdomain</code> example by <em>www</em>, <code>:uuid</code> is a string to identify request, try <code>request.uuid</code>.</p>
 ]]></content>
   </entry>
   

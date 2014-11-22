@@ -1,0 +1,303 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>From irb to Rails console - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="Rails, Ruby Nov 22nd, 2014 From irb to Rails console From Justing Weiss’s article: What’s the Difference Between irb, bundle exec irb, bundle &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2014/11/22/from-irb-to-rails-console">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2014/11/22/from-irb-to-rails-console/">From Irb to Rails Console</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/11/20/encoding-and-encryption-in-ruby/">Encoding and Encryption in Ruby</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/10/17/design-patterns-in-ruby/">[Review] Design Patterns in Ruby</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/09/29/things-i-learnt-from-owning-rails-class/">Things I Learn From Owning Rails Class</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/09/27/rebuilding-rails/">[Review] Rebuilding Rails</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Nov 22<span>nd</span>, 2014</a>
+</span>
+
+    </div>
+    <h1>
+      From irb to Rails console
+    </h1>
+  
+</header>
+
+
+  <section><p>From Justing Weiss’s article:</p>
+
+<p><a href="http://www.justinweiss.com/blog/2014/11/17/what-are-the-differences-between-irb/?utm_source=Weissblog+Subscribers&amp;utm_campaign=dc22dc3715-What_are_the_differences_between_irb_11_17_2014&amp;utm_medium=email&amp;utm_term=0_2494b7d197-dc22dc3715-120246897">What’s the Difference Between <em>irb</em>, <em>bundle exec irb</em>, <em>bundle console</em>, and <em>rails console</em>?</a></p>
+
+<ul>
+  <li><code>irb</code></li>
+</ul>
+
+<p>It can’t easily load gems that Bundler installs outside of RubyGems’ load path. Eg. <code>bundle install --path=vendor/bundle</code></p>
+
+<ul>
+  <li><code>bundle exec irb</code></li>
+</ul>
+
+<p>It can easily load <em>Gemfile</em> gems by Bundler.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="err">$</span> <span class="n">irb</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="nb">require</span> <span class="s1">&#39;bundler/setup&#39;</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="kp">true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li><code>bundle exec console</code></li>
+</ul>
+
+<p>Find and auto-require <em>Gemfile</em> gems.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="err">$</span> <span class="n">irb</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="nb">require</span> <span class="s1">&#39;bundler/setup&#39;</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="kp">true</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">version</span>
+</span><span class="line"><span class="ss">NameError</span><span class="p">:</span> <span class="n">uninitialized</span> <span class="n">constant</span> <span class="no">Rails</span>
+</span><span class="line">        <span class="n">from</span> <span class="p">(</span><span class="n">irb</span><span class="p">):</span><span class="mi">2</span>
+</span><span class="line">        <span class="n">from</span> <span class="sr">/Users/</span><span class="n">wendi</span><span class="o">/.</span><span class="n">rvm</span><span class="o">/</span><span class="n">rubies</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">p353</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="ss">irb</span><span class="p">:</span><span class="mi">12</span><span class="ss">:in</span> <span class="s1">&#39;&lt;main&gt;&#39;</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="no">Bundler</span><span class="o">.</span><span class="n">require</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="o">[&lt;</span><span class="ss">Bundler</span><span class="p">:</span><span class="ss">:Dependency</span> <span class="n">type</span><span class="o">=</span><span class="ss">:runtime</span> <span class="nb">name</span><span class="o">=</span><span class="s2">&quot;rails&quot;</span> <span class="n">requirements</span><span class="o">=</span><span class="s2">&quot;= 4.1.6&quot;</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="o">]</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">version</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="s2">&quot;4.1.6&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li><code>rails console</code></li>
+</ul>
+
+<p>Find, auto-require <em>Gemfile</em> gems and load Rails Application env.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="err">$</span> <span class="n">irb</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="nb">require</span> <span class="s1">&#39;bundler/setup&#39;</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="kp">true</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">version</span>
+</span><span class="line"><span class="ss">NameError</span><span class="p">:</span> <span class="n">uninitialized</span> <span class="n">constant</span> <span class="no">Rails</span>
+</span><span class="line">        <span class="n">from</span> <span class="p">(</span><span class="n">irb</span><span class="p">):</span><span class="mi">2</span>
+</span><span class="line">        <span class="n">from</span> <span class="sr">/Users/</span><span class="n">wendi</span><span class="o">/.</span><span class="n">rvm</span><span class="o">/</span><span class="n">rubies</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">p353</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="ss">irb</span><span class="p">:</span><span class="mi">12</span><span class="ss">:in</span> <span class="s1">&#39;&lt;main&gt;&#39;</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="no">Bundler</span><span class="o">.</span><span class="n">require</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="o">[&lt;</span><span class="ss">Bundler</span><span class="p">:</span><span class="ss">:Dependency</span> <span class="n">type</span><span class="o">=</span><span class="ss">:runtime</span> <span class="nb">name</span><span class="o">=</span><span class="s2">&quot;rails&quot;</span> <span class="n">requirements</span><span class="o">=</span><span class="s2">&quot;= 4.1.6&quot;</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="o">]</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">version</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="s2">&quot;4.1.6&quot;</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="n">require_relative</span> <span class="s1">&#39;config/environment.rb&#39;</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="kp">true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme of <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2014/11/22/from-irb-to-rails-console/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2014/11/22/from-irb-to-rails-console/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>

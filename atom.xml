@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-11-20T22:23:33+08:00</updated>
+  <updated>2014-11-22T18:19:32+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,102 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[From irb to Rails console]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2014/11/22/from-irb-to-rails-console/"/>
+    <updated>2014-11-22T18:09:51+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2014/11/22/from-irb-to-rails-console</id>
+    <content type="html"><![CDATA[<p>From Justing Weiss’s article:</p>
+
+<p><a href="http://www.justinweiss.com/blog/2014/11/17/what-are-the-differences-between-irb/?utm_source=Weissblog+Subscribers&amp;utm_campaign=dc22dc3715-What_are_the_differences_between_irb_11_17_2014&amp;utm_medium=email&amp;utm_term=0_2494b7d197-dc22dc3715-120246897">What’s the Difference Between <em>irb</em>, <em>bundle exec irb</em>, <em>bundle console</em>, and <em>rails console</em>?</a></p>
+
+<ul>
+  <li><code>irb</code></li>
+</ul>
+
+<p>It can’t easily load gems that Bundler installs outside of RubyGems’ load path. Eg. <code>bundle install --path=vendor/bundle</code></p>
+
+<ul>
+  <li><code>bundle exec irb</code></li>
+</ul>
+
+<p>It can easily load <em>Gemfile</em> gems by Bundler.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="err">$</span> <span class="n">irb</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="nb">require</span> <span class="s1">&#39;bundler/setup&#39;</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="kp">true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li><code>bundle exec console</code></li>
+</ul>
+
+<p>Find and auto-require <em>Gemfile</em> gems.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="err">$</span> <span class="n">irb</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="nb">require</span> <span class="s1">&#39;bundler/setup&#39;</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="kp">true</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">version</span>
+</span><span class="line"><span class="ss">NameError</span><span class="p">:</span> <span class="n">uninitialized</span> <span class="n">constant</span> <span class="no">Rails</span>
+</span><span class="line">        <span class="n">from</span> <span class="p">(</span><span class="n">irb</span><span class="p">):</span><span class="mi">2</span>
+</span><span class="line">        <span class="n">from</span> <span class="sr">/Users/</span><span class="n">wendi</span><span class="o">/.</span><span class="n">rvm</span><span class="o">/</span><span class="n">rubies</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">p353</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="ss">irb</span><span class="p">:</span><span class="mi">12</span><span class="ss">:in</span> <span class="s1">&#39;&lt;main&gt;&#39;</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="no">Bundler</span><span class="o">.</span><span class="n">require</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="o">[&lt;</span><span class="ss">Bundler</span><span class="p">:</span><span class="ss">:Dependency</span> <span class="n">type</span><span class="o">=</span><span class="ss">:runtime</span> <span class="nb">name</span><span class="o">=</span><span class="s2">&quot;rails&quot;</span> <span class="n">requirements</span><span class="o">=</span><span class="s2">&quot;= 4.1.6&quot;</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="o">]</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">version</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="s2">&quot;4.1.6&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li><code>rails console</code></li>
+</ul>
+
+<p>Find, auto-require <em>Gemfile</em> gems and load Rails Application env.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="err">$</span> <span class="n">irb</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="nb">require</span> <span class="s1">&#39;bundler/setup&#39;</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="kp">true</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">version</span>
+</span><span class="line"><span class="ss">NameError</span><span class="p">:</span> <span class="n">uninitialized</span> <span class="n">constant</span> <span class="no">Rails</span>
+</span><span class="line">        <span class="n">from</span> <span class="p">(</span><span class="n">irb</span><span class="p">):</span><span class="mi">2</span>
+</span><span class="line">        <span class="n">from</span> <span class="sr">/Users/</span><span class="n">wendi</span><span class="o">/.</span><span class="n">rvm</span><span class="o">/</span><span class="n">rubies</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">p353</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="ss">irb</span><span class="p">:</span><span class="mi">12</span><span class="ss">:in</span> <span class="s1">&#39;&lt;main&gt;&#39;</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="no">Bundler</span><span class="o">.</span><span class="n">require</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="o">[&lt;</span><span class="ss">Bundler</span><span class="p">:</span><span class="ss">:Dependency</span> <span class="n">type</span><span class="o">=</span><span class="ss">:runtime</span> <span class="nb">name</span><span class="o">=</span><span class="s2">&quot;rails&quot;</span> <span class="n">requirements</span><span class="o">=</span><span class="s2">&quot;= 4.1.6&quot;</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="o">]</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">version</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="s2">&quot;4.1.6&quot;</span>
+</span><span class="line"><span class="o">&gt;&gt;</span> <span class="n">require_relative</span> <span class="s1">&#39;config/environment.rb&#39;</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="kp">true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Encoding and Encryption in Ruby]]></title>
@@ -5482,138 +5578,6 @@ of calling your framework.</li>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[[Review]  历史深处的忧虑]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/09/23/lin-da-li-shi-shen-chu-de-you-lu/"/>
-    <updated>2014-09-23T22:25:49+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/09/23/lin-da-li-shi-shen-chu-de-you-lu</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Book</strong></td>
-      <td>历史深处的忧虑</td>
-    </tr>
-    <tr>
-      <td><strong>Author</strong></td>
-      <td>林达</td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="http://book.douban.com/subject/25708714/">book.douban.com/subject/25708714</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>中国人的“虐待”概念，带有很强的主观性和主动性。但是在美国，这只是一个法律概念，它是不考虑冬季，只察看行为和后果的。</p>
-
-<h2 id="section">关于雇佣关系</h2>
-
-<p>1964年的民权法。六十年代的美国民权运动的结果不仅是立法取消了种族隔离，它还使得自由派思潮广为流行。保护每一个人的平等权利的观念浮到了表层上，尤其是社会上的弱势群体，比如少数民族、妇女、残疾人等等，他们的权利受到了前所未有的关注。</p>
-
-<p>1972年美国又制定了著名的平权法案，更规定了所有的政府机构和超过十五名雇员的私人企业，都必须在招工、技术培训、升迁等机会上，给弱势群体一定的比例。</p>
-
-<p>1991年，美国再一次制定新的民权法案。把雇主和雇员在发生民权官司时，提供证据的负担重新放到雇主一边。</p>
-
-<h2 id="section-1">关于权利法案</h2>
-
-<p>我们在评论一件事情”好“还是”不好“的时候，他们经常只是简单地说：”这是合法的“以及“这是非法的”。</p>
-
-<p>宪法确立了一个民主制度，宪法的修正案，尤其这个修正案的前十条，通常被称为权利法案的，保证了美国每一个”个人“最基本的权利不受侵犯。美国人认为，<strong>假如一个人最基本的权利能够得到保障，他就是自由的。</strong></p>
-
-<p>1773年签署《独立宣言》，但是直到1783年，他们才打胜了这场以“生命、自由和追求幸福”的名义而举行的战争，英国终于签字承认了美国的独立。</p>
-
-<p>《权利法案》旨在限制联邦政府权利的无限扩张，防止联邦政府干涉和剥夺美国人民的自由。从此宪法所支撑的美国变成了一个设计精巧的结构，政府和人民时时处于相互制约的状态之中。这个运转结构也是美国稳定的原因之一：政府时时处于强有力的监督之下，它就不容易在错误的道路上走得太远，甚至发生大滑坡；同时，人民有了充分的自由，他们有了表达意愿的渠道以及宣泄情绪的出口，也就不容易积怨之深从而产生爆发性的破坏力。</p>
-
-<p>到1789年，美国宪法的前一部分才被通过。也就是说，美国打赢独立战争的六年之后，美国人法定的建国日十三年之后，美国政府才开始工作，才开始通过民主选举，选出他们的第一届总统华盛顿。</p>
-
-<p>很多国家的宪法都有言论自由这一条，那么美国的《权利法案》有什么特殊的地方呢？它的特点就是规定了政府不得立法剥夺这种自由。</p>
-
-<h2 id="section-2">关于第一修正案</h2>
-
-<p>宪法第一修正案的关键就是：言论自由与真理完全无关。</p>
-
-<p>马丁·路德·金认为“手段代表了在形成之中的理想和在进行之中的目的，人们无法通过邪恶的手段来达到美好的目的，因为手段是种子，目的是树”。</p>
-
-<p>如何解决既维护言论自由的承诺，又惧怕言论引起的非法行为以及煽动暴力，甚至担心危及国家安全？</p>
-
-<p>“清楚与现实的危险”测定原则。如果政府无法证明某一言论是造成了清楚与现实的危险，它就不能对该言论的发表者进行惩罚。</p>
-
-<p>1969年重新规定了该原则：只有当一个言论所宣传的暴力，有可能直接煽起“迫在眉睫“的非法行动时，政府才有权干预。</p>
-
-<p>我认为应该从教育中学习，不应该抑制任何声音。从最反面的人那里我也学到过东西。我可以不赞成某一观点，但是这并不意味着这一观点就不应该发表，或者说，我就不应该去听。</p>
-
-<p>应该给三K党言论自由吗？斯蒂芬·潘佛回答到“如果你因为害怕一个不自由的时代，因此就不给他们言论自由的话，那么，这个不自由的时代已经开始了。是你自己给它开了头。”</p>
-
-<p><strong>言论自由的关键是什么呢？</strong></p>
-
-<p>关键就在于它的“内容中性“原则，就是要把“真理”二字坚决地摒弃在言论自由的大门之外。只要让“真理”二字一不小心从门缝里溜进来，言论自由就完了。为什么这样说呢？呼吁和宣扬言论自由的人们是很容易上“真理”的当的。他们或是明确认为，或是在潜意识中，总是觉得言论自由是走向“真理”的一条“阳光大道”，觉得言论自由只是让真理“越辩越明”的一种方式。在这种概念的指导下，一旦走到自己感觉已经“真理到手”的这一步，言论自由被抛弃就成了十分顺理成章的事儿。只要不坚持“内容中性”，只要以为言论自由的目的是为了追求真理，那么，就无法避免这样的情况发生：终有一日，在理论和现实上，都无法阻挡一个或数个权威在手的人物，或是一群所谓的“大多数”，出来把自己宣布为“真理”，而扼杀别人的言论自由。</p>
-
-<p>克林顿对于俄克拉荷马爆炸案的一句评价：“这是针对美国，我们的生活方式以及我们所有信仰的攻击。”</p>
-
-<p>政府的权利大，人民的权利必定受影响；政府的权利小，法律和秩序又不好保障。</p>
-
-<p>分权，是横向把政府的权利切成两个大的层次，也就是把联邦政府和地方政府的权利分隔开。除了权利的横向分隔，宪法还把国家政府的权利从竖向切成三条，“三权分立”，立法（国会）、行政（总统）、司法（最高法院）的绝对独立。</p>
-
-<p>“伟大的妥协”：国会的众议院以州人口比例确定议员的数量，而参议院则不论州的大小，每州两名议员，以确认小州的利益也有保障。</p>
-
-<p>总统四年选一次，众议员两年选一次，参议员六年选一次。</p>
-
-<p>最高法院的组成是九名大法官。这九名大法官由总统提名、经国会批准任命的，并且最高法院的大法官是终身制的。</p>
-
-<p>新闻监督，免预检制度，由麦当娜催生出五秒滞后的预检限制。</p>
-
-<p>新闻自由的主要意图就是防止对出版社的预先限制。即使是对于滥用新闻出版自由的人，也只能在事后，即出版之后适当惩罚，而不能预先阻止出版。</p>
-
-<p>蒙哥马利市专管警察部门的一名政府官员，名叫沙利文，以诽谤罪告《纽约时报》和四名黑人牧师。由此，最高法院宣布了一条非常重要的原则：当公职人员遇到不实的批评而受到伤害的时候，他不能以诽谤罪要求赔偿金，除非他能够提出证据，证明这是出于“真是的恶意”。法庭同时也指出：在自由辩论中，发生失误是不可避免的，必须保护新闻界有“喘气的空间”，使他们有可能生存下去。</p>
-
-<p>之后这条原则从“公职人员”扩大到了“公众人物”，而后再扩大到“卷入公众事务”的普通人。</p>
-
-<h2 id="section-3">关于第二修正案</h2>
-
-<p>保障了人民拥有枪的自由及保卫自由的能力。</p>
-
-<p>在这个成分复杂的世界里，永远会有一部分人滥用自由。整个社会也就不得不为这种滥用自由的情况承担后果。</p>
-
-<p>“二战”之前德国人民也是合法拥有武器的。但是在希特勒上台之后，首先搞枪支登记，然后设法逐步搞没收枪支。接着，犹太人面对武装的党卫队员，就只有束手待毙的份了。</p>
-
-<h2 id="section-4">关于第三、四修正案</h2>
-
-<p>私人财产不受侵犯是宪法第四修正案所保护的自由。</p>
-
-<p>根据宪法第四修正案，最高法院早就有了“排斥原则”，这个原则认定，任何非法搜查的证据，都不能用于审理过程，任何在这个基础上的定罪都必须撤销。</p>
-
-<p>在美国，所有人都知道，一个案子以胜诉终结，就是意味着另一个案子的开始。这非常有效地防止了美国政府的公职人员对平民的迫害，因为他们必须有所顾忌，一不当心的话，弄不好就是“搬起石头砸自己的脚”。</p>
-
-<p>在这里发生一个民权案例的时候，各种民权机构以及许多平民，他们都会抛开对当事人个人的好恶，抛开对他的信念、言论、行为的好恶，去支持这个当事人保护自己的宪法权利。这个时候，他们看上去像是在共同守护一个堤坝，似乎一旦决堤就会一毁俱毁。</p>
-
-<h2 id="section-5">关于第五、六、七修正案</h2>
-
-<p>陪审团、审判相关。</p>
-
-<p>“无罪假定”在美国的司法制度中是极为重要的一条。正是这一条，决定了检方和辩方从道义上的平等地位。正因为在审判之前，假定被告是无罪的，律师也就可以毫无心理负担，理直气壮的进行辩护。</p>
-
-<p>如果检察官有任何抬高自己在道义上地位的迹象，比如说，宣称自己是伸张正义，而暗示辩护律师是为犯罪开脱等等，都是违反了“公平游戏”的原则，是严重犯规的行为。</p>
-
-<p>警察的违规破案是否可行？《权利法案》的核心就是防止美国政府剥夺人民的自由和权力，如果以“成败论英雄”，那岂不是鼓励警察违反宪法。</p>
-
-<p>陪审员被允许知道的东西，只限于法官判定可以让他们听到和看到的东西。</p>
-
-<p>法官一般判定哪些“犯规”？与案情无关；还有一些诱导性的问题也是不允许的（不能先确定一个事实，问证人是不是这样）</p>
-
-<p>提问的一方是在与证人对话，“抗议”的一方是在与法官对话，检辩双方一般是互相不对话的。一旦出现他们之间的对话，通常带有“争执”意味，法官会在这样的“苗子”刚刚冒出来的时候就马上叫停，有时会立即判处罚款。</p>
-
-<p>在向证人提问时，也绝对不允许“争执”。与证人的全部对话只能以提问的形式出现。即使提问的一方发现证人明显是在那里说谎，他也不能直接对证人说，你这是说谎，因为这不仅已经不是“提问”，而且是一种“争执”。（所有律师都要有把肯定句变为疑问句的本事）</p>
-
-<p>刑事法律有一个极其重要的原则，被告只要提出怀疑即可，不必作出证明，这叫做“没有证明的负担”；而相反，检方则必须提供证明以“超越合理的怀疑”，这叫做“具有证明的负担”，或者说“证明的负担在检方”。</p>
-
-<p>不论陪审团最后作出什么样的裁决，是“罪名成立”也罢，是“罪名不成立”也罢，都必须是陪审团全体陪审员一致的意见。只要是意见不能取得一致，就意味着“无法做出裁决”，就必须宣判这一次的审判“宣告失败”。</p>
-
-<p>在录音被公布之后，佛曼只引用了《权利法案》第五条中的一句话，就是人民“不得被强迫在任何刑事案件中自证其罪”。这一句也被扩大为：不能强迫一个人说出对自己不利的证词。</p>
-
-<p>牺牲任何一个“个人”的自由权利以及家庭幸福，以此作为换取社会利益的代价，这种做法的合理性是不被美国宪法精神所承认的。它不承认任何一种社会要求可以高于一个公民对于自由幸福和合法权利的要求。</p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[How to use Mock and Stub in Minitest and Rspec?]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec/"/>
     <updated>2014-09-23T20:14:24+08:00</updated>
@@ -8229,87 +8193,6 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[[Review]  长发飞扬的日子]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/06/03/jiang-xin-chang-fa-fei-yang-de-ri-zi/"/>
-    <updated>2014-06-03T00:34:18+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/06/03/jiang-xin-chang-fa-fei-yang-de-ri-zi</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Book</strong></td>
-      <td>长发飞扬的日子</td>
-    </tr>
-    <tr>
-      <td><strong>Author</strong></td>
-      <td>姜昕</td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="http://book.douban.com/subject/6189764/">book.douban.com/subject/6189764</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>阴雨连绵会让我觉得他是，好天气反而会让我坐立不安。</p>
-
-<p>我久久地注视着那个方向，终于明白其实我们都只是在寻找我们各自的过去，而那种寻找是徒劳的。</p>
-
-<p>爱是一种在一瞬间就忽然降临的东西，是让你猝不及防却又挥之不去的东西。如果你犹豫再三，如果你反复掂量，那它就掺进了杂质，变成了表面上与爱情类似却又远不能急的另一种情感。</p>
-
-<p>虽然我和夏旸后来分开了，彼此也都曾给对方造成过伤害，可是，我从不怀疑他曾经对我说过的誓言——因为后来我终于知道了：誓言不见得是会实现的——年轻的誓言其实是你一生中曾经绽放的最绚烂的花朵。等到有一天，你再也听不到它而且自己也不会再说的时候，其实，那正是成长的悲哀。</p>
-
-<p>所以，对摇滚乐这一名词，我是这样理解的：它就像当初崔健诠释他自己的名字的那句话——就是一种“摧毁”和一种“建立”。它不应该局限于任何一种和声走势，也不应该局限于任何一种表演形式或表面现象，它是“点燃”，用从一些心灵发出的声音将另外一些心灵“点燃”。</p>
-
-<p>崔健说得特别号：“我没有老，因为我还有质疑这个世界的能力！”</p>
-
-<p>他找到了新的方向——那一切的改变，是因为 <a href="http://en.wikipedia.org/wiki/Peter_Murphy_(musician\)">Peter Murphy</a> 在 Bauhaus 时期的两张唱片——<a href="http://www.xiami.com/album/50278?spm=0.0.0.0.vuZDIm">In The Flat Field</a>、<a href="http://www.xiami.com/album/50279?spm=0.0.0.0.vuZDIm">Mask</a>，尤其是他离开乐队之后发行的那张个人专辑 <a href="http://www.xiami.com/album/55495?spm=0.0.0.0.7DIi01">Deep</a>。</p>
-
-<p>很多年后回头再看，我才真正意识到当年那么年轻的他能做到这一点有多么难得，他并没有因为一时的成功就忘乎所以、不可一世。而能够在名利双收的时候选择离开、在功成名就以后仍然一直将自己的注意力放在音乐上，这样的人一直是我敬佩的。</p>
-
-<p>生活并不像我们最初想象的那样，可是，好天气还会有，所以，最傻的事情就是在一个阴霾的天气中绝望。</p>
-
-<p>– “这些天我一直在想，当初选择做音乐到底是为了什么？难道就是为了出唱片，被好多人捧着、盯着？可那样幸福吗？”<br />
-– “可你舍得放弃吗？那样你就会觉得幸福了吗？”
-– “要是有一天我做的音乐一钱不值，再没有人说它们好，你会怎么想？会失望吗？”<br />
-– “不会的！我相信你！”
-– “所以说，这是条‘贼船’，上去就很难下来了！连你都这么想——不会的！的确，我是舍不得放弃，我已经‘中毒‘太深了……可是我怎么觉得，我的幸福也都被它毁了……我不知道我在对谁负责、谁又能对我负责！”</p>
-
-<p>今年年初，一个偶然的早晨，我们坐在“永和豆浆”一起吃早点，又谈起那段往事，我说：“还记得吗？你那个无比美好的理想。可是为什么在我告诉你我已经爱上另一个男人的时候，你又掐着我的脖子把我堵在墙角里了？还说女人真狠！得承认你还是自私的吧？”</p>
-
-<p>那天晚上，我拆开那个信封，里边是一张白色的硬纸壳儿，上边是一个“梦”字，不过那不仅仅是一个字，那其实是一幅画。上边“林”字的“横撇竖捺”画的是牛仔裤的侧面、牙膏牙刷、烟、打火机和笔；下面“夕”字的两撇是我和他的背影；一横是一张一百块钱的正面，四个“老人”换成了他乐队的四个人，发型怪异戴着墨镜，其中三个还分别拿着吉他、贝斯和鼓槌，那一点则是一个“？”。</p>
-
-<p>信封里没有照片，也没有画，那同样是两张牛皮纸，只不过比信封的质地稍薄，背面是放大的石膏头像，右上角印着四行小字：</p>
-
-<ul>
-  <li>多而乱的皱纹是岁月层层叠叠的刻度  </li>
-  <li>大小深浅的斑点是过去的记忆  </li>
-  <li>这就是平稳平淡的艺术生活  </li>
-  <li>创造出丰富的艺术生命  </li>
-</ul>
-
-<p>最后面是四个大字：  </p>
-
-<ul>
-  <li>留驻记忆</li>
-</ul>
-
-<p>如果有一天，一个人能够面容坦然地说：I’m alone, but not lonely。我以为那样的他（她）才是真的成熟了——所以，我最欣赏的气质，是坦然。</p>
-
-<p>当我们的路通向另一个黑暗森林，追寻来时的脚步是多么困难！当路被设定好了，回归似乎不可能。生命就是我们的契约，但是除了最高法庭之外，无人能撤销它；在这样的夜里，死亡看来非常遥远，可是我们知道这是自欺欺人。我们没有时间看见最暗淡的星自我们眼角消失。当它们熄灭，我们会等待更明亮的傍晚。或者，瞻仰它们的光彩，让我们多么焦虑。我从不知有任何快乐可以不带来焦虑。但我们很愿意付出这样的代价……
-– Emily Dickenson</p>
-
-<p>那天晚上，他们玩过一个游戏，用一本不知被谁一摞的成语字典彼此算命。每个轮到的人随意选择一个页数，并且选择那一页从上到下的某个成语。大家试过，都觉得准的不行！他们是按照年龄顺序进行的，最后轮到峻峻，他是乐队里年龄最小的一个。他那一条是——风流云散。</p>
-
-<p>仅仅两年多的时间，让一个人从“长发飞扬”到“怪毛林立”，再到“一毛不拔”，这选择和放弃到底意味着什么呢？</p>
-
-<p>门厅中最惨烈的就是那个杯子，它粉身碎骨在一滩水渍中，就像那是它的血。</p>
-
-<p>我们都失败过，所以应该更加懂得怎么去保护我们的镜子。他还说，我们不要像从前那样，在一份感情里交付盲目的热情，我们唯一需要交付的，是自己心里的坦然。这个世界的诱惑很多，可我们必须明白——每一次心旌摇动，即使对方不知道，那面镜子也照得见，而且它会出现裂痕。所以，如果我们只想一位地任随心意，就不要在一起；如果打算在一起，就不要欺骗那面镜子。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[includes vs. joins in Rails]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2014/06/03/rails-includes-vs-joins/"/>
     <updated>2014-06-03T00:32:18+08:00</updated>
@@ -8408,60 +8291,6 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 
 <p><img src="https://dl.dropboxusercontent.com/s/ol5lajw9z9hwaca/rails-includes_vs_joins_selected.png?dl=1&amp;token_hash=AAE9IXia0UGrhtp5vqQRQHLWGOydmyjeTXuuek6Kg-CtOA&amp;expiry=1399564547" alt="rails-includes_vs_joins" /></p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Review]  我所理解的生活]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/05/18/han-han-wo-suo-li-jie-de-sheng-huo/"/>
-    <updated>2014-05-18T18:00:46+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/05/18/han-han-wo-suo-li-jie-de-sheng-huo</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Book</strong></td>
-      <td>我所理解的生活</td>
-    </tr>
-    <tr>
-      <td><strong>Author</strong></td>
-      <td>韩寒</td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="http://book.douban.com/subject/20425053/">book.douban.com/subject/20425053</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>这世道觉得文绉绉的诬陷没问题，这世道让那些不说粗话但最缺德的人能做道德评判家，这世道让那些话不脏但心眼脏、手段脏的人当道，这世道能任意颠倒黑白、混淆是非，这世道觉得公众人物或者随便谁说一个“操”字就不应该，那就操翻这世道。</p>
-
-<p>很多人恨特权，因为特权没有在自己手中。</p>
-
-<p>还有某些人开会制定了应对措施，这些措施中甚至包括联合一些专职黑我的人再次对我进行诽谤和攻击。当然，最后这些没有实施，因为他们发现所谓黑，都是无需组织的，我如果说饭能吃屎不能吃，他们都能捧着马桶干杯。</p>
-
-<p>缘分不是走在街上非要撞见，缘分就是睡前醒后彼此想念。</p>
-
-<p>没人能让所有人满意，所以让自己和你中意的人满意就可以了。你所判定的一切，也许就是你自己内心的投影。</p>
-
-<p>我也将尽我所能，为在乎我的人创造各种东西，绝不向厌恶我的人解释这是个什么东西。</p>
-
-<p>我是一个虚荣的人，有时候甚至还虚伪。由于我得到的越来越多，所以也可以假装越来越不虚荣，因为有了一些真荣。但我的内心还是虚荣的。不出席所有颁奖典礼、不去各种上流场合其实是另外一种虚荣，并不是淡泊。</p>
-
-<p>开了几天的微博，我陷入了一种意淫的豪迈。</p>
-
-<p>我越来越觉得很多东西的结果，其实并不是不同人的改变，而只是同类人的聚集。在我的微博马甲里，你觉得这个政府糟透了，时日不多。在别人的微博马甲里，你觉得生活挺安逸的，一切都好。所以，你所关注的一切，就是你所看到的世界。</p>
-
-<p>每个人的道路都不同，我走在我的野路上，她走在她的大路上，都值得祝福。只要不走歪路邪路，每条道路都有成功的方式。黄思路也是，</p>
-
-<p>你知道你能做到，别人觉得你也许可以做到，那么，少废话，做到再说，其他的怨气都是虚妄。</p>
-
-<p>这枚碎片不是新型的，也不是心形的，它的不规则是规则的。</p>
-
-<p>至少在文字中你很擅长论理，对你来说，论理这个事，最重要的一点是什么？我觉得论理最重要的一点就是不用典。</p>
-
-<p>互联网多年，出现了很多聪明人，但完全没能稀释这个世界上笨蛋的浓度。</p>
-
-<p>写作三种：说服你，拉拢他，剖析我。最早的我一直在第一种，后来发现容易背叛自己。于是我到了第二种，又发现容易迎合大众。我一直在去往第三种，路上有反复，有踌躇，有代价，有痛苦，但那才是一个真正的写作者要去的地方。否则你只是一个饭局作家，一个去了香港买了本地摊杂志就假装知道中国政治内幕。</p>
 ]]></content>
   </entry>
   
