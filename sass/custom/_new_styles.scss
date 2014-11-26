@@ -218,12 +218,14 @@ blockquote:before {
     content:"\201C";
     font-size:40px;
     margin-left:-10px;
+    float: left;
     font-family:georgia,serif;
     color:#b8d6e0;
 }
 blockquote p {
     font-size: 14px;
     font-weight: 300;
+    margin-top: 30px;
     margin-bottom: 0;
     font-style: italic;
     line-height:25px;
