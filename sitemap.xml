@@ -4,108 +4,112 @@
         <loc>
             http://blog.ifyouseewendy.com/blog/2014/05/18/the-rails-4-way-environments-and-configurations/
         </loc>
-        <lastmod>2014-09-27T15:55:13+08:00</lastmod>
+        <lastmod>2014-09-28T15:12:10+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/2014/06/03/rails-includes-vs-joins/</loc>
-        <lastmod>2014-09-27T15:55:13+08:00</lastmod>
+        <lastmod>2014-09-28T15:12:10+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/2014/06/03/metaprogrammingi-ruby/</loc>
-        <lastmod>2014-10-11T22:33:23+08:00</lastmod>
+        <lastmod>2014-10-14T19:57:46+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ifyouseewendy.com/blog/2014/06/03/inside-activesupport-notifications/
         </loc>
-        <lastmod>2014-10-11T22:34:58+08:00</lastmod>
+        <lastmod>2014-10-14T19:57:46+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ifyouseewendy.com/blog/2014/06/22/asciicast-of-fundamentals-of-design-by-codeschool/
         </loc>
-        <lastmod>2014-10-11T22:35:12+08:00</lastmod>
+        <lastmod>2014-10-14T19:57:46+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ifyouseewendy.com/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec/
         </loc>
-        <lastmod>2014-09-27T15:55:13+08:00</lastmod>
+        <lastmod>2014-09-28T15:12:10+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/2014/09/27/git-community-book/</loc>
-        <lastmod>2014-10-11T22:35:41+08:00</lastmod>
+        <lastmod>2014-10-14T19:57:46+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/2014/09/27/rebuilding-rails/</loc>
-        <lastmod>2014-10-11T22:40:54+08:00</lastmod>
+        <lastmod>2014-10-14T19:57:46+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ifyouseewendy.com/blog/2014/09/29/things-i-learnt-from-owning-rails-class/
         </loc>
-        <lastmod>2014-10-13T23:23:31+08:00</lastmod>
+        <lastmod>2014-10-14T19:57:46+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/2014/10/17/design-patterns-in-ruby/</loc>
-        <lastmod>2014-11-20T00:59:33+08:00</lastmod>
+        <lastmod>2014-10-17T18:12:25+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/2014/11/20/encoding-and-encryption-in-ruby/</loc>
-        <lastmod>2014-11-22T18:19:22+08:00</lastmod>
+        <lastmod>2014-11-20T22:23:32+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/2014/11/22/from-irb-to-rails-console/</loc>
-        <lastmod>2014-11-22T18:19:22+08:00</lastmod>
+        <lastmod>2014-11-26T11:31:16+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/2014/11/23/quotes-from-ira-glass/</loc>
-        <lastmod>2014-11-23T00:27:30+08:00</lastmod>
+        <lastmod>2014-11-26T11:43:35+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.ifyouseewendy.com/blog/2014/11/26/practicing-rails/</loc>
+        <lastmod>2014-11-26T11:40:02+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/about/</loc>
-        <lastmod>2014-09-27T17:13:25+08:00</lastmod>
+        <lastmod>2014-09-28T15:12:10+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/archives/</loc>
-        <lastmod>2014-11-23T00:27:30+08:00</lastmod>
+        <lastmod>2014-11-26T11:43:35+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/archives/</loc>
-        <lastmod>2014-11-23T00:27:30+08:00</lastmod>
+        <lastmod>2014-11-26T11:43:35+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/</loc>
-        <lastmod>2014-11-23T00:27:30+08:00</lastmod>
+        <lastmod>2014-11-26T11:43:35+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ifyouseewendy.com/book/2014-05-18-han-han-wo-suo-li-jie-de-sheng-huo.html
         </loc>
-        <lastmod>2014-11-22T18:19:22+08:00</lastmod>
+        <lastmod>2014-11-26T11:31:16+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ifyouseewendy.com/book/2014-06-03-jiang-xin-chang-fa-fei-yang-de-ri-zi.html
         </loc>
-        <lastmod>2014-11-22T18:19:22+08:00</lastmod>
+        <lastmod>2014-11-26T11:31:16+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ifyouseewendy.com/book/2014-09-23-lin-da-li-shi-shen-chu-de-you-lu.html
         </loc>
-        <lastmod>2014-11-22T18:19:22+08:00</lastmod>
+        <lastmod>2014-11-26T11:31:16+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/fz/</loc>
-        <lastmod>2014-09-14T20:52:36+08:00</lastmod>
+        <lastmod>2014-08-18T17:07:42+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/</loc>
-        <lastmod>2014-11-23T00:27:30+08:00</lastmod>
+        <lastmod>2014-11-26T11:43:35+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/robots.txt</loc>
-        <lastmod>2014-05-18T17:31:51+08:00</lastmod>
+        <lastmod>2014-07-18T14:31:44+08:00</lastmod>
     </url>
 </urlset>

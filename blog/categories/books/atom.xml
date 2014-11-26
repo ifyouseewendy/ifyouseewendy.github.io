@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-11-23T00:47:50+08:00</updated>
+  <updated>2014-11-26T11:54:56+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,473 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Review] Practicing Rails]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2014/11/26/practicing-rails/"/>
+    <updated>2014-11-26T11:32:14+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2014/11/26/practicing-rails</id>
+    <content type="html"><![CDATA[<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>Practicing Rails</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td>Justin Weiss</td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="https://www.justinweiss.com/book/">www.justinweiss.com/book</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul id="markdown-toc">
+  <li><a href="#meta-principles">Meta Principles</a></li>
+  <li><a href="#tiny-apps">Tiny Apps</a>    <ul>
+      <li><a href="#build-a-tiny-app">Build a tiny App</a></li>
+      <li><a href="#owning-the-things-you-learn">Owning the things you learn</a></li>
+    </ul>
+  </li>
+  <li><a href="#build-your-own-app">Build Your Own App</a>    <ul>
+      <li><a href="#where-to-start">Where to start?</a>        <ul>
+          <li><a href="#build-from-ui-down">Build from UI Down</a></li>
+          <li><a href="#thinking-in-resources">Thinking in resources</a></li>
+          <li><a href="#t-shaped-development">T-Shaped development</a></li>
+          <li><a href="#just-in-time-learning">Just-in-time learning</a></li>
+        </ul>
+      </li>
+      <li><a href="#which-feature-do-you-build-next">Which feature do you build next?</a></li>
+    </ul>
+  </li>
+  <li><a href="#test-your-code-efficiently">Test Your Code Efficiently</a>    <ul>
+      <li><a href="#feature-development-process-with-testing">Feature development process with testing</a></li>
+      <li><a href="#organizing-and-structuring-your-tests">Organizing and structuring your tests</a>        <ul>
+          <li><a href="#use-object-oriented-design-to-make-your-tests-better">Use object-oriented design to make your tests better</a></li>
+          <li><a href="#refacoring">Refacoring</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#learning-skill">Learning Skill</a>    <ul>
+      <li><a href="#learning-stage">Learning Stage</a></li>
+      <li><a href="#a-to-dont-list">A to-don’t list</a></li>
+      <li><a href="#guidance">Guidance</a></li>
+      <li><a href="#google-and-stackoverflow-may-not-be-the-answer">Google and StackOverflow may not be the answer</a></li>
+      <li><a href="#dig-into-code-to-understand-it-better">Dig into code to understand it better</a></li>
+      <li><a href="#avoiding-the-temptation-of-the-new">Avoiding the temptation of the new</a></li>
+      <li><a href="#building-a-good-mental-filter">Building a good mental filter</a></li>
+      <li><a href="#push-vs-pull">Push vs. Pull</a></li>
+      <li><a href="#system-learning">System learning</a></li>
+      <li><a href="#when-to-give-new-tech-a-chance">When to give new tech a chance</a></li>
+      <li><a href="#catch-up-with-changes">Catch up with changes</a></li>
+    </ul>
+  </li>
+  <li><a href="#form-a-habit">Form a habit</a>    <ul>
+      <li><a href="#why">Why?</a></li>
+      <li><a href="#how-to-keep-consistent">How to keep consistent?</a>        <ul>
+          <li><a href="#morning-or-evening">Morning or Evening?</a></li>
+        </ul>
+      </li>
+      <li><a href="#how-to-keep-motivated">How to keep motivated?</a>        <ul>
+          <li><a href="#pre-prepare">Pre-prepare</a></li>
+          <li><a href="#processes">Processes</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="meta-principles">Meta Principles</h2>
+
+<ul>
+  <li>
+    <p><strong>As soon as you want to learn something, try it out.</strong></p>
+  </li>
+  <li>
+    <p><strong>When you feel yourself procrastinating or stressed about something, break it apart.</strong></p>
+
+    <p>Large, fuzzy tasks are killer. If the next thing you want to do is tiny, and you can start on it in the next five minutes, you probably will. If it’s big and vague, you’ll put it off until you know how to start it. Which will probably be never.</p>
+  </li>
+  <li>
+    <p><strong>Start backwards.</strong></p>
+
+    <p>When you write an app, start from the UI down. Allow your vision of the feature to guide your development. It’s easy to know if you’re building the right thing when you start from the end and trace back to the beginning. And UI sketches and HTML views are a lot easier to think about than abstract data models.</p>
+  </li>
+  <li>
+    <p><strong>Keep it simple, and add complexity later.</strong></p>
+
+    <p>The most frustrating struggles come from running into problems you don’t know how to solve. You can skip these problems by avoiding new things until you understand the old things. This goes for everything from gems and libraries to patterns and object-oriented design principles.</p>
+  </li>
+  <li>
+    <p><strong>Systems, not motivation.</strong></p>
+
+    <p>You can’t rely on motivation every day. Instead, set up systems and habits, so you don’t have to motivate yourself to work.</p>
+  </li>
+  <li>
+    <p><strong>Struggling should tell you that you’re on the brink of learning something really valuable. Keep it up.</strong></p>
+  </li>
+</ul>
+
+<h2 id="tiny-apps">Tiny Apps</h2>
+
+<p>When you read something interesting, tweak it with a tiny app.</p>
+
+<ul>
+  <li>UI related, with a <code>rails server</code></li>
+  <li>Functional, with a <code>rails console</code>. If setting it up in the console gets annoying, write a test case for it.</li>
+</ul>
+
+<h3 id="build-a-tiny-app">Build a tiny App</h3>
+
+<blockquote>
+  <p>I care about getting the most knowledge in the least amount of time, and scaffolds and other Rails code generators are a great way to do just that.</p>
+</blockquote>
+
+<p><code>ruby
+rails new test_polymorphic_association
+cd test_polymorphic_association
+bin/rails generate scaffold bug title:string description:text
+bin/rake db:migrate
+</code></p>
+
+<p><strong>Some tips for investigating ideas through the Rails console</strong></p>
+
+<p>You can use a lot of Rails features through the <code>app</code> object. app is a special object that has some useful methods for experimenting with your Rails app.</p>
+
+<p><code>ruby
+irb(main):002:0&gt; app.bug_path bug
+irb(main):003:0&gt; app.get "/bugs/1"
+irb(main):003:0&gt; puts app.response.body.first(200)
+</code></p>
+
+<p>The <code>helper</code> object provides all of your app’s view and helper methods in the Rails console:</p>
+
+<p><code>ruby
+irb(main):005:0&gt; helper.content_tag :h1, "Hey there" =&gt; "&lt;h1&gt;Hey there&lt;/h1&gt;"
+</code></p>
+
+<h3 id="owning-the-things-you-learn">Owning the things you learn</h3>
+
+<p>Explore the boundaries of that concept until you feel like you really get it.</p>
+
+<ol>
+  <li>test the boundaries</li>
+  <li>break and dig it, brainstorm some questions about the idea you’re exploring.</li>
+</ol>
+
+<h2 id="build-your-own-app">Build Your Own App</h2>
+
+<ul>
+  <li><strong>Core Paths</strong>, focus on building an important path through your app as your first feature.</li>
+  <li><strong>Build from UI down</strong>.</li>
+  <li><strong>Avoid large, fuzzy tasks</strong>. At every stage, you should be trying to break large tasks apart into smaller ones.</li>
+</ul>
+
+<h3 id="where-to-start">Where to start?</h3>
+
+<p>Take a few minutes and think what you’re trying to build. Write down every feature that comes to mind. Think of the different paths a user could take through your application, the different things they could do. Describe them in a single sentence.</p>
+
+<p>Then, narrow them down to paths where, if you didn’t have them, your app couldn’t exist. <strong>Core paths</strong>.</p>
+
+<p>In general, less code is better code. And <strong>starting from the view and building toward the model</strong> from there is the best way I know to consistently write less code.</p>
+
+<ul>
+  <li>Finding Core Path</li>
+  <li>View toward Model</li>
+</ul>
+
+<h4 id="build-from-ui-down">Build from UI Down</h4>
+
+<blockquote>
+  <p>Feature development process</p>
+</blockquote>
+
+<ol>
+  <li>Take the small feature from earlier.</li>
+  <li>Think of one simple thing someone could do with that feature.</li>
+  <li>Draw just enough screens for that user to be able to do that thing.</li>
+  <li>Describe the path through that action, as if you were telling someone what you were going to do.</li>
+  <li>As you describe that path, write out the objects, properties of those objects, and other actions you think you need to develop that path.</li>
+</ol>
+
+<h4 id="thinking-in-resources">Thinking in resources</h4>
+
+<p>Rails works well with “resources.” (You can think of a resource as an ActiveRecord model and a controller that has seven actions: <code>index</code>, <code>new</code>, <code>create</code>, <code>show</code>, <code>edit</code>, <code>update</code>, and <code>destroy</code>).</p>
+
+<h4 id="t-shaped-development">T-Shaped development</h4>
+
+<p>When you build something, try to get something rough up as quickly as possible. As long as the core of the feature you want to build is there, it’s fine.</p>
+
+<h4 id="just-in-time-learning">Just-in-time learning</h4>
+
+<p>It means you’re not trying to learn everything at the beginning. That’s the most common way to procrastinate starting something that you’re too nervous to do.</p>
+
+<h3 id="which-feature-do-you-build-next">Which feature do you build next?</h3>
+
+<p>Keeping these tasks as small as possible is the key. And try to follow the questions below.</p>
+
+<ol>
+  <li>Ask some questions: What is the app missing? What did you postpone to get that first feature done?</li>
+  <li>Try using what you have so far. What would make your life easier if it was built? What annoys you while you’re using your app?</li>
+  <li>Ifyou’rebuildingthisappforsomeoneelse,watchhowtheyusetheproject. Where are they struggling? What do they complain about?</li>
+</ol>
+
+<h2 id="test-your-code-efficiently">Test Your Code Efficiently</h2>
+
+<h3 id="feature-development-process-with-testing">Feature development process with testing</h3>
+
+<ol>
+  <li>Take your small feature.</li>
+  <li>Think of one simple thing someone could do with that feature.</li>
+  <li>Draw just enough screens for that user to be able to do that thing.</li>
+  <li>Translate that sketch into a failing integration test.</li>
+  <li>Get the first part of that test to pass:</li>
+  <li>Write a failing controller test.</li>
+  <li>Write some failing unit tests.</li>
+  <li>Write enough code to get the unit and controller tests to pass.</li>
+  <li>Repeat until the next part of your integration test passes.</li>
+</ol>
+
+<p><strong><em>What do you test?</em></strong></p>
+
+<ul>
+  <li>Happy path tests.</li>
+  <li>Sad path tests.</li>
+  <li>What-if tests, must be documented.</li>
+</ul>
+
+<p><strong><em>How do you test?</em></strong></p>
+
+<ol>
+  <li>Arrange</li>
+  <li>Act</li>
+  <li>Assert</li>
+</ol>
+
+<p><strong><em>When aren’t you testing enough?</em></strong></p>
+
+<p>Bugs imply that you missed a test somewhere. If you run into a bug in your app that your tests didn’t catch, you’re probably missing a test.</p>
+
+<ol>
+  <li>Write a test that fails while the bug exists.</li>
+  <li>Fix the bug.</li>
+  <li>Make sure the test passes now.</li>
+  <li>Check in both your test and fix, so you don’t run into the problem again.</li>
+</ol>
+
+<p><strong><em>How to keep TDD?</em></strong></p>
+
+<p>Translate that sketch into a failing <strong>integration test</strong>(Capybara).</p>
+
+<ol>
+  <li>Write a failing controller test.</li>
+  <li>Write some failing unit tests.</li>
+  <li>Write enough code to get the unit and controller tests to pass.</li>
+  <li>Repeat until the next part of your integration test passes.</li>
+</ol>
+
+<h3 id="organizing-and-structuring-your-tests">Organizing and structuring your tests</h3>
+
+<h4 id="use-object-oriented-design-to-make-your-tests-better">Use object-oriented design to make your tests better</h4>
+
+<p>With minitest, all of your test suites are just classes, tests are methods. That means you can use your object oriented design skills to reorganize your tests.</p>
+
+<p>Guides to follow:</p>
+
+<ol>
+  <li><strong>For tests, clarity is better than cleverness.</strong> You don’t have anything testing your tests, so you have to be careful not to make things too abstract. Hard-coding values, copy and pasted code, all that kind of stuff is usually OK in tests, if they make the test easier to understand.</li>
+  <li>Organizing your tests is easiest if your test organization matches your code organization. </li>
+  <li>Wait until you feel real pain before refactoring your tests.</li>
+</ol>
+
+<h4 id="refacoring">Refacoring</h4>
+
+<ul>
+  <li>Using Extract Method to write custom assertions.</li>
+  <li>Using Extract Method to make mocks easier to write.</li>
+  <li>Using modules to share tests between test suites.</li>
+</ul>
+
+<h2 id="learning-skill">Learning Skill</h2>
+
+<blockquote>
+  <p>The skill of learning.</p>
+</blockquote>
+
+<h3 id="learning-stage">Learning Stage</h3>
+
+<ol>
+  <li>First stage. Baseline knowledge, bootstrapping your learning process.</li>
+  <li>Second stage. You’re past the basics but not an expert, still require conscious thought.</li>
+  <li>Thrid stage. Skills in the third stage are mastered. They don’t require thought, you use instinct and intuition when you use them.</li>
+</ol>
+
+<p>If all of their skills were at an intermediate level, they’d not only have to think about how to use each of those skills, but how they interacted in this one specific situation, and what kinds of tradeoffs they’ll have to make.</p>
+
+<p>1 + 3 &gt; 2 + 2</p>
+
+<p>So you’ll be much more productive if you have 5 skills in the third stage and 5 skills in the first stage than if you have ten skills in the second stage.</p>
+
+<h3 id="a-to-dont-list">A to-don’t list</h3>
+
+<p>It might seem like you need to master JavaScript before you can write a Rails app. You will, someday. But you won’t get anywhere without starting an app you can get excited about, and you don’t need JavaScript for that first stage. So cross JavaScript off the list. For now.</p>
+
+<p><strong>For now</strong> is powerful. You’re giving yourself permission to set other things aside, so you can focus on something else.</p>
+
+<h3 id="guidance">Guidance</h3>
+
+<p>Search for the things that really resonate with you, the things you get lost in, the things you just want to do for hours.</p>
+
+<p>Take a look at what you know and what you don’t. What you want to learn, and what your app needs you to learn. Set aside some things that seem less important, and turn them into a “Not Right Now” list. Eventually you’ll have a few things you just can’t set aside – learn those thoroughly. And keep moving forward.</p>
+
+<p>Intermediate Rails isn’t about learning all the stuff you learned as a beginner in a little more depth. It’s about the stem of the “T” in T-Shaped Learning. It’s about gaining deep knowledge in a few different areas, one thing at a time. And it’s about using that knowledge to build your own apps, the way you imagined.</p>
+
+<h3 id="google-and-stackoverflow-may-not-be-the-answer">Google and StackOverflow may not be the answer</h3>
+
+<p>This can be the fastest way to get your problem solved, and is much easier than investigating it yourself. But you lose the opportunity to go through the investigation, and you miss the chance to build experience debugging and solving your own problems. This robs you of a chance to get to know your code, the language, and the framework better.</p>
+
+<p>Every problem you run into is an opportunity to learn.</p>
+
+<p>But if you use them to solve a problem, make sure you read the answer, follow references, and immerse yourself in the knowledge the solution brings you. </p>
+
+<p>When you use someone else’s solution to solve your problems, your app will become a mess of inconsistent code that probably only works coincidentally.</p>
+
+<h3 id="dig-into-code-to-understand-it-better">Dig into code to understand it better</h3>
+
+<p>Great developers know how to read and understand code. When you read code, you’ll understand much more than what the documentation tells you. Sometimes, after spending time with the code, you’ll know as much about it as the author does!</p>
+
+<p><strong>Reading code is a skill you’ll have to build like any other, and it’s not like reading a book.</strong></p>
+
+<p>Practice reading code. Learning to read and explore code will teach you things you won’t learn anywhere else. And when you get good enough at reading code, you’ll be able to solve problems you might have thought were impossible before.</p>
+
+<p>Remember, reading code isn’t like reading anything else. It’s about debugging and exploration. <strong>You have to run it.</strong></p>
+
+<h3 id="avoiding-the-temptation-of-the-new">Avoiding the temptation of the new</h3>
+
+<p>You have to separate the things that are interesting because they’re new, from the things that are interesting because they’ll help you get work done.</p>
+
+<h3 id="building-a-good-mental-filter">Building a good mental filter</h3>
+
+<p>Two questions to ask.</p>
+
+<ol>
+  <li>Is this something I need to know right now?</li>
+  <li>If I knew this a year ago, would it have made my life easier today?</li>
+</ol>
+
+<h3 id="push-vs-pull">Push vs. Pull</h3>
+
+<p>Hitting these sites is the “pull” model of receiving tech news. You’re the one digging it up. But these days, I’ve been using the “push” model more and more. I’ve been getting email newsletters, podcasts, things that get delivered to you instead of you looking for them.</p>
+
+<h3 id="system-learning">System learning</h3>
+
+<p>If you find a few good sources, keep a steady learning and practice schedule, and learn things as they become important to you, you’ll make much more progress than those who constantly chase the news sites.</p>
+
+<h3 id="when-to-give-new-tech-a-chance">When to give new tech a chance</h3>
+
+<p>Try it out on a new small project. Then, take the technique as far as it’ll go.</p>
+
+<p>But unfortunately, a lot of the techniques won’t have as much of a benefit in smaller projects. So create a new branch for your experiments, so you don’t wreck your code if you don’t like the technique. And</p>
+
+<ol>
+  <li>Make the change.</li>
+  <li>Look at the old code next to the new.</li>
+  <li>Ask yourself, which code do you prefer?</li>
+  <li>Ask a few other people, which code do they prefer?</li>
+  <li>If the new way is an improvement, go forward with that.</li>
+</ol>
+
+<p><strong>A technique only has value if it improves your code, so a direct comparison is the best way to judge.</strong></p>
+
+<h3 id="catch-up-with-changes">Catch up with changes</h3>
+
+<p>The best way to keep up with changes to your gems is to track down the project’s <em>CHANGELOG</em> file.</p>
+
+<p>These will help you catch up on the big changes from version to version. Usually, they’re just a short summary of each major change.</p>
+
+<h2 id="form-a-habit">Form a habit</h2>
+
+<blockquote>
+  <p>Keep your schedule consistent</p>
+</blockquote>
+
+<h3 id="why">Why?</h3>
+
+<p><strong>Whenever you try to build a new skill, consistency is much more important than the amount of time you spend.</strong></p>
+
+<p>When you first try to keep a schedule, it’ll feel weird. To me, it feels like I’m just pretending, like I’m just copying what someone else told me to do, instead of actually getting anything done. That feeling starts to hit me around the fourth or fifth day in a row, and it goes away after about three weeks. It’s totally normal, but it can be dangerous.</p>
+
+<p>Anytime you change a routine, you’ll face some internal resistance. Our daily routines seem normal to us, that’s what makes them routines. So building the momentum to change those routines takes a lot of effort, since you’re breaking habits that have taken years to form, in just a few weeks.</p>
+
+<p>You might be tempted to spend 6 hours learning one day and take the rest of the week off. But that doesn’t solve the core problem.</p>
+
+<p><strong>Habits are built off of repetition, not total time.</strong> If you try to jam everything all into a single day, you’ll have less repetition. It’ll be easier to skip. And if your schedule is really so packed that you can’t find time every day to work on this stuff, how will you find a big chunk of time one day a week?</p>
+
+<p><strong>Once you’re consistent enough to form a habit, motivation won’t be as much of an issue. It’s just become something I do, so I do it.</strong></p>
+
+<h3 id="how-to-keep-consistent">How to keep consistent?</h3>
+
+<p>By “consistency,” I don’t mean that you have to spend hours every single night on this stuff. When you first build your schedule, go shorter rather than longer. <strong>Aim for 40 minutes a day to start.</strong></p>
+
+<p>If you can’t find the time anywhere else, staying up 40 minutes later at night usually won’t be too painful. Same thing with waking up a little earlier each day.</p>
+
+<p>But 40 minutes is also short enough that it’ll surprise you when it’s over. You’ll start the next task and leave it unfinished.</p>
+
+<p>When you <strong>leave something unfinished</strong>, it’ll stay in the back of your mind. When this happens, you’ll unconsciously be looking for closure, so you’ll be more receptive to related ideas that just pop into your head. You’ll really want to finish it.</p>
+
+<h4 id="morning-or-evening">Morning or Evening?</h4>
+
+<p>Cons on <strong>evening</strong>:</p>
+
+<ol>
+  <li>You don’t really have a set deadline (except sleep), so you can let your motivation carry you beyond the time you set aside.</li>
+  <li>You might also be drained. If you’re tired, it’s easy to convince yourself to skip it, “just this once.” And after a frustrating day at work, you’ll start to tell yourself that you’ve had a rough day, you deserve to just get a good night’s sleep. You’ll catch up tomorrow, right?</li>
+  <li>It’s also easy to push until later. “If I watch one more episode, I’ll start as soon as it’s done. It’ll only be 10 minutes late.” But before you know it, you’re an hour late, you’ve destroyed your sleeping schedule and you’ll pay for it tomorrow, when you’re drained again and you’ll skip again.</li>
+</ol>
+
+<p>While <strong>morning</strong>:</p>
+
+<blockquote>
+  <p>You might feel brain-dead and uncreative in the morning, which can be killer if you’re learning and practicing creative work like learning Rails. And it’s hard to wake up early until you get used to it.  </p>
+
+  <p>I heard a lot of people I trust and respect suggest trying waking up a little earlier for a week or so. I did, and it was hard, and I felt totally unproductive.  </p>
+
+  <p>But somehow, once I measured my actual productivity, I found out I was twice as pro- ductive in the mornings as the evenings. This is crazy, because it felt like the exact opposite!</p>
+</blockquote>
+
+<p>I really need to give it a shot.</p>
+
+<h3 id="how-to-keep-motivated">How to keep motivated?</h3>
+
+<p>Of course, to form a habit is the best way. But before that, try these.</p>
+
+<h4 id="pre-prepare">Pre-prepare</h4>
+
+<ol>
+  <li>Separating the decision about where to start from the decision about what to do.</li>
+  <li>It creates an unfinished loop in your mind, they’re just as powerful here.</li>
+</ol>
+
+<h4 id="processes">Processes</h4>
+
+<p>Seinfeld method:</p>
+
+<blockquote>
+  <p>[Jerry Seinfeld] told me to get a big wall calendar that has a whole year on one page and hang it on a prominent wall. The next step was to get a big red magic marker.</p>
+
+  <p>He said for each day that I do my task of writing, I get to put a big red X over that day. “After a few days you’ll have a chain. Just keep at it and the chain will grow longer every day. You’ll like seeing that chain, especially when you get a few weeks under your belt. Your only job next is to not break the chain.”</p>
+
+  <p>“Don’t break the chain,” he said again for emphasis.</p>
+</blockquote>
+
+<p>When you miss a habit and break a chain, you lose all your motivation to keep the streak going. And you lose it at the exact time you need extra motivation to build that streak back up.</p>
+
+<p>So keep consistent with a habit tracker, calendar, or Beeminder.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Review] Design Patterns in Ruby]]></title>
@@ -4689,214 +5156,6 @@ def foo
 end
 ```</p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Review] The Rails 4 Way - Environments and Configurations]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/05/18/the-rails-4-way-environments-and-configurations/"/>
-    <updated>2014-05-18T16:10:42+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/05/18/the-rails-4-way-environments-and-configurations</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Book</strong></td>
-      <td>The Rails 4 Way</td>
-    </tr>
-    <tr>
-      <td><strong>Author</strong></td>
-      <td>Obie Fernandez, Kevin Faustino, Vitaly Kushner</td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="http://amzn.com/0321944275">amzn.com/0321944275</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="bundler-refhttpbundlerio">Bundler <a href="http://bundler.io">ref</a></h2>
-
-<p>Bundler does gem dependency resolution based on Gemfile.</p>
-
-<h4 id="operator"><code>~&gt;</code> operator</h4>
-
-<p>The specifier <strong>~&gt;</strong> has a special meaning, best shown by example. <code>~&gt; 2.0.3</code> is identical to <code>&gt;= 2.0.3</code> and <code>&lt; 2.1</code>. <code>~&gt; 2.1</code> is identical to <code>&gt;= 2.1</code> and <code>&lt; 3.0</code>. <code>~&gt; 2.2.beta</code> will match prerelease versions like <code>2.2.beta.12</code>.</p>
-
-<p><code>ruby hello linenos:false
-gem 'thin',  '~&gt;1.1'
-</code></p>
-
-<h4 id="require"><code>require</code></h4>
-
-<p>Occasionally, the name of the gem that should be used in a require statement is
-different than the name of that gem in the repository. In those cases, the <strong>:require</strong>
-option solves this simply and declaratively right in the Gemfile.</p>
-
-<p><code>ruby
-gem 'sqlite3-ruby', :require =&gt; 'sqlite3'
-</code></p>
-
-<h4 id="group">group</h4>
-
-<p>```ruby
-gem ‘wirble’, :group =&gt; :development
-gem ‘ruby-debug’, :group =&gt; [:development, :test]</p>
-
-<p>group :test do
-  gem ‘rspec’
-end
-```</p>
-
-<h4 id="bundle-installupdate">bundle install/update</h4>
-
-<p><code>ruby
--&gt; calculate a dependency tree -&gt; generate Gemfile.lock
-</code></p>
-
-<h4 id="bundle-package">bundle package</h4>
-
-<blockquote>
-  <p>it will package up all your gems in <strong>vendor/cache</strong> directory. Running <strong>bundle install</strong> will use the gems in package and skip connecting to rubygems.org. use this to avoid external dependencies at deploy time, or if you depend on private gems that you are not available in any public repository.</p>
-</blockquote>
-
-<h4 id="bundle-exec">bundle exec</h4>
-
-<p>Non-Rails scripts must be executed with this to get a properly initialized RubyGems environment.</p>
-
-<h4 id="bundle-install---path-venderbundle---binstubs">bundle install –path vender/bundle –binstubs</h4>
-
-<p>The default location for gems installed by bundler is directory named <strong>.bundle</strong> in your user directory.</p>
-
-<p>This command will generate <strong>.bundle/config</strong> file:</p>
-
-<h2 id="ruby-bundleconfig">```ruby .bundle/config</h2>
-<p>BUNDLE_BIN: bundler_stubs
-BUNDLE_PATH: vendor/bundle
-BUNDLE_DISABLE_SHARED_GEMS: “1”
-```</p>
-
-<p>gems in <strong>verdor/cache</strong>, and installed in <strong>vendor/bundle</strong>.</p>
-
-<h4 id="bundle-install-vendor---disable-shared-gems">bundle install vendor –disable-shared-gems</h4>
-
-<blockquote>
-  <p>This command tells Bundler to install gems even if they are already installed in the system. Normally Bunlder avoids that symlinks to already downloaded gems that exists in your system. This option is useful when you are trying to package up an application that all dependencies unpacked.</p>
-</blockquote>
-
-<h2 id="startup-and-application-settings">Startup and Application Settings</h2>
-
-<p><code>boot.rb</code></p>
-
-<ul>
-  <li>sets up Bundler and load paths</li>
-</ul>
-
-<p><code>application.rb</code></p>
-
-<ul>
-  <li>require ‘boot’</li>
-  <li>load rails gems, gems for the specified Rail.env, and configures the application ( <strong>define Application class</strong> ).</li>
-</ul>
-
-<p><code>environment.rb</code></p>
-
-<ul>
-  <li>require ‘application’</li>
-  <li>runs all initializers ( <code>Application.initialize!</code> )</li>
-</ul>
-
-<p><code>environments/development.rb | test.rb | production.rb</code></p>
-
-<ul>
-  <li>makes environmental configuraions.</li>
-  <li>application.rb makes unenvironmental configurations, like time-zone, autoload_paths, encoding.</li>
-</ul>
-
-<h2 id="configurations">Configurations</h2>
-
-<h4 id="wrap-parameters">Wrap Parameters</h4>
-
-<p>Introduced in Rails 3.1, the <code>wrap_parameters.rb</code> initializer configures your application to work with JavaScript MVC frameworks.</p>
-
-<p>When submitting JSON parameters to a controller, Rails will wrap the parameters into a nested hash, with the controller’s name being set as the key. To illustrate, consider the following JSON:</p>
-
-<p><code>ruby
-{"title": "TheRails4Way"}
-</code></p>
-
-<p>If a client submitted the above JSON to a controller named ArticlesController, Rails would nest the params hash under the key “article”. This ensures the setting of model attributes from request parameters is consistent with the convention used when submitting from Rails form helpers.</p>
-
-<p><code>ruby
-{"title": "TheRails4Way", "article" =&gt; {"title": "TheRails4Way"}}
-</code></p>
-
-<h4 id="schema-dumper">Schema Dumper</h4>
-
-<p><code>ruby
-config.active_record.schema_format = :sql
-</code></p>
-
-<p>Every time you run tests, Rails dumps the schema of your development database and copies it to the test database using an auto generated <code>schema.rb</code> script. It looks very similar to an Active Record migration script; in fact, it uses the same API.</p>
-
-<h4 id="automatic-class-reloading">Automatic Class Reloading</h4>
-
-<p><code>ruby
-config.cache_classes = false
-</code></p>
-
-<p>Without getting into too much nitty-gritty detail, when the config.cache_classes setting is true,Rails willuse Ruby’s <code>require</code> statement to do its class loading, and when it is false, it will use <code>load</code> instead.</p>
-
-<p>When you require a Ruby file, the interpreter executes and caches it. If the file is required again (as in subsequent requests), the interpreter ignores the require statement and moves on. When you load a Ruby file, the interpreter executes the file again, no matter how many times it has been loaded before.</p>
-
-<h4 id="auto-loading-code">Auto-Loading Code</h4>
-
-<p>By following the naming convention, Rails will search <code>$LOAD_PATH</code> to find the undefined constant. So when using Rails console, <strong>you never have to explicitly <code>require</code> anything!</strong></p>
-
-<p>Rails takes advantage of the fact that Ruby provides a callback mechanism for missing constants. When Rails encounters an undefined constant in the code, it uses a class loader routine based on file-naming conventions to find and require the needed Ruby script.</p>
-
-<h4 id="eager-load">Eager Load</h4>
-
-<p><code>ruby
-config.eager_load = false
-</code></p>
-
-<p>In your production environment, you will want this set to true, as it copies most of your application in memory. This provides a performance increase to web servers that copy on write, such as Unicorn.</p>
-
-<h4 id="explain-for-slow-queries">Explain for Slow Queries</h4>
-
-<p><code>ruby
-config.active_record.auto_explain_threshold_in_seconds = 0.5
-</code></p>
-
-<p>Introduced in Rails 3.2, Active Record now monitors the threshold of SQL queries being made. If any query takes longer than the specified threshold, the query plan is logged with a warning.</p>
-
-<h4 id="assets">Assets</h4>
-
-<p><code>ruby
-config.assets.debug = true
-</code></p>
-
-<p>Setting config.assets.debug to false, would result in Sprockets concatenating and running preprocessors on all assets.</p>
-
-<p><code>ruby
-config.assets.compile = true
-</code></p>
-
-<p>If an asset is requested that does not exist in the public/assets folder, Rails will throw an exception. To enable live asset compilation fallback on production, set config.assets.compile to true.</p>
-
-<p><code>ruby
-config.assets.enable = false
-</code></p>
-
-<p>Like most features in Rails, the usage of the Asset Pipeline is completely optional. To include assets in your project as it was done in Rails 3.0, set config.assets.enabled to false.</p>
-
-<h4 id="tagged-logging-refhttparunim2011x-request-id-tracking-taggedlogging-rails">Tagged Logging <a href="http://arun.im/2011/x-request-id-tracking-taggedlogging-rails">ref</a></h4>
-
-<p><code>ruby
-config.log_tags = [ :subdomain, :uuid ]
-</code></p>
-
-<p>Rails 3.2 introduced the ability to tag your log messages. <code>:subdomain</code> example by <em>www</em>, <code>:uuid</code> is a string to identify request, try <code>request.uuid</code>.</p>
 ]]></content>
   </entry>
   
