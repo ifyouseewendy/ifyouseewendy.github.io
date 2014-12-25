@@ -1,0 +1,322 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Git Filter Branch in Practice - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="Git Dec 25th, 2014 Git Filter Branch in Practice For some reasons, our company team is migrating our codebase from Github Enterprise to Gitlab. One &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2014/12/25/git-filter-branch-in-practice">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2014/12/25/git-filter-branch-in-practice/">Git Filter Branch in Practice</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/11/26/practicing-rails/">[Review] Practicing Rails</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/11/23/quotes-from-ira-glass/">Quotes From Ira Glass</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/11/22/from-irb-to-rails-console/">From Irb to Rails Console</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/11/20/encoding-and-encryption-in-ruby/">Encoding and Encryption in Ruby</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/git/'>Git</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Dec 25<span>th</span>, 2014</a>
+</span>
+
+    </div>
+    <h1>
+      Git Filter Branch in Practice
+    </h1>
+  
+</header>
+
+
+  <section><p>For some reasons, our company team is migrating our codebase from Github Enterprise to Gitlab. One of the annoying things we should do is to update the invalid author names and emails in our git commits. Specifically, we should filter out the commits with emails which are not under <code>umeng.com</code>.</p>
+
+<p>I’ve used <code>git-filter-branch</code> once in my own project to do a similar job, updating author name and email, which used <code>env-filter</code> option in a few lines to complete.</p>
+
+<p>Things are getting a little complicated this time. Our repo has several branches, numbers of collaborators and almost 18,000 commits. I need to be much more careful and patient, to find a safe way before reaching the ultimate horrible “force update”.</p>
+
+<h2 id="major-idea">Major Idea</h2>
+
+<p>Use <code>git filter-branch --commit-filter</code> to update each commit’s author info.</p>
+
+<p>Psuedo-code of updating logic</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;$GIT_AUTHOR_EMAIL&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="n">email</span><span class="o">.</span><span class="n">match</span> <span class="sr">/@umeng.com/</span>
+</span><span class="line">  <span class="n">commit</span><span class="o">-</span><span class="n">tree</span>
+</span><span class="line"><span class="k">else</span>
+</span><span class="line">  <span class="n">email</span><span class="o">.</span><span class="n">match</span> <span class="sr">/(?&lt;name&gt;*)@(?&lt;domain&gt;*).com/</span> <span class="c1"># psuedo</span>
+</span><span class="line">
+</span><span class="line">  <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="s1">&#39;wendy&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;wendi&#39;</span><span class="p">,</span>
+</span><span class="line">    <span class="s1">&#39;ifyouseewendy&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;wendi&#39;</span><span class="p">,</span>
+</span><span class="line">    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">if</span> <span class="n">mapping</span><span class="o">[</span><span class="nb">name</span><span class="o">].</span><span class="n">presents?</span>
+</span><span class="line">    <span class="n">commit_email</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">mapping</span><span class="o">[</span><span class="nb">name</span><span class="o">]</span><span class="si">}</span><span class="s2">@umeng.com&quot;</span>
+</span><span class="line">  <span class="k">else</span>
+</span><span class="line">    <span class="n">commit_email</span> <span class="o">=</span> <span class="s2">&quot;umeng_</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="n">domain</span><span class="si">}</span><span class="s2">@umeng.com&quot;</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="n">commit</span><span class="o">-</span><span class="n">tree</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="step-by-step">Step by Step</h2>
+
+<p><strong>1. Checkout a test branch</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git checkout -b update_git_info
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>2. Filter author emails</strong></p>
+
+<p>Use <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-generate_stats-rb">generate_stats.rb</a> to</p>
+
+<ol>
+  <li>Gather commits info of <em>author_name</em>, <em>author_email</em>, and <em>committer_email</em>.</li>
+  <li>Run again after finishing the whole job to verify.</li>
+</ol>
+
+<p><strong>3. Prepare a mapping file</strong></p>
+
+<p>For authors whose email domain is not <code>umeng</code>, write the mapping file under this rule:</p>
+
+<ol>
+  <li>Seperated by <code>\s</code></li>
+  <li>First is the valid Umeng name</li>
+  <li>Second to the end, are the names of the invalid email</li>
+</ol>
+
+<p>Sample:</p>
+
+<p>change <code>wendy@xx.com</code> and <code>ifyouseewendy@xx.com</code> to <code>wendi@umeng.com</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">wendi wendy ifyouseewendy
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>4. Leverage mapping file</strong></p>
+
+<p>Write a Ruby script to map names, used in the final script.</p>
+
+<p><a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-update_name-rb">update_name.rb</a>, read a name to change, output the corresponding Umeng author name.</p>
+
+<p><strong>5. Git filter-branch bash script</strong></p>
+
+<p>Here is the final working script, <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-git_filter_branch-sh">git_filter_branch.sh</a>. The bash email pattern matching part was tweaked based on <a href="http://stackoverflow.com/questions/14170873/bash-regex-email-matching">glenn jackman’s answer</a> on Stack Overflow.</p>
+
+<h2 id="things-to-take-caution">Things to Take Caution</h2>
+
+<p>When running <code>git filter-branch --commit-filter &lt;commad&gt;</code>, logic in <code>&lt;command&gt;</code> was the core part to finish my work. Remenber, <strong>DO NOT write <code>echo</code> in command part</strong> for debug use or whatever, as <code>echo</code> will interrupt the filter branch workflow.</p>
+
+<p>Better use a seperate script when debugging. I’ve used <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-update_email-sh">update_email.rb</a> to develop on email pattern matching, and copy paste into the final <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-git_filter_branch-sh">git_filter_branch.sh</a>.</p>
+
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme of <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2014/12/25/git-filter-branch-in-practice/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2014/12/25/git-filter-branch-in-practice/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>
