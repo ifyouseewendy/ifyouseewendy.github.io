@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Encoding and Encryption in Ruby"
+title: "Encryption in Ruby"
 date: 2014-11-20 00:53:44 +0800
 comments: true
 categories: ['Ruby']
