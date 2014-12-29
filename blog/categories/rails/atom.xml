@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-12-25T21:06:26+08:00</updated>
+  <updated>2014-12-29T16:54:45+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -1916,34 +1916,34 @@ internals.</p>
     <p>These two ways have no conflicts: if passing a nil pattern and a block, it just returns an <strong>Subscribers::AllMessages</strong> instance which has a <strong>Subscribers::Timed</strong> instance wrapped.</p>
 
     <p>So let’s check it out what does a <strong>Subscribers::Timed</strong> instance respond?</p>
-
-    <p>```ruby
-  def start(name, id, payload)
-    timestack = Thread.current[:_timestack] ||= []
-    timestack.push Time.now
-  end</p>
-
-    <p>def finish(name, id, payload)
-    timestack = Thread.current[:_timestack]
-    started = timestack.pop
-    @delegate.call(name, started, Time.now, id, payload)
-  end</p>
-
-    <p>def publish(name, *args)
-    @delegate.call name, *args
-  end</p>
-
-    <p>def subscribed_to?(name)
-    @pattern === name.to_s
-  end</p>
-
-    <p>def matches?(subscriber_or_name)
-    self === subscriber_or_name ||
-      @pattern &amp;&amp; @pattern === subscriber_or_name
-  end
-  ```</p>
   </li>
 </ul>
+
+<p>```ruby
+def start(name, id, payload)
+  timestack = Thread.current[:_timestack] ||= []
+  timestack.push Time.now
+end</p>
+
+<p>def finish(name, id, payload)
+  timestack = Thread.current[:_timestack]
+  started = timestack.pop
+  @delegate.call(name, started, Time.now, id, payload)
+end</p>
+
+<p>def publish(name, *args)
+  @delegate.call name, *args
+end</p>
+
+<p>def subscribed_to?(name)
+  @pattern === name.to_s
+end</p>
+
+<p>def matches?(subscriber_or_name)
+  self === subscriber_or_name ||
+    @pattern &amp;&amp; @pattern === subscriber_or_name
+end
+```</p>
 
 <h2 id="activesupportnotificationsinstrumenter">ActiveSupport::Notifications::Instrumenter</h2>
 
@@ -1968,47 +1968,48 @@ internals.</p>
 <h4 id="instance-methods-1">Instance Methods</h4>
 
 <ul>
-  <li>
-    <p><code>start(name, payload)</code>, <code>finish(name, payload)</code></p>
-
-    <p>```ruby
-  def start(name, payload)
-    @notifier.start name, @id, payload
-  end</p>
-
-    <p>def finish(name, payload)
-    @notifier.finish name, @id, payload
-  end
-  ```</p>
-  </li>
-  <li>
-    <p><code>instrument(name, payload={})</code></p>
-
-    <p><code>ruby
-  def instrument(name, payload={})
-    start name, payload
-    begin
-      yield payload
-    rescue Exception =&gt; e
-      payload[:exception] = [e.class.name, e.message]
-      raise e
-    ensure
-      finish name, payload
-    end
-  end
- </code></p>
-
-    <p>Where does this method get called? in <code>ActiveSupport::Notifications.instrument</code>:</p>
-
-    <p><code>ruby
-  instrumenter.instrument(name, payload) { yield payload if block_given? }
- </code></p>
-
-    <p>The processing begins with <code>start</code>, ends with <code>finish</code>, instrumenter delegates it to <code>@notifier</code>, and <code>notifier</code> turns to <code>@subscribers</code> which are listening for the event name. And what does <code>@subscribers</code> do with <code>start</code> and <code>finish</code>? Normally we use subscriber objects defined by <code>Subscribers::Timed</code>, which use <code>start</code> to save a beginning timestamp, and <code>finish</code> to save an ending timestamp, and calling the block user passed.</p>
-
-    <p>Attention on the control flow, the events get sent even if an error occurs in the passed-in block.</p>
-  </li>
+  <li><code>start(name, payload)</code>, <code>finish(name, payload)</code></li>
 </ul>
+
+<p>```ruby
+def start(name, payload)
+  @notifier.start name, @id, payload
+end</p>
+
+<p>def finish(name, payload)
+  @notifier.finish name, @id, payload
+end
+```</p>
+
+<ul>
+  <li><code>instrument(name, payload={})</code></li>
+</ul>
+
+<p><code>ruby
+def instrument(name, payload={})
+  start name, payload
+  begin
+    yield payload
+  rescue Exception =&gt; e
+    payload[:exception] = [e.class.name, e.message]
+    raise e
+  ensure
+    finish name, payload
+  end
+end
+</code></p>
+
+<pre><code>Where does this method get called? in `ActiveSupport::Notifications.instrument`:
+</code></pre>
+
+<p><code>ruby
+instrumenter.instrument(name, payload) { yield payload if block_given? }
+</code></p>
+
+<pre><code>The processing begins with `start`, ends with `finish`, instrumenter delegates it to `@notifier`, and `notifier` turns to `@subscribers` which are listening for the event name. And what does `@subscribers` do with `start` and `finish`? Normally we use subscriber objects defined by `Subscribers::Timed`, which use `start` to save a beginning timestamp, and `finish` to save an ending timestamp, and calling the block user passed.
+
+Attention on the control flow, the events get sent even if an error occurs in the passed-in block.
+</code></pre>
 
 <h2 id="activesupportnotificationsevent">ActiveSupport::Notifications::Event</h2>
 

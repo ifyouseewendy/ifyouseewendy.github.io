@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-12-25T21:06:26+08:00</updated>
+  <updated>2014-12-29T16:54:45+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -14,15 +14,185 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Readable Git Log by Using Custom Commit Template]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2014/12/29/readable-git-log-by-using-custom-commit-template/"/>
+    <updated>2014-12-29T15:43:39+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2014/12/29/readable-git-log-by-using-custom-commit-template</id>
+    <content type="html"><![CDATA[<p>I was thinking of making my git logs more readable for a long time. Sometimes merge log can help to seperate a set of commits as a feature, but <strong>how can we get more info from the sequential log messages inside a set of commits?</strong></p>
+
+<p>After doing a little research, I’ve found <a href="http://programmers.stackexchange.com/questions/42110/can-you-recommend-a-good-commit-message-template-guidelines-to-enforce-in-the">rangzen’s answer</a> on Stack Exchange sounds reasonable.</p>
+
+<blockquote>
+  <p>With Add, Mod(ify), Ref(actoring), Fix, Rem(ove) and Rea(dability) then it’s easy to extract logfile.
+Example :<br />
++ Add: New function to rule the world.<br />
++ Mod: Add women factor in Domination.ruleTheWorld().<br />
++ Ref: Extract empathy stuff to an abstract class.<br />
++ Fix: RUL-42 or #42 Starvation need to be initialised before Energy to avoid the nullpointer in People.<br />
++ Rem: freeSpeech is not used anymore.<br />
++ Rea: Removed old TODO and extra space in header.  </p>
+</blockquote>
+
+<p>And I want to give it a try by,</p>
+
+<ol>
+  <li>Setting <code>git config commit.template</code> to my customized commit template.</li>
+  <li>Using git <code>commit-msg</code> hook to enforce the pattern, validating on commit message.</li>
+</ol>
+
+<p>Here is the details.</p>
+
+<h2 id="customize-commit-template">Customize Commit Template</h2>
+
+<p>Write a <code>.gitmessage</code> template.</p>
+
+<p>```</p>
+
+<h1 id="rule-1-use-meta-operation">= Rule 1, use meta operation</h1>
+
+<h1 id="add-new-function-to-rule-the-world">Add: new function to rule the world</h1>
+<p># Mod: query_date logic
+# Rem: user.rake is not used anymore
+# Ren: hello-world to hell-world
+# Fix: #1900, stupid typo
+# Ref: extract to an abstract class.
+# Opt: cache in get_active_table</p>
+
+<h1 id="rule-2-leave-a--at-the-end-to-flag-folding">= Rule 2, leave a “*” at the end to flag folding</h1>
+
+<h1 id="mod-querydate-logic">Mod: query_date logic*</h1>
+<p>#
+# Use chronic to guess date.
+#
+# Chronic.parse(‘may 27th’, :guess =&gt; false)
+# #=&gt; Sun May 27 00:00:00 PDT 2007..Mon May 28 00:00:00 PDT 2007</p>
+
+<p>```</p>
+
+<p>Make git serve it.</p>
+
+<p><code>sh
+$ git config --global commit.template ~/.gitmessage
+</code></p>
+
+<p>Now when committing, git enables the template:</p>
+
+<p>```sh
+$ git touch README &amp;&amp; git commit</p>
+
+<h1 id="rule-1-use-meta-operation-1">= Rule 1, use meta operation</h1>
+
+<h1 id="add-new-function-to-rule-the-world-1">Add: new function to rule the world</h1>
+<p># Mod: query_date logic
+# Rem: user.rake is not used anymore
+# Ren: hello-world to hell-world
+# Fix: #1900, stupid typo
+# Ref: extract to an abstract class.
+# Opt: cache in get_active_table</p>
+
+<h1 id="rule-2-leave-a--at-the-end-to-flag-folding-1">= Rule 2, leave a “*” at the end to flag folding</h1>
+
+<h1 id="mod-querydate-logic-1">Mod: query_date logic*</h1>
+<p>#
+# Use chronic to guess date.
+#
+# Chronic.parse(‘may 27th’, :guess =&gt; false)
+# #=&gt; Sun May 27 00:00:00 PDT 2007..Mon May 28 00:00:00 PDT 2007</p>
+
+<h1 id="please-enter-the-commit-message-for-your-changes-lines-starting">Please enter the commit message for your changes. Lines starting</h1>
+<p># with ‘#’ will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#	new file:   README
+#</p>
+
+<p>```</p>
+
+<h2 id="validate-on-rules">Validate on Rules</h2>
+
+<p>Write a Ruby script, naming <code>commit-msg</code> under <code>.git/hooks</code>, and make it executable.</p>
+
+<p>```ruby
+#!/usr/bin/env ruby</p>
+
+<h1 id="init-repo">Init repo</h1>
+<p>exit 0 if <code>git log --oneline -1 2&gt;/dev/null</code>.empty?</p>
+
+<p>message_file = ARGV[0]
+lines = File.readlines(message_file).reject{|l| l =~ /^#/}.map(&amp;:strip).reject(&amp;:empty?)</p>
+
+<p>subject_regex = ‘[Add|Mod|Rem|Ren|Fix|Ref|Opt]:\s\S+’
+regex = lines.count &gt; 1 ? /#{subject_regex}*$/ : /#{subject_regex}/</p>
+
+<p>unless lines[0] =~ regex
+  puts “[POLICY] Your message is not formatted correctly”
+  puts “[POLICY] Please check ~/.gitmessage.txt”
+  exit 1
+end
+```</p>
+
+<p>Now committing has validations.</p>
+
+<p>```sh
+# Rule 1</p>
+
+<p>$ git commit -m ‘Add README’
+[POLICY] Your message is not formatted correctly
+[POLICY] Please check ~/.gitmessage</p>
+
+<p>$ git commit -m ‘Add: README’
+[master e492ec1] Add: README
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README</p>
+
+<h1 id="rule-2">Rule 2</h1>
+
+<p>$ git commit -m ‘Add: README
+quote&gt; 
+quote&gt; some content’
+[POLICY] Your message is not formatted correctly
+[POLICY] Please check ~/.gitmessage</p>
+
+<p>$ git commit -m ‘Add: README*
+quote&gt; 
+quote&gt; some content’
+[master 5fdd0f4] Add: README*
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README
+```</p>
+
+<p>Here is the final <code>git log --oneline</code> look,</p>
+
+<p><code>sh
+* 0435fa9 2014-12-29 Ref: code smells like..teen spirit [wendi]
+* 13423ff 2014-12-29 Fix: #1984 big bro 404 error* [wendi]
+* 0c5b9f9 2014-12-29 Add: pygments.rb to enable highlight* [wendi]
+* e99d1b5 2014-12-29 Mod: heading sytle [wendi]
+* 95576cc 2014-12-29 Ren: README.md [wendi]
+* 2f5c632 2014-12-29 Add: README [wendi]
+* 6673bd7 2014-12-29 Init [wendi]
+</code></p>
+
+<p><strong><em>How to make self-defined hook ship with every project?</em></strong></p>
+
+<p>Use <code>init.templatedir</code> config option.</p>
+
+<p>Check this post, <a href="https://coderwall.com/p/jp7d5q/create-a-global-git-commit-hook">Create a global git commit hook</a> by Matt Venables.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Git Filter Branch in Practice]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2014/12/25/git-filter-branch-in-practice/"/>
     <updated>2014-12-25T20:54:49+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2014/12/25/git-filter-branch-in-practice</id>
-    <content type="html"><![CDATA[<p>For some reasons, our company team is migrating our codebase from Github Enterprise to Gitlab. One of the annoying things we should do is to update the invalid author names and emails in our git commits. Specifically, we should filter out the commits with emails which are not under <code>umeng.com</code>.</p>
+    <content type="html"><![CDATA[<p>For some reasons, our company team is migrating our codebase from Github Enterprise to Gitlab. One of the annoying things we should do is to update the invalid author names and emails in our git commits. Specifically, we should</p>
 
-<p>I’ve used <code>git-filter-branch</code> once in my own project to do a similar job, updating author name and email, which used <code>env-filter</code> option in a few lines to complete.</p>
+<p><strong>Filter out the author emails which are not ending <code>umeng.com</code>, modify meta info of these commits by a self-defined rule, and update the inconsistent author and committer info.</strong></p>
 
-<p>Things are getting a little complicated this time. Our repo has several branches, numbers of collaborators and almost 18,000 commits. I need to be much more careful and patient, to find a safe way before reaching the ultimate horrible “force update”.</p>
+<p>I’ve used <code>git-filter-branch</code> once to do a similar but simpler job, which updated my own name and email, by using <code>env-filter</code> option in a few lines to complete.</p>
+
+<p>Things are getting a little complicated this time. Our repo has several branches, numbers of collaborators and almost 18,000 commits. I must be careful and patient, to find a safe way before reaching the ultimate horrible “force update”.</p>
 
 <h2 id="major-idea">Major Idea</h2>
 
@@ -101,9 +271,9 @@ wendi wendy ifyouseewendy
 
 <h2 id="things-to-take-caution">Things to Take Caution</h2>
 
-<p>When running <code>git filter-branch --commit-filter &lt;commad&gt;</code>, logic in <code>&lt;command&gt;</code> was the core part to finish my work. Remenber, <strong>DO NOT write <code>echo</code> in command part</strong> for debug use or whatever, as <code>echo</code> will interrupt the filter branch workflow.</p>
+<p>When running <code>git filter-branch --commit-filter &lt;commad&gt;</code>, logic in <code>&lt;command&gt;</code> was the core part to finish my job. Remenber, <strong>DO NOT write <code>echo</code> in command part</strong> for debug use or whatever, as <code>echo</code> will interrupt the filter branch workflow.</p>
 
-<p>Better use a seperate script when debugging. I’ve used <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-update_email-sh">update_email.rb</a> to develop on email pattern matching, and copy paste into the final <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-git_filter_branch-sh">git_filter_branch.sh</a>.</p>
+<p>Better use a seperate script when debugging. I use <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-update_email-sh">update_email.rb</a> to develop on email pattern matching, and copy paste into the final <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-git_filter_branch-sh">git_filter_branch.sh</a>.</p>
 
 ]]></content>
   </entry>

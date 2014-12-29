@@ -90,6 +90,10 @@
 <ul>
 	
     <li>
+    	<a href="/blog/2014/12/29/readable-git-log-by-using-custom-commit-template/">Readable Git Log by Using Custom Commit Template</a>
+    </li>
+    
+    <li>
     	<a href="/blog/2014/12/25/git-filter-branch-in-practice/">Git Filter Branch in Practice</a>
     </li>
     
@@ -103,10 +107,6 @@
     
     <li>
     	<a href="/blog/2014/11/22/from-irb-to-rails-console/">From Irb to Rails Console</a>
-    </li>
-    
-    <li>
-    	<a href="/blog/2014/11/20/encoding-and-encryption-in-ruby/">Encoding and Encryption in Ruby</a>
     </li>
     
 </ul>
@@ -498,34 +498,56 @@ internals.</p>
     <p>These two ways have no conflicts: if passing a nil pattern and a block, it just returns an <strong>Subscribers::AllMessages</strong> instance which has a <strong>Subscribers::Timed</strong> instance wrapped.</p>
 
     <p>So let’s check it out what does a <strong>Subscribers::Timed</strong> instance respond?</p>
-
-    <p>&#8220;`ruby
-  def start(name, id, payload)
-    timestack = Thread.current[:_timestack] ||= []
-    timestack.push Time.now
-  end</p>
-
-    <p>def finish(name, id, payload)
-    timestack = Thread.current[:_timestack]
-    started = timestack.pop
-    @delegate.call(name, started, Time.now, id, payload)
-  end</p>
-
-    <p>def publish(name, *args)
-    @delegate.call name, *args
-  end</p>
-
-    <p>def subscribed_to?(name)
-    @pattern === name.to_s
-  end</p>
-
-    <p>def matches?(subscriber_or_name)
-    self === subscriber_or_name ||
-      @pattern &amp;&amp; @pattern === subscriber_or_name
-  end
-  &#8220;`</p>
   </li>
 </ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span><span class="line">  <span class="n">timestack</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">current</span><span class="o">[</span><span class="ss">:_timestack</span><span class="o">]</span> <span class="o">||=</span> <span class="o">[]</span>
+</span><span class="line">  <span class="n">timestack</span><span class="o">.</span><span class="n">push</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span><span class="line">  <span class="n">timestack</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">current</span><span class="o">[</span><span class="ss">:_timestack</span><span class="o">]</span>
+</span><span class="line">  <span class="n">started</span> <span class="o">=</span> <span class="n">timestack</span><span class="o">.</span><span class="n">pop</span>
+</span><span class="line">  <span class="vi">@delegate</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">started</span><span class="p">,</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">publish</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</span><span class="line">  <span class="vi">@delegate</span><span class="o">.</span><span class="n">call</span> <span class="nb">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">subscribed_to?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+</span><span class="line">  <span class="vi">@pattern</span> <span class="o">===</span> <span class="nb">name</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">matches?</span><span class="p">(</span><span class="n">subscriber_or_name</span><span class="p">)</span>
+</span><span class="line">  <span class="nb">self</span> <span class="o">===</span> <span class="n">subscriber_or_name</span> <span class="o">||</span>
+</span><span class="line">    <span class="vi">@pattern</span> <span class="o">&amp;&amp;</span> <span class="vi">@pattern</span> <span class="o">===</span> <span class="n">subscriber_or_name</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h2 id="activesupportnotificationsinstrumenter">ActiveSupport::Notifications::Instrumenter</h2>
 
@@ -550,47 +572,64 @@ internals.</p>
 <h4 id="instance-methods-1">Instance Methods</h4>
 
 <ul>
-  <li>
-    <p><code>start(name, payload)</code>, <code>finish(name, payload)</code></p>
-
-    <p>&#8220;`ruby
-  def start(name, payload)
-    @notifier.start name, @id, payload
-  end</p>
-
-    <p>def finish(name, payload)
-    @notifier.finish name, @id, payload
-  end
-  &#8220;`</p>
-  </li>
-  <li>
-    <p><code>instrument(name, payload={})</code></p>
-
-    <p><code>ruby
-  def instrument(name, payload={})
-    start name, payload
-    begin
-      yield payload
-    rescue Exception =&gt; e
-      payload[:exception] = [e.class.name, e.message]
-      raise e
-    ensure
-      finish name, payload
-    end
-  end
- </code></p>
-
-    <p>Where does this method get called? in <code>ActiveSupport::Notifications.instrument</code>:</p>
-
-    <p><code>ruby
-  instrumenter.instrument(name, payload) { yield payload if block_given? }
- </code></p>
-
-    <p>The processing begins with <code>start</code>, ends with <code>finish</code>, instrumenter delegates it to <code>@notifier</code>, and <code>notifier</code> turns to <code>@subscribers</code> which are listening for the event name. And what does <code>@subscribers</code> do with <code>start</code> and <code>finish</code>? Normally we use subscriber objects defined by <code>Subscribers::Timed</code>, which use <code>start</code> to save a beginning timestamp, and <code>finish</code> to save an ending timestamp, and calling the block user passed.</p>
-
-    <p>Attention on the control flow, the events get sent even if an error occurs in the passed-in block.</p>
-  </li>
+  <li><code>start(name, payload)</code>, <code>finish(name, payload)</code></li>
 </ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span><span class="line">  <span class="vi">@notifier</span><span class="o">.</span><span class="n">start</span> <span class="nb">name</span><span class="p">,</span> <span class="vi">@id</span><span class="p">,</span> <span class="n">payload</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span><span class="line">  <span class="vi">@notifier</span><span class="o">.</span><span class="n">finish</span> <span class="nb">name</span><span class="p">,</span> <span class="vi">@id</span><span class="p">,</span> <span class="n">payload</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li><code>instrument(name, payload={})</code></li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="p">{})</span>
+</span><span class="line">  <span class="n">start</span> <span class="nb">name</span><span class="p">,</span> <span class="n">payload</span>
+</span><span class="line">  <span class="k">begin</span>
+</span><span class="line">    <span class="k">yield</span> <span class="n">payload</span>
+</span><span class="line">  <span class="k">rescue</span> <span class="no">Exception</span> <span class="o">=&gt;</span> <span class="n">e</span>
+</span><span class="line">    <span class="n">payload</span><span class="o">[</span><span class="ss">:exception</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="o">]</span>
+</span><span class="line">    <span class="k">raise</span> <span class="n">e</span>
+</span><span class="line">  <span class="k">ensure</span>
+</span><span class="line">    <span class="n">finish</span> <span class="nb">name</span><span class="p">,</span> <span class="n">payload</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<pre><code>Where does this method get called? in `ActiveSupport::Notifications.instrument`:
+</code></pre>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">instrumenter</span><span class="o">.</span><span class="n">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span> <span class="p">{</span> <span class="k">yield</span> <span class="n">payload</span> <span class="k">if</span> <span class="nb">block_given?</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<pre><code>The processing begins with `start`, ends with `finish`, instrumenter delegates it to `@notifier`, and `notifier` turns to `@subscribers` which are listening for the event name. And what does `@subscribers` do with `start` and `finish`? Normally we use subscriber objects defined by `Subscribers::Timed`, which use `start` to save a beginning timestamp, and `finish` to save an ending timestamp, and calling the block user passed.
+
+Attention on the control flow, the events get sent even if an error occurs in the passed-in block.
+</code></pre>
 
 <h2 id="activesupportnotificationsevent">ActiveSupport::Notifications::Event</h2>
 

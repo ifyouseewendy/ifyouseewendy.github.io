@@ -90,6 +90,10 @@
 <ul>
 	
     <li>
+    	<a href="/blog/2014/12/29/readable-git-log-by-using-custom-commit-template/">Readable Git Log by Using Custom Commit Template</a>
+    </li>
+    
+    <li>
     	<a href="/blog/2014/12/25/git-filter-branch-in-practice/">Git Filter Branch in Practice</a>
     </li>
     
@@ -103,10 +107,6 @@
     
     <li>
     	<a href="/blog/2014/11/22/from-irb-to-rails-console/">From Irb to Rails Console</a>
-    </li>
-    
-    <li>
-    	<a href="/blog/2014/11/20/encoding-and-encryption-in-ruby/">Encoding and Encryption in Ruby</a>
     </li>
     
 </ul>
@@ -167,11 +167,13 @@
 </header>
 
 
-  <section><p>For some reasons, our company team is migrating our codebase from Github Enterprise to Gitlab. One of the annoying things we should do is to update the invalid author names and emails in our git commits. Specifically, we should filter out the commits with emails which are not under <code>umeng.com</code>.</p>
+  <section><p>For some reasons, our company team is migrating our codebase from Github Enterprise to Gitlab. One of the annoying things we should do is to update the invalid author names and emails in our git commits. Specifically, we should</p>
 
-<p>I’ve used <code>git-filter-branch</code> once in my own project to do a similar job, updating author name and email, which used <code>env-filter</code> option in a few lines to complete.</p>
+<p><strong>Filter out the author emails which are not ending <code>umeng.com</code>, modify meta info of these commits by a self-defined rule, and update the inconsistent author and committer info.</strong></p>
 
-<p>Things are getting a little complicated this time. Our repo has several branches, numbers of collaborators and almost 18,000 commits. I need to be much more careful and patient, to find a safe way before reaching the ultimate horrible “force update”.</p>
+<p>I’ve used <code>git-filter-branch</code> once to do a similar but simpler job, which updated my own name and email, by using <code>env-filter</code> option in a few lines to complete.</p>
+
+<p>Things are getting a little complicated this time. Our repo has several branches, numbers of collaborators and almost 18,000 commits. I must be careful and patient, to find a safe way before reaching the ultimate horrible “force update”.</p>
 
 <h2 id="major-idea">Major Idea</h2>
 
@@ -270,9 +272,9 @@
 
 <h2 id="things-to-take-caution">Things to Take Caution</h2>
 
-<p>When running <code>git filter-branch --commit-filter &lt;commad&gt;</code>, logic in <code>&lt;command&gt;</code> was the core part to finish my work. Remenber, <strong>DO NOT write <code>echo</code> in command part</strong> for debug use or whatever, as <code>echo</code> will interrupt the filter branch workflow.</p>
+<p>When running <code>git filter-branch --commit-filter &lt;commad&gt;</code>, logic in <code>&lt;command&gt;</code> was the core part to finish my job. Remenber, <strong>DO NOT write <code>echo</code> in command part</strong> for debug use or whatever, as <code>echo</code> will interrupt the filter branch workflow.</p>
 
-<p>Better use a seperate script when debugging. I’ve used <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-update_email-sh">update_email.rb</a> to develop on email pattern matching, and copy paste into the final <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-git_filter_branch-sh">git_filter_branch.sh</a>.</p>
+<p>Better use a seperate script when debugging. I use <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-update_email-sh">update_email.rb</a> to develop on email pattern matching, and copy paste into the final <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-git_filter_branch-sh">git_filter_branch.sh</a>.</p>
 
 </section>
 

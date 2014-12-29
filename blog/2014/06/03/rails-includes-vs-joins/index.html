@@ -13,7 +13,9 @@
   <meta name="author" content="wendi">
 
   
-  <meta name="description" content="Rails Jun 3rd, 2014 includes vs. joins in Rails includes Eager load the included associations into memory. Fire two queries: SELECT “products”.* &hellip;">
+  <meta name="description" content="Rails Jun 3rd, 2014 includes vs. joins in Rails includes Eager load the included associations into memory. Fire two queries: 1
+2
+SELECT "products &hellip;">
   <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
   
 
@@ -90,6 +92,10 @@
 <ul>
 	
     <li>
+    	<a href="/blog/2014/12/29/readable-git-log-by-using-custom-commit-template/">Readable Git Log by Using Custom Commit Template</a>
+    </li>
+    
+    <li>
     	<a href="/blog/2014/12/25/git-filter-branch-in-practice/">Git Filter Branch in Practice</a>
     </li>
     
@@ -103,10 +109,6 @@
     
     <li>
     	<a href="/blog/2014/11/22/from-irb-to-rails-console/">From Irb to Rails Console</a>
-    </li>
-    
-    <li>
-    	<a href="/blog/2014/11/20/encoding-and-encryption-in-ruby/">Encoding and Encryption in Ruby</a>
     </li>
     
 </ul>
@@ -171,14 +173,16 @@
 
 <p>Eager load the included associations into memory. Fire two queries:</p>
 
-<p>SELECT “products”.* FROM “products” ORDER BY name
-    SELECT “categories”.* FROM “categories” WHERE “categories”.”id” IN (2, 1, 5, 4, 3)</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">SELECT "products".* FROM "products" ORDER BY name
+</span><span class="line">SELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1, 5, 4, 3)</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><code>joins</code></p>
 
 <p>Sometimes,<code>includes</code> will load many redundant fields in association table, <code>joins</code> help to control what columns after <code>SELECT</code>.</p>
 
-<h4 id="reference">Reference</h4>
+<p><em>Reference</em></p>
 
 <ul>
   <li><a href="http://stackoverflow.com/questions/1208636/rails-include-vs-joins/10129946">ruby - Rails :include vs. :joins - Stack Overflow</a></li>
@@ -188,7 +192,7 @@
 
 <hr />
 
-<p><strong>Does query with <code>includes</code> and <code>joins</code> return the same count?</strong></p>
+<p><strong><em>Does query with <code>includes</code> and <code>joins</code> return the same count?</em></strong></p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>activerecord-includes-joins-query-count</span><a href="https://gist.github.com/ifyouseewendy/429544e5b8f49a347e95">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -248,7 +252,7 @@
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p><strong>Does <code>includes</code> work with Mongoid?</strong> </p>
+<p><strong><em>Does <code>includes</code> work with Mongoid?</em></strong></p>
 
 <p>Check list:</p>
 
@@ -259,7 +263,7 @@
 
 <p>By now ( <em>2014-05-08</em> ) the latest version <em>4.0.0.beta1</em> behaves much better than last stable version <em>3.1.6</em>, check the <a href="https://gist.github.com/ifyouseewendy/0069c0498274d2dd5a6d">gist</a>.</p>
 
-<p><img src="https://dl.dropboxusercontent.com/s/ol5lajw9z9hwaca/rails-includes_vs_joins_selected.png?dl=1&amp;token_hash=AAE9IXia0UGrhtp5vqQRQHLWGOydmyjeTXuuek6Kg-CtOA&amp;expiry=1399564547" alt="rails-includes_vs_joins" /></p>
+<p><img src="https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/rails-includes_vs_joins_selected.png?token=AA-NI7Boc2dYZfduWv_nTlZ7RqfuModHks5Uqkq3wA%3D%3D" alt="rails-includes_vs_joins" /></p>
 
 </section>
 
