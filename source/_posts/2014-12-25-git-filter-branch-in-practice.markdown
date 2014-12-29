@@ -6,11 +6,13 @@ comments: true
 categories: [Git]
 ---
 
-For some reasons, our company team is migrating our codebase from Github Enterprise to Gitlab. One of the annoying things we should do is to update the invalid author names and emails in our git commits. Specifically, we should filter out the commits with emails which are not under `umeng.com`.
+For some reasons, our company team is migrating our codebase from Github Enterprise to Gitlab. One of the annoying things we should do is to update the invalid author names and emails in our git commits. Specifically, we should
 
-I've used `git-filter-branch` once in my own project to do a similar job, updating author name and email, which used `env-filter` option in a few lines to complete.
+**Filter out the author emails which are not ending `umeng.com`, modify meta info of these commits by a self-defined rule, and update the inconsistent author and committer info.**
 
-Things are getting a little complicated this time. Our repo has several branches, numbers of collaborators and almost 18,000 commits. I need to be much more careful and patient, to find a safe way before reaching the ultimate horrible "force update".
+I've used `git-filter-branch` once to do a similar but simpler job, which updated my own name and email, by using `env-filter` option in a few lines to complete.
+
+Things are getting a little complicated this time. Our repo has several branches, numbers of collaborators and almost 18,000 commits. I must be careful and patient, to find a safe way before reaching the ultimate horrible "force update".
 
 ## Major Idea
 
@@ -86,10 +88,8 @@ Here is the final working script, [git\_filter_branch.sh](https://gist.github.co
 
 ## Things to Take Caution
 
+When running `git filter-branch --commit-filter <commad>`, logic in `<command>` was the core part to finish my job. Remenber, **DO NOT write `echo` in command part** for debug use or whatever, as `echo` will interrupt the filter branch workflow.
 
-When running `git filter-branch --commit-filter <commad>`, logic in `<command>` was the core part to finish my work. Remenber, **DO NOT write `echo` in command part** for debug use or whatever, as `echo` will interrupt the filter branch workflow.
-
-Better use a seperate script when debugging. I've used [update_email.rb](https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-update_email-sh) to develop on email pattern matching, and copy paste into the final [git\_filter_branch.sh](https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-git_filter_branch-sh).
-
+Better use a seperate script when debugging. I use [update_email.rb](https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-update_email-sh) to develop on email pattern matching, and copy paste into the final [git\_filter_branch.sh](https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-git_filter_branch-sh).
 
 
