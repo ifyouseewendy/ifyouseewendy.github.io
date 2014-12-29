@@ -11,15 +11,17 @@ categories: Rails
 
 Eager load the included associations into memory. Fire two queries:
 
-  SELECT "products".* FROM "products" ORDER BY name
-    SELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1, 5, 4, 3)
+```
+SELECT "products".* FROM "products" ORDER BY name
+SELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1, 5, 4, 3)
+```
 
 `joins`
 
 Sometimes,`includes` will load many redundant fields in association table, `joins` help to control what columns after `SELECT`.
 
- 
-####Reference
+
+*Reference*
 
 + [ruby - Rails :include vs. :joins - Stack Overflow](http://stackoverflow.com/questions/1208636/rails-include-vs-joins/10129946)
 + [#181 Include vs Joins - RailsCasts](http://railscasts.com/episodes/181-include-vs-joins?language=zh&view=asciicast)
@@ -27,7 +29,7 @@ Sometimes,`includes` will load many redundant fields in association table, `join
 
 - - -
 
-**Does query with `includes` and `joins` return the same count?**
+***Does query with `includes` and `joins` return the same count?***
 
 ```ruby activerecord-includes-joins-query-count  https://gist.github.com/ifyouseewendy/429544e5b8f49a347e95
 class Post < ActiveRecord::Base
@@ -61,7 +63,7 @@ end
 
 ```
 
-**Does `includes` work with Mongoid?** 
+***Does `includes` work with Mongoid?***
 
 Check list:
 
@@ -70,6 +72,6 @@ Check list:
 
 By now ( *2014-05-08* ) the latest version *4.0.0.beta1* behaves much better than last stable version *3.1.6*, check the [gist](https://gist.github.com/ifyouseewendy/0069c0498274d2dd5a6d).
 
-![rails-includes_vs_joins](https://dl.dropboxusercontent.com/s/ol5lajw9z9hwaca/rails-includes_vs_joins_selected.png?dl=1&token_hash=AAE9IXia0UGrhtp5vqQRQHLWGOydmyjeTXuuek6Kg-CtOA&expiry=1399564547)
+![rails-includes_vs_joins](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/rails-includes_vs_joins_selected.png?token=AA-NI7Boc2dYZfduWv_nTlZ7RqfuModHks5Uqkq3wA%3D%3D)
 
 

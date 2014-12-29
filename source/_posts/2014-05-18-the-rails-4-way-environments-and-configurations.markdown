@@ -20,7 +20,7 @@ Bundler does gem dependency resolution based on Gemfile.
 
 The specifier **~>** has a special meaning, best shown by example. `~> 2.0.3` is identical to `>= 2.0.3` and `< 2.1`. `~> 2.1` is identical to `>= 2.1` and `< 3.0`. `~> 2.2.beta` will match prerelease versions like `2.2.beta.12`.
 
-``` ruby hello linenos:false
+``` ruby
 gem 'thin',  '~>1.1'
 ```
 
