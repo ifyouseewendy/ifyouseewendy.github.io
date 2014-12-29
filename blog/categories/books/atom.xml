@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-12-29T16:54:45+08:00</updated>
+  <updated>2014-12-29T17:07:15+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -798,7 +798,7 @@ irb(main):005:0&gt; helper.content_tag :h1, "Hey there" =&gt; "&lt;h1&gt;Hey the
 
 <h3 id="description">Description</h3>
 
-<p><img src="/image-repo/template-method.png" alt="template-method" /></p>
+<p><img src="https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/template-method.png" alt="template-method" /></p>
 
 <ol>
   <li>Extract the common part into an abstract base class</li>
