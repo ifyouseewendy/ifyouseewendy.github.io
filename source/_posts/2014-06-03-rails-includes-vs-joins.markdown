@@ -72,6 +72,6 @@ Check list:
 
 By now ( *2014-05-08* ) the latest version *4.0.0.beta1* behaves much better than last stable version *3.1.6*, check the [gist](https://gist.github.com/ifyouseewendy/0069c0498274d2dd5a6d).
 
-![rails-includes_vs_joins](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/rails-includes_vs_joins_selected.png?token=AA-NI7Boc2dYZfduWv_nTlZ7RqfuModHks5Uqkq3wA%3D%3D)
+![rails-includes_vs_joins](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/rails-includes_vs_joins_selected.png)
 
 
