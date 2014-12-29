@@ -245,31 +245,31 @@ internals.
 
     So let's check it out what does a **Subscribers::Timed** instance respond?
 
-    ```ruby
-    def start(name, id, payload)
-      timestack = Thread.current[:_timestack] ||= []
-      timestack.push Time.now
-    end
+```ruby
+def start(name, id, payload)
+  timestack = Thread.current[:_timestack] ||= []
+  timestack.push Time.now
+end
 
-    def finish(name, id, payload)
-      timestack = Thread.current[:_timestack]
-      started = timestack.pop
-      @delegate.call(name, started, Time.now, id, payload)
-    end
+def finish(name, id, payload)
+  timestack = Thread.current[:_timestack]
+  started = timestack.pop
+  @delegate.call(name, started, Time.now, id, payload)
+end
 
-    def publish(name, *args)
-      @delegate.call name, *args
-    end
+def publish(name, *args)
+  @delegate.call name, *args
+end
 
-    def subscribed_to?(name)
-      @pattern === name.to_s
-    end
+def subscribed_to?(name)
+  @pattern === name.to_s
+end
 
-    def matches?(subscriber_or_name)
-      self === subscriber_or_name ||
-        @pattern && @pattern === subscriber_or_name
-    end
-    ```
+def matches?(subscriber_or_name)
+  self === subscriber_or_name ||
+    @pattern && @pattern === subscriber_or_name
+end
+```
 
 
 ## ActiveSupport::Notifications::Instrumenter
@@ -296,37 +296,37 @@ internals.
 
 + `start(name, payload)`, `finish(name, payload)`
 
-    ```ruby
-    def start(name, payload)
-      @notifier.start name, @id, payload
-    end
+```ruby
+def start(name, payload)
+  @notifier.start name, @id, payload
+end
 
-    def finish(name, payload)
-      @notifier.finish name, @id, payload
-    end
-    ```
+def finish(name, payload)
+  @notifier.finish name, @id, payload
+end
+```
 
 + `instrument(name, payload={})`
 
-    ```ruby
-    def instrument(name, payload={})
-      start name, payload
-      begin
-        yield payload
-      rescue Exception => e
-        payload[:exception] = [e.class.name, e.message]
-        raise e
-      ensure
-        finish name, payload
-      end
-    end
-    ```
+```ruby
+def instrument(name, payload={})
+  start name, payload
+  begin
+    yield payload
+  rescue Exception => e
+    payload[:exception] = [e.class.name, e.message]
+    raise e
+  ensure
+    finish name, payload
+  end
+end
+```
 
     Where does this method get called? in `ActiveSupport::Notifications.instrument`:
 
-    ```ruby
-    instrumenter.instrument(name, payload) { yield payload if block_given? }
-    ```
+```ruby
+instrumenter.instrument(name, payload) { yield payload if block_given? }
+```
 
     The processing begins with `start`, ends with `finish`, instrumenter delegates it to `@notifier`, and `notifier` turns to `@subscribers` which are listening for the event name. And what does `@subscribers` do with `start` and `finish`? Normally we use subscriber objects defined by `Subscribers::Timed`, which use `start` to save a beginning timestamp, and `finish` to save an ending timestamp, and calling the block user passed.
 
