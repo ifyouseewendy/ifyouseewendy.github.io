@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2014-12-29T17:07:15+08:00</updated>
+  <updated>2014-12-29T17:14:47+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -902,7 +902,7 @@ end
 
 <h3 id="description-2">Description</h3>
 
-<p><img src="/image-repo/observer.png" alt="observer" /></p>
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/blob/source/image-repo/observer.png" alt="observer" /></p>
 
 <p>The aiming is to build a system that is highly integrated—that is, a system where every part is aware of the state of the whole.</p>
 
