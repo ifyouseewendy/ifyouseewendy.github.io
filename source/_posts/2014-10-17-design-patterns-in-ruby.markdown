@@ -148,7 +148,7 @@ Basic idea is *Seperate out the things that change from thos that stay the same.
 
 ### Description
 
-![template-method](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/template-method.png?token=1019171__eyJzY29wZSI6IlJhd0Jsb2I6aWZ5b3VzZWV3ZW5keS9pZnlvdXNlZXdlbmR5LmdpdGh1Yi5pby9zb3VyY2UvaW1hZ2UtcmVwby90ZW1wbGF0ZS1tZXRob2QucG5nIiwiZXhwaXJlcyI6MTQxNDE0Mzg5MH0%3D--3212fc4d83e1d1875f91cf3789eed93140c1cd11)
+![template-method](/image-repo/template-method.png)
 
 1. Extract the common part into an abstract base class
 2. Create some hook methods as the interface
@@ -179,7 +179,7 @@ Basic idea is *Delegate, delegate, delegate* and *Prefer composition over inheri
 
 ### Description
 
-![strategy](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/strategy.png?token=1019171__eyJzY29wZSI6IlJhd0Jsb2I6aWZ5b3VzZWV3ZW5keS9pZnlvdXNlZXdlbmR5LmdpdGh1Yi5pby9zb3VyY2UvaW1hZ2UtcmVwby9zdHJhdGVneS5wbmciLCJleHBpcmVzIjoxNDE0MTQ0Njg5fQ%3D%3D--e0f6812fdb7db4d905dc30228d35e9638bb573c9)
+![strategy](/image-repo/strategy.png)
 
 1. Pull the algorithm out into a seperate "strategy" object.
 2. All of the startegy objects support the same interface. 
@@ -247,7 +247,7 @@ end
 
 ### Description
 
-![observer](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/observer.png?token=1019171__eyJzY29wZSI6IlJhd0Jsb2I6aWZ5b3VzZWV3ZW5keS9pZnlvdXNlZXdlbmR5LmdpdGh1Yi5pby9zb3VyY2UvaW1hZ2UtcmVwby9vYnNlcnZlci5wbmciLCJleHBpcmVzIjoxNDE0MTQ0NzA3fQ%3D%3D--972a62502b72eed1ea8ddbf310cf731203fca2ef)
+![observer](/image-repo/observer.png)
 
 The aiming is to build a system that is highly integrated—that is, a system where every part is aware of the state of the whole.
 
@@ -398,7 +398,7 @@ ActiveRecord::Observer has been deprecated from Rails 4.0, but we can still get 
 
 ### Description
 
-![](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/composite.png?token=1019171__eyJzY29wZSI6IlJhd0Jsb2I6aWZ5b3VzZWV3ZW5keS9pZnlvdXNlZXdlbmR5LmdpdGh1Yi5pby9zb3VyY2UvaW1hZ2UtcmVwby9jb21wb3NpdGUucG5nIiwiZXhwaXJlcyI6MTQxNDE0NDcyMH0%3D--41ebbd60d08a3abdea333d8d72694059201bc3e5)
+![composite](/image-repo/composite.png)
 
 1. **component**, a common interface or base class for all of your objects.
 2. **leaf**, the class doing simple, indivisible building blocks of process.
@@ -687,7 +687,7 @@ subclasses_of(Numeric)
 
 ### Description
 
-![command](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/command.png?token=1019171__eyJzY29wZSI6IlJhd0Jsb2I6aWZ5b3VzZWV3ZW5keS9pZnlvdXNlZXdlbmR5LmdpdGh1Yi5pby9zb3VyY2UvaW1hZ2UtcmVwby9jb21tYW5kLnBuZyIsImV4cGlyZXMiOjE0MTQxNDQ3MzN9--33626d43f040acda1c51aab2f47463b37fbe7704)
+![command](/image-repo/command.png)
 
 The idea of factoring out the action code into its own object is the essence of the Command pattern.
 
@@ -877,7 +877,7 @@ Madeleine is a transactional, high-performance, object persistence framework tha
 
 An adapter is an object that crosses the chasm between the interface that you have and the interface that you need.
 
-![the adapter](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/adapter.png?token=1019171__eyJzY29wZSI6IlJhd0Jsb2I6aWZ5b3VzZWV3ZW5keS9pZnlvdXNlZXdlbmR5LmdpdGh1Yi5pby9zb3VyY2UvaW1hZ2UtcmVwby9hZGFwdGVyLnBuZyIsImV4cGlyZXMiOjE0MTQxNDQ3Njl9--d142dd1a755ebc23b763e8e94c87be02b43f2057)
+![the adapter](/image-repo/adapter.png)
 
 The client expects the target to have a certain interface. But unknown to the client, the target object is really an adapter, and buried inside of the adapter is a reference to a second object, the adaptee, which actually per- forms the work.
 
@@ -912,7 +912,7 @@ One of the advantages that Ruby’s duck typing gives to adapter writers is that
 
 ### Description
 
-![the proxy](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/proxy.png?token=1019171__eyJzY29wZSI6IlJhd0Jsb2I6aWZ5b3VzZWV3ZW5keS9pZnlvdXNlZXdlbmR5LmdpdGh1Yi5pby9zb3VyY2UvaW1hZ2UtcmVwby9wcm94eS5wbmciLCJleHBpcmVzIjoxNDE0MTQ0Nzg2fQ%3D%3D--6ec8fc99ca14732a2744cc9410769a6ab7f78001)
+![the proxy](/image-repo/proxy.png)
 
 The Proxy pattern is essentially built around a little white lie. The counterfeit object, called the **proxy** by the GoF, has a reference to the real object, the **subject**, hidden inside. Whenever the client code calls a method on the proxy, the proxy simply forwards the request to the real object.
 
@@ -1093,7 +1093,7 @@ sum=math_service.add(2,2)
 
 ### Description
 
-![](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/decorator.png?token=1019171__eyJzY29wZSI6IlJhd0Jsb2I6aWZ5b3VzZWV3ZW5keS9pZnlvdXNlZXdlbmR5LmdpdGh1Yi5pby9zb3VyY2UvaW1hZ2UtcmVwby9kZWNvcmF0b3IucG5nIiwiZXhwaXJlcyI6MTQxNDE0NDgwMn0%3D--2c202e13a352e65c69bcec687476ebc7e4c00653)
+![decorator](/image-repo/decorator.png)
 
 The ConcreteComponent is the “real” object, the object that implements the basic component functionality.
 
@@ -1107,7 +1107,7 @@ The Decorator pattern lets you start with some basic functionality and layer on 
 
 The trouble is that the inheritance-based approach requires you to come up with all possi- ble combinations of features up-front, at design time.
 
-![out-of-control inheritance](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/out-of-control-inheritance.png?token=1019171__eyJzY29wZSI6IlJhd0Jsb2I6aWZ5b3VzZWV3ZW5keS9pZnlvdXNlZXdlbmR5LmdpdGh1Yi5pby9zb3VyY2UvaW1hZ2UtcmVwby9vdXQtb2YtY29udHJvbC1pbmhlcml0YW5jZS5wbmciLCJleHBpcmVzIjoxNDE0MTQ0ODE2fQ%3D%3D--be1c2549bc9b301806cc25134fe396bc9d0522af)
+![out-of-control inheritance](/image-repo/out-of-control-inheritance.png)
 
 ### Code Usage
 
@@ -1438,7 +1438,7 @@ As it runs, rake—like most build tools—reads in information about what it ne
 
 ### Description
 
-![factory](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/factory.png?token=1019171__eyJzY29wZSI6IlJhd0Jsb2I6aWZ5b3VzZWV3ZW5keS9pZnlvdXNlZXdlbmR5LmdpdGh1Yi5pby9zb3VyY2UvaW1hZ2UtcmVwby9mYWN0b3J5LnBuZyIsImV4cGlyZXMiOjE0MTQxNDQ4Mjl9--7c5492b15202fd40f4b9ad9ecce6271643e040b2)
+![factory](/image-repo/factory.png)
 
 The GoF called this technique of pushing the “which class” decision down on a subclass the Factory Method pattern.
 
@@ -1532,7 +1532,7 @@ pond.simulate_one_day
 
 ### Abstract Factory
 
-![abstract factory](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/abstract-factory.png?token=1019171__eyJzY29wZSI6IlJhd0Jsb2I6aWZ5b3VzZWV3ZW5keS9pZnlvdXNlZXdlbmR5LmdpdGh1Yi5pby9zb3VyY2UvaW1hZ2UtcmVwby9hYnN0cmFjdC1mYWN0b3J5LnBuZyIsImV4cGlyZXMiOjE0MTQxNDQ4NDJ9--56f2ee5040831c5866dccf0e719271bf5fb8c5d9)
+![abstract factory](/image-repo/abstract-factory.png)
 
 
 An object dedicated to creating a compatible set of objects is called an abstract factory. 
@@ -1644,7 +1644,7 @@ Base.send(method_name, config)
 
 Builder pattern, a pattern designed to help you configure those complex objects. The builder class takes charge of assembling all of the components of a complex object.
 
-![builder](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/buidler.png?token=1019171__eyJzY29wZSI6IlJhd0Jsb2I6aWZ5b3VzZWV3ZW5keS9pZnlvdXNlZXdlbmR5LmdpdGh1Yi5pby9zb3VyY2UvaW1hZ2UtcmVwby9idWlkbGVyLnBuZyIsImV4cGlyZXMiOjE0MTQxNDQ4NTR9--98a9584478dc067c7484944e08b074d42f42ebfa)
+![builder](/image-repo/buidler.png)
 
 The client of the builder object the **director** because it directs the builder in the construction of the new object (called the **product**). Builders not only ease the burden of creating complex objects, but also hide the implementation details.
 
@@ -1766,7 +1766,7 @@ Builder pattern sometimes creeps up on you as your application becomes increasin
 
 Interpreter pattern, which suggests that sometimes the best way to solve a problem is to invent a new language for just that purpose. 
 
-![Interpreter](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/interpreter.png?token=1019171__eyJzY29wZSI6IlJhd0Jsb2I6aWZ5b3VzZWV3ZW5keS9pZnlvdXNlZXdlbmR5LmdpdGh1Yi5pby9zb3VyY2UvaW1hZ2UtcmVwby9pbnRlcnByZXRlci5wbmciLCJleHBpcmVzIjoxNDE0MTQ0ODY3fQ%3D%3D--e73714ecf39b453ac514fc0bb1f0b49f3a4b6cc0)
+![Interpreter](/image-repo/interpreter.png)
 
 The heart of the Interpreter pattern is the abstract syntax tree.
 
