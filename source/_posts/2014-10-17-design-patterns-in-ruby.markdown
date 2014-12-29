@@ -148,7 +148,7 @@ Basic idea is *Seperate out the things that change from thos that stay the same.
 
 ### Description
 
-![template-method](/image-repo/template-method.png)
+![template-method](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/template-method.png)
 
 1. Extract the common part into an abstract base class
 2. Create some hook methods as the interface
@@ -179,7 +179,7 @@ Basic idea is *Delegate, delegate, delegate* and *Prefer composition over inheri
 
 ### Description
 
-![strategy](/image-repo/strategy.png)
+![strategy](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/strategy.png)
 
 1. Pull the algorithm out into a seperate "strategy" object.
 2. All of the startegy objects support the same interface. 
@@ -247,7 +247,7 @@ end
 
 ### Description
 
-![observer](/image-repo/observer.png)
+![observer](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/observer.png)
 
 The aiming is to build a system that is highly integrated—that is, a system where every part is aware of the state of the whole.
 
@@ -398,7 +398,7 @@ ActiveRecord::Observer has been deprecated from Rails 4.0, but we can still get 
 
 ### Description
 
-![composite](/image-repo/composite.png)
+![composite](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/composite.png)
 
 1. **component**, a common interface or base class for all of your objects.
 2. **leaf**, the class doing simple, indivisible building blocks of process.
@@ -687,7 +687,7 @@ subclasses_of(Numeric)
 
 ### Description
 
-![command](/image-repo/command.png)
+![command](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/command.png)
 
 The idea of factoring out the action code into its own object is the essence of the Command pattern.
 
@@ -877,7 +877,7 @@ Madeleine is a transactional, high-performance, object persistence framework tha
 
 An adapter is an object that crosses the chasm between the interface that you have and the interface that you need.
 
-![the adapter](/image-repo/adapter.png)
+![the adapter](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/adapter.png)
 
 The client expects the target to have a certain interface. But unknown to the client, the target object is really an adapter, and buried inside of the adapter is a reference to a second object, the adaptee, which actually per- forms the work.
 
@@ -912,7 +912,7 @@ One of the advantages that Ruby’s duck typing gives to adapter writers is that
 
 ### Description
 
-![the proxy](/image-repo/proxy.png)
+![the proxy](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/proxy.png)
 
 The Proxy pattern is essentially built around a little white lie. The counterfeit object, called the **proxy** by the GoF, has a reference to the real object, the **subject**, hidden inside. Whenever the client code calls a method on the proxy, the proxy simply forwards the request to the real object.
 
@@ -1093,7 +1093,7 @@ sum=math_service.add(2,2)
 
 ### Description
 
-![decorator](/image-repo/decorator.png)
+![decorator](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/decorator.png)
 
 The ConcreteComponent is the “real” object, the object that implements the basic component functionality.
 
@@ -1107,7 +1107,7 @@ The Decorator pattern lets you start with some basic functionality and layer on 
 
 The trouble is that the inheritance-based approach requires you to come up with all possi- ble combinations of features up-front, at design time.
 
-![out-of-control inheritance](/image-repo/out-of-control-inheritance.png)
+![out-of-control inheritance](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/out-of-control-inheritance.png)
 
 ### Code Usage
 
@@ -1438,7 +1438,7 @@ As it runs, rake—like most build tools—reads in information about what it ne
 
 ### Description
 
-![factory](/image-repo/factory.png)
+![factory](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/factory.png)
 
 The GoF called this technique of pushing the “which class” decision down on a subclass the Factory Method pattern.
 
@@ -1532,7 +1532,7 @@ pond.simulate_one_day
 
 ### Abstract Factory
 
-![abstract factory](/image-repo/abstract-factory.png)
+![abstract factory](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/abstract-factory.png)
 
 
 An object dedicated to creating a compatible set of objects is called an abstract factory. 
@@ -1644,7 +1644,7 @@ Base.send(method_name, config)
 
 Builder pattern, a pattern designed to help you configure those complex objects. The builder class takes charge of assembling all of the components of a complex object.
 
-![builder](/image-repo/buidler.png)
+![builder](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/buidler.png)
 
 The client of the builder object the **director** because it directs the builder in the construction of the new object (called the **product**). Builders not only ease the burden of creating complex objects, but also hide the implementation details.
 
@@ -1766,7 +1766,7 @@ Builder pattern sometimes creeps up on you as your application becomes increasin
 
 Interpreter pattern, which suggests that sometimes the best way to solve a problem is to invent a new language for just that purpose. 
 
-![Interpreter](/image-repo/interpreter.png)
+![Interpreter](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/interpreter.png)
 
 The heart of the Interpreter pattern is the abstract syntax tree.
 
