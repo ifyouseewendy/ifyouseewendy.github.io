@@ -16,7 +16,7 @@ categories: [Ruby, Books]
 
 # The Object Model
 
-![the_object_model](https://dl.dropboxusercontent.com/s/a6qc1yd1cd57pkp/the_object_model.png?dl=1&token_hash=AAEBXb4OJ73P3xWWbPmIMOferP8_YHxQlS9d8l0hjEq2wQ&expiry=1400078501)
+![the_object_model](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/the_object_model.png?token=AA-NIz5OzBmOp0hOsRZjkMM8T5S4ndT_ks5UqkyIwA%3D%3D)
 
 An object contains its instance variables and a reference to a class.
 
@@ -857,7 +857,7 @@ obj.singleton_class.instance_methods.grep(/my_/)
 
 **Singleton classes and inheritance**
 
-![singleton_classes_and_inheritance](https://dl.dropboxusercontent.com/s/leu6dh1ro55u149/singleton_classes_and_inheritance.png?dl=1&token_hash=AAFdcu5UXq5RMpm7nkaQf_B5Und9FjuPF85b35aIWXjC1g&expiry=1400340965)
+![singleton_classes_and_inheritance](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/singleton_classes_and_inheritance.png?token=AA-NI08_F1rOD2C2U8j70uOwanbIUUEPks5UqkyNwA%3D%3D)
 
 **7 rules of the Ruby object model**
 
