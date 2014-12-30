@@ -1,0 +1,1903 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Git Reminders - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="Git Dec 30th, 2014 Git Reminders After using Git for two years, I’ve finally finished reading these two books, twice. Not only skimming, but also &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2014/12/30/git-reminders">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2014/12/30/git-reminders/">Git Reminders</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/12/29/readable-git-log-by-using-custom-commit-template/">Readable Git Log by Using Custom Commit Template</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/12/25/git-filter-branch-in-practice/">Git Filter Branch in Practice</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/11/26/practicing-rails/">[Review] Practicing Rails</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/11/23/quotes-from-ira-glass/">Quotes From Ira Glass</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/git/'>Git</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Dec 30<span>th</span>, 2014</a>
+</span>
+
+    </div>
+    <h1>
+      Git Reminders
+    </h1>
+  
+</header>
+
+
+  <section><p>After using Git for two years, I’ve finally finished reading these two books, twice. Not only skimming, but also making excerpts and perform experiments in the meantime. These two fabulous books really benefit me a lot, and this is the final notes which construct my Git knowledge base, and comprise the excerpts from both books and experiments on some specific topics.</p>
+
+<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>Git Community Book</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td>people in the Git community</td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="http://alx.github.io/gitbook/">alx.github.io/gitbook</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>Pro Git</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td>Scott Chacon and Ben Straub</td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="http://git-scm.com/book/en">git-scm.com/book</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul id="markdown-toc">
+  <li><a href="#basics">Basics</a>    <ul>
+      <li><a href="#meta">Meta</a></li>
+      <li><a href="#git-object-model">Git Object Model</a>        <ul>
+          <li><a href="#the-sha-1">The SHA-1</a></li>
+          <li><a href="#the-objects">The Objects</a></li>
+        </ul>
+      </li>
+      <li><a href="#staged">Staged</a></li>
+      <li><a href="#branching">Branching</a></li>
+      <li><a href="#tags">Tags</a></li>
+    </ul>
+  </li>
+  <li><a href="#configuration">Configuration</a>    <ul>
+      <li><a href="#ignoreing-files">Ignoreing Files</a></li>
+      <li><a href="#commit-template">Commit Template</a></li>
+      <li><a href="#git-attributes">Git Attributes</a></li>
+    </ul>
+  </li>
+  <li><a href="#porcelain">Porcelain</a>    <ul>
+      <li><a href="#branch">Branch</a>        <ul>
+          <li><a href="#inspecting-a-remote">Inspecting a Remote</a></li>
+          <li><a href="#checkout-and-track-a-remote-branch">Checkout and Track a Remote Branch</a></li>
+        </ul>
+      </li>
+      <li><a href="#tag">Tag</a>        <ul>
+          <li><a href="#share-tags">Share tags</a></li>
+          <li><a href="#sign-tags">Sign tags</a></li>
+          <li><a href="#distributing-the-public-pgp-key">Distributing the Public PGP Key</a></li>
+          <li><a href="#generate-a-build-number">Generate a Build Number</a></li>
+          <li><a href="#prepare-a-release">Prepare a Release</a></li>
+        </ul>
+      </li>
+      <li><a href="#rebasing">Rebasing</a></li>
+      <li><a href="#merge-base">Merge Base</a></li>
+      <li><a href="#merge-stage">Merge Stage</a></li>
+      <li><a href="#ancestry-references">Ancestry References</a></li>
+      <li><a href="#commit-ranges">Commit Ranges</a></li>
+      <li><a href="#log">Log</a>        <ul>
+          <li><a href="#summarize-or-get-a-quick-changelog">Summarize or Get a Quick Changelog</a></li>
+        </ul>
+      </li>
+      <li><a href="#stash">Stash</a>        <ul>
+          <li><a href="#reapply-the-staged-changes">Reapply the Staged Changes</a></li>
+          <li><a href="#create-a-branch-from-stash">Create a Branch from Stash</a></li>
+        </ul>
+      </li>
+      <li><a href="#create-new-empty-branches">Create New Empty Branches</a></li>
+      <li><a href="#filter-branch">Filter Branch</a>        <ul>
+          <li><a href="#removing-a-file-from-every-commit">Removing a File from Every Commit</a></li>
+          <li><a href="#making-a-subdirectory-the-new-root">Making a Subdirectory the New Root</a></li>
+          <li><a href="#changing-e-mail-addresses-globally">Changing E-Mail Addresses Globally</a></li>
+          <li><a href="#realworld-example">Realworld Example</a></li>
+        </ul>
+      </li>
+      <li><a href="#blame">Blame</a></li>
+      <li><a href="#bisect">Bisect</a>        <ul>
+          <li><a href="#auto-check-by-script">Auto Check By Script</a></li>
+        </ul>
+      </li>
+      <li><a href="#submodules">Submodules</a>        <ul>
+          <li><a href="#maintain-a-repo-which-contains-a-submodule">Maintain a repo which contains a submodule</a></li>
+          <li><a href="#maintain-a-cloned-repo-which-contains-a-submodule">Maintain a cloned repo which contains a submodule</a></li>
+          <li><a href="#a-demo-workflow">A Demo Workflow</a></li>
+          <li><a href="#cautions">Cautions</a></li>
+        </ul>
+      </li>
+      <li><a href="#subtree-merging-a-submodule-substitution">Subtree Merging (A Submodule Substitution)</a>        <ul>
+          <li><a href="#use-git-merge-subtree-strategy">Use git-merge Subtree Strategy</a></li>
+          <li><a href="#use-git-subtree">Use git-subtree</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#git-internals">Git Internals</a>    <ul>
+      <li><a href="#plumbing-objects">Plumbing Objects</a>        <ul>
+          <li><a href="#blob-object">Blob Object</a></li>
+          <li><a href="#tree-objects">Tree Objects</a></li>
+          <li><a href="#commit-objects">Commit Objects</a></li>
+          <li><a href="#object-storage">Object Storage</a></li>
+        </ul>
+      </li>
+      <li><a href="#index">Index</a></li>
+      <li><a href="#packfile">Packfile</a></li>
+      <li><a href="#the-refspec">The Refspec</a>        <ul>
+          <li><a href="#fetching">fetching</a></li>
+        </ul>
+      </li>
+      <li><a href="#data-recovery">Data Recovery</a>        <ul>
+          <li><a href="#reflog">reflog</a></li>
+          <li><a href="#fsck">fsck</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="basics">Basics</h2>
+
+<h3 id="meta">Meta</h3>
+
+<p><strong>Snapshots, Not Differences</strong></p>
+
+<p>Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot.</p>
+
+<p><strong>Git Generally Only Adds Data</strong></p>
+
+<p>It is very difficult to get the system to do anything that is not undoable or to make it erase data in any way.</p>
+
+<h3 id="git-object-model">Git Object Model</h3>
+
+<h4 id="the-sha-1">The SHA-1</h4>
+
+<blockquote>
+  <p>checksum, object ID</p>
+</blockquote>
+
+<ol>
+  <li>Represents object name.</li>
+  <li>40-digit long.</li>
+  <li>Use SHA1 hash to generate based on the object content.</li>
+  <li>Keeps the identity.</li>
+</ol>
+
+<h4 id="the-objects">The Objects</h4>
+
+<p>Every object consists of three things: <strong>type, size, content</strong>.</p>
+
+<p>There are four different types of objects: <strong>blob, tree, commit, tag</strong>.</p>
+
+<p><strong>blob</strong> is a chunk of binary data, used to stroe file data.</p>
+
+<blockquote>
+  <p>The blob is entirely defined by its data, totally independent of its location.</p>
+</blockquote>
+
+<p><strong>tree</strong> is basically like a directory - it references a bunch of other trees and/or blobs.</p>
+
+<blockquote>
+  <p>Since trees and blobs, like all other objects, are named by the SHA1 hash of their contents, two trees have the same SHA1 name if and only if their contents (including, recursively, the contents of all subdirectories) are identical.</p>
+</blockquote>
+
+<p><strong>commit</strong>  points to a single tree, marking it as what the project looked like at a certain point in time. It contains meta-information about that point in time, such as a timestamp, the author of the changes since the last commit, a pointer to the previous commit(s), etc.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git show --pretty<span class="o">=</span>raw HEAD
+</span><span class="line">commit 6cc1a668111eb54ef4dbe976fff24f2e3d8b95f9
+</span><span class="line">tree 36df675d7ae80e7eef0faac893b266801a4fa94a
+</span><span class="line">parent d448c30aa03fba2884ab87c21081ef0f74d24f7e
+</span><span class="line">author wendi &lt;wendi@umeng.com&gt; 1409022714 +0800
+</span><span class="line">committer wendi &lt;wendi@umeng.com&gt; 1409022733 +0800
+</span><span class="line">
+</span><span class="line">    Update error <span class="nb">type </span>service url
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>tag</strong> is a way to mark a specific commit as special in some way. It is normally used to tag certain commits as specific releases or something along those lines.</p>
+
+<blockquote>
+  <p>A tag object contains an object name (called simply ‘object’), object type, tag name, the name of the person (“tagger”) who created the tag, and a message, which may contain a signature</p>
+</blockquote>
+
+<h3 id="staged">Staged</h3>
+
+<p>Staged means that you have marked a modified file in its current version to go into your next commit snapshot.</p>
+
+<p>The staging area is a simple file, generally contained in your Git directory, that stores information about what will go into your next commit.</p>
+
+<h3 id="branching">Branching</h3>
+
+<p>A branch in Git is simply a lightweight movable pointer to one of these commits.</p>
+
+<p>How does Git know what branch you’re currently on? It keeps a special pointer called <em>HEAD</em>.</p>
+
+<p><strong>Remote Branches</strong></p>
+
+<p>Remote branches act as bookmarks to remind you where the branches on your remote repositories were the last time you connected to them.</p>
+
+<h3 id="tags">Tags</h3>
+
+<p>The tag object is very much like a commit object, but <strong>a tag object points to a commit rather than a tree. It’s like a branch reference, but it never moves</strong> — it always points to the same commit but gives it a friendlier name. </p>
+
+<p>You can tag any Git object. For example, the maintainer adds the GPG public key as a blob object and then tagged it.</p>
+
+<p><strong>Lightweight</strong></p>
+
+<p>A lightweight tag is very much like a branch that doesn’t change — it’s just a pointer to a specific commit.</p>
+
+<p><strong>Annotated</strong></p>
+
+<p>Annotated tags, however, are stored as full objects in the Git database. They’re checksummed; contain the tagger name, e-mail, and date; have a tagging message; and can be signed and verified with GNU Privacy Guard (GPG). </p>
+
+<h2 id="configuration">Configuration</h2>
+
+<h3 id="ignoreing-files">Ignoreing Files</h3>
+
+<p>Glob patterns are like simplified regular expressions that shells use.</p>
+
+<p>You can negate a pattern by starting it with an exclamation point (!).</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">*.a       <span class="c"># no .a files</span>
+</span><span class="line">!lib.a    <span class="c"># but do track lib.a, even though you’re ignoring .a files above</span>
+</span><span class="line">/TODO     <span class="c"># only ignore the root TODO file, not subdir/TODO</span>
+</span><span class="line">build/    <span class="c"># ignore all files in the build/ directory</span>
+</span><span class="line">doc/*.txt <span class="c"># ignore doc/notes.txt, but not doc/server/arch.txt</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="commit-template">Commit Template</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git config --global commit.template <span class="nv">$HOME</span>/.gitmessage
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I’ve defined some experimental rules based on <a href="http://programmers.stackexchange.com/questions/42110/can-you-recommend-a-good-commit-message-template-guidelines-to-enforce-in-the">rangzen’s recommandation</a> on Stack Exchange. Here is my <a href="https://github.com/ifyouseewendy/dotfiles/blob/master/gitmessage">.gitmessage</a>.</p>
+
+<p>Here is another post for specific usage, <a href="http://blog.ifyouseewendy.com/blog/2014/12/29/readable-git-log-by-using-custom-commit-template/">Readable Git Log by Using Custom Commit Template</a></p>
+
+<h3 id="git-attributes">Git Attributes</h3>
+
+<p>The path-specific settings are called Git attributes and are set either in a <code>.gitattribute</code> file in one of your directories (normally the root of your project) or in the <code>.git/info/attributes</code> file if you don’t want the attributes file committed with your project.</p>
+
+<ul>
+  <li>Identifying Binary Files</li>
+  <li>Diffing Binary Files (word, image EXIF)</li>
+  <li>Filters (clean and smudge)</li>
+  <li>Exorting
+    <ul>
+      <li>export-ignore</li>
+      <li>export-subst</li>
+    </ul>
+  </li>
+  <li>Merge Strategies</li>
+</ul>
+
+<h2 id="porcelain">Porcelain</h2>
+
+<h3 id="branch">Branch</h3>
+
+<h4 id="inspecting-a-remote">Inspecting a Remote</h4>
+
+<p><code>git remote show [remote-name]</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git remote show origin
+</span><span class="line">* remote origin
+</span><span class="line">  URL: git://github.com/schacon/ticgit.git
+</span><span class="line">  Remote branch merged with ’git pull’ <span class="k">while </span>on branch master
+</span><span class="line">    master
+</span><span class="line">  Tracked remote branches
+</span><span class="line">    master
+</span><span class="line">    ticgit
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="checkout-and-track-a-remote-branch">Checkout and Track a Remote Branch</h4>
+
+<p>Two ways.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git checkout -b sf origin/serverfix
+</span><span class="line">Branch sf <span class="nb">set </span>up to track remote branch refs/remotes/origin/serverfix.
+</span><span class="line">Switched to a new branch <span class="s2">&quot;sf&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git checkout --track origin/serverfix
+</span><span class="line">Branch serverfix <span class="nb">set </span>up to track remote branch refs/remotes/origin/serverfix.
+</span><span class="line">Switched to a new branch <span class="s2">&quot;serverfix&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="tag">Tag</h3>
+
+<h4 id="share-tags">Share tags</h4>
+
+<p>By default, the git push command doesn’t transfer tags to remote servers. You will have to explicitly push tags to a shared server after you have created them.</p>
+
+<p><code>git push origin [tagname]</code></p>
+
+<p>If you have a lot of tags that you want to push up at once, you can also use the –tags option to the git push command.</p>
+
+<p><code>git push origin --tags</code></p>
+
+<h4 id="sign-tags">Sign tags</h4>
+
+<ul>
+  <li>PGP, Pretty Good Privacy, the standard.</li>
+  <li>GPG, Gnu Privacy Guard, the implementation.</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="c"># Generate your key</span>
+</span><span class="line"><span class="nv">$ </span>gpg --gen-key
+</span><span class="line">
+</span><span class="line"><span class="nv">$ </span>gpg --list-key
+</span><span class="line">/Users/wendi/.gnupg/pubring.gpg
+</span><span class="line">-------------------------------
+</span><span class="line">pub   2048R/FXXXXXXX 2014-12-19
+</span><span class="line">uid                  Di Wen <span class="o">(</span>wendi<span class="o">)</span> &lt;ifyouseewendy@gmail.com&gt;
+</span><span class="line">sub   2048R/XXXXXXX 2014-12-19
+</span><span class="line">
+</span><span class="line"><span class="c"># Set Git config</span>
+</span><span class="line"><span class="nv">$ </span>git config --global user.signingkey FXXXXXXX
+</span><span class="line">
+</span><span class="line"><span class="c"># Sign</span>
+</span><span class="line">git tag -s v0.1 -m <span class="s1">&#39;First GPG signed tag&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="distributing-the-public-pgp-key">Distributing the Public PGP Key</h4>
+
+<p>Import the key into the Git database by exporting it and piping that through <code>git hash-object</code>, which writes a new blob with those contents into Git and gives you back the SHA–1 of the blob.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>gpg -a --export F721C45A | git <span class="nb">hash</span>-object -w --stdin
+</span><span class="line">659ef797d181633c87ec71ac3f9ba29fe5775b92
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Now that you have the contents of your key in Git, you can create a tag that points directly to it by specifying the new SHA–1 value that the hash-object command gave you:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git tag -a maintainer-pgp-pub 659ef797d181633c87ec71ac3f9ba29fe5775b92
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If you run <code>git push --tags</code>, the maintainer-pgp-pub tag will be shared with ev- eryone. If anyone wants to verify a tag, they can directly import your PGP key by pulling the blob directly out of the database and importing it into GPG:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git show maintainer-pgp-pub | gpg --import
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>They can use that key to verify all your signed tags. Also, if you include instructions in the tag message, running <code>git show &lt;tag&gt;</code> will let you give the end user more specific instructions about tag verification.</p>
+
+<h4 id="generate-a-build-number">Generate a Build Number</h4>
+
+<p>Git gives you the name of the nearest tag with the number of commits on top of that tag and a partial SHA–1 value of the commit you’re describing:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git describe master
+</span><span class="line">v1.6.2-rc1-20-g8c5b85c
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The git describe command favors annotated tags.</p>
+
+<h4 id="prepare-a-release">Prepare a Release</h4>
+
+<p>Create <code>tar.gz</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git archive master --prefix<span class="o">=</span>’project/’ | gzip &gt; ‘git describe master‘.tar.gz
+</span><span class="line"><span class="nv">$ </span>ls *.tar.gz
+</span><span class="line">v1.6.2-rc1-20-g8c5b85c.tar.gz
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Create <code>zip</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git archive master --prefix<span class="o">=</span>’project/’ --format<span class="o">=</span>zip &gt; ‘git describe master‘.zip
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="rebasing">Rebasing</h3>
+
+<p><strong>an advanced example</strong></p>
+
+<p>Now <code>git show-branch master server client</code> shows like this:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&lt;-- commit0 &lt;-- commit1 &lt;-- commit2                 master
+</span><span class="line">                  <span class="se">\</span>
+</span><span class="line">                   <span class="se">\-</span>- commit3 &lt;-- commit4          server
+</span><span class="line">                          <span class="se">\</span>
+</span><span class="line">                           <span class="se">\-</span>- commit5 &lt;-- commit6  client
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>What does <code>git rebase --onto master server client</code> do?</p>
+
+<ol>
+  <li>Checkout <em>client</em> branch</li>
+  <li>Figure out the patches from the common ancestor of <em>server</em> and <em>client</em> (commits of <code>git log server..client</code>)</li>
+  <li>Replay the patches onto <em>master</em></li>
+</ol>
+
+<p>Run <code>git show-branch master server client</code> again:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">                        master                  client
+</span><span class="line">                           |                       |
+</span><span class="line">&lt;-- commit0 &lt;-- commit1 &lt;-- commit2 &lt;-- commit5 &lt;-- commit6
+</span><span class="line">              <span class="se">\</span>
+</span><span class="line">               <span class="se">\-</span>- commit3 &lt;-- commit4
+</span><span class="line">                                  |
+</span><span class="line">                                server
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="merge-base">Merge Base</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git merge-base master <span class="nb">test</span>
+</span><span class="line">da07c4b40491581a0d6f877373a5cbeb1ea8c800
+</span><span class="line">
+</span><span class="line"><span class="nv">$ </span>git show <span class="sb">`</span>git merge-base master <span class="nb">test</span><span class="sb">`</span>
+</span><span class="line">commit da07c4b40491581a0d6f877373a5cbeb1ea8c800
+</span><span class="line">Author: wendi &lt;ifyouseewendy@gmail.com&gt;
+</span><span class="line">Date:   Fri Dec 19 12:56:08 2014 +0800
+</span><span class="line">
+</span><span class="line">    Add README
+</span><span class="line">
+</span><span class="line">diff --git a/README b/README
+</span><span class="line">new file mode 100644
+</span><span class="line">index 0000000..e69de29
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="merge-stage">Merge Stage</h3>
+
+<p>When merging, one parent will be <strong>HEAD</strong>, and the other will be the tip of the other branch, which is stored temporarily in <strong>MERGE_HEAD</strong>.</p>
+
+<p>During the merge, the index holds three versions of each file. Each of these three “file stages” represents a different version of the file:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git show :1:file.txt <span class="c"># the file in a common ancestor of both branches.</span>
+</span><span class="line"><span class="nv">$ </span>git show :2:file.txt <span class="c"># the version from HEAD.</span>
+</span><span class="line"><span class="nv">$ </span>git show :3:file.txt <span class="c"># the version from MERGE_HEAD.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Some special diff options allow diffing the working directory against any of these stages:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git diff -1 file.txt <span class="c"># diff against stage 1</span>
+</span><span class="line"><span class="nv">$ </span>git diff --base file.txt <span class="c"># same as the above</span>
+</span><span class="line"><span class="nv">$ </span>git diff -2 file.txt <span class="c"># diff against stage 2</span>
+</span><span class="line"><span class="nv">$ </span>git diff --ours file.txt <span class="c"># same as the above</span>
+</span><span class="line"><span class="nv">$ </span>git diff -3 file.txt <span class="c"># diff against stage 3</span>
+</span><span class="line"><span class="nv">$ </span>git diff --theirs file.txt <span class="c"># same as the above.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="ancestry-references">Ancestry References</h3>
+
+<ul>
+  <li>^&lt;n&gt; select the nth <em>parent</em> of the commit (relevant in merges).</li>
+  <li>~&lt;n&gt; select the nth <em>ancestor</em> commit, always following the first parent.</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">G   H   I   J
+</span><span class="line"> <span class="se">\ </span>/     <span class="se">\ </span>/
+</span><span class="line">  D   E   F
+</span><span class="line">   <span class="se">\ </span> |  / <span class="se">\</span>
+</span><span class="line">    <span class="se">\ </span>| /   |
+</span><span class="line">     <span class="se">\|</span>/    |
+</span><span class="line">      B     C
+</span><span class="line">       <span class="se">\ </span>  /
+</span><span class="line">        <span class="se">\ </span>/
+</span><span class="line">         A
+</span><span class="line"><span class="nv">A</span> <span class="o">=</span>      <span class="o">=</span> A^0
+</span><span class="line"><span class="nv">B</span> <span class="o">=</span> A^   <span class="o">=</span> A^1     <span class="o">=</span> A~1
+</span><span class="line"><span class="nv">C</span> <span class="o">=</span> A^2  <span class="o">=</span> A^2
+</span><span class="line"><span class="nv">D</span> <span class="o">=</span> A^^  <span class="o">=</span> A^1^1   <span class="o">=</span> A~2
+</span><span class="line"><span class="nv">E</span> <span class="o">=</span> B^2  <span class="o">=</span> A^^2
+</span><span class="line"><span class="nv">F</span> <span class="o">=</span> B^3  <span class="o">=</span> A^^3
+</span><span class="line"><span class="nv">G</span> <span class="o">=</span> A^^^ <span class="o">=</span> A^1^1^1 <span class="o">=</span> A~3
+</span><span class="line"><span class="nv">H</span> <span class="o">=</span> D^2  <span class="o">=</span> B^^2    <span class="o">=</span> A^^^2  <span class="o">=</span> A~2^2
+</span><span class="line"><span class="nv">I</span> <span class="o">=</span> F^   <span class="o">=</span> B^3^    <span class="o">=</span> A^^3^
+</span><span class="line"><span class="nv">J</span> <span class="o">=</span> F^2  <span class="o">=</span> B^3^2   <span class="o">=</span> A^^3^2
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>recorded in <a href="http://schacon.github.com/git/git-rev-parse">git-rev-parse(1)</a></p>
+
+<h3 id="commit-ranges">Commit Ranges</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="c"># reachable from one commit but aren’t reachable from another.</span>
+</span><span class="line"><span class="nv">$ </span>git log ref1..ref2
+</span><span class="line"><span class="nv">$ </span>git log ^ref1 ref2
+</span><span class="line"><span class="nv">$ </span>git log ref2 --not ref1
+</span><span class="line">
+</span><span class="line"><span class="c"># reachable by either of two references but not by both of them.</span>
+</span><span class="line"><span class="nv">$ </span>git log master...experiment
+</span><span class="line">
+</span><span class="line"><span class="nv">$ </span>git log --left-right master...experiment
+</span><span class="line">&lt; F
+</span><span class="line">&lt; E
+</span><span class="line">&gt; D
+</span><span class="line">&gt; C
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="log">Log</h3>
+
+<h4 id="summarize-or-get-a-quick-changelog">Summarize or Get a Quick Changelog</h4>
+
+<p>Use <code>git shortlog</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git shortlog --no-merges master --not v1.0.1
+</span><span class="line">Chris Wanstrath <span class="o">(</span>8<span class="o">)</span>:
+</span><span class="line">      Add support <span class="k">for </span>annotated tags to Grit::Tag
+</span><span class="line">      Add packed-refs annotated tag support.
+</span><span class="line">      Add Grit::Commit#to_patch
+</span><span class="line">      Update version and History.txt
+</span><span class="line">      Remove stray ‘puts‘
+</span><span class="line">      Make ls_tree ignore nils
+</span><span class="line">Tom Preston-Werner <span class="o">(</span>4<span class="o">)</span>:
+</span><span class="line">      fix dates in <span class="nb">history</span>
+</span><span class="line"><span class="nb">      </span>dynamic version method
+</span><span class="line">      Version bump to 1.0.2
+</span><span class="line">      Regenerated gemspec <span class="k">for </span>version 1.0.2
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="stash">Stash</h3>
+
+<h4 id="reapply-the-staged-changes">Reapply the Staged Changes</h4>
+
+<p>Use <code>git stash apply --index stash@{n}</code></p>
+
+<p>You have stashed changes below,</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">On branch master
+</span><span class="line">Changes to be committed:
+</span><span class="line">  <span class="o">(</span>use <span class="s2">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
+</span><span class="line">
+</span><span class="line">        modified:   a.rb
+</span><span class="line">
+</span><span class="line">Changes not staged <span class="k">for </span>commit:
+</span><span class="line">  <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed<span class="o">)</span>
+</span><span class="line">  <span class="o">(</span>use <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes in working directory<span class="o">)</span>
+</span><span class="line">
+</span><span class="line">        modified:   todo
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>After checking out to other branch and back, you wanna apply the changes stashed.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git stash apply stash@<span class="o">{</span>0<span class="o">}</span>
+</span><span class="line">
+</span><span class="line">On branch master
+</span><span class="line">Changes not staged <span class="k">for </span>commit:
+</span><span class="line">  <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed<span class="o">)</span>
+</span><span class="line">  <span class="o">(</span>use <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes in working directory<span class="o">)</span>
+</span><span class="line">
+</span><span class="line">        modified:   a.rb
+</span><span class="line">        modified:   todo
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>So, How to reapply the staged changes?</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git stash apply --index stash@<span class="o">{</span>0<span class="o">}</span>
+</span><span class="line">
+</span><span class="line">On branch master
+</span><span class="line">Changes to be committed:
+</span><span class="line">  <span class="o">(</span>use <span class="s2">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
+</span><span class="line">
+</span><span class="line">        modified:   a.rb
+</span><span class="line">
+</span><span class="line">Changes not staged <span class="k">for </span>commit:
+</span><span class="line">  <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed<span class="o">)</span>
+</span><span class="line">  <span class="o">(</span>use <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes in working directory<span class="o">)</span>
+</span><span class="line">
+</span><span class="line">        modified:   todo
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="create-a-branch-from-stash">Create a Branch from Stash</h4>
+
+<p>Use <code>git stash branch {branch_name}</code>, which creates a new branch, checks out the commit you were on when you stashed your work, reapplies your work there, and then drops the stash if it applies successfully.</p>
+
+<h3 id="create-new-empty-branches">Create New Empty Branches</h3>
+
+<p>Use <strong>symobolic-ref</strong>. A symbolic ref is a regular file that stores a string that begins with ref: refs/. For example, your .git/HEAD is a regular file whose contents is ref: refs/heads/master.</p>
+
+<blockquote>
+  <p>In the past, .git/HEAD was a symbolic link pointing at
+       refs/heads/master. When we wanted to switch to another branch, we did
+       ln -sf refs/heads/newbranch .git/HEAD, and when we wanted to find out
+       which branch we are on, we did readlink .git/HEAD. But symbolic links
+       are not entirely portable, so they are now deprecated and symbolic refs
+       (as described above) are used by default.</p>
+</blockquote>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git symbolic-ref HEAD refs/heads/newbranch
+</span><span class="line">  <span class="c"># no branch is created,</span>
+</span><span class="line">  <span class="c"># and all files are deleted to index.</span>
+</span><span class="line"><span class="nv">$ </span>rm .git/index
+</span><span class="line">git clean -fdx
+</span><span class="line">&lt;<span class="k">do </span>work&gt;
+</span><span class="line">git add your files
+</span><span class="line">git commit -m <span class="s1">&#39;Initial commit&#39;</span>
+</span><span class="line">  <span class="c"># branch &#39;newbranch&#39; is created.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="filter-branch">Filter Branch</h3>
+
+<h4 id="removing-a-file-from-every-commit">Removing a File from Every Commit</h4>
+
+<p>The <code>--tree-filter</code> option runs the specified command after each checkout of the project and then recommits the results.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git filter-branch --tree-filter ’rm -f passwords.txt’ HEAD
+</span><span class="line">Rewrite 6b9b3cf04e7c5686a9cb838c3f36a8cb6a0fc2bd <span class="o">(</span>21/21<span class="o">)</span>
+</span><span class="line">Ref ’refs/heads/master’ was rewritten
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="making-a-subdirectory-the-new-root">Making a Subdirectory the New Root</h4>
+
+<p>Use <code>--subdirectory-filter</code> option.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git filter-branch --subdirectory-filter trunk HEAD
+</span><span class="line">Rewrite 856f0bf61e41a27326cdae8f09fe708d679f596f <span class="o">(</span>12/12<span class="o">)</span>
+</span><span class="line">Ref ’refs/heads/master’ was rewritten
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="changing-e-mail-addresses-globally">Changing E-Mail Addresses Globally</h4>
+
+<p>Use <code>--commit-filter</code> option.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git filter-branch --commit-filter ’
+</span><span class="line">        <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$GIT_AUTHOR_EMAIL&quot;</span> <span class="o">=</span> <span class="s2">&quot;schacon@localhost&quot;</span> <span class="o">]</span>;
+</span><span class="line">        <span class="k">then</span>
+</span><span class="line"><span class="k">                </span><span class="nv">GIT_AUTHOR_NAME</span><span class="o">=</span><span class="s2">&quot;Scott Chacon&quot;</span>;
+</span><span class="line">                <span class="nv">GIT_AUTHOR_EMAIL</span><span class="o">=</span><span class="s2">&quot;schacon@example.com&quot;</span>;
+</span><span class="line">                git commit-tree <span class="s2">&quot;$@&quot;</span>;
+</span><span class="line">        <span class="k">else</span>
+</span><span class="line"><span class="k">        fi</span>’ HEAD
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="realworld-example">Realworld Example</h4>
+
+<p>Check this post, <a href="http://blog.ifyouseewendy.com/blog/2014/12/25/git-filter-branch-in-practice/">Git Filter Branch in Practice</a></p>
+
+<h3 id="blame">Blame</h3>
+
+<p>If you pass <code>-C</code> to git blame, Git analyzes the file you’re annotating and tries to figure out where snippets of code within it originally came from if they were copied from elsewhere.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git blame -C -L 141,153 GITPackUpload.m
+</span><span class="line">f344f58d GITServerHandler.m <span class="o">(</span>Scott 2009-01-04 141<span class="o">)</span>
+</span><span class="line">f344f58d GITServerHandler.m <span class="o">(</span>Scott 2009-01-04 142<span class="o">)</span> - <span class="o">(</span>void<span class="o">)</span> gatherObjectShasFromC
+</span><span class="line">f344f58d GITServerHandler.m <span class="o">(</span>Scott 2009-01-04 143<span class="o">)</span> <span class="o">{</span>
+</span><span class="line">70befddd GITPackUpload.m    <span class="o">(</span>Scott 2009-03-22 144<span class="o">)</span>     //NSLog<span class="o">(</span>@<span class="err">&quot;</span>GATHER COMMI
+</span><span class="line">ad11ac80 GITPackUpload.m    <span class="o">(</span>Scott 2009-03-22 144<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="bisect">Bisect</h3>
+
+<p>First you run <code>git bisect start</code> to get things going, and then you use <code>git bisect bad</code> to tell the system that the current commit you’re on is broken. Then, you must tell bisect when the last known good state was, using <code>git bisect good [good commit]</code>.</p>
+
+<h4 id="auto-check-by-script">Auto Check By Script</h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git bisect run <span class="nb">test</span>-error.sh
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Doing so automatically runs <code>test-error.sh</code> on each checked-out commit until Git finds the first broken commit. You can also run something like make or make tests or whatever you have that runs automated tests for you.</p>
+
+<h3 id="submodules">Submodules</h3>
+
+<h4 id="maintain-a-repo-which-contains-a-submodule">Maintain a repo which contains a submodule</h4>
+
+<blockquote>
+  <p>Add a submodule into your existing git repo.</p>
+</blockquote>
+
+<p>Add a submodule.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git submodule add git://github.com/chneukirchen/rack.git rack
+</span><span class="line">
+</span><span class="line"><span class="nv">$ </span>git status
+</span><span class="line"><span class="c"># On branch master</span>
+</span><span class="line"><span class="c"># Changes to be committed:</span>
+</span><span class="line"><span class="c"># # # # #</span>
+</span><span class="line"><span class="o">(</span>use <span class="s2">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
+</span><span class="line">   new file:   .gitmodules
+</span><span class="line">   new file:   rack
+</span><span class="line">
+</span><span class="line"><span class="nv">$ </span>git commit -m <span class="s1">&#39;Add rack submodule&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>As <code>.git/config</code> and <code>.gitmodules</code> have been registered, when you want to update the submodule, just enter into the submodule dir and do git opertations.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">cd </span>rack
+</span><span class="line"><span class="nv">$ </span>touch aa <span class="o">&amp;&amp;</span> git add . <span class="o">&amp;&amp;</span> git commit -m <span class="s1">&#39;Add aa&#39;</span>
+</span><span class="line"><span class="o">[</span>master 060998f<span class="o">]</span> Add aa
+</span><span class="line"> 1 file changed, 0 insertions<span class="o">(</span>+<span class="o">)</span>, 0 deletions<span class="o">(</span>-<span class="o">)</span>
+</span><span class="line"> create mode 100644 aa
+</span><span class="line"><span class="nv">$ </span>git push
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>When you make changes and commit in that subdirectory, the superproject notices that the <em>HEAD</em> there has changed and records the exact commit you’re currently working off of. So, update your superproject from time to time with a pointer to the latest commit in that subproject.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ..
+</span><span class="line"><span class="nv">$ </span>git status
+</span><span class="line">On branch master
+</span><span class="line">Changes not staged <span class="k">for </span>commit:
+</span><span class="line">  <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed<span class="o">)</span>
+</span><span class="line">  <span class="o">(</span>use <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes in working directory<span class="o">)</span>
+</span><span class="line">
+</span><span class="line">        modified:   rack <span class="o">(</span>new commits<span class="o">)</span>
+</span><span class="line"><span class="nv">$ </span>git commit -am <span class="s1">&#39;Update rack&#39;</span>
+</span><span class="line"><span class="nv">$ </span>git push
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="maintain-a-cloned-repo-which-contains-a-submodule">Maintain a cloned repo which contains a submodule</h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git clone git://github.com/schacon/myproject.git
+</span><span class="line"><span class="nv">$ </span><span class="nb">cd </span>myproject/rack
+</span><span class="line"><span class="nv">$ </span>ls
+</span><span class="line"><span class="c"># empty</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Setup with two commands:</p>
+
+<ol>
+  <li><code>git submodule init</code>. Initialize your local configurtaion (<code>.gitmodules</code> to  <code>.git/config</code>)</li>
+  <li><code>git submodule update</code>. Fetch all the data from that project and check out the appropriate commit listed in your superproject.</li>
+</ol>
+
+<h4 id="a-demo-workflow">A Demo Workflow</h4>
+
+<p>Create the submodules:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>mkdir ~/git
+</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ~/git
+</span><span class="line"><span class="nv">$ </span><span class="k">for </span>i in a b c d
+</span><span class="line"><span class="k">do</span>
+</span><span class="line"><span class="k">    </span>mkdir <span class="nv">$i</span>
+</span><span class="line">    <span class="nb">cd</span> <span class="nv">$i</span>
+</span><span class="line">    git init
+</span><span class="line">    <span class="nb">echo</span> <span class="s2">&quot;module $i&quot;</span> &gt; <span class="nv">$i</span>.txt
+</span><span class="line">    git add <span class="nv">$i</span>.txt
+</span><span class="line">    git commit -m <span class="s2">&quot;Initial commit, submodule $i&quot;</span>
+</span><span class="line">    <span class="nb">cd</span> ..
+</span><span class="line"><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Create the superproject and add all the submodules:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>mkdir super
+</span><span class="line"><span class="nv">$ </span><span class="nb">cd </span>super
+</span><span class="line"><span class="nv">$ </span>git init
+</span><span class="line"><span class="nv">$ </span><span class="k">for </span>i in a b c d
+</span><span class="line"><span class="k">do</span>
+</span><span class="line"><span class="k">    </span>git submodule add ~/git/<span class="nv">$i</span>
+</span><span class="line"><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>See what files git-submodule created:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>ls -a
+</span><span class="line">.  ..  .git  .gitmodules  a  b  c  d
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The <code>git-submodule add</code> command does a couple of things:</p>
+
+<ul>
+  <li>It clones the submodule under the current directory and by default checks out the master branch.</li>
+  <li>It adds the submodule’s clone path to the gitmodules file and adds this file to the index, ready to be committed.</li>
+  <li>It adds the submodule’s current commit ID to the index, ready to be committed.</li>
+</ul>
+
+<p>Commit the superproject:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git commit -m <span class="s2">&quot;Add submodules a, b, c and d.&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Clone the superproject:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ..
+</span><span class="line"><span class="nv">$ </span>git clone super cloned
+</span><span class="line"><span class="nv">$ </span><span class="nb">cd </span>cloned
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Check submodule status:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git submodule status
+</span><span class="line">-d266b9873ad50488163457f025db7cdd9683d88b a
+</span><span class="line">-e81d457da15309b4fef4249aba9b50187999670d b
+</span><span class="line">-c1536a972b9affea0f16e0680ba87332dc059146 c
+</span><span class="line">-d96249ff5d57de5de093e6baff9e0aafa5276a74 d
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Register the submodule into <code>.git/config</code>:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git submodule init
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Clone the submodules and check out the commits specified in the superproject:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git submodule update
+</span><span class="line"><span class="nv">$ </span><span class="nb">cd </span>a
+</span><span class="line"><span class="nv">$ </span>ls -a
+</span><span class="line">.  ..  .git  a.txt
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>One major difference between <code>git-submodule update</code> and <code>git-submodule add</code> is that git-submodule update checks out a specific commit, rather than the tip of a branch. It’s like checking out a tag: <strong>the head is detached</strong>, so you’re not working on a branch. </p>
+
+<p>A detached head, means the <em>HEAD</em> file points directly to a commit, not to a symbolic reference.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git branch
+</span><span class="line">* <span class="o">(</span>no branch<span class="o">)</span>
+</span><span class="line">master
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Check out or create a new branch:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git checkout master
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git checkout -b fix-up
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Do work and commit:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;adding a line again&quot;</span> &gt;&gt; a.txt
+</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;Updated the submodule from within the superproject.&quot;</span>
+</span><span class="line"><span class="nv">$ </span>git push
+</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ..
+</span><span class="line"><span class="nv">$ </span>git diff
+</span><span class="line">diff --git a/a b/a
+</span><span class="line">index d266b98..261dfac 160000
+</span><span class="line">--- a/a
+</span><span class="line">+++ b/a
+</span><span class="line">@@ -1 +1 @@
+</span><span class="line">-Subproject commit d266b9873ad50488163457f025db7cdd9683d88b
+</span><span class="line">+Subproject commit 261dfac35cb99d380eb966e102c1197139f7fa24
+</span><span class="line"><span class="nv">$ </span>git add a
+</span><span class="line"><span class="nv">$ </span>git commit -m <span class="s2">&quot;Updated submodule a.&quot;</span>
+</span><span class="line"><span class="nv">$ </span>git push
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="cautions">Cautions</h4>
+
+<p><em>Always publish the submodule change before publishing the change to the superproject that references it. If you forget to publish the submodule change, others won’t be able to clone the repository:</em></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ~/git/super/a
+</span><span class="line"><span class="nv">$ </span><span class="nb">echo </span>i added another line to this file &gt;&gt; a.txt
+</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;doing it wrong this time&quot;</span>
+</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ..
+</span><span class="line"><span class="nv">$ </span>git add a
+</span><span class="line"><span class="nv">$ </span>git commit -m <span class="s2">&quot;Updated submodule a again.&quot;</span>
+</span><span class="line"><span class="nv">$ </span>git push
+</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ~/git/cloned
+</span><span class="line"><span class="nv">$ </span>git pull
+</span><span class="line"><span class="nv">$ </span>git submodule update
+</span><span class="line">error: pathspec <span class="s1">&#39;261dfac35cb99d380eb966e102c1197139f7fa24&#39;</span> did not match any file<span class="o">(</span>s<span class="o">)</span> known to git.
+</span><span class="line">Did you forget to <span class="s1">&#39;git add&#39;</span>?
+</span><span class="line">Unable to checkout <span class="s1">&#39;261dfac35cb99d380eb966e102c1197139f7fa24&#39;</span> in submodule path <span class="s1">&#39;a&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><em>It’s not safe to run git submodule update if you’ve made and committed changes within a submodule without checking out a branch first. They will be silently overwritten</em>:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>cat a.txt
+</span><span class="line">module a
+</span><span class="line"><span class="nv">$ </span><span class="nb">echo </span>line added from private2 &gt;&gt; a.txt
+</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;line added inside private2&quot;</span>
+</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ..
+</span><span class="line"><span class="nv">$ </span>git submodule update
+</span><span class="line">Submodule path <span class="s1">&#39;a&#39;</span>: checked out <span class="s1">&#39;d266b9873ad50488163457f025db7cdd9683d88b&#39;</span>
+</span><span class="line"><span class="nv">$ </span><span class="nb">cd </span>a
+</span><span class="line"><span class="nv">$ </span>cat a.txt
+</span><span class="line">module a
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="subtree-merging-a-submodule-substitution">Subtree Merging (A Submodule Substitution)</h3>
+
+<h4 id="use-git-merge-subtree-strategy">Use git-merge Subtree Strategy</h4>
+
+<p><strong>Add a subtree</strong></p>
+
+<p>First, add the Rack project as a remote reference in your own project and then check it out into its own branch.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git remote add rack_remote git@github.com:schacon/rack.git
+</span><span class="line"><span class="nv">$ </span>git fetch rack_remote
+</span><span class="line"><span class="nv">$ </span>git checkout -b rack_branch rack_remote/master
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Now you have the root of the Rack project in your <code>rack_branch</code> branch and your own project in the <code>master</code> branch.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>ls
+</span><span class="line">AUTHORS        KNOWN-ISSUES   Rakefile
+</span><span class="line">COPYING        README         bin
+</span><span class="line"><span class="nv">$ </span>git checkout master
+</span><span class="line">Switched to branch <span class="s2">&quot;master&quot;</span>
+</span><span class="line"><span class="nv">$ </span>ls
+</span><span class="line">README
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Use <code>git read-tree</code> to read the root tree of one branch into your current staging area and working directory. You just switched back to your <code>master</code> branch, and you pull the <code>rack_branch</code> into the <em>rack</em> subdirectory of your <code>master</code> branch of your main project.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git <span class="nb">read</span>-tree --prefix<span class="o">=</span>rack/ -u rack_branch
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>When you commit, it looks like you have all the Rack files under that subdirectory — as though you copied them in from a tarball. </p>
+
+<p><strong>Update and merge subtree</strong></p>
+
+<p>If the Rack project updates, you can pull in upstream changes by switching to that branch and pulling:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git checkout rack_branch
+</span><span class="line"><span class="nv">$ </span>git pull
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then, you can merge those changes back into your master branch. You can use <code>git merge -s subtree</code> and it will work fine; but Git will also merge the histories together, which you probably don’t want. To pull in the changes and prepopulate the commit message, use the <code>--squash</code> and <code>--no-commit</code> options as well as the <code>-s subtree</code> strategy option:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git checkout master
+</span><span class="line"><span class="nv">$ </span>git merge --squash -s subtree --no-commit rack_branch
+</span><span class="line">Squash commit -- not updating HEAD
+</span><span class="line">Automatic merge went well; stopped before committing as requested
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>All the changes from your Rack project are merged in and ready to be committed locally. You can also do the opposite — make changes in the <code>rack</code> subdirectory of your master branch and then merge them into your <code>rack_branch</code> branch later to submit them to the maintainers or push them upstream.</p>
+
+<p><strong>Diff a subtree</strong></p>
+
+<p>To get a diff between what you have in your rack subdirectory and the code in your rack branch branch — to see if you need to merge them — you can’t use the normal diff command. Instead, you must run git diff-tree with the branch you want to compare to:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git diff-tree -p rack_branch
+</span><span class="line"><span class="nv">$ </span>git diff-tree -p rack_remote/master
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="use-git-subtree">Use git-subtree</h4>
+
+<ul>
+  <li><a href="http://blogs.atlassian.com/2013/05/alternatives-to-git-submodule-git-subtree/">alternatives-to-git-submodule-git-subtree</a> by Atlassian Blog</li>
+  <li><a href="https://hpc.uni.lu/blog/2014/understanding-git-subtree/">Understanding Git Subtree</a> by HPC @ Uni.lu</li>
+</ul>
+
+<h2 id="git-internals">Git Internals</h2>
+
+<p>Git is fundamentally a <strong>content-addressable filesystem</strong> with a VCS user interface written on top of it.</p>
+
+<ul>
+  <li>Plumbing, verbs that do low-level work and were designed to be chained together UNIX style or called from scripts.</li>
+  <li>Porcelain, the more user-friendly commands.</li>
+</ul>
+
+<h3 id="plumbing-objects">Plumbing Objects</h3>
+
+<h4 id="blob-object">Blob Object</h4>
+
+<p>Git is a content-addressable filesystem, at the core of Git is a simple key-value data store. You can insert any kind of content into it, and it will give you back a key that you can use to retrieve the content again at any time.</p>
+
+<p><strong>Create</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">&#39;test content&#39;</span> | git <span class="nb">hash</span>-object -w --stdin
+</span><span class="line">d670460b4b4aece5915caf5c68d12f560a9fe3e4
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The <code>-w</code> tells hash-object to store the object; otherwise, the command simply tells you what the key would be.</p>
+
+<p><strong>Check</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>find .git/objects -type f
+</span><span class="line">.git/objects/d6/70460b4b4aece5915caf5c68d12f560a9fe3e4
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>View</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git cat-file -p d670460b4b4aece5915caf5c68d12f560a9fe3e4
+</span><span class="line"><span class="nb">test </span>content
+</span><span class="line">
+</span><span class="line"><span class="nv">$ </span>git cat-file -t d670460b4b4aece5915caf5c68d12f560a9fe3e4
+</span><span class="line">blob
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="tree-objects">Tree Objects</h4>
+
+<p>Basically, tree objects are used to specify snapshots.</p>
+
+<p>Tree object solves the problem of storing the filename and also allows you to store a group of files together.</p>
+
+<p><strong>View</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git cat-file -p masterˆ<span class="o">{</span>tree<span class="o">}</span>
+</span><span class="line">100644 blob a906cb2a4a904a152e80877d4088654daad0c859    README
+</span><span class="line">100644 blob 8f94139338f9404f26296befa88755fc2598c289    Rakefile
+</span><span class="line">040000 tree 99f1a6d12cb4b6f19c8655fca46c3ecf317074e0    lib
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>Create</strong>.</p>
+
+<p>Git normally creates a tree by taking the state of your staging area or index and writing a tree object from it. </p>
+
+<ul>
+  <li>
+    <p>Use <code>update-index</code> to create an index.</p>
+
+    <ul>
+      <li><code>--add</code>, because the file doesn’t yet exist in your staging area.</li>
+      <li><code>--cacheinfo</code>, because the file you’re adding isn’t in your directory but is in your database.</li>
+      <li><code>100644</code>, which means it’s a normal file. Other options are <code>100755</code>, which means it’s an executable file; and <code>120000</code>, which specifies a symbolic link.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git update-index --add --cacheinfo 100644 <span class="se">\</span>
+</span><span class="line">  83baae61804e65cc73a7201a7252750c76066a30 test.tx
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li>Use <code>read-tree</code> to read an existing tree into your staging area as a subtree by using the <code>--prefix</code> option.</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git cat-file -p d8329fc1cc938780ffdd9f94e0d364e0ea74f579
+</span><span class="line">100644 blob 83baae61804e65cc73a7201a7252750c76066a30    test.txt
+</span><span class="line">
+</span><span class="line"><span class="nv">$ </span>git <span class="nb">read</span>-tree --prefix<span class="o">=</span>bak d8329fc1cc938780ffdd9f94e0d364e0ea74f579
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Use the <code>write-tree</code> command to write the staging area out to a tree object. No <code>-w</code> option is needed — calling <code>write-tree</code> automatically creates a tree object from the state of the index if that tree doesn’t yet exist:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git write-tree
+</span><span class="line">d8329fc1cc938780ffdd9f94e0d364e0ea74f579
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="commit-objects">Commit Objects</h4>
+
+<p>You have three trees that specify the different snapshots of your project that you want to track, but the earlier problem remains: you must remember all three SHA–1 values in order to recall the snapshots. You also don’t have any information about who saved the snapshots, when they were saved, or why they were saved. This is the basic information that the commit object stores for you.</p>
+
+<p><strong>Create</strong></p>
+
+<p>Use <code>commit-tree</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">echo</span> ’first commit’ | git commit-tree d8329f
+</span><span class="line">fdf4fc3344e67ab068f836878b6c4951e3b15f3d
+</span><span class="line">
+</span><span class="line"><span class="nv">$ </span><span class="nb">echo</span> ’second commit’ | git commit-tree 0155eb -p fdf4fc3
+</span><span class="line">cac0cab538b970a37ea1e769cbbde608743bc96d
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>View</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git cat-file -p fdf4fc3
+</span><span class="line">tree d8329fc1cc938780ffdd9f94e0d364e0ea74f579
+</span><span class="line">author Scott Chacon &lt;schacon@gmail.com&gt; 1243040974 -0700
+</span><span class="line">committer Scott Chacon &lt;schacon@gmail.com&gt; 1243040974 -0700
+</span><span class="line">
+</span><span class="line">first commit
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="object-storage">Object Storage</h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>git_object_storage.rb</span><a href="https://gist.github.com/ifyouseewendy/ec7a4d8df55a2de70af1">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="nb">require</span> <span class="s1">&#39;digest/sha1&#39;</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;zlib&#39;</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;fileutils&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># put_raw_object(&quot;what is up, doc?&quot;, &#39;blob&#39;)</span>
+</span><span class="line"><span class="k">def</span> <span class="nf">put_raw_object</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">type</span><span class="p">)</span>
+</span><span class="line">  <span class="c1"># Generate SHA-1</span>
+</span><span class="line">  <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">type</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">content</span><span class="o">.</span><span class="n">length</span><span class="si">}</span><span class="se">\0</span><span class="s2">&quot;</span>   <span class="c1"># =&gt; &quot;blob 16\000&quot;</span>
+</span><span class="line">  <span class="n">store</span> <span class="o">=</span> <span class="n">header</span> <span class="o">+</span> <span class="n">content</span>              <span class="c1"># =&gt; &quot;blob 16\000what is up, doc?&quot;</span>
+</span><span class="line">  <span class="n">sha1</span> <span class="o">=</span> <span class="ss">Digest</span><span class="p">:</span><span class="ss">:SHA1</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="n">store</span><span class="p">)</span>  <span class="c1"># =&gt; &quot;bd9dbf5aae1a3862dd1526723246b20206e5fc37&quot;</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1"># p sha1</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1"># Compress with Zlib</span>
+</span><span class="line">  <span class="n">zlib_content</span> <span class="o">=</span> <span class="ss">Zlib</span><span class="p">:</span><span class="ss">:Deflate</span><span class="o">.</span><span class="n">deflate</span><span class="p">(</span><span class="n">store</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1"># Write to disk</span>
+</span><span class="line">  <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;.git/objects/&#39;</span> <span class="o">+</span> <span class="n">sha1</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">]</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">sha1</span><span class="o">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">38</span><span class="o">]</span> <span class="c1"># =&gt; &quot;.git/objects/bd/9dbf5aae1a3862dd1526723246b20206e5fc37&quot;</span>
+</span><span class="line">  <span class="no">FileUtils</span><span class="o">.</span><span class="n">mkdir_p</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>                 <span class="c1"># =&gt; &quot;.git/objects/bd&quot;</span>
+</span><span class="line">  <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">){</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span> <span class="n">zlib_content</span> <span class="p">}</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong><em>What Git does when you run the git add and git commit commands?</em></strong></p>
+
+<ol>
+  <li>stores blobs for the files that have changed</li>
+  <li>updates the index</li>
+  <li>writes out trees</li>
+  <li>writes commit objects that reference the top- level trees and the commits that came immediately before them.</li>
+</ol>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>find .git/objects -type f
+</span><span class="line">.git/objects/01/55eb4229851634a0f03eb265b69f5a2d56f341 <span class="c"># tree 2</span>
+</span><span class="line">.git/objects/1a/410efbd13591db07496601ebc7a059dd55cfe9 <span class="c"># commit 3</span>
+</span><span class="line">.git/objects/1f/7a7a472abf3dd9643fd615f6da379c4acb3e3a <span class="c"># test.txt v2</span>
+</span><span class="line">.git/objects/3c/4e9cd789d88d8d89c1073707c3585e41b0e614 <span class="c"># tree 3</span>
+</span><span class="line">.git/objects/83/baae61804e65cc73a7201a7252750c76066a30 <span class="c"># test.txt v1</span>
+</span><span class="line">.git/objects/ca/c0cab538b970a37ea1e769cbbde608743bc96d <span class="c"># commit 2</span>
+</span><span class="line">.git/objects/d8/329fc1cc938780ffdd9f94e0d364e0ea74f579 <span class="c"># tree 1</span>
+</span><span class="line">.git/objects/fa/49b077972391ad58037050f2a75f74e3671e92 <span class="c"># new.txt</span>
+</span><span class="line">.git/objects/fd/f4fc3344e67ab068f836878b6c4951e3b15f3d <span class="c"># commit 1</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/pro_git_figure_9_3.png" alt="figure 9.3" /></p>
+
+<h3 id="index">Index</h3>
+
+<p>The index is a binary file (generally kept in .git/index) containing a sorted list of path names.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git ls-files --stage
+</span><span class="line">100644 63c918c667fa005ff12ad89437f2fdc80926e21c 0
+</span><span class="line">100644 5529b198e8d14decbe4ad99db3f7fb632de0439d 0
+</span><span class="line">100644 6ff87c4664981e4397625791c8ea3bbb5f2279a3 0
+</span><span class="line">100644 a37b2152bd26be2c2289e1f57a292534a51a93c7 0
+</span><span class="line">100644 fbefe9a45b00a54b58d94d06eca48b03d40a50e0 0
+</span><span class="line">...
+</span><span class="line">100644 2511aef8d89ab52be5ec6a5e46236b4b6bcd07ea 0
+</span><span class="line">100644 2ade97b2574a9f77e7ae4002a4e07a6a38e46d07 0
+</span><span class="line">100644 d5de8292e05e7c36c4b68857c1cf9855e3d2f70a 0
+</span><span class="line">.gitignore
+</span><span class="line">.mailmap
+</span><span class="line">COPYING
+</span><span class="line">Documentation/.gitignore
+</span><span class="line">Documentation/Makefile
+</span><span class="line">xdiff/xtypes.h
+</span><span class="line">xdiff/xutils.c
+</span><span class="line">xdiff/xutils.h
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ol>
+  <li>
+    <p>The index contains all the information necessary to generate a single (uniquely determined) tree object.</p>
+  </li>
+  <li>
+    <p>The index enables fast comparisons between the tree object it defines and the working tree.</p>
+  </li>
+  <li>
+    <p>It can efficiently represent information about merge conflicts between different tree objects.</p>
+  </li>
+</ol>
+
+<h3 id="packfile">Packfile</h3>
+
+<ul>
+  <li><strong>Loose objects</strong> are the simpler format. It is simply the compressed data (snapshots) stored in a single file on disk.</li>
+  <li><strong>Packed Objects</strong>. In order to save that space, Git utilizes the packfile. This is a format where Git will only save the part that has changed in the second file, with a pointer to the file it is similar to. Triggered by
+    <ul>
+      <li>run the <code>git gc</code> command manually</li>
+      <li>push to a remote server</li>
+    </ul>
+  </li>
+</ul>
+
+<p>When Git packs objects, it looks for files that are named and sized similarly, and stores just the deltas from one version of the file to the next.</p>
+
+<p>What is also interesting is that the second version of the file is the one that is stored intact, whereas the original version is stored as a delta — this is because you’re most likely to need faster access to the most recent version of the file.</p>
+
+<h3 id="the-refspec">The Refspec</h3>
+
+<p>Recorded in <code>.git/config</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="o">[</span>remote <span class="s2">&quot;origin&quot;</span><span class="o">]</span>
+</span><span class="line">    <span class="nv">url</span> <span class="o">=</span> git@github.com:schacon/simplegit-progit.git
+</span><span class="line">    <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/origin/*
+</span><span class="line">    <span class="nv">push</span> <span class="o">=</span> refs/heads/master:refs/heads/master
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The format of the refspec is an optional <code>+</code>, followed by <code>&lt;src&gt;:&lt;dst&gt;</code>.</p>
+
+<ul>
+  <li><code>+</code> tells Git to update the reference even if it isn’t a fast-forward.</li>
+  <li><code>&lt;src&gt;</code> is the pattern for references on the remote side.</li>
+  <li><code>&lt;dst&gt;</code> is where those references will be written locally. </li>
+</ul>
+
+<h4 id="fetching">fetching</h4>
+
+<p>If you want Git instead to pull down only the master branch each time, and not every other branch on the remote server, you can change the fetch line to</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">fetch</span> <span class="o">=</span> +refs/heads/master:refs/remotes/origin/master
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You can also specify multiple refspecs for fetching in your configuration file.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">fetch</span> <span class="o">=</span> +refs/heads/master:refs/remotes/origin/master
+</span><span class="line"><span class="nv">fetch</span> <span class="o">=</span> +refs/heads/experiment:refs/remotes/origin/experiment
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You can use namespacing to accomplish something like that. If you have a QA team that pushes a series of branches, and you want to get the master branch and any of the QA team’s branches but nothing else, you can use a config section like this:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="o">[</span>remote <span class="s2">&quot;origin&quot;</span><span class="o">]</span>
+</span><span class="line">    <span class="nv">url</span> <span class="o">=</span> git@github.com:schacon/simplegit-progit.git
+</span><span class="line">    <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/master:refs/remotes/origin/master
+</span><span class="line">    <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/qa/*:refs/remotes/origin/qa/*
+</span><span class="line">
+</span><span class="line">    <span class="c"># You can’t use partial globs in the pattern</span>
+</span><span class="line">    <span class="c"># fetch = +refs/heads/qa*:refs/remotes/origin/qa*</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If you want to do something one time, you can specify the refspec on the command line, too. Multiple refspecs are accepted.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git fetch origin master:refs/remotes/origin/mymaster <span class="se">\</span>
+</span><span class="line">   topic:refs/remotes/origin/topic
+</span><span class="line">From git@github.com:schacon/simplegit
+</span><span class="line"> ! <span class="o">[</span>rejected<span class="o">]</span>        master     -&gt; origin/mymaster  <span class="o">(</span>non fast forward<span class="o">)</span>
+</span><span class="line"> * <span class="o">[</span>new branch<span class="o">]</span>      topic      -&gt; origin/topic
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="data-recovery">Data Recovery</h3>
+
+<h4 id="reflog">reflog</h4>
+
+<p>As you’re working, Git silently records what your HEAD is every time you change it. Each time you commit or change branches, the reflog is updated. The reflog is also updated by the <code>git update-ref</code> command, which is another reason to use it instead of just writing the SHA value to your ref files.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git reflog
+</span><span class="line">1a410ef HEAD@<span class="o">{</span>0<span class="o">}</span>: 1a410efbd13591db07496601ebc7a059dd55cfe9: updating HEAD
+</span><span class="line">ab1afef HEAD@<span class="o">{</span>1<span class="o">}</span>: ab1afef80fac8e34258ff41fc1b867c702daa24b: updating HEAD
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>To see the same information in a much more useful way, we can run <code>git log -g</code> or <code>git log --walk-reflogs</code>, which will give you a normal log output for your reflog.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git log -g
+</span><span class="line">commit 1a410efbd13591db07496601ebc7a059dd55cfe9
+</span><span class="line">Reflog: HEAD@<span class="o">{</span>0<span class="o">}</span> <span class="o">(</span>Scott Chacon &lt;schacon@gmail.com&gt;<span class="o">)</span>
+</span><span class="line">Reflog message: updating HEAD
+</span><span class="line">Author: Scott Chacon &lt;schacon@gmail.com&gt;
+</span><span class="line">Date:   Fri May 22 18:22:37 2009 -0700
+</span><span class="line">
+</span><span class="line">    third commit
+</span><span class="line">
+</span><span class="line">commit ab1afef80fac8e34258ff41fc1b867c702daa24b
+</span><span class="line">Reflog: HEAD@<span class="o">{</span>1<span class="o">}</span> <span class="o">(</span>Scott Chacon &lt;schacon@gmail.com&gt;<span class="o">)</span>
+</span><span class="line">Reflog message: updating HEAD
+</span><span class="line">Author: Scott Chacon &lt;schacon@gmail.com&gt;
+</span><span class="line">Date:   Fri May 22 18:15:24 2009 -0700
+</span><span class="line">
+</span><span class="line">    modified repo a bit
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="fsck">fsck</h4>
+
+<blockquote>
+  <p>File System Consistency Check</p>
+</blockquote>
+
+<p>Suppose your loss was for some reason not in the reflog, you can use the <code>git fsck</code> utility, which checks your database for integrity. If you run it with the <code>--full</code> option, it shows you all objects that aren’t pointed to by another object:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git fsck --full
+</span><span class="line">dangling blob d670460b4b4aece5915caf5c68d12f560a9fe3e4
+</span><span class="line">dangling commit ab1afef80fac8e34258ff41fc1b867c702daa24b
+</span><span class="line">dangling tree aea790b9a58f6cf6f2804eeac9f0abbe9631e4c9
+</span><span class="line">dangling blob 7108f7ecb345ee9d0084193f147cdad4d2998293
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme of <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2014/12/30/git-reminders/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2014/12/30/git-reminders/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>
