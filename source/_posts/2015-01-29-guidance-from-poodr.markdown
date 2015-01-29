@@ -3,7 +3,7 @@ layout: post
 title: "[Review] Guidance from POODR"
 date: 2015-01-29 15:20:13 +0800
 comments: true
-categories: 
+categories: ['Ruby', 'Books']
 ---
 
 {:.custom}
