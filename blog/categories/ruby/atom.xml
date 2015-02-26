@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-01-29T15:43:16+08:00</updated>
+  <updated>2015-02-26T16:57:59+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,819 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Review] Guidance from POODR]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/01/29/guidance-from-poodr/"/>
+    <updated>2015-01-29T15:20:13+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/01/29/guidance-from-poodr</id>
+    <content type="html"><![CDATA[<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>Practical Object Oriented Design in Ruby</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td>Sandi Metz</td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="http://www.poodr.com/">www.poodr.com</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul id="markdown-toc">
+  <li><a href="#object-oriented-design">Object-Oriented Design</a>    <ul>
+      <li><a href="#the-tools-of-design">The Tools of Design</a>        <ul>
+          <li><a href="#design-principles">Design Principles</a></li>
+          <li><a href="#design-patterns">Design Patterns</a></li>
+        </ul>
+      </li>
+      <li><a href="#the-act-of-design">The Act of Design</a>        <ul>
+          <li><a href="#how-design-fails">How Design Fails</a></li>
+          <li><a href="#when-to-design">When to Design</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#guidance">Guidance</a>    <ul>
+      <li><a href="#designing-classes-with-a-single-responsibility">Designing Classes with a Single Responsibility</a>        <ul>
+          <li><a href="#depend-on-behavior-not-data">Depend on Behavior, Not Data</a></li>
+          <li><a href="#enforce-single-responsibility-everywhere">Enforce Single Responsibility Everywhere</a></li>
+        </ul>
+      </li>
+      <li><a href="#manage-dependencies">Manage Dependencies</a>        <ul>
+          <li><a href="#inject-dependencies">Inject Dependencies</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#after">after</a>    <ul>
+      <li><a href="#isolate-dependencies">Isolate Dependencies</a></li>
+      <li><a href="#remove-argument-order-dependencies">Remove Argument-Order Dependencies</a></li>
+      <li><a href="#managing-dependency-direction">Managing Dependency Direction</a></li>
+      <li><a href="#creating-flexible-interfaces">Creating Flexible Interfaces</a>        <ul>
+          <li><a href="#finding-the-public-interface">Finding the Public Interface</a>            <ul>
+              <li><a href="#focus-messages-between-domain-objects">Focus Messages between Domain Objects</a></li>
+              <li><a href="#use-sequence-diagrams">Use Sequence Diagrams</a></li>
+              <li><a href="#asking-for-what-instead-of-telling-how">Asking for “What” Instead of Telling “How”</a></li>
+              <li><a href="#seeking-contect-independence">Seeking Contect Independence</a></li>
+            </ul>
+          </li>
+          <li><a href="#the-law-of-demeter">The Law of Demeter</a></li>
+        </ul>
+      </li>
+      <li><a href="#reductin-costs-with-duck-typing">Reductin Costs with Duck Typing</a>        <ul>
+          <li><a href="#polymorphism">Polymorphism</a></li>
+          <li><a href="#recognizing-hidden-ducks">Recognizing Hidden Ducks</a></li>
+          <li><a href="#guidance-1">Guidance</a></li>
+        </ul>
+      </li>
+      <li><a href="#acquiring-behavior-through-inheritance">Acquiring Behavior Through Inheritance</a>        <ul>
+          <li><a href="#inheritance">Inheritance</a></li>
+          <li><a href="#recognizing-where-to-use-inheritance">Recognizing Where to Use Inheritance</a>            <ul>
+              <li><a href="#finding-the-abstraction">Finding the Abstraction</a></li>
+            </ul>
+          </li>
+          <li><a href="#using-templage-methods">Using Templage Methods</a>            <ul>
+              <li><a href="#template-method">Template Method</a></li>
+              <li><a href="#implementing-every-template-method">Implementing Every Template Method</a></li>
+            </ul>
+          </li>
+          <li><a href="#manging-coupling">Manging Coupling</a>            <ul>
+              <li><a href="#decoupling-subclasses-using-hook-messages">Decoupling Subclasses Using Hook Messages</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#sharing-role-behavior-with-modules">Sharing Role Behavior with Modules</a>        <ul>
+          <li><a href="#understanding-roles">Understanding Roles</a></li>
+          <li><a href="#writing-inheritable-code">Writing Inheritable Code</a>            <ul>
+              <li><a href="#recognize-the-antipatterns">Recognize the Antipatterns</a></li>
+              <li><a href="#insist-on-the-abstraction">Insist on the Abstraction</a></li>
+              <li><a href="#honor-the-contract">Honor the Contract</a></li>
+              <li><a href="#use-the-template-method-pattern">Use the Template Method Pattern</a></li>
+              <li><a href="#preemptively-decouple-classes">Preemptively Decouple Classes</a></li>
+              <li><a href="#create-shallow-hierarchies">Create Shallow Hierarchies</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#combining-objects-with-composition">Combining Objects with Composition</a>        <ul>
+          <li><a href="#aggregation-a-special-kind-of-composition">Aggregation: A Special Kind of Composition</a></li>
+          <li><a href="#deciding-between-inheritance-and-composition">Deciding Between Inheritance and Composition</a>            <ul>
+              <li><a href="#inheritance-1">Inheritance</a></li>
+              <li><a href="#composition">Composition</a></li>
+            </ul>
+          </li>
+          <li><a href="#guidance-2">Guidance</a></li>
+        </ul>
+      </li>
+      <li><a href="#designing-cost-effective-tests">Designing Cost-Effective Tests</a>        <ul>
+          <li><a href="#intentional-testing">Intentional Testing</a>            <ul>
+              <li><a href="#knowing-your-intentions">Knowing Your Intentions</a></li>
+              <li><a href="#knowing-what-to-test">Knowing What to Test</a>                <ul>
+                  <li><a href="#remove-the-duplicate">Remove the Duplicate</a></li>
+                  <li><a href="#message-model">Message Model</a></li>
+                </ul>
+              </li>
+              <li><a href="#knowing-when-to-test">Knowing When to Test</a></li>
+              <li><a href="#knowing-how-to-test">Knowing How to Test</a></li>
+            </ul>
+          </li>
+          <li><a href="#testing-incoming-messages">Testing Incoming Messages</a></li>
+          <li><a href="#testing-private-methods">Testing Private Methods</a></li>
+          <li><a href="#testing-outgoing-messages">Testing Outgoing Messages</a></li>
+          <li><a href="#testing-duck-types">Testing Duck Types</a></li>
+          <li><a href="#testing-inherited-code">Testing Inherited Code</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="object-oriented-design">Object-Oriented Design</h1>
+
+<p>Object-oriented design (OOD) requires that you shift from thinking of the world as a collection of predefined procedures to modeling the world as a series of messages that pass between objects.</p>
+
+<p>Object-oriented applications are made up of parts that interact to produce the behavior of the whole. The parts are <em>objects</em>; interactions are embodied in the <em>messages</em> that pass between them.</p>
+
+<p>Object-oriented design is about managing dependencies. In the absence of design, unmanaged dependencies wreak havoc because objects know too much about one another.</p>
+
+<p>Design is thus an art, the art of arranging code, and design is more the art of preserving changeability than it is the act of achieving perfection. You must not only write code for the feature you plan to deliver today, you must also create code that is amenable to being changed later. It doesn’t guess the future; it preserves your options for accommodating the future. It doesn’t choose; it leaves you room to move.</p>
+
+<p>The trick to getting the most bang for your design buck is to acquire an understanding of the theories of design and to apply these theories appropriately, at the right time, and in the right amounts. </p>
+
+<p>Well-designed applications are constructed of reusable code. Small, trustworthy self- contained objects with minimal context, clear interfaces, and injected dependencies are inherently reusable.</p>
+
+<h2 id="the-tools-of-design">The Tools of Design</h2>
+
+<h3 id="design-principles">Design Principles</h3>
+
+<ul>
+  <li>
+    <p><strong>SOLID</strong></p>
+
+    <ul>
+      <li>Single Responsibility</li>
+      <li>Open-Closed</li>
+      <li>Liskov Substitution</li>
+      <li>Interface Segregation</li>
+      <li>Dependency Inversion</li>
+    </ul>
+  </li>
+  <li><strong>DRY</strong>, Don’t Repeat Yourself</li>
+  <li><strong>LoD</strong>, Law of Demeter</li>
+</ul>
+
+<h3 id="design-patterns">Design Patterns</h3>
+
+<p>by Gof</p>
+
+<h2 id="the-act-of-design">The Act of Design</h2>
+
+<h3 id="how-design-fails">How Design Fails</h3>
+
+<ul>
+  <li>Lack of it. Successful but undesigned applications carry the seeds of their own destruction; they are easy to write but gradually become impossible to change. “Yes, I can add that feature, but it will break everything.”</li>
+  <li>Overdesign. Aware of OO design techniques but do not yet understand how to apply them. “No, I can’t add that feature; it wasn’t designed to do that.”</li>
+  <li>Seperated from the act of programming. Design is a process of progressive discovery that relies on a feedback loop. The iterative techniques of the Agile software movement are thus perfectly suited to the creation of well-designed OO applications. The iterative nature of Agile development allows design to adjust regularly and to evolve naturally. </li>
+</ul>
+
+<h3 id="when-to-design">When to Design</h3>
+
+<blockquote>
+  <p>Agile believes that your customers can’t define the software they want before seeing it, so it’s best to show them sooner rather than later. If this premise is true, then it logically follows that you should build software in tiny increments, gradually iterating your way into an application that meets the customer’s true need. The Agile experience is that this collaboration produces software that differs from what was initially imagined; the resulting software could not have been anticipated by any other means. </p>
+</blockquote>
+
+<p>If Agile is correct, then</p>
+
+<ol>
+  <li>there is absolutely no point in doing a Big Up Front Design (BUFD) (because it cannot possibly be correct)</li>
+  <li>no one can predict when the application will be done (because you don’t know in advance what it will eventually do)</li>
+</ol>
+
+<p>Agile processes guarantee change and your ability to make these changes depends on your application’s design. If you cannot write well-designed code you’ll have to rewrite your application during every iteration.</p>
+
+<h1 id="guidance">Guidance</h1>
+
+<p>Focus on object,</p>
+
+<ul>
+  <li>Single <strong>Responsibility</strong></li>
+  <li>Manage <strong>Dependencies</strong></li>
+</ul>
+
+<p>Focus on message,</p>
+
+<ul>
+  <li><strong>Interface</strong>, creating flexible interfaces</li>
+  <li><strong>Duck Typing</strong>, reducing costs with Duck Typing</li>
+  <li><strong>Inheritance</strong>, acquiring behavior through inheritance</li>
+  <li><strong>Module</strong>, sharing <strong>role</strong> behavior with modules</li>
+  <li><strong>Composition</strong>, combining objects with composition</li>
+  <li><strong>Tests</strong>, designing cost-effective tests</li>
+</ul>
+
+<h2 id="designing-classes-with-a-single-responsibility">Designing Classes with a Single Responsibility</h2>
+
+<p>SRP requires that a class be <strong>cohesive</strong>, that everything in a class is related to its central purpose, the class is said to be highly cohesive or to have a single responsibility.</p>
+
+<h3 id="depend-on-behavior-not-data">Depend on Behavior, Not Data</h3>
+
+<p>“Don’t Repeat Yourself” (DRY) is a shortcut for this idea.</p>
+
+<ul>
+  <li>Hide instance variables</li>
+  <li>Hide data structures</li>
+</ul>
+
+<h3 id="enforce-single-responsibility-everywhere">Enforce Single Responsibility Everywhere</h3>
+
+<ul>
+  <li>
+    <p>Extract extra responsibilities from methods</p>
+
+    <p>Methods, like classes, should have a single responsibility. All of the same reasons apply; having just one responsibility makes them easy to change and easy to reuse.</p>
+  </li>
+  <li>
+    <p>Isolate extra responsibilities in classes</p>
+
+    <p>Postponing decisions until you are absolutely forced to make them. Any decision you make in advance of an explicit requirement is just a guess. Don’t decide; preserve your ability to make a decision later.</p>
+  </li>
+</ul>
+
+<h2 id="manage-dependencies">Manage Dependencies</h2>
+
+<p>To collaborate, an object must know something know about others. <em>Knowing</em> creates a dependency, or <em>coupling</em> creates a dependency.</p>
+
+<p>Dependency management is core to creating future-proof applications.</p>
+
+<p>An object has a dependency when it knows</p>
+
+<ul>
+  <li>The name of another class.</li>
+  <li>The name of a message that it intends to send to someone other than self.</li>
+  <li>The arguments that a message requires.</li>
+  <li>The order of those arguments.</li>
+  <li>Knowing the name of a message you plan to send to someone other than self.</li>
+  <li>Tests on code.</li>
+</ul>
+
+<h3 id="inject-dependencies">Inject Dependencies</h3>
+
+<p>```ruby
+# before
+class Gear
+  …</p>
+
+<p>def gear_inches
+    ratio * Wheel.new(rim, tire).diameter
+  end
+end</p>
+
+<h1 id="after">after</h1>
+<p>class Gear
+  attr_reader :chainring, :cog, :wheel
+  def initialize(chainring, cog, wheel)
+    @chainring = chainring
+    @cog       = cog
+    @wheel     = wheel
+  end</p>
+
+<p>def gear_inches
+    ratio * wheel.diameter
+  end
+end
+``` </p>
+
+<p>Gear previously had explicit dependencies on the Wheel class and on the type and order of its initialization arguments, but through injection these dependencies have been reduced to a single dependency on the diameter method.</p>
+
+<h3 id="isolate-dependencies">Isolate Dependencies</h3>
+
+<p><strong>Isolate Instance Creation</strong></p>
+
+<p>If you are so constrained that you cannot change the code to inject a Wheel into a Gear, you should isolate the creation of a new Wheel inside the Gear class.</p>
+
+<p>```ruby
+class Gear
+  …</p>
+
+<p>def gear_inches
+    ratio * wheel.diameter
+  end</p>
+
+<p>def wheel
+    @wheel ||= Wheel.new(rim, tire)
+  end
+```</p>
+
+<ul>
+  <li>Isolate Vulnerable External Messages</li>
+</ul>
+
+<p>External messages, that is, messages that are “sent to someone other than self.”</p>
+
+<p>```ruby
+class Gear
+  …</p>
+
+<p>def gear_inches
+    ratio * diameter
+  end</p>
+
+<p>def diameter
+    wheel.diameter
+  end
+```</p>
+
+<h3 id="remove-argument-order-dependencies">Remove Argument-Order Dependencies</h3>
+
+<ul>
+  <li>Use Hashes for Initialization Arguments</li>
+  <li>Explicitly Define Defaults</li>
+  <li>Isolate Multiparameter Initialization, use a wrapper.</li>
+</ul>
+
+<h3 id="managing-dependency-direction">Managing Dependency Direction</h3>
+
+<p>Depend on things that change less often than you do.</p>
+
+<ul>
+  <li>Some classes are more likely than others to have changes in requirements.</li>
+  <li>Concrete classes are more likely to change than abstract classes.</li>
+  <li>Changing a class that has many dependents will result in widespread consequences.</li>
+</ul>
+
+<p>Depend on abstractions.</p>
+
+<h2 id="creating-flexible-interfaces">Creating Flexible Interfaces</h2>
+
+<blockquote>
+  <p>Interface within a class, make up its public interface.</p>
+</blockquote>
+
+<p>Public Interfaces</p>
+
+<ul>
+  <li>Reveal its primary responsibility</li>
+  <li>Are expected to be invoked by others</li>
+  <li>Will not change on a whim</li>
+  <li>Are safe for others to depend on</li>
+  <li>Are thoroughly documented in the tests</li>
+</ul>
+
+<p>Private Interfaces</p>
+
+<ul>
+  <li>Handle implementation details</li>
+  <li>Are not expected to be sent by other objects</li>
+  <li>Can change for any reason whatsoever</li>
+  <li>Are unsafe for others to depend on</li>
+  <li>May not even be referenced in the tests</li>
+</ul>
+
+<p>Well-defined public interfaces consist of stable methods that expose the responsibilities of their underlying classes (public methods should read like a description of responsibilities).</p>
+
+<h3 id="finding-the-public-interface">Finding the Public Interface</h3>
+
+<h4 id="focus-messages-between-domain-objects">Focus Messages between Domain Objects</h4>
+
+<p>Nouns in the application that have both data and behavior are called domain objects. Domain objects are easy to find but they are not at the design center of your application. Design experts notice domain objects without concentrating on them; they focus not on these objects but on the messages that pass between them.</p>
+
+<h4 id="use-sequence-diagrams">Use Sequence Diagrams</h4>
+
+<p>They explicitly specify the messages that pass between objects, and because objects should only communicate using public interfaces, sequence diagrams are a vehicle for exposing, experimenting with, and ultimately defining those interfaces.</p>
+
+<h4 id="asking-for-what-instead-of-telling-how">Asking for “What” Instead of Telling “How”</h4>
+
+<h4 id="seeking-contect-independence">Seeking Contect Independence</h4>
+
+<p>The best possible situation is for an object to be completely independent of its context. An object that could collaborate with others without knowing who they are or what they do could be reused in novel and unanticipated ways.</p>
+
+<p>The technique for collaborating with others without knowing who they are—dependency injection. </p>
+
+<h3 id="the-law-of-demeter">The Law of Demeter</h3>
+
+<p>It prohibits routing a message to a third object via a second object of a different type. “Only talk to your immediate neighbors” or “use only one dot.”</p>
+
+<p>Delegation is tempting as a solution to the Demeter problem because it removes the visible evidence of violations.</p>
+
+<p>Listening to Demeter means paying attention to your point of view. If you shift to a message-based perspective, the messages you find will become public interfaces in the objects they lead you to discover. However, if you are bound by the shackles of existing domain objects, you’ll end up assembling their existing public interfaces into long message chains and thus will miss the opportunity to find and construct flexible public interfaces.</p>
+
+<h2 id="reductin-costs-with-duck-typing">Reductin Costs with Duck Typing</h2>
+
+<blockquote>
+  <p>Interface, across classes and is independent of any single class. The interface represents a set of messages where the messages themselves define the interface. It’s almost as if the interface defines a virtual class; that is, any class that implements the required methods can act like the interface kind of thing.</p>
+</blockquote>
+
+<p><strong>Duck types</strong> are public interfaces that are not tied to any specific class. These across-class interfaces add enormous flexibility to your application by replacing costly dependencies on class with more forgiving dependencies on messages.</p>
+
+<h3 id="polymorphism">Polymorphism</h3>
+
+<p><strong>Polymorphism</strong> in OOP refers to the ability of many different objects to respond to the same message. Senders of the message need not care about the class of the receiver; receivers supply their own specific version of the behavior. Polymorphic methods honor an implicit bargain; they agree to be inter- changeable from the sender’s point of view.</p>
+
+<p>A single message thus has many (poly) forms (morphs).</p>
+
+<p>There are a number of ways to achieve polymorphism:</p>
+
+<ul>
+  <li>Duck Typing</li>
+  <li>Inheritance</li>
+  <li>Behavior Sharing (module)</li>
+</ul>
+
+<h3 id="recognizing-hidden-ducks">Recognizing Hidden Ducks</h3>
+
+<ul>
+  <li>Case statements that switch on class</li>
+  <li><code>kind_of?</code> and <code>is_a?</code></li>
+  <li><code>responds_to?</code></li>
+</ul>
+
+<h3 id="guidance-1">Guidance</h3>
+
+<p>When you create duck types you must both document and test their public inter- faces. Fortunately, good tests are the best documentation.</p>
+
+<p>The decision to create a new duck type relies on judgment. The purpose of design is to lower costs; bring this measuring stick to every situation. If creating a duck type would reduce unstable dependencies, do so. Use your best judgment.</p>
+
+<h2 id="acquiring-behavior-through-inheritance">Acquiring Behavior Through Inheritance</h2>
+
+<h3 id="inheritance">Inheritance</h3>
+
+<p>Inheritance is, at its core, a mechanism for <strong>automatic message delegation</strong>. It defines a forwarding path for not-understood messages. It creates relationships such that, if one object cannot respond to a received message, it delegates that message to another. You don’t have to write code to explicitly delegate the message, instead you define an inheritance relationship between two objects and the forwarding happens automatically.</p>
+
+<p>When your problem is one of needing numerous specializations of a stable, common abstraction, inheritance can be an extremely low-cost solution.</p>
+
+<h3 id="recognizing-where-to-use-inheritance">Recognizing Where to Use Inheritance</h3>
+
+<p>The inheritance exactly solves: that of highly related types that share common behavior but differ along some dimension.  </p>
+
+<p>Inheritance provides a way to define two objects as having a relationship such that when the first receives a message that it does not understand, it automatically forwards, or delegates, the message to the second. It’s as simple as that.  </p>
+
+<p>Duck types cut across classes, they do not use classical inheritance to share common behavior. Duck types share code via Ruby modules.</p>
+
+<h4 id="finding-the-abstraction">Finding the Abstraction</h4>
+
+<p>It almost never makes sense to create an abstract superclass with only one sub-class.  </p>
+
+<p>Creating a hierarchy has costs; the best way to minimize these costs is to maximize your chance of getting the abstraction right before allowing subclasses to depend on it. While the two bikes you know about supply a fair amount of information about the common abstraction, three bikes would supply a great deal more. If you could put this decision off until FastFeet asked for a third kind of bike, your odds of finding the right abstraction would improve dramatically.</p>
+
+<p>When deciding between refactoring strategies, indeed, when deciding between design strategies in general, it’s useful to ask the question: “What will happen if I’m wrong?”</p>
+
+<h3 id="using-templage-methods">Using Templage Methods</h3>
+
+<h4 id="template-method">Template Method</h4>
+
+<p>This technique of defining a basic structure in the superclass and sending messages to acquire subclass-specific contributions is known as the template method pattern.</p>
+
+<h4 id="implementing-every-template-method">Implementing Every Template Method</h4>
+
+<p>Any class that uses the template method pattern must supply an implementation for every message it sends, and creating code that fails with reasonable error messages takes minor effort in the present but provides value forever.</p>
+
+<p><code>ruby
+class Bicycle
+  #...
+  def default_tire_size
+    raise NotImplementedError, "This #{self.class} cannot respond to:"
+  end 
+end
+</code></p>
+
+<h3 id="manging-coupling">Manging Coupling</h3>
+
+<p>When a subclass sends <code>super</code> it’s effectively declaring that it knows the algorithm; it depends on this knowledge. If the algorithm changes, then the subclasses may break even if their own specializations are not otherwise affected.</p>
+
+<h4 id="decoupling-subclasses-using-hook-messages">Decoupling Subclasses Using Hook Messages</h4>
+
+<p>Instead of allowing subclasses to know the algorithm and requiring that they send <code>super</code>, superclasses can instead send <code>hook</code> messages, ones that exist solely to provide subclasses a place to contribute information by implementing matching methods. This strategy removes knowledge of the algorithm from the subclass and returns control to the superclass.</p>
+
+<p>```ruby
+class Bicycle
+  def initialize(args={})
+    @size = args[:size]
+    @chain = args[:chain] || default_chain
+    @tire_size = args[:tire_size] || default_tire_size</p>
+
+<pre><code>post_initialize(args)   # Bicycle both sends   end
+</code></pre>
+
+<p>def post_initialize(args) # and implements this 
+    nil
+  end
+  # …
+end</p>
+
+<p>class RoadBike &lt; Bicycle</p>
+
+<p>def post_initialize(args)         # RoadBike can 
+    @tape_color = args[:tape_color] # optionally
+  end                               # override it
+  # …
+end
+```</p>
+
+<p>This change allows RoadBike to know less about Bicycle, reducing the coupling between them and making each more flexible in the face of an uncertain future. New subclasses need only implement the <code>hook</code> methods.</p>
+
+<h2 id="sharing-role-behavior-with-modules">Sharing Role Behavior with Modules</h2>
+
+<h3 id="understanding-roles">Understanding Roles</h3>
+
+<p>Modules thus provide a perfect way to allow objects of different classes to play a common role using a single set of code.</p>
+
+<p>The rules for modules are the same as for classical inheritance. If a module sends a message it must provide an implementation, even if that implementation merely raises an error indicating that users of the module must implement the method.</p>
+
+<p>This is-a versus behaves-like-a difference definitely matters, each choice has distinct consequences.</p>
+
+<h3 id="writing-inheritable-code">Writing Inheritable Code</h3>
+
+<p>The usefulness and maintainability of inheritance hierarchies and modules is in direct proportion to the quality of the code. </p>
+
+<h4 id="recognize-the-antipatterns">Recognize the Antipatterns</h4>
+
+<p>There are two antipatterns that indicate that your code might benefit from inheritance.</p>
+
+<ul>
+  <li>An object that uses a variable with a name like <code>type</code> or <code>category</code> to determine what message to send to <code>self</code> contains two highly related but slightly different types.</li>
+  <li>When a sending object checks the class of a receiving object to determine what message to send, you have overlooked a duck type. In addition to sharing an interface, duck types might also share behavior. When they do, place the shared code in a module and include that module in each class or object that plays the role.</li>
+</ul>
+
+<h4 id="insist-on-the-abstraction">Insist on the Abstraction</h4>
+
+<p>Superclasses should not contain code that applies to some, but not all, subclasses. This restriction also applies to modules: the code in a module must apply to all who use it.</p>
+
+<p>Subclasses that override a method to raise an exception like “does not implement” are a symptom of this problem. When subclasses override a method to declare that they <em>do not do that thing</em> they come perilously close to declaring that they <em>are not that thing</em>.</p>
+
+<h4 id="honor-the-contract">Honor the Contract</h4>
+
+<p>Subclasses agree to a contract; they promise to be substitutable for their superclasses.</p>
+
+<p>Subclasses that fail to honor their contract are difficult to use. They’re “special” and cannot be freely substituted for their superclasses. These subclasses are declaring that they are not really a kind-of their superclass </p>
+
+<p><strong>Liskov Substitution Principle (LSP)</strong>, which in mathematical terms says that a subtype should be substitutable for its supertype. Named after Barbara Liskov.</p>
+
+<h4 id="use-the-template-method-pattern">Use the Template Method Pattern</h4>
+
+<p>The abstract code defines the algorithms and the concrete inheritors of that abstraction contribute specializations by overriding these template methods.</p>
+
+<p>Modules, therefore, should use the template method pattern to invite those that include them to supply specializations, and should implement hook methods to avoid forcing includers to send <code>super</code>.</p>
+
+<h4 id="preemptively-decouple-classes">Preemptively Decouple Classes</h4>
+
+<p>Avoid writing code that requires its inheritors to send <code>super</code>; instead use hook messages to allow subclasses to participate while absolving them of responsibility for knowing the abstract algorithm. Writing code that requires subclasses to send <code>super</code> adds an additional dependency; avoid this if you can.</p>
+
+<p>Hook methods solve the problem of sending <code>super</code>, but, unfortunately, only for adjacent levels of the hierarchy.</p>
+
+<h4 id="create-shallow-hierarchies">Create Shallow Hierarchies</h4>
+
+<p>The limitations of hook methods are just one of the many reasons to create shallow hierarchies.</p>
+
+<p>Because objects depend on everything above them, a deep hierarchy has a large set of built-in dependencies, each of which might someday change.</p>
+
+<p>Another problem with deep hierarchies is that programmers tend to be familiar with just the classes at their tops and bottoms; that is, they tend to understand only the behavior implemented at the boundaries of the search path.</p>
+
+<h2 id="combining-objects-with-composition">Combining Objects with Composition</h2>
+
+<p>Composition is the act of combining distinct parts into a complex whole such that the whole becomes more than the sum of its parts.</p>
+
+<h3 id="aggregation-a-special-kind-of-composition">Aggregation: A Special Kind of Composition</h3>
+
+<p>Delegation creates dependencies; the receiving object must recognize the message and know where to send it. Composition often involves delegation but the term means something more. A composed object is made up of parts with which it expects to interact via well-defined interfaces.</p>
+
+<p>Composition indicates a <em>has-a</em> relationship where the contained object has no life inde- pendent of its container.</p>
+
+<p>Aggregation is exactly like composition except that the contained object has an independent life.</p>
+
+<h3 id="deciding-between-inheritance-and-composition">Deciding Between Inheritance and Composition</h3>
+
+<ul>
+  <li>Remember that classical inheritance is a code arrangement technique. For the cost of arranging objects in a hierarchy, you get message delegation for free. </li>
+  <li>Composition is an alternative that reverses these costs and benefits. Composition allows objects to have structural independence, but at the cost of explicit message delegation.</li>
+</ul>
+
+<p>The general rule is that, faced with a problem that composition can solve, you should be biased towards doing so. If you cannot explicitly defend inheritance as a better solution, use composition.</p>
+
+<h4 id="inheritance-1">Inheritance</h4>
+
+<p><strong>Benefits</strong></p>
+
+<p>Inheritance is a better solution when its use provides high rewards for low risk.</p>
+
+<p>Use of inheritance results in code that can be described as open–closed; hierarchies are open for extension while remaining closed for modification. </p>
+
+<p>You need look no farther than the source of object-oriented languages themselves to see the value of organizing code using inheritance.</p>
+
+<p><strong>Costs</strong></p>
+
+<p>You might be fooled into choosing inheritance to solve the wrong kind of problem. If you make this mistake a day will come when you need to add behavior but find there’s no easy way do so.</p>
+
+<p>Even when inheritance makes sense for the problem, you might be writing code that will be used by others for purposes you did not anticipate.</p>
+
+<p>The very high cost of making changes near the top of an incorrectly modeled hierarchy. In this case, the leveraging effect works to your disadvantage; small changes break everything.</p>
+
+<p>The impossibility of adding behavior when new subclasses represent a mixture of types.</p>
+
+<p>Inheritance, therefore, is a place where the question “<em>What will happen when I’m wrong?</em>” assumes special importance. Inheritance by definition comes with a deeply embedded set of dependencies. Subclasses depend on the methods defined in their superclasses and on the automatic delegation of messages to those superclasses. This is classical inheritance’s greatest strength and biggest weakness.</p>
+
+<p><strong>Guidance</strong></p>
+
+<p>Your consideration of the use of inheritance should be tempered by your <em>expectations about the population who will use your code</em>. If you are writing code for an in-house application in a domain with which you are intimately familiar, you may be able to predict the future well enough to be confident that your design problem is one for which inheritance is a cost-effective solution.</p>
+
+<p>Avoid writing frameworks that require users of your code to subclass your objects in order to gain your behavior. Their application’s objects may already be arranged in a hierarchy; inheriting from your framework may not be possible.</p>
+
+<h4 id="composition">Composition</h4>
+
+<p>Composed objects do not depend on the structure of the class hierarchy, and they delegate their own messages.</p>
+
+<p><strong>Benefits</strong></p>
+
+<p>When using composition, the natural tendency is to create many small objects that con- tain straightforward responsibilities that are accessible through clearly defined interfaces. These small objects have a single responsibility and specify their own behavior. They are transparent.</p>
+
+<p>By their very nature, objects that participate in composition are small, structurally independent, and have well-defined interfaces. This allows their seamless transition into pluggable, interchangeable components.</p>
+
+<p><strong>Costs</strong></p>
+
+<p>The composed object must explicitly know which messages to delegate and to whom. Identical delegation code may be needed by many different objects. Composition provides no way to share this code.</p>
+
+<p>Composition is excellent at prescribing rules for assembling an object made of parts but doesn’t provide as much help for the problem of arranging code for a collection of parts that are very nearly identical.</p>
+
+<h3 id="guidance-2">Guidance</h3>
+
+<p>Composition, classical inheritance, and behavior sharing via modules are competing techniques for arranging code.</p>
+
+<ul>
+  <li>Use inheritance for <em>is-a</em> Relationships.</li>
+  <li>Use Duck Types for <em>behaves-like-a</em> Relationships</li>
+  <li>Use Composition for <em>has-a</em> Relationships</li>
+</ul>
+
+<h2 id="designing-cost-effective-tests">Designing Cost-Effective Tests</h2>
+
+<p>An understanding of object-oriented design, good refactoring skills, and the ability to write efficient tests form a <strong>three-legged stool</strong> upon which changeable code rests.</p>
+
+<p>Your overall goal is to create well-designed applications that have acceptable test coverage. </p>
+
+<h3 id="intentional-testing">Intentional Testing</h3>
+
+<h4 id="knowing-your-intentions">Knowing Your Intentions</h4>
+
+<p>The true purpose of testing, just like the true purpose of design, is to reduce costs.</p>
+
+<p>It is common for programmers who are new to testing to find themselves in the unhappy state where the tests they write do cost more than the value those tests provide, and who therefore want to argue about the worth of tests. The solution to the problem of costly tests, however, is not to stop testing but instead to get better at it.</p>
+
+<ol>
+  <li>Finding Bugs</li>
+  <li>Supplying Documentation</li>
+  <li>Deferring Design Decisions</li>
+  <li>Supporting Abstractions</li>
+  <li>Exposing Design Flaws. When the design is bad, testing is hard. The best way to achieve this goal is to write loosely coupled tests about only the things that matter.</li>
+</ol>
+
+<h4 id="knowing-what-to-test">Knowing What to Test</h4>
+
+<h5 id="remove-the-duplicate">Remove the Duplicate</h5>
+
+<p>One simple way to get better value from tests is to write fewer of them. The safest way to accomplish this is to test everything just once and in the proper place.</p>
+
+<p>Removing duplication from testing lowers the cost of changing tests in reaction to application changes, and putting tests in the right place guarantees they’ll be forced to change only when absolutely necessary.</p>
+
+<h5 id="message-model">Message Model</h5>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/origins_of_messages.png" alt="origins_of_messages" /></p>
+
+<p>Think of an object-oriented application as a series of messages passing between a set of black boxes. Tests should concentrate on the incoming or outgoing messages that cross an object’s boundaries.</p>
+
+<ul>
+  <li>
+    <p>Incoming Message</p>
+
+    <p>Objects should make assertions about <em>state</em> only for messages in their own public interfaces.</p>
+  </li>
+  <li>
+    <p>Outgoing Message</p>
+
+    <ul>
+      <li><em>query</em>, outgoing messages have no side effects and thus matter only to their senders.</li>
+      <li><em>command</em>, outgoing messages do have side effects (a file gets written, a database record is saved, an action is taken by an observer). It is the responsibility of the sending object to prove that they are properly sent. Proving that a message gets sent is a test of behavior, not state.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Conclusion</strong></p>
+
+<p>Incoming messages should be tested for the state they return. Outgoing command messages should be tested to ensure they get sent. Outgoing query messages should not be tested.</p>
+
+<h4 id="knowing-when-to-test">Knowing When to Test</h4>
+
+<p>You should write tests first, whenever it makes sense to do so.</p>
+
+<p>Done at the correct time and in the right amounts, testing, and writing code test-first, will lower your overall costs. Gaining these benefits requires applying object-oriented design principles everywhere, both to the code of your application and to the code in your tests.</p>
+
+<p><em>What novices do?</em></p>
+
+<p>Novices often write code that is far too coupled; they combine unrelated responsibilities and bind many dependencies into every object. </p>
+
+<p>It is an unfortunate truth that the most complex code is usually written by the least qualified person.</p>
+
+<p>Novice programmers don’t yet have the skills to write simple code.</p>
+
+<h4 id="knowing-how-to-test">Knowing How to Test</h4>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/bdd_and_tdd.png" alt="bdd_and_tdd" /></p>
+
+<ul>
+  <li><strong>BDD</strong> takes an outside-in approach, creating objects at the boundary of an application and working its way inward, mock-ing as necessary to supply as-yet-unwritten objects.</li>
+  <li><strong>TDD</strong> takes an inside-out approach, usually starting with tests of domain objects and then reusing these newly created domain objects in the tests of adjacent layers of code.</li>
+</ul>
+
+<p><strong>Testing point-of-view</strong></p>
+
+<p>Your tests could stand completely inside of the object under test, with effective access to all of its internals. This is a bad idea.</p>
+
+<p>It’s better for tests to assume a viewpoint that sights along the edges of the object under test, where they can know only about messages that come and go.</p>
+
+<h3 id="testing-incoming-messages">Testing Incoming Messages</h3>
+
+<ul>
+  <li>
+    <p>Deleting Unused Interfaces</p>
+
+    <p>Do not test an incoming message that has no dependents; delete it. </p>
+  </li>
+  <li>
+    <p>Proving the Public Interface</p>
+  </li>
+  <li>
+    <p>Isolating the Object Under Test</p>
+  </li>
+  <li>
+    <p>Injecting Dependencies as Roles</p>
+
+    <p>Object-oriented design tells you to inject dependencies because it believes that specific concrete classes will vary more than these roles, or conversely, roles will be more stable than the classes from which they were abstracted.</p>
+
+    <ul>
+      <li>Creating Test Doubles</li>
+      <li>Using Tests to Document Roles</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="testing-private-methods">Testing Private Methods</h3>
+
+<p>Dealing with private methods requires judgment and flexibility.</p>
+
+<p>The rules-of-thumb for testing private methods are thus: Never write them, and if you do, never ever test them, unless of course it makes sense to do so.</p>
+
+<h3 id="testing-outgoing-messages">Testing Outgoing Messages</h3>
+
+<ul>
+  <li>Ignoring Query Messages</li>
+  <li>
+    <p>Proving Command Messages</p>
+
+    <p>The responsibility for testing a message’s return value lies with its receiver. <strong>Mocks</strong> are tests of behavior, as opposed to tests of state. Instead of making assertions about what a message returns, mocks define an expectation that a message will get sent. </p>
+  </li>
+</ul>
+
+<h3 id="testing-duck-types">Testing Duck Types</h3>
+
+<p>The desire to test duck types creates a need for shareable tests for roles, and once you acquire this role-based perspective you can use it to your advantage in many situations. From the point of view of the object under test, every other object is a role and dealing with objects as if they are representatives of the roles they play loosens coupling and increases flexibility, both in your application and in your tests.</p>
+
+<ul>
+  <li>Testing Roles. Extract a module, test it and include in every role.</li>
+  <li>Using Role Tests to Validate Doubles.</li>
+</ul>
+
+<h3 id="testing-inherited-code">Testing Inherited Code</h3>
+
+<ul>
+  <li>
+    <p>Specifying the Inherited Interface</p>
+
+    <p>Write a shared test for the common contract and include this test in every object.</p>
+  </li>
+  <li>
+    <p>Specifying Subclass Responsibilities</p>
+
+    <ul>
+      <li>Confirming Subclass Behavior. The <em>BicycleInterfaceTest</em> and the <em>BicycleSubclassTest</em>, combined, take all of the pain out of testing the common behavior of subclasses. These tests give you confidence that subclasses aren’t drifting away from the standard.</li>
+      <li>Confirming Superclass Enforcement. Test the template method.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Testing Unique Behavior</p>
+
+    <ul>
+      <li>Testing Concrete Subclass Behavior. It’s important to test these specializations without embedding knowledge of the superclass into the test.</li>
+      <li>Testing Abstract Superclass Behavior. Because Bicycle used tem- plate methods to acquire concrete specializations you can stub the behavior that would normally be supplied by subclasses. Even better, because you understand the Liskov Substitution Principle, you can easily manufacture a testable instance of Bicycle by creating a new subclass for use solely by this test.</li>
+    </ul>
+  </li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[From irb to Rails console]]></title>
@@ -2726,85 +3539,6 @@ raise method(:respond_with).source_location.inspect
     <p>Try <code>mount</code> a rack-based app in Rails.</p>
   </li>
 </ol>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to use Mock and Stub in Minitest and Rspec?]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec/"/>
-    <updated>2014-09-23T20:14:24+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec</id>
-    <content type="html"><![CDATA[<p>Referenced in <a href="http://blog.arvidandersson.se/2012/03/28/minimalicous-testing-in-ruby-1-9">Minimalicious testing in Ruby 1.9 with MiniTest</a></p>
-
-<ul>
-  <li>A <strong>stub object</strong> is a pretend object that implement some of the interface of the object it pretends to be and returns predefined responses. </li>
-  <li>A <strong>mock object</strong> is similair to a stub but has another use case: <em>it helps decide if the test case it is used in passes by verifying if it’s methods has been called or not.</em></li>
-</ul>
-
-<h2 id="minitestmock">Minitest::Mock</h2>
-
-<p><code>require 'minitest/mock'</code></p>
-
-<p><em>stub</em></p>
-
-<p><code>ruby
-[2] pry(main)&gt; foo = Minitest::Mock.new
-=&gt; #&lt;Minitest::Mock:0x82ff7b5c&gt;
-[3] pry(main)&gt; foo.expect(:hi, 'hello')
-=&gt; #&lt;Minitest::Mock:0x82ff7b5c&gt;
-[4] pry(main)&gt; foo.hi
-=&gt; "hello"
-</code></p>
-
-<p><em>mock</em></p>
-
-<p><code>ruby
-[5] pry(main)&gt; bar = Minitest::Mock.new
-=&gt; #&lt;Minitest::Mock:0x821763e4&gt;
-[6] pry(main)&gt; bar.expect(:hi, 'hello', ['arg1', 'arg2'])
-=&gt; #&lt;Minitest::Mock:0x821763e4&gt;
-[7] pry(main)&gt; bar.verify
-MockExpectationError: expected hi("arg1", "arg2") =&gt; "hello", got []
-[8] pry(main)&gt; bar.hi('arg1', 'arg2')
-=&gt; "hello"
-[9] pry(main)&gt; bar.verify
-=&gt; true
-</code></p>
-
-<h2 id="rspecmocks">RSpec::Mocks</h2>
-
-<p><code>require 'rspec/mocks/standalone'</code></p>
-
-<p><em>stub</em></p>
-
-<p><code>ruby
-[2] pry(main)&gt; foo = double()
-=&gt; #&lt;RSpec::Mocks::Mock:0x82c66b78 @name=nil&gt;
-[3] pry(main)&gt; foo.stub(:hi).and_return('hello')
-=&gt; nil
-[4] pry(main)&gt; foo.hi
-=&gt; "hello"
-[7] pry(main)&gt; foo.stub(:hi).with('world').and_return('hello world')
-=&gt; nil
-[9] pry(main)&gt; foo.hi('world')
-=&gt; "hello world"
-</code></p>
-
-<p><em>mock</em></p>
-
-<p><code>ruby
-[18] pry(main)&gt; foo = double()
-=&gt; #&lt;RSpec::Mocks::Mock:0x82c66b78 @name=nil&gt;
-[19] pry(main)&gt; foo.should_receive(:hi).with('world')
-=&gt; #&lt;RSpec::Mocks::MessageExpectation:0x818c11f4&gt;
-</code></p>
-
-<h3 id="reference">Reference</h3>
-
-<ul>
-  <li><a href="http://www.ruby-doc.org/stdlib-2.0/libdoc/minitest/rdoc/MiniTest/Mock.html">Minitest::Mock</a></li>
-  <li><a href="https://www.relishapp.com/rspec/rspec-mocks/v/2-3/docs/method-stubs">Rspec Mocks</a></li>
-</ul>
 ]]></content>
   </entry>
   

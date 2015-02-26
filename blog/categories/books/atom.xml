@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-01-29T15:43:16+08:00</updated>
+  <updated>2015-02-26T16:57:59+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,819 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Review] Guidance from POODR]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/01/29/guidance-from-poodr/"/>
+    <updated>2015-01-29T15:20:13+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/01/29/guidance-from-poodr</id>
+    <content type="html"><![CDATA[<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>Practical Object Oriented Design in Ruby</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td>Sandi Metz</td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="http://www.poodr.com/">www.poodr.com</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul id="markdown-toc">
+  <li><a href="#object-oriented-design">Object-Oriented Design</a>    <ul>
+      <li><a href="#the-tools-of-design">The Tools of Design</a>        <ul>
+          <li><a href="#design-principles">Design Principles</a></li>
+          <li><a href="#design-patterns">Design Patterns</a></li>
+        </ul>
+      </li>
+      <li><a href="#the-act-of-design">The Act of Design</a>        <ul>
+          <li><a href="#how-design-fails">How Design Fails</a></li>
+          <li><a href="#when-to-design">When to Design</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#guidance">Guidance</a>    <ul>
+      <li><a href="#designing-classes-with-a-single-responsibility">Designing Classes with a Single Responsibility</a>        <ul>
+          <li><a href="#depend-on-behavior-not-data">Depend on Behavior, Not Data</a></li>
+          <li><a href="#enforce-single-responsibility-everywhere">Enforce Single Responsibility Everywhere</a></li>
+        </ul>
+      </li>
+      <li><a href="#manage-dependencies">Manage Dependencies</a>        <ul>
+          <li><a href="#inject-dependencies">Inject Dependencies</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#after">after</a>    <ul>
+      <li><a href="#isolate-dependencies">Isolate Dependencies</a></li>
+      <li><a href="#remove-argument-order-dependencies">Remove Argument-Order Dependencies</a></li>
+      <li><a href="#managing-dependency-direction">Managing Dependency Direction</a></li>
+      <li><a href="#creating-flexible-interfaces">Creating Flexible Interfaces</a>        <ul>
+          <li><a href="#finding-the-public-interface">Finding the Public Interface</a>            <ul>
+              <li><a href="#focus-messages-between-domain-objects">Focus Messages between Domain Objects</a></li>
+              <li><a href="#use-sequence-diagrams">Use Sequence Diagrams</a></li>
+              <li><a href="#asking-for-what-instead-of-telling-how">Asking for “What” Instead of Telling “How”</a></li>
+              <li><a href="#seeking-contect-independence">Seeking Contect Independence</a></li>
+            </ul>
+          </li>
+          <li><a href="#the-law-of-demeter">The Law of Demeter</a></li>
+        </ul>
+      </li>
+      <li><a href="#reductin-costs-with-duck-typing">Reductin Costs with Duck Typing</a>        <ul>
+          <li><a href="#polymorphism">Polymorphism</a></li>
+          <li><a href="#recognizing-hidden-ducks">Recognizing Hidden Ducks</a></li>
+          <li><a href="#guidance-1">Guidance</a></li>
+        </ul>
+      </li>
+      <li><a href="#acquiring-behavior-through-inheritance">Acquiring Behavior Through Inheritance</a>        <ul>
+          <li><a href="#inheritance">Inheritance</a></li>
+          <li><a href="#recognizing-where-to-use-inheritance">Recognizing Where to Use Inheritance</a>            <ul>
+              <li><a href="#finding-the-abstraction">Finding the Abstraction</a></li>
+            </ul>
+          </li>
+          <li><a href="#using-templage-methods">Using Templage Methods</a>            <ul>
+              <li><a href="#template-method">Template Method</a></li>
+              <li><a href="#implementing-every-template-method">Implementing Every Template Method</a></li>
+            </ul>
+          </li>
+          <li><a href="#manging-coupling">Manging Coupling</a>            <ul>
+              <li><a href="#decoupling-subclasses-using-hook-messages">Decoupling Subclasses Using Hook Messages</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#sharing-role-behavior-with-modules">Sharing Role Behavior with Modules</a>        <ul>
+          <li><a href="#understanding-roles">Understanding Roles</a></li>
+          <li><a href="#writing-inheritable-code">Writing Inheritable Code</a>            <ul>
+              <li><a href="#recognize-the-antipatterns">Recognize the Antipatterns</a></li>
+              <li><a href="#insist-on-the-abstraction">Insist on the Abstraction</a></li>
+              <li><a href="#honor-the-contract">Honor the Contract</a></li>
+              <li><a href="#use-the-template-method-pattern">Use the Template Method Pattern</a></li>
+              <li><a href="#preemptively-decouple-classes">Preemptively Decouple Classes</a></li>
+              <li><a href="#create-shallow-hierarchies">Create Shallow Hierarchies</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#combining-objects-with-composition">Combining Objects with Composition</a>        <ul>
+          <li><a href="#aggregation-a-special-kind-of-composition">Aggregation: A Special Kind of Composition</a></li>
+          <li><a href="#deciding-between-inheritance-and-composition">Deciding Between Inheritance and Composition</a>            <ul>
+              <li><a href="#inheritance-1">Inheritance</a></li>
+              <li><a href="#composition">Composition</a></li>
+            </ul>
+          </li>
+          <li><a href="#guidance-2">Guidance</a></li>
+        </ul>
+      </li>
+      <li><a href="#designing-cost-effective-tests">Designing Cost-Effective Tests</a>        <ul>
+          <li><a href="#intentional-testing">Intentional Testing</a>            <ul>
+              <li><a href="#knowing-your-intentions">Knowing Your Intentions</a></li>
+              <li><a href="#knowing-what-to-test">Knowing What to Test</a>                <ul>
+                  <li><a href="#remove-the-duplicate">Remove the Duplicate</a></li>
+                  <li><a href="#message-model">Message Model</a></li>
+                </ul>
+              </li>
+              <li><a href="#knowing-when-to-test">Knowing When to Test</a></li>
+              <li><a href="#knowing-how-to-test">Knowing How to Test</a></li>
+            </ul>
+          </li>
+          <li><a href="#testing-incoming-messages">Testing Incoming Messages</a></li>
+          <li><a href="#testing-private-methods">Testing Private Methods</a></li>
+          <li><a href="#testing-outgoing-messages">Testing Outgoing Messages</a></li>
+          <li><a href="#testing-duck-types">Testing Duck Types</a></li>
+          <li><a href="#testing-inherited-code">Testing Inherited Code</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="object-oriented-design">Object-Oriented Design</h1>
+
+<p>Object-oriented design (OOD) requires that you shift from thinking of the world as a collection of predefined procedures to modeling the world as a series of messages that pass between objects.</p>
+
+<p>Object-oriented applications are made up of parts that interact to produce the behavior of the whole. The parts are <em>objects</em>; interactions are embodied in the <em>messages</em> that pass between them.</p>
+
+<p>Object-oriented design is about managing dependencies. In the absence of design, unmanaged dependencies wreak havoc because objects know too much about one another.</p>
+
+<p>Design is thus an art, the art of arranging code, and design is more the art of preserving changeability than it is the act of achieving perfection. You must not only write code for the feature you plan to deliver today, you must also create code that is amenable to being changed later. It doesn’t guess the future; it preserves your options for accommodating the future. It doesn’t choose; it leaves you room to move.</p>
+
+<p>The trick to getting the most bang for your design buck is to acquire an understanding of the theories of design and to apply these theories appropriately, at the right time, and in the right amounts. </p>
+
+<p>Well-designed applications are constructed of reusable code. Small, trustworthy self- contained objects with minimal context, clear interfaces, and injected dependencies are inherently reusable.</p>
+
+<h2 id="the-tools-of-design">The Tools of Design</h2>
+
+<h3 id="design-principles">Design Principles</h3>
+
+<ul>
+  <li>
+    <p><strong>SOLID</strong></p>
+
+    <ul>
+      <li>Single Responsibility</li>
+      <li>Open-Closed</li>
+      <li>Liskov Substitution</li>
+      <li>Interface Segregation</li>
+      <li>Dependency Inversion</li>
+    </ul>
+  </li>
+  <li><strong>DRY</strong>, Don’t Repeat Yourself</li>
+  <li><strong>LoD</strong>, Law of Demeter</li>
+</ul>
+
+<h3 id="design-patterns">Design Patterns</h3>
+
+<p>by Gof</p>
+
+<h2 id="the-act-of-design">The Act of Design</h2>
+
+<h3 id="how-design-fails">How Design Fails</h3>
+
+<ul>
+  <li>Lack of it. Successful but undesigned applications carry the seeds of their own destruction; they are easy to write but gradually become impossible to change. “Yes, I can add that feature, but it will break everything.”</li>
+  <li>Overdesign. Aware of OO design techniques but do not yet understand how to apply them. “No, I can’t add that feature; it wasn’t designed to do that.”</li>
+  <li>Seperated from the act of programming. Design is a process of progressive discovery that relies on a feedback loop. The iterative techniques of the Agile software movement are thus perfectly suited to the creation of well-designed OO applications. The iterative nature of Agile development allows design to adjust regularly and to evolve naturally. </li>
+</ul>
+
+<h3 id="when-to-design">When to Design</h3>
+
+<blockquote>
+  <p>Agile believes that your customers can’t define the software they want before seeing it, so it’s best to show them sooner rather than later. If this premise is true, then it logically follows that you should build software in tiny increments, gradually iterating your way into an application that meets the customer’s true need. The Agile experience is that this collaboration produces software that differs from what was initially imagined; the resulting software could not have been anticipated by any other means. </p>
+</blockquote>
+
+<p>If Agile is correct, then</p>
+
+<ol>
+  <li>there is absolutely no point in doing a Big Up Front Design (BUFD) (because it cannot possibly be correct)</li>
+  <li>no one can predict when the application will be done (because you don’t know in advance what it will eventually do)</li>
+</ol>
+
+<p>Agile processes guarantee change and your ability to make these changes depends on your application’s design. If you cannot write well-designed code you’ll have to rewrite your application during every iteration.</p>
+
+<h1 id="guidance">Guidance</h1>
+
+<p>Focus on object,</p>
+
+<ul>
+  <li>Single <strong>Responsibility</strong></li>
+  <li>Manage <strong>Dependencies</strong></li>
+</ul>
+
+<p>Focus on message,</p>
+
+<ul>
+  <li><strong>Interface</strong>, creating flexible interfaces</li>
+  <li><strong>Duck Typing</strong>, reducing costs with Duck Typing</li>
+  <li><strong>Inheritance</strong>, acquiring behavior through inheritance</li>
+  <li><strong>Module</strong>, sharing <strong>role</strong> behavior with modules</li>
+  <li><strong>Composition</strong>, combining objects with composition</li>
+  <li><strong>Tests</strong>, designing cost-effective tests</li>
+</ul>
+
+<h2 id="designing-classes-with-a-single-responsibility">Designing Classes with a Single Responsibility</h2>
+
+<p>SRP requires that a class be <strong>cohesive</strong>, that everything in a class is related to its central purpose, the class is said to be highly cohesive or to have a single responsibility.</p>
+
+<h3 id="depend-on-behavior-not-data">Depend on Behavior, Not Data</h3>
+
+<p>“Don’t Repeat Yourself” (DRY) is a shortcut for this idea.</p>
+
+<ul>
+  <li>Hide instance variables</li>
+  <li>Hide data structures</li>
+</ul>
+
+<h3 id="enforce-single-responsibility-everywhere">Enforce Single Responsibility Everywhere</h3>
+
+<ul>
+  <li>
+    <p>Extract extra responsibilities from methods</p>
+
+    <p>Methods, like classes, should have a single responsibility. All of the same reasons apply; having just one responsibility makes them easy to change and easy to reuse.</p>
+  </li>
+  <li>
+    <p>Isolate extra responsibilities in classes</p>
+
+    <p>Postponing decisions until you are absolutely forced to make them. Any decision you make in advance of an explicit requirement is just a guess. Don’t decide; preserve your ability to make a decision later.</p>
+  </li>
+</ul>
+
+<h2 id="manage-dependencies">Manage Dependencies</h2>
+
+<p>To collaborate, an object must know something know about others. <em>Knowing</em> creates a dependency, or <em>coupling</em> creates a dependency.</p>
+
+<p>Dependency management is core to creating future-proof applications.</p>
+
+<p>An object has a dependency when it knows</p>
+
+<ul>
+  <li>The name of another class.</li>
+  <li>The name of a message that it intends to send to someone other than self.</li>
+  <li>The arguments that a message requires.</li>
+  <li>The order of those arguments.</li>
+  <li>Knowing the name of a message you plan to send to someone other than self.</li>
+  <li>Tests on code.</li>
+</ul>
+
+<h3 id="inject-dependencies">Inject Dependencies</h3>
+
+<p>```ruby
+# before
+class Gear
+  …</p>
+
+<p>def gear_inches
+    ratio * Wheel.new(rim, tire).diameter
+  end
+end</p>
+
+<h1 id="after">after</h1>
+<p>class Gear
+  attr_reader :chainring, :cog, :wheel
+  def initialize(chainring, cog, wheel)
+    @chainring = chainring
+    @cog       = cog
+    @wheel     = wheel
+  end</p>
+
+<p>def gear_inches
+    ratio * wheel.diameter
+  end
+end
+``` </p>
+
+<p>Gear previously had explicit dependencies on the Wheel class and on the type and order of its initialization arguments, but through injection these dependencies have been reduced to a single dependency on the diameter method.</p>
+
+<h3 id="isolate-dependencies">Isolate Dependencies</h3>
+
+<p><strong>Isolate Instance Creation</strong></p>
+
+<p>If you are so constrained that you cannot change the code to inject a Wheel into a Gear, you should isolate the creation of a new Wheel inside the Gear class.</p>
+
+<p>```ruby
+class Gear
+  …</p>
+
+<p>def gear_inches
+    ratio * wheel.diameter
+  end</p>
+
+<p>def wheel
+    @wheel ||= Wheel.new(rim, tire)
+  end
+```</p>
+
+<ul>
+  <li>Isolate Vulnerable External Messages</li>
+</ul>
+
+<p>External messages, that is, messages that are “sent to someone other than self.”</p>
+
+<p>```ruby
+class Gear
+  …</p>
+
+<p>def gear_inches
+    ratio * diameter
+  end</p>
+
+<p>def diameter
+    wheel.diameter
+  end
+```</p>
+
+<h3 id="remove-argument-order-dependencies">Remove Argument-Order Dependencies</h3>
+
+<ul>
+  <li>Use Hashes for Initialization Arguments</li>
+  <li>Explicitly Define Defaults</li>
+  <li>Isolate Multiparameter Initialization, use a wrapper.</li>
+</ul>
+
+<h3 id="managing-dependency-direction">Managing Dependency Direction</h3>
+
+<p>Depend on things that change less often than you do.</p>
+
+<ul>
+  <li>Some classes are more likely than others to have changes in requirements.</li>
+  <li>Concrete classes are more likely to change than abstract classes.</li>
+  <li>Changing a class that has many dependents will result in widespread consequences.</li>
+</ul>
+
+<p>Depend on abstractions.</p>
+
+<h2 id="creating-flexible-interfaces">Creating Flexible Interfaces</h2>
+
+<blockquote>
+  <p>Interface within a class, make up its public interface.</p>
+</blockquote>
+
+<p>Public Interfaces</p>
+
+<ul>
+  <li>Reveal its primary responsibility</li>
+  <li>Are expected to be invoked by others</li>
+  <li>Will not change on a whim</li>
+  <li>Are safe for others to depend on</li>
+  <li>Are thoroughly documented in the tests</li>
+</ul>
+
+<p>Private Interfaces</p>
+
+<ul>
+  <li>Handle implementation details</li>
+  <li>Are not expected to be sent by other objects</li>
+  <li>Can change for any reason whatsoever</li>
+  <li>Are unsafe for others to depend on</li>
+  <li>May not even be referenced in the tests</li>
+</ul>
+
+<p>Well-defined public interfaces consist of stable methods that expose the responsibilities of their underlying classes (public methods should read like a description of responsibilities).</p>
+
+<h3 id="finding-the-public-interface">Finding the Public Interface</h3>
+
+<h4 id="focus-messages-between-domain-objects">Focus Messages between Domain Objects</h4>
+
+<p>Nouns in the application that have both data and behavior are called domain objects. Domain objects are easy to find but they are not at the design center of your application. Design experts notice domain objects without concentrating on them; they focus not on these objects but on the messages that pass between them.</p>
+
+<h4 id="use-sequence-diagrams">Use Sequence Diagrams</h4>
+
+<p>They explicitly specify the messages that pass between objects, and because objects should only communicate using public interfaces, sequence diagrams are a vehicle for exposing, experimenting with, and ultimately defining those interfaces.</p>
+
+<h4 id="asking-for-what-instead-of-telling-how">Asking for “What” Instead of Telling “How”</h4>
+
+<h4 id="seeking-contect-independence">Seeking Contect Independence</h4>
+
+<p>The best possible situation is for an object to be completely independent of its context. An object that could collaborate with others without knowing who they are or what they do could be reused in novel and unanticipated ways.</p>
+
+<p>The technique for collaborating with others without knowing who they are—dependency injection. </p>
+
+<h3 id="the-law-of-demeter">The Law of Demeter</h3>
+
+<p>It prohibits routing a message to a third object via a second object of a different type. “Only talk to your immediate neighbors” or “use only one dot.”</p>
+
+<p>Delegation is tempting as a solution to the Demeter problem because it removes the visible evidence of violations.</p>
+
+<p>Listening to Demeter means paying attention to your point of view. If you shift to a message-based perspective, the messages you find will become public interfaces in the objects they lead you to discover. However, if you are bound by the shackles of existing domain objects, you’ll end up assembling their existing public interfaces into long message chains and thus will miss the opportunity to find and construct flexible public interfaces.</p>
+
+<h2 id="reductin-costs-with-duck-typing">Reductin Costs with Duck Typing</h2>
+
+<blockquote>
+  <p>Interface, across classes and is independent of any single class. The interface represents a set of messages where the messages themselves define the interface. It’s almost as if the interface defines a virtual class; that is, any class that implements the required methods can act like the interface kind of thing.</p>
+</blockquote>
+
+<p><strong>Duck types</strong> are public interfaces that are not tied to any specific class. These across-class interfaces add enormous flexibility to your application by replacing costly dependencies on class with more forgiving dependencies on messages.</p>
+
+<h3 id="polymorphism">Polymorphism</h3>
+
+<p><strong>Polymorphism</strong> in OOP refers to the ability of many different objects to respond to the same message. Senders of the message need not care about the class of the receiver; receivers supply their own specific version of the behavior. Polymorphic methods honor an implicit bargain; they agree to be inter- changeable from the sender’s point of view.</p>
+
+<p>A single message thus has many (poly) forms (morphs).</p>
+
+<p>There are a number of ways to achieve polymorphism:</p>
+
+<ul>
+  <li>Duck Typing</li>
+  <li>Inheritance</li>
+  <li>Behavior Sharing (module)</li>
+</ul>
+
+<h3 id="recognizing-hidden-ducks">Recognizing Hidden Ducks</h3>
+
+<ul>
+  <li>Case statements that switch on class</li>
+  <li><code>kind_of?</code> and <code>is_a?</code></li>
+  <li><code>responds_to?</code></li>
+</ul>
+
+<h3 id="guidance-1">Guidance</h3>
+
+<p>When you create duck types you must both document and test their public inter- faces. Fortunately, good tests are the best documentation.</p>
+
+<p>The decision to create a new duck type relies on judgment. The purpose of design is to lower costs; bring this measuring stick to every situation. If creating a duck type would reduce unstable dependencies, do so. Use your best judgment.</p>
+
+<h2 id="acquiring-behavior-through-inheritance">Acquiring Behavior Through Inheritance</h2>
+
+<h3 id="inheritance">Inheritance</h3>
+
+<p>Inheritance is, at its core, a mechanism for <strong>automatic message delegation</strong>. It defines a forwarding path for not-understood messages. It creates relationships such that, if one object cannot respond to a received message, it delegates that message to another. You don’t have to write code to explicitly delegate the message, instead you define an inheritance relationship between two objects and the forwarding happens automatically.</p>
+
+<p>When your problem is one of needing numerous specializations of a stable, common abstraction, inheritance can be an extremely low-cost solution.</p>
+
+<h3 id="recognizing-where-to-use-inheritance">Recognizing Where to Use Inheritance</h3>
+
+<p>The inheritance exactly solves: that of highly related types that share common behavior but differ along some dimension.  </p>
+
+<p>Inheritance provides a way to define two objects as having a relationship such that when the first receives a message that it does not understand, it automatically forwards, or delegates, the message to the second. It’s as simple as that.  </p>
+
+<p>Duck types cut across classes, they do not use classical inheritance to share common behavior. Duck types share code via Ruby modules.</p>
+
+<h4 id="finding-the-abstraction">Finding the Abstraction</h4>
+
+<p>It almost never makes sense to create an abstract superclass with only one sub-class.  </p>
+
+<p>Creating a hierarchy has costs; the best way to minimize these costs is to maximize your chance of getting the abstraction right before allowing subclasses to depend on it. While the two bikes you know about supply a fair amount of information about the common abstraction, three bikes would supply a great deal more. If you could put this decision off until FastFeet asked for a third kind of bike, your odds of finding the right abstraction would improve dramatically.</p>
+
+<p>When deciding between refactoring strategies, indeed, when deciding between design strategies in general, it’s useful to ask the question: “What will happen if I’m wrong?”</p>
+
+<h3 id="using-templage-methods">Using Templage Methods</h3>
+
+<h4 id="template-method">Template Method</h4>
+
+<p>This technique of defining a basic structure in the superclass and sending messages to acquire subclass-specific contributions is known as the template method pattern.</p>
+
+<h4 id="implementing-every-template-method">Implementing Every Template Method</h4>
+
+<p>Any class that uses the template method pattern must supply an implementation for every message it sends, and creating code that fails with reasonable error messages takes minor effort in the present but provides value forever.</p>
+
+<p><code>ruby
+class Bicycle
+  #...
+  def default_tire_size
+    raise NotImplementedError, "This #{self.class} cannot respond to:"
+  end 
+end
+</code></p>
+
+<h3 id="manging-coupling">Manging Coupling</h3>
+
+<p>When a subclass sends <code>super</code> it’s effectively declaring that it knows the algorithm; it depends on this knowledge. If the algorithm changes, then the subclasses may break even if their own specializations are not otherwise affected.</p>
+
+<h4 id="decoupling-subclasses-using-hook-messages">Decoupling Subclasses Using Hook Messages</h4>
+
+<p>Instead of allowing subclasses to know the algorithm and requiring that they send <code>super</code>, superclasses can instead send <code>hook</code> messages, ones that exist solely to provide subclasses a place to contribute information by implementing matching methods. This strategy removes knowledge of the algorithm from the subclass and returns control to the superclass.</p>
+
+<p>```ruby
+class Bicycle
+  def initialize(args={})
+    @size = args[:size]
+    @chain = args[:chain] || default_chain
+    @tire_size = args[:tire_size] || default_tire_size</p>
+
+<pre><code>post_initialize(args)   # Bicycle both sends   end
+</code></pre>
+
+<p>def post_initialize(args) # and implements this 
+    nil
+  end
+  # …
+end</p>
+
+<p>class RoadBike &lt; Bicycle</p>
+
+<p>def post_initialize(args)         # RoadBike can 
+    @tape_color = args[:tape_color] # optionally
+  end                               # override it
+  # …
+end
+```</p>
+
+<p>This change allows RoadBike to know less about Bicycle, reducing the coupling between them and making each more flexible in the face of an uncertain future. New subclasses need only implement the <code>hook</code> methods.</p>
+
+<h2 id="sharing-role-behavior-with-modules">Sharing Role Behavior with Modules</h2>
+
+<h3 id="understanding-roles">Understanding Roles</h3>
+
+<p>Modules thus provide a perfect way to allow objects of different classes to play a common role using a single set of code.</p>
+
+<p>The rules for modules are the same as for classical inheritance. If a module sends a message it must provide an implementation, even if that implementation merely raises an error indicating that users of the module must implement the method.</p>
+
+<p>This is-a versus behaves-like-a difference definitely matters, each choice has distinct consequences.</p>
+
+<h3 id="writing-inheritable-code">Writing Inheritable Code</h3>
+
+<p>The usefulness and maintainability of inheritance hierarchies and modules is in direct proportion to the quality of the code. </p>
+
+<h4 id="recognize-the-antipatterns">Recognize the Antipatterns</h4>
+
+<p>There are two antipatterns that indicate that your code might benefit from inheritance.</p>
+
+<ul>
+  <li>An object that uses a variable with a name like <code>type</code> or <code>category</code> to determine what message to send to <code>self</code> contains two highly related but slightly different types.</li>
+  <li>When a sending object checks the class of a receiving object to determine what message to send, you have overlooked a duck type. In addition to sharing an interface, duck types might also share behavior. When they do, place the shared code in a module and include that module in each class or object that plays the role.</li>
+</ul>
+
+<h4 id="insist-on-the-abstraction">Insist on the Abstraction</h4>
+
+<p>Superclasses should not contain code that applies to some, but not all, subclasses. This restriction also applies to modules: the code in a module must apply to all who use it.</p>
+
+<p>Subclasses that override a method to raise an exception like “does not implement” are a symptom of this problem. When subclasses override a method to declare that they <em>do not do that thing</em> they come perilously close to declaring that they <em>are not that thing</em>.</p>
+
+<h4 id="honor-the-contract">Honor the Contract</h4>
+
+<p>Subclasses agree to a contract; they promise to be substitutable for their superclasses.</p>
+
+<p>Subclasses that fail to honor their contract are difficult to use. They’re “special” and cannot be freely substituted for their superclasses. These subclasses are declaring that they are not really a kind-of their superclass </p>
+
+<p><strong>Liskov Substitution Principle (LSP)</strong>, which in mathematical terms says that a subtype should be substitutable for its supertype. Named after Barbara Liskov.</p>
+
+<h4 id="use-the-template-method-pattern">Use the Template Method Pattern</h4>
+
+<p>The abstract code defines the algorithms and the concrete inheritors of that abstraction contribute specializations by overriding these template methods.</p>
+
+<p>Modules, therefore, should use the template method pattern to invite those that include them to supply specializations, and should implement hook methods to avoid forcing includers to send <code>super</code>.</p>
+
+<h4 id="preemptively-decouple-classes">Preemptively Decouple Classes</h4>
+
+<p>Avoid writing code that requires its inheritors to send <code>super</code>; instead use hook messages to allow subclasses to participate while absolving them of responsibility for knowing the abstract algorithm. Writing code that requires subclasses to send <code>super</code> adds an additional dependency; avoid this if you can.</p>
+
+<p>Hook methods solve the problem of sending <code>super</code>, but, unfortunately, only for adjacent levels of the hierarchy.</p>
+
+<h4 id="create-shallow-hierarchies">Create Shallow Hierarchies</h4>
+
+<p>The limitations of hook methods are just one of the many reasons to create shallow hierarchies.</p>
+
+<p>Because objects depend on everything above them, a deep hierarchy has a large set of built-in dependencies, each of which might someday change.</p>
+
+<p>Another problem with deep hierarchies is that programmers tend to be familiar with just the classes at their tops and bottoms; that is, they tend to understand only the behavior implemented at the boundaries of the search path.</p>
+
+<h2 id="combining-objects-with-composition">Combining Objects with Composition</h2>
+
+<p>Composition is the act of combining distinct parts into a complex whole such that the whole becomes more than the sum of its parts.</p>
+
+<h3 id="aggregation-a-special-kind-of-composition">Aggregation: A Special Kind of Composition</h3>
+
+<p>Delegation creates dependencies; the receiving object must recognize the message and know where to send it. Composition often involves delegation but the term means something more. A composed object is made up of parts with which it expects to interact via well-defined interfaces.</p>
+
+<p>Composition indicates a <em>has-a</em> relationship where the contained object has no life inde- pendent of its container.</p>
+
+<p>Aggregation is exactly like composition except that the contained object has an independent life.</p>
+
+<h3 id="deciding-between-inheritance-and-composition">Deciding Between Inheritance and Composition</h3>
+
+<ul>
+  <li>Remember that classical inheritance is a code arrangement technique. For the cost of arranging objects in a hierarchy, you get message delegation for free. </li>
+  <li>Composition is an alternative that reverses these costs and benefits. Composition allows objects to have structural independence, but at the cost of explicit message delegation.</li>
+</ul>
+
+<p>The general rule is that, faced with a problem that composition can solve, you should be biased towards doing so. If you cannot explicitly defend inheritance as a better solution, use composition.</p>
+
+<h4 id="inheritance-1">Inheritance</h4>
+
+<p><strong>Benefits</strong></p>
+
+<p>Inheritance is a better solution when its use provides high rewards for low risk.</p>
+
+<p>Use of inheritance results in code that can be described as open–closed; hierarchies are open for extension while remaining closed for modification. </p>
+
+<p>You need look no farther than the source of object-oriented languages themselves to see the value of organizing code using inheritance.</p>
+
+<p><strong>Costs</strong></p>
+
+<p>You might be fooled into choosing inheritance to solve the wrong kind of problem. If you make this mistake a day will come when you need to add behavior but find there’s no easy way do so.</p>
+
+<p>Even when inheritance makes sense for the problem, you might be writing code that will be used by others for purposes you did not anticipate.</p>
+
+<p>The very high cost of making changes near the top of an incorrectly modeled hierarchy. In this case, the leveraging effect works to your disadvantage; small changes break everything.</p>
+
+<p>The impossibility of adding behavior when new subclasses represent a mixture of types.</p>
+
+<p>Inheritance, therefore, is a place where the question “<em>What will happen when I’m wrong?</em>” assumes special importance. Inheritance by definition comes with a deeply embedded set of dependencies. Subclasses depend on the methods defined in their superclasses and on the automatic delegation of messages to those superclasses. This is classical inheritance’s greatest strength and biggest weakness.</p>
+
+<p><strong>Guidance</strong></p>
+
+<p>Your consideration of the use of inheritance should be tempered by your <em>expectations about the population who will use your code</em>. If you are writing code for an in-house application in a domain with which you are intimately familiar, you may be able to predict the future well enough to be confident that your design problem is one for which inheritance is a cost-effective solution.</p>
+
+<p>Avoid writing frameworks that require users of your code to subclass your objects in order to gain your behavior. Their application’s objects may already be arranged in a hierarchy; inheriting from your framework may not be possible.</p>
+
+<h4 id="composition">Composition</h4>
+
+<p>Composed objects do not depend on the structure of the class hierarchy, and they delegate their own messages.</p>
+
+<p><strong>Benefits</strong></p>
+
+<p>When using composition, the natural tendency is to create many small objects that con- tain straightforward responsibilities that are accessible through clearly defined interfaces. These small objects have a single responsibility and specify their own behavior. They are transparent.</p>
+
+<p>By their very nature, objects that participate in composition are small, structurally independent, and have well-defined interfaces. This allows their seamless transition into pluggable, interchangeable components.</p>
+
+<p><strong>Costs</strong></p>
+
+<p>The composed object must explicitly know which messages to delegate and to whom. Identical delegation code may be needed by many different objects. Composition provides no way to share this code.</p>
+
+<p>Composition is excellent at prescribing rules for assembling an object made of parts but doesn’t provide as much help for the problem of arranging code for a collection of parts that are very nearly identical.</p>
+
+<h3 id="guidance-2">Guidance</h3>
+
+<p>Composition, classical inheritance, and behavior sharing via modules are competing techniques for arranging code.</p>
+
+<ul>
+  <li>Use inheritance for <em>is-a</em> Relationships.</li>
+  <li>Use Duck Types for <em>behaves-like-a</em> Relationships</li>
+  <li>Use Composition for <em>has-a</em> Relationships</li>
+</ul>
+
+<h2 id="designing-cost-effective-tests">Designing Cost-Effective Tests</h2>
+
+<p>An understanding of object-oriented design, good refactoring skills, and the ability to write efficient tests form a <strong>three-legged stool</strong> upon which changeable code rests.</p>
+
+<p>Your overall goal is to create well-designed applications that have acceptable test coverage. </p>
+
+<h3 id="intentional-testing">Intentional Testing</h3>
+
+<h4 id="knowing-your-intentions">Knowing Your Intentions</h4>
+
+<p>The true purpose of testing, just like the true purpose of design, is to reduce costs.</p>
+
+<p>It is common for programmers who are new to testing to find themselves in the unhappy state where the tests they write do cost more than the value those tests provide, and who therefore want to argue about the worth of tests. The solution to the problem of costly tests, however, is not to stop testing but instead to get better at it.</p>
+
+<ol>
+  <li>Finding Bugs</li>
+  <li>Supplying Documentation</li>
+  <li>Deferring Design Decisions</li>
+  <li>Supporting Abstractions</li>
+  <li>Exposing Design Flaws. When the design is bad, testing is hard. The best way to achieve this goal is to write loosely coupled tests about only the things that matter.</li>
+</ol>
+
+<h4 id="knowing-what-to-test">Knowing What to Test</h4>
+
+<h5 id="remove-the-duplicate">Remove the Duplicate</h5>
+
+<p>One simple way to get better value from tests is to write fewer of them. The safest way to accomplish this is to test everything just once and in the proper place.</p>
+
+<p>Removing duplication from testing lowers the cost of changing tests in reaction to application changes, and putting tests in the right place guarantees they’ll be forced to change only when absolutely necessary.</p>
+
+<h5 id="message-model">Message Model</h5>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/origins_of_messages.png" alt="origins_of_messages" /></p>
+
+<p>Think of an object-oriented application as a series of messages passing between a set of black boxes. Tests should concentrate on the incoming or outgoing messages that cross an object’s boundaries.</p>
+
+<ul>
+  <li>
+    <p>Incoming Message</p>
+
+    <p>Objects should make assertions about <em>state</em> only for messages in their own public interfaces.</p>
+  </li>
+  <li>
+    <p>Outgoing Message</p>
+
+    <ul>
+      <li><em>query</em>, outgoing messages have no side effects and thus matter only to their senders.</li>
+      <li><em>command</em>, outgoing messages do have side effects (a file gets written, a database record is saved, an action is taken by an observer). It is the responsibility of the sending object to prove that they are properly sent. Proving that a message gets sent is a test of behavior, not state.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Conclusion</strong></p>
+
+<p>Incoming messages should be tested for the state they return. Outgoing command messages should be tested to ensure they get sent. Outgoing query messages should not be tested.</p>
+
+<h4 id="knowing-when-to-test">Knowing When to Test</h4>
+
+<p>You should write tests first, whenever it makes sense to do so.</p>
+
+<p>Done at the correct time and in the right amounts, testing, and writing code test-first, will lower your overall costs. Gaining these benefits requires applying object-oriented design principles everywhere, both to the code of your application and to the code in your tests.</p>
+
+<p><em>What novices do?</em></p>
+
+<p>Novices often write code that is far too coupled; they combine unrelated responsibilities and bind many dependencies into every object. </p>
+
+<p>It is an unfortunate truth that the most complex code is usually written by the least qualified person.</p>
+
+<p>Novice programmers don’t yet have the skills to write simple code.</p>
+
+<h4 id="knowing-how-to-test">Knowing How to Test</h4>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/bdd_and_tdd.png" alt="bdd_and_tdd" /></p>
+
+<ul>
+  <li><strong>BDD</strong> takes an outside-in approach, creating objects at the boundary of an application and working its way inward, mock-ing as necessary to supply as-yet-unwritten objects.</li>
+  <li><strong>TDD</strong> takes an inside-out approach, usually starting with tests of domain objects and then reusing these newly created domain objects in the tests of adjacent layers of code.</li>
+</ul>
+
+<p><strong>Testing point-of-view</strong></p>
+
+<p>Your tests could stand completely inside of the object under test, with effective access to all of its internals. This is a bad idea.</p>
+
+<p>It’s better for tests to assume a viewpoint that sights along the edges of the object under test, where they can know only about messages that come and go.</p>
+
+<h3 id="testing-incoming-messages">Testing Incoming Messages</h3>
+
+<ul>
+  <li>
+    <p>Deleting Unused Interfaces</p>
+
+    <p>Do not test an incoming message that has no dependents; delete it. </p>
+  </li>
+  <li>
+    <p>Proving the Public Interface</p>
+  </li>
+  <li>
+    <p>Isolating the Object Under Test</p>
+  </li>
+  <li>
+    <p>Injecting Dependencies as Roles</p>
+
+    <p>Object-oriented design tells you to inject dependencies because it believes that specific concrete classes will vary more than these roles, or conversely, roles will be more stable than the classes from which they were abstracted.</p>
+
+    <ul>
+      <li>Creating Test Doubles</li>
+      <li>Using Tests to Document Roles</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="testing-private-methods">Testing Private Methods</h3>
+
+<p>Dealing with private methods requires judgment and flexibility.</p>
+
+<p>The rules-of-thumb for testing private methods are thus: Never write them, and if you do, never ever test them, unless of course it makes sense to do so.</p>
+
+<h3 id="testing-outgoing-messages">Testing Outgoing Messages</h3>
+
+<ul>
+  <li>Ignoring Query Messages</li>
+  <li>
+    <p>Proving Command Messages</p>
+
+    <p>The responsibility for testing a message’s return value lies with its receiver. <strong>Mocks</strong> are tests of behavior, as opposed to tests of state. Instead of making assertions about what a message returns, mocks define an expectation that a message will get sent. </p>
+  </li>
+</ul>
+
+<h3 id="testing-duck-types">Testing Duck Types</h3>
+
+<p>The desire to test duck types creates a need for shareable tests for roles, and once you acquire this role-based perspective you can use it to your advantage in many situations. From the point of view of the object under test, every other object is a role and dealing with objects as if they are representatives of the roles they play loosens coupling and increases flexibility, both in your application and in your tests.</p>
+
+<ul>
+  <li>Testing Roles. Extract a module, test it and include in every role.</li>
+  <li>Using Role Tests to Validate Doubles.</li>
+</ul>
+
+<h3 id="testing-inherited-code">Testing Inherited Code</h3>
+
+<ul>
+  <li>
+    <p>Specifying the Inherited Interface</p>
+
+    <p>Write a shared test for the common contract and include this test in every object.</p>
+  </li>
+  <li>
+    <p>Specifying Subclass Responsibilities</p>
+
+    <ul>
+      <li>Confirming Subclass Behavior. The <em>BicycleInterfaceTest</em> and the <em>BicycleSubclassTest</em>, combined, take all of the pain out of testing the common behavior of subclasses. These tests give you confidence that subclasses aren’t drifting away from the standard.</li>
+      <li>Confirming Superclass Enforcement. Test the template method.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Testing Unique Behavior</p>
+
+    <ul>
+      <li>Testing Concrete Subclass Behavior. It’s important to test these specializations without embedding knowledge of the superclass into the test.</li>
+      <li>Testing Abstract Superclass Behavior. Because Bicycle used tem- plate methods to acquire concrete specializations you can stub the behavior that would normally be supplied by subclasses. Even better, because you understand the Liskov Substitution Principle, you can easily manufacture a testable instance of Bicycle by creating a new subclass for use solely by this test.</li>
+    </ul>
+  </li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Review] Practicing Rails]]></title>
@@ -3861,1301 +4674,6 @@ $ echo 'a5f85ba5875917319471dfd98dfc636c1dc65650' &gt; .git/refs/heads/master
 <p><code>sh
 $ git update-ref refs/heads/master a5f85ba5875917319471dfd98dfc636c1dc65650
 </code> </p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Review] Metaprogramming Ruby]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/06/03/metaprogrammingi-ruby/"/>
-    <updated>2014-06-03T00:44:28+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/06/03/metaprogrammingi-ruby</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Book</strong></td>
-      <td>Metaprogramming Ruby 2: Program Like the Ruby Pros</td>
-    </tr>
-    <tr>
-      <td><strong>Author</strong></td>
-      <td>Paolo Perrotta</td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="https://pragprog.com/book/ppmetr2/metaprogramming-ruby-2">pragprog.com/book/ppmetr2/metaprogramming-ruby-2</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<ul id="markdown-toc">
-  <li><a href="#the-object-model">The Object Model</a>    <ul>
-      <li><a href="#instance-variable">Instance variable</a></li>
-      <li><a href="#instance-method">Instance method</a></li>
-      <li><a href="#truth-about-classes">Truth about classes</a></li>
-      <li><a href="#constant">Constant</a></li>
-      <li><a href="#method-lookup">Method lookup</a></li>
-      <li><a href="#refinement">Refinement</a></li>
-    </ul>
-  </li>
-  <li><a href="#methods">Methods</a>    <ul>
-      <li><a href="#dynamic-dispatch">Dynamic Dispatch</a></li>
-      <li><a href="#dynamic-method">Dynamic Method</a></li>
-      <li><a href="#ghost-method">Ghost Method</a></li>
-    </ul>
-  </li>
-  <li><a href="#callables">Callables</a>    <ul>
-      <li><a href="#the-callables">the Callables</a></li>
-      <li><a href="#blocks">Blocks</a></li>
-    </ul>
-  </li>
-  <li><a href="#env-is-created-for-each-event-to-be-a-clean-room">env is created for each event to be a Clean Room</a>    <ul>
-      <li><a href="#proc-objects">Proc Objects</a>        <ul>
-          <li><a href="#methods-1">Methods</a></li>
-          <li><a href="#unbound-methods">Unbound Methods</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#class-definitions">Class Definitions</a>    <ul>
-      <li><a href="#the-current-class">The Current Class</a></li>
-    </ul>
-  </li>
-  <li><a href="#console">console</a>    <ul>
-      <li><a href="#class-instance-variables">Class Instance Variables</a></li>
-      <li><a href="#singleton-methods">Singleton Methods</a></li>
-      <li><a href="#singleton-class">Singleton Class</a></li>
-    </ul>
-  </li>
-  <li><a href="#example2">example2</a>    <ul>
-      <li><a href="#method-wrapper">Method Wrapper</a>        <ul>
-          <li><a href="#around-alias">Around Alias</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#nameerror-undefined-method-foo-for-class-myclass">=&gt; NameError: undefined method <code>foo' for class </code>MyClass’</a>    <ul>
-      <li><a href="#refinement-wrapper">Refinement Wrapper</a></li>
-      <li><a href="#prepended-wrapper">Prepended Wrapper</a></li>
-      <li><a href="#an-interesting-quiz-solving-by-around-alias">An interesting quiz solving by Around Alias</a></li>
-    </ul>
-  </li>
-  <li><a href="#eval-and-binding">Eval and Binding</a></li>
-</ul>
-
-<h1 id="the-object-model">The Object Model</h1>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/the_object_model.png" alt="the_object_model" /></p>
-
-<p>An object contains its instance variables and a reference to a class.</p>
-
-<h2 id="instance-variable">Instance variable</h2>
-
-<p>Instance variables just spring into existence when you assign them a value, so you can have objects of the same class that carry different instance variables.</p>
-
-<h2 id="instance-method">Instance method</h2>
-
-<p>You can get a list of an object’s methods by calling <code>Object#methods</code>.</p>
-
-<p>When you talk about the class, you call it an instance method, and when you talk about the object, you simply call it a method.</p>
-
-<p><code>ruby
-String.instance_methods == "abc".methods # =&gt; true
-String.methods == "abc".methods # =&gt; false
-</code></p>
-
-<p>An object’s instance variables live in the object itself, and an object’s methods live in the object’s class. That’s why objects of the same class share methods but don’t share instance variables.</p>
-
-<h2 id="truth-about-classes">Truth about classes</h2>
-
-<p>The truth about classes: classes themselves are nothing but objects.</p>
-
-<p>The methods of an object are also the instance methods of its class. In turn, this means that the methods of a class are the instance methods of <code>Class</code>:</p>
-
-<p><code>ruby
-Class.instance_methods(false) # =&gt; [:allocate, :new, :superclass]
-</code></p>
-
-<p><strong><em>What’s the difference between <code>class</code> and <code>superclass</code>?</em></strong></p>
-
-<ul>
-  <li><code>class</code> is about the type which an object belongs to.</li>
-  <li><code>superclass</code> is about inheritance, between classes.</li>
-</ul>
-
-<p>The <code>superclass</code> of Class is Module—which is to say, every class is also a module. To be precise, a class is a module with three additional instance methods (new, allocate, and superclass) that allow you to create objects or arrange classes into hierarchies.</p>
-
-<p><strong><em>Which to pick between Class and Module?</em></strong></p>
-
-<p>Usually, you pick a module when you mean it to be included somewhere, and you pick a class when you mean it to be instantiated or inherited.</p>
-
-<p><strong><em>What’s an Object, and what’s a Class?</em></strong></p>
-
-<ul>
-  <li>
-    <p>What’s an object? It’s a bunch of instance variables, plus a link to a class. The object’s methods don’t live in the object—they live in the object’s class, where they’re called the instance methods of the class.</p>
-  </li>
-  <li>
-    <p>What’s a class? It’s an object (an instance of Class), plus a list of instance methods and a link to a superclass. Class is a subclass of Module, so a class is also a module.</p>
-  </li>
-</ul>
-
-<p><strong><em>What’s the difference between <code>load</code> and <code>require</code>?</em></strong></p>
-
-<p>You use load to execute code, and you use require to import libraries.</p>
-
-<ol>
-  <li>use <code>require</code>, no need to appends ‘.rb’.</li>
-  <li><code>require</code> loads only once.</li>
-</ol>
-
-<p><strong><em>As <code>load</code> executes codes, how does <code>load</code> avoid conlicts?</em></strong></p>
-
-<p><code>load('motd.rb', true)</code></p>
-
-<p>If you load a file this way, Ruby creates an anonymous module, uses that module as a Namespace to contain all the constants from motd.rb, and then destroys the module.</p>
-
-<h2 id="constant">Constant</h2>
-
-<p>classes are nothing but objects, class names are nothing but constants.</p>
-
-<p><strong><em>How is a constant really different from a variable?</em></strong></p>
-
-<p>The one important difference has to do with their scope.</p>
-
-<p>Constants are arranged in a tree similar to a file system, where the names of modules and classes play the part of directories and regular constants play the part of files.</p>
-
-<h2 id="method-lookup">Method lookup</h2>
-
-<p><strong><em>What does Ruby do, when you call a method?</em></strong></p>
-
-<ol>
-  <li>It finds the method. This is a process called method lookup.</li>
-  <li>It executes the method. To do that, Ruby needs something called <code>self</code>.</li>
-</ol>
-
-<p><strong><em>How does Ruby lookup methods?</em></strong></p>
-
-<p><em>“one step to the right, then up”</em> rule: go one step to the right into the receiver’s class, and then go up the ancestors chain until you find the method.</p>
-
-<p><strong><em>What does ancestor chain look like, when <code>prepend</code> or <code>include</code> multiple modules?</em></strong></p>
-
-<p>The <code>prepend</code> method. It works like <code>include</code>, but it inserts the module below the including class.</p>
-
-<p>```ruby
-class C
-  include M1
-  include M2</p>
-
-<p>prepend M3
-  prepend M4
-end</p>
-
-<p>class D &lt; C; end</p>
-
-<p>D.ancestors # =&gt; [‘M4’, ‘M3’, ‘C’, ‘M2’, ‘M1’]
-```</p>
-
-<p><strong><em>What does Ruby do, when <code>prepend</code> or <code>include</code> a module multiple times?</em></strong></p>
-
-<p>If that module is already in the chain, Ruby silently ignores the second inclusion. As a result, a module can only appear once in the same chain of ancestors.</p>
-
-<p><strong>Basic ancestor chain</strong></p>
-
-<p><code>ruby
-class MyClass; end
-MyClass.ancestors # =&gt; [MyClass, Object, Kernel, BasicObject]
-</code></p>
-
-<p><strong><em>What <code>private</code> really means?</em></strong></p>
-
-<p><code>private</code> methods come from two rules working together:</p>
-
-<ol>
-  <li>you need an explicit receiver to call a method on an object that is not yourself.</li>
-  <li><code>private</code> methods can be called only with an <strong>implicit <code>self</code></strong>.</li>
-</ol>
-
-<p>Put these two rules together, and you’ll see that you can only call a <code>private</code> method on yourself. You can call this the “private rule.“</p>
-
-<p><strong><em>What’s the env when you start the <code>irb</code>?</em></strong></p>
-
-<p>As soon as you start a Ruby program, you’re sitting within an object named <code>main</code> that the Ruby interpreter created for you.</p>
-
-<h2 id="refinement">Refinement</h2>
-
-<p>Refinements are similar to Monkeypatches, but they’re not global. A Refinement is only active in two places:</p>
-
-<ul>
-  <li>The <code>refine</code> block itself.</li>
-  <li>The code starting from the place where you call <code>using</code> until the end of the module definition (if you’re in a module definition) or the end of the file (if you’re at the top level).</li>
-</ul>
-
-<p><strong><em>Which has the precedence, Refinement or Method lookup?</em></strong></p>
-
-<p>Refinements are like pieces of code patched right over a class, and they override normal method lookup. On the other hand, a Refinement works in a limited area of the program: the lines of code between the call to <code>using</code> and the end of the file, or the end of the module definition.</p>
-
-<p>Code in an active Refinement takes precedence over code in the refined class, and also over code in modules that are included or prepended by the class. Refining a class is like slapping a patch right onto the original code of the class.</p>
-
-<p>A trivia example about Refinement:</p>
-
-<p>```ruby
-class MyClass</p>
-
-<p>def my_method
-    “original my_method()”
-  end</p>
-
-<p>def another_method
-    my_method
-  end</p>
-
-<p>end</p>
-
-<p>module MyClassRefinement
-  refine MyClass do
-    def my_method
-      “refined my_method()”
-    end
-  end
-end</p>
-
-<p>using MyClassRefinement
-MyClass.new.my_method     # =&gt; “refine my_method()”
-MyClass.new.another_method # =&gt; “original my_method()”
-```</p>
-
-<p>Even if you call <code>another_method</code> after the <code>using</code>, the call to <code>my_method</code> itself happens before the <code>using</code>—so it calls the original, unrefined version of the method.</p>
-
-<p>A help reference, <a href="http://timelessrepo.com/refinements-in-ruby">Refinements in Ruby</a> by The timeless repository.</p>
-
-<h1 id="methods">Methods</h1>
-
-<h2 id="dynamic-dispatch">Dynamic Dispatch</h2>
-
-<p>Why would you use <code>send</code> instead of the plain old dot notation? Because with <code>send</code>, the name of the method that you want to call becomes just a regular argument. You can wait literally until the very last moment to decide which method to call, while the code is running. This technique is called Dynamic Dispatch.</p>
-
-<p><strong>An example of Dynamic Dispatch</strong></p>
-
-<p>```ruby gems/pry-0.9.12.2/lib/pry/pry_instance.rb
-def refresh(options={})
-  defaults = {}
-  attributes = [
-          :input, :output, :commands, :print, :quiet,
-          :exception_handler, :hooks, :custom_completions,
-          :prompt, :memory_size, :extra_sticky_locals</p>
-
-<pre><code>    ]
-</code></pre>
-
-<p>attributes.each do |attribute|
-    defaults[attribute] = Pry.send attribute
-  end</p>
-
-<p># …</p>
-
-<p>defaults.merge!(options).each do |key, value|
-    send(“#{key}=”, value) if respond_to?(“#{key}=”)
-  end</p>
-
-<p>true
-end
-```</p>
-
-<p><strong><em>What’s the concern about <code>send</code>?</em></strong></p>
-
-<p>You can call any method with <code>send</code>, including private methods.</p>
-
-<p>You can use <code>public_send</code> instead. It’s like send, but it makes a point of respecting the receiver’s privacy.</p>
-
-<h2 id="dynamic-method">Dynamic Method</h2>
-
-<p>There is one important reason to use <code>Module#define_method</code>(<strong>private</strong>) over the more familiar def keyword: <code>define_method</code> allows you to decide the name of the defined method at runtime.</p>
-
-<h2 id="ghost-method">Ghost Method</h2>
-
-<p><code>BasicObject#method_missing</code> (<strong>private</strong>)</p>
-
-<p>Ghost Methods are usually icing on the cake, but some objects actually rely almost exclusively on them. They collect method calls through <code>method_missing</code> and forward them to the wrapped object.</p>
-
-<p><strong><em>How can <code>respond_to?</code> missing methods?</em></strong></p>
-
-<p>refernced from <a href="http://blog.marc-andre.ca/2010/11/15/methodmissing-politely/">Method_missing, Politely</a> by Marc Andre.</p>
-
-<p>```ruby
-class StereoPlayer
-  def method_missing(method, *args, &amp;block)
-    if method.to_s =~ /play_(\w+)/
-      puts “Here’s #{$1}”
-    else
-      super
-    end
-  end
-end</p>
-
-<p>p = StereoPlayer.new
-# ok:
-p.play_some_Beethoven # =&gt; “Here’s some_Beethoven”
-# not very polite:
-p.respond_to? :play_some_Beethoven # =&gt; false</p>
-
-<p>class StereoPlayer
-  # def method_missing …
-  #   …
-  # end</p>
-
-<p>def respond_to?(method, *)
-    method.to_s =~ /play_(\w+)/ || super
-  end
-end
-p.respond_to? :play_some_Beethoven # =&gt; true</p>
-
-<p>```</p>
-
-<p>You can specialize <code>respond_to?</code>, but it doesnot make a missing method behaves exactly like a method.</p>
-
-<p><code>ruby
-p.method :play_some_Beethoven
-# =&gt; NameError: undefined method `play_some_Beethoven'
-#               for class `StereoPlayer'
-</code></p>
-
-<p>Ruby 1.9.2 introduces <code>respond_to_missing?</code> that provides for a clean solution to the problem. Instead of specializing <code>respond_to?</code> one specializes <code>respond_to_missing?</code>.</p>
-
-<p>```ruby
-class StereoPlayer
-  # def method_missing …
-  #   …
-  # end</p>
-
-<p>def respond_to_missing?(method, *)
-    method =~ /play_(\w+)/ || super
-  end
-end</p>
-
-<p>p = StereoPlayer.new
-p.play_some_Beethoven # =&gt; “Here’s some_Beethoven”
-p.respond_to? :play_some_Beethoven # =&gt; true
-m = p.method(:play_some_Beethoven) # =&gt; #&lt;Method: StereoPlayer#play_some_Beethoven&gt;
-# m acts like any other method:
-m.call # =&gt; “Here’s some_Beethoven”
-m == p.method(:play_some_Beethoven) # =&gt; true
-m.name # =&gt; :play_some_Beethoven
-StereoPlayer.send :define_method, :ludwig, m
-p.ludwig # =&gt; “Here’s some_Beethoven”
-```</p>
-
-<p><strong><em>What about the constant missing?</em></strong></p>
-
-<p><code>Module#const_missing</code>(<strong>public</strong>)</p>
-
-<p><strong><em>What’s the concern about <code>method_missing</code>?</em></strong></p>
-
-<p>This is a common problem with Ghost Methods: since unknown calls become calls to <code>method_missing</code>, your object might accept a call that’s just plain wrong. Finding a bug like this one in a large program can be pretty painful.
-To avoid this kind of trouble, take care not to introduce too many Ghost Methods.</p>
-
-<p>Ghost Methods can be dangerous. You can avoid most of their problems by following a few basic recommendations (always call <code>super</code>, always redefine <code>respond_to_missing?</code>)</p>
-
-<p>And you may call some methods <code>Object</code> or some others classes in ancestor chain defined.</p>
-
-<p><strong><em>How to solve it? Blank Slate!</em></strong></p>
-
-<p>Remove methods from an object to turn them into Ghost Methods.</p>
-
-<ul>
-  <li>Inheriting from <code>BasicObject</code> is the quicker way to define a Blank Slate in Ruby.</li>
-</ul>
-
-<p><code>ruby
-im = BasicObject.instance_methods
-im # =&gt; [:==, :equal?, :!, :!=, :instance_eval, :instance_exec, :__send__, :__id__]
-</code></p>
-
-<ul>
-  <li>
-    <p>Inheriting from <code>Object</code> by default, and remove method inherited.</p>
-
-    <p>Don’t hide <code>instance_eval</code> or any method beginning with <code>__</code>. One example of a reserved method is <code>BasicObject#__send__</code>, that behaves the same as send, but gives you a scary warning when you try to remove it.</p>
-  </li>
-</ul>
-
-<p><code>ruby
-class Compter
-  instance_methods.each do |m|
-    undef_method m unless m.to_s =~ /^__|method_missing|respond_to/
-  end
-end
-</code></p>
-
-<ul>
-  <li>Or you can write a BlankSlate class to inherit.</li>
-</ul>
-
-<p>```ruby
-class BlankSlate</p>
-
-<p>def self.hide(name)
-    return unless instance_methods.include? name.to_s
-    return if name.to_s =~ /^__|method_missing|respond_to/
-    @hidden_methods ||= {}
-    @hidden_methods[name.to_sym] = instance_method(name)
-    undef_method name
-  end</p>
-
-<p>instance_methods.each{|m| hide m }
-end
-```</p>
-
-<p><strong><em>What’s the difference between <code>undef_method</code> and <code>remove_method</code>?</em></strong></p>
-
-<ul>
-  <li>The drastic <code>undef_method</code> removes any method, including the inherited ones.</li>
-  <li>The kinder <code>remove_method</code> removes the method from the receiver, but it leaves inherited methods alone.</li>
-</ul>
-
-<p><strong><em>What’s the boiling down facts between Ghost Method and really methods?</em></strong></p>
-
-<p>Ghost Method are just a way to intercept method calls. Because of this fact, they behave different than actual methods.</p>
-
-<p><strong><em>What’s the choice between <code>define_method</code> and <code>method_missing</code>?</em></strong></p>
-
-<p>There are times when Ghost Methods are your only viable option. This usually happens</p>
-
-<ul>
-  <li>When you have a large number of method calls.</li>
-  <li>When you don’t know what method calls you might need at runtime.</li>
-</ul>
-
-<p><em>Use Dynamic Methods if you can, and Ghost Methods if you have to.</em></p>
-
-<h1 id="callables">Callables</h1>
-
-<h2 id="the-callables">the Callables</h2>
-
-<blockquote>
-  <p>Package code, and call it later</p>
-</blockquote>
-
-<ul>
-  <li><strong>block</strong>, evaluated in the scope which they’re defined.</li>
-  <li><strong>proc</strong>, which is basically a block turned object, and evaluated in the scope which they’re defined.</li>
-  <li><strong>lambda</strong>, which is a slight variation on a proc.</li>
-  <li><strong>method</strong>, bound to an object, which are evaluated in that object’s scope. They can also be unbound from their scope and rebound to another object or class.</li>
-</ul>
-
-<p><strong>block</strong> is not an object, while <strong>proc</strong> and <strong>lambda</strong> are Proc objects, and <strong>method</strong> is <a href="http://stackoverflow.com/questions/2602340/methods-in-ruby-objects-or-not">in question</a>.</p>
-
-<h2 id="blocks">Blocks</h2>
-
-<p>The main point about blocks is that they are all inclusive and come ready to run. They contain both the <strong>code</strong> and <strong>a set of bindings</strong>.</p>
-
-<p><strong>When you define the block, it simply grabs the bindings that are there at that moment</strong>, and then it carries those bindings along when you pass the block into a method.</p>
-
-<p>```ruby
-def my_method
-  x = “Goodbye”
-  yield(“cruel”)
-end</p>
-
-<p>x = “Hello”
-my_method {|y| “#{x}, #{y} world” } # =&gt; “Hello, cruel world”
-```</p>
-
-<p><strong><em>What if I define additional bindings inside a block?</em></strong></p>
-
-<p>They disappear after the block ends.</p>
-
-<p><strong><em>What’s the meaning of “a block is a closure”?</em></strong></p>
-
-<p>a block is a closure, this means a block captures the local bindings and carries them along with it.</p>
-
-<p><strong>scope</strong></p>
-
-<p>You can see bindings all over the scope.</p>
-
-<p><code>class</code>, <code>module</code>, and <code>def</code>, respectively. Each of these keywords acts like a <strong>Scope Gate</strong>.</p>
-
-<p><strong>A subtle difference between <code>class</code>, <code>module</code> and <code>def</code></strong></p>
-
-<p>The code in a <code>class</code> or <code>module</code> definition is executed immediately. Conversely, the code in a method definition is executed later, when you eventually call the method.</p>
-
-<p><strong><em>Whenever the program changes scope, some bindings are replaced by a new set of bindings. RIGHT?</em></strong></p>
-
-<p>For <code>local_varialbes</code>, that’s right, but <code>instance_variables</code>, <code>class_variables</code> and <code>global_variables</code> can go through the Scope Gate.</p>
-
-<p><strong><em>What’s the difference between Global Variables and Top-Level Instance Variables?</em></strong></p>
-
-<p>when it comes to global variables, use them sparingly, if ever.</p>
-
-<p>You can access a top-level instance variable whenever <code>main</code> takes the role of self. When any other object is <code>self</code>, the top-level instance variable is out of scope.</p>
-
-<p><strong><em>How to cross the Scope Gate, and Why?</em></strong></p>
-
-<p>You can use these techniques:</p>
-
-<ul>
-  <li>Use Flat Scope (<code>Class.new</code>, <code>Module.new</code>, and <code>define_method</code>)</li>
-  <li>Use Shared Scope</li>
-  <li>Use Context Probe (<code>BasicObject#instance_eval</code>)</li>
-</ul>
-
-<p>to mix code and bindings at will.</p>
-
-<p><strong><em>What is Flat Scope?</em></strong></p>
-
-<p>“flattening the scope,” meaning that the two scopes share variables as if the scopes were squeezed together. For short, you can call this spell a Flat Scope.</p>
-
-<p>Use <code>Class.new</code>, <code>Module.new</code> and <code>define_method</code>.</p>
-
-<p><strong><em>What is Shared Scope?</em></strong></p>
-
-<p>```ruby
-# use <code>def</code> to do seperate
-def define_methods
-  shared = 0</p>
-
-<p>Kernel.send :define_method, :counter do
-    shared
-  end</p>
-
-<p>Kernel.send :define_method, :inc do |x|
-    shared += x
-  end
-end</p>
-
-<p>define_methods</p>
-
-<p>counter # =&gt; 0
-inc(4)
-counter # =&gt; 4
-```</p>
-
-<p>If you define multiple methods in the same Flat Scope, maybe protected by a Scope Gate, all those methods can share bindings. That’s called a <strong>Shared Scope</strong></p>
-
-<p><strong><em>What is Context Probe?</em></strong></p>
-
-<p><code>instance_eval</code> has a slightly more flexible twin brother named <code>instance_exec</code>, that allows you to pass arguments to the block.</p>
-
-<p>```ruby
-class C
-  def initialize
-    @x = 1
-  end
-end</p>
-
-<p>class D
-  def twisted_method
-    @y = 2
-    C.new.instance_eval { “@x: #{@x}, @y: #{@y}” }
-  end
-end</p>
-
-<p>D.new.twisted_method # =&gt; “@x: 1, @y: “
-```</p>
-
-<p>However, instance variables depend on <code>self</code>, so when <code>instance_eval</code> switches <code>self</code> to the receiver, all the instance variables in the caller fall out of scope.</p>
-
-<p><strong>Clean Room</strong></p>
-
-<p>Blank Slates are good candidates for Clean Room.</p>
-
-<p>The ideal Clean Room doesn’t have many methods or instance variables, because the names of those methods and instance variables could clash with the names in the environment that the block comes from. For this reason, instances of <code>BasicObject</code> usually make for good Clean Rooms, because they’re Blank Slates.</p>
-
-<p>You might think of using a <code>BasicObject</code> instead of an Object for your Clean Room. However, remember that <code>BasicObject</code> is also a Blank Slate, and as such it lacks some common methods such as puts.</p>
-
-<p><strong><em>What’s the different use for Shared Scope and Clean Room?</em></strong></p>
-
-<p><em>Shared Scope</em> is used in definition, to make variables(bindings) shared between methods, while <em>Clean Room</em> is used to run code, to help reduce the modifications on shared variables(like instance variables).</p>
-
-<p>```ruby
-# lambda which is called immediatley is the Shared Scope
-lambda {
-  setups = []
-  events = []</p>
-
-<p>Kernel.send :define_method, :event do |description, &amp;block|
-    events « 
-  end</p>
-
-<p>Kernel.send :define_method, :setup do |&amp;block|
-    setups « block
-  end</p>
-
-<p>Kernel.send :define_method, :each_event do |&amp;block|
-    events.each do |event|
-      block.call event
-    end
-  end</p>
-
-<p>Kernel.send :define_method, :each_setup do |&amp;block|
-    setups.each do |setup|
-      block.call setup
-    end
-  end
-}.call</p>
-
-<p>load ‘events.rb’</p>
-
-<h1 id="env-is-created-for-each-event-to-be-a-clean-room">env is created for each event to be a Clean Room</h1>
-<p>each_event do |event|
-  env = Object.new
-  each_setup do |setup|
-    env.instance_eval &amp;setup
-  end
-  puts “ALERT: #{event[:description]}” if env.instance_eval &amp;(event[:condition])
-end
-```</p>
-
-<p><strong><em>When is <code>yield</code> not enough to use?</em></strong></p>
-
-<ul>
-  <li>You want to pass the block to another method (or even another block).</li>
-  <li>You want to convert the block to a <code>Proc</code>.</li>
-</ul>
-
-<h2 id="proc-objects">Proc Objects</h2>
-
-<p>as blocks are not objects, Ruby provides the standard library class <code>Proc</code>. A <code>Proc</code> is a block that has been turned into an object. You can create a <code>Proc</code> by passing the block to <code>Proc.new</code>. Later, you can evaluate the block-turned-object with <code>Proc#call</code>.</p>
-
-<p><strong>Deferred Evaluation</strong></p>
-
-<p><code>ruby
-inc = Proc.new {|x| x + 1 }
-# more code...
-inc.call(2) # =&gt; 3
-</code></p>
-
-<p><strong>4 ways to create Procs explicitly</strong></p>
-
-<p><code>ruby
-Proc.new {|x| x + 1 }
-proc {|x| x + 1 }
-lambda {|x| x + 1 }
--&gt; x { x + 1 } # stabby lambda
-</code></p>
-
-<p><strong>Ways to create Procs implicitly</strong></p>
-
-<p>use <code>&amp;</code> to convert block into a proc:</p>
-
-<p>```ruby
-def make_proc(&amp;p)
-  p
-end</p>
-
-<p>make_proc {|x| x + 1 }
-```</p>
-
-<p><strong>4 ways to call Procs</strong></p>
-
-<p><code>ruby
-p.call(41)
-p[41]
-p === 41
-p.(41)
-</code></p>
-
-<p><strong>Use <code>&amp;</code> to convert a block to Proc</strong></p>
-
-<p>```ruby
-def my_method(&amp;the_proc)
-  the_proc
-end</p>
-
-<p>p = my_method {|name| “Hello, #{name}!” }
-p.class     # =&gt; Proc
-p.call(“Bill”)  # =&gt; “Hello, Bill!”
-```</p>
-
-<p><strong>Use <code>&amp;</code> to convert a Proc to block</strong></p>
-
-<p>```ruby
-def my_method(greeting)
-    “#{greeting}, #{yield}!”
-end</p>
-
-<p>my_proc = proc { “Bill” }
-my_method(“Hello”, &amp;my_proc)
-```</p>
-
-<p><strong><em>What’s a lambda?</em></strong></p>
-
-<p>Procs created with <code>lambda</code> are called <em>lambdas</em>, while the others are simply called <em>procs</em>. (You can use the <code>Proc#lambda?</code> method to check whether the <code>Proc</code> is a lambda).</p>
-
-<p><strong>Procs vs. Lambdas</strong></p>
-
-<ul>
-  <li>
-    <p><code>return</code></p>
-
-    <p><code>lambda</code> returns just returns from the lambda, while a proc returns from the scope where the proc itself was defined.</p>
-  </li>
-  <li>
-    <p><strong>arity</strong></p>
-
-    <p>Call a <code>lambda</code> with the wrong arity, and it fails with an <code>ArgumentError</code>, while if there are too many arguments, a proc drops the excess arguments. If there are too few arguments, it assigns <code>nil</code> to the missing arguments.</p>
-  </li>
-</ul>
-
-<p>Generally speaking, <code>lambdas</code> are more intuitive than procs because they’re more similar to methods. They’re pretty strict about arity, and they simply exit when you call <code>return</code>.</p>
-
-<p><strong>About the tolerance on arguments</strong></p>
-
-<p>method == lambda &lt; proc == block</p>
-
-<h3 id="methods-1">Methods</h3>
-
-<p>By calling <code>Kernel#method</code>, you get the method itself as a Method object, which you can later execute with <code>Method#call</code>. In Ruby 2.1, you also have <code>Kernel#singleton_method</code>, that converts the name of a Singleton Method to a Method object.</p>
-
-<p><strong>Conversions between methods and procs</strong></p>
-
-<ul>
-  <li>Use <code>Method#to_proc</code> to convert a method into proc.</li>
-  <li>Use <code>define_method</code> to convert a proc into method.</li>
-</ul>
-
-<p><strong>An important difference between methods and procs</strong></p>
-
-<p>a <code>lambda</code> is evaluated in the scope it’s defined in (it’s a closure, remember?), while a <code>Method</code> is evaluated in the scope of its object.</p>
-
-<h3 id="unbound-methods">Unbound Methods</h3>
-
-<p><code>UnboundMethods</code> are like <code>Methods</code> that have been detached from their original class or module.</p>
-
-<p><strong>You can’t call an <code>UnboundMethod</code></strong>, but you can use it to generate a normal method that you can call.</p>
-
-<p><strong>generate</strong></p>
-
-<ul>
-  <li>use <code>Method#unbind</code></li>
-</ul>
-
-<p><code>ruby
-def foo; end
-unbound = method(:foo).unbind
-unbound.class   # =&gt; UnboundMethod
-</code></p>
-
-<ul>
-  <li>use <code>Module#instance_method</code></li>
-</ul>
-
-<p>```ruby
-module MyModule
-  def my_method
-  42
-  end
-end</p>
-
-<p>unbound = MyModule.instance_method(:my_method)
-unbound.class   # =&gt; UnboundMethod
-```</p>
-
-<p><em>Note:</em> <code>instance_methods</code> is totally different, it’s like <code>methods</code>, just return an array of symbols.</p>
-
-<p><strong>usage</strong></p>
-
-<ul>
-  <li>bind the UnboundMethod to an object with <code>UnboundMethod#bind</code>. UnboundMethods that come from a class can only be bound to objects of the same class (or a subclass), while UnboundMethods that come from a module have no such limitation from Ruby 2.0 onwards.</li>
-  <li>use an UnboundMethod to define a brand new method by passing it to <code>Module#define_method</code>.</li>
-</ul>
-
-<p>```ruby
-String.class_eval do
-  define_method :another_method, unbound
-end</p>
-
-<p>“abc”.another_method # =&gt; 42
-```</p>
-
-<p><strong>example</strong></p>
-
-<p>In ActiveSupport, the ‘autoloading’ system includes a <code>Loadable</code> module, which redefines the standard <code>Kernel#load</code>. If a class includes <code>Loadable</code>, then <code>Loadable#load</code> gets lower then <code>Kernel#load</code> on its chain of ancestors.</p>
-
-<p>And what if you want to stop using <code>Loadable#load</code> and go back to the plain vanilla <code>Kernel#load</code>?</p>
-
-<p><code>ruby # gems/activesupport-4.0.2/lib/active_support/dependencies.rb
-module Loadable
-  def exclude_from(base)
-    base.class_eval { define_method :load, Kernel.instance_method(:load) }
-  end
-end
-</code></p>
-
-<h1 id="class-definitions">Class Definitions</h1>
-
-<p>In Java and C#, defining a class is like making a deal between you and the compiler.</p>
-
-<p>In Ruby, class definitions are different. When you use the class keyword, you aren’t just dictating how objects will behave in the future. On the contrary, you’re actually running code.</p>
-
-<h2 id="the-current-class">The Current Class</h2>
-
-<p>Wherever you are in a Ruby program, you always have a current object: <code>self</code>. Likewise, you always have a current class (or module). As The Ruby interpreter always keeps a reference to the current class (or module), when you define a method, that method becomes an instance method of the current class.</p>
-
-<p>Although you can get a reference to the current object through <code>self</code>, there’s no equivalent keyword to get a reference to the current class.</p>
-
-<p><strong><em>How to keep track of the current class?</em></strong></p>
-
-<ul>
-  <li>At the top level of your program, the current class is <code>Object</code>, the class of <code>main</code>. (That’s why, if you define a method at the top level, that method becomes an instance method of <code>Object</code>).</li>
-</ul>
-
-<p><code>ruby
-def foo; puts 'foo'; end
-Object.instance_methods.grep(:foo)      # =&gt; []
-Object.private_instance_methods.grep(:foo) # =&gt; [:foo]
-</code></p>
-
-<p>```ruby
-[6] pry(main)&gt; def foo; puts ‘foo’; end
-=&gt; nil
-[7] pry(main)&gt; cd Object
-[8] pry(Object):1&gt; show-method foo</p>
-
-<p>From: (pry) @ line 4:
-Owner: Object
-Visibility: private
-Number of lines: 1</p>
-
-<p>def foo; puts ‘foo’; end
-[9] pry(Object):1&gt; cd ..
-```</p>
-
-<p>```ruby
-# foo.rb
-def foo; puts ‘foo’; end
-p Object.private_instance_methods.grep(:foo) # =&gt; [:foo]</p>
-
-<h1 id="console">console</h1>
-<p>$ ruby foo.rb # =&gt; [:foo]
-```</p>
-
-<ul>
-  <li>
-    <p>In a method, the current class is the class of the current object.</p>
-  </li>
-  <li>
-    <p>When you open a class with the <code>class</code> keyword (or a module with the <code>module</code> keyword), that class becomes the current class.</p>
-  </li>
-</ul>
-
-<p><strong><em>How can you open the class if you don’t know its name?</em></strong></p>
-
-<p>Use <code>Module#class_eval</code>.</p>
-
-<p><strong><em>What’s the advantage of <code>Module#class_eval</code> other than <code>class</code>?</em></strong></p>
-
-<ul>
-  <li><code>Module#class_eval</code> is actually more flexible than class. You can use <code>class_eval</code> on any variable that references the class, while <code>class</code> requires a constant.</li>
-  <li><code>class</code> opens a new scope, losing sight of the current bindings, while <code>class_eval</code> has a <em>Flat Scope</em>.</li>
-</ul>
-
-<p><strong><em>When to use <code>class_eval</code>, and when <code>instance_eval</code>?</em></strong></p>
-
-<p>Use <code>instance_eval</code> to open an object that is not a class, and <code>class_eval</code> to open a class definition and define methods with <code>def</code>.</p>
-
-<p><strong><em>What’s the difference between <code>class_eval</code> and <code>instance_eval</code>?</em></strong></p>
-
-<p>Both changes <code>self</code>, and <code>class_eval</code> changes the current class to the caller’s class, while <code>instance_eval</code> changes the current class to the caller’s singleton class.</p>
-
-<p><strong>An interesting knowledge about <code>Class.new</code></strong></p>
-
-<p>```ruby
-c = Class.new(Array) do
-  def my_method
-    ‘Hello!’
-  end
-end</p>
-
-<p>MyClass = c
-c.name  # =&gt; ‘MyClass’
-```</p>
-
-<p>When you assign an anonymous class to a constant, Ruby understands that you’re trying to give a name to the class, and it does something special: it turns around to the class and says, “Here’s your new name.” Now the constant references the Class, and the Class also references the constant. If it weren’t for this trick, a class wouldn’t be able to know its own name</p>
-
-<h2 id="class-instance-variables">Class Instance Variables</h2>
-
-<p>They’re just regular instance variables that happen to belong to an object of class <code>Class</code>. Because of that, a Class Instance Variable can be accessed only by the class itself— not by an instance or by a subclass.</p>
-
-<p>No weird behaviors like Class Variables, which subclass and class share the same variable.</p>
-
-<h2 id="singleton-methods">Singleton Methods</h2>
-
-<p><code>ruby
-obj = Object.new
-def obj.foo; puts 'foo'; end
-</code></p>
-
-<p>A method which is specific to a single object, is called Singleton Methods.</p>
-
-<p>You can also use <code>Object#define_singleton_method</code>: (Remeber <code>Module#define_method</code>?)</p>
-
-<p><code>ruby
-obj.define_singleton_method :bar { puts 'bar' }
-</code></p>
-
-<p><strong><em>What is the Class Macro?</em></strong></p>
-
-<p>A method such as <code>attr_accessor</code> is called a Class Macro. Class Macros look like keywords, but they’re just regular class methods that are meant to be used in a class definition.</p>
-
-<h2 id="singleton-class">Singleton Class</h2>
-
-<p>A singleton class is where an object’s Singleton Methods live</p>
-
-<p><strong><em>How to get?</em></strong></p>
-
-<ul>
-  <li>Use the <code>&lt;&lt;</code> syntax.</li>
-</ul>
-
-<p><code>ruby
-def obj.my_singleton_method; end
-class &lt;&lt; obj; instance_methods.grep(/my_/); end
-</code></p>
-
-<p>```ruby
-class Foo
-  class « self
-    def bar; puts ‘Foo.bar’; end
-  end
-end</p>
-
-<p>foo = Foo.new
-class « foo
-  def bar; puts ‘foo.bar’; end
-end
-```</p>
-
-<ul>
-  <li>Use <code>Object#singleton_class</code></li>
-</ul>
-
-<p><code>ruby
-obj.singleton_class.instance_methods.grep(/my_/)
-</code></p>
-
-<p><strong>Singleton classes and inheritance</strong></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/singleton_classes_and_inheritance.png" alt="singleton_classes_and_inheritance" /></p>
-
-<p><strong>7 rules of the Ruby object model</strong></p>
-
-<blockquote>
-  <p>The Ruby object model is a beautiful place,” Bill notes, with a dreamy expres- sion on his face. “There are classes, singleton classes, and modules. There are instance methods, class methods, and singleton methods.</p>
-</blockquote>
-
-<ol>
-  <li>There is only one kind of object—be it a regular object or a module.</li>
-  <li>There is only one kind of module—be it a regular module, a class, or a singleton class.</li>
-  <li>There is only one kind of method, and it lives in a module—most often in a class.</li>
-  <li>Every object, classes included, has its own “real class,” be it a regular class or a singleton class.</li>
-  <li>Every class, with the exception of <code>BasicObject</code>, has exactly one ancestor— either a superclass, or a module. This means you have a single chain of ancestors from any class up to <code>BasicObject</code>.</li>
-  <li>The superclass of the singleton class of an object is the object’s class. The superclass of the singleton class of a class is the singleton class of the class’s superclass.</li>
-  <li>When you call a method, Ruby goes “right” in the receiver’s real class and then “up” the ancestors chain. That’s all there is to know about the way Ruby finds methods.</li>
-</ol>
-
-<p><strong><em>Can object’s Singleton Class touch the its Instance Variable?</em></strong></p>
-
-<p>```ruby
-# exampel 1</p>
-
-<p>class MyClass
-  def name; @name; end
-  def name=(n); @name=n; end
-end</p>
-
-<p>obj = MyClass.new
-obj.name = ‘foo’
-obj.name # =&gt; ‘foo’</p>
-
-<p>obj.instance_eval { def to_s; “My name is #@name”; end }
-obj.to_s # =&gt; “My name is foo”</p>
-
-<h1 id="example2">example2</h1>
-
-<p>class MyClass
-  @age = 42
-  class « self
-    def age; @age; end
-  end
-end</p>
-
-<p>MyClass.age # =&gt; 42
-```</p>
-
-<p>Yes, it can. So I can assume the obj’s Instance Variable lives in its Singleton Class.</p>
-
-<p><strong><em>Can a module’s singleton methods be included?</em></strong></p>
-
-<p>No!</p>
-
-<p>When a class includes a module, it gets the module’s instance methods—not the class methods. Class methods stay out of reach, in the module’s singleton class.</p>
-
-<p>```ruby
-module M
-  def foo; puts ‘foo’; end
-  def self.bar; puts ‘bar’; end
-end</p>
-
-<p>class C
-  include M
-end</p>
-
-<p>C.new.foo # =&gt; ‘foo’
-C.new.bar # =&gt; NoMethodError</p>
-
-<p>class C
-  extend M
-end</p>
-
-<p>C.bar # =&gt; NoMethodError
-C.foo # =&gt; ‘foo’
-```</p>
-
-<p><strong><em>What’s the difference between <code>Module#include</code> and <code>Object#extend</code>?</em></strong></p>
-
-<ul>
-  <li><code>Module#include</code> includes a module in the receiver’s class.</li>
-  <li><code>Object#extend</code> includes a module in the receiver’s singleton class.</li>
-</ul>
-
-<h2 id="method-wrapper">Method Wrapper</h2>
-
-<ul>
-  <li>Around Alias</li>
-  <li>Refinement Wrapper</li>
-  <li>Prepended Wrapper(<code>Module#prepend</code>)</li>
-</ul>
-
-<p>Selection: Prepended Wrapper &gt; Refinement Wrapper &gt; Around Alias</p>
-
-<h3 id="around-alias">Around Alias</h3>
-
-<p><strong><code>alias</code> vs. <code>alias_method</code></strong></p>
-
-<p><code>ruby
-class MyClass
-  alias :new_foo :foo
-  alias_method :another_new_foo, :foo
-end
-</code></p>
-
-<ul>
-  <li><code>alias</code> is a keyword.</li>
-  <li><code>alias_method</code> is an instance method of Module. <code>Module#alias_method</code></li>
-</ul>
-
-<p><strong><em>Can you alias a method before it defined?</em></strong></p>
-
-<p>No!</p>
-
-<p>```ruby
-class MyClass
-  alias_method :new_foo, :foo
-  def foo; puts ‘foo’; end
-end</p>
-
-<h1 id="nameerror-undefined-method-foo-for-class-myclass">=&gt; NameError: undefined method <code>foo' for class </code>MyClass’</h1>
-<p>```</p>
-
-<p><strong><em>Can aliases break the class’s encapsulation?</em></strong></p>
-
-<p>Yes!</p>
-
-<p>```ruby
-class MyClass
-  alias_method :new_foo, :foo</p>
-
-<p>private
-    def foo; puts ‘foo’; end
-  end</p>
-
-<p>MyClass.new.foo     # =&gt; NoMethodError: private method <code>foo' called
-  MyClass.new.new_foo # =&gt; 'foo'
-</code>``</p>
-
-<p><strong><em>How to write an Around Alias?</em></strong></p>
-
-<ol>
-  <li>You alias a method.</li>
-  <li>You redefine it.</li>
-  <li>You call the old method from the new method.</li>
-</ol>
-
-<p><strong>Downsides</strong></p>
-
-<ul>
-  <li>They pollute your classes with one additional method name. You can fix this small problem somehow by making the old version of the method <code>private</code> after you alias it.</li>
-  <li>The loading issue. You should never load an Around Alias twice, unless you want to end up with an exception when you call the method.</li>
-</ul>
-
-<p>The main issue with Around Aliases, however, is that they are a form of Monkeypatching. Like all Monkeypatches, they can break existing code that wasn’t expecting the method to change.</p>
-
-<h3 id="refinement-wrapper">Refinement Wrapper</h3>
-
-<p><strong>Advantage over Around Alias</strong></p>
-
-<p>If you call <code>super</code> from a refined method, you will call the original, unrefined method.</p>
-
-<p>```ruby
-module StringRefinement
-  refine String do
-    def length
-      super &gt; 5 ? ‘long’ : ‘short’
-    end
-  end
-end</p>
-
-<p>using StringRefinement
-“War and Peace”.length # =&gt; “long”
-```</p>
-
-<h3 id="prepended-wrapper">Prepended Wrapper</h3>
-
-<p>A method in a prepended module can override a method in the includer, and call the non- overridden version with <code>super</code>.</p>
-
-<p>```ruby
-module ExplicitString
-  def length
-    super &gt; 5 ? ‘long’ : ‘short’
-  end
-end</p>
-
-<p>String.class_eval do
-  prepend ExplicitString
-end</p>
-
-<p>“War and Peace”.length # =&gt; “long”
-```</p>
-
-<p><strong><em>Advantage over Refinement Wrapper and Around Alias?</em></strong></p>
-
-<p>It’s generally considered cleaner and more explicit than both a Refinement Wrapper and an Around Alias.</p>
-
-<h3 id="an-interesting-quiz-solving-by-around-alias">An interesting quiz solving by Around Alias</h3>
-
-<p>Make it work:</p>
-
-<p><code>ruby
-1 + 1 # =&gt; 3
-</code></p>
-
-<p>You can solve this quiz with an Open Class. Just reopen <code>Fixnum</code>, and redefine <code>+</code> so that <code>(x+y)</code> becomes <code>(x+y+1)</code>. This is not as easy as it seems, however. The new version of + relies on the old version of +, so you need to wrap your old version with the new version.</p>
-
-<p>```ruby
-class Fixnum
-  alias_method :old_plus, :+</p>
-
-<p>def +(value)
-    self.old_plus(value).old_plus(1)
-  end
-end
-```</p>
-
-<h1 id="eval-and-binding">Eval and Binding</h1>
-
-<p><code>Kernel#eval</code> Evaluates the Ruby expression(s) in string. If binding is given, which must be a <code>Binding</code> object, the evaluation is performed in its context.</p>
-
-<p>```ruby
-def get_binding(str)
-  binding
-end</p>
-
-<p>str = ‘hello’
-eval “str + ‘ Fred’”                     # =&gt; “hello Fred”
-eval “str + ‘ Fred’”, get_binding(‘bye’) # =&gt; “bye Fred”
-```</p>
-
-<p><code>Kernel#binding</code> Returns a <code>Binding</code> object, describing the variable and method bindings at the point of call. This object can be used when calling eval to execute the evaluated command in this environment.</p>
-
-<p>Ruby also provides a predefined constant named <code>TOPLEVEL_BINDING</code>, which is just a Binding of the top-level scope.</p>
-
-<p>You can also use <code>Proc#binding</code> to return a <code>Binding</code> object.</p>
-
-<p>```ruby
-def get_proc(str)
-  -&gt; {}
-end</p>
-
-<p>eval “str + ‘Fred’”, get_proc(‘bye’).binding # =&gt; “bye Fred”
-```</p>
-
-<p>```ruby
-l = -&gt; { name = ‘wendi’ }
-eval “puts name”, l.binding
-# =&gt; NameError: undefined local variable or method <code>name' for main:Object</code></p>
-
-<p>def bar
-  name = ‘wendi’
-  -&gt; {}
-end
-eval “puts name”, bar.binding
-# =&gt; wendi
-```</p>
-
-<p><strong><em>What’s to concern when using <code>eval</code>?</em></strong></p>
-
-<ul>
-  <li>
-    <p>As it only accepts strings of codes but not blocks, it’s not editor friendly(syntax highlighting) and hard to trace syntax errors.</p>
-  </li>
-  <li>
-    <p>Code Injection.</p>
-  </li>
-</ul>
-
-<p><strong><em>What’s the soluction Ruby provided for <code>eval</code> insecurity?</em></strong></p>
-
-<ul>
-  <li>
-    <p>Tainted Objects, <code>Object#tainted?</code>, <code>Object#untaint</code></p>
-  </li>
-  <li>
-    <p>Safe Levels, <code>$SAFE</code></p>
-
-    <ul>
-      <li>0, “hippie commune”, where you can hug trees and format hard disks.</li>
-      <li>Any safe level greater than 0 also causes Ruby to flat-out refuse to evaluate tainted string.</li>
-      <li>2, disallows most file-related operations.</li>
-      <li>3, “military dictatorship,” where every object you create is tainted by default.</li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong><em>How to write a Sandbox for <code>eval</code>?</em></strong></p>
-
-<p><code>ruby
-class ERB
-  def result(b=new_toplevel)
-    if @safe_level
-      proc {
-        $SAFE = @safe_level
-        eval(@src, b, (@filename || '(erb)'), 0)
-      }.call
-    else
-      eval(@src, b, (@filename || '(erb)'), 0)
-    end
-  end
-end
-</code></p>
-
-<p><em>Updated 2014-09-28</em></p>
-
-<p>As I was looking API and fiddling around, I found 3 new methods only supported by Ruby 2.1.</p>
-
-<p>```ruby
-def foo
-  a = 1</p>
-
-<p>binding.local_variable_defined?(:a) # =&gt; true
-  # binding.eval(“defined?(#{symbol}) == ‘local-variable’”)</p>
-
-<p>binding.local_variable_get(:a) #=&gt; 1
-  # binding.eval(“#{symbol}”)</p>
-
-<p>binding.local_variable_set(:a, 2) #=&gt; 2
-  # binding.eval(“#{symbol} = #{obj}”)
-end
-```</p>
-
 ]]></content>
   </entry>
   
