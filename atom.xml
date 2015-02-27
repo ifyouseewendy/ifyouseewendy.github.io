@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-02-26T17:20:41+08:00</updated>
+  <updated>2015-02-27T12:53:58+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Great Expectations 2015]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/02/27/great-expectations-2015/"/>
+    <updated>2015-02-27T12:52:00+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/02/27/great-expectations-2015</id>
+    <content type="html"><![CDATA[<h2 id="target">Target</h2>
+
+<p><strong>Algorithm</strong></p>
+
+<ul>
+  <li>Reading Algorithms 4th thoroughly.</li>
+  <li>Algorithm course on Coursera.</li>
+</ul>
+
+<p><strong>English</strong></p>
+
+<ul>
+  <li>Words, need an efficient way to study new and review regularly</li>
+  <li>Listening, keep on Friends or podcast.</li>
+</ul>
+
+<p>Key point is to make it a regular stuff.</p>
+
+<p><strong>Source Code Reading</strong></p>
+
+<ul>
+  <li>Find or create a written, detailed, repeatable process to follow.</li>
+  <li><a href="http://www.justinweiss.com/blog/2015/02/03/finding-your-way-around-a-new-rails-project/?utm_source=Weissblog+Subscribers&amp;utm_campaign=80c8a475a1-The_best_way_to_fight_being_overwhelmed2_5_2015&amp;utm_medium=email&amp;utm_term=0_2494b7d197-80c8a475a1-120246897">Finding Your Way Around a New Rails Project</a></li>
+</ul>
+
+<h2 id="habit">Habit</h2>
+
+<p><em>#lift.do</em></p>
+
+<p><strong>Get Up Early</strong></p>
+
+<ul>
+  <li>Review yesterday <em>#dayone</em></li>
+  <li>Schedule on new day <em>#sunrise</em> <em>#omnifocus</em></li>
+</ul>
+
+<p><strong>Record Daily Life</strong></p>
+
+<ul>
+  <li>Knowledge <em>#evernote</em></li>
+  <li>Life trivia <em>#dayone</em></li>
+  <li>Financial status, monthly</li>
+</ul>
+
+<p><strong>One Hour Tech Reading</strong></p>
+
+<p>Need to keep quiet and focused, books or source code.</p>
+
+<h2 id="workday">Workday</h2>
+
+<blockquote>
+  <p>What should be a workday like?</p>
+</blockquote>
+
+<ul>
+  <li>08:00 Get up, do the reviewing and scheduling.</li>
+  <li>10:00 Company stuff I</li>
+  <li>12:00 Lunch</li>
+  <li>13:00 Company stuff II</li>
+  <li>16:00 Tech read</li>
+  <li>17:00 Email subscriptions and browsing </li>
+  <li>18:00 Company stuff IIII</li>
+  <li>20:00 Back home</li>
+  <li>22:30 Dear Diary</li>
+  <li>23:00 Go to bed and random read.</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Review] Guidance from POODR]]></title>
