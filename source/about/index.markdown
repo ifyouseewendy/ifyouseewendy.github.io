@@ -14,6 +14,7 @@ My name is Di Wen, this is an Internet Profile of mine.
 
   - [Blog](http://blog.ifyouseewendy.com) Tech books I read, and thoughts I made. Feel free for communication.
   - [Github](https://github.com/ifyouseewendy) && [StackOverflow](http://stackoverflow.com/users/1331774/ifyouseewendy)
+  - [Resume](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/Resume%20-%20Di%20Wen.pdf) && [简历](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/%E7%AE%80%E5%8E%86%20-%20%E6%B8%A9%E8%BF%AA.pdf)
 
 + **Amateur**
 
