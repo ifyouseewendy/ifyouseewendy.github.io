@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-03-03T18:02:18+08:00</updated>
+  <updated>2015-03-04T17:48:59+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,110 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Annoying OAuth Issue on HTTP URL Encoding]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding/"/>
+    <updated>2015-03-04T17:46:12+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding</id>
+    <content type="html"><![CDATA[<p>I was developing and maintaining an OAuth service using <code>pelle/oauth-plugin</code> gem. Other than the standard token exchange process, there is a need to authenticate by signature based on user’s passed in parameters. As custom parameters can include custom charactors, here comes the space encoding issue.</p>
+
+<ul>
+  <li>Why the service approves my test script by passing <code>name=wendi</code> but refuses <code>name=Di Wen</code> ?</li>
+  <li>Why the <code>CGI.escape('Di Wen')</code> outputs <code>"Di+Wen"</code>, while <code>URI.escape('Di Wen')</code> outpus <code>Di%20Wen</code> ?</li>
+</ul>
+
+<p>This is definitely an annoying issue. I’ve run into it sometime before, but today I need to make a clear mind.</p>
+
+<p><strong>What’s the HTTP standard way to encode space in URL?</strong></p>
+
+<p><code>%20</code>, according to the <a href="http://www.w3schools.com/tags/ref_urlencode.asp">HTML URL Encoding Reference</a> by W3schools.</p>
+
+<p><strong>Why the hell some libary encode space to <code>+</code>?</strong></p>
+
+<p>Because of the <code>application/x-www-form-urlencoded</code> <em>MIME</em> type.</p>
+
+<p>Refered to Wikipedia, <a href="http://en.wikipedia.org/wiki/Percent-encoding#The_application.2Fx-www-form-urlencoded_type">Percent Encoding</a></p>
+
+<blockquote>
+  <p>The encoding used by default is based on a very early version of the general URI percent-encoding rules, with a number of modifications such as newline normalization and replacing spaces with “+” instead of “%20”. The Internet media type of data encoded this way is application/x-www-form-urlencoded, and it is currently defined (still in a very outdated manner) in the HTML and XForms specifications.</p>
+</blockquote>
+
+<p>And <a href="http://stackoverflow.com/users/634419/anomie">Anomie</a> has a summary <a href="http://stackoverflow.com/a/5433216/1331774">answer</a>,</p>
+
+<blockquote>
+  <p>The query string format is actually a different but related encoding, application/x-www-form-urlencoded, defined in RFC 1866 along with HTML 2.0. It was based on RFC 1738, but specified that spaces (not all whitespace, just the character with ASCII code 0x20) are replaced by ‘+’ and that line breaks are to be encoded as CRLF (i.e. %0D%0A). The former is likely because that saves 2 bytes for a very common character in form submissions at the expense of using an extra 2 bytes for a much less common character, and the latter is to avoid problems when transferring between systems using different end-of-line codings. Non-ASCII characters were left unconsidered.</p>
+</blockquote>
+
+<blockquote>
+  <p>UTF-8 coding in URIs came over a decade later, in RFC 3986, although individual protocols may have specified this or another encoding of non-ASCII characters earlier. To maintain backwards compatibility, all UTF-8 octets must be percent-encoded.</p>
+</blockquote>
+
+<p><strong>What’s the Rule of Thumb in Ruby world?</strong></p>
+
+<p><a href="http://stackoverflow.com/users/409475/ernest">Ernest</a> makes a <a href="http://stackoverflow.com/questions/2824126/whats-the-difference-between-uri-escape-and-cgi-escape">specification</a> about the escape methods over <code>URI</code>, <code>CGI</code>, and <code>Addressable</code>, and gives a conclusion</p>
+
+<blockquote>
+  <ul>
+    <li>Do not use URI.escape or similar</li>
+    <li>Use CGI::escape if you only need form escape</li>
+    <li>If you need to work with URIs, use Addressable, it offers url encoding, form encoding and normalizes URLs.</li>
+  </ul>
+</blockquote>
+
+<p><strong>So, what’s the solution to my question?</strong></p>
+
+<p>The <code>pelle/oauth-plugin</code> gem failed my test script with <code>CGI</code> by</p>
+
+<p>```ruby
+pry(main)&gt; CGI.escape ‘Di Wen’
+=&gt; “Di+Wen”</p>
+
+<h1 id="expecting-di2bwen">expecting “Di%2BWen”</h1>
+<p>```</p>
+
+<p>Also failed <code>URI</code> and <code>Addressable</code> by</p>
+
+<p>```ruby
+pry(main)&gt; URI.escape ‘Di@Wen’
+=&gt; “Di@Wen”</p>
+
+<p>pry(main)&gt; Addressable::URI.parse(“Di@Wen”).normalize
+=&gt; #&lt;Addressable::URI:0x81f58abc URI:Di@Wen&gt;</p>
+
+<h1 id="expecting-di40wen">expecting “Di%40Wen”</h1>
+<p>```</p>
+
+<p>After some digging into the gem, I’ve found its encoding method</p>
+
+<p>```ruby
+# Escape +value+ by URL encoding all non-reserved character.
+#
+# See Also: {OAuth core spec version 1.0, section 5.1}[http://oauth.net/core/1.0#rfc.section.5.1]
+def escape(value)
+  URI::escape(value.to_s, OAuth::RESERVED_CHARACTERS)
+rescue ArgumentError
+  URI::escape(value.to_s.force_encoding(Encoding::UTF_8), OAuth::RESERVED_CHARACTERS)
+end</p>
+
+<p>OAuth::RESERVED_CHARACTERS # =&gt; /[^a-zA-Z0-9-._\~]/
+```</p>
+
+<p>Following the comment, comes along the OAuth standard specification about <a href="http://oauth.net/core/1.0/#rfc.section.5.1">Parameter Encoding</a></p>
+
+<blockquote>
+  <p>All parameter names and values are escaped using the [RFC3986] percent-encoding (%xx) mechanism. Characters not in the unreserved character set ([RFC3986] section 2.3) MUST be encoded. Characters in the unreserved character set MUST NOT be encoded. Hexadecimal characters in encodings MUST be upper case. Text names and values MUST be encoded as UTF-8 octets before percent-encoding them per [RFC3629].</p>
+</blockquote>
+
+<blockquote>
+  <pre><code>unreserved = ALPHA, DIGIT, '-', '.', '_', '~'
+</code></pre>
+</blockquote>
+
+<p>Under the standard spec and refering to the gem’s implementation, I’ve finally solved my stupid issue.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Review] Guidance from POODR]]></title>
@@ -3266,279 +3370,6 @@ end<br />
 <ul>
   <li><a href="https://github.com/nslocum/design-patterns-in-ruby">Examples from the book Design Patterns</a> by <a href="https://github.com/nslocum">Nick Slocum</a></li>
 </ul>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Things I Learn from Owning Rails Class]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/09/29/things-i-learnt-from-owning-rails-class/"/>
-    <updated>2014-09-29T18:36:28+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/09/29/things-i-learnt-from-owning-rails-class</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Teacher</strong></td>
-      <td><a href="http://macournoyer.com/">Marc-André Cournoy</a></td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="http://owningrails.com/">Owning Rails</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>I’ve participated Marc’s Owning Rails online class recently. AWESOME!</p>
-
-<p>The class has two parts. Marc led us to build a minimal version of Rails on first day, Marc focused on the structure and design pattern behind Rails. Trully I think it’s a live version of <a href="http://blog.ifyouseewendy.com/blog/2014/09/27/rebuilding-rails/">Rebuilding Rails</a>, maybe you can read it as a substitution. Second day is the excellent part, took us diving into the real Rails source. Marc gave us a clear clue on what each part do and how they work, and also some practical introductions on how and where to keep on digging after class. </p>
-
-<p>Beside professional, I should also mention that Marc is a really kind and patient guy.</p>
-
-<p>Thanks a lot, Marc.</p>
-
-<hr />
-
-<p>Following are some specific questions I’ve noted on class.</p>
-
-<p><strong><em>Is <code>yield</code> still available after passing <code>&amp;block</code>?</em></strong></p>
-
-<p>yes.</p>
-
-<p><code>ruby
-[1] pry(main)&gt; def foo(&amp;block)
-[1] pry(main)*   p block
-[1] pry(main)*   yield
-[1] pry(main)* end 
-[4] pry(main)&gt; foo { puts 'foo' }
-#&lt;Proc:0x000001053e7f28@(pry):6&gt;
-foo
-=&gt; nil
-[5] pry(main)&gt; def bar(&amp;block)
-[5] pry(main)*   block.call
-[5] pry(main)*   yield
-[5] pry(main)* end  
-=&gt; nil
-[6] pry(main)&gt; bar { puts 'bar' }
-bar
-bar
-=&gt; nil
-</code></p>
-
-<p>Passing block directly will omit the block-to-proc process, it can be more efficient.</p>
-
-<p><strong><em>How to make bindings of block get understood in object, which differs the environment the block defines?</em></strong></p>
-
-<blockquote>
-  <p>When you define the block, it simply grabs the bindings that are there at that moment, and then it carries those bindings along when you pass the block into a method. </p>
-</blockquote>
-
-<p>```ruby
-=class Router
-  def initialize
-    @routes = {}
-  end</p>
-
-<p>def match(route)
-    puts ‘#match from Router instance’
-    @routes.update route
-  end</p>
-
-<p>=  def routes(&amp;block)
-    yield
-  end
-end</p>
-
-<p>def match(route)
-  puts ‘#match from main object’
-end</p>
-
-<p>Router.new.routes do
-  match ‘/user’ =&gt; ‘users#index’
-end</p>
-
-<h1 id="match-in-main-object">=&gt; #match in main object</h1>
-<p>```</p>
-
-<p>Use <code>instance_eval</code> to eval the new bindings.</p>
-
-<p>```ruby
-def match(route)
-  puts ‘#match in main object’
-end</p>
-
-<p>class Router
-  def routes(&amp;block)
-    instance_eval(&amp;block)
-  end
-end</p>
-
-<p>Router.new.routes do
-  match ‘/user’ =&gt; ‘users#index’
-end</p>
-
-<h1 id="match-from-router-instance">=&gt; match from Router instance</h1>
-<p>```</p>
-
-<p><strong><em>Why using <code>::File</code> in <code>config.ru</code>?</em></strong></p>
-
-<p>```ruby
-# config.ru</p>
-
-<p>require ::File.expand_path(‘../config/environment’, <strong>FILE</strong>)
-run Rails.application
-```</p>
-
-<p>Actually the code above is defined in module Rack, where <code>Rack::File</code> already exists.</p>
-
-<p><strong><em>How to use <code>include</code> to construct a method chain?</em></strong></p>
-
-<p>```ruby
-module A
-  def foo
-    puts ‘foo from A’
-    super
-  end
-end</p>
-
-<p>module B
-  def foo
-    puts ‘foo from B’
-    super
-  end
-end</p>
-
-<p>class Base
-  include A, B</p>
-
-<p>def foo
-    puts ‘foo from Base’
-  end
-end</p>
-
-<p>Base.new.foo
-# =&gt; foo from Base
-```</p>
-
-<p>One way to solve is to use <code>prepend</code> instead of <code>include</code>, introduced by Ruby 2.0.</p>
-
-<p>Considering the compatibility, Rails may not start to use it. Here is the Rails way to solve</p>
-
-<p>```ruby
-module A
-  def foo
-    puts ‘foo from A’
-    super
-  end
-end</p>
-
-<p>module B
-  def foo
-    puts ‘foo from B’
-    super
-  end
-end</p>
-
-<p>class Metal
-  def foo
-    puts ‘foo from Base’
-  end
-end</p>
-
-<p>class Base
-  include A, B
-end</p>
-
-<p>Base.new.foo
-# =&gt; foo from A
-# =&gt; foo from B
-# =&gt; foo from Base
-```</p>
-
-<p><strong><em>How instance variables shared betweet controller and view?</em></strong></p>
-
-<p>One way is to use <code>instance_varialbles</code> and <code>instance_variable_set/get</code>, to passing instance varaibles defined in action to the view object.</p>
-
-<p>The other way is passing <code>binding</code> directly.</p>
-
-<p><code>ruby
-template = ERB.new( File.read() )
-template.result(binding)
-# eval(template.src, binding)
-</code></p>
-
-<p><strong><em>Truth about binding</em></strong></p>
-
-<ol>
-  <li>
-    <p><code>Binding.new</code> doesn’t work, you can only call <code>Kernel.binding</code> or <code>Proc#binding</code>.</p>
-  </li>
-  <li>
-    <p>You can only use <code>binding</code> with <code>eval</code>. <code>eval('', binding)</code> or <code>binding.eval('')</code></p>
-  </li>
-</ol>
-
-<p><strong><em>When we create custom middleware is it a good practise to add new keys and values to env variable to transfer it between middlewares?</em></strong></p>
-
-<blockquote>
-  <p>[02:35] &lt;wawka&gt; macournoyer: When we create custom middleware is it a good practise to add new keys and values to env variable to transfer it between middlewares ?<br />
-[02:36] &lt;macournoyer&gt;  Rack specs recommend namespacing everything you put in the env var<br />
-[02:36] &lt;macournoyer&gt; eg.: Rails will do env[“action_controller.request_id”] = “…” <br />
-[02:36] &lt;macournoyer&gt; “action_controller.” is the namespace<br />
-[02:36] &lt;wawka&gt; macournoyer: ok</p>
-</blockquote>
-
-<p><strong><em>How to check a gem’s dependency and dive into the source code?</em></strong></p>
-
-<p>```sh
-$ gem dep rails -v=4.1.6  <br />
-Gem rails-4.1.6
-  actionmailer (= 4.1.6)
-  actionpack (= 4.1.6)
-  actionview (= 4.1.6)
-  activemodel (= 4.1.6)
-  activerecord (= 4.1.6)
-  activesupport (= 4.1.6)
-  bundler (&lt; 2.0, &gt;= 1.3.0)
-  railties (= 4.1.6)
-  sprockets-rails (~&gt; 2.0)</p>
-
-<p>$ bundle open activerecord</p>
-
-<h1 id="open-the-latest-version-on-system-a-little-bit-dangerous">open the latest version on system, a little bit dangerous</h1>
-<p>$ gem edit activerecord
-```</p>
-
-<p><strong><em>How to get the source location of the method calling?</em></strong></p>
-
-<p>In Rails, <em>guess</em> the logic part(activerecord, activesupport..) based on the method function, then use <code>bundle open</code> to dive in.</p>
-
-<p>Ruby supports <code>Method#source_location</code>, <code>Proc#source_location</code> to provides some information, not accurate though. Use it like this</p>
-
-<p><code>ruby
-# chech where defined respond_with
-raise method(:respond_with).source_location.inspect
-</code></p>
-
-<hr />
-
-<h3 id="other-stuffs">Other stuffs</h3>
-
-<ol>
-  <li>
-    <p>Marc’s <a href="https://gist.github.com/macournoyer/1878273">gitconfig</a></p>
-  </li>
-  <li>
-    <p>Don’t try to understand everything.</p>
-  </li>
-  <li>
-    <p>Read concern, callbacks, core_ext and other ActiveSupport parts as a start.</p>
-  </li>
-  <li>
-    <p>Nice word learnt, <strong>Base</strong>ics</p>
-  </li>
-  <li>
-    <p>Try <code>mount</code> a rack-based app in Rails.</p>
-  </li>
-</ol>
 ]]></content>
   </entry>
   

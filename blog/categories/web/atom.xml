@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-03-03T18:02:18+08:00</updated>
+  <updated>2015-03-04T17:48:59+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,110 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Annoying OAuth Issue on HTTP URL Encoding]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding/"/>
+    <updated>2015-03-04T17:46:12+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding</id>
+    <content type="html"><![CDATA[<p>I was developing and maintaining an OAuth service using <code>pelle/oauth-plugin</code> gem. Other than the standard token exchange process, there is a need to authenticate by signature based on user’s passed in parameters. As custom parameters can include custom charactors, here comes the space encoding issue.</p>
+
+<ul>
+  <li>Why the service approves my test script by passing <code>name=wendi</code> but refuses <code>name=Di Wen</code> ?</li>
+  <li>Why the <code>CGI.escape('Di Wen')</code> outputs <code>"Di+Wen"</code>, while <code>URI.escape('Di Wen')</code> outpus <code>Di%20Wen</code> ?</li>
+</ul>
+
+<p>This is definitely an annoying issue. I’ve run into it sometime before, but today I need to make a clear mind.</p>
+
+<p><strong>What’s the HTTP standard way to encode space in URL?</strong></p>
+
+<p><code>%20</code>, according to the <a href="http://www.w3schools.com/tags/ref_urlencode.asp">HTML URL Encoding Reference</a> by W3schools.</p>
+
+<p><strong>Why the hell some libary encode space to <code>+</code>?</strong></p>
+
+<p>Because of the <code>application/x-www-form-urlencoded</code> <em>MIME</em> type.</p>
+
+<p>Refered to Wikipedia, <a href="http://en.wikipedia.org/wiki/Percent-encoding#The_application.2Fx-www-form-urlencoded_type">Percent Encoding</a></p>
+
+<blockquote>
+  <p>The encoding used by default is based on a very early version of the general URI percent-encoding rules, with a number of modifications such as newline normalization and replacing spaces with “+” instead of “%20”. The Internet media type of data encoded this way is application/x-www-form-urlencoded, and it is currently defined (still in a very outdated manner) in the HTML and XForms specifications.</p>
+</blockquote>
+
+<p>And <a href="http://stackoverflow.com/users/634419/anomie">Anomie</a> has a summary <a href="http://stackoverflow.com/a/5433216/1331774">answer</a>,</p>
+
+<blockquote>
+  <p>The query string format is actually a different but related encoding, application/x-www-form-urlencoded, defined in RFC 1866 along with HTML 2.0. It was based on RFC 1738, but specified that spaces (not all whitespace, just the character with ASCII code 0x20) are replaced by ‘+’ and that line breaks are to be encoded as CRLF (i.e. %0D%0A). The former is likely because that saves 2 bytes for a very common character in form submissions at the expense of using an extra 2 bytes for a much less common character, and the latter is to avoid problems when transferring between systems using different end-of-line codings. Non-ASCII characters were left unconsidered.</p>
+</blockquote>
+
+<blockquote>
+  <p>UTF-8 coding in URIs came over a decade later, in RFC 3986, although individual protocols may have specified this or another encoding of non-ASCII characters earlier. To maintain backwards compatibility, all UTF-8 octets must be percent-encoded.</p>
+</blockquote>
+
+<p><strong>What’s the Rule of Thumb in Ruby world?</strong></p>
+
+<p><a href="http://stackoverflow.com/users/409475/ernest">Ernest</a> makes a <a href="http://stackoverflow.com/questions/2824126/whats-the-difference-between-uri-escape-and-cgi-escape">specification</a> about the escape methods over <code>URI</code>, <code>CGI</code>, and <code>Addressable</code>, and gives a conclusion</p>
+
+<blockquote>
+  <ul>
+    <li>Do not use URI.escape or similar</li>
+    <li>Use CGI::escape if you only need form escape</li>
+    <li>If you need to work with URIs, use Addressable, it offers url encoding, form encoding and normalizes URLs.</li>
+  </ul>
+</blockquote>
+
+<p><strong>So, what’s the solution to my question?</strong></p>
+
+<p>The <code>pelle/oauth-plugin</code> gem failed my test script with <code>CGI</code> by</p>
+
+<p>```ruby
+pry(main)&gt; CGI.escape ‘Di Wen’
+=&gt; “Di+Wen”</p>
+
+<h1 id="expecting-di2bwen">expecting “Di%2BWen”</h1>
+<p>```</p>
+
+<p>Also failed <code>URI</code> and <code>Addressable</code> by</p>
+
+<p>```ruby
+pry(main)&gt; URI.escape ‘Di@Wen’
+=&gt; “Di@Wen”</p>
+
+<p>pry(main)&gt; Addressable::URI.parse(“Di@Wen”).normalize
+=&gt; #&lt;Addressable::URI:0x81f58abc URI:Di@Wen&gt;</p>
+
+<h1 id="expecting-di40wen">expecting “Di%40Wen”</h1>
+<p>```</p>
+
+<p>After some digging into the gem, I’ve found its encoding method</p>
+
+<p>```ruby
+# Escape +value+ by URL encoding all non-reserved character.
+#
+# See Also: {OAuth core spec version 1.0, section 5.1}[http://oauth.net/core/1.0#rfc.section.5.1]
+def escape(value)
+  URI::escape(value.to_s, OAuth::RESERVED_CHARACTERS)
+rescue ArgumentError
+  URI::escape(value.to_s.force_encoding(Encoding::UTF_8), OAuth::RESERVED_CHARACTERS)
+end</p>
+
+<p>OAuth::RESERVED_CHARACTERS # =&gt; /[^a-zA-Z0-9-._\~]/
+```</p>
+
+<p>Following the comment, comes along the OAuth standard specification about <a href="http://oauth.net/core/1.0/#rfc.section.5.1">Parameter Encoding</a></p>
+
+<blockquote>
+  <p>All parameter names and values are escaped using the [RFC3986] percent-encoding (%xx) mechanism. Characters not in the unreserved character set ([RFC3986] section 2.3) MUST be encoded. Characters in the unreserved character set MUST NOT be encoded. Hexadecimal characters in encodings MUST be upper case. Text names and values MUST be encoded as UTF-8 octets before percent-encoding them per [RFC3629].</p>
+</blockquote>
+
+<blockquote>
+  <pre><code>unreserved = ALPHA, DIGIT, '-', '.', '_', '~'
+</code></pre>
+</blockquote>
+
+<p>Under the standard spec and refering to the gem’s implementation, I’ve finally solved my stupid issue.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ASCIIcast of Fundamentals of Design by CodeSchool]]></title>

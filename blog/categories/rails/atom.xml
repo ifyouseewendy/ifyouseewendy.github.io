@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-03-03T18:02:18+08:00</updated>
+  <updated>2015-03-04T17:48:59+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,110 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Annoying OAuth Issue on HTTP URL Encoding]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding/"/>
+    <updated>2015-03-04T17:46:12+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding</id>
+    <content type="html"><![CDATA[<p>I was developing and maintaining an OAuth service using <code>pelle/oauth-plugin</code> gem. Other than the standard token exchange process, there is a need to authenticate by signature based on user’s passed in parameters. As custom parameters can include custom charactors, here comes the space encoding issue.</p>
+
+<ul>
+  <li>Why the service approves my test script by passing <code>name=wendi</code> but refuses <code>name=Di Wen</code> ?</li>
+  <li>Why the <code>CGI.escape('Di Wen')</code> outputs <code>"Di+Wen"</code>, while <code>URI.escape('Di Wen')</code> outpus <code>Di%20Wen</code> ?</li>
+</ul>
+
+<p>This is definitely an annoying issue. I’ve run into it sometime before, but today I need to make a clear mind.</p>
+
+<p><strong>What’s the HTTP standard way to encode space in URL?</strong></p>
+
+<p><code>%20</code>, according to the <a href="http://www.w3schools.com/tags/ref_urlencode.asp">HTML URL Encoding Reference</a> by W3schools.</p>
+
+<p><strong>Why the hell some libary encode space to <code>+</code>?</strong></p>
+
+<p>Because of the <code>application/x-www-form-urlencoded</code> <em>MIME</em> type.</p>
+
+<p>Refered to Wikipedia, <a href="http://en.wikipedia.org/wiki/Percent-encoding#The_application.2Fx-www-form-urlencoded_type">Percent Encoding</a></p>
+
+<blockquote>
+  <p>The encoding used by default is based on a very early version of the general URI percent-encoding rules, with a number of modifications such as newline normalization and replacing spaces with “+” instead of “%20”. The Internet media type of data encoded this way is application/x-www-form-urlencoded, and it is currently defined (still in a very outdated manner) in the HTML and XForms specifications.</p>
+</blockquote>
+
+<p>And <a href="http://stackoverflow.com/users/634419/anomie">Anomie</a> has a summary <a href="http://stackoverflow.com/a/5433216/1331774">answer</a>,</p>
+
+<blockquote>
+  <p>The query string format is actually a different but related encoding, application/x-www-form-urlencoded, defined in RFC 1866 along with HTML 2.0. It was based on RFC 1738, but specified that spaces (not all whitespace, just the character with ASCII code 0x20) are replaced by ‘+’ and that line breaks are to be encoded as CRLF (i.e. %0D%0A). The former is likely because that saves 2 bytes for a very common character in form submissions at the expense of using an extra 2 bytes for a much less common character, and the latter is to avoid problems when transferring between systems using different end-of-line codings. Non-ASCII characters were left unconsidered.</p>
+</blockquote>
+
+<blockquote>
+  <p>UTF-8 coding in URIs came over a decade later, in RFC 3986, although individual protocols may have specified this or another encoding of non-ASCII characters earlier. To maintain backwards compatibility, all UTF-8 octets must be percent-encoded.</p>
+</blockquote>
+
+<p><strong>What’s the Rule of Thumb in Ruby world?</strong></p>
+
+<p><a href="http://stackoverflow.com/users/409475/ernest">Ernest</a> makes a <a href="http://stackoverflow.com/questions/2824126/whats-the-difference-between-uri-escape-and-cgi-escape">specification</a> about the escape methods over <code>URI</code>, <code>CGI</code>, and <code>Addressable</code>, and gives a conclusion</p>
+
+<blockquote>
+  <ul>
+    <li>Do not use URI.escape or similar</li>
+    <li>Use CGI::escape if you only need form escape</li>
+    <li>If you need to work with URIs, use Addressable, it offers url encoding, form encoding and normalizes URLs.</li>
+  </ul>
+</blockquote>
+
+<p><strong>So, what’s the solution to my question?</strong></p>
+
+<p>The <code>pelle/oauth-plugin</code> gem failed my test script with <code>CGI</code> by</p>
+
+<p>```ruby
+pry(main)&gt; CGI.escape ‘Di Wen’
+=&gt; “Di+Wen”</p>
+
+<h1 id="expecting-di2bwen">expecting “Di%2BWen”</h1>
+<p>```</p>
+
+<p>Also failed <code>URI</code> and <code>Addressable</code> by</p>
+
+<p>```ruby
+pry(main)&gt; URI.escape ‘Di@Wen’
+=&gt; “Di@Wen”</p>
+
+<p>pry(main)&gt; Addressable::URI.parse(“Di@Wen”).normalize
+=&gt; #&lt;Addressable::URI:0x81f58abc URI:Di@Wen&gt;</p>
+
+<h1 id="expecting-di40wen">expecting “Di%40Wen”</h1>
+<p>```</p>
+
+<p>After some digging into the gem, I’ve found its encoding method</p>
+
+<p>```ruby
+# Escape +value+ by URL encoding all non-reserved character.
+#
+# See Also: {OAuth core spec version 1.0, section 5.1}[http://oauth.net/core/1.0#rfc.section.5.1]
+def escape(value)
+  URI::escape(value.to_s, OAuth::RESERVED_CHARACTERS)
+rescue ArgumentError
+  URI::escape(value.to_s.force_encoding(Encoding::UTF_8), OAuth::RESERVED_CHARACTERS)
+end</p>
+
+<p>OAuth::RESERVED_CHARACTERS # =&gt; /[^a-zA-Z0-9-._\~]/
+```</p>
+
+<p>Following the comment, comes along the OAuth standard specification about <a href="http://oauth.net/core/1.0/#rfc.section.5.1">Parameter Encoding</a></p>
+
+<blockquote>
+  <p>All parameter names and values are escaped using the [RFC3986] percent-encoding (%xx) mechanism. Characters not in the unreserved character set ([RFC3986] section 2.3) MUST be encoded. Characters in the unreserved character set MUST NOT be encoded. Hexadecimal characters in encodings MUST be upper case. Text names and values MUST be encoded as UTF-8 octets before percent-encoding them per [RFC3629].</p>
+</blockquote>
+
+<blockquote>
+  <pre><code>unreserved = ALPHA, DIGIT, '-', '.', '_', '~'
+</code></pre>
+</blockquote>
+
+<p>Under the standard spec and refering to the gem’s implementation, I’ve finally solved my stupid issue.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Review] Practicing Rails]]></title>
@@ -1596,482 +1700,6 @@ end
 <p>Rails connects lots of tiny Rack applications into a single overall application. Itʼs a complicated, multi-layered construction.</p>
 
 <p>Each Rails controller keeps track of a mini-Rack stack of middleware which can be specified per-action like before_filters.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Inside ActiveSupport Notifications]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/06/03/inside-activesupport-notifications/"/>
-    <updated>2014-06-03T00:45:35+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/06/03/inside-activesupport-notifications</id>
-    <content type="html"><![CDATA[<ul id="markdown-toc">
-  <li><a href="#preparation">Preparation</a></li>
-  <li><a href="#activesupportnotifications">ActiveSupport::Notifications</a>    <ul>
-      <li><a href="#file-name">File name</a></li>
-      <li><a href="#dependency">Dependency</a></li>
-      <li><a href="#brief">Brief</a></li>
-      <li><a href="#specification">Specification</a>        <ul>
-          <li><a href="#class-variables">Class Variables</a></li>
-          <li><a href="#class-methods">Class Methods</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#activesupportnotificationsfanout">ActiveSupport::Notifications::Fanout</a>    <ul>
-      <li><a href="#file-name-1">File name</a></li>
-      <li><a href="#dependency-1">Dependency</a></li>
-      <li><a href="#brief-1">Brief</a></li>
-      <li><a href="#specification-1">Specification</a>        <ul>
-          <li><a href="#instance-variables">Instance Variables</a></li>
-          <li><a href="#instance-methods">Instance Methods</a></li>
-          <li><a href="#modules">Modules</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#activesupportnotificationsinstrumenter">ActiveSupport::Notifications::Instrumenter</a>    <ul>
-      <li><a href="#file-name-2">File name</a></li>
-      <li><a href="#dependency-2">Dependency</a></li>
-      <li><a href="#brief-2">Brief</a></li>
-      <li><a href="#specification-2">Specification</a>        <ul>
-          <li><a href="#instance-variables-1">Instance Variables</a></li>
-          <li><a href="#instance-methods-1">Instance Methods</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#activesupportnotificationsevent">ActiveSupport::Notifications::Event</a>    <ul>
-      <li><a href="#file-name-3">File name</a></li>
-      <li><a href="#dependency-3">Dependency</a></li>
-      <li><a href="#specification-3">Specification</a></li>
-    </ul>
-  </li>
-  <li><a href="#main-working-flow">Main Working Flow</a>    <ul>
-      <li><a href="#activesupportnotificationssubscribe">ActiveSupport::Notifications.subscribe</a></li>
-      <li><a href="#activesupportnotificationsinstrument">ActiveSupport::Notifications.instrument</a></li>
-    </ul>
-  </li>
-  <li><a href="#misc">MISC</a></li>
-  <li><a href="#reference">Reference</a></li>
-</ul>
-
-<h2 id="preparation">Preparation</h2>
-
-<ul>
-  <li>Read API doc first, <a href="ActiveSupport::Notifications">ActiveSupport::Notifications</a>.</li>
-  <li>About hooks inside Rails for instrumentation, check the edge doc on <a href="http://edgeguides.rubyonrails.org/active_support_instrumentation.html">Active Support Instrumentation</a>.</li>
-</ul>
-
-<p>Then let’s read through the <strong>ActiveSupport::Notifications</strong> source code.</p>
-
-<h2 id="activesupportnotifications">ActiveSupport::Notifications</h2>
-
-<h3 id="file-name">File name</h3>
-
-<p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications.rb">activesupport/lib/active_support/notifications.rb</a></p>
-
-<h3 id="dependency">Dependency</h3>
-
-<ul>
-  <li><code>active_support/notifications/instrumenter</code></li>
-  <li><code>active_support/notifications/fanout</code></li>
-  <li><code>active_support/per_thread_registry</code></li>
-</ul>
-
-<h3 id="brief">Brief</h3>
-
-<ol>
-  <li>A class attribute accessor <code>notifier</code>, which is initialized by <code>Fanout.new</code>.</li>
-  <li>Several class methods as the interfaces exposed, which encapsulate <code>notifer</code> to do the real work.</li>
-  <li>A class named <strong>InstrumentationRegistry</strong>.</li>
-</ol>
-
-<h3 id="specification">Specification</h3>
-
-<h4 id="class-variables">Class Variables</h4>
-
-<p><code>self.notifier = Fanout.new</code></p>
-
-<h4 id="class-methods">Class Methods</h4>
-
-<ul>
-  <li>
-    <p><code>subscribe</code>, <code>unsubscribe</code> and <code>publish</code> all delegate to <code>notifier</code>, like</p>
-
-    <p><code>ruby
-  def subscribe(*args, &amp;block)
-    notifier.subscribe(*args, &amp;block)
-  end
- </code></p>
-  </li>
-  <li>
-    <p><code>subscribed(callback, *args, &amp;block)</code>, <code>subscribe</code> while <code>block</code> is running, and <code>unsubscribe</code> while running is over.</p>
-
-    <p><code>ruby
-  def subscribed(callback, *args, &amp;block)
-    subscriber = subscribe(*args, &amp;callback)
-    yield
-  ensure
-    unsubscribe(subscriber)
-  end
- </code></p>
-  </li>
-  <li>
-    <p><code>instrument(name, payload = {})</code></p>
-
-    <p><code>ruby
-  def instrument(name, payload = {})
-    if notifier.listening?(name)
-      instrumenter.instrument(name, payload) { yield payload if block_given? }
-    else
-      yield payload if block_given?
-    end
-  end
- </code></p>
-  </li>
-</ul>
-
-<p><code>notifier.listening?(name)</code> is checking if there are subscribers listening on the event name.</p>
-
-<p><strong><em>And what’s an instrumenter?</em></strong></p>
-
-<p>Check out the <strong>ActiveSupport::Notifications::Instrumenter</strong> below or skip this part temporally.</p>
-
-<p>Let’s talk about <strong>InstrumentationRegistry</strong> first, it is a sub-class defined in <strong>ActiveSupport::Notifications</strong>. It extends <strong>ActiveSupport::PerThreadRegistry</strong> to keep thread safe, and defines <code>#instrumenter_for</code> used for recording <strong>Instrumenter</strong> instance for specific <code>notifier</code>.</p>
-
-<p>```ruby
-# This class is a registry which holds all of the +Instrumenter+ objects
-# in a particular thread local. To access the +Instrumenter+ object for a
-# particular +notifier+, you can call the following method:
-#
-#   InstrumentationRegistry.instrumenter_for(notifier)
-#
-# The instrumenters for multiple notifiers are held in a single instance of
-# this class.
-class InstrumentationRegistry # :nodoc:
-  extend ActiveSupport::PerThreadRegistry</p>
-
-<p>def initialize
-    @registry = {}
-  end</p>
-
-<p>def instrumenter_for(notifier)
-    @registry[notifier] ||= Instrumenter.new(notifier)
-  end
-end
-```</p>
-
-<p>Then look back in <strong>ActiveSupport::Notifications</strong> for its usage:</p>
-
-<p><code>ruby
-def instrumenter
-  InstrumentationRegistry.instance.instrumenter_for(notifier)
-end
-</code></p>
-
-<p>Extending <strong>ActiveSupport::PerThreadRegistry</strong> gives <strong>InstrumentationRegistry</strong> the <code>instance</code> class methods, returns a thread local <strong>InstrumentationRegistry</strong> instance. Check the <strong>ActiveSupport::PerThreadRegistry</strong> <a href="http://api.rubyonrails.org/classes/ActiveSupport/PerThreadRegistry.html">api</a> for details.</p>
-
-<h2 id="activesupportnotificationsfanout">ActiveSupport::Notifications::Fanout</h2>
-
-<h3 id="file-name-1">File name</h3>
-
-<p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications%2Ffanout.rb">activesupport/lib/active_support/notifications/fanout.rb</a></p>
-
-<h3 id="dependency-1">Dependency</h3>
-
-<ul>
-  <li><code>mutex_m</code>, a Ruby Std-lib module. <a href="http://www.ruby-doc.org/stdlib-2.1.2//libdoc/mutex_m/rdoc/Mutex_m.html">api</a></li>
-  <li><code>thread_safe</code>, a collection of thread-safe versions of common core Ruby classes. <a href="https://github.com/headius/thread_safe">api</a></li>
-</ul>
-
-<h3 id="brief-1">Brief</h3>
-
-<p>This is a default queue implementation that ships with Notifications. It just pushes events to all registered log subscribers.</p>
-
-<p>This class is thread safe. All methods are reentrant.</p>
-
-<h3 id="specification-1">Specification</h3>
-
-<h4 id="instance-variables">Instance Variables</h4>
-
-<p><code>@subscribers</code>, an array, records the subscribers.</p>
-
-<p><code>@listeners_for</code>, a reverse map(hash). It maps the event name to the subscribers. Initialized by <code>ThreadSafe::Cache.new</code>, <a href="https://github.com/headius/thread_safe">thread_safe</a> gem says:</p>
-
-<blockquote>
-  <p><code>ThreadSafe::Cache</code> also exists, as a hash-like object, and should have
-much better performance characteristics esp. under high concurrency than
-<code>ThreadSafe::Hash</code>. However, <code>ThreadSafe::Cache</code> is not strictly semantically
-equivalent to a ruby <code>Hash</code> – for instance, it does not necessarily retain
-ordering by insertion time as <code>Hash</code> does. For most uses it should do fine
-though, and we recommend you consider <code>ThreadSafe::Cache</code> instead of
-<code>ThreadSafe::Hash</code> for your concurrency-safe hash needs. It understands some
-options when created (depending on your ruby platform) that control some of the
-internals.</p>
-</blockquote>
-
-<h4 id="instance-methods">Instance Methods</h4>
-
-<ul>
-  <li>
-    <p><code>subscribe(pattern = nil, block = Proc.new)</code></p>
-
-    <p><code>ActiveSupport::Notifications.subscribe</code> use this method on <code>notifier</code> to subscribe event name based on <code>pattern</code> and a <code>block</code> to do the instrumentation callback.</p>
-
-    <p>It initialize a <em>subscriber</em> with <code>Subscribers.new pattern, block</code>, use <code>synchronize</code>(for thread safe) to record <em>subscriber</em> into <code>@subscribers</code>, and clear the <code>@listeners_for</code>, then returns the <em>subscriber</em>.</p>
-
-    <p><code>ruby
-  def subscribe(pattern = nil, block = Proc.new)
-    subscriber = Subscribers.new pattern, block
-    synchronize do
-      @subscribers &lt;&lt; subscriber
-      @listeners_for.clear
-    end
-    subscriber
-  end
- </code></p>
-  </li>
-  <li>
-    <p><code>unsubscribe(subscriber)</code></p>
-
-    <p><code>ruby
-  synchronize do
-    @subscribers.reject! { |s| s.matches?(subscriber) }
-      @listeners_for.clear
-    end
-  end
- </code></p>
-
-    <p>Note the <code>matches?</code> method on subscriber. Every subscriber object defines this method, <strong>Subscribers::Evented</strong> and <strong>Subscribers::Timed</strong> defines it like this:</p>
-
-    <p><code>ruby
-  def matches?(subscriber_or_name)
-    self === subscriber_or_name ||
-      @pattern &amp;&amp; @pattern === subscriber_or_name
-  end
- </code></p>
-
-    <p>Unsubscribe a subscriber object or unsubscribe based on the <code>@pattern</code> matching.</p>
-
-    <p><strong>Subscribers::AllMessages</strong> alias <code>matches?</code> to <code>===</code>, just do the type matching.</p>
-  </li>
-  <li>
-    <p><code>start</code>, <code>finish</code>, <code>publish(name, id, payload)</code></p>
-
-    <p>just delegates to subscribers based on the event name.</p>
-
-    <p><code>ruby
-  def start(name, id, payload)
-    listeners_for(name).each { |s| s.start(name, id, payload) }
-  end
- </code></p>
-  </li>
-  <li>
-    <p><code>listeners_for(name)</code></p>
-
-    <p>a helper method, equals fetch or set on <code>@listeners_for</code>, returns the subscribers based on the event name.</p>
-
-    <p><code>ruby
-  def listeners_for(name)
-    # this is correctly done double-checked locking (ThreadSafe::Cache's lookups have volatile semantics)
-    @listeners_for[name] || synchronize do
-      # use synchronisation when accessing @subscribers
-      @listeners_for[name] ||= @subscribers.select { |s| s.subscribed_to?(name) }
-    end
-  end
- </code></p>
-  </li>
-  <li>
-    <p><code>listening?(name)</code></p>
-
-    <p>a helper method, checks if <code>listeners_for(name).any?</code>.</p>
-  </li>
-  <li>
-    <p><code>wait</code></p>
-
-    <p>as this is a sync queue, this method is left blank.</p>
-  </li>
-</ul>
-
-<h4 id="modules">Modules</h4>
-
-<ul>
-  <li>
-    <p><strong>Subscribers</strong></p>
-
-    <p><strong>Subscribers</strong> defines a class method <code>new</code> and three sub-classes: <strong>Evented</strong>, <strong>Timed</strong>, and <strong>AllMessages</strong>. <strong>Timed</strong> inheritates <strong>Evented</strong>, and <strong>AllMessages</strong> encapsulates an <strong>Evented</strong> object.</p>
-
-    <p>About <code>self.new(pattern, listener)</code>, remember where does <code>Subscribers.new</code> get called?</p>
-
-    <p>It’s in <code>Fanout#subscribe(pattern = nil, block = Proc.new)</code>. If the <code>block</code> can duck-typing <code>:start</code> and <code>:finish</code>, it’ll initialize a subscriber by <strong>Evented</strong> with <code>pattern</code> and <code>block</code> recorded, otherwise by <strong>Timed</strong>. And if <code>pattern</code> is nil, which means calling <code>ActiveSupport::Notifications.subscribe</code> without event name, <code>Subscribers.new</code> returns an <strong>AllMessages</strong> object which initialized with a subscriber defined above. Otherwise(if <code>pattern</code> presents) returns a subscriber directly.</p>
-
-    <p>Normally we use <code>ActiveSupport::Notifications.subscribe</code> in two ways:</p>
-
-    <ul>
-      <li>subscribe all events, which means no <code>pattern</code> passed, and a <strong>Subscribers::AllMessages</strong> instance saved.</li>
-      <li>the <code>block</code> we pass to <code>ActiveSupport::Notifications.subscribe</code> won’t respond to <code>start</code> and <code>finish</code>, which means a <strong>Subscribers::Timed</strong> instance saved.</li>
-    </ul>
-
-    <p>These two ways have no conflicts: if passing a nil pattern and a block, it just returns an <strong>Subscribers::AllMessages</strong> instance which has a <strong>Subscribers::Timed</strong> instance wrapped.</p>
-
-    <p>So let’s check it out what does a <strong>Subscribers::Timed</strong> instance respond?</p>
-  </li>
-</ul>
-
-<p>```ruby
-def start(name, id, payload)
-  timestack = Thread.current[:_timestack] ||= []
-  timestack.push Time.now
-end</p>
-
-<p>def finish(name, id, payload)
-  timestack = Thread.current[:_timestack]
-  started = timestack.pop
-  @delegate.call(name, started, Time.now, id, payload)
-end</p>
-
-<p>def publish(name, *args)
-  @delegate.call name, *args
-end</p>
-
-<p>def subscribed_to?(name)
-  @pattern === name.to_s
-end</p>
-
-<p>def matches?(subscriber_or_name)
-  self === subscriber_or_name ||
-    @pattern &amp;&amp; @pattern === subscriber_or_name
-end
-```</p>
-
-<h2 id="activesupportnotificationsinstrumenter">ActiveSupport::Notifications::Instrumenter</h2>
-
-<h3 id="file-name-2">File name</h3>
-
-<p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications%2Finstrumenter.rb">activesupport/lib/active_support/notifications/instrumenter.rb</a></p>
-
-<h3 id="dependency-2">Dependency</h3>
-
-<p><code>securerandom</code>, <a href="http://ruby-doc.org/stdlib-2.1.0/libdoc/securerandom/rdoc/SecureRandom.html">api</a></p>
-
-<h3 id="brief-2">Brief</h3>
-
-<h3 id="specification-2">Specification</h3>
-
-<h4 id="instance-variables-1">Instance Variables</h4>
-
-<p><code>@id</code>, with an <code>attr_reader</code>, generated by <code>SecureRandom.hex(10)</code>.</p>
-
-<p><code>@notifier</code>, records the <strong>Fanout</strong> instance.</p>
-
-<h4 id="instance-methods-1">Instance Methods</h4>
-
-<ul>
-  <li><code>start(name, payload)</code>, <code>finish(name, payload)</code></li>
-</ul>
-
-<p>```ruby
-def start(name, payload)
-  @notifier.start name, @id, payload
-end</p>
-
-<p>def finish(name, payload)
-  @notifier.finish name, @id, payload
-end
-```</p>
-
-<ul>
-  <li><code>instrument(name, payload={})</code></li>
-</ul>
-
-<p><code>ruby
-def instrument(name, payload={})
-  start name, payload
-  begin
-    yield payload
-  rescue Exception =&gt; e
-    payload[:exception] = [e.class.name, e.message]
-    raise e
-  ensure
-    finish name, payload
-  end
-end
-</code></p>
-
-<pre><code>Where does this method get called? in `ActiveSupport::Notifications.instrument`:
-</code></pre>
-
-<p><code>ruby
-instrumenter.instrument(name, payload) { yield payload if block_given? }
-</code></p>
-
-<pre><code>The processing begins with `start`, ends with `finish`, instrumenter delegates it to `@notifier`, and `notifier` turns to `@subscribers` which are listening for the event name. And what does `@subscribers` do with `start` and `finish`? Normally we use subscriber objects defined by `Subscribers::Timed`, which use `start` to save a beginning timestamp, and `finish` to save an ending timestamp, and calling the block user passed.
-
-Attention on the control flow, the events get sent even if an error occurs in the passed-in block.
-</code></pre>
-
-<h2 id="activesupportnotificationsevent">ActiveSupport::Notifications::Event</h2>
-
-<h3 id="file-name-3">File name</h3>
-
-<p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications%2Finstrumenter.rb">activesupport/lib/active_support/notifications/instrumenter.rb</a></p>
-
-<h3 id="dependency-3">Dependency</h3>
-
-<h3 id="specification-3">Specification</h3>
-
-<p>Note that this class has a <code>@children</code> instance variable recording associations between events, and these two methods:</p>
-
-<p>```ruby
-def «(event)
-  @children « event
-end</p>
-
-<p>def parent_of?(event)
-  @children.include? event
-end
-```</p>
-
-<h2 id="main-working-flow">Main Working Flow</h2>
-
-<h3 id="activesupportnotificationssubscribe">ActiveSupport::Notifications.subscribe</h3>
-
-<ol>
-  <li><code>ActiveSupport::Notifications.subscribe(name) {|*args| }</code>.</li>
-  <li>in <strong>Notficiations.subscribe</strong>, <code>notifier.subscribe(*args, &amp;block)</code>.</li>
-  <li>in <strong>Fanout#subscribe</strong>, <code>subscriber = Subscribers.new pattern, block</code>, then records subscriber into <code>@subscribers</code>.</li>
-</ol>
-
-<h3 id="activesupportnotificationsinstrument">ActiveSupport::Notifications.instrument</h3>
-
-<ol>
-  <li><code>ActiveSupport::Notifications.instrument(name, payload) { }</code>.</li>
-  <li>in <strong>Notficiations.instrument</strong>, <code>instrumenter.instrument(name, payload) { yield payload if block_given? }</code>.</li>
-  <li>in <strong>Instrumenter#instrument</strong>, <code>@notifier.start</code>, <code>yield payload</code> and then <code>@notifier.finish</code>.</li>
-  <li>in <strong>Fanout::Subscribers::Timed#start</strong>, records beginning time.</li>
-  <li>in <strong>Fanout::Subscribers::Timed#finish</strong>, records ending time, and passing <code>name, start_time, end_time, id, payload</code> to the subscribers callbacks.</li>
-</ol>
-
-<h2 id="misc">MISC</h2>
-
-<p><strong><em>How does ActiveSupport::Notifications keep thread safe?</em></strong></p>
-
-<p><code>extend</code> <strong>ActiveSupport::PerThreadRegistry</strong> in <strong>InstrumentationRegistry</strong>.</p>
-
-<h2 id="reference">Reference</h2>
-
-<p>Unit test:</p>
-
-<ul>
-  <li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications_test.rb">activesupport/test/notifications_test.rb</a></li>
-  <li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications%2Fevented_notification_test.rb">activesupport/test/notifications/evented_notification_test.rb</a></li>
-  <li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications%2Finstrumenter_test.rb">activesupport/test/notifications/instrumenter_test.rb</a></li>
-</ul>
-
-<p><a href="http://www.paperplanes.de/2012/3/14/on-notifications-logsubscribers-and-bringing-sanity-to-rails-logging.html">On Notifications, Log Subscribers, and Bringing Sanity to Rails’ Logging</a><br />
-<a href="http://railscasts.com/episodes/249-notifications-in-rails-3">#249 Notifications in Rails 3</a><br />
-<a href="https://speakerdeck.com/nextmat/digging-deep-with-activesupportnotifications">Digging Deep with ActiveSupport::Notifications</a></p>
 
 ]]></content>
   </entry>

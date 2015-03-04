@@ -1,0 +1,331 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Annoying OAuth Issue on HTTP URL Encoding - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="Rails, Ruby, Web Mar 4th, 2015 Annoying OAuth Issue on HTTP URL Encoding I was developing and maintaining an OAuth service using pelle/oauth-plugin &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding/">Annoying OAuth Issue on HTTP URL Encoding</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/02/27/great-expectations-2015/">Great Expectations 2015</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/01/29/guidance-from-poodr/">[Review] Guidance From POODR</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/12/30/git-reminders/">Git Reminders</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/12/29/readable-git-log-by-using-custom-commit-template/">Readable Git Log by Using Custom Commit Template</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/web/'>Web</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Mar 4<span>th</span>, 2015</a>
+</span>
+
+    </div>
+    <h1>
+      Annoying OAuth Issue on HTTP URL Encoding
+    </h1>
+  
+</header>
+
+
+  <section><p>I was developing and maintaining an OAuth service using <code>pelle/oauth-plugin</code> gem. Other than the standard token exchange process, there is a need to authenticate by signature based on user’s passed in parameters. As custom parameters can include custom charactors, here comes the space encoding issue.</p>
+
+<ul>
+  <li>Why the service approves my test script by passing <code>name=wendi</code> but refuses <code>name=Di Wen</code> ?</li>
+  <li>Why the <code>CGI.escape('Di Wen')</code> outputs <code>"Di+Wen"</code>, while <code>URI.escape('Di Wen')</code> outpus <code>Di%20Wen</code> ?</li>
+</ul>
+
+<p>This is definitely an annoying issue. I’ve run into it sometime before, but today I need to make a clear mind.</p>
+
+<p><strong>What’s the HTTP standard way to encode space in URL?</strong></p>
+
+<p><code>%20</code>, according to the <a href="http://www.w3schools.com/tags/ref_urlencode.asp">HTML URL Encoding Reference</a> by W3schools.</p>
+
+<p><strong>Why the hell some libary encode space to <code>+</code>?</strong></p>
+
+<p>Because of the <code>application/x-www-form-urlencoded</code> <em>MIME</em> type.</p>
+
+<p>Refered to Wikipedia, <a href="http://en.wikipedia.org/wiki/Percent-encoding#The_application.2Fx-www-form-urlencoded_type">Percent Encoding</a></p>
+
+<blockquote>
+  <p>The encoding used by default is based on a very early version of the general URI percent-encoding rules, with a number of modifications such as newline normalization and replacing spaces with “+” instead of “%20”. The Internet media type of data encoded this way is application/x-www-form-urlencoded, and it is currently defined (still in a very outdated manner) in the HTML and XForms specifications.</p>
+</blockquote>
+
+<p>And <a href="http://stackoverflow.com/users/634419/anomie">Anomie</a> has a summary <a href="http://stackoverflow.com/a/5433216/1331774">answer</a>,</p>
+
+<blockquote>
+  <p>The query string format is actually a different but related encoding, application/x-www-form-urlencoded, defined in RFC 1866 along with HTML 2.0. It was based on RFC 1738, but specified that spaces (not all whitespace, just the character with ASCII code 0x20) are replaced by ‘+’ and that line breaks are to be encoded as CRLF (i.e. %0D%0A). The former is likely because that saves 2 bytes for a very common character in form submissions at the expense of using an extra 2 bytes for a much less common character, and the latter is to avoid problems when transferring between systems using different end-of-line codings. Non-ASCII characters were left unconsidered.</p>
+</blockquote>
+
+<blockquote>
+  <p>UTF-8 coding in URIs came over a decade later, in RFC 3986, although individual protocols may have specified this or another encoding of non-ASCII characters earlier. To maintain backwards compatibility, all UTF-8 octets must be percent-encoded.</p>
+</blockquote>
+
+<p><strong>What’s the Rule of Thumb in Ruby world?</strong></p>
+
+<p><a href="http://stackoverflow.com/users/409475/ernest">Ernest</a> makes a <a href="http://stackoverflow.com/questions/2824126/whats-the-difference-between-uri-escape-and-cgi-escape">specification</a> about the escape methods over <code>URI</code>, <code>CGI</code>, and <code>Addressable</code>, and gives a conclusion</p>
+
+<blockquote>
+  <ul>
+    <li>Do not use URI.escape or similar</li>
+    <li>Use CGI::escape if you only need form escape</li>
+    <li>If you need to work with URIs, use Addressable, it offers url encoding, form encoding and normalizes URLs.</li>
+  </ul>
+</blockquote>
+
+<p><strong>So, what’s the solution to my question?</strong></p>
+
+<p>The <code>pelle/oauth-plugin</code> gem failed my test script with <code>CGI</code> by</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="no">CGI</span><span class="o">.</span><span class="n">escape</span> <span class="s1">&#39;Di Wen&#39;</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="s2">&quot;Di+Wen&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># expecting &quot;Di%2BWen&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Also failed <code>URI</code> and <code>Addressable</code> by</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="no">URI</span><span class="o">.</span><span class="n">escape</span> <span class="s1">&#39;Di@Wen&#39;</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="s2">&quot;Di@Wen&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="ss">Addressable</span><span class="p">:</span><span class="ss">:URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;Di@Wen&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">normalize</span>
+</span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;Addressable::URI:0x81f58abc URI:Di@Wen&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># expecting &quot;Di%40Wen&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>After some digging into the gem, I’ve found its encoding method</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># Escape +value+ by URL encoding all non-reserved character.</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1"># See Also: {OAuth core spec version 1.0, section 5.1}[http://oauth.net/core/1.0#rfc.section.5.1]</span>
+</span><span class="line"><span class="k">def</span> <span class="nf">escape</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span class="line">  <span class="ss">URI</span><span class="p">:</span><span class="ss">:escape</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">to_s</span><span class="p">,</span> <span class="ss">OAuth</span><span class="p">:</span><span class="ss">:RESERVED_CHARACTERS</span><span class="p">)</span>
+</span><span class="line"><span class="k">rescue</span> <span class="no">ArgumentError</span>
+</span><span class="line">  <span class="ss">URI</span><span class="p">:</span><span class="ss">:escape</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">force_encoding</span><span class="p">(</span><span class="ss">Encoding</span><span class="p">:</span><span class="ss">:UTF_8</span><span class="p">),</span> <span class="ss">OAuth</span><span class="p">:</span><span class="ss">:RESERVED_CHARACTERS</span><span class="p">)</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line"><span class="ss">OAuth</span><span class="p">:</span><span class="ss">:RESERVED_CHARACTERS</span> <span class="c1"># =&gt; /[^a-zA-Z0-9\-\.\_\~]/</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Following the comment, comes along the OAuth standard specification about <a href="http://oauth.net/core/1.0/#rfc.section.5.1">Parameter Encoding</a></p>
+
+<blockquote>
+  <p>All parameter names and values are escaped using the [RFC3986] percent-encoding (%xx) mechanism. Characters not in the unreserved character set ([RFC3986] section 2.3) MUST be encoded. Characters in the unreserved character set MUST NOT be encoded. Hexadecimal characters in encodings MUST be upper case. Text names and values MUST be encoded as UTF-8 octets before percent-encoding them per [RFC3629].</p>
+</blockquote>
+
+<blockquote>
+  <pre><code>unreserved = ALPHA, DIGIT, '-', '.', '_', '~'
+</code></pre>
+</blockquote>
+
+<p>Under the standard spec and refering to the gem’s implementation, I’ve finally solved my stupid issue.</p>
+
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>
