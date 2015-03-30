@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-03-05T16:26:27+08:00</updated>
+  <updated>2015-03-30T16:28:06+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,91 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Trick: Local Assignment over Method Sending]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/03/30/ruby-trick-local-assignment-over-method-sending/"/>
+    <updated>2015-03-30T16:24:59+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/03/30/ruby-trick-local-assignment-over-method-sending</id>
+    <content type="html"><![CDATA[<p>There is a weird situation I haven’t noticed before:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Counter</span>
+</span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:processed</span><span class="p">,</span> <span class="ss">:processed_names</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span>
+</span><span class="line">    <span class="vi">@processed</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line">    <span class="vi">@processed_names</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">foo</span>
+</span><span class="line">    <span class="n">processed</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">bar</span>
+</span><span class="line">    <span class="n">processed_names</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;a&#39;</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">w</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span><span class="p">;</span>
+</span><span class="line"><span class="n">w</span><span class="o">.</span><span class="n">foo</span> <span class="c1"># =&gt; NoMethodError: undefined method `+&#39; for nil:NilClass`</span>
+</span><span class="line"><span class="n">w</span><span class="o">.</span><span class="n">bar</span> <span class="c1"># =&gt; [&#39;a&#39;]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong><em>Why the hell?</em></strong></p>
+
+<p><strong>Local assignment always has precedence over method sending</strong>. Assignment happened in <code>w.foo</code>, which not in <code>w.bar</code>.</p>
+
+<p>Check this one:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Person</span>
+</span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:name</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">foo</span>
+</span><span class="line">    <span class="nb">name</span> <span class="o">=</span> <span class="s1">&#39;John&#39;</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">t</span> <span class="o">=</span> <span class="no">Tao</span><span class="o">.</span><span class="n">new</span>
+</span><span class="line"><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="c1"># =&gt; nil</span>
+</span><span class="line"><span class="n">t</span><span class="o">.</span><span class="n">foo</span>  <span class="c1"># =&gt; &#39;John&#39;</span>
+</span><span class="line"><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="c1"># =&gt; nil</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>name = 'John'</code> only means a definition of a local variable, which won’t send <code>=</code> to <code>name</code>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Annoying OAuth Issue on HTTP URL Encoding]]></title>
@@ -11963,223 +12048,6 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 
 <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/rails-includes_vs_joins_selected.png" alt="rails-includes_vs_joins" /></p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Review] The Rails 4 Way - Environments and Configurations]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/05/18/the-rails-4-way-environments-and-configurations/"/>
-    <updated>2014-05-18T16:10:42+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/05/18/the-rails-4-way-environments-and-configurations</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Book</strong></td>
-      <td>The Rails 4 Way</td>
-    </tr>
-    <tr>
-      <td><strong>Author</strong></td>
-      <td>Obie Fernandez, Kevin Faustino, Vitaly Kushner</td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="http://amzn.com/0321944275">amzn.com/0321944275</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="bundler-refhttpbundlerio">Bundler <a href="http://bundler.io">ref</a></h2>
-
-<p>Bundler does gem dependency resolution based on Gemfile.</p>
-
-<h4 id="operator"><code>~&gt;</code> operator</h4>
-
-<p>The specifier <strong>~&gt;</strong> has a special meaning, best shown by example. <code>~&gt; 2.0.3</code> is identical to <code>&gt;= 2.0.3</code> and <code>&lt; 2.1</code>. <code>~&gt; 2.1</code> is identical to <code>&gt;= 2.1</code> and <code>&lt; 3.0</code>. <code>~&gt; 2.2.beta</code> will match prerelease versions like <code>2.2.beta.12</code>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">gem</span> <span class="s1">&#39;thin&#39;</span><span class="p">,</span>  <span class="s1">&#39;~&gt;1.1&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h4 id="require"><code>require</code></h4>
-
-<p>Occasionally, the name of the gem that should be used in a require statement is
-different than the name of that gem in the repository. In those cases, the <strong>:require</strong>
-option solves this simply and declaratively right in the Gemfile.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">gem</span> <span class="s1">&#39;sqlite3-ruby&#39;</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="s1">&#39;sqlite3&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h4 id="group">group</h4>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">gem</span> <span class="s1">&#39;wirble&#39;</span><span class="p">,</span> <span class="ss">:group</span> <span class="o">=&gt;</span> <span class="ss">:development</span>
-</span><span class="line"><span class="n">gem</span> <span class="s1">&#39;ruby-debug&#39;</span><span class="p">,</span> <span class="ss">:group</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span><span class="o">]</span>
-</span><span class="line">
-</span><span class="line"><span class="n">group</span> <span class="ss">:test</span> <span class="k">do</span>
-</span><span class="line">  <span class="n">gem</span> <span class="s1">&#39;rspec&#39;</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h4 id="bundle-installupdate">bundle install/update</h4>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="o">-&gt;</span> <span class="n">calculate</span> <span class="n">a</span> <span class="n">dependency</span> <span class="n">tree</span> <span class="o">-&gt;</span> <span class="n">generate</span> <span class="no">Gemfile</span><span class="o">.</span><span class="n">lock</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h4 id="bundle-package">bundle package</h4>
-
-<blockquote>
-  <p>it will package up all your gems in <strong>vendor/cache</strong> directory. Running <strong>bundle install</strong> will use the gems in package and skip connecting to rubygems.org. use this to avoid external dependencies at deploy time, or if you depend on private gems that you are not available in any public repository.</p>
-</blockquote>
-
-<h4 id="bundle-exec">bundle exec</h4>
-
-<p>Non-Rails scripts must be executed with this to get a properly initialized RubyGems environment.</p>
-
-<h4 id="bundle-install---path-venderbundle---binstubs">bundle install –path vender/bundle –binstubs</h4>
-
-<p>The default location for gems installed by bundler is directory named <strong>.bundle</strong> in your user directory.</p>
-
-<p>This command will generate <strong>.bundle/config</strong> file:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>.bundle/config</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="o">---</span>
-</span><span class="line"><span class="no">BUNDLE_BIN</span><span class="p">:</span> <span class="n">bundler_stubs</span>
-</span><span class="line"><span class="no">BUNDLE_PATH</span><span class="p">:</span> <span class="n">vendor</span><span class="o">/</span><span class="n">bundle</span>
-</span><span class="line"><span class="no">BUNDLE_DISABLE_SHARED_GEMS</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>gems in <strong>verdor/cache</strong>, and installed in <strong>vendor/bundle</strong>.</p>
-
-<h4 id="bundle-install-vendor---disable-shared-gems">bundle install vendor –disable-shared-gems</h4>
-
-<blockquote>
-  <p>This command tells Bundler to install gems even if they are already installed in the system. Normally Bunlder avoids that symlinks to already downloaded gems that exists in your system. This option is useful when you are trying to package up an application that all dependencies unpacked.</p>
-</blockquote>
-
-<h2 id="startup-and-application-settings">Startup and Application Settings</h2>
-
-<p><code>boot.rb</code></p>
-
-<ul>
-  <li>sets up Bundler and load paths</li>
-</ul>
-
-<p><code>application.rb</code></p>
-
-<ul>
-  <li>require ‘boot’</li>
-  <li>load rails gems, gems for the specified Rail.env, and configures the application ( <strong>define Application class</strong> ).</li>
-</ul>
-
-<p><code>environment.rb</code></p>
-
-<ul>
-  <li>require ‘application’</li>
-  <li>runs all initializers ( <code>Application.initialize!</code> )</li>
-</ul>
-
-<p><code>environments/development.rb | test.rb | production.rb</code></p>
-
-<ul>
-  <li>makes environmental configuraions.</li>
-  <li>application.rb makes unenvironmental configurations, like time-zone, autoload_paths, encoding.</li>
-</ul>
-
-<h2 id="configurations">Configurations</h2>
-
-<h4 id="wrap-parameters">Wrap Parameters</h4>
-
-<p>Introduced in Rails 3.1, the <code>wrap_parameters.rb</code> initializer configures your application to work with JavaScript MVC frameworks.</p>
-
-<p>When submitting JSON parameters to a controller, Rails will wrap the parameters into a nested hash, with the controller’s name being set as the key. To illustrate, consider the following JSON:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;TheRails4Way&quot;</span><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>If a client submitted the above JSON to a controller named ArticlesController, Rails would nest the params hash under the key “article”. This ensures the setting of model attributes from request parameters is consistent with the convention used when submitting from Rails form helpers.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;TheRails4Way&quot;</span><span class="p">,</span> <span class="s2">&quot;article&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;TheRails4Way&quot;</span><span class="p">}}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h4 id="schema-dumper">Schema Dumper</h4>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">config</span><span class="o">.</span><span class="n">active_record</span><span class="o">.</span><span class="n">schema_format</span> <span class="o">=</span> <span class="ss">:sql</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Every time you run tests, Rails dumps the schema of your development database and copies it to the test database using an auto generated <code>schema.rb</code> script. It looks very similar to an Active Record migration script; in fact, it uses the same API.</p>
-
-<h4 id="automatic-class-reloading">Automatic Class Reloading</h4>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">config</span><span class="o">.</span><span class="n">cache_classes</span> <span class="o">=</span> <span class="kp">false</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Without getting into too much nitty-gritty detail, when the config.cache_classes setting is true,Rails willuse Ruby’s <code>require</code> statement to do its class loading, and when it is false, it will use <code>load</code> instead.</p>
-
-<p>When you require a Ruby file, the interpreter executes and caches it. If the file is required again (as in subsequent requests), the interpreter ignores the require statement and moves on. When you load a Ruby file, the interpreter executes the file again, no matter how many times it has been loaded before.</p>
-
-<h4 id="auto-loading-code">Auto-Loading Code</h4>
-
-<p>By following the naming convention, Rails will search <code>$LOAD_PATH</code> to find the undefined constant. So when using Rails console, <strong>you never have to explicitly <code>require</code> anything!</strong></p>
-
-<p>Rails takes advantage of the fact that Ruby provides a callback mechanism for missing constants. When Rails encounters an undefined constant in the code, it uses a class loader routine based on file-naming conventions to find and require the needed Ruby script.</p>
-
-<h4 id="eager-load">Eager Load</h4>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">config</span><span class="o">.</span><span class="n">eager_load</span> <span class="o">=</span> <span class="kp">false</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>In your production environment, you will want this set to true, as it copies most of your application in memory. This provides a performance increase to web servers that copy on write, such as Unicorn.</p>
-
-<h4 id="explain-for-slow-queries">Explain for Slow Queries</h4>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">config</span><span class="o">.</span><span class="n">active_record</span><span class="o">.</span><span class="n">auto_explain_threshold_in_seconds</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.</span><span class="mi">5</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Introduced in Rails 3.2, Active Record now monitors the threshold of SQL queries being made. If any query takes longer than the specified threshold, the query plan is logged with a warning.</p>
-
-<h4 id="assets">Assets</h4>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="kp">true</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Setting config.assets.debug to false, would result in Sprockets concatenating and running preprocessors on all assets.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">compile</span> <span class="o">=</span> <span class="kp">true</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>If an asset is requested that does not exist in the public/assets folder, Rails will throw an exception. To enable live asset compilation fallback on production, set config.assets.compile to true.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kp">false</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Like most features in Rails, the usage of the Asset Pipeline is completely optional. To include assets in your project as it was done in Rails 3.0, set config.assets.enabled to false.</p>
-
-<h4 id="tagged-logging-refhttparunim2011x-request-id-tracking-taggedlogging-rails">Tagged Logging <a href="http://arun.im/2011/x-request-id-tracking-taggedlogging-rails">ref</a></h4>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">config</span><span class="o">.</span><span class="n">log_tags</span> <span class="o">=</span> <span class="o">[</span> <span class="ss">:subdomain</span><span class="p">,</span> <span class="ss">:uuid</span> <span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Rails 3.2 introduced the ability to tag your log messages. <code>:subdomain</code> example by <em>www</em>, <code>:uuid</code> is a string to identify request, try <code>request.uuid</code>.</p>
 ]]></content>
   </entry>
   
