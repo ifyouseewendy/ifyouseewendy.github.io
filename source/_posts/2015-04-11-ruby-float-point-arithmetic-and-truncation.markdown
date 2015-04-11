@@ -93,7 +93,7 @@ First, what the hell happens on the precision of float point arithmetic?
 
 According to [What Every Programmer Should Know About Floating-Point Arithmetic](http://floating-point-gui.de/), the answer is the binary fraction issue.
 
-![Binary Fraction](/image-repo/binary_fraction.png)
+![Binary Fraction](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/binary_fraction.png)
 
 > Specifically, binary can only represent those numbers as a finite fraction where the denominator is a power of 2. Unfortunately, this does not include most of the numbers that can be represented as finite fraction in base 10, like 0.1.
 
