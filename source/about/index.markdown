@@ -10,7 +10,7 @@ Hello stranger,
 
 My name is Di Wen, this is an Internet Profile of mine.
 
-+ **Career**, I'm a 2+ years Web Developer, focusing on Ruby and Rails, and working hard to be edge-cutting. I live in Beijing and work at [Umeng](http://www.umeng.com), Alibaba-inc.
++ **Career**, I'm a 3 years Web Developer, focusing on Ruby and Rails, and working hard to be cutting-edge. I live in Beijing and work at [Umeng](http://www.umeng.com), Alibaba-inc.
 
   - [Blog](http://blog.ifyouseewendy.com) Tech books I read, and thoughts I made. Feel free for communication.
   - [Github](https://github.com/ifyouseewendy) && [StackOverflow](http://stackoverflow.com/users/1331774/ifyouseewendy)

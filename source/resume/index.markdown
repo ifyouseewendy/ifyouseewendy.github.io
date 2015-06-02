@@ -15,7 +15,7 @@ footer: true
 
 ## Summary
 
-A Web developer, focusing on Ruby and Rails. Trying to be good, as bad as I can. 
+A Web developer, focusing on Ruby and Rails, and working hard to be cutting-edge.
 
 ## Education
 
