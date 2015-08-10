@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-06-02T19:12:18+08:00</updated>
+  <updated>2015-08-10T20:57:10+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,276 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Data Types in Rails]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/08/10/data-types-in-rails/"/>
+    <updated>2015-08-10T17:45:53+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/08/10/data-types-in-rails</id>
+    <content type="html"><![CDATA[<p><strong><em>Have you ever got annoyed with data types when you are creating Rails migrations?</em></strong></p>
+
+<p><strong><em>What’s the full list of data types in Rails? Does it differ from MySQL to PostgreSQL?</em></strong></p>
+
+<p><strong><em>When adding a <code>title</code> field to <code>Post</code> table, should we use <code>title</code> as a <code>string</code> or <code>text</code>? Same answer with MySQL and PostgreSQL?</em></strong></p>
+
+<p>You may want to check the Rails guides of <a href="http://edgeguides.rubyonrails.org/active_record_migrations.html">Active Record Migrations</a>, but all you get is disappointment because its lacking of essential information about data types.</p>
+
+<p>Here is a quick entry about data types which I extracts from Rails API and Stack Overflow.</p>
+
+<h2 id="general-data-type">General Data Type</h2>
+
+<blockquote>
+  <p>From <a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#method-i-column">ActiveRecord::ConnectionAdapters::TableDefinition#column</a></p>
+</blockquote>
+
+<p>Instantiates a new column for the table. The type parameter is normally one of the migrations native types, which is one of the following: </p>
+
+<ul>
+  <li><code>:primary_key</code></li>
+  <li><code>:string</code></li>
+  <li><code>:text</code></li>
+  <li><code>:integer</code></li>
+  <li><code>:float</code></li>
+  <li><code>:decimal</code></li>
+  <li><code>:datetime</code></li>
+  <li><code>:time</code></li>
+  <li><code>:date</code></li>
+  <li><code>:binary</code></li>
+  <li><code>:boolean</code></li>
+</ul>
+
+<h2 id="specific-dbms-data-type">Specific DBMS Data Type</h2>
+
+<blockquote>
+  <p>From Psylone’s answer on <a href="http://stackoverflow.com/a/17279395/1331774">Where is the documentation page for ActiveRecord data types?</a></p>
+</blockquote>
+
+<p>Check the specific DB adaptor in source code.</p>
+
+<p><code>ruby MySQL Data Types https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L244-L256 link
+NATIVE_DATABASE_TYPES = {
+  :primary_key =&gt; "int(11) auto_increment PRIMARY KEY",
+  :string      =&gt; { :name =&gt; "varchar", :limit =&gt; 255 },
+  :text        =&gt; { :name =&gt; "text" },
+  :integer     =&gt; { :name =&gt; "int", :limit =&gt; 4 },
+  :float       =&gt; { :name =&gt; "float" },
+  :decimal     =&gt; { :name =&gt; "decimal" },
+  :datetime    =&gt; { :name =&gt; "datetime" },
+  :time        =&gt; { :name =&gt; "time" },
+  :date        =&gt; { :name =&gt; "date" },
+  :binary      =&gt; { :name =&gt; "blob" },
+  :boolean     =&gt; { :name =&gt; "tinyint", :limit =&gt; 1 }
+}
+</code></p>
+
+<p><code>ruby PostgreSQL Data Types https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L77-L112 link
+NATIVE_DATABASE_TYPES = {
+  primary_key: "serial primary key",
+  bigserial: "bigserial",
+  string:      { name: "character varying" },
+  text:        { name: "text" },
+  integer:     { name: "integer" },
+  float:       { name: "float" },
+  decimal:     { name: "decimal" },
+  datetime:    { name: "timestamp" },
+  time:        { name: "time" },
+  date:        { name: "date" },
+  daterange:   { name: "daterange" },
+  numrange:    { name: "numrange" },
+  tsrange:     { name: "tsrange" },
+  tstzrange:   { name: "tstzrange" },
+  int4range:   { name: "int4range" },
+  int8range:   { name: "int8range" },
+  binary:      { name: "bytea" },
+  boolean:     { name: "boolean" },
+  bigint:      { name: "bigint" },
+  xml:         { name: "xml" },
+  tsvector:    { name: "tsvector" },
+  hstore:      { name: "hstore" },
+  inet:        { name: "inet" },
+  cidr:        { name: "cidr" },
+  macaddr:     { name: "macaddr" },
+  uuid:        { name: "uuid" },
+  json:        { name: "json" },
+  jsonb:       { name: "jsonb" },
+  ltree:       { name: "ltree" },
+  citext:      { name: "citext" },
+  point:       { name: "point" },
+  bit:         { name: "bit" },
+  bit_varying: { name: "bit varying" },
+  money:       { name: "money" },
+}
+</code></p>
+
+<p>Or, use <code>ActiveRecord::Base.connection.native_database_types.keys</code> to get all valid data types based on your database adaptor.</p>
+
+<p><code>ruby
+# PostgreSQL
+[1] pry(main)&gt; ActiveRecord::Base.connection.native_database_types.keys
+[
+  [ 0] :primary_key,
+  [ 1] :bigserial,
+  [ 2] :string,
+  [ 3] :text,
+  [ 4] :integer,
+  [ 5] :float,
+  [ 6] :decimal,
+  [ 7] :datetime,
+  [ 8] :time,
+  [ 9] :date,
+  [10] :daterange,
+  [11] :numrange,
+  [12] :tsrange,
+  [13] :tstzrange,
+  [14] :int4range,
+  [15] :int8range,
+  [16] :binary,
+  [17] :boolean,
+  [18] :bigint,
+  [19] :xml,
+  [20] :tsvector,
+  [21] :hstore,
+  [22] :inet,
+  [23] :cidr,
+  [24] :macaddr,
+  [25] :uuid,
+  [26] :json,
+  [27] :jsonb,
+  [28] :ltree,
+  [29] :citext,
+  [30] :point,
+  [31] :bit,
+  [32] :bit_varying,
+  [33] :money
+]
+</code></p>
+
+<p>There is another guide about <a href="http://edgeguides.rubyonrails.org/active_record_postgresql.html">Active Record and PostgreSQL</a>.</p>
+
+<blockquote>
+  <p>From gotqn’s answer on <a href="http://stackoverflow.com/a/25702629/1331774">Rails 4 datatypes?</a></p>
+</blockquote>
+
+<p>Rails data types mapping to different DB data types:</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/data_types_1.png" alt="Data Types 1" />
+<img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/data_types_2.png" alt="Data Types 2" /></p>
+
+<h2 id="data-type-shortcut-when-generating-model">Data Type Shortcut When Generating Model</h2>
+
+<blockquote>
+  <p>From tomascharad’s answer on <a href="http://stackoverflow.com/questions/17918117/rails-4-datatypes">Rails 4 datatypes?</a></p>
+</blockquote>
+
+<p>```sh
+$ rails generate model -h</p>
+
+<p>Available field types:</p>
+
+<pre><code>Just after the field name you can specify a type like text or boolean.
+It will generate the column with the associated SQL type. For instance:
+
+    `rails generate model post title:string body:text`
+
+will generate a title column with a varchar type and a body column with a text
+type. If no type is specified the string type will be used by default.
+You can use the following types:
+
+    integer
+    primary_key
+    decimal
+    float
+    boolean
+    binary
+    string
+    text
+    date
+    time
+    datetime
+
+You can also consider `references` as a kind of type. For instance, if you run:
+
+    `rails generate model photo title:string album:references`
+
+It will generate an `album_id` column. You should generate these kinds of fields when
+you will use a `belongs_to` association, for instance. `references` also supports
+polymorphism, you can enable polymorphism like this:
+
+    `rails generate model product supplier:references{polymorphic}`
+
+For integer, string, text and binary fields, an integer in curly braces will
+be set as the limit:
+
+    `rails generate model user pseudo:string{30}`
+
+For decimal, two integers separated by a comma in curly braces will be used
+for precision and scale:
+
+    `rails generate model product 'price:decimal{10,2}'`
+
+You can add a `:uniq` or `:index` suffix for unique or standard indexes
+respectively:
+
+    `rails generate model user pseudo:string:uniq`
+    `rails generate model user pseudo:string:index`
+
+You can combine any single curly brace option with the index options:
+
+    `rails generate model user username:string{30}:uniq`
+    `rails generate model product supplier:references{polymorphic}:index`
+
+If you require a `password_digest` string column for use with
+has_secure_password, you should specify `password:digest`:
+
+    `rails generate model user password:digest`
+</code></pre>
+
+<p>```</p>
+
+<h2 id="should-you-choose-string-or-text">Should you choose string or text?</h2>
+
+<p>In <strong>MySQL</strong></p>
+
+<blockquote>
+  <p>From tjeezy’s answer and Omar Qureshi’s comment on <a href="http://stackoverflow.com/a/3354452/1331774">Difference between string and text in rails?</a></p>
+</blockquote>
+
+<p><code>
+:string |                   VARCHAR                | :limit =&gt; 1 to 255 (default = 255)
+:text   | TINYTEXT, TEXT, MEDIUMTEXT, or LONGTEXT2 | :limit =&gt; 1 to 4294967296 (default = 65536)
+</code></p>
+
+<p>So you’d better specify the <code>:limit</code> as a reminder to yourself that there is a limit and you should have a validation in the model to ensure that the limit is not exceeded.</p>
+
+<p>And, you can have indexes on <code>varchars</code>, you cannot on <code>text</code>.</p>
+
+<p>In <strong>Postgresql</strong></p>
+
+<blockquote>
+  <p>From PostgreSQL Manual <a href="http://www.postgresql.org/docs/9.3/interactive/datatype-character.html">Character Types</a></p>
+</blockquote>
+
+<p>There is no performance difference among these three types, apart from increased storage space when using the blank-padded type, and a few extra CPU cycles to check the length when storing into a length-constrained column. While <code>character(n)</code> has performance advantages in some other database systems, there is no such advantage in PostgreSQL; in fact <code>character(n)</code> is usually the slowest of the three because of its additional storage costs. In most situations <code>text</code> or <code>character</code> varying should be used instead.</p>
+
+<blockquote>
+  <p>From Omar Qureshi’s answer on <a href="http://stackoverflow.com/questions/3354330/difference-between-string-and-text-in-rails">Difference between string and text in rails?</a></p>
+</blockquote>
+
+<p>If you are using postgres use <code>text</code> wherever you can, unless you have a size constraint since there is no performance penalty for <code>text</code> vs <code>varchar</code>.</p>
+
+<blockquote>
+  <p>From mu is too short’s answer on <a href="http://stackoverflow.com/questions/8129776/rails-3-postgres-how-long-is-a-string-if-you-dont-apply-limit-in-schema">rails 3/postgres - how long is a string if you don’t apply :limit in schema</a> and <a href="http://stackoverflow.com/questions/8694273/changing-a-column-type-to-longer-strings-in-rails/8694483#8694483">Changing a column type to longer strings in rails</a></p>
+</blockquote>
+
+<p><code>
+:string | character varying (255)
+:text   | text
+</code></p>
+
+<p>There’s no reason to use <code>:string</code> (AKA <code>varchar</code>) at all, the database treats <code>text</code> and <code>varchar(n)</code> the same internally except for the extra length constraints for <code>varchar(n)</code>; you should only use <code>varchar(n)</code> (AKA <code>:string</code>) if you have an external constrain on the column size.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby Float Point Arithmetic and Truncation]]></title>
@@ -1136,78 +1406,6 @@ end
     </ul>
   </li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[From irb to Rails console]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/11/22/from-irb-to-rails-console/"/>
-    <updated>2014-11-22T18:09:51+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/11/22/from-irb-to-rails-console</id>
-    <content type="html"><![CDATA[<p>From Justing Weiss’s article:</p>
-
-<p><a href="http://www.justinweiss.com/blog/2014/11/17/what-are-the-differences-between-irb/?utm_source=Weissblog+Subscribers&amp;utm_campaign=dc22dc3715-What_are_the_differences_between_irb_11_17_2014&amp;utm_medium=email&amp;utm_term=0_2494b7d197-dc22dc3715-120246897">What’s the Difference Between <em>irb</em>, <em>bundle exec irb</em>, <em>bundle console</em>, and <em>rails console</em>?</a></p>
-
-<ul>
-  <li><code>irb</code></li>
-</ul>
-
-<p>It can’t easily load gems that Bundler installs outside of RubyGems’ load path. Eg. <code>bundle install --path=vendor/bundle</code></p>
-
-<ul>
-  <li><code>bundle exec irb</code></li>
-</ul>
-
-<p>It can easily load <em>Gemfile</em> gems by Bundler.</p>
-
-<p><code>ruby
-$ irb
-&gt;&gt; require 'bundler/setup'
-=&gt; true
-</code></p>
-
-<ul>
-  <li><code>bundle exec console</code></li>
-</ul>
-
-<p>Find and auto-require <em>Gemfile</em> gems.</p>
-
-<p><code>ruby
-$ irb
-&gt;&gt; require 'bundler/setup'
-=&gt; true
-&gt;&gt; Rails.version
-NameError: uninitialized constant Rails
-        from (irb):2
-        from /Users/wendi/.rvm/rubies/ruby-2.0.0-p353/bin/irb:12:in '&lt;main&gt;'
-&gt;&gt; Bundler.require
-=&gt; [&lt;Bundler::Dependency type=:runtime name="rails" requirements="= 4.1.6"&gt;, ... ]
-&gt;&gt; Rails.version
-=&gt; "4.1.6"
-</code></p>
-
-<ul>
-  <li><code>rails console</code></li>
-</ul>
-
-<p>Find, auto-require <em>Gemfile</em> gems and load Rails Application env.</p>
-
-<p><code>ruby
-$ irb
-&gt;&gt; require 'bundler/setup'
-=&gt; true
-&gt;&gt; Rails.version
-NameError: uninitialized constant Rails
-        from (irb):2
-        from /Users/wendi/.rvm/rubies/ruby-2.0.0-p353/bin/irb:12:in '&lt;main&gt;'
-&gt;&gt; Bundler.require
-=&gt; [&lt;Bundler::Dependency type=:runtime name="rails" requirements="= 4.1.6"&gt;, ... ]
-&gt;&gt; Rails.version
-=&gt; "4.1.6"
-&gt;&gt; require_relative 'config/environment.rb'
-=&gt; true
-</code></p>
 
 ]]></content>
   </entry>

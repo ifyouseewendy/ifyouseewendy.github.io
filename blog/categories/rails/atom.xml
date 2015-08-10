@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-06-02T19:12:18+08:00</updated>
+  <updated>2015-08-10T20:57:10+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,276 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Data Types in Rails]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/08/10/data-types-in-rails/"/>
+    <updated>2015-08-10T17:45:53+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/08/10/data-types-in-rails</id>
+    <content type="html"><![CDATA[<p><strong><em>Have you ever got annoyed with data types when you are creating Rails migrations?</em></strong></p>
+
+<p><strong><em>What’s the full list of data types in Rails? Does it differ from MySQL to PostgreSQL?</em></strong></p>
+
+<p><strong><em>When adding a <code>title</code> field to <code>Post</code> table, should we use <code>title</code> as a <code>string</code> or <code>text</code>? Same answer with MySQL and PostgreSQL?</em></strong></p>
+
+<p>You may want to check the Rails guides of <a href="http://edgeguides.rubyonrails.org/active_record_migrations.html">Active Record Migrations</a>, but all you get is disappointment because its lacking of essential information about data types.</p>
+
+<p>Here is a quick entry about data types which I extracts from Rails API and Stack Overflow.</p>
+
+<h2 id="general-data-type">General Data Type</h2>
+
+<blockquote>
+  <p>From <a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#method-i-column">ActiveRecord::ConnectionAdapters::TableDefinition#column</a></p>
+</blockquote>
+
+<p>Instantiates a new column for the table. The type parameter is normally one of the migrations native types, which is one of the following: </p>
+
+<ul>
+  <li><code>:primary_key</code></li>
+  <li><code>:string</code></li>
+  <li><code>:text</code></li>
+  <li><code>:integer</code></li>
+  <li><code>:float</code></li>
+  <li><code>:decimal</code></li>
+  <li><code>:datetime</code></li>
+  <li><code>:time</code></li>
+  <li><code>:date</code></li>
+  <li><code>:binary</code></li>
+  <li><code>:boolean</code></li>
+</ul>
+
+<h2 id="specific-dbms-data-type">Specific DBMS Data Type</h2>
+
+<blockquote>
+  <p>From Psylone’s answer on <a href="http://stackoverflow.com/a/17279395/1331774">Where is the documentation page for ActiveRecord data types?</a></p>
+</blockquote>
+
+<p>Check the specific DB adaptor in source code.</p>
+
+<p><code>ruby MySQL Data Types https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L244-L256 link
+NATIVE_DATABASE_TYPES = {
+  :primary_key =&gt; "int(11) auto_increment PRIMARY KEY",
+  :string      =&gt; { :name =&gt; "varchar", :limit =&gt; 255 },
+  :text        =&gt; { :name =&gt; "text" },
+  :integer     =&gt; { :name =&gt; "int", :limit =&gt; 4 },
+  :float       =&gt; { :name =&gt; "float" },
+  :decimal     =&gt; { :name =&gt; "decimal" },
+  :datetime    =&gt; { :name =&gt; "datetime" },
+  :time        =&gt; { :name =&gt; "time" },
+  :date        =&gt; { :name =&gt; "date" },
+  :binary      =&gt; { :name =&gt; "blob" },
+  :boolean     =&gt; { :name =&gt; "tinyint", :limit =&gt; 1 }
+}
+</code></p>
+
+<p><code>ruby PostgreSQL Data Types https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L77-L112 link
+NATIVE_DATABASE_TYPES = {
+  primary_key: "serial primary key",
+  bigserial: "bigserial",
+  string:      { name: "character varying" },
+  text:        { name: "text" },
+  integer:     { name: "integer" },
+  float:       { name: "float" },
+  decimal:     { name: "decimal" },
+  datetime:    { name: "timestamp" },
+  time:        { name: "time" },
+  date:        { name: "date" },
+  daterange:   { name: "daterange" },
+  numrange:    { name: "numrange" },
+  tsrange:     { name: "tsrange" },
+  tstzrange:   { name: "tstzrange" },
+  int4range:   { name: "int4range" },
+  int8range:   { name: "int8range" },
+  binary:      { name: "bytea" },
+  boolean:     { name: "boolean" },
+  bigint:      { name: "bigint" },
+  xml:         { name: "xml" },
+  tsvector:    { name: "tsvector" },
+  hstore:      { name: "hstore" },
+  inet:        { name: "inet" },
+  cidr:        { name: "cidr" },
+  macaddr:     { name: "macaddr" },
+  uuid:        { name: "uuid" },
+  json:        { name: "json" },
+  jsonb:       { name: "jsonb" },
+  ltree:       { name: "ltree" },
+  citext:      { name: "citext" },
+  point:       { name: "point" },
+  bit:         { name: "bit" },
+  bit_varying: { name: "bit varying" },
+  money:       { name: "money" },
+}
+</code></p>
+
+<p>Or, use <code>ActiveRecord::Base.connection.native_database_types.keys</code> to get all valid data types based on your database adaptor.</p>
+
+<p><code>ruby
+# PostgreSQL
+[1] pry(main)&gt; ActiveRecord::Base.connection.native_database_types.keys
+[
+  [ 0] :primary_key,
+  [ 1] :bigserial,
+  [ 2] :string,
+  [ 3] :text,
+  [ 4] :integer,
+  [ 5] :float,
+  [ 6] :decimal,
+  [ 7] :datetime,
+  [ 8] :time,
+  [ 9] :date,
+  [10] :daterange,
+  [11] :numrange,
+  [12] :tsrange,
+  [13] :tstzrange,
+  [14] :int4range,
+  [15] :int8range,
+  [16] :binary,
+  [17] :boolean,
+  [18] :bigint,
+  [19] :xml,
+  [20] :tsvector,
+  [21] :hstore,
+  [22] :inet,
+  [23] :cidr,
+  [24] :macaddr,
+  [25] :uuid,
+  [26] :json,
+  [27] :jsonb,
+  [28] :ltree,
+  [29] :citext,
+  [30] :point,
+  [31] :bit,
+  [32] :bit_varying,
+  [33] :money
+]
+</code></p>
+
+<p>There is another guide about <a href="http://edgeguides.rubyonrails.org/active_record_postgresql.html">Active Record and PostgreSQL</a>.</p>
+
+<blockquote>
+  <p>From gotqn’s answer on <a href="http://stackoverflow.com/a/25702629/1331774">Rails 4 datatypes?</a></p>
+</blockquote>
+
+<p>Rails data types mapping to different DB data types:</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/data_types_1.png" alt="Data Types 1" />
+<img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/data_types_2.png" alt="Data Types 2" /></p>
+
+<h2 id="data-type-shortcut-when-generating-model">Data Type Shortcut When Generating Model</h2>
+
+<blockquote>
+  <p>From tomascharad’s answer on <a href="http://stackoverflow.com/questions/17918117/rails-4-datatypes">Rails 4 datatypes?</a></p>
+</blockquote>
+
+<p>```sh
+$ rails generate model -h</p>
+
+<p>Available field types:</p>
+
+<pre><code>Just after the field name you can specify a type like text or boolean.
+It will generate the column with the associated SQL type. For instance:
+
+    `rails generate model post title:string body:text`
+
+will generate a title column with a varchar type and a body column with a text
+type. If no type is specified the string type will be used by default.
+You can use the following types:
+
+    integer
+    primary_key
+    decimal
+    float
+    boolean
+    binary
+    string
+    text
+    date
+    time
+    datetime
+
+You can also consider `references` as a kind of type. For instance, if you run:
+
+    `rails generate model photo title:string album:references`
+
+It will generate an `album_id` column. You should generate these kinds of fields when
+you will use a `belongs_to` association, for instance. `references` also supports
+polymorphism, you can enable polymorphism like this:
+
+    `rails generate model product supplier:references{polymorphic}`
+
+For integer, string, text and binary fields, an integer in curly braces will
+be set as the limit:
+
+    `rails generate model user pseudo:string{30}`
+
+For decimal, two integers separated by a comma in curly braces will be used
+for precision and scale:
+
+    `rails generate model product 'price:decimal{10,2}'`
+
+You can add a `:uniq` or `:index` suffix for unique or standard indexes
+respectively:
+
+    `rails generate model user pseudo:string:uniq`
+    `rails generate model user pseudo:string:index`
+
+You can combine any single curly brace option with the index options:
+
+    `rails generate model user username:string{30}:uniq`
+    `rails generate model product supplier:references{polymorphic}:index`
+
+If you require a `password_digest` string column for use with
+has_secure_password, you should specify `password:digest`:
+
+    `rails generate model user password:digest`
+</code></pre>
+
+<p>```</p>
+
+<h2 id="should-you-choose-string-or-text">Should you choose string or text?</h2>
+
+<p>In <strong>MySQL</strong></p>
+
+<blockquote>
+  <p>From tjeezy’s answer and Omar Qureshi’s comment on <a href="http://stackoverflow.com/a/3354452/1331774">Difference between string and text in rails?</a></p>
+</blockquote>
+
+<p><code>
+:string |                   VARCHAR                | :limit =&gt; 1 to 255 (default = 255)
+:text   | TINYTEXT, TEXT, MEDIUMTEXT, or LONGTEXT2 | :limit =&gt; 1 to 4294967296 (default = 65536)
+</code></p>
+
+<p>So you’d better specify the <code>:limit</code> as a reminder to yourself that there is a limit and you should have a validation in the model to ensure that the limit is not exceeded.</p>
+
+<p>And, you can have indexes on <code>varchars</code>, you cannot on <code>text</code>.</p>
+
+<p>In <strong>Postgresql</strong></p>
+
+<blockquote>
+  <p>From PostgreSQL Manual <a href="http://www.postgresql.org/docs/9.3/interactive/datatype-character.html">Character Types</a></p>
+</blockquote>
+
+<p>There is no performance difference among these three types, apart from increased storage space when using the blank-padded type, and a few extra CPU cycles to check the length when storing into a length-constrained column. While <code>character(n)</code> has performance advantages in some other database systems, there is no such advantage in PostgreSQL; in fact <code>character(n)</code> is usually the slowest of the three because of its additional storage costs. In most situations <code>text</code> or <code>character</code> varying should be used instead.</p>
+
+<blockquote>
+  <p>From Omar Qureshi’s answer on <a href="http://stackoverflow.com/questions/3354330/difference-between-string-and-text-in-rails">Difference between string and text in rails?</a></p>
+</blockquote>
+
+<p>If you are using postgres use <code>text</code> wherever you can, unless you have a size constraint since there is no performance penalty for <code>text</code> vs <code>varchar</code>.</p>
+
+<blockquote>
+  <p>From mu is too short’s answer on <a href="http://stackoverflow.com/questions/8129776/rails-3-postgres-how-long-is-a-string-if-you-dont-apply-limit-in-schema">rails 3/postgres - how long is a string if you don’t apply :limit in schema</a> and <a href="http://stackoverflow.com/questions/8694273/changing-a-column-type-to-longer-strings-in-rails/8694483#8694483">Changing a column type to longer strings in rails</a></p>
+</blockquote>
+
+<p><code>
+:string | character varying (255)
+:text   | text
+</code></p>
+
+<p>There’s no reason to use <code>:string</code> (AKA <code>varchar</code>) at all, the database treats <code>text</code> and <code>varchar(n)</code> the same internally except for the extra length constraints for <code>varchar(n)</code>; you should only use <code>varchar(n)</code> (AKA <code>:string</code>) if you have an external constrain on the column size.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Annoying OAuth Issue on HTTP URL Encoding]]></title>
@@ -926,781 +1196,6 @@ raise method(:respond_with).source_location.inspect
     <p>Try <code>mount</code> a rack-based app in Rails.</p>
   </li>
 </ol>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Review] Rebuilding Rails]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/09/27/rebuilding-rails/"/>
-    <updated>2014-09-27T14:48:48+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/09/27/rebuilding-rails</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Book</strong></td>
-      <td>Rebuilding Rails</td>
-    </tr>
-    <tr>
-      <td><strong>Author</strong></td>
-      <td>Noah Gibbs</td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="http://rebuilding-rails.com/">rebuilding-rails.com</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<ul id="markdown-toc">
-  <li><a href="#zero-to-it-works">1. Zero to “It Works!”</a></li>
-  <li><a href="#your-first-controller">2. Your First Controller</a></li>
-  <li><a href="#rails-automatic-loading">3. Rails Automatic Loading</a></li>
-  <li><a href="#httpcontroller---httpcontroller">‘HTTPController’ -&gt; ‘http_controller’</a>    <ul>
-      <li><a href="#rendering-views">4. Rendering Views</a></li>
-      <li><a href="#basic-models">5. Basic Models</a></li>
-      <li><a href="#request-response">6. Request, Response</a></li>
-    </ul>
-  </li>
-  <li><a href="#rulerslibrulersrb">rulers/lib/rulers.rb</a>    <ul>
-      <li><a href="#the-littlest-orm">7. The Littlest ORM</a></li>
-      <li><a href="#rack-middleware">8. Rack Middleware</a></li>
-    </ul>
-  </li>
-  <li><a href="#rackup">$ rackup</a>    <ul>
-      <li><a href="#real-routing">9. Real Routing</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>My re-building source code</p>
-
-<ul>
-  <li><a href="https://github.com/ifyouseewendy/rulers">rulers</a></li>
-  <li><a href="https://github.com/ifyouseewendy/best_quotes">best_quotes</a></li>
-</ul>
-
-<p>Work flow diagram</p>
-
-<p><img src="https://raw.githubusercontent.com/ifyouseewendy/best_quotes/master/rebuilding-rails.png" alt="img texrebuilding-rails" style="width:562px" /></p>
-
-<h2 id="zero-to-it-works">1. Zero to “It Works!”</h2>
-
-<p><code>ruby
-gem.add_development_dependency "rspec"
-gem.add_runtime_dependency "rest-client"
-gem.add_runtime_dependency "some_gem", "1.3.0"
-gem.add_runtime_dependency "other_gem", "&gt;0.8.2"
-</code></p>
-
-<p>Each of these adds a runtime dependency (needed to run the gem at all) or a development dependency (needed to develop or test the gem).</p>
-
-<p>Youʼll need to go into the rulers directory and <code>git add .</code> before you rebuild the gem (<code>git add .; gem build rulers.gemspec; gem install rulers-0.0.1.gem</code>). Thatʼs because rulers.gemspec is actually calling git to find out what files to include in your gem.</p>
-
-<p><strong>Rails structure</strong></p>
-
-<ul>
-  <li>
-    <p><strong>ActiveSupport</strong> is a compatibility library including methods that aren’t necessarily specific to Rails. You’ll see ActiveSupport used by non-Rails libraries because it contains such a lot of useful baseline functionality. ActiveSupport includes methods like how Rails changes words from single to plural, or CamelCase to snake_case. It also includes significantly better time and date support than the Ruby standard library.</p>
-  </li>
-  <li>
-    <p><strong>ActiveModel</strong> hooks into features of your models that aren’t really about the database - for instance, if you want a URL for a given model, ActiveModel helps you there. It’s a thin wrapper around many different ActiveModel implementations to tell Rails how to use them. Most commonly, ActiveModel implementations are ORMs (see ActiveRecord, below), but they can also use non-relational storage like MongoDB, Redis, Memcached or even just local machine memory.</p>
-  </li>
-  <li>
-    <p><strong>ActiveRecord</strong> is an Object-Relational Mapper (ORM). That means that it maps between Ruby objects and tables in a SQL database. When you query from or write to the SQL database in Rails, you do it through ActiveRecord. ActiveRecord also implements ActiveModel. ActiveRecord supports MySQL and SQLite, plus JDBC, Oracle, PostgreSQL and many others.</p>
-  </li>
-  <li>
-    <p><strong>ActionPack</strong> (<em>ActionDispatch, ActionController, Actionview</em>) does routing - the mapping of an incoming URL to a controller and action in Rails. It also sets up your controllers and views, and shepherds a request through its controller action and then through rendering the view. For some of it, ActionPack uses Rack. The template rendering itself is done through an external gem like Erubis for .erb templates, or Haml for .haml templates. ActionPack also handles action- or view-centered functionality like view caching.</p>
-  </li>
-  <li>
-    <p><strong>ActionMailer</strong> is used to send out email, especially email based on templates. It works a lot like you’d hope Rails email would, with controllers, actions and “views” - which for email are text- based templates, not regular web-page templates.</p>
-  </li>
-</ul>
-
-<h2 id="your-first-controller">2. Your First Controller</h2>
-
-<p>Rails encapsulated the Rack information into a “request” object rather than just including the hash right into the controller. Thatʼs a good idea when you want to abstract it a bit – normalize values for certain variables, for instance, or read and set cookies to store session data.</p>
-
-<h2 id="rails-automatic-loading">3. Rails Automatic Loading</h2>
-
-<p>When debugging or printing error messages I like to use STDERR because itʼs a bit harder to redirect than a normal “puts” and so youʼre more likely to see it even when using a log file, background process or similar.</p>
-
-<p>For simple structures, “inspect” shows them exactly as youʼd type them into Ruby – strings with quotes, numbers bare, symbols with a leading colon and so on.</p>
-
-<p><strong>Reloading Means Convenience</strong></p>
-
-<p><code>gem "rulers", :path =&gt; "../rulers"</code> This trick actually relies on deep Bundler trickery and requires you to always “bundle exec” before running things like rackup. If you forget that, it can look like the gem isnʼt there or (worse) look like an old version.</p>
-
-<p><strong>CamelCase and snake_case</strong></p>
-
-<p>```ruby
-# rulers/lib/rulers/util.rb
-module Rulers
-  def self.to_underscore(string)
-    string.gsub(/::/, ‘/’).
-    gsub(/([A-Z]+)([A-Z][a-z])/,’\1<em>\2’).
-    gsub(/([a-z\d])([A-Z])/,’\1</em>\2’).
-    tr(“-“, “_”).
-    downcase
-  end
-end</p>
-
-<h1 id="httpcontroller---httpcontroller">‘HTTPController’ -&gt; ‘http_controller’</h1>
-<p># ‘MD5Controller’ -&gt; ‘md5_controller’
-# ‘HomeController’ -&gt; ‘home_controller’
-```</p>
-
-<p><strong>Put it together</strong></p>
-
-<p><code>ruby
-# rulers/lib/rulers/dependencies.rb
-class Object
-  def self.const_missing(c)
-    require Rulers.to_underscore(c.to_s)
-    Object.const_get(c)
-  end
-end
-</code></p>
-
-<p><code>ruby
-# rulers/lib/rulers/controller.rb
-def controller_name
-  klass = self.class
-  klass = klass.to_s.gsub /Controller$/, ""
-  Rulers.to_underscore klass
-end
-</code></p>
-
-<p><strong>Did it work?</strong></p>
-
-<p>When you load a file called whatever_class.rb, youʼre not actually guaranteed that it contains WhateverClass, or that the constant WhateverClass is actually a class. How would you check?</p>
-
-<p>You might try calling const_get(:WhateverClass)… Except that you just made const_get try to load automatically. If you call it on an unloaded class inside the method call where you try to load, youʼll recurse forever and get a “stack level too deep” and a crash. So const_get isnʼt the full answer.</p>
-
-<p>```ruby
-# rulers/lib/rulers/dependencies.rb
-class Object
-  def self.const_missing(c)
-    return nil if @calling_const_missing</p>
-
-<pre><code>@calling_const_missing = true
-require Rulers.to_underscore(c.to_s)
-klass = Object.const_get(c)
-@calling_const_missing = false
-
-klass   end end ```
-</code></pre>
-
-<p>But thereʼs a reason I say “hideously hacky.” Think about ways this could break. For instance – think about what would happen if you hit this in multiple threads at once. Oops!</p>
-
-<p><strong>Re-re-reloading</strong></p>
-
-<p><a href="https://github.com/alexch/rerun">rerun</a></p>
-
-<p>```ruby
-# best_quotes/Gemfile
-source ‘https://rubygems.org’
-gem ‘rulers’, :path =&gt; “../rulers”</p>
-
-<p>group :development do
-  gem ‘rerun’
-  gem ‘listen’, ‘=1.3.1’ # for older Ruby
-end
-```</p>
-
-<p>Running by <code>bundle exec rerun -- rackup -p 3001</code>. The “–” is an old Unix trick. It means “thatʼs all the arguments you get, the rest belong to somebody else.” Specifically, it tells rerun to ignore the “-p” later.</p>
-
-<p><a href="https://github.com/rtomayko/shotgun">shotgun</a></p>
-
-<p>reloading rack development server, forking version of rackup.</p>
-
-<p><strong>In Rails</strong></p>
-
-<ol>
-  <li>
-    <p><a href="https://github.com/rails/rails/blob/master/activesupport/lib/active_support/dependencies.rb">rails/activesupport/lib/active_support/dependencies.rb</a> Rails uses ActiveSupport for its const_missing support. Most of the code is installing a const_missing that can call through to non-Rails versions of const_missing in other classes, and can be removed or re-added and is appropriately modular. It also works hard to support nested modules like MyLibrary::SubModule::SomeClass.</p>
-  </li>
-  <li>
-    <p><a href="http://urbanautomaton.com/blog/2013/08/27/rails-autoloading-hell/#fn1">Rails autoloading — how it works, and when it doesn’t</a> by Simon Coffey.</p>
-  </li>
-</ol>
-
-<h2 id="rendering-views">4. Rendering Views</h2>
-
-<p><strong>Erb and Erubis</strong></p>
-
-<p>```ruby
-# some_directory/erb_test.rb
-require “erubis”</p>
-
-<p>template = «TEMPLATE
-Hello! This is a template.
-It has &lt;%= whatever %&gt;.
-TEMPLATE</p>
-
-<p>eruby = Erubis::Eruby.new(template)
-puts eruby.src
-puts “==========”
-puts eruby.result(:whatever =&gt; “ponies!”)
-```</p>
-
-<p>Run it with <code>ruby erb_test.rb</code></p>
-
-<p><code>ruby
-bash-3.2$ ruby erb_test.rb
-_buf = ''; _buf &lt;&lt; 'Hello!   This is a template. It has ';
-_buf &lt;&lt; ( whatever ).to_s; _buf &lt;&lt; '.';
-_buf.to_s
-==========
-Hello! This is a template.
-It has ponies!.
-</code></p>
-
-<p>The few lines starting with <code>_buf</code> are interesting. Erubis takes apart our string, appends it to <code>_buf</code> piece by piece, and adds the variables in as well after calling <code>.to_s</code> on them. Then it just returns <code>_buf</code>.</p>
-
-<p><strong>Rack test example</strong></p>
-
-<p><a href="https://github.com/brynary/rack-test">rack-test</a></p>
-
-<p>```ruby
-require_relative “test_helper”</p>
-
-<p>class TestApp &lt; Rulers::Application
-  def get_controller_and_action(env)
-    [TestController, “index”]
-  end
-end</p>
-
-<p>class TestController &lt; Rulers::Controlle
-  def index
-    “Hello!”  # Not rendering a view
-  end
-end</p>
-
-<p>class RulersAppTest &lt; Test::Unit::TestCase
- include Rack::Test::Methods</p>
-
-<p>def app
-    TestApp.new
-  end</p>
-
-<p>def test_request
-    get “/example/route”
-    assert last_response.ok?
-    body = last_response.body
-    assert body[“Hello”]
-  end
-end
-```</p>
-
-<p><strong>Rake test example</strong></p>
-
-<p>Rake actually ships with a “Rake::TestTask”.</p>
-
-<p>```ruby
-# Rakefile
-require “bundler/gem_tasks”
-require “rake/testtask”</p>
-
-<p>Rake::TestTask.new do |t|
-  t.name = “test”  # this is the default
-  t.libs « “test”  # load the test dir
-  t.test_files = Dir[‘test/<em>test</em>.rb’]
-  t.verbose = true
-end
-```</p>
-
-<p><em>A word of caution</em>: Rake will always run your tests by loading them into the same Ruby process, then running each one in turn. This is a lot faster than running them in individual processes, but it means that your tests can mess with each other in annoying ways. If you find yourself saying, “but I didnʼt set that global variable in this test!” think about whether some other test might have done it. For extra fun, the tests donʼt always run in any predictable order.</p>
-
-<p><strong>In Rails</strong></p>
-
-<p>Rails actually allows registering a number of different template engines at once with a number of different extensions so that Erb files are rendered with Erubis, but .haml files are rendered with the HAML templating engine.</p>
-
-<p>You can find the top-level view code in <a href="https://github.com/rails/rails/blob/master/actionview/lib/action_view.rb">actionpack/lib/action_view.rb</a>, and the whole big chunk of Rails view code in actionpack/lib/action_view/. From there, look in <a href="https://github.com/rails/rails/blob/master/actionview/lib/action_view/template/handlers/erb.rb">template/handlers/erb.rb</a> for a pretty compact description of exactly how Rails uses Erubis to render Erb templates. You can see that most of the bulk of Railsʼ version is setup, interface and dealing with string encodings. You save a lot of trouble by knowing that youʼre basically only dealing with ASCII and/or UTF-8 strings.</p>
-
-<h2 id="basic-models">5. Basic Models</h2>
-
-<p>Use <a href="https://github.com/intridea/multi_json">multi_json</a> (a generic swappable back-end for JSON handling) to built a simple system of models based on JSON files.</p>
-
-<p><strong>In Rails</strong></p>
-
-<p>ActiveRecord is an Object-Relational Mapper so that each of your objects represents a database row. ActiveModel is the interface that Rails uses to all of storage including non-relational stores like Cassandra or MongoDB, to fit particular object types into Rails.</p>
-
-<p>For a good overview of ActiveModel, have a look at a blog post from Yehuda Katz on that topic: <a href="http://yehudakatz.com/2010/01/10/activemodel-make-any-ruby-object-feel-like-activerecord/">ActiveModel: Make Any Ruby Object Feel Like ActiveRecord</a></p>
-
-<h2 id="request-response">6. Request, Response</h2>
-
-<p>```ruby
-# rulers/lib/rulers/controller.rb
-module Rulers
-  class Controller
-    def response(text, status = 200, headers = {})
-      raise “Already responded!” if @response
-      a = [text].flatten
-      @response = Rack::Response.new(a, status, headers)
-    end</p>
-
-<pre><code>def get_response  # Only for Rulers
-  @response
-end
-
-def render_response(*args)
-  response(render(*args))
-end   end end
-</code></pre>
-
-<h1 id="rulerslibrulersrb">rulers/lib/rulers.rb</h1>
-<p>module Ruler
-  class Application
-    def call(env)   # Redefine
-      if env[‘PATH_INFO’] == ‘/favicon.ico’
-        return [404,
-          {‘Content-Type’ =&gt; ‘text/html’}, []]
-      end</p>
-
-<pre><code>  klass, act = get_controller_and_action(env)
-  controller = klass.new(env)
-  text = controller.send(act)
-  if controller.get_response
-    # ensure the code after render_response works
-    st, hd, rs = controller.get_response.to_a
-    [st, hd, [rs.body].flatten]
-  else
-    # without explicitly render_response in action,
-    # you can add auto render here
-    [200, {'Content-Type' =&gt; 'text/html'}, [text]]
-  end
-end   end end ```
-</code></pre>
-
-<p>In Rails, the return value from the controller is ignored. Instead if you donʼt call render (Railsʼ equivalent of render_response), it will automatically call it for you with the same controller name, and the viewʼs name set to the same name as your action.</p>
-
-<p>Rails doesnʼt return the string when you call “render” (well, usually - some calls to render do!). Instead, it keeps track of the fact that you called render and what you called it on. Then it gives you an error if you call it again, or uses the defaults if you get to the end of a controller action without calling it</p>
-
-<p><strong>Instance Variables</strong></p>
-
-<p>The Rails answer is to set instance variables in the controller, then use them in the view. Try creating a new view object, mostly just to use Erubis to evaluate the view file. Then, make it easy to pass in a hash of instance variables which youʼll set on the view object before doing the evaluation.</p>
-
-<p><code>ruby
-# rulers/lib/rulers/controller.rb
-module Rulers
-  class Controller
-    def render(view_name, locals = {})
-      filename = File.join 'app', 'views', controller_name, "#{view_name}.html.erb"
-      ivars = instance_variables.reduce({}) {|ha, iv| ha[iv] = instance_variable_get(iv); ha }
-      Rulers::View.new(filename, ivars, locals).result
-    end
-  end
-end
-</code></p>
-
-<p><strong>In Rails</strong></p>
-
-<p>Rails (more specifically, ActionPack) uses Rack in a very similar way, even exposing the Rack Request object with the “request” method. Especially <a href="https://github.com/rails/rails/blob/master/actionpack%2Flib%2Faction_controller%2Fmetal.rb">metal.rb </a>and metal/*.rb. “Rails Metal” is a name for the lower-level Rails which goes mostly straight through to the “bare metal” – that is, to Rack.</p>
-
-<p>You can find a lot of the Rails implementation of Rack in these directories – for instance, metal/redirecting.rb is the implementation of the redirect_to() helper which returns status 302 (redirect) and a location to Rack. You could steal the code and add a redirect_to to Rulers, if you wanted.</p>
-
-<p>You can also find things like forgery (CSRF) protection, multiple renderers (i.e. Erb vs Haml), forcing SSL if requested and cookies in this directory. Some are complex, while others call to Rack very simply and you could move right over to Rulers.</p>
-
-<h2 id="the-littlest-orm">7. The Littlest ORM</h2>
-
-<p>migration</p>
-
-<p><code>ruby
-# best_quotes/mini_migration.rb
-require "sqlite3"
-conn = SQLite3::Database.new "test.db"
-conn.execute &lt;&lt;SQL
-create table my_table (
-  id INTEGER PRIMARY KEY,
-  posted INTEGER,
-  title VARCHAR(30),
-  body VARCHAR(32000));
-SQL
-</code></p>
-
-<p>sqlite model</p>
-
-<p>```ruby
-# rulers/lib/rulers/sqlite_model.rb
-require “sqlite3”
-require “rulers/util”</p>
-
-<p>DB = SQLite3::Database.new “test.db”</p>
-
-<p>module Rulers
-  module Model
-    class SQLite</p>
-
-<pre><code>  class &lt;&lt; self
-    def table
-      Rulers.to_underscore name
-    end
-
-    def schema
-      return @schema if @schema
-      @schema = {}
-      DB.table_info(table) do |row|
-        @schema[ row['name'] ] = row['type']
-      end
-      @schema
-    end
-
-    def to_sql(val)
-      case val
-      when Numeric
-        val.to_s
-      when String
-        "'#{val}'"
-      else
-        raise "Can't change #{val.class} to SQL!"
-      end
-    end
-
-    def create(values)
-      values.delete 'id'
-      keys = schema.keys - ['id']
-      vals = keys.map do |key|
-        values[key] ? to_sql(values[key]) : 'null'
-      end
-
-      DB.execute &lt;&lt;SQL
-        INSERT INTO #{table} (#{keys.join(',')})
-        VALUES (#{vals.join(',')}); SQL
-
-      data = Hash[keys.zip(vals)]
-      sql = "SELECT last_insert_rowid();"
-      data['id'] = DB.execute(sql)[0][0]
-      self.new data
-    end
-
-    def count
-      DB.execute(&lt;&lt;SQL)[0][0]
-        SELECT COUNT(*) FROM #{table} SQL
-    end
-
-    def find(id)
-      row = DB.execute &lt;&lt;SQL
-        SELECT #{schema.keys.join(',')} from #{table} where id=#{id} SQL
-      data = Hash[ schema.keys.zip row[0] ]
-      self.new data
-    end
-  end
-
-  def initialize(data = nil)
-    @hash = data
-  end
-
-  def [](name)
-    @hash[name.to_s]
-  end
-
-  def []=(name, value)
-    @hash[name.to_s] = value
-  end
-
-  def save!
-    unless @hash['id']
-      self.class.create
-      return true
-    end
-
-    fields = @hash.map do |k,v|
-      "#{k}=#{self.class.to_sql(v)}"
-    end.join(',')
-
-    DB.execute &lt;&lt;SQL
-      UPDATE #{self.class.table}
-      SET #{fields}
-      WHERE id="#{@hash['id']}" SQL
-    true
-  end
-
-  def save
-    save! rescue false
-  end
-
-end   end end ```
-</code></pre>
-
-<p>You can add a method to the SQLite model that takes a column name and a type, and then when saving and loading that column, does something type-dependent to it, like the boolean or JSON fields above.</p>
-
-<p>ActiveRecord allows both ways – you can research the <code>before_save</code> and <code>after_initialize</code> callbacks for how to do it on save/ load.</p>
-
-<p><strong>In Rails</strong></p>
-
-<p>ActiveRecord contains mappings of operations like our gem, but also migrations, cross-database compatibility and a huge amount of optimization and general complexity. And thatʼs even though they use the ARel gem for most of the heavy lifting!</p>
-
-<h2 id="rack-middleware">8. Rack Middleware</h2>
-
-<p>With any Ruby web framework, you can modify how it works by adding Rack components around it. I like thinking of them as pancakes, because Rack lets you build your framework and your application like a stack of pancakes.</p>
-
-<p><strong>Built-in middlewares</strong></p>
-
-<ul>
-  <li><strong>Rack::Auth::Basic</strong> - HTTP Basic authentication.</li>
-  <li><strong>Rack::Auth::Digest</strong> - HTTP Digest authentication.</li>
-  <li><strong>Rack::Cascade</strong> - Pass a request to a series of Rack apps, and use the first request that comes back as good. Itʼs a way to mount one Rack app “on top of” another (or many).</li>
-  <li><strong>Rack::Chunked</strong> - A Rack interface to HTTP Chunked transfer.</li>
-  <li><strong>Rack::CommonLogger</strong> - Request logging.</li>
-  <li><strong>Rack::ConditionalGet</strong> - Implement HTTP If-None-Match and If- Modified-Since with ETags and dates.</li>
-  <li><strong>Rack::Config</strong> - Call a given block before each request.</li>
-  <li><strong>Rack::ContentLength</strong> - Set Content-Length automatically.</li>
-  <li><strong>Rack::ContentType</strong> - Try to guess Content-Type and set it. Rack::Deflater - Compress the response with gzip/deflate.</li>
-  <li><strong>Rack::Directory</strong> - Add Apache-style directory listings. This is an endpoint not an intermediate layer, so use it with “run.”</li>
-  <li><strong>Rack::ETag</strong> - Generate ETags from MD5s of the content.</li>
-  <li><strong>Rack::Head</strong> - Remove response body for HEAD requests.</li>
-  <li><strong>Rack::Lint</strong> - Check your responses for correctness.</li>
-  <li><strong>Rack::Lock</strong> - Only allow one thread in at once.</li>
-  <li><strong>Rack::Reloader</strong> - Reload your app when files change.</li>
-  <li><strong>Rack::Runtime</strong> - Times the request, sets X-Runtime in response.</li>
-  <li><strong>Rack::Sendfile</strong> - Use the X-Sendfile header to ask your web server to send a file much faster than Ruby can.</li>
-  <li><strong>Rack::ShowExceptions</strong> - Show a nice exception page if something breaks.</li>
-  <li><strong>Rack::ShowStatus</strong> - Show a pretty page if the result is empty.</li>
-  <li><strong>Rack::Static</strong> - Serve from certain directories as static files instead
-of calling your framework.</li>
-  <li><strong>Rack::URLMap</strong> - Route different directories to different apps or different stacks. You can also use this with a “map” block in config.ru.</li>
-</ul>
-
-<p>Rack::URLMap is a way to tell Rack what paths go to what Rack apps - and if thereʼs could be two that match, the longer path always takes precedence.</p>
-
-<p>Rack::ContentType is to set the default HTML content type for everything. Since itʼs at the top, outside the blocks, it applies to all the blocks.</p>
-
-<p>The lobster, by the way, is a simple test app built into Rack. Youʼll see it as an example in many places.</p>
-
-<p><strong>Thrid-party middlewares</strong></p>
-
-<ul>
-  <li><a href="https://github.com/rack/rack-contrib">rack-contrib</a></li>
-  <li><a href="https://github.com/rack/rack/wiki/List-of-Middleware">middlewares listed in rack wiki</a></li>
-</ul>
-
-<p><strong>In Rails</strong></p>
-
-<p>The primary Rack application object in Rails is called ActionController::Dispatcher.</p>
-
-<p>ActionController::Base allows you to get mini-Rack-apps for each controller action because it inherits from Metal, the basic Rails Rack class. So you can call MyController.action(:myaction) and get a Rack app for that action in your controller.</p>
-
-<p><strong>Calling order of Rack middlewares</strong></p>
-
-<p>```ruby
-class Foo
-  def initialize(app, arg = ‘’)
-    puts ‘–&gt; Foo#init’
-    @app = app
-    @arg = arg
-    puts ‘–&gt; Foo#initend’
-  end</p>
-
-<p>def call(env)
-    puts ‘–&gt; Foo#call’
-    status, headers, content = @app.call(env)
-    content[0] += “#{@arg}”
-    puts ‘–&gt; Foo#callend’
-    [ status, headers, content ]
-  end
-end</p>
-
-<p>class Bar
-  def initialize(app, arg = ‘’)
-    puts ‘–&gt; Bar#init’
-    @app = app
-    @arg = arg
-    puts ‘–&gt; Bar#initend’
-  end</p>
-
-<p>def call(env)
-    puts ‘–&gt; Bar#call’
-    status, headers, content = @app.call(env)
-    content[0] += “#{@arg}”
-    puts ‘–&gt; Bar#callend’
-    [ status, headers, content ]
-  end
-end</p>
-
-<p>use Foo, ‘, foo’
-use Bar, ‘, bar’</p>
-
-<p>run proc {
-  puts ‘–&gt; main#call’
-  [200, {‘Content-Type’ =&gt; ‘text/html’}, [‘Hello, world’]]
-}</p>
-
-<h1 id="rackup">$ rackup</h1>
-<p># –&gt; Bar#init
-# –&gt; Bar#initend
-# –&gt; Foo#init
-# –&gt; Foo#initend
-# Thin web server (v1.6.1 codename Death Proof)
-# Maximum connections set to 1024
-# Listening on 0.0.0.0:9292, CTRL+C to stop
-#
-# –&gt; Foo#call
-# –&gt; Bar#call
-# –&gt; main#call
-# –&gt; Bar#callend
-# –&gt; Foo#callend
-# 127.0.0.1 - wendi [23/Sep/2014 15:56:20] “GET / HTTP/1.1” 200 - 0.0013
-```</p>
-
-<p>Other samples:</p>
-
-<ul>
-  <li><a href="https://gist.github.com/ifyouseewendy/15dd511d2d939e432068#file-config-lobster-ru">lobster</a></li>
-  <li><a href="https://gist.github.com/ifyouseewendy/15dd511d2d939e432068#file-config-auth-ru">auth</a></li>
-  <li><a href="https://gist.github.com/ifyouseewendy/15dd511d2d939e432068#file-config-benchmark-ru">benchmark</a></li>
-</ul>
-
-<h2 id="real-routing">9. Real Routing</h2>
-
-<p>Rails 3 takes this a half-step farther and makes every action on every controller a full-on Rack app that you can extract and use.</p>
-
-<p>Add RouteObject class.</p>
-
-<p>```ruby
-class RouteObject
-  def initialize
-    @rules = []
-  end</p>
-
-<p># save routing rules
-  def match(url, *args)
-    options = {}
-    options = args.pop if args[-1].is_a?(Hash)
-    options[:default] ||= {}</p>
-
-<pre><code>dest = nil
-dest = args.pop if args.size &gt; 0
-raise 'Too many args!' if args.size &gt; 0
-
-parts = url.split('/')
-parts.select!{|p| !p.empty? }
-
-vars = []
-regexp_parts = parts.map do |part|
-  if part[0] == ':'
-    vars &lt;&lt; part[1..-1]
-    "([a-zA-Z0-9_]+)"
-  elsif part[0] == '*'
-    vars &lt;&lt; part[1..-1]
-    "(.*)"
-  else
-    part
-  end
-end
-
-regexp = regexp_parts.join('/')
-@rules.push({
-  :regexp =&gt; Regexp.new("^/#{regexp}$"),
-  :vars =&gt; vars,
-  :dest =&gt; dest,
-  :options =&gt; options
-})   end
-</code></pre>
-
-<p># match rules to url and route to specific controller action.
-  # 
-  # 1. the router just applies them in order – if more than
-  #    one rule matches, the first one wins.
-  # 2. the second argument can be a Rack application, 
-  #    which Rails then calls.
-  def check_url(url)
-    @rules.each do |r|
-      m = r[:regexp].match(url)</p>
-
-<pre><code>  if m
-    options = r[:options]
-    params = options[:default].dup
-
-    r[:vars].each_with_index do |v, i|
-      params[v] = m.captures[i]
-    end
-
-    if r[:dest]
-      return get_dest(r[:dest], params)
-    else
-      controller = params['controller']
-      action = params['action']
-      return get_dest("#{controller}##{action}", params)
-    end
-  end
-end
-
-nil   end
-</code></pre>
-
-<p>def get_dest(dest, routing_params = {})
-    return dest if dest.respond_to?(:call)</p>
-
-<pre><code>if dest =~ /^([^#]+)#([^#]+)$/
-  name = $1.capitalize
-  cont = Object.const_get("#{name}Controller")
-  return cont.action($2, routing_params)
-end
-
-raise "No destination: #{dest.inspect}!"   end end ```
-</code></pre>
-
-<p>Define <code>route</code> to save rules in an instance of RouteObject, and use <code>get_rack_app</code> to route to controller actions. </p>
-
-<p>```ruby
-module Rulers
-  class Application
-    def route(&amp;block)
-      @route_obj ||= RouteObject.new
-      @route_obj.instance_eval(&amp;block)
-    end</p>
-
-<pre><code>def get_rack_app(env)
-  raise 'No routes!' unless @route_obj
-  @route_obj.check_url env['PATH_INFO']
-end   end end ```
-</code></pre>
-
-<p>Update Rulers::Controller to use <code>self.action</code> to initialize rack app, and <code>dispatch</code> to specific action.</p>
-
-<p>```ruby
-# rulers/lib/rulers/controller.rb
-module Rulers
-  class Controller
-    include Rulers::Model</p>
-
-<pre><code>def initialize(env)
-  @env = env
-  @routing_params = {}
-end
-
-def env
-  @env
-end
-
-def self.action(act, p = {})
-  proc {|e| self.new(e).dispatch(act, p) }
-end
-
-def dispatch(action, routing_params = {})
-  @routing_params = routing_params
-
-  self.send(action)
-  render_response action.to_sym unless get_response
-  st, hd, rs = get_response.to_a
-  [st, hd, [rs.body].flatten]
-end
-
-def params
-  request.params.merge @routing_params
-end
-</code></pre>
-
-<p>end
-end
-```</p>
-
-<p><strong>In Rails</strong></p>
-
-<p>Rails connects lots of tiny Rack applications into a single overall application. Itʼs a complicated, multi-layered construction.</p>
-
-<p>Each Rails controller keeps track of a mini-Rack stack of middleware which can be specified per-action like before_filters.</p>
-
 ]]></content>
   </entry>
   
