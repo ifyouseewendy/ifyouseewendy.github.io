@@ -204,3 +204,13 @@ Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
 Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
 ```
 
+- - -
+
+**Reference**
+
+- [Remove N+1 queries in your Ruby on Rails app](http://blog.diatomenterprises.com/remove-n1-queries-in-your-ruby-on-rails-app/?utm_source=rubyweekly&utm_medium=email)
+- [Rails :include vs. :joins](http://stackoverflow.com/questions/1208636/rails-include-vs-joins?rq=1)
+- [Preload, Eagerload, Includes and Joins](http://blog.bigbinary.com/2013/07/01/preload-vs-eager-load-vs-joins-vs-includes.html)
+- [Rolling with Rails 2.1 - The First Full Tutorial - Part 2](http://www.akitaonrails.com/2008/5/26/rolling-with-rails-2-1-the-first-full-tutorial-part-2)
+
+
