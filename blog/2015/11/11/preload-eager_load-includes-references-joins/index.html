@@ -1,0 +1,517 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>preload, eager_load, includes, references, and joins in Rails - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="Rails, Ruby Nov 11th, 2015 preload, eager_load, includes, references, and joins in Rails There is always a confusion about these query methods. And &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2015/11/11/preload-eager_load-includes-references-joins/">Preload, Eager_load, Includes, References, and Joins in Rails</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/08/10/data-types-in-rails/">Data Types in Rails</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/04/11/ruby-float-point-arithmetic-and-truncation/">Ruby Float Point Arithmetic and Truncation</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/03/30/ruby-trick-local-assignment-over-method-sending/">Ruby Trick: Local Assignment Over Method Sending</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding/">Annoying OAuth Issue on HTTP URL Encoding</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>Rails</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Nov 11<span>th</span>, 2015</a>
+</span>
+
+    </div>
+    <h1>
+      preload, eager_load, includes, references, and joins in Rails
+    </h1>
+  
+</header>
+
+
+  <section><p>There is always a confusion about these query methods. And after some digging, I’ve made my conclusion here: <code>includes</code> is the outstanding one.</p>
+
+<p>Here comes the demonstation.</p>
+
+<p><strong>Preparation</strong></p>
+
+<p>Environment</p>
+
+<ul>
+  <li>Ruby: 2.2.2</li>
+  <li>Rails: 4.2.2</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># model and reference</span>
+</span><span class="line"><span class="k">class</span> <span class="nc">Blog</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class="line">  <span class="n">has_many</span> <span class="ss">:posts</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1"># t.string   &quot;name&quot;</span>
+</span><span class="line">  <span class="c1"># t.string   &quot;author&quot;</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class="line">  <span class="n">belongs_to</span> <span class="ss">:blog</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1"># t.string   &quot;title&quot;</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># seed</span>
+</span><span class="line"><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">b_id</span><span class="o">|</span>
+</span><span class="line">  <span class="n">blog</span> <span class="o">=</span> <span class="no">Blog</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Blog </span><span class="si">#{</span><span class="n">b_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="ss">author</span><span class="p">:</span> <span class="s1">&#39;someone&#39;</span><span class="p">)</span>
+</span><span class="line">  <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">p_id</span><span class="o">|</span> <span class="n">blog</span><span class="o">.</span><span class="n">posts</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">title</span><span class="p">:</span> <span class="s2">&quot;Post </span><span class="si">#{</span><span class="n">b_id</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="n">p_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="preload">preload</h3>
+
+<p>Always firing two separate queries.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.preload<span class="o">(</span>:posts<span class="o">)</span>
+</span><span class="line">  Blog Load <span class="o">(</span>3.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.* FROM <span class="s2">&quot;blogs&quot;</span>
+</span><span class="line">  Post Load <span class="o">(</span>1.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> IN <span class="o">(</span>1, 2, 3<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="eagerload">eager_load</h3>
+
+<ul>
+  <li>One query, LEFT OUTER JOINed in any query rather than loaded separately.</li>
+  <li>JOIN first, then query by where clause. So you can query on referenced table, without an iteration of  <code>Enumerable#select</code>.</li>
+  <li>Works just the same as <code>includes</code> + <code>references</code>.</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.eager_load<span class="o">(</span>:posts<span class="o">)</span>
+</span><span class="line">  SQL <span class="o">(</span>0.4ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>
+</span><span class="line">
+</span><span class="line">&gt; Blog.eager_load<span class="o">(</span>:posts<span class="o">)</span>.where<span class="o">(</span>name: <span class="s1">&#39;Blog 1&#39;</span><span class="o">)</span>
+</span><span class="line">  SQL <span class="o">(</span>0.4ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> WHERE <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;name&quot;</span>, <span class="s2">&quot;Blog 1&quot;</span><span class="o">]]</span>
+</span><span class="line">
+</span><span class="line">&gt; Blog.eager_load<span class="o">(</span>:posts<span class="o">)</span>.where<span class="o">(</span>name: <span class="s1">&#39;Blog 1&#39;</span><span class="o">)</span>.where<span class="o">(</span>posts: <span class="o">{</span>title: <span class="s1">&#39;Post 1-1&#39;</span><span class="o">})</span>
+</span><span class="line">  SQL <span class="o">(</span>0.4ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> WHERE <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> <span class="o">=</span> ? AND <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;name&quot;</span>, <span class="s2">&quot;Blog 1&quot;</span><span class="o">]</span>, <span class="o">[</span><span class="s2">&quot;title&quot;</span>, <span class="s2">&quot;Post 1-1&quot;</span><span class="o">]]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="includes">includes</h3>
+
+<p>Behaves based on situations, intelligent!</p>
+
+<p>Situation 1, just like <code>preload</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.includes<span class="o">(</span>:posts<span class="o">)</span>
+</span><span class="line">  Blog Load <span class="o">(</span>2.8ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.* FROM <span class="s2">&quot;blogs&quot;</span>
+</span><span class="line">  Post Load <span class="o">(</span>0.7ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> IN <span class="o">(</span>1, 2, 3<span class="o">)</span>
+</span><span class="line">
+</span><span class="line">&gt; Blog.includes<span class="o">(</span>:posts<span class="o">)</span>.where<span class="o">(</span>name: <span class="s1">&#39;Blog 1&#39;</span><span class="o">)</span>
+</span><span class="line">  Blog Load <span class="o">(</span>0.7ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.* FROM <span class="s2">&quot;blogs&quot;</span> WHERE <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;name&quot;</span>, <span class="s2">&quot;Blog 1&quot;</span><span class="o">]]</span>
+</span><span class="line">  Post Load <span class="o">(</span>0.3ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> IN <span class="o">(</span>1<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Situation 2, just like <code>eager_load</code>, <strong>fired by querying referenced table</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.includes<span class="o">(</span>:posts<span class="o">)</span>.where<span class="o">(</span>name: <span class="s1">&#39;Blog 1&#39;</span><span class="o">)</span>.where<span class="o">(</span>posts: <span class="o">{</span>title: <span class="s1">&#39;Post 1-1&#39;</span><span class="o">})</span>
+</span><span class="line">  SQL <span class="o">(</span>0.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> WHERE <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> <span class="o">=</span> ? AND <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;name&quot;</span>, <span class="s2">&quot;Blog 1&quot;</span><span class="o">]</span>, <span class="o">[</span><span class="s2">&quot;title&quot;</span>, <span class="s2">&quot;Post 1-1&quot;</span><span class="o">]]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong><em><code>includes</code> or <code>eager_load</code></em></strong></p>
+
+<p>Consider this snippet:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.includes<span class="o">(</span>:posts<span class="o">)</span>.each<span class="o">{</span>|blog| puts blog.posts.map<span class="o">(</span>&amp;:title<span class="o">)</span>.join<span class="o">(</span><span class="s1">&#39;,&#39;</span><span class="o">)</span> <span class="o">}</span>
+</span><span class="line">  Blog Load <span class="o">(</span>0.3ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.* FROM <span class="s2">&quot;blogs&quot;</span>
+</span><span class="line">  Post Load <span class="o">(</span>0.3ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> IN <span class="o">(</span>1, 2, 3<span class="o">)</span>
+</span><span class="line">
+</span><span class="line">&gt; Blog.eager_load<span class="o">(</span>:posts<span class="o">)</span>.each<span class="o">{</span>|blog| puts blog.posts.map<span class="o">(</span>&amp;:title<span class="o">)</span>.join<span class="o">(</span><span class="s1">&#39;,&#39;</span><span class="o">)</span> <span class="o">}</span>                                                                                                                    SQL <span class="o">(</span>0.9ms<span class="o">)</span>
+</span><span class="line">  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Both expressions return the same result, so should we prefer two seperated queries by <code>includes</code> (also <code>preload</code>) or the LEFT OUTER JOINed query by <code>eager_load</code>?</p>
+
+<p>There is a <a href="http://www.akitaonrails.com/2008/5/26/rolling-with-rails-2-1-the-first-full-tutorial-part-2">blog post</a> by Fabio Akita talks about the change of Rails 2.1 (see the section entitled “Optimized Eager Loading”). Here are some references:</p>
+
+<blockquote>
+  <p>For some situations, the monster outer join becomes slower than many smaller queries.
+The bottom line is: generally it seems better to split a monster join into smaller ones, as you’ve seen in the above example. This avoid the cartesian product overload problem.</p>
+</blockquote>
+
+<p>Example for SQL data returned from LEFT OUTER JOIN query</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">sqlite&gt;  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>;
+</span><span class="line">1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|1|Post 1-1|2015-11-11 15:22:35.053689|2015-11-11 15:22:35.053689|1
+</span><span class="line">1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|2|Post 1-2|2015-11-11 15:22:35.058113|2015-11-11 15:22:35.058113|1
+</span><span class="line">1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|3|Post 1-3|2015-11-11 15:22:35.062776|2015-11-11 15:22:35.062776|1
+</span><span class="line">1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|4|Post 1-4|2015-11-11 15:22:35.065994|2015-11-11 15:22:35.065994|1
+</span><span class="line">1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|5|Post 1-5|2015-11-11 15:22:35.069632|2015-11-11 15:22:35.069632|1
+</span><span class="line">2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|6|Post 2-1|2015-11-11 15:22:35.078644|2015-11-11 15:22:35.078644|2
+</span><span class="line">2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|7|Post 2-2|2015-11-11 15:22:35.081845|2015-11-11 15:22:35.081845|2
+</span><span class="line">2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|8|Post 2-3|2015-11-11 15:22:35.084888|2015-11-11 15:22:35.084888|2
+</span><span class="line">2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|9|Post 2-4|2015-11-11 15:22:35.087778|2015-11-11 15:22:35.087778|2
+</span><span class="line">2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|10|Post 2-5|2015-11-11 15:22:35.090781|2015-11-11 15:22:35.090781|2
+</span><span class="line">3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|11|Post 3-1|2015-11-11 15:22:35.097479|2015-11-11 15:22:35.097479|3
+</span><span class="line">3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|12|Post 3-2|2015-11-11 15:22:35.103512|2015-11-11 15:22:35.103512|3
+</span><span class="line">3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|13|Post 3-3|2015-11-11 15:22:35.108775|2015-11-11 15:22:35.108775|3
+</span><span class="line">3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|14|Post 3-4|2015-11-11 15:22:35.112654|2015-11-11 15:22:35.112654|3
+</span><span class="line">3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|15|Post 3-5|2015-11-11 15:22:35.117601|2015-11-11 15:22:35.117601|3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<blockquote>
+  <p>The longer and more complex the result set, the more this matters because the more objects Rails would have to deal with. Allocating and deallocating several hundreds or thousands of small duplicated objects is never a good deal.</p>
+</blockquote>
+
+<p>As <code>includes</code> can behave the same as <code>eager_load</code> in one case, but better in the other case. My conclusion is, <strong>prefer <code>includes</code> over <code>eager_load</code></strong>.</p>
+
+<h3 id="references">references</h3>
+
+<ul>
+  <li>Works only with <code>includes</code>, makes <code>includes</code> behaves like <code>eager_load</code></li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.includes<span class="o">(</span>:posts<span class="o">)</span>.where<span class="o">(</span>name: <span class="s1">&#39;Blog 1&#39;</span><span class="o">)</span>.references<span class="o">(</span>:posts<span class="o">)</span>
+</span><span class="line">  SQL <span class="o">(</span>0.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> WHERE <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;name&quot;</span>, <span class="s2">&quot;Blog 1&quot;</span><span class="o">]]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="joins">joins</h3>
+
+<p><em>INNER JOIN</em>, compared to <code>eager_load</code> (<em>LEFT OUTER JOIN</em>).</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.joins<span class="o">(</span>:posts<span class="o">)</span>
+</span><span class="line">  Blog Load <span class="o">(</span>0.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.* FROM <span class="s2">&quot;blogs&quot;</span> INNER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>compared to <code>eager_load</code></strong></p>
+
+<p>Query by <code>joins</code> just returns the raw data, whereas the data from <code>eager_load</code> is filtered by Rails.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.joins<span class="o">(</span>:posts<span class="o">)</span>.count
+</span><span class="line">   <span class="o">(</span>0.3ms<span class="o">)</span>  SELECT COUNT<span class="o">(</span>*<span class="o">)</span> FROM <span class="s2">&quot;blogs&quot;</span> INNER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>
+</span><span class="line"> <span class="o">=</span>&gt; 15
+</span><span class="line">&gt; Blog.eager_load<span class="o">(</span>:posts<span class="o">)</span>.count
+</span><span class="line">   <span class="o">(</span>0.4ms<span class="o">)</span>  SELECT COUNT<span class="o">(</span>DISTINCT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span><span class="o">)</span> FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>
+</span><span class="line"> <span class="o">=</span>&gt; 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>So you need to take caution about iteration on <code>joins</code> query.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.joins<span class="o">(</span>:posts<span class="o">)</span>.each <span class="k">do</span> |blog|
+</span><span class="line">&gt;   puts blog.posts.map<span class="o">(</span>&amp;:title<span class="o">)</span>.join<span class="o">(</span><span class="s1">&#39;, &#39;</span><span class="o">)</span>
+</span><span class="line">&gt; end
+</span><span class="line">  Blog Load <span class="o">(</span>0.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.* FROM <span class="s2">&quot;blogs&quot;</span> INNER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>
+</span><span class="line">  Post Load <span class="o">(</span>0.3ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 1<span class="o">]]</span>
+</span><span class="line">Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 1<span class="o">]]</span>
+</span><span class="line">Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 1<span class="o">]]</span>
+</span><span class="line">Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 1<span class="o">]]</span>
+</span><span class="line">Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 1<span class="o">]]</span>
+</span><span class="line">Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 2<span class="o">]]</span>
+</span><span class="line">Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 2<span class="o">]]</span>
+</span><span class="line">Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 2<span class="o">]]</span>
+</span><span class="line">Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 2<span class="o">]]</span>
+</span><span class="line">Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 2<span class="o">]]</span>
+</span><span class="line">Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 3<span class="o">]]</span>
+</span><span class="line">Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+</span><span class="line">  Post Load <span class="o">(</span>0.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 3<span class="o">]]</span>
+</span><span class="line">Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 3<span class="o">]]</span>
+</span><span class="line">Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 3<span class="o">]]</span>
+</span><span class="line">Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 3<span class="o">]]</span>
+</span><span class="line">Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>

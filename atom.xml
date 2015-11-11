@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-08-10T20:57:10+08:00</updated>
+  <updated>2015-11-12T00:54:05+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,316 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[preload, eager_load, includes, references, and joins in Rails]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins/"/>
+    <updated>2015-11-11T23:25:17+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins</id>
+    <content type="html"><![CDATA[<p>There is always a confusion about these query methods. And after some digging, I’ve made my conclusion here: <code>includes</code> is the outstanding one.</p>
+
+<p>Here comes the demonstation.</p>
+
+<p><strong>Preparation</strong></p>
+
+<p>Environment</p>
+
+<ul>
+  <li>Ruby: 2.2.2</li>
+  <li>Rails: 4.2.2</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># model and reference</span>
+</span><span class="line"><span class="k">class</span> <span class="nc">Blog</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class="line">  <span class="n">has_many</span> <span class="ss">:posts</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1"># t.string   &quot;name&quot;</span>
+</span><span class="line">  <span class="c1"># t.string   &quot;author&quot;</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class="line">  <span class="n">belongs_to</span> <span class="ss">:blog</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1"># t.string   &quot;title&quot;</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># seed</span>
+</span><span class="line"><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">b_id</span><span class="o">|</span>
+</span><span class="line">  <span class="n">blog</span> <span class="o">=</span> <span class="no">Blog</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Blog </span><span class="si">#{</span><span class="n">b_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="ss">author</span><span class="p">:</span> <span class="s1">&#39;someone&#39;</span><span class="p">)</span>
+</span><span class="line">  <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">p_id</span><span class="o">|</span> <span class="n">blog</span><span class="o">.</span><span class="n">posts</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">title</span><span class="p">:</span> <span class="s2">&quot;Post </span><span class="si">#{</span><span class="n">b_id</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="n">p_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="preload">preload</h3>
+
+<p>Always firing two separate queries.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.preload<span class="o">(</span>:posts<span class="o">)</span>
+</span><span class="line">  Blog Load <span class="o">(</span>3.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.* FROM <span class="s2">&quot;blogs&quot;</span>
+</span><span class="line">  Post Load <span class="o">(</span>1.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> IN <span class="o">(</span>1, 2, 3<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="eagerload">eager_load</h3>
+
+<ul>
+  <li>One query, LEFT OUTER JOINed in any query rather than loaded separately.</li>
+  <li>JOIN first, then query by where clause. So you can query on referenced table, without an iteration of  <code>Enumerable#select</code>.</li>
+  <li>Works just the same as <code>includes</code> + <code>references</code>.</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.eager_load<span class="o">(</span>:posts<span class="o">)</span>
+</span><span class="line">  SQL <span class="o">(</span>0.4ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>
+</span><span class="line">
+</span><span class="line">&gt; Blog.eager_load<span class="o">(</span>:posts<span class="o">)</span>.where<span class="o">(</span>name: <span class="s1">&#39;Blog 1&#39;</span><span class="o">)</span>
+</span><span class="line">  SQL <span class="o">(</span>0.4ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> WHERE <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;name&quot;</span>, <span class="s2">&quot;Blog 1&quot;</span><span class="o">]]</span>
+</span><span class="line">
+</span><span class="line">&gt; Blog.eager_load<span class="o">(</span>:posts<span class="o">)</span>.where<span class="o">(</span>name: <span class="s1">&#39;Blog 1&#39;</span><span class="o">)</span>.where<span class="o">(</span>posts: <span class="o">{</span>title: <span class="s1">&#39;Post 1-1&#39;</span><span class="o">})</span>
+</span><span class="line">  SQL <span class="o">(</span>0.4ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> WHERE <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> <span class="o">=</span> ? AND <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;name&quot;</span>, <span class="s2">&quot;Blog 1&quot;</span><span class="o">]</span>, <span class="o">[</span><span class="s2">&quot;title&quot;</span>, <span class="s2">&quot;Post 1-1&quot;</span><span class="o">]]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="includes">includes</h3>
+
+<p>Behaves based on situations, intelligent!</p>
+
+<p>Situation 1, just like <code>preload</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.includes<span class="o">(</span>:posts<span class="o">)</span>
+</span><span class="line">  Blog Load <span class="o">(</span>2.8ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.* FROM <span class="s2">&quot;blogs&quot;</span>
+</span><span class="line">  Post Load <span class="o">(</span>0.7ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> IN <span class="o">(</span>1, 2, 3<span class="o">)</span>
+</span><span class="line">
+</span><span class="line">&gt; Blog.includes<span class="o">(</span>:posts<span class="o">)</span>.where<span class="o">(</span>name: <span class="s1">&#39;Blog 1&#39;</span><span class="o">)</span>
+</span><span class="line">  Blog Load <span class="o">(</span>0.7ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.* FROM <span class="s2">&quot;blogs&quot;</span> WHERE <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;name&quot;</span>, <span class="s2">&quot;Blog 1&quot;</span><span class="o">]]</span>
+</span><span class="line">  Post Load <span class="o">(</span>0.3ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> IN <span class="o">(</span>1<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Situation 2, just like <code>eager_load</code>, <strong>fired by querying referenced table</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.includes<span class="o">(</span>:posts<span class="o">)</span>.where<span class="o">(</span>name: <span class="s1">&#39;Blog 1&#39;</span><span class="o">)</span>.where<span class="o">(</span>posts: <span class="o">{</span>title: <span class="s1">&#39;Post 1-1&#39;</span><span class="o">})</span>
+</span><span class="line">  SQL <span class="o">(</span>0.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> WHERE <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> <span class="o">=</span> ? AND <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;name&quot;</span>, <span class="s2">&quot;Blog 1&quot;</span><span class="o">]</span>, <span class="o">[</span><span class="s2">&quot;title&quot;</span>, <span class="s2">&quot;Post 1-1&quot;</span><span class="o">]]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong><em><code>includes</code> or <code>eager_load</code></em></strong></p>
+
+<p>Consider this snippet:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.includes<span class="o">(</span>:posts<span class="o">)</span>.each<span class="o">{</span>|blog| puts blog.posts.map<span class="o">(</span>&amp;:title<span class="o">)</span>.join<span class="o">(</span><span class="s1">&#39;,&#39;</span><span class="o">)</span> <span class="o">}</span>
+</span><span class="line">  Blog Load <span class="o">(</span>0.3ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.* FROM <span class="s2">&quot;blogs&quot;</span>
+</span><span class="line">  Post Load <span class="o">(</span>0.3ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> IN <span class="o">(</span>1, 2, 3<span class="o">)</span>
+</span><span class="line">
+</span><span class="line">&gt; Blog.eager_load<span class="o">(</span>:posts<span class="o">)</span>.each<span class="o">{</span>|blog| puts blog.posts.map<span class="o">(</span>&amp;:title<span class="o">)</span>.join<span class="o">(</span><span class="s1">&#39;,&#39;</span><span class="o">)</span> <span class="o">}</span>                                                                                                                    SQL <span class="o">(</span>0.9ms<span class="o">)</span>
+</span><span class="line">  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Both expressions return the same result, so should we prefer two seperated queries by <code>includes</code> (also <code>preload</code>) or the LEFT OUTER JOINed query by <code>eager_load</code>?</p>
+
+<p>There is a <a href="http://www.akitaonrails.com/2008/5/26/rolling-with-rails-2-1-the-first-full-tutorial-part-2">blog post</a> by Fabio Akita talks about the change of Rails 2.1 (see the section entitled “Optimized Eager Loading”). Here are some references:</p>
+
+<blockquote>
+  <p>For some situations, the monster outer join becomes slower than many smaller queries.
+The bottom line is: generally it seems better to split a monster join into smaller ones, as you’ve seen in the above example. This avoid the cartesian product overload problem.</p>
+</blockquote>
+
+<p>Example for SQL data returned from LEFT OUTER JOIN query</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">sqlite&gt;  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>;
+</span><span class="line">1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|1|Post 1-1|2015-11-11 15:22:35.053689|2015-11-11 15:22:35.053689|1
+</span><span class="line">1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|2|Post 1-2|2015-11-11 15:22:35.058113|2015-11-11 15:22:35.058113|1
+</span><span class="line">1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|3|Post 1-3|2015-11-11 15:22:35.062776|2015-11-11 15:22:35.062776|1
+</span><span class="line">1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|4|Post 1-4|2015-11-11 15:22:35.065994|2015-11-11 15:22:35.065994|1
+</span><span class="line">1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|5|Post 1-5|2015-11-11 15:22:35.069632|2015-11-11 15:22:35.069632|1
+</span><span class="line">2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|6|Post 2-1|2015-11-11 15:22:35.078644|2015-11-11 15:22:35.078644|2
+</span><span class="line">2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|7|Post 2-2|2015-11-11 15:22:35.081845|2015-11-11 15:22:35.081845|2
+</span><span class="line">2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|8|Post 2-3|2015-11-11 15:22:35.084888|2015-11-11 15:22:35.084888|2
+</span><span class="line">2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|9|Post 2-4|2015-11-11 15:22:35.087778|2015-11-11 15:22:35.087778|2
+</span><span class="line">2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|10|Post 2-5|2015-11-11 15:22:35.090781|2015-11-11 15:22:35.090781|2
+</span><span class="line">3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|11|Post 3-1|2015-11-11 15:22:35.097479|2015-11-11 15:22:35.097479|3
+</span><span class="line">3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|12|Post 3-2|2015-11-11 15:22:35.103512|2015-11-11 15:22:35.103512|3
+</span><span class="line">3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|13|Post 3-3|2015-11-11 15:22:35.108775|2015-11-11 15:22:35.108775|3
+</span><span class="line">3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|14|Post 3-4|2015-11-11 15:22:35.112654|2015-11-11 15:22:35.112654|3
+</span><span class="line">3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|15|Post 3-5|2015-11-11 15:22:35.117601|2015-11-11 15:22:35.117601|3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<blockquote>
+  <p>The longer and more complex the result set, the more this matters because the more objects Rails would have to deal with. Allocating and deallocating several hundreds or thousands of small duplicated objects is never a good deal.</p>
+</blockquote>
+
+<p>As <code>includes</code> can behave the same as <code>eager_load</code> in one case, but better in the other case. My conclusion is, <strong>prefer <code>includes</code> over <code>eager_load</code></strong>.</p>
+
+<h3 id="references">references</h3>
+
+<ul>
+  <li>Works only with <code>includes</code>, makes <code>includes</code> behaves like <code>eager_load</code></li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.includes<span class="o">(</span>:posts<span class="o">)</span>.where<span class="o">(</span>name: <span class="s1">&#39;Blog 1&#39;</span><span class="o">)</span>.references<span class="o">(</span>:posts<span class="o">)</span>
+</span><span class="line">  SQL <span class="o">(</span>0.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t0_r0, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> AS t0_r1, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;author&quot;</span> AS t0_r2, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t0_r3, <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t0_r4, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;id&quot;</span> AS t1_r0, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;title&quot;</span> AS t1_r1, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;created_at&quot;</span> AS t1_r2, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;updated_at&quot;</span> AS t1_r3, <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> AS t1_r4 FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span> WHERE <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;name&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;name&quot;</span>, <span class="s2">&quot;Blog 1&quot;</span><span class="o">]]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="joins">joins</h3>
+
+<p><em>INNER JOIN</em>, compared to <code>eager_load</code> (<em>LEFT OUTER JOIN</em>).</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.joins<span class="o">(</span>:posts<span class="o">)</span>
+</span><span class="line">  Blog Load <span class="o">(</span>0.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.* FROM <span class="s2">&quot;blogs&quot;</span> INNER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>compared to <code>eager_load</code></strong></p>
+
+<p>Query by <code>joins</code> just returns the raw data, whereas the data from <code>eager_load</code> is filtered by Rails.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.joins<span class="o">(</span>:posts<span class="o">)</span>.count
+</span><span class="line">   <span class="o">(</span>0.3ms<span class="o">)</span>  SELECT COUNT<span class="o">(</span>*<span class="o">)</span> FROM <span class="s2">&quot;blogs&quot;</span> INNER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>
+</span><span class="line"> <span class="o">=</span>&gt; 15
+</span><span class="line">&gt; Blog.eager_load<span class="o">(</span>:posts<span class="o">)</span>.count
+</span><span class="line">   <span class="o">(</span>0.4ms<span class="o">)</span>  SELECT COUNT<span class="o">(</span>DISTINCT <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span><span class="o">)</span> FROM <span class="s2">&quot;blogs&quot;</span> LEFT OUTER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>
+</span><span class="line"> <span class="o">=</span>&gt; 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>So you need to take caution about iteration on <code>joins</code> query.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">&gt; Blog.joins<span class="o">(</span>:posts<span class="o">)</span>.each <span class="k">do</span> |blog|
+</span><span class="line">&gt;   puts blog.posts.map<span class="o">(</span>&amp;:title<span class="o">)</span>.join<span class="o">(</span><span class="s1">&#39;, &#39;</span><span class="o">)</span>
+</span><span class="line">&gt; end
+</span><span class="line">  Blog Load <span class="o">(</span>0.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;blogs&quot;</span>.* FROM <span class="s2">&quot;blogs&quot;</span> INNER JOIN <span class="s2">&quot;posts&quot;</span> ON <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> <span class="s2">&quot;blogs&quot;</span>.<span class="s2">&quot;id&quot;</span>
+</span><span class="line">  Post Load <span class="o">(</span>0.3ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 1<span class="o">]]</span>
+</span><span class="line">Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 1<span class="o">]]</span>
+</span><span class="line">Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 1<span class="o">]]</span>
+</span><span class="line">Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 1<span class="o">]]</span>
+</span><span class="line">Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 1<span class="o">]]</span>
+</span><span class="line">Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 2<span class="o">]]</span>
+</span><span class="line">Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 2<span class="o">]]</span>
+</span><span class="line">Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 2<span class="o">]]</span>
+</span><span class="line">Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 2<span class="o">]]</span>
+</span><span class="line">Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 2<span class="o">]]</span>
+</span><span class="line">Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 3<span class="o">]]</span>
+</span><span class="line">Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+</span><span class="line">  Post Load <span class="o">(</span>0.2ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 3<span class="o">]]</span>
+</span><span class="line">Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 3<span class="o">]]</span>
+</span><span class="line">Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 3<span class="o">]]</span>
+</span><span class="line">Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+</span><span class="line">  Post Load <span class="o">(</span>0.1ms<span class="o">)</span>  SELECT <span class="s2">&quot;posts&quot;</span>.* FROM <span class="s2">&quot;posts&quot;</span> WHERE <span class="s2">&quot;posts&quot;</span>.<span class="s2">&quot;blog_id&quot;</span> <span class="o">=</span> ?  <span class="o">[[</span><span class="s2">&quot;blog_id&quot;</span>, 3<span class="o">]]</span>
+</span><span class="line">Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Data Types in Rails]]></title>
@@ -10395,546 +10705,6 @@ of calling your framework.</li>
 <p><strong>Asymmetry</strong></p>
 
 <p>All of the principles together contribute to balance.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Inside ActiveSupport Notifications]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/06/03/inside-activesupport-notifications/"/>
-    <updated>2014-06-03T00:45:35+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/06/03/inside-activesupport-notifications</id>
-    <content type="html"><![CDATA[<ul id="markdown-toc">
-  <li><a href="#preparation">Preparation</a></li>
-  <li><a href="#activesupportnotifications">ActiveSupport::Notifications</a>    <ul>
-      <li><a href="#file-name">File name</a></li>
-      <li><a href="#dependency">Dependency</a></li>
-      <li><a href="#brief">Brief</a></li>
-      <li><a href="#specification">Specification</a>        <ul>
-          <li><a href="#class-variables">Class Variables</a></li>
-          <li><a href="#class-methods">Class Methods</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#activesupportnotificationsfanout">ActiveSupport::Notifications::Fanout</a>    <ul>
-      <li><a href="#file-name-1">File name</a></li>
-      <li><a href="#dependency-1">Dependency</a></li>
-      <li><a href="#brief-1">Brief</a></li>
-      <li><a href="#specification-1">Specification</a>        <ul>
-          <li><a href="#instance-variables">Instance Variables</a></li>
-          <li><a href="#instance-methods">Instance Methods</a></li>
-          <li><a href="#modules">Modules</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#activesupportnotificationsinstrumenter">ActiveSupport::Notifications::Instrumenter</a>    <ul>
-      <li><a href="#file-name-2">File name</a></li>
-      <li><a href="#dependency-2">Dependency</a></li>
-      <li><a href="#brief-2">Brief</a></li>
-      <li><a href="#specification-2">Specification</a>        <ul>
-          <li><a href="#instance-variables-1">Instance Variables</a></li>
-          <li><a href="#instance-methods-1">Instance Methods</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#activesupportnotificationsevent">ActiveSupport::Notifications::Event</a>    <ul>
-      <li><a href="#file-name-3">File name</a></li>
-      <li><a href="#dependency-3">Dependency</a></li>
-      <li><a href="#specification-3">Specification</a></li>
-    </ul>
-  </li>
-  <li><a href="#main-working-flow">Main Working Flow</a>    <ul>
-      <li><a href="#activesupportnotificationssubscribe">ActiveSupport::Notifications.subscribe</a></li>
-      <li><a href="#activesupportnotificationsinstrument">ActiveSupport::Notifications.instrument</a></li>
-    </ul>
-  </li>
-  <li><a href="#misc">MISC</a></li>
-  <li><a href="#reference">Reference</a></li>
-</ul>
-
-<h2 id="preparation">Preparation</h2>
-
-<ul>
-  <li>Read API doc first, <a href="ActiveSupport::Notifications">ActiveSupport::Notifications</a>.</li>
-  <li>About hooks inside Rails for instrumentation, check the edge doc on <a href="http://edgeguides.rubyonrails.org/active_support_instrumentation.html">Active Support Instrumentation</a>.</li>
-</ul>
-
-<p>Then let’s read through the <strong>ActiveSupport::Notifications</strong> source code.</p>
-
-<h2 id="activesupportnotifications">ActiveSupport::Notifications</h2>
-
-<h3 id="file-name">File name</h3>
-
-<p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications.rb">activesupport/lib/active_support/notifications.rb</a></p>
-
-<h3 id="dependency">Dependency</h3>
-
-<ul>
-  <li><code>active_support/notifications/instrumenter</code></li>
-  <li><code>active_support/notifications/fanout</code></li>
-  <li><code>active_support/per_thread_registry</code></li>
-</ul>
-
-<h3 id="brief">Brief</h3>
-
-<ol>
-  <li>A class attribute accessor <code>notifier</code>, which is initialized by <code>Fanout.new</code>.</li>
-  <li>Several class methods as the interfaces exposed, which encapsulate <code>notifer</code> to do the real work.</li>
-  <li>A class named <strong>InstrumentationRegistry</strong>.</li>
-</ol>
-
-<h3 id="specification">Specification</h3>
-
-<h4 id="class-variables">Class Variables</h4>
-
-<p><code>self.notifier = Fanout.new</code></p>
-
-<h4 id="class-methods">Class Methods</h4>
-
-<ul>
-  <li>
-    <p><code>subscribe</code>, <code>unsubscribe</code> and <code>publish</code> all delegate to <code>notifier</code>, like</p>
-
-    <p><code>ruby
-  def subscribe(*args, &amp;block)
-    notifier.subscribe(*args, &amp;block)
-  end
- </code></p>
-  </li>
-  <li>
-    <p><code>subscribed(callback, *args, &amp;block)</code>, <code>subscribe</code> while <code>block</code> is running, and <code>unsubscribe</code> while running is over.</p>
-
-    <p><code>ruby
-  def subscribed(callback, *args, &amp;block)
-    subscriber = subscribe(*args, &amp;callback)
-    yield
-  ensure
-    unsubscribe(subscriber)
-  end
- </code></p>
-  </li>
-  <li>
-    <p><code>instrument(name, payload = {})</code></p>
-
-    <p><code>ruby
-  def instrument(name, payload = {})
-    if notifier.listening?(name)
-      instrumenter.instrument(name, payload) { yield payload if block_given? }
-    else
-      yield payload if block_given?
-    end
-  end
- </code></p>
-  </li>
-</ul>
-
-<p><code>notifier.listening?(name)</code> is checking if there are subscribers listening on the event name.</p>
-
-<p><strong><em>And what’s an instrumenter?</em></strong></p>
-
-<p>Check out the <strong>ActiveSupport::Notifications::Instrumenter</strong> below or skip this part temporally.</p>
-
-<p>Let’s talk about <strong>InstrumentationRegistry</strong> first, it is a sub-class defined in <strong>ActiveSupport::Notifications</strong>. It extends <strong>ActiveSupport::PerThreadRegistry</strong> to keep thread safe, and defines <code>#instrumenter_for</code> used for recording <strong>Instrumenter</strong> instance for specific <code>notifier</code>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># This class is a registry which holds all of the +Instrumenter+ objects</span>
-</span><span class="line"><span class="c1"># in a particular thread local. To access the +Instrumenter+ object for a</span>
-</span><span class="line"><span class="c1"># particular +notifier+, you can call the following method:</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1">#   InstrumentationRegistry.instrumenter_for(notifier)</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1"># The instrumenters for multiple notifiers are held in a single instance of</span>
-</span><span class="line"><span class="c1"># this class.</span>
-</span><span class="line"><span class="k">class</span> <span class="nc">InstrumentationRegistry</span> <span class="c1"># :nodoc:</span>
-</span><span class="line">  <span class="kp">extend</span> <span class="ss">ActiveSupport</span><span class="p">:</span><span class="ss">:PerThreadRegistry</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span>
-</span><span class="line">    <span class="vi">@registry</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">instrumenter_for</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
-</span><span class="line">    <span class="vi">@registry</span><span class="o">[</span><span class="n">notifier</span><span class="o">]</span> <span class="o">||=</span> <span class="no">Instrumenter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then look back in <strong>ActiveSupport::Notifications</strong> for its usage:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">instrumenter</span>
-</span><span class="line">  <span class="no">InstrumentationRegistry</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">instrumenter_for</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Extending <strong>ActiveSupport::PerThreadRegistry</strong> gives <strong>InstrumentationRegistry</strong> the <code>instance</code> class methods, returns a thread local <strong>InstrumentationRegistry</strong> instance. Check the <strong>ActiveSupport::PerThreadRegistry</strong> <a href="http://api.rubyonrails.org/classes/ActiveSupport/PerThreadRegistry.html">api</a> for details.</p>
-
-<h2 id="activesupportnotificationsfanout">ActiveSupport::Notifications::Fanout</h2>
-
-<h3 id="file-name-1">File name</h3>
-
-<p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications%2Ffanout.rb">activesupport/lib/active_support/notifications/fanout.rb</a></p>
-
-<h3 id="dependency-1">Dependency</h3>
-
-<ul>
-  <li><code>mutex_m</code>, a Ruby Std-lib module. <a href="http://www.ruby-doc.org/stdlib-2.1.2//libdoc/mutex_m/rdoc/Mutex_m.html">api</a></li>
-  <li><code>thread_safe</code>, a collection of thread-safe versions of common core Ruby classes. <a href="https://github.com/headius/thread_safe">api</a></li>
-</ul>
-
-<h3 id="brief-1">Brief</h3>
-
-<p>This is a default queue implementation that ships with Notifications. It just pushes events to all registered log subscribers.</p>
-
-<p>This class is thread safe. All methods are reentrant.</p>
-
-<h3 id="specification-1">Specification</h3>
-
-<h4 id="instance-variables">Instance Variables</h4>
-
-<p><code>@subscribers</code>, an array, records the subscribers.</p>
-
-<p><code>@listeners_for</code>, a reverse map(hash). It maps the event name to the subscribers. Initialized by <code>ThreadSafe::Cache.new</code>, <a href="https://github.com/headius/thread_safe">thread_safe</a> gem says:</p>
-
-<blockquote>
-  <p><code>ThreadSafe::Cache</code> also exists, as a hash-like object, and should have
-much better performance characteristics esp. under high concurrency than
-<code>ThreadSafe::Hash</code>. However, <code>ThreadSafe::Cache</code> is not strictly semantically
-equivalent to a ruby <code>Hash</code> – for instance, it does not necessarily retain
-ordering by insertion time as <code>Hash</code> does. For most uses it should do fine
-though, and we recommend you consider <code>ThreadSafe::Cache</code> instead of
-<code>ThreadSafe::Hash</code> for your concurrency-safe hash needs. It understands some
-options when created (depending on your ruby platform) that control some of the
-internals.</p>
-</blockquote>
-
-<h4 id="instance-methods">Instance Methods</h4>
-
-<ul>
-  <li>
-    <p><code>subscribe(pattern = nil, block = Proc.new)</code></p>
-
-    <p><code>ActiveSupport::Notifications.subscribe</code> use this method on <code>notifier</code> to subscribe event name based on <code>pattern</code> and a <code>block</code> to do the instrumentation callback.</p>
-
-    <p>It initialize a <em>subscriber</em> with <code>Subscribers.new pattern, block</code>, use <code>synchronize</code>(for thread safe) to record <em>subscriber</em> into <code>@subscribers</code>, and clear the <code>@listeners_for</code>, then returns the <em>subscriber</em>.</p>
-
-    <p><code>ruby
-  def subscribe(pattern = nil, block = Proc.new)
-    subscriber = Subscribers.new pattern, block
-    synchronize do
-      @subscribers &lt;&lt; subscriber
-      @listeners_for.clear
-    end
-    subscriber
-  end
- </code></p>
-  </li>
-  <li>
-    <p><code>unsubscribe(subscriber)</code></p>
-
-    <p><code>ruby
-  synchronize do
-    @subscribers.reject! { |s| s.matches?(subscriber) }
-      @listeners_for.clear
-    end
-  end
- </code></p>
-
-    <p>Note the <code>matches?</code> method on subscriber. Every subscriber object defines this method, <strong>Subscribers::Evented</strong> and <strong>Subscribers::Timed</strong> defines it like this:</p>
-
-    <p><code>ruby
-  def matches?(subscriber_or_name)
-    self === subscriber_or_name ||
-      @pattern &amp;&amp; @pattern === subscriber_or_name
-  end
- </code></p>
-
-    <p>Unsubscribe a subscriber object or unsubscribe based on the <code>@pattern</code> matching.</p>
-
-    <p><strong>Subscribers::AllMessages</strong> alias <code>matches?</code> to <code>===</code>, just do the type matching.</p>
-  </li>
-  <li>
-    <p><code>start</code>, <code>finish</code>, <code>publish(name, id, payload)</code></p>
-
-    <p>just delegates to subscribers based on the event name.</p>
-
-    <p><code>ruby
-  def start(name, id, payload)
-    listeners_for(name).each { |s| s.start(name, id, payload) }
-  end
- </code></p>
-  </li>
-  <li>
-    <p><code>listeners_for(name)</code></p>
-
-    <p>a helper method, equals fetch or set on <code>@listeners_for</code>, returns the subscribers based on the event name.</p>
-
-    <p><code>ruby
-  def listeners_for(name)
-    # this is correctly done double-checked locking (ThreadSafe::Cache's lookups have volatile semantics)
-    @listeners_for[name] || synchronize do
-      # use synchronisation when accessing @subscribers
-      @listeners_for[name] ||= @subscribers.select { |s| s.subscribed_to?(name) }
-    end
-  end
- </code></p>
-  </li>
-  <li>
-    <p><code>listening?(name)</code></p>
-
-    <p>a helper method, checks if <code>listeners_for(name).any?</code>.</p>
-  </li>
-  <li>
-    <p><code>wait</code></p>
-
-    <p>as this is a sync queue, this method is left blank.</p>
-  </li>
-</ul>
-
-<h4 id="modules">Modules</h4>
-
-<ul>
-  <li>
-    <p><strong>Subscribers</strong></p>
-
-    <p><strong>Subscribers</strong> defines a class method <code>new</code> and three sub-classes: <strong>Evented</strong>, <strong>Timed</strong>, and <strong>AllMessages</strong>. <strong>Timed</strong> inheritates <strong>Evented</strong>, and <strong>AllMessages</strong> encapsulates an <strong>Evented</strong> object.</p>
-
-    <p>About <code>self.new(pattern, listener)</code>, remember where does <code>Subscribers.new</code> get called?</p>
-
-    <p>It’s in <code>Fanout#subscribe(pattern = nil, block = Proc.new)</code>. If the <code>block</code> can duck-typing <code>:start</code> and <code>:finish</code>, it’ll initialize a subscriber by <strong>Evented</strong> with <code>pattern</code> and <code>block</code> recorded, otherwise by <strong>Timed</strong>. And if <code>pattern</code> is nil, which means calling <code>ActiveSupport::Notifications.subscribe</code> without event name, <code>Subscribers.new</code> returns an <strong>AllMessages</strong> object which initialized with a subscriber defined above. Otherwise(if <code>pattern</code> presents) returns a subscriber directly.</p>
-
-    <p>Normally we use <code>ActiveSupport::Notifications.subscribe</code> in two ways:</p>
-
-    <ul>
-      <li>subscribe all events, which means no <code>pattern</code> passed, and a <strong>Subscribers::AllMessages</strong> instance saved.</li>
-      <li>the <code>block</code> we pass to <code>ActiveSupport::Notifications.subscribe</code> won’t respond to <code>start</code> and <code>finish</code>, which means a <strong>Subscribers::Timed</strong> instance saved.</li>
-    </ul>
-
-    <p>These two ways have no conflicts: if passing a nil pattern and a block, it just returns an <strong>Subscribers::AllMessages</strong> instance which has a <strong>Subscribers::Timed</strong> instance wrapped.</p>
-
-    <p>So let’s check it out what does a <strong>Subscribers::Timed</strong> instance respond?</p>
-  </li>
-</ul>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
-</span><span class="line">  <span class="n">timestack</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">current</span><span class="o">[</span><span class="ss">:_timestack</span><span class="o">]</span> <span class="o">||=</span> <span class="o">[]</span>
-</span><span class="line">  <span class="n">timestack</span><span class="o">.</span><span class="n">push</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
-</span><span class="line">  <span class="n">timestack</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">current</span><span class="o">[</span><span class="ss">:_timestack</span><span class="o">]</span>
-</span><span class="line">  <span class="n">started</span> <span class="o">=</span> <span class="n">timestack</span><span class="o">.</span><span class="n">pop</span>
-</span><span class="line">  <span class="vi">@delegate</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">started</span><span class="p">,</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="k">def</span> <span class="nf">publish</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
-</span><span class="line">  <span class="vi">@delegate</span><span class="o">.</span><span class="n">call</span> <span class="nb">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="k">def</span> <span class="nf">subscribed_to?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-</span><span class="line">  <span class="vi">@pattern</span> <span class="o">===</span> <span class="nb">name</span><span class="o">.</span><span class="n">to_s</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="k">def</span> <span class="nf">matches?</span><span class="p">(</span><span class="n">subscriber_or_name</span><span class="p">)</span>
-</span><span class="line">  <span class="nb">self</span> <span class="o">===</span> <span class="n">subscriber_or_name</span> <span class="o">||</span>
-</span><span class="line">    <span class="vi">@pattern</span> <span class="o">&amp;&amp;</span> <span class="vi">@pattern</span> <span class="o">===</span> <span class="n">subscriber_or_name</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="activesupportnotificationsinstrumenter">ActiveSupport::Notifications::Instrumenter</h2>
-
-<h3 id="file-name-2">File name</h3>
-
-<p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications%2Finstrumenter.rb">activesupport/lib/active_support/notifications/instrumenter.rb</a></p>
-
-<h3 id="dependency-2">Dependency</h3>
-
-<p><code>securerandom</code>, <a href="http://ruby-doc.org/stdlib-2.1.0/libdoc/securerandom/rdoc/SecureRandom.html">api</a></p>
-
-<h3 id="brief-2">Brief</h3>
-
-<h3 id="specification-2">Specification</h3>
-
-<h4 id="instance-variables-1">Instance Variables</h4>
-
-<p><code>@id</code>, with an <code>attr_reader</code>, generated by <code>SecureRandom.hex(10)</code>.</p>
-
-<p><code>@notifier</code>, records the <strong>Fanout</strong> instance.</p>
-
-<h4 id="instance-methods-1">Instance Methods</h4>
-
-<ul>
-  <li><code>start(name, payload)</code>, <code>finish(name, payload)</code></li>
-</ul>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
-</span><span class="line">  <span class="vi">@notifier</span><span class="o">.</span><span class="n">start</span> <span class="nb">name</span><span class="p">,</span> <span class="vi">@id</span><span class="p">,</span> <span class="n">payload</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
-</span><span class="line">  <span class="vi">@notifier</span><span class="o">.</span><span class="n">finish</span> <span class="nb">name</span><span class="p">,</span> <span class="vi">@id</span><span class="p">,</span> <span class="n">payload</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<ul>
-  <li><code>instrument(name, payload={})</code></li>
-</ul>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="p">{})</span>
-</span><span class="line">  <span class="n">start</span> <span class="nb">name</span><span class="p">,</span> <span class="n">payload</span>
-</span><span class="line">  <span class="k">begin</span>
-</span><span class="line">    <span class="k">yield</span> <span class="n">payload</span>
-</span><span class="line">  <span class="k">rescue</span> <span class="no">Exception</span> <span class="o">=&gt;</span> <span class="n">e</span>
-</span><span class="line">    <span class="n">payload</span><span class="o">[</span><span class="ss">:exception</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="o">]</span>
-</span><span class="line">    <span class="k">raise</span> <span class="n">e</span>
-</span><span class="line">  <span class="k">ensure</span>
-</span><span class="line">    <span class="n">finish</span> <span class="nb">name</span><span class="p">,</span> <span class="n">payload</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<pre><code>Where does this method get called? in `ActiveSupport::Notifications.instrument`:
-</code></pre>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">instrumenter</span><span class="o">.</span><span class="n">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span> <span class="p">{</span> <span class="k">yield</span> <span class="n">payload</span> <span class="k">if</span> <span class="nb">block_given?</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<pre><code>The processing begins with `start`, ends with `finish`, instrumenter delegates it to `@notifier`, and `notifier` turns to `@subscribers` which are listening for the event name. And what does `@subscribers` do with `start` and `finish`? Normally we use subscriber objects defined by `Subscribers::Timed`, which use `start` to save a beginning timestamp, and `finish` to save an ending timestamp, and calling the block user passed.
-
-Attention on the control flow, the events get sent even if an error occurs in the passed-in block.
-</code></pre>
-
-<h2 id="activesupportnotificationsevent">ActiveSupport::Notifications::Event</h2>
-
-<h3 id="file-name-3">File name</h3>
-
-<p><a href="https://github.com/rails/rails/blob/master/activesupport%2Flib%2Factive_support%2Fnotifications%2Finstrumenter.rb">activesupport/lib/active_support/notifications/instrumenter.rb</a></p>
-
-<h3 id="dependency-3">Dependency</h3>
-
-<h3 id="specification-3">Specification</h3>
-
-<p>Note that this class has a <code>@children</code> instance variable recording associations between events, and these two methods:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">&lt;&lt;</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-</span><span class="line">  <span class="vi">@children</span> <span class="o">&lt;&lt;</span> <span class="n">event</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="k">def</span> <span class="nf">parent_of?</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-</span><span class="line">  <span class="vi">@children</span><span class="o">.</span><span class="n">include?</span> <span class="n">event</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="main-working-flow">Main Working Flow</h2>
-
-<h3 id="activesupportnotificationssubscribe">ActiveSupport::Notifications.subscribe</h3>
-
-<ol>
-  <li><code>ActiveSupport::Notifications.subscribe(name) {|*args| }</code>.</li>
-  <li>in <strong>Notficiations.subscribe</strong>, <code>notifier.subscribe(*args, &amp;block)</code>.</li>
-  <li>in <strong>Fanout#subscribe</strong>, <code>subscriber = Subscribers.new pattern, block</code>, then records subscriber into <code>@subscribers</code>.</li>
-</ol>
-
-<h3 id="activesupportnotificationsinstrument">ActiveSupport::Notifications.instrument</h3>
-
-<ol>
-  <li><code>ActiveSupport::Notifications.instrument(name, payload) { }</code>.</li>
-  <li>in <strong>Notficiations.instrument</strong>, <code>instrumenter.instrument(name, payload) { yield payload if block_given? }</code>.</li>
-  <li>in <strong>Instrumenter#instrument</strong>, <code>@notifier.start</code>, <code>yield payload</code> and then <code>@notifier.finish</code>.</li>
-  <li>in <strong>Fanout::Subscribers::Timed#start</strong>, records beginning time.</li>
-  <li>in <strong>Fanout::Subscribers::Timed#finish</strong>, records ending time, and passing <code>name, start_time, end_time, id, payload</code> to the subscribers callbacks.</li>
-</ol>
-
-<h2 id="misc">MISC</h2>
-
-<p><strong><em>How does ActiveSupport::Notifications keep thread safe?</em></strong></p>
-
-<p><code>extend</code> <strong>ActiveSupport::PerThreadRegistry</strong> in <strong>InstrumentationRegistry</strong>.</p>
-
-<h2 id="reference">Reference</h2>
-
-<p>Unit test:</p>
-
-<ul>
-  <li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications_test.rb">activesupport/test/notifications_test.rb</a></li>
-  <li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications%2Fevented_notification_test.rb">activesupport/test/notifications/evented_notification_test.rb</a></li>
-  <li><a href="https://github.com/rails/rails/blob/master/activesupport%2Ftest%2Fnotifications%2Finstrumenter_test.rb">activesupport/test/notifications/instrumenter_test.rb</a></li>
-</ul>
-
-<p><a href="http://www.paperplanes.de/2012/3/14/on-notifications-logsubscribers-and-bringing-sanity-to-rails-logging.html">On Notifications, Log Subscribers, and Bringing Sanity to Rails’ Logging</a><br />
-<a href="http://railscasts.com/episodes/249-notifications-in-rails-3">#249 Notifications in Rails 3</a><br />
-<a href="https://speakerdeck.com/nextmat/digging-deep-with-activesupportnotifications">Digging Deep with ActiveSupport::Notifications</a></p>
 
 ]]></content>
   </entry>

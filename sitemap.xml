@@ -108,7 +108,13 @@
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/2015/08/10/data-types-in-rails/</loc>
-        <lastmod>2015-08-10T20:54:36+08:00</lastmod>
+        <lastmod>2015-11-12T00:52:49+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins/
+        </loc>
+        <lastmod>2015-11-12T00:52:57+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/about/</loc>
@@ -116,15 +122,15 @@
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/archives/</loc>
-        <lastmod>2015-08-10T20:54:36+08:00</lastmod>
+        <lastmod>2015-11-12T00:52:57+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/archives/</loc>
-        <lastmod>2015-08-10T20:54:36+08:00</lastmod>
+        <lastmod>2015-11-12T00:52:57+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/</loc>
-        <lastmod>2015-08-10T20:54:36+08:00</lastmod>
+        <lastmod>2015-11-12T00:52:57+08:00</lastmod>
     </url>
     <url>
         <loc>
@@ -150,7 +156,7 @@
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/</loc>
-        <lastmod>2015-08-10T20:54:36+08:00</lastmod>
+        <lastmod>2015-11-12T00:52:57+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/resume/</loc>

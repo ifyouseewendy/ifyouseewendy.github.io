@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-08-10T20:57:10+08:00</updated>
+  <updated>2015-11-12T00:54:05+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,230 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[preload, eager_load, includes, references, and joins in Rails]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins/"/>
+    <updated>2015-11-11T23:25:17+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins</id>
+    <content type="html"><![CDATA[<p>There is always a confusion about these query methods. And after some digging, I’ve made my conclusion here: <code>includes</code> is the outstanding one.</p>
+
+<p>Here comes the demonstation.</p>
+
+<p><strong>Preparation</strong></p>
+
+<p>Environment</p>
+
+<ul>
+  <li>Ruby: 2.2.2</li>
+  <li>Rails: 4.2.2</li>
+</ul>
+
+<p>```ruby
+# model and reference
+class Blog &lt; ActiveRecord::Base
+  has_many :posts</p>
+
+<p># t.string   “name”
+  # t.string   “author”
+end</p>
+
+<p>class Post &lt; ActiveRecord::Base
+  belongs_to :blog</p>
+
+<p># t.string   “title”
+end</p>
+
+<h1 id="seed">seed</h1>
+<p>(1..3).each do |b_id|
+  blog = Blog.create(name: “Blog #{b_id}”, author: ‘someone’)
+  (1..5).each { |p_id| blog.posts.create(title: “Post #{b_id}-#{p_id}”) }
+end
+```</p>
+
+<h3 id="preload">preload</h3>
+
+<p>Always firing two separate queries.</p>
+
+<p><code>sh
+&gt; Blog.preload(:posts)
+  Blog Load (3.2ms)  SELECT "blogs".* FROM "blogs"
+  Post Load (1.2ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" IN (1, 2, 3)
+</code></p>
+
+<h3 id="eagerload">eager_load</h3>
+
+<ul>
+  <li>One query, LEFT OUTER JOINed in any query rather than loaded separately.</li>
+  <li>JOIN first, then query by where clause. So you can query on referenced table, without an iteration of  <code>Enumerable#select</code>.</li>
+  <li>Works just the same as <code>includes</code> + <code>references</code>.</li>
+</ul>
+
+<p>```sh
+&gt; Blog.eager_load(:posts)
+  SQL (0.4ms)  SELECT “blogs”.”id” AS t0_r0, “blogs”.”name” AS t0_r1, “blogs”.”author” AS t0_r2, “blogs”.”created_at” AS t0_r3, “blogs”.”updated_at” AS t0_r4, “posts”.”id” AS t1_r0, “posts”.”title” AS t1_r1, “posts”.”created_at” AS t1_r2, “posts”.”updated_at” AS t1_r3, “posts”.”blog_id” AS t1_r4 FROM “blogs” LEFT OUTER JOIN “posts” ON “posts”.”blog_id” = “blogs”.”id”</p>
+
+<blockquote>
+  <p>Blog.eager_load(:posts).where(name: ‘Blog 1’)
+  SQL (0.4ms)  SELECT “blogs”.”id” AS t0_r0, “blogs”.”name” AS t0_r1, “blogs”.”author” AS t0_r2, “blogs”.”created_at” AS t0_r3, “blogs”.”updated_at” AS t0_r4, “posts”.”id” AS t1_r0, “posts”.”title” AS t1_r1, “posts”.”created_at” AS t1_r2, “posts”.”updated_at” AS t1_r3, “posts”.”blog_id” AS t1_r4 FROM “blogs” LEFT OUTER JOIN “posts” ON “posts”.”blog_id” = “blogs”.”id” WHERE “blogs”.”name” = ?  [[“name”, “Blog 1”]]</p>
+</blockquote>
+
+<blockquote>
+  <p>Blog.eager_load(:posts).where(name: ‘Blog 1’).where(posts: {title: ‘Post 1-1’})
+  SQL (0.4ms)  SELECT “blogs”.”id” AS t0_r0, “blogs”.”name” AS t0_r1, “blogs”.”author” AS t0_r2, “blogs”.”created_at” AS t0_r3, “blogs”.”updated_at” AS t0_r4, “posts”.”id” AS t1_r0, “posts”.”title” AS t1_r1, “posts”.”created_at” AS t1_r2, “posts”.”updated_at” AS t1_r3, “posts”.”blog_id” AS t1_r4 FROM “blogs” LEFT OUTER JOIN “posts” ON “posts”.”blog_id” = “blogs”.”id” WHERE “blogs”.”name” = ? AND “posts”.”title” = ?  [[“name”, “Blog 1”], [“title”, “Post 1-1”]]
+```</p>
+</blockquote>
+
+<h3 id="includes">includes</h3>
+
+<p>Behaves based on situations, intelligent!</p>
+
+<p>Situation 1, just like <code>preload</code></p>
+
+<p>```sh
+&gt; Blog.includes(:posts)
+  Blog Load (2.8ms)  SELECT “blogs”.* FROM “blogs”
+  Post Load (0.7ms)  SELECT “posts”.* FROM “posts” WHERE “posts”.”blog_id” IN (1, 2, 3)</p>
+
+<blockquote>
+  <p>Blog.includes(:posts).where(name: ‘Blog 1’)
+  Blog Load (0.7ms)  SELECT “blogs”.* FROM “blogs” WHERE “blogs”.”name” = ?  [[“name”, “Blog 1”]]
+  Post Load (0.3ms)  SELECT “posts”.* FROM “posts” WHERE “posts”.”blog_id” IN (1)
+```</p>
+</blockquote>
+
+<p>Situation 2, just like <code>eager_load</code>, <strong>fired by querying referenced table</strong></p>
+
+<p><code>sh
+&gt; Blog.includes(:posts).where(name: 'Blog 1').where(posts: {title: 'Post 1-1'})
+  SQL (0.2ms)  SELECT "blogs"."id" AS t0_r0, "blogs"."name" AS t0_r1, "blogs"."author" AS t0_r2, "blogs"."created_at" AS t0_r3, "blogs"."updated_at" AS t0_r4, "posts"."id" AS t1_r0, "posts"."title" AS t1_r1, "posts"."created_at" AS t1_r2, "posts"."updated_at" AS t1_r3, "posts"."blog_id" AS t1_r4 FROM "blogs" LEFT OUTER JOIN "posts" ON "posts"."blog_id" = "blogs"."id" WHERE "blogs"."name" = ? AND "posts"."title" = ?  [["name", "Blog 1"], ["title", "Post 1-1"]]
+</code></p>
+
+<p><strong><em><code>includes</code> or <code>eager_load</code></em></strong></p>
+
+<p>Consider this snippet:</p>
+
+<p>```sh
+&gt; Blog.includes(:posts).each{|blog| puts blog.posts.map(&amp;:title).join(‘,’) }
+  Blog Load (0.3ms)  SELECT “blogs”.* FROM “blogs”
+  Post Load (0.3ms)  SELECT “posts”.* FROM “posts” WHERE “posts”.”blog_id” IN (1, 2, 3)</p>
+
+<blockquote>
+  <p>Blog.eager_load(:posts).each{|blog| puts blog.posts.map(&amp;:title).join(‘,’) }                                                                                                                    SQL (0.9ms)
+  SELECT “blogs”.”id” AS t0_r0, “blogs”.”name” AS t0_r1, “blogs”.”author” AS t0_r2, “blogs”.”created_at” AS t0_r3, “blogs”.”updated_at” AS t0_r4, “posts”.”id” AS t1_r0, “posts”.”title” AS t1_r1, “posts”.”created_at” AS t1_r2, “posts”.”updated_at” AS t1_r3, “posts”.”blog_id” AS t1_r4 FROM “blogs” LEFT OUTER JOIN “posts” ON “posts”.”blog_id” = “blogs”.”id”
+```</p>
+</blockquote>
+
+<p>Both expressions return the same result, so should we prefer two seperated queries by <code>includes</code> (also <code>preload</code>) or the LEFT OUTER JOINed query by <code>eager_load</code>?</p>
+
+<p>There is a <a href="http://www.akitaonrails.com/2008/5/26/rolling-with-rails-2-1-the-first-full-tutorial-part-2">blog post</a> by Fabio Akita talks about the change of Rails 2.1 (see the section entitled “Optimized Eager Loading”). Here are some references:</p>
+
+<blockquote>
+  <p>For some situations, the monster outer join becomes slower than many smaller queries.
+The bottom line is: generally it seems better to split a monster join into smaller ones, as you’ve seen in the above example. This avoid the cartesian product overload problem.</p>
+</blockquote>
+
+<p>Example for SQL data returned from LEFT OUTER JOIN query</p>
+
+<p><code>sh
+sqlite&gt;  SELECT "blogs"."id" AS t0_r0, "blogs"."name" AS t0_r1, "blogs"."author" AS t0_r2, "blogs"."created_at" AS t0_r3, "blogs"."updated_at" AS t0_r4, "posts"."id" AS t1_r0, "posts"."title" AS t1_r1, "posts"."created_at" AS t1_r2, "posts"."updated_at" AS t1_r3, "posts"."blog_id" AS t1_r4 FROM "blogs" LEFT OUTER JOIN "posts" ON "posts"."blog_id" = "blogs"."id";
+1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|1|Post 1-1|2015-11-11 15:22:35.053689|2015-11-11 15:22:35.053689|1
+1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|2|Post 1-2|2015-11-11 15:22:35.058113|2015-11-11 15:22:35.058113|1
+1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|3|Post 1-3|2015-11-11 15:22:35.062776|2015-11-11 15:22:35.062776|1
+1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|4|Post 1-4|2015-11-11 15:22:35.065994|2015-11-11 15:22:35.065994|1
+1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|5|Post 1-5|2015-11-11 15:22:35.069632|2015-11-11 15:22:35.069632|1
+2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|6|Post 2-1|2015-11-11 15:22:35.078644|2015-11-11 15:22:35.078644|2
+2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|7|Post 2-2|2015-11-11 15:22:35.081845|2015-11-11 15:22:35.081845|2
+2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|8|Post 2-3|2015-11-11 15:22:35.084888|2015-11-11 15:22:35.084888|2
+2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|9|Post 2-4|2015-11-11 15:22:35.087778|2015-11-11 15:22:35.087778|2
+2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|10|Post 2-5|2015-11-11 15:22:35.090781|2015-11-11 15:22:35.090781|2
+3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|11|Post 3-1|2015-11-11 15:22:35.097479|2015-11-11 15:22:35.097479|3
+3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|12|Post 3-2|2015-11-11 15:22:35.103512|2015-11-11 15:22:35.103512|3
+3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|13|Post 3-3|2015-11-11 15:22:35.108775|2015-11-11 15:22:35.108775|3
+3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|14|Post 3-4|2015-11-11 15:22:35.112654|2015-11-11 15:22:35.112654|3
+3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|15|Post 3-5|2015-11-11 15:22:35.117601|2015-11-11 15:22:35.117601|3
+</code></p>
+
+<blockquote>
+  <p>The longer and more complex the result set, the more this matters because the more objects Rails would have to deal with. Allocating and deallocating several hundreds or thousands of small duplicated objects is never a good deal.</p>
+</blockquote>
+
+<p>As <code>includes</code> can behave the same as <code>eager_load</code> in one case, but better in the other case. My conclusion is, <strong>prefer <code>includes</code> over <code>eager_load</code></strong>.</p>
+
+<h3 id="references">references</h3>
+
+<ul>
+  <li>Works only with <code>includes</code>, makes <code>includes</code> behaves like <code>eager_load</code></li>
+</ul>
+
+<p><code>sh
+&gt; Blog.includes(:posts).where(name: 'Blog 1').references(:posts)
+  SQL (0.2ms)  SELECT "blogs"."id" AS t0_r0, "blogs"."name" AS t0_r1, "blogs"."author" AS t0_r2, "blogs"."created_at" AS t0_r3, "blogs"."updated_at" AS t0_r4, "posts"."id" AS t1_r0, "posts"."title" AS t1_r1, "posts"."created_at" AS t1_r2, "posts"."updated_at" AS t1_r3, "posts"."blog_id" AS t1_r4 FROM "blogs" LEFT OUTER JOIN "posts" ON "posts"."blog_id" = "blogs"."id" WHERE "blogs"."name" = ?  [["name", "Blog 1"]]
+</code></p>
+
+<h3 id="joins">joins</h3>
+
+<p><em>INNER JOIN</em>, compared to <code>eager_load</code> (<em>LEFT OUTER JOIN</em>).</p>
+
+<p><code>sh
+&gt; Blog.joins(:posts)
+  Blog Load (0.2ms)  SELECT "blogs".* FROM "blogs" INNER JOIN "posts" ON "posts"."blog_id" = "blogs"."id"
+</code></p>
+
+<p><strong>compared to <code>eager_load</code></strong></p>
+
+<p>Query by <code>joins</code> just returns the raw data, whereas the data from <code>eager_load</code> is filtered by Rails.</p>
+
+<p><code>sh
+&gt; Blog.joins(:posts).count
+   (0.3ms)  SELECT COUNT(*) FROM "blogs" INNER JOIN "posts" ON "posts"."blog_id" = "blogs"."id"
+ =&gt; 15
+&gt; Blog.eager_load(:posts).count
+   (0.4ms)  SELECT COUNT(DISTINCT "blogs"."id") FROM "blogs" LEFT OUTER JOIN "posts" ON "posts"."blog_id" = "blogs"."id"
+ =&gt; 3
+</code></p>
+
+<p>So you need to take caution about iteration on <code>joins</code> query.</p>
+
+<p><code>sh
+&gt; Blog.joins(:posts).each do |blog|
+&gt;   puts blog.posts.map(&amp;:title).join(', ')
+&gt; end
+  Blog Load (0.2ms)  SELECT "blogs".* FROM "blogs" INNER JOIN "posts" ON "posts"."blog_id" = "blogs"."id"
+  Post Load (0.3ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 1]]
+Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 1]]
+Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 1]]
+Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 1]]
+Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 1]]
+Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 2]]
+Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 2]]
+Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 2]]
+Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 2]]
+Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 2]]
+Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 3]]
+Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+  Post Load (0.2ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 3]]
+Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 3]]
+Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 3]]
+Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 3]]
+Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
+</code></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Data Types in Rails]]></title>
@@ -923,279 +1147,6 @@ NameError: uninitialized constant Rails
 =&gt; true
 </code></p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Things I Learn from Owning Rails Class]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/09/29/things-i-learnt-from-owning-rails-class/"/>
-    <updated>2014-09-29T18:36:28+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/09/29/things-i-learnt-from-owning-rails-class</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Teacher</strong></td>
-      <td><a href="http://macournoyer.com/">Marc-André Cournoy</a></td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="http://owningrails.com/">Owning Rails</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>I’ve participated Marc’s Owning Rails online class recently. AWESOME!</p>
-
-<p>The class has two parts. Marc led us to build a minimal version of Rails on first day, Marc focused on the structure and design pattern behind Rails. Trully I think it’s a live version of <a href="http://blog.ifyouseewendy.com/blog/2014/09/27/rebuilding-rails/">Rebuilding Rails</a>, maybe you can read it as a substitution. Second day is the excellent part, took us diving into the real Rails source. Marc gave us a clear clue on what each part do and how they work, and also some practical introductions on how and where to keep on digging after class. </p>
-
-<p>Beside professional, I should also mention that Marc is a really kind and patient guy.</p>
-
-<p>Thanks a lot, Marc.</p>
-
-<hr />
-
-<p>Following are some specific questions I’ve noted on class.</p>
-
-<p><strong><em>Is <code>yield</code> still available after passing <code>&amp;block</code>?</em></strong></p>
-
-<p>yes.</p>
-
-<p><code>ruby
-[1] pry(main)&gt; def foo(&amp;block)
-[1] pry(main)*   p block
-[1] pry(main)*   yield
-[1] pry(main)* end 
-[4] pry(main)&gt; foo { puts 'foo' }
-#&lt;Proc:0x000001053e7f28@(pry):6&gt;
-foo
-=&gt; nil
-[5] pry(main)&gt; def bar(&amp;block)
-[5] pry(main)*   block.call
-[5] pry(main)*   yield
-[5] pry(main)* end  
-=&gt; nil
-[6] pry(main)&gt; bar { puts 'bar' }
-bar
-bar
-=&gt; nil
-</code></p>
-
-<p>Passing block directly will omit the block-to-proc process, it can be more efficient.</p>
-
-<p><strong><em>How to make bindings of block get understood in object, which differs the environment the block defines?</em></strong></p>
-
-<blockquote>
-  <p>When you define the block, it simply grabs the bindings that are there at that moment, and then it carries those bindings along when you pass the block into a method. </p>
-</blockquote>
-
-<p>```ruby
-=class Router
-  def initialize
-    @routes = {}
-  end</p>
-
-<p>def match(route)
-    puts ‘#match from Router instance’
-    @routes.update route
-  end</p>
-
-<p>=  def routes(&amp;block)
-    yield
-  end
-end</p>
-
-<p>def match(route)
-  puts ‘#match from main object’
-end</p>
-
-<p>Router.new.routes do
-  match ‘/user’ =&gt; ‘users#index’
-end</p>
-
-<h1 id="match-in-main-object">=&gt; #match in main object</h1>
-<p>```</p>
-
-<p>Use <code>instance_eval</code> to eval the new bindings.</p>
-
-<p>```ruby
-def match(route)
-  puts ‘#match in main object’
-end</p>
-
-<p>class Router
-  def routes(&amp;block)
-    instance_eval(&amp;block)
-  end
-end</p>
-
-<p>Router.new.routes do
-  match ‘/user’ =&gt; ‘users#index’
-end</p>
-
-<h1 id="match-from-router-instance">=&gt; match from Router instance</h1>
-<p>```</p>
-
-<p><strong><em>Why using <code>::File</code> in <code>config.ru</code>?</em></strong></p>
-
-<p>```ruby
-# config.ru</p>
-
-<p>require ::File.expand_path(‘../config/environment’, <strong>FILE</strong>)
-run Rails.application
-```</p>
-
-<p>Actually the code above is defined in module Rack, where <code>Rack::File</code> already exists.</p>
-
-<p><strong><em>How to use <code>include</code> to construct a method chain?</em></strong></p>
-
-<p>```ruby
-module A
-  def foo
-    puts ‘foo from A’
-    super
-  end
-end</p>
-
-<p>module B
-  def foo
-    puts ‘foo from B’
-    super
-  end
-end</p>
-
-<p>class Base
-  include A, B</p>
-
-<p>def foo
-    puts ‘foo from Base’
-  end
-end</p>
-
-<p>Base.new.foo
-# =&gt; foo from Base
-```</p>
-
-<p>One way to solve is to use <code>prepend</code> instead of <code>include</code>, introduced by Ruby 2.0.</p>
-
-<p>Considering the compatibility, Rails may not start to use it. Here is the Rails way to solve</p>
-
-<p>```ruby
-module A
-  def foo
-    puts ‘foo from A’
-    super
-  end
-end</p>
-
-<p>module B
-  def foo
-    puts ‘foo from B’
-    super
-  end
-end</p>
-
-<p>class Metal
-  def foo
-    puts ‘foo from Base’
-  end
-end</p>
-
-<p>class Base
-  include A, B
-end</p>
-
-<p>Base.new.foo
-# =&gt; foo from A
-# =&gt; foo from B
-# =&gt; foo from Base
-```</p>
-
-<p><strong><em>How instance variables shared betweet controller and view?</em></strong></p>
-
-<p>One way is to use <code>instance_varialbles</code> and <code>instance_variable_set/get</code>, to passing instance varaibles defined in action to the view object.</p>
-
-<p>The other way is passing <code>binding</code> directly.</p>
-
-<p><code>ruby
-template = ERB.new( File.read() )
-template.result(binding)
-# eval(template.src, binding)
-</code></p>
-
-<p><strong><em>Truth about binding</em></strong></p>
-
-<ol>
-  <li>
-    <p><code>Binding.new</code> doesn’t work, you can only call <code>Kernel.binding</code> or <code>Proc#binding</code>.</p>
-  </li>
-  <li>
-    <p>You can only use <code>binding</code> with <code>eval</code>. <code>eval('', binding)</code> or <code>binding.eval('')</code></p>
-  </li>
-</ol>
-
-<p><strong><em>When we create custom middleware is it a good practise to add new keys and values to env variable to transfer it between middlewares?</em></strong></p>
-
-<blockquote>
-  <p>[02:35] &lt;wawka&gt; macournoyer: When we create custom middleware is it a good practise to add new keys and values to env variable to transfer it between middlewares ?<br />
-[02:36] &lt;macournoyer&gt;  Rack specs recommend namespacing everything you put in the env var<br />
-[02:36] &lt;macournoyer&gt; eg.: Rails will do env[“action_controller.request_id”] = “…” <br />
-[02:36] &lt;macournoyer&gt; “action_controller.” is the namespace<br />
-[02:36] &lt;wawka&gt; macournoyer: ok</p>
-</blockquote>
-
-<p><strong><em>How to check a gem’s dependency and dive into the source code?</em></strong></p>
-
-<p>```sh
-$ gem dep rails -v=4.1.6  <br />
-Gem rails-4.1.6
-  actionmailer (= 4.1.6)
-  actionpack (= 4.1.6)
-  actionview (= 4.1.6)
-  activemodel (= 4.1.6)
-  activerecord (= 4.1.6)
-  activesupport (= 4.1.6)
-  bundler (&lt; 2.0, &gt;= 1.3.0)
-  railties (= 4.1.6)
-  sprockets-rails (~&gt; 2.0)</p>
-
-<p>$ bundle open activerecord</p>
-
-<h1 id="open-the-latest-version-on-system-a-little-bit-dangerous">open the latest version on system, a little bit dangerous</h1>
-<p>$ gem edit activerecord
-```</p>
-
-<p><strong><em>How to get the source location of the method calling?</em></strong></p>
-
-<p>In Rails, <em>guess</em> the logic part(activerecord, activesupport..) based on the method function, then use <code>bundle open</code> to dive in.</p>
-
-<p>Ruby supports <code>Method#source_location</code>, <code>Proc#source_location</code> to provides some information, not accurate though. Use it like this</p>
-
-<p><code>ruby
-# chech where defined respond_with
-raise method(:respond_with).source_location.inspect
-</code></p>
-
-<hr />
-
-<h3 id="other-stuffs">Other stuffs</h3>
-
-<ol>
-  <li>
-    <p>Marc’s <a href="https://gist.github.com/macournoyer/1878273">gitconfig</a></p>
-  </li>
-  <li>
-    <p>Don’t try to understand everything.</p>
-  </li>
-  <li>
-    <p>Read concern, callbacks, core_ext and other ActiveSupport parts as a start.</p>
-  </li>
-  <li>
-    <p>Nice word learnt, <strong>Base</strong>ics</p>
-  </li>
-  <li>
-    <p>Try <code>mount</code> a rack-based app in Rails.</p>
-  </li>
-</ol>
 ]]></content>
   </entry>
   
