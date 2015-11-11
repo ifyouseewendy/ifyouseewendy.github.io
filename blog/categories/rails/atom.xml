@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-11-12T00:54:05+08:00</updated>
+  <updated>2015-11-12T00:58:56+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -233,6 +233,17 @@ Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
   Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 3]]
 Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
 </code></p>
+
+<hr />
+
+<p><strong>Reference</strong></p>
+
+<ul>
+  <li><a href="http://blog.diatomenterprises.com/remove-n1-queries-in-your-ruby-on-rails-app/?utm_source=rubyweekly&amp;utm_medium=email">Remove N+1 queries in your Ruby on Rails app</a></li>
+  <li><a href="http://stackoverflow.com/questions/1208636/rails-include-vs-joins?rq=1">Rails :include vs. :joins</a></li>
+  <li><a href="http://blog.bigbinary.com/2013/07/01/preload-vs-eager-load-vs-joins-vs-includes.html">Preload, Eagerload, Includes and Joins</a></li>
+  <li><a href="http://www.akitaonrails.com/2008/5/26/rolling-with-rails-2-1-the-first-full-tutorial-part-2">Rolling with Rails 2.1 - The First Full Tutorial - Part 2</a></li>
+</ul>
 
 ]]></content>
   </entry>
