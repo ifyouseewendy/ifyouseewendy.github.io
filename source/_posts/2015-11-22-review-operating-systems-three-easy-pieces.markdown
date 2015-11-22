@@ -124,13 +124,13 @@ To understand what constitutes a process, we thus have to understand its **machi
 2. Ready
 3. Blocked
 
-![Process: State Transitions](/image-repo/os-process_state_transitions.png)
+![Process: State Transitions](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-process_state_transitions.png)
 
 **Data Structures**
 
 To track the state of each process, for example, the OS likely will keep some kind of **process list** for all processes that are ready, as well as some additional information to track which process is currently running.
 
-![The xv6 Proc Structure](/image-repo/os-the_xv6_proc_structure.png)
+![The xv6 Proc Structure](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-the_xv6_proc_structure.png)
 
 The **register context** will hold, for a stopped process, the contents of its registers. When a process is stopped, its registers will be saved to this memory location; by restoring these registers (i.e., placing their values back into the actual physical registers), the OS can resume running the process.
 
@@ -211,7 +211,7 @@ The kernel does so by setting up a **trap table** at boot time. When the machine
 
 **Limited Direct Execution Protocol**
 
-![Limited Direct Execution Protocol](/image-repo/os-limited_directed_execution_protocol.png)
+![Limited Direct Execution Protocol](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-limited_directed_execution_protocol.png)
 
 There are two phases in the LDE protocol:
 
@@ -243,7 +243,7 @@ Whether to continue running the currently-running process, or switch to a differ
 
 If the decision is made to switch, the OS then executes a low-level piece of code which we refer to as a **context switch**. A context switch is conceptually simple: all the OS has to do is save a few register values for the currently-executing process (onto its kernel stack, for example) and restore a few for the soon-to-be-executing process (from its kernel stack).
 
-![Timer Interrupt](/image-repo/os-timer_interrupt.png)
+![Timer Interrupt](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-timer_interrupt.png)
 
 ## Scheduling
 
@@ -360,7 +360,7 @@ One big question is how to **parameterize** such a scheduler.
 
 Most MLFQ variants allow for **varying time-slice length** across different queues. The high-priority queues are usually given short time slices; the low-priority queues, in contrast, contain long-running jobs that are CPU-bound; hence, longer time slices work well.
 
-![Lower Priority, Longer Quanta](/image-repo/os-lower_priority_longer_quanta.png)
+![Lower Priority, Longer Quanta](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lower_priority_longer_quanta.png)
 
 The FreeBSD scheduler (version 4.3) uses a formula to calculate the current priority level of a job, basing it on how much CPU the process has used.
 
