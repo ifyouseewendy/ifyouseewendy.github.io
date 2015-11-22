@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-11-12T00:58:56+08:00</updated>
+  <updated>2015-11-22T13:57:43+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,531 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Review] Operating Systems Three Easy Pieces]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/11/22/review-operating-systems-three-easy-pieces/"/>
+    <updated>2015-11-22T13:44:38+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/11/22/review-operating-systems-three-easy-pieces</id>
+    <content type="html"><![CDATA[<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>Operating Systems: Three Easy Pieces</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td><a href="http://www.cs.wisc.edu/~remzi">Remzi H. Arpaci-Dusseau</a> and <a href="http://www.cs.wisc.edu/~dusseau">Andrea C. Arpaci-Dusseau</a></td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">pages.cs.wisc.edu/~remzi/OSTEP</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul id="markdown-toc">
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#cpu-virtualisation">CPU Virtualisation</a>    <ul>
+      <li><a href="#process">Process</a>        <ul>
+          <li><a href="#chapter-4---the-abstraction-the-process">Chapter 4 - The Abstraction: The Process</a></li>
+          <li><a href="#chapter-5---interlude-process-api">Chapter 5 - Interlude: Process API</a></li>
+        </ul>
+      </li>
+      <li><a href="#mechanism">Mechanism</a>        <ul>
+          <li><a href="#chapter-6---mechanism-limited-direct-execution">Chapter 6 - Mechanism: Limited Direct Execution</a></li>
+        </ul>
+      </li>
+      <li><a href="#scheduling">Scheduling</a>        <ul>
+          <li><a href="#chapter-7---scheduling-introduction">Chapter 7 - Scheduling: Introduction</a></li>
+          <li><a href="#chapter-8---scheduling-the-multi-level-feedback-queue">Chapter 8 - Scheduling: The Multi-Level Feedback Queue</a></li>
+          <li><a href="#chapter-9---scheduling-proportional-share">Chapter 9 - Scheduling: Proportional Share</a></li>
+          <li><a href="#chapter-10---multiprocessor-scheduling">Chapter 10 - Multiprocessor Scheduling</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="introduction">Introduction</h1>
+
+<p><strong>The Crux of the whole book</strong></p>
+
+<p>How does the operating system virtualize resources?
+What mechanisms and policies are implemented by the OS to attain virtualization?
+How does the OS do so efficiently?</p>
+
+<p><strong>The Von Neumann model of computing</strong></p>
+
+<p>Many millions (and these days, even billions) of times every second, the processor <strong>fetches</strong> an instruction from memory, <strong>decodes</strong> it (i.e., figures out which instruction this is), and <strong>executes</strong> it.</p>
+
+<p><strong>The OS is sometimes known as a resource manager</strong></p>
+
+<p>The primary way the OS does this is through a general technique that we call virtualization. That is, the OS takes a physical resource (such as the processor, or memory, or a disk) and transforms it into a more general, powerful, and easy-to-use virtual form of itself. Thus, we sometimes refer to the operating system as a <strong>virtual machine</strong>.</p>
+
+<p><strong>Virtualising the CPU</strong></p>
+
+<p>Turning a single CPU (or small set of them) into a seemingly infinite number of CPUs and thus allowing many programs to seemingly run at once is what we call virtualizing the CPU.</p>
+
+<p><strong>Virtualising the Memory</strong></p>
+
+<p>Memory is just an array of bytes; to <strong>read</strong> memory, one must specify an <strong>address</strong> to be able to access the data stored there; to <strong>write</strong> (or update) memory, one must also specify the data to be written to the given address.</p>
+
+<p>The OS is virtualizing memory. Each process accesses its own private <strong>virtual address space</strong> (sometimes just called its address space)</p>
+
+<p><strong>Concurrency</strong></p>
+
+<p>Three instructions: one to <strong>load</strong> the value of the counter from memory into a register, one to <strong>increment</strong> it, and one to <strong>store</strong> it back into memory. Because these three instructions do not execute atomically (all at once), strange things can happen.</p>
+
+<p><strong>Persistence</strong></p>
+
+<p>The software in the operating system that usually manages the disk is called the <strong>file system</strong>; it is thus responsible for storing any files the user creates in a reliable and efficient manner on the disks of the system.</p>
+
+<p>For performance reasos, most file systems first <strong>delay</strong> such writes for a while, hoping to batch them into larger groups. To handle the problems of system crashes during writes, most file systems incorporate some kind of intricate write protocol, such as <strong>journaling</strong> or <strong>copy-on-write</strong>, carefully ordering writes to disk to ensure that if a failure occurs during the write sequence, the system can recover to reasonable state afterwards.</p>
+
+<p><strong>Design Goals</strong></p>
+
+<p>What an OS actually does: it takes physical <strong>resources</strong>, such as a CPU, memory, or disk, and <strong>virtualizes</strong> them. It handles tough and tricky issues related to <strong>concurrency</strong>. And it stores files <strong>persistently</strong>, thus making them safe over the long-term.</p>
+
+<ol>
+  <li>To build up some <strong>abstractions</strong> in order to make the system convenient and easy to use.</li>
+  <li>To provide high <strong>performance</strong>, another way to say this is our goal is to minimize the overheads of the OS.</li>
+  <li>To provide <strong>protection</strong> between applications, as well as between the OS and applications. Protection is at nthe heart of one of the main principles underlying an operating system, which is that of <strong>isolation</strong>; isolating processes from one another is the key to protection and thus underlies much of what an OS must do.</li>
+</ol>
+
+<p><strong>Some History</strong></p>
+
+<ol>
+  <li>Early Operating Systems: Just Libraries.  This mode of computing was known as <strong>batch</strong> processing.</li>
+  <li>Beyond Libraries: Protection. The idea of a system call was invented. The key difference between a <strong>system call</strong> and a <strong>procedure call</strong> is that a system call transfers control (i.e., jumps) into the OS while simultaneously raising the hardware privilege level. User applications run in what is referred to as user mode which means the hardware restricts what applications can do; When a system call is initiated (usually through a special hardware instruction called a trap), the hardware transfers control to a pre-specified trap handler (that the OS set up previously) and simultaneously raises the privilege level to kernel mode.</li>
+  <li>The Era of Multiprogramming by minicomputer. In particular, multiprogramming became commonplace due to the desire to make better use of machine resources. One of the major practical advances of the time was the introduction of the <strong>UNIX</strong> operating system, primarily thanks to <strong>Ken Thompson</strong> (and <strong>Dennis Ritchie</strong>) at Bell Labs (yes, the phone company). <strong>Bill Joy</strong>, made a wonderful distribution (the Berkeley Systems Distribution, or <strong>BSD</strong>) which had some advanced virtual memory, file system, and networking subsystems. Joy later co-founded Sun Microsystems.</li>
+  <li>The Modern Era by PC with DOS, Mac OS.</li>
+</ol>
+
+<h1 id="cpu-virtualisation">CPU Virtualisation</h1>
+
+<h2 id="process">Process</h2>
+
+<h3 id="chapter-4---the-abstraction-the-process">Chapter 4 - The Abstraction: The Process</h3>
+
+<p><strong>Process</strong></p>
+
+<p>The definition of a process, informally, is quite simple: it is a running program.</p>
+
+<p><strong>How to provide the illusion of many CPUs?</strong></p>
+
+<p>This basic technique, known as <strong>time sharing</strong> of the CPU, allows users to run as many concurrent processes as they would like; the potential cost is performance, as each will run more slowly if the CPU(s) must be shared.</p>
+
+<p><strong>Mechanisms</strong></p>
+
+<p>Mechanisms are low-level methods or protocols that implement a needed piece of functionality.</p>
+
+<p><strong>Policies</strong></p>
+
+<p>On top of these mechanisms resides some of the intelligence in the OS, in the form of policies.</p>
+
+<p><strong>Tip: Separate policy and mechanism</strong></p>
+
+<p>In many operating systems, a common design paradigm is to separate high-level policies from their low-level mechanisms. You can think of the mechanism as providing the answer to a <strong>how</strong> question about a system; for example, how does an operating system perform a context switch? The policy provides the answer to a <strong>which</strong> question; for example, which process should the operating system run right now?</p>
+
+<p><strong>Machine State</strong></p>
+
+<p>To understand what constitutes a process, we thus have to understand its <strong>machine state</strong>: what a program can read or update when it is running. At any given time, what parts of the machine are important to the execution of this program?</p>
+
+<ol>
+  <li>Memory. The memory that the process can address (called its <strong>address space</strong>) is part of the process.</li>
+  <li>Registry. There are some particularly special registers that form part of this machine state. For example, the <strong>program counter</strong> (PC) (sometimes called the instruction pointer or IP). similarly a stack pointer and associated <strong>frame pointer</strong> are used to manage the stack for function parameters, local variables, and return addresses.</li>
+  <li>I/O information. Programs often access persistent storage devices too. Such I/O information might include a list of the files the process currently has open.</li>
+</ol>
+
+<p><strong>Process API</strong></p>
+
+<ol>
+  <li>Create</li>
+  <li>Destroy</li>
+  <li>Wait</li>
+  <li>Miscellaneous Control (suspend, resume)</li>
+  <li>Status</li>
+</ol>
+
+<p><strong>How does the OS get a program up and running?</strong></p>
+
+<ol>
+  <li>To <strong>load</strong> its code and any static data (e.g., initialized variables) into memory, into the <strong>address space</strong> of the process. In early (or simple) operating systems, the loading process is done <strong>eagerly</strong>; modern OSes perform the process <strong>lazily</strong>, i.e., by loading pieces of code or data only as they are needed during program execution. To truly understand how lazy loading of pieces of code and data works, you’ll have to understand more about the machinery of <strong>paging</strong> and <strong>swapping</strong>.</li>
+  <li>Once the code and static data are loaded into memory, there are a few other things the OS needs to do before running the process. Some memory must be allocated for the program’s <strong>run-time stack</strong> (or just stack). As you should likely already know, C programs use the stack for local variables, function parameters, and return addresses; the OS allocates this memory and gives it to the process.</li>
+  <li>The OS may also allocate some memory for the program’s <strong>heap</strong>. In C programs, the heap is used for explicitly requested dynamically-allocated data; programs request such space by calling malloc() and free it explicitly by calling free(). The heap is needed for data structures such as linked lists, hash tables, trees, and other interesting data structures.</li>
+  <li>The OS will also do some other initialization tasks, particularly as related to input/output (I/O). For example, in UNIX systems, each process by default has three open <strong>file descriptors</strong>.</li>
+  <li>To start the program running at the entry point, namely main(), the OS transfers control of the CPU to the newly-created process, and thus the program begins its execution.</li>
+</ol>
+
+<p><strong>Process States</strong></p>
+
+<ol>
+  <li>Running</li>
+  <li>Ready</li>
+  <li>Blocked</li>
+</ol>
+
+<p><img src="http://blog.ifyouseewendy.com/image-repo/os-process_state_transitions.png" alt="Process: State Transitions" /></p>
+
+<p><strong>Data Structures</strong></p>
+
+<p>To track the state of each process, for example, the OS likely will keep some kind of <strong>process list</strong> for all processes that are ready, as well as some additional information to track which process is currently running.</p>
+
+<p><img src="http://blog.ifyouseewendy.com/image-repo/os-the_xv6_proc_structure.png" alt="The xv6 Proc Structure" /></p>
+
+<p>The <strong>register context</strong> will hold, for a stopped process, the contents of its registers. When a process is stopped, its registers will be saved to this memory location; by restoring these registers (i.e., placing their values back into the actual physical registers), the OS can resume running the process.</p>
+
+<p>Sometimes people refer to the individual structure that stores information about a process as a <strong>Process Control Block (PCB)</strong>.</p>
+
+<h3 id="chapter-5---interlude-process-api">Chapter 5 - Interlude: Process API</h3>
+
+<p>UNIX presents one of the most intriguing ways to create a new process with a pair of system calls:</p>
+
+<p><strong>fork()</strong></p>
+
+<p>The newly-created process (called the <strong>child</strong>, in contrast to the creating <strong>parent</strong>) desn’t start running at main(), like you might expect (note, the “hello, world” message only got printed out once); rather, it just comes into life as if it had called fork() itself. You might have noticed: the child isn’t an exact copy. Specifically, al- though it now has its own copy of the address space (i.e., its own private memory), its own registers, its own PC, and so forth, the value it returns to the caller of fork() is different.</p>
+
+<p>The output is <strong>not deterministic</strong>. When the child process is created, there are now two active processes in the system that we care about: the parent and the child.</p>
+
+<p><strong>wait()</strong></p>
+
+<p>Adding a wait() call to the code above makes the output <strong>deterministic</strong>.</p>
+
+<p><strong>exec()</strong></p>
+
+<p>It does not create a new process; rather, it transforms the currently running program (formerly p3) into a different running program (wc). After the exec() in the child, it is almost as if p3.c never ran; a successful call to exec() never returns.</p>
+
+<p><strong>Why? Motivating The API</strong></p>
+
+<p>Why would we build sucho an odd interface to what should be the simple act of creating a new process? Well, as it turns out, the separation of fork() and exec() is essential in building a UNIX shell, because it lets the shell run code after the call to fork() but before the call to exec(); this code can alter the environment of the about-to-be-run program, and thus enables a variety of interesting features to be readily built.</p>
+
+<p><strong>How Does Shell Utilise The API?</strong></p>
+
+<p>The shell is just a user program.</p>
+
+<ol>
+  <li>It shows you a prompt and then waits for you to type something into it.</li>
+  <li>You then type a command (i.e., the name of an executable program, plus any arguments) into it;</li>
+  <li>In most cases, the shell then figures out where in the file system the executable resides</li>
+  <li>calls fork() to create a new child process to run the command</li>
+  <li>calls some variant of exec() to run the command</li>
+  <li>waits for the command to complete by calling wait().</li>
+  <li>When the child completes, the shell returns from wait() and prints out a prompt again, ready for your next command.</li>
+</ol>
+
+<p>eg. prompt&gt; wc p3.c &gt; newfile.txt</p>
+
+<p>When the child is created, before calling exec(), the shell closes standard output and opens the file newfile.txt.</p>
+
+<h2 id="mechanism">Mechanism</h2>
+
+<h3 id="chapter-6---mechanism-limited-direct-execution">Chapter 6 - Mechanism: Limited Direct Execution</h3>
+
+<p><strong>The Crux</strong></p>
+
+<ul>
+  <li>performance: how can we implement virtualization without adding excessive overhead to the system?</li>
+  <li>control: how can we run processes efficiently while retaining control over the CPU?</li>
+</ul>
+
+<p>Attaining performance while maintaining control is thus one of the central challenges in building an operating system.</p>
+
+<p><strong>Basic Technique: Limited Direct Execution</strong></p>
+
+<p>The basic idea is straightforward: just run the program you want to run on the CPU, but first make sure to set up the hardware so as to limit what the process can do without OS assistance.</p>
+
+<p>In an analogous manner, the OS “baby proofs” the CPU, by first (during boot time) setting up the <strong>trap handlers</strong> and starting an <strong>interrupt timer</strong>, and then by only running processes in a restricted mode. By doing so, the OS can feel quite assured that processes can run efficiently, only requir- ing OS intervention to perform privileged operations or when they have monopolized the CPU for too long and thus need to be switched out.</p>
+
+<p><strong>Problem #1: Restricted Operations</strong></p>
+
+<p>Use Protected Control Transfer</p>
+
+<p>The hardware assists the OS by providing different modes of execution. In <strong>user mode</strong>, applications do not have full access to hardware resources. In <strong>kernel mode</strong>, the OS has access to the full resources of the machine. When the user process wants to perform some kinds of privileged operation, it can perform a <strong>system call</strong>.</p>
+
+<p><strong>System Call</strong></p>
+
+<p>To execute a system call, a program must execute a special <strong>trap</strong> instruction. This instruction simultaneously jumps into the kernel and raises the privilege level to kernel mode; once in the kernel, the system can now per- form whatever privileged operations are needed (if allowed), and thus do the required work for the calling process. When finished, the OS calls a special <strong>return-from-trap</strong> instruction</p>
+
+<p><strong>Why System Calls Look Like Procedure Calls?</strong></p>
+
+<p>It is a procedure call, but hidden inside that procedure call is the famous trap instruction. More specifically, when you call open() (for example), you are executing a procedure call into the C library. The parts of the C library that make system calls are hand-coded in assembly, as they need to carefully follow convention in order to process arguments and return values correctly, as well as execute the hardware-specific trap instruction. And now you know why you personally don’t have to write assembly code to trap into an OS; somebody has already written that assembly for you.</p>
+
+<p><strong>How does the trap know which code to run inside the OS?</strong></p>
+
+<p>The kernel does so by setting up a <strong>trap table</strong> at boot time. When the machine boots up, it does so in privileged (kernel) mode, and thus is free to configure machine hardware as need be. The OS informs the hardware of the locations of these <strong>trap handlers</strong>.</p>
+
+<p><strong>Limited Direct Execution Protocol</strong></p>
+
+<p><img src="http://blog.ifyouseewendy.com/image-repo/os-limited_directed_execution_protocol.png" alt="Limited Direct Execution Protocol" /></p>
+
+<p>There are two phases in the LDE protocol:</p>
+
+<p>In the first (at boot time), the kernel initializes the <strong>trap table</strong>, and the CPU remembers its location for subsequent use.</p>
+
+<p>In the second (when running a process), the kernel sets up a few things (e.g., allocating a node on the process list, allocating memory) before using a <strong>return-from-trap</strong> instruction to start the execution of the process; this switches the CPU to user mode and begins running the process.</p>
+
+<p>Normal flow:</p>
+
+<p>When the process wishes to issue a system call, it traps back into the OS, which handles it and once again returns control via a return-from-trap to the process. The process then completes its work, and returns from main(); this usually will return into some stub code which will properly exit the program (say, by calling the exit() system call, which traps into the OS).</p>
+
+<p><strong>Problem #2: Switching Between Processes</strong></p>
+
+<p>How can the operating system regain control of the CPU so that it can switch between processes?</p>
+
+<p>In a <strong>cooperative</strong> scheduling system, the OS regains control of the CPU by waiting for a system call or an illegal operation of some kind to take place.</p>
+
+<p>How can the OS gain control of the CPU even if processes are not being cooperative? What can the OS do to ensure a rogue process does not take over the machine?</p>
+
+<p><strong>Timer Interrupt</strong></p>
+
+<p>A timer device can be programmed to raise an interrupt every so many milliseconds; when the interrupt is raised, the currently running process is halted, and a pre-configured interrupt handler in the OS runs. At this point, the OS has regained control of the CPU, and thus can do what it pleases: stop the current process, and start a different one.</p>
+
+<p>The OS must inform the hardware of which code to run when the timer interrupt occurs; thus, at boot time, the OS does exactly that. Second, also during the boot sequence, the OS must start the timer, which is of course a privileged operation.</p>
+
+<p><strong>Scheduler</strong></p>
+
+<p>Whether to continue running the currently-running process, or switch to a different one. This decision is made by a part of the operating system known as the scheduler.</p>
+
+<p>If the decision is made to switch, the OS then executes a low-level piece of code which we refer to as a <strong>context switch</strong>. A context switch is conceptually simple: all the OS has to do is save a few register values for the currently-executing process (onto its kernel stack, for example) and restore a few for the soon-to-be-executing process (from its kernel stack).</p>
+
+<p><img src="http://blog.ifyouseewendy.com/image-repo/os-timer_interrupt.png" alt="Timer Interrupt" /></p>
+
+<h2 id="scheduling">Scheduling</h2>
+
+<h3 id="chapter-7---scheduling-introduction">Chapter 7 - Scheduling: Introduction</h3>
+
+<p><strong>Scheduling Metrics</strong></p>
+
+<ul>
+  <li>performance
+    <ul>
+      <li>turnaround = T(completion) - T(arrival)</li>
+      <li>responsive time = T(first run) - T(arrival)</li>
+    </ul>
+  </li>
+  <li>fairness</li>
+</ul>
+
+<p>Performance and fairness are often at odds in scheduling.</p>
+
+<p>The introduction of time-shared machines changed all that. Now users would sit at a terminal and demand interactive performance from the system as well. And thus, a new metric was born: response time.</p>
+
+<p><strong>Assumption</strong></p>
+
+<ol>
+  <li>Each job runs for the same amount of time.</li>
+  <li>All jobs arrive at the same time.</li>
+  <li>Once started, each job runs to completion.</li>
+  <li>All jobs only use the CPU (i.e., they perform no I/O)</li>
+  <li>The run-time (length) of each job is known.</li>
+</ol>
+
+<p><strong>Policy 1-1 FIFO</strong></p>
+
+<p>under assumption: 1,2,3,4,5</p>
+
+<p>Given our assumptions about jobs all arriving at the same time, we could prove that SJF is indeed an optimal scheduling algorithm.</p>
+
+<p><strong>Policy 1-2 SJF (Shortest Job First)</strong></p>
+
+<p>under assumption: 1,2,3,4,5</p>
+
+<p>Why is FIFO not good?</p>
+
+<p>If Assumption(1) is false, there will be the <strong>convoy effect</strong>, where a number of relatively-short potential consumers of a resource get queued behind a heavyweight resource consumer.</p>
+
+<p>Is SJF preemptive?</p>
+
+<p>No, it’s <strong>non-preemptive</strong>. In the old days of batch computing, a number of non-preemptive sched- ulers were developed; such systems would run each job to completion before considering whether to run a new job. Virtually all modern schedulers are <strong>preemptive</strong>, and quite willing to stop one process from running in order to run another.</p>
+
+<p><strong>Policy 1-3 STCF (Shortest Time-to-Completion First) or PSJF (Preemptive Shortest Job First)</strong></p>
+
+<p>under assumption: 1,2,3,4,5</p>
+
+<p><strong>Policy 2 RR (Round-Robin)</strong></p>
+
+<p>The basic idea is simple: instead of running jobs to completion, RR runs a job for a <strong>time slice</strong> (sometimes called a scheduling quantum) and then switches to the next job in the run queue.</p>
+
+<p>The length of the time slice is critical for RR. The shorter it is, the better the performance of RR under the response-time metric. However, making the time slice too short is problematic: suddenly the cost of context switching will dominate overall performance. Thus, de- ciding on the length of the time slice presents a trade-off to a system de- signer, making it long enough to amortize the cost of switching without making it so long that the system is no longer responsive.</p>
+
+<p>RR, with a reasonable time slice, is thus an excellent scheduler if response time is our only metric. It is not surprising, then, that RR is indeed one of the worst policies if turnaround time is our metric.</p>
+
+<p><strong>Policy 1 vs. Policy 2</strong></p>
+
+<p>There is an inherent trade-off: if you are willing to be unfair, you can run shorter jobs to com- pletion, but at the cost of response time; if you instead value fairness, response time is lowered, but at the cost of turnaround time. This type of trade-off is common in systems</p>
+
+<p><strong>Incorporate I/O by overlap</strong></p>
+
+<p>under assumption: 4</p>
+
+<p>We see how a scheduler might incorporate I/O. By treating each CPU burst as a job, the scheduler makes sure processes that are “interactive” get run frequently. While those interactive jobs are performing I/O, other CPU-intensive jobs run, thus better utilizing the processor.</p>
+
+<h3 id="chapter-8---scheduling-the-multi-level-feedback-queue">Chapter 8 - Scheduling: The Multi-Level Feedback Queue</h3>
+
+<p><strong>MLFQ</strong></p>
+
+<p>it has <strong>multiple levels of queues</strong>, and <strong>uses feedback to determine the priority</strong> of a given job.</p>
+
+<p>Instead of demanding a priori knowledge of the nature of a job, it observes the execution of a job and prioritizes it accordingly. In this way, it manages to achieve the best of both worlds: it can deliver excellent overall performance (similar to SJF/STCF) for short-running interactive jobs, and is fair and makes progress for long-running CPU-intensive workloads.</p>
+
+<p><em>Multi-Level</em></p>
+
+<p>The MLFQ has a number of distinct queues, each assigned a different <strong>priority level</strong>. At any given time, a job that is ready to run is on a single queue. MLFQ uses priorities to decide which job should run at a given time: a job with higher priority (i.e., a job on a higher queue) is chosen to run. Of course, more than one job may be on a given queue, and thus have the same priority. In this case, we will just use round-robin scheduling among those jobs.</p>
+
+<p><em>Feedback</em></p>
+
+<p>Thus, the key to MLFQ scheduling lies in how the scheduler sets priorities. Rather than giving a fixed priority to each job, MLFQ varies the priority of a job based on its observed behavior.</p>
+
+<p><strong>How To Change Priority</strong></p>
+
+<p>Rule 3: When a job enters the system, it is placed at the highest priority (the topmost queue).
+Rule 4a: If a job uses up an entire time slice while running, its priority is reduced (i.e., it moves down one queue).
+Rule 4b: If a job gives up the CPU before the time slice is up, it stays at the same priority level.</p>
+
+<p><em>Problems</em></p>
+
+<ol>
+  <li>Starvation</li>
+  <li>Smart user could rewrite their program to game the scheduler.</li>
+  <li>A program may change its behavior over time; what was CPU-bound may transition to a phase of interactivity.</li>
+</ol>
+
+<p><strong>How to prevent gaming of our scheduler?</strong></p>
+
+<p>Rules 4a and 4b, let a job retain its priority by relinquishing the CPU before the time slice expires. The solution here is to perform better <strong>accounting</strong> of CPU time at each level of the MLFQ. Instead of forgetting how much of a time slice a process used at a given level, the scheduler should keep track; once a process has used its allotment, it is demoted to the next priority queue.</p>
+
+<p>Rule 4: Once a job uses up its time allotment at a given level (regardless of how many times it has given up the CPU), its priority is reduced (i.e., it moves down one queue).</p>
+
+<p><strong>Priority Boost</strong></p>
+
+<p>The simple idea here is to periodically boost the priority of all the jobs in system.</p>
+
+<p>Rule 5: After some time period S, move all the jobs in the system to the topmost queue.</p>
+
+<p><strong>Tuning MLFQ</strong></p>
+
+<p>One big question is how to <strong>parameterize</strong> such a scheduler.</p>
+
+<ul>
+  <li>How many queues should there be?</li>
+  <li>How big should the time slice be per queue?</li>
+  <li>How often should priority be boosted in order to avoid starvation and account for changes in behavior?</li>
+</ul>
+
+<p><em>Some Variants</em></p>
+
+<p>Most MLFQ variants allow for <strong>varying time-slice length</strong> across different queues. The high-priority queues are usually given short time slices; the low-priority queues, in contrast, contain long-running jobs that are CPU-bound; hence, longer time slices work well.</p>
+
+<p><img src="http://blog.ifyouseewendy.com/image-repo/os-lower_priority_longer_quanta.png" alt="Lower Priority, Longer Quanta" /></p>
+
+<p>The FreeBSD scheduler (version 4.3) uses a formula to calculate the current priority level of a job, basing it on how much CPU the process has used.</p>
+
+<p>Some schedulers reserve the highest priority levels for operating system work; thus typical user jobs can never obtain the highest levels of priority in the system. Some systems also allow some user advice to help set priorities; for example, by using the command-line utility nice.</p>
+
+<p><strong>Refined Rules</strong></p>
+
+<ul>
+  <li>Rule 1: If Priority(A) &gt; Priority(B), A runs (B doesn’t).</li>
+  <li>Rule 2: If Priority(A) = Priority(B), A &amp; B run in RR.</li>
+  <li>Rule 3: When a job enters the system, it is placed at the highest priority (the topmost queue).</li>
+  <li>Rule 4: Once a job uses up its time allotment at a given level (re- gardless of how many times it has given up the CPU), its priority is reduced (i.e., it moves down one queue).</li>
+  <li>Rule 5: After some time period S, move all the jobs in the system to the topmost queue.</li>
+</ul>
+
+<h3 id="chapter-9---scheduling-proportional-share">Chapter 9 - Scheduling: Proportional Share</h3>
+
+<p><strong>0. Basic Idea</strong></p>
+
+<p><strong>Proportional-share scheduler</strong>, also sometimes referred to as a <strong>fair-share scheduler</strong>. Proportional-share is based around a simple concept: instead of optimizing for turnaround or response time, a scheduler might instead try to guarantee that each job obtain a certain percentage of CPU time.</p>
+
+<p><strong>Implementations</strong></p>
+
+<ul>
+  <li><strong>lottery</strong> scheduling, lottery uses randomness in a clever way to achieve proportional share</li>
+  <li><strong>stride</strong> scheduling, stride does so deterministically</li>
+</ul>
+
+<p><strong>Application</strong></p>
+
+<p>One is that such approaches do not particularly mesh well with I/O [AC97]; another is that they leave open the hard problem of ticket assignment, i.e., how do you know how many tickets your browser should be allocated?</p>
+
+<p>As a result, proportional-share schedulers are more useful in domains where some of these problems (such as assignment of shares) are rela- tively easy to solve. For example, in a virtualized data centre.</p>
+
+<p><strong>1. Lottery Scheduling</strong></p>
+
+<p>The basic idea is quite simple: every so often, hold a lottery to determine which process should get to run next; processes that should run more often should be given more chances to win the lottery. One of the most beautiful aspects of lottery scheduling is its use of randomness.</p>
+
+<p><strong>Advantage</strong></p>
+
+<ul>
+  <li>randomness
+    <ul>
+      <li>First, random often avoids strange corner-case behaviors that a more traditional algorithm may have trouble handling.</li>
+      <li>Second, random also is lightweight, requiring little state to track alternatives.</li>
+      <li>Finally, random can be quite fast.</li>
+    </ul>
+  </li>
+  <li>simplicity of implementation</li>
+  <li>no global state</li>
+</ul>
+
+<p><strong>Disadvantage</strong></p>
+
+<ul>
+  <li>Hard to assign tickets to jobs</li>
+  <li>Not deterministic. Only as the jobs run for a significant number of time slices does the lottery scheduler approach the desired outcome.</li>
+</ul>
+
+<p><strong>Ticket</strong></p>
+
+<p>Tickets, which are used to represent the share of a resource that a process (or user or whatever) should receive. The percent of tickets that a process has represents its share of the system resource in question.</p>
+
+<p><strong>Ticket Mechanisms</strong></p>
+
+<p>Lottery scheduling also provides a number of mechanisms to manipulate tickets in different and sometimes useful ways.</p>
+
+<ul>
+  <li>ticket currency</li>
+  <li>ticket transfer</li>
+  <li>ticket inflation</li>
+</ul>
+
+<p><strong>Implementation</strong></p>
+
+<p>Probably the most amazing thing about lottery scheduling is the simplicity of its implementation.</p>
+
+<ul>
+  <li>a good random number generator to pick the winning ticket</li>
+  <li>a data structure to track the processes of the system (e.g., a list)</li>
+  <li>the total number of tickets.</li>
+</ul>
+
+<p><strong>2. Stride Scheduling</strong></p>
+
+<p>a <strong>deterministic</strong> fair-share scheduler.</p>
+
+<p>Respectively, we can compute the stride of each by dividing some large number by the number of tickets each process has been assigned. We call this value the <strong>stride</strong> of each process.</p>
+
+<p>Jobs A, B, and C, with 100, 50, and 250 tickets. if we divide 10,000 by each of those ticket values, we obtain the following stride values for A, B, and C: 100, 200, and 40.</p>
+
+<p>Every time a process runs, we will increment a counter for it (called its <strong>pass</strong> value) by its stride to track its global progress. The scheduler then uses the stride and pass to determine which process should run next.</p>
+
+<p>The basic idea is simple: at any given time, pick the process to run that has the lowest pass value so far; when you run a process, increment its pass counter by its stride.</p>
+
+<p><strong>Advantage</strong></p>
+
+<p>Lottery scheduling achieves the proportions probabilistically over time; stride scheduling gets them exactly right at the end of each scheduling cycle.</p>
+
+<p><strong>Disadvantage</strong></p>
+
+<p>Well, lottery scheduling has one nice property that stride scheduling does not: no global state. Imagine a new job enters in the middle of our stride scheduling example above; what should its pass value be? Should it be set to 0? If so, it will monopolize the CPU. With lottery scheduling, there is no global state per process; we simply add a new process with whatever tickets it has, update the single global variable to track how many total tickets we have, and go from there. In this way, lottery makes it much easier to incorporate new processes in a sensible manner.</p>
+
+<h3 id="chapter-10---multiprocessor-scheduling">Chapter 10 - Multiprocessor Scheduling</h3>
+
+<p><em>TODO after reading Concurrency</em></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[preload, eager_load, includes, references, and joins in Rails]]></title>
@@ -10378,345 +10903,6 @@ of calling your framework.</li>
   <li><a href="http://www.ruby-doc.org/stdlib-2.0/libdoc/minitest/rdoc/MiniTest/Mock.html">Minitest::Mock</a></li>
   <li><a href="https://www.relishapp.com/rspec/rspec-mocks/v/2-3/docs/method-stubs">Rspec Mocks</a></li>
 </ul>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ASCIIcast of Fundamentals of Design by CodeSchool]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/06/22/asciicast-of-fundamentals-of-design-by-codeschool/"/>
-    <updated>2014-06-22T23:35:39+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/06/22/asciicast-of-fundamentals-of-design-by-codeschool</id>
-    <content type="html"><![CDATA[<ul id="markdown-toc">
-  <li><a href="#typeface-classifications">Typeface Classifications</a>    <ul>
-      <li><a href="#typefaces">Typefaces</a></li>
-      <li><a href="#principles">Principles</a></li>
-    </ul>
-  </li>
-  <li><a href="#font-size-leading--weights">Font Size, Leading &amp; Weights</a></li>
-  <li><a href="#line-width--widows">Line-Width &amp; Widows</a>    <ul>
-      <li><a href="#line-width-is-measured-in-cpl">Line Width Is Measured in CPL</a></li>
-      <li><a href="#save-the-orphans--widows">Save the Orphans &amp; Widows.</a></li>
-    </ul>
-  </li>
-  <li><a href="#color-theory">Color Theory</a>    <ul>
-      <li><a href="#hsl">HSL</a></li>
-    </ul>
-  </li>
-  <li><a href="#color-scheme">Color Scheme</a>    <ul>
-      <li><a href="#colors">Colors</a></li>
-      <li><a href="#schemes">Schemes</a></li>
-    </ul>
-  </li>
-  <li><a href="#color--type">Color &amp; Type</a></li>
-  <li><a href="#basic-layout">Basic Layout</a></li>
-  <li><a href="#the-grid">The Grid</a>    <ul>
-      <li><a href="#fixed-or-fluid">Fixed or Fluid</a></li>
-      <li><a href="#example">Example</a></li>
-    </ul>
-  </li>
-  <li><a href="#whitespce--balance">Whitespce &amp; Balance</a></li>
-</ul>
-
-<h2 id="typeface-classifications">Typeface Classifications</h2>
-
-<p>Content is king.</p>
-
-<p>What’s your audience?</p>
-
-<p>Find the typeface suits the content well.</p>
-
-<h3 id="typefaces">Typefaces</h3>
-
-<p><strong>Serif</strong></p>
-
-<ul>
-  <li>
-    <p>Humanist Serif, suits for journalism or historical applications.</p>
-
-    <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-14h32m05s237.png" alt="Humanist Serif" /></p>
-  </li>
-  <li>
-    <p>Transitional Serif, suits for traditional academia or legal applications.</p>
-
-    <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-14h32m25s106.png" alt="Transitional Serif" /></p>
-  </li>
-  <li>
-    <p>Modern Serif, suits for arts or culture applications.</p>
-
-    <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-14h32m36s248.png" alt="Modern Serif" /></p>
-  </li>
-  <li>
-    <p>Egyptian (Slab Serif), suits for marketing or promotional applications.</p>
-
-    <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-14h32m57s247.png" alt="Egyptian (Slab Serif)" /></p>
-  </li>
-</ul>
-
-<p><strong>Sans-Serif</strong></p>
-
-<p><em>Sans</em> is the French word for without.</p>
-
-<ul>
-  <li>
-    <p>Humanist Sans Serif, suits for government or educational applications.  </p>
-
-    <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-14h39m01s9.png" alt="Humanist Sans Serif" /></p>
-  </li>
-  <li>
-    <p>Transitional Sans Serif, suits for technology or transportation applications.</p>
-
-    <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-15h16m50s201.png" alt="Transitional Sans Serif" /></p>
-  </li>
-  <li>
-    <p>Geometric Sans Serif, suits for science or architecture applications.</p>
-
-    <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-14h42m35s95.png" alt="Geometric Sans Serif" /></p>
-  </li>
-</ul>
-
-<p><strong>script</strong></p>
-
-<p>Difficult to read, don’t use in body copy.</p>
-
-<p><em>Comic Sans</em> is a script font, not a Sans Serif font. Maybe don’t use it everywhere.</p>
-
-<h3 id="principles">Principles</h3>
-
-<p>Don’t choose two fonts from the same style.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-14h44m57s130.png" alt="p1" /></p>
-
-<p>Don’t choose two fonts from the same class.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-14h46m49s85.png" alt="p2" /></p>
-
-<p>When mixing classes, find a similar trait using fonts that share one thing in common but are otherwise different.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-14h48m11s213.png" alt="p3" />
-<img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-14h48m23s225.png" alt="p4" /></p>
-
-<p>Contrast over Harmony. Keep it the same or change it a lot, look for emphatic differences rather than mushy transitions.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-14h48m52s15.png" alt="p5" /></p>
-
-<h2 id="font-size-leading--weights">Font Size, Leading &amp; Weights</h2>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-16h19m36s197.png" alt="Establish Visual Hierarchy" /></p>
-
-<p>Establish visual relationships between elements on the page is going to allow your users to more quickly process the information.</p>
-
-<p>Use different font size. Huge size is annoying, and 16px is good by suggestion.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-16h21m38s168.png" alt="Font Size" /></p>
-
-<p>Leading is around 120% to 150% of the body copy size.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-16h22m48s94.png" alt="Leading" /></p>
-
-<h2 id="line-width--widows">Line-Width &amp; Widows</h2>
-
-<h3 id="line-width-is-measured-in-cpl">Line Width Is Measured in CPL</h3>
-
-<blockquote>
-  <p>Robert Bringhurst in “The elements of Typographic style” recommends 45 to 75 characters per line, 66 characters per line is widely considered the ideal. A width of 600px will hold around 75 characters of 18px text.</p>
-</blockquote>
-
-<p>Use <code>max-width</code> to control CPL.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-16h40m13s48.png" alt="CPL" /></p>
-
-<h3 id="save-the-orphans--widows">Save the Orphans &amp; Widows.</h3>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-16h56m47s155.png" alt="widow" /></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-16h57m24s123.png" alt="orphan" /></p>
-
-<p>No perfect solution.  </p>
-
-<p>Try tweaking with the font size, weight, line width, and leading to fix the problem.</p>
-
-<h2 id="color-theory">Color Theory</h2>
-
-<ul>
-  <li>
-    <p>Subtractive Color, using CMYK (Cyan, Megenta, Yellow) color space.</p>
-
-    <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-08h25m21s91.png" alt="CMYK" /></p>
-  </li>
-  <li>
-    <p>Additive Color, using RGB spectrum.</p>
-
-    <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-08h25m57s202.png" alt="RGB" /></p>
-  </li>
-</ul>
-
-<h3 id="hsl">HSL</h3>
-
-<p>RGB is hard, while human process HSL. Hue, Saturation, Lightness.</p>
-
-<p><strong>Hue</strong></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-08h27m27s79.png" alt="hue" /></p>
-
-<p><strong>Saturation</strong></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-08h28m27s178.png" alt="staturation" /></p>
-
-<p><strong>Lightness</strong></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-08h28m33s232.png" alt="lightness" /></p>
-
-<p>Example</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-08h28m43s70.png" alt="hsl example" /></p>
-
-<p><strong>How to use?</strong></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-08h29m20s189.png" alt="use1" /></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-08h29m22s214.png" alt="use2" /></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-08h29m37s111.png" alt="use3" /></p>
-
-<p><strong>What about HSB, B for brightness?</strong></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-08h29m45s191.png" alt="hsb" /></p>
-
-<h2 id="color-scheme">Color Scheme</h2>
-
-<p>Start by selecting a Base Color.</p>
-
-<p>Keep Culture in Mind.</p>
-
-<p>Build Scheme around Base Color.</p>
-
-<h3 id="colors">Colors</h3>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/%E6%9C%AA%E5%91%BD%E5%90%8D_meitu_0.jpg" alt="colors" /></p>
-
-<h3 id="schemes">Schemes</h3>
-
-<p><strong>Monochromatic</strong></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-13h30m23s77.png" alt="monochromatic" /></p>
-
-<p><strong>Analogous</strong></p>
-
-<p>Analogous color schemes require you have colors with hues that both ascend and descend equally on either side of the base color. They also should be less than 40 degrees from the base.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-13h32m19s227.png" alt="analogous" /></p>
-
-<p><strong>Complementary</strong></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-13h32m17s204.png" alt="complementary" />
-<img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-13h31m11s38.png" alt="complementary2" /></p>
-
-<p>Don’t have to be perfect. Use the methods to tweak as needed to fit your project.</p>
-
-<h2 id="color--type">Color &amp; Type</h2>
-
-<p>Typography must have a high degree of contrast between it and its background.</p>
-
-<p>Black and white are the best.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-21h17m52s0.png" alt="black and white" /></p>
-
-<p>Colors that are the same hue but have a very high saturation and lightness contrast are a close second.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-21h17m54s23.png" alt="same hue" /></p>
-
-<p>Some colors are intrinsically difficult for humans to distinguish, such as red, green, blue, and orange.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-21h19m05s218.png" alt="hard distinguish" /></p>
-
-<p>Some colors are light colors, warm colors, like yellow, and some colors are dark colors, cool colors, like blue. So creating contrast in which the yellow is darker than the blue creates a very awkward experience.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-21h22m13s51.png" alt="light and dark colors" /></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-21h21m01s107.png" alt="yellow and blue" /></p>
-
-<p>Making yellow light, and blue dark is much more legible.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-21h22m00s181.png" alt="legible colors" /></p>
-
-<p>Warm and cool colors can be used to create depth, as warm colors appear closer to the screen or to the user. So use cool colors as the background and warm colors as the foreground.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-21h23m52s24.png" alt="warm colors are closer to the user" /></p>
-
-<p>You should combine colors to reinforce <strong>Visual Hierarchy</strong>. As an example, the CodeSchool website get progressively darker as you scroll, which anchors the page and create a more stable viewing experience.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-21h35m30s84.png" alt="codeschool" /></p>
-
-<p>Dont’ be tacky. And treat the image behind the text to make it stand out. </p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-21h29m29s200.png" alt="Treat image behind text" /></p>
-
-<h2 id="basic-layout">Basic Layout</h2>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-17-13h40m49s203.png" alt="layout1" /></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-17-13h40m57s24.png" alt="layout2" /></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-17-13h41m06s122.png" alt="layout3" /></p>
-
-<p>Reinforces the <strong>Visual Hierarchy</strong>.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-17-13h41m23s22.png" alt="layout4" /></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-17-13h43m31s29.png" alt="layout5" /></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-17-13h47m26s72.png" alt="layout6" /></p>
-
-<h2 id="the-grid">The Grid</h2>
-
-<p>It is made up of a system of horizontal and vetical lines.</p>
-
-<ul>
-  <li>
-    <p>The vertical lines create columns with gutters in between them that are used to proportionally distribute elements across the page.</p>
-
-    <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-21-02h29m42s176.png" alt="vertical lines" /></p>
-
-    <p>Avoid clutter by respecting the gutters. Don’t put design elements or type in between the columns.</p>
-
-    <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-21-02h41m13s209.png" alt="avoid clutter" /></p>
-  </li>
-  <li>
-    <p>The horizontal lines are used to create a baseline for text that shoudl be equal to the line height.</p>
-
-    <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-21-02h30m23s114.png" alt="horizontal lines" /></p>
-  </li>
-</ul>
-
-<p>Use them in Photoshop or another graphics software as a reference when designing.</p>
-
-<h3 id="fixed-or-fluid">Fixed or Fluid</h3>
-
-<ul>
-  <li>
-    <p>With a fixed grid, the browser can get bigger or smaller, and the grid will remain constant.</p>
-  </li>
-  <li>
-    <p>With a fluid grid, it grows or shrinks with the browser window. And columns are either added or dropped to better serve that size.</p>
-  </li>
-</ul>
-
-<h3 id="example">Example</h3>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-21-02h38m41s189.png" alt="the grid1" /></p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-21-02h38m44s7.png" alt="the grid2" /></p>
-
-<h2 id="whitespce--balance">Whitespce &amp; Balance</h2>
-
-<p>Balance all the things.</p>
-
-<p><strong>Symmetry</strong></p>
-
-<p><strong>Asymmetry</strong></p>
-
-<p>All of the principles together contribute to balance.</p>
-
 ]]></content>
   </entry>
   
