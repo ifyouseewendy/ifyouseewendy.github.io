@@ -326,13 +326,13 @@ How does the OS do so efficiently?</p>
   <li>Blocked</li>
 </ol>
 
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/blob/source/image-repo/os-process_state_transitions.png" alt="Process: State Transitions" /></p>
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-process_state_transitions.png" alt="Process: State Transitions" /></p>
 
 <p><strong>Data Structures</strong></p>
 
 <p>To track the state of each process, for example, the OS likely will keep some kind of <strong>process list</strong> for all processes that are ready, as well as some additional information to track which process is currently running.</p>
 
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/blob/source/image-repo/os-the_xv6_proc_structure.png" alt="The xv6 Proc Structure" /></p>
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-the_xv6_proc_structure.png" alt="The xv6 Proc Structure" /></p>
 
 <p>The <strong>register context</strong> will hold, for a stopped process, the contents of its registers. When a process is stopped, its registers will be saved to this memory location; by restoring these registers (i.e., placing their values back into the actual physical registers), the OS can resume running the process.</p>
 
@@ -417,7 +417,7 @@ How does the OS do so efficiently?</p>
 
 <p><strong>Limited Direct Execution Protocol</strong></p>
 
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/blob/source/image-repo/os-limited_directed_execution_protocol.png" alt="Limited Direct Execution Protocol" /></p>
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-limited_directed_execution_protocol.png" alt="Limited Direct Execution Protocol" /></p>
 
 <p>There are two phases in the LDE protocol:</p>
 
@@ -449,7 +449,7 @@ How does the OS do so efficiently?</p>
 
 <p>If the decision is made to switch, the OS then executes a low-level piece of code which we refer to as a <strong>context switch</strong>. A context switch is conceptually simple: all the OS has to do is save a few register values for the currently-executing process (onto its kernel stack, for example) and restore a few for the soon-to-be-executing process (from its kernel stack).</p>
 
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/blob/source/image-repo/os-timer_interrupt.png" alt="Timer Interrupt" /></p>
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-timer_interrupt.png" alt="Timer Interrupt" /></p>
 
 <h2 id="scheduling">Scheduling</h2>
 
@@ -577,7 +577,7 @@ Rule 4b: If a job gives up the CPU before the time slice is up, it stays at the 
 
 <p>Most MLFQ variants allow for <strong>varying time-slice length</strong> across different queues. The high-priority queues are usually given short time slices; the low-priority queues, in contrast, contain long-running jobs that are CPU-bound; hence, longer time slices work well.</p>
 
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/blob/source/image-repo/os-lower_priority_longer_quanta.png" alt="Lower Priority, Longer Quanta" /></p>
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lower_priority_longer_quanta.png" alt="Lower Priority, Longer Quanta" /></p>
 
 <p>The FreeBSD scheduler (version 4.3) uses a formula to calculate the current priority level of a job, basing it on how much CPU the process has used.</p>
 
