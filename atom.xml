@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-11-22T14:03:24+08:00</updated>
+  <updated>2015-11-30T16:20:36+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,219 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Some Hash Tricks in Ruby]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/11/30/some-hash-tricks-in-ruby/"/>
+    <updated>2015-11-30T16:17:38+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/11/30/some-hash-tricks-in-ruby</id>
+    <content type="html"><![CDATA[<blockquote>
+  <p>from <a href="http://blog.honeybadger.io/advanced-ruby-hash-techniques/">http://blog.honeybadger.io/advanced-ruby-hash-techniques/</a></p>
+</blockquote>
+
+<h3 id="strict-fetching">Strict fetching</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="nb">hash</span><span class="p">,</span> <span class="n">key</span><span class="o">|</span> <span class="k">raise</span> <span class="no">ArgumentError</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;No hash key: </span><span class="si">#{</span> <span class="n">key</span> <span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]=</span><span class="mi">1</span>
+</span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]</span> <span class="c1"># 1</span>
+</span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:x</span><span class="o">]</span> <span class="c1"># raises ArgumentError: No hash key: x</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="modifying-defaults-after-initialization">Modifying defaults after initialization</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">h</span><span class="o">=</span><span class="p">{}</span>
+</span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]</span> <span class="c1"># nil</span>
+</span><span class="line"><span class="n">h</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;new default&quot;</span>
+</span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]</span> <span class="c1"># &quot;new default&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">h</span><span class="o">.</span><span class="n">default_proc</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">to_i</span> <span class="p">}</span>
+</span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]</span> <span class="c1"># 1435684014</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="factorial-using-hash">Factorial using Hash</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">factorial</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">{</span><span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="n">k</span><span class="o">|</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">?</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">]*</span><span class="n">k</span> <span class="p">:</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">}</span>
+</span><span class="line"><span class="no">Factorail</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="c1"># =&gt; 24</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="a-game-of-lazily-infinite-nested-hashes">A game of lazily infinite nested hashes</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">generator</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="nb">hash</span><span class="p">,</span> <span class="n">key</span><span class="o">|</span>
+</span><span class="line">  <span class="nb">hash</span><span class="o">[</span><span class="n">key</span><span class="o">]</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">generator</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span> <span class="o">[</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="o">][</span><span class="nb">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">]</span> <span class="o">=&gt;</span> <span class="s1">&#39;You found me&#39;</span> <span class="p">)</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line"><span class="n">dungeon</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="o">&amp;</span><span class="n">generator</span>
+</span><span class="line"><span class="n">dungeon</span><span class="o">[</span><span class="s1">&#39;n&#39;</span><span class="o">]</span>            <span class="c1"># =&gt; { &quot;s&quot; =&gt; &quot;You found me&quot; }</span>
+</span><span class="line"><span class="n">dungeon</span><span class="o">[</span><span class="s1">&#39;n&#39;</span><span class="o">][</span><span class="s1">&#39;w&#39;</span><span class="o">]</span>       <span class="c1"># =&gt; { &quot;e&quot; =&gt; &quot;You found me&quot; }</span>
+</span><span class="line"><span class="n">dungeon</span><span class="o">[</span><span class="s1">&#39;n&#39;</span><span class="o">][</span><span class="s1">&#39;w&#39;</span><span class="o">][</span><span class="s1">&#39;e&#39;</span><span class="o">]</span>  <span class="c1"># =&gt; &quot;You found me&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<blockquote>
+  <p>from <a href="https://endofline.wordpress.com/2010/12/24/hash-tricks/">https://endofline.wordpress.com/2010/12/24/hash-tricks</a></p>
+</blockquote>
+
+<h3 id="hash-returns-hashes-to-build-a-tree-structure">Hash returns hashes, to build a tree structure</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">tree_block</span> <span class="o">=</span> <span class="o">-&gt;</span><span class="p">(</span><span class="nb">hash</span><span class="p">,</span><span class="n">k</span><span class="p">){</span> <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tree_block</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="n">opts</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tree_block</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="n">opts</span><span class="o">[</span><span class="s1">&#39;dev&#39;</span><span class="o">][</span><span class="s1">&#39;db&#39;</span><span class="o">][</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;localhost:2828&quot;</span>
+</span><span class="line"><span class="n">opts</span><span class="o">[</span><span class="s1">&#39;dev&#39;</span><span class="o">][</span><span class="s1">&#39;db&#39;</span><span class="o">][</span><span class="s1">&#39;user&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;me&quot;</span>
+</span><span class="line"><span class="n">opts</span><span class="o">[</span><span class="s1">&#39;dev&#39;</span><span class="o">][</span><span class="s1">&#39;db&#39;</span><span class="o">][</span><span class="s1">&#39;password&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;secret&quot;</span>
+</span><span class="line"><span class="n">opts</span><span class="o">[</span><span class="s1">&#39;test&#39;</span><span class="o">][</span><span class="s1">&#39;db&#39;</span><span class="o">][</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;localhost:2828&quot;</span>
+</span><span class="line"><span class="n">opts</span><span class="o">[</span><span class="s1">&#39;test&#39;</span><span class="o">][</span><span class="s1">&#39;db&#39;</span><span class="o">][</span><span class="s1">&#39;user&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;test_user&quot;</span>
+</span><span class="line"><span class="n">opts</span><span class="o">[</span><span class="s1">&#39;test&#39;</span><span class="o">][</span><span class="s1">&#39;db&#39;</span><span class="o">][</span><span class="s1">&#39;password&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;test_secret&quot;</span>
+</span><span class="line"><span class="n">opts</span>
+</span><span class="line"><span class="c1"># =&gt; {</span>
+</span><span class="line">  <span class="s2">&quot;dev&quot;</span>  <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">    <span class="s2">&quot;db&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">      <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost:2828&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="s2">&quot;user&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;me&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">},</span>
+</span><span class="line">  <span class="s2">&quot;test&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">    <span class="s2">&quot;db&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">      <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost:2828&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="s2">&quot;user&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;test_user&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;test_secret&quot;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="use-hash-as-a-method">Use hash as a method</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
+</span><span class="line"><span class="n">http</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="n">k</span><span class="o">|</span>
+</span><span class="line">  <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="no">URI</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">.</span><span class="n">body</span>
+</span><span class="line">  <span class="n">h</span><span class="o">.</span><span class="n">delete</span> <span class="n">h</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">first</span> <span class="k">if</span> <span class="n">h</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="c1"># a caching layer</span>
+</span><span class="line">  <span class="n">h</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<blockquote>
+  <p>from Amadan posted on <a href="https://www.reddit.com/r/ruby/comments/29hr4x/whats_youre_favorite_ruby_trick_or_quirk_thata">https://www.reddit.com/r/ruby/comments/29hr4x/whats_youre_favorite_ruby_trick_or_quirk_thata</a></p>
+</blockquote>
+
+<h3 id="autovivifying-hashes-are-cool">Autovivifying hashes are cool</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">autohash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="o">|</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">h</span><span class="o">.</span><span class="n">default_proc</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="n">autohash</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">2</span><span class="o">][</span><span class="mi">3</span><span class="o">][</span><span class="mi">4</span><span class="o">][</span><span class="mi">5</span><span class="o">][</span><span class="mi">6</span><span class="o">][</span><span class="mi">7</span><span class="o">]</span> <span class="o">=</span> <span class="mi">8</span>
+</span><span class="line"><span class="n">autohash</span> <span class="c1"># =&gt; {1=&gt;{2=&gt;{3=&gt;{4=&gt;{5=&gt;{6=&gt;{7=&gt;8}}}}}}}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<blockquote>
+  <p>from The Buckblog <a href="http://weblog.jamisbuck.org/2015/11/14/little-things-refactoring-with-hashes.html">http://weblog.jamisbuck.org/2015/11/14/little-things-refactoring-with-hashes.html</a></p>
+</blockquote>
+
+<h3 id="refactor-case-statement">Refactor case statement</h3>
+
+<p>before</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">klass</span> <span class="o">=</span> <span class="k">case</span> <span class="n">params</span><span class="o">[</span><span class="ss">:student_level</span><span class="o">]</span>
+</span><span class="line">  <span class="k">when</span> <span class="ss">:freshman</span><span class="p">,</span> <span class="ss">:sophomore</span> <span class="k">then</span>
+</span><span class="line">    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Underclassman</span>
+</span><span class="line">  <span class="k">when</span> <span class="ss">:junior</span><span class="p">,</span> <span class="ss">:senior</span> <span class="k">then</span>
+</span><span class="line">    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Upperclassman</span>
+</span><span class="line">  <span class="k">when</span> <span class="ss">:graduate</span>
+</span><span class="line">    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Graduate</span>
+</span><span class="line">  <span class="k">else</span>
+</span><span class="line">    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Unregistered</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="n">student</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">birthdate</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">phone</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>after</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">STUDENT_LEVELS</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">Student</span><span class="p">:</span><span class="ss">:Unregistered</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+</span><span class="line">  <span class="ss">freshman</span><span class="p">:</span> <span class="ss">Student</span><span class="p">:</span><span class="ss">:Underclassman</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">sophomore</span><span class="p">:</span> <span class="ss">Student</span><span class="p">:</span><span class="ss">:Underclassman</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">junior</span><span class="p">:</span>    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Upperclassman</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">senior</span><span class="p">:</span>    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Upperclassman</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">graduate</span><span class="p">:</span>  <span class="ss">Student</span><span class="p">:</span><span class="ss">:Graduate</span>
+</span><span class="line"><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="n">klass</span> <span class="o">=</span> <span class="no">STUDENT_LEVELS</span><span class="o">[</span><span class="n">params</span><span class="o">[</span><span class="ss">:student_level</span><span class="o">]]</span>
+</span><span class="line"><span class="n">student</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">birthdate</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">phone</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Review] Operating Systems Three Easy Pieces]]></title>
@@ -10798,111 +11011,6 @@ of calling your framework.</li>
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git update-ref refs/heads/master a5f85ba5875917319471dfd98dfc636c1dc65650
 </span></code></pre></td></tr></table></div></figure></notextile></div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to use Mock and Stub in Minitest and Rspec?]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec/"/>
-    <updated>2014-09-23T20:14:24+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/09/23/how-to-use-mock-and-stub-in-minitest-and-rspec</id>
-    <content type="html"><![CDATA[<p>Referenced in <a href="http://blog.arvidandersson.se/2012/03/28/minimalicous-testing-in-ruby-1-9">Minimalicious testing in Ruby 1.9 with MiniTest</a></p>
-
-<ul>
-  <li>A <strong>stub object</strong> is a pretend object that implement some of the interface of the object it pretends to be and returns predefined responses. </li>
-  <li>A <strong>mock object</strong> is similair to a stub but has another use case: <em>it helps decide if the test case it is used in passes by verifying if it’s methods has been called or not.</em></li>
-</ul>
-
-<h2 id="minitestmock">Minitest::Mock</h2>
-
-<p><code>require 'minitest/mock'</code></p>
-
-<p><em>stub</em></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="ss">Minitest</span><span class="p">:</span><span class="ss">:Mock</span><span class="o">.</span><span class="n">new</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x82ff7b5c&gt;</span>
-</span><span class="line"><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="ss">:hi</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">)</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x82ff7b5c&gt;</span>
-</span><span class="line"><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">hi</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="s2">&quot;hello&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><em>mock</em></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span> <span class="o">=</span> <span class="ss">Minitest</span><span class="p">:</span><span class="ss">:Mock</span><span class="o">.</span><span class="n">new</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x821763e4&gt;</span>
-</span><span class="line"><span class="o">[</span><span class="mi">6</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="ss">:hi</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="o">[</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;arg2&#39;</span><span class="o">]</span><span class="p">)</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x821763e4&gt;</span>
-</span><span class="line"><span class="o">[</span><span class="mi">7</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span><span class="o">.</span><span class="n">verify</span>
-</span><span class="line"><span class="ss">MockExpectationError</span><span class="p">:</span> <span class="n">expected</span> <span class="n">hi</span><span class="p">(</span><span class="s2">&quot;arg1&quot;</span><span class="p">,</span> <span class="s2">&quot;arg2&quot;</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="n">got</span> <span class="o">[]</span>
-</span><span class="line"><span class="o">[</span><span class="mi">8</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span><span class="o">.</span><span class="n">hi</span><span class="p">(</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;arg2&#39;</span><span class="p">)</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="s2">&quot;hello&quot;</span>
-</span><span class="line"><span class="o">[</span><span class="mi">9</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span><span class="o">.</span><span class="n">verify</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="kp">true</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="rspecmocks">RSpec::Mocks</h2>
-
-<p><code>require 'rspec/mocks/standalone'</code></p>
-
-<p><em>stub</em></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">double</span><span class="p">()</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;RSpec::Mocks::Mock:0x82c66b78 @name=nil&gt;</span>
-</span><span class="line"><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">stub</span><span class="p">(</span><span class="ss">:hi</span><span class="p">)</span><span class="o">.</span><span class="n">and_return</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="kp">nil</span>
-</span><span class="line"><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">hi</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="s2">&quot;hello&quot;</span>
-</span><span class="line"><span class="o">[</span><span class="mi">7</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">stub</span><span class="p">(</span><span class="ss">:hi</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">and_return</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="kp">nil</span>
-</span><span class="line"><span class="o">[</span><span class="mi">9</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">hi</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="s2">&quot;hello world&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><em>mock</em></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="o">[</span><span class="mi">18</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">double</span><span class="p">()</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;RSpec::Mocks::Mock:0x82c66b78 @name=nil&gt;</span>
-</span><span class="line"><span class="o">[</span><span class="mi">19</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">should_receive</span><span class="p">(</span><span class="ss">:hi</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;RSpec::Mocks::MessageExpectation:0x818c11f4&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h3 id="reference">Reference</h3>
-
-<ul>
-  <li><a href="http://www.ruby-doc.org/stdlib-2.0/libdoc/minitest/rdoc/MiniTest/Mock.html">Minitest::Mock</a></li>
-  <li><a href="https://www.relishapp.com/rspec/rspec-mocks/v/2-3/docs/method-stubs">Rspec Mocks</a></li>
-</ul>
 ]]></content>
   </entry>
   

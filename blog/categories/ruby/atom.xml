@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-11-22T14:03:24+08:00</updated>
+  <updated>2015-11-30T16:20:36+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,152 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Some Hash Tricks in Ruby]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/11/30/some-hash-tricks-in-ruby/"/>
+    <updated>2015-11-30T16:17:38+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/11/30/some-hash-tricks-in-ruby</id>
+    <content type="html"><![CDATA[<blockquote>
+  <p>from <a href="http://blog.honeybadger.io/advanced-ruby-hash-techniques/">http://blog.honeybadger.io/advanced-ruby-hash-techniques/</a></p>
+</blockquote>
+
+<h3 id="strict-fetching">Strict fetching</h3>
+
+<p><code>ruby
+h = Hash.new { |hash, key| raise ArgumentError.new("No hash key: #{ key }") }
+h[:a]=1
+h[:a] # 1
+h[:x] # raises ArgumentError: No hash key: x
+</code></p>
+
+<h3 id="modifying-defaults-after-initialization">Modifying defaults after initialization</h3>
+
+<p>```ruby
+h={}
+h[:a] # nil
+h.default = “new default”
+h[:a] # “new default”</p>
+
+<p>h.default_proc = Proc.new { Time.now.to_i }
+h[:a] # 1435684014
+```</p>
+
+<h3 id="factorial-using-hash">Factorial using Hash</h3>
+
+<p><code>ruby
+factorial = Hash.new{|h,k| k &gt; 1 ? h[k] = h[k-1]*k : h[k] = 1 }
+Factorail[4] # =&gt; 24
+</code></p>
+
+<h3 id="a-game-of-lazily-infinite-nested-hashes">A game of lazily infinite nested hashes</h3>
+
+<p><code>ruby
+generator = Proc.new do |hash, key|
+  hash[key] = Hash.new(&amp;generator).merge( ['n', 's', 'e', 'w'][rand(4)] =&gt; 'You found me' )
+end
+dungeon = Hash.new &amp;generator
+dungeon['n']            # =&gt; { "s" =&gt; "You found me" }
+dungeon['n']['w']       # =&gt; { "e" =&gt; "You found me" }
+dungeon['n']['w']['e']  # =&gt; "You found me"
+</code></p>
+
+<blockquote>
+  <p>from <a href="https://endofline.wordpress.com/2010/12/24/hash-tricks/">https://endofline.wordpress.com/2010/12/24/hash-tricks</a></p>
+</blockquote>
+
+<h3 id="hash-returns-hashes-to-build-a-tree-structure">Hash returns hashes, to build a tree structure</h3>
+
+<p>```ruby
+tree_block = -&gt;(hash,k){ hash[k] = Hash.new(&amp;tree_block) }
+opts = Hash.new(&amp;tree_block)</p>
+
+<p>opts[‘dev’][‘db’][‘host’] = “localhost:2828”
+opts[‘dev’][‘db’][‘user’] = “me”
+opts[‘dev’][‘db’][‘password’] = “secret”
+opts[‘test’][‘db’][‘host’] = “localhost:2828”
+opts[‘test’][‘db’][‘user’] = “test_user”
+opts[‘test’][‘db’][‘password’] = “test_secret”
+opts
+# =&gt; {
+  “dev”  =&gt; {
+    “db” =&gt; {
+      “host”     =&gt; “localhost:2828”,
+      “user”     =&gt; “me”,
+      “password” =&gt; “secret”
+    }
+  },
+  “test” =&gt; {
+    “db” =&gt; {
+      “host”     =&gt; “localhost:2828”,
+      “user”     =&gt; “test_user”,
+      “password” =&gt; “test_secret”
+    }
+  }
+}
+```</p>
+
+<h3 id="use-hash-as-a-method">Use hash as a method</h3>
+
+<p><code>ruby
+require 'net/http'
+http = Hash.new do |h,k|
+  h[k] = Net::HTTP.get_response(URI(k)).body
+  h.delete h.keys.first if h.length &gt; 3 # a caching layer
+  h
+end
+</code></p>
+
+<blockquote>
+  <p>from Amadan posted on <a href="https://www.reddit.com/r/ruby/comments/29hr4x/whats_youre_favorite_ruby_trick_or_quirk_thata">https://www.reddit.com/r/ruby/comments/29hr4x/whats_youre_favorite_ruby_trick_or_quirk_thata</a></p>
+</blockquote>
+
+<h3 id="autovivifying-hashes-are-cool">Autovivifying hashes are cool</h3>
+
+<p><code>ruby
+autohash = Hash.new { |h, k| h[k] = Hash.new(&amp;h.default_proc) }
+autohash[1][2][3][4][5][6][7] = 8
+autohash # =&gt; {1=&gt;{2=&gt;{3=&gt;{4=&gt;{5=&gt;{6=&gt;{7=&gt;8}}}}}}}
+</code></p>
+
+<blockquote>
+  <p>from The Buckblog <a href="http://weblog.jamisbuck.org/2015/11/14/little-things-refactoring-with-hashes.html">http://weblog.jamisbuck.org/2015/11/14/little-things-refactoring-with-hashes.html</a></p>
+</blockquote>
+
+<h3 id="refactor-case-statement">Refactor case statement</h3>
+
+<p>before</p>
+
+<p><code>ruby
+klass = case params[:student_level]
+  when :freshman, :sophomore then
+    Student::Underclassman
+  when :junior, :senior then
+    Student::Upperclassman
+  when :graduate
+    Student::Graduate
+  else
+    Student::Unregistered
+  end
+student = klass.new(name, birthdate, address, phone)
+</code></p>
+
+<p>after</p>
+
+<p>```ruby
+STUDENT_LEVELS = Hash.new(Student::Unregistered).merge(
+  freshman: Student::Underclassman,
+  sophomore: Student::Underclassman,
+  junior:    Student::Upperclassman,
+  senior:    Student::Upperclassman,
+  graduate:  Student::Graduate
+)</p>
+
+<p>klass = STUDENT_LEVELS[params[:student_level]]
+student = klass.new(name, birthdate, address, phone)
+```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[preload, eager_load, includes, references, and joins in Rails]]></title>
@@ -725,110 +871,6 @@ t.name # =&gt; nil
 ```</p>
 
 <p><code>name = 'John'</code> only means a definition of a local variable, which won’t send <code>=</code> to <code>name</code>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Annoying OAuth Issue on HTTP URL Encoding]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding/"/>
-    <updated>2015-03-04T17:46:12+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding</id>
-    <content type="html"><![CDATA[<p>I was developing and maintaining an OAuth service using <code>pelle/oauth-plugin</code> gem. Other than the standard token exchange process, there is a need to authenticate by signature based on user’s passed in parameters. As custom parameters can include custom charactors, here comes the space encoding issue.</p>
-
-<ul>
-  <li>Why the service approves my test script by passing <code>name=wendi</code> but refuses <code>name=Di Wen</code> ?</li>
-  <li>Why the <code>CGI.escape('Di Wen')</code> outputs <code>"Di+Wen"</code>, while <code>URI.escape('Di Wen')</code> outpus <code>Di%20Wen</code> ?</li>
-</ul>
-
-<p>This is definitely an annoying issue. I’ve run into it sometime before, but today I need to make a clear mind.</p>
-
-<p><strong>What’s the HTTP standard way to encode space in URL?</strong></p>
-
-<p><code>%20</code>, according to the <a href="http://www.w3schools.com/tags/ref_urlencode.asp">HTML URL Encoding Reference</a> by W3schools.</p>
-
-<p><strong>Why the hell some libary encode space to <code>+</code>?</strong></p>
-
-<p>Because of the <code>application/x-www-form-urlencoded</code> <em>MIME</em> type.</p>
-
-<p>Refered to Wikipedia, <a href="http://en.wikipedia.org/wiki/Percent-encoding#The_application.2Fx-www-form-urlencoded_type">Percent Encoding</a></p>
-
-<blockquote>
-  <p>The encoding used by default is based on a very early version of the general URI percent-encoding rules, with a number of modifications such as newline normalization and replacing spaces with “+” instead of “%20”. The Internet media type of data encoded this way is application/x-www-form-urlencoded, and it is currently defined (still in a very outdated manner) in the HTML and XForms specifications.</p>
-</blockquote>
-
-<p>And <a href="http://stackoverflow.com/users/634419/anomie">Anomie</a> has a summary <a href="http://stackoverflow.com/a/5433216/1331774">answer</a>,</p>
-
-<blockquote>
-  <p>The query string format is actually a different but related encoding, application/x-www-form-urlencoded, defined in RFC 1866 along with HTML 2.0. It was based on RFC 1738, but specified that spaces (not all whitespace, just the character with ASCII code 0x20) are replaced by ‘+’ and that line breaks are to be encoded as CRLF (i.e. %0D%0A). The former is likely because that saves 2 bytes for a very common character in form submissions at the expense of using an extra 2 bytes for a much less common character, and the latter is to avoid problems when transferring between systems using different end-of-line codings. Non-ASCII characters were left unconsidered.</p>
-</blockquote>
-
-<blockquote>
-  <p>UTF-8 coding in URIs came over a decade later, in RFC 3986, although individual protocols may have specified this or another encoding of non-ASCII characters earlier. To maintain backwards compatibility, all UTF-8 octets must be percent-encoded.</p>
-</blockquote>
-
-<p><strong>What’s the Rule of Thumb in Ruby world?</strong></p>
-
-<p><a href="http://stackoverflow.com/users/409475/ernest">Ernest</a> makes a <a href="http://stackoverflow.com/questions/2824126/whats-the-difference-between-uri-escape-and-cgi-escape">specification</a> about the escape methods over <code>URI</code>, <code>CGI</code>, and <code>Addressable</code>, and gives a conclusion</p>
-
-<blockquote>
-  <ul>
-    <li>Do not use URI.escape or similar</li>
-    <li>Use CGI::escape if you only need form escape</li>
-    <li>If you need to work with URIs, use Addressable, it offers url encoding, form encoding and normalizes URLs.</li>
-  </ul>
-</blockquote>
-
-<p><strong>So, what’s the solution to my question?</strong></p>
-
-<p>The <code>pelle/oauth-plugin</code> gem failed my test script with <code>CGI</code> by</p>
-
-<p>```ruby
-pry(main)&gt; CGI.escape ‘Di Wen’
-=&gt; “Di+Wen”</p>
-
-<h1 id="expecting-di2bwen">expecting “Di%2BWen”</h1>
-<p>```</p>
-
-<p>Also failed <code>URI</code> and <code>Addressable</code> by</p>
-
-<p>```ruby
-pry(main)&gt; URI.escape ‘Di@Wen’
-=&gt; “Di@Wen”</p>
-
-<p>pry(main)&gt; Addressable::URI.parse(“Di@Wen”).normalize
-=&gt; #&lt;Addressable::URI:0x81f58abc URI:Di@Wen&gt;</p>
-
-<h1 id="expecting-di40wen">expecting “Di%40Wen”</h1>
-<p>```</p>
-
-<p>After some digging into the gem, I’ve found its encoding method</p>
-
-<p>```ruby
-# Escape +value+ by URL encoding all non-reserved character.
-#
-# See Also: {OAuth core spec version 1.0, section 5.1}[http://oauth.net/core/1.0#rfc.section.5.1]
-def escape(value)
-  URI::escape(value.to_s, OAuth::RESERVED_CHARACTERS)
-rescue ArgumentError
-  URI::escape(value.to_s.force_encoding(Encoding::UTF_8), OAuth::RESERVED_CHARACTERS)
-end</p>
-
-<p>OAuth::RESERVED_CHARACTERS # =&gt; /[^a-zA-Z0-9-._\~]/
-```</p>
-
-<p>Following the comment, comes along the OAuth standard specification about <a href="http://oauth.net/core/1.0/#rfc.section.5.1">Parameter Encoding</a></p>
-
-<blockquote>
-  <p>All parameter names and values are escaped using the [RFC3986] percent-encoding (%xx) mechanism. Characters not in the unreserved character set ([RFC3986] section 2.3) MUST be encoded. Characters in the unreserved character set MUST NOT be encoded. Hexadecimal characters in encodings MUST be upper case. Text names and values MUST be encoded as UTF-8 octets before percent-encoding them per [RFC3629].</p>
-</blockquote>
-
-<blockquote>
-  <pre><code>unreserved = ALPHA, DIGIT, '-', '.', '_', '~'
-</code></pre>
-</blockquote>
-
-<p>Under the standard spec and refering to the gem’s implementation, I’ve finally solved my stupid issue.</p>
-
 ]]></content>
   </entry>
   

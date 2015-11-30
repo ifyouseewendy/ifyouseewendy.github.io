@@ -1,0 +1,424 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Some Hash Tricks in Ruby - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="Ruby Nov 30th, 2015 Some Hash Tricks in Ruby from http://blog.honeybadger.io/advanced-ruby-hash-techniques/ Strict fetching 1
+2
+3
+4
+h = Hash.new { | &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2015/11/30/some-hash-tricks-in-ruby">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2015/11/30/some-hash-tricks-in-ruby/">Some Hash Tricks in Ruby</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/11/22/review-operating-systems-three-easy-pieces/">[Review] Operating Systems Three Easy Pieces</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/11/11/preload-eager_load-includes-references-joins/">Preload, Eager_load, Includes, References, and Joins in Rails</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/08/10/data-types-in-rails/">Data Types in Rails</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/04/11/ruby-float-point-arithmetic-and-truncation/">Ruby Float Point Arithmetic and Truncation</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Nov 30<span>th</span>, 2015</a>
+</span>
+
+    </div>
+    <h1>
+      Some Hash Tricks in Ruby
+    </h1>
+  
+</header>
+
+
+  <section><blockquote>
+  <p>from <a href="http://blog.honeybadger.io/advanced-ruby-hash-techniques/">http://blog.honeybadger.io/advanced-ruby-hash-techniques/</a></p>
+</blockquote>
+
+<h3 id="strict-fetching">Strict fetching</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="nb">hash</span><span class="p">,</span> <span class="n">key</span><span class="o">|</span> <span class="k">raise</span> <span class="no">ArgumentError</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;No hash key: </span><span class="si">#{</span> <span class="n">key</span> <span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]=</span><span class="mi">1</span>
+</span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]</span> <span class="c1"># 1</span>
+</span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:x</span><span class="o">]</span> <span class="c1"># raises ArgumentError: No hash key: x</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="modifying-defaults-after-initialization">Modifying defaults after initialization</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">h</span><span class="o">=</span><span class="p">{}</span>
+</span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]</span> <span class="c1"># nil</span>
+</span><span class="line"><span class="n">h</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;new default&quot;</span>
+</span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]</span> <span class="c1"># &quot;new default&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">h</span><span class="o">.</span><span class="n">default_proc</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">to_i</span> <span class="p">}</span>
+</span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]</span> <span class="c1"># 1435684014</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="factorial-using-hash">Factorial using Hash</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">factorial</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">{</span><span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="n">k</span><span class="o">|</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">?</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">]*</span><span class="n">k</span> <span class="p">:</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">}</span>
+</span><span class="line"><span class="no">Factorail</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="c1"># =&gt; 24</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="a-game-of-lazily-infinite-nested-hashes">A game of lazily infinite nested hashes</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">generator</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="nb">hash</span><span class="p">,</span> <span class="n">key</span><span class="o">|</span>
+</span><span class="line">  <span class="nb">hash</span><span class="o">[</span><span class="n">key</span><span class="o">]</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">generator</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span> <span class="o">[</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="o">][</span><span class="nb">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">]</span> <span class="o">=&gt;</span> <span class="s1">&#39;You found me&#39;</span> <span class="p">)</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line"><span class="n">dungeon</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="o">&amp;</span><span class="n">generator</span>
+</span><span class="line"><span class="n">dungeon</span><span class="o">[</span><span class="s1">&#39;n&#39;</span><span class="o">]</span>            <span class="c1"># =&gt; { &quot;s&quot; =&gt; &quot;You found me&quot; }</span>
+</span><span class="line"><span class="n">dungeon</span><span class="o">[</span><span class="s1">&#39;n&#39;</span><span class="o">][</span><span class="s1">&#39;w&#39;</span><span class="o">]</span>       <span class="c1"># =&gt; { &quot;e&quot; =&gt; &quot;You found me&quot; }</span>
+</span><span class="line"><span class="n">dungeon</span><span class="o">[</span><span class="s1">&#39;n&#39;</span><span class="o">][</span><span class="s1">&#39;w&#39;</span><span class="o">][</span><span class="s1">&#39;e&#39;</span><span class="o">]</span>  <span class="c1"># =&gt; &quot;You found me&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<blockquote>
+  <p>from <a href="https://endofline.wordpress.com/2010/12/24/hash-tricks/">https://endofline.wordpress.com/2010/12/24/hash-tricks</a></p>
+</blockquote>
+
+<h3 id="hash-returns-hashes-to-build-a-tree-structure">Hash returns hashes, to build a tree structure</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">tree_block</span> <span class="o">=</span> <span class="o">-&gt;</span><span class="p">(</span><span class="nb">hash</span><span class="p">,</span><span class="n">k</span><span class="p">){</span> <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tree_block</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="n">opts</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tree_block</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="n">opts</span><span class="o">[</span><span class="s1">&#39;dev&#39;</span><span class="o">][</span><span class="s1">&#39;db&#39;</span><span class="o">][</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;localhost:2828&quot;</span>
+</span><span class="line"><span class="n">opts</span><span class="o">[</span><span class="s1">&#39;dev&#39;</span><span class="o">][</span><span class="s1">&#39;db&#39;</span><span class="o">][</span><span class="s1">&#39;user&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;me&quot;</span>
+</span><span class="line"><span class="n">opts</span><span class="o">[</span><span class="s1">&#39;dev&#39;</span><span class="o">][</span><span class="s1">&#39;db&#39;</span><span class="o">][</span><span class="s1">&#39;password&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;secret&quot;</span>
+</span><span class="line"><span class="n">opts</span><span class="o">[</span><span class="s1">&#39;test&#39;</span><span class="o">][</span><span class="s1">&#39;db&#39;</span><span class="o">][</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;localhost:2828&quot;</span>
+</span><span class="line"><span class="n">opts</span><span class="o">[</span><span class="s1">&#39;test&#39;</span><span class="o">][</span><span class="s1">&#39;db&#39;</span><span class="o">][</span><span class="s1">&#39;user&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;test_user&quot;</span>
+</span><span class="line"><span class="n">opts</span><span class="o">[</span><span class="s1">&#39;test&#39;</span><span class="o">][</span><span class="s1">&#39;db&#39;</span><span class="o">][</span><span class="s1">&#39;password&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;test_secret&quot;</span>
+</span><span class="line"><span class="n">opts</span>
+</span><span class="line"><span class="c1"># =&gt; {</span>
+</span><span class="line">  <span class="s2">&quot;dev&quot;</span>  <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">    <span class="s2">&quot;db&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">      <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost:2828&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="s2">&quot;user&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;me&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">},</span>
+</span><span class="line">  <span class="s2">&quot;test&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">    <span class="s2">&quot;db&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">      <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost:2828&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="s2">&quot;user&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;test_user&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;test_secret&quot;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="use-hash-as-a-method">Use hash as a method</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
+</span><span class="line"><span class="n">http</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="n">k</span><span class="o">|</span>
+</span><span class="line">  <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="no">URI</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">.</span><span class="n">body</span>
+</span><span class="line">  <span class="n">h</span><span class="o">.</span><span class="n">delete</span> <span class="n">h</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">first</span> <span class="k">if</span> <span class="n">h</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="c1"># a caching layer</span>
+</span><span class="line">  <span class="n">h</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<blockquote>
+  <p>from Amadan posted on <a href="https://www.reddit.com/r/ruby/comments/29hr4x/whats_youre_favorite_ruby_trick_or_quirk_thata">https://www.reddit.com/r/ruby/comments/29hr4x/whats_youre_favorite_ruby_trick_or_quirk_thata</a></p>
+</blockquote>
+
+<h3 id="autovivifying-hashes-are-cool">Autovivifying hashes are cool</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">autohash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="o">|</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">h</span><span class="o">.</span><span class="n">default_proc</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="n">autohash</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">2</span><span class="o">][</span><span class="mi">3</span><span class="o">][</span><span class="mi">4</span><span class="o">][</span><span class="mi">5</span><span class="o">][</span><span class="mi">6</span><span class="o">][</span><span class="mi">7</span><span class="o">]</span> <span class="o">=</span> <span class="mi">8</span>
+</span><span class="line"><span class="n">autohash</span> <span class="c1"># =&gt; {1=&gt;{2=&gt;{3=&gt;{4=&gt;{5=&gt;{6=&gt;{7=&gt;8}}}}}}}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<blockquote>
+  <p>from The Buckblog <a href="http://weblog.jamisbuck.org/2015/11/14/little-things-refactoring-with-hashes.html">http://weblog.jamisbuck.org/2015/11/14/little-things-refactoring-with-hashes.html</a></p>
+</blockquote>
+
+<h3 id="refactor-case-statement">Refactor case statement</h3>
+
+<p>before</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">klass</span> <span class="o">=</span> <span class="k">case</span> <span class="n">params</span><span class="o">[</span><span class="ss">:student_level</span><span class="o">]</span>
+</span><span class="line">  <span class="k">when</span> <span class="ss">:freshman</span><span class="p">,</span> <span class="ss">:sophomore</span> <span class="k">then</span>
+</span><span class="line">    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Underclassman</span>
+</span><span class="line">  <span class="k">when</span> <span class="ss">:junior</span><span class="p">,</span> <span class="ss">:senior</span> <span class="k">then</span>
+</span><span class="line">    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Upperclassman</span>
+</span><span class="line">  <span class="k">when</span> <span class="ss">:graduate</span>
+</span><span class="line">    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Graduate</span>
+</span><span class="line">  <span class="k">else</span>
+</span><span class="line">    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Unregistered</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="n">student</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">birthdate</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">phone</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>after</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">STUDENT_LEVELS</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">Student</span><span class="p">:</span><span class="ss">:Unregistered</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+</span><span class="line">  <span class="ss">freshman</span><span class="p">:</span> <span class="ss">Student</span><span class="p">:</span><span class="ss">:Underclassman</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">sophomore</span><span class="p">:</span> <span class="ss">Student</span><span class="p">:</span><span class="ss">:Underclassman</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">junior</span><span class="p">:</span>    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Upperclassman</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">senior</span><span class="p">:</span>    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Upperclassman</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">graduate</span><span class="p">:</span>  <span class="ss">Student</span><span class="p">:</span><span class="ss">:Graduate</span>
+</span><span class="line"><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="n">klass</span> <span class="o">=</span> <span class="no">STUDENT_LEVELS</span><span class="o">[</span><span class="n">params</span><span class="o">[</span><span class="ss">:student_level</span><span class="o">]]</span>
+</span><span class="line"><span class="n">student</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">birthdate</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">phone</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2015/11/30/some-hash-tricks-in-ruby/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2015/11/30/some-hash-tricks-in-ruby/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>
