@@ -65,9 +65,6 @@ What an OS actually does: it takes physical **resources**, such as a CPU, memory
 3. The Era of Multiprogramming by minicomputer. In particular, multiprogramming became commonplace due to the desire to make better use of machine resources. One of the major practical advances of the time was the introduction of the **UNIX** operating system, primarily thanks to **Ken Thompson** (and **Dennis Ritchie**) at Bell Labs (yes, the phone company). **Bill Joy**, made a wonderful distribution (the Berkeley Systems Distribution, or **BSD**) which had some advanced virtual memory, file system, and networking subsystems. Joy later co-founded Sun Microsystems.
 4. The Modern Era by PC with DOS, Mac OS.
 
-
-
-
 # CPU Virtualisation
 
 ## Process
@@ -92,7 +89,8 @@ On top of these mechanisms resides some of the intelligence in the OS, in the fo
 
 **Tip: Separate policy and mechanism**
 
-In many operating systems, a common design paradigm is to separate high-level policies from their low-level mechanisms. You can think of the mechanism as providing the answer to a **how** question about a system; for example, how does an operating system perform a context switch? The policy provides the answer to a **which** question; for example, which process should the operating system run right now?
+In many operating systems, a common design paradigm is to separate high-level policies from their low-level mechanisms. You can think of the mechanism as providing the answer to a **how** question about a system; for example, how does an operating system perform a context switch? The policy provides the answer
+ to a **which** question; for example, which process should the operating system run right now?
 
 **Machine State**
 
@@ -124,13 +122,13 @@ To understand what constitutes a process, we thus have to understand its **machi
 2. Ready
 3. Blocked
 
-![Process: State Transitions](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-process_state_transitions.png)
+![os-process_state_transitions.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-process_state_transitions.png)
 
 **Data Structures**
 
 To track the state of each process, for example, the OS likely will keep some kind of **process list** for all processes that are ready, as well as some additional information to track which process is currently running.
 
-![The xv6 Proc Structure](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-the_xv6_proc_structure.png)
+![os-the_xv6_proc_structure.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-the_xv6_proc_structure.png)
 
 The **register context** will hold, for a stopped process, the contents of its registers. When a process is stopped, its registers will be saved to this memory location; by restoring these registers (i.e., placing their values back into the actual physical registers), the OS can resume running the process.
 
@@ -211,7 +209,7 @@ The kernel does so by setting up a **trap table** at boot time. When the machine
 
 **Limited Direct Execution Protocol**
 
-![Limited Direct Execution Protocol](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-limited_directed_execution_protocol.png)
+![os-limited_directed_execution_protocol.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-limited_directed_execution_protocol.png)
 
 There are two phases in the LDE protocol:
 
@@ -243,7 +241,7 @@ Whether to continue running the currently-running process, or switch to a differ
 
 If the decision is made to switch, the OS then executes a low-level piece of code which we refer to as a **context switch**. A context switch is conceptually simple: all the OS has to do is save a few register values for the currently-executing process (onto its kernel stack, for example) and restore a few for the soon-to-be-executing process (from its kernel stack).
 
-![Timer Interrupt](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-timer_interrupt.png)
+![os-timer_interrupt.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-timer_interrupt.png)
 
 ## Scheduling
 
@@ -284,7 +282,7 @@ If Assumption(1) is false, there will be the **convoy effect**, where a number o
 
 Is SJF preemptive?
 
-No, it’s **non-preemptive**. In the old days of batch computing, a number of non-preemptive sched- ulers were developed; such systems would run each job to completion before considering whether to run a new job. Virtually all modern schedulers are **preemptive**, and quite willing to stop one process from running in order to run another.
+No, it’s **non-preemptive**. In the old days of batch computing, a number of non-preemptive scheulers were developed; such systems would run each job to completi before considering whether to run a new job. Virtually all modern schedulers are **preemptive**, and quite willing to stop one process from running in order to run another.
 
 **Policy 1-3 STCF (Shortest Time-to-Completion First) or PSJF (Preemptive Shortest Job First)**
 
@@ -296,7 +294,7 @@ The basic idea is simple: instead of running jobs to completion, RR runs a job f
 
 The length of the time slice is critical for RR. The shorter it is, the better the performance of RR under the response-time metric. However, making the time slice too short is problematic: suddenly the cost of context switching will dominate overall performance. Thus, de- ciding on the length of the time slice presents a trade-off to a system de- signer, making it long enough to amortize the cost of switching without making it so long that the system is no longer responsive.
 
-RR, with a reasonable time slice, is thus an excellent scheduler if response time is our only metric. It is not surprising, then, that RR is indeed one of the worst policies if turnaround time is our metric.
+RR, with a reonasonable time slice, is thus an excellent scheduler if response time is our only metric. It is not surprising, then, that RR is indeed one of the worst policies if turnaround time is our metric.
 
 **Policy 1 vs. Policy 2**
 
@@ -360,7 +358,7 @@ One big question is how to **parameterize** such a scheduler.
 
 Most MLFQ variants allow for **varying time-slice length** across different queues. The high-priority queues are usually given short time slices; the low-priority queues, in contrast, contain long-running jobs that are CPU-bound; hence, longer time slices work well.
 
-![Lower Priority, Longer Quanta](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lower_priority_longer_quanta.png)
+![os-lower_priority_longer_quanta.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lower_priority_longer_quanta.png)
 
 The FreeBSD scheduler (version 4.3) uses a formula to calculate the current priority level of a job, basing it on how much CPU the process has used.
 
