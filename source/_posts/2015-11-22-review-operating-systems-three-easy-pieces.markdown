@@ -451,7 +451,7 @@ Well, lottery scheduling has one nice property that stride scheduling does not: 
 
 *TODO after reading Concurrency*
 
-# Memory Virtualisation - Operating Systems Three Easy Pieces
+# Memory Virtualisation
 
 ## Address Space
 
