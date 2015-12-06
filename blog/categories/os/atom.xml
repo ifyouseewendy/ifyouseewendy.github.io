@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OS | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/os/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-12-06T14:55:04+08:00</updated>
+  <updated>2015-12-06T15:02:18+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -157,7 +157,8 @@ How does the OS do so efficiently?</p>
 
 <p><strong>Tip: Separate policy and mechanism</strong></p>
 
-<p>In many operating systems, a common design paradigm is to separate high-level policies from their low-level mechanisms. You can think of the mechanism as providing the answer to a <strong>how</strong> question about a system; for example, how does an operating system perform a context switch? The policy provides the answer to a <strong>which</strong> question; for example, which process should the operating system run right now?</p>
+<p>In many operating systems, a common design paradigm is to separate high-level policies from their low-level mechanisms. You can think of the mechanism as providing the answer to a <strong>how</strong> question about a system; for example, how does an operating system perform a context switch? The policy provides the answer
+ to a <strong>which</strong> question; for example, which process should the operating system run right now?</p>
 
 <p><strong>Machine State</strong></p>
 
@@ -197,13 +198,13 @@ How does the OS do so efficiently?</p>
   <li>Blocked</li>
 </ol>
 
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-process_state_transitions.png" alt="Process: State Transitions" /></p>
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-process_state_transitions.png" alt="os-process_state_transitions.png" /></p>
 
 <p><strong>Data Structures</strong></p>
 
 <p>To track the state of each process, for example, the OS likely will keep some kind of <strong>process list</strong> for all processes that are ready, as well as some additional information to track which process is currently running.</p>
 
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-the_xv6_proc_structure.png" alt="The xv6 Proc Structure" /></p>
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-the_xv6_proc_structure.png" alt="os-the_xv6_proc_structure.png" /></p>
 
 <p>The <strong>register context</strong> will hold, for a stopped process, the contents of its registers. When a process is stopped, its registers will be saved to this memory location; by restoring these registers (i.e., placing their values back into the actual physical registers), the OS can resume running the process.</p>
 
@@ -288,7 +289,7 @@ How does the OS do so efficiently?</p>
 
 <p><strong>Limited Direct Execution Protocol</strong></p>
 
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-limited_directed_execution_protocol.png" alt="Limited Direct Execution Protocol" /></p>
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-limited_directed_execution_protocol.png" alt="os-limited_directed_execution_protocol.png" /></p>
 
 <p>There are two phases in the LDE protocol:</p>
 
@@ -320,7 +321,7 @@ How does the OS do so efficiently?</p>
 
 <p>If the decision is made to switch, the OS then executes a low-level piece of code which we refer to as a <strong>context switch</strong>. A context switch is conceptually simple: all the OS has to do is save a few register values for the currently-executing process (onto its kernel stack, for example) and restore a few for the soon-to-be-executing process (from its kernel stack).</p>
 
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-timer_interrupt.png" alt="Timer Interrupt" /></p>
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-timer_interrupt.png" alt="os-timer_interrupt.png" /></p>
 
 <h2 id="scheduling">Scheduling</h2>
 
@@ -368,7 +369,7 @@ How does the OS do so efficiently?</p>
 
 <p>Is SJF preemptive?</p>
 
-<p>No, it’s <strong>non-preemptive</strong>. In the old days of batch computing, a number of non-preemptive sched- ulers were developed; such systems would run each job to completion before considering whether to run a new job. Virtually all modern schedulers are <strong>preemptive</strong>, and quite willing to stop one process from running in order to run another.</p>
+<p>No, it’s <strong>non-preemptive</strong>. In the old days of batch computing, a number of non-preemptive scheulers were developed; such systems would run each job to completi before considering whether to run a new job. Virtually all modern schedulers are <strong>preemptive</strong>, and quite willing to stop one process from running in order to run another.</p>
 
 <p><strong>Policy 1-3 STCF (Shortest Time-to-Completion First) or PSJF (Preemptive Shortest Job First)</strong></p>
 
@@ -380,7 +381,7 @@ How does the OS do so efficiently?</p>
 
 <p>The length of the time slice is critical for RR. The shorter it is, the better the performance of RR under the response-time metric. However, making the time slice too short is problematic: suddenly the cost of context switching will dominate overall performance. Thus, de- ciding on the length of the time slice presents a trade-off to a system de- signer, making it long enough to amortize the cost of switching without making it so long that the system is no longer responsive.</p>
 
-<p>RR, with a reasonable time slice, is thus an excellent scheduler if response time is our only metric. It is not surprising, then, that RR is indeed one of the worst policies if turnaround time is our metric.</p>
+<p>RR, with a reonasonable time slice, is thus an excellent scheduler if response time is our only metric. It is not surprising, then, that RR is indeed one of the worst policies if turnaround time is our metric.</p>
 
 <p><strong>Policy 1 vs. Policy 2</strong></p>
 
@@ -448,7 +449,7 @@ Rule 4b: If a job gives up the CPU before the time slice is up, it stays at the 
 
 <p>Most MLFQ variants allow for <strong>varying time-slice length</strong> across different queues. The high-priority queues are usually given short time slices; the low-priority queues, in contrast, contain long-running jobs that are CPU-bound; hence, longer time slices work well.</p>
 
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lower_priority_longer_quanta.png" alt="Lower Priority, Longer Quanta" /></p>
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lower_priority_longer_quanta.png" alt="os-lower_priority_longer_quanta.png" /></p>
 
 <p>The FreeBSD scheduler (version 4.3) uses a formula to calculate the current priority level of a job, basing it on how much CPU the process has used.</p>
 
