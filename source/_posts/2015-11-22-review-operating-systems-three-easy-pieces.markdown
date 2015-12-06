@@ -452,3 +452,457 @@ Well, lottery scheduling has one nice property that stride scheduling does not: 
 ### Chapter 10 - Multiprocessor Scheduling
 
 *TODO after reading Concurrency*
+
+# Memory Virtualisation - Operating Systems Three Easy Pieces
+
+## Address Space
+
+### Chapter 13 - The Abstraction: Address Spaces
+
+**Multiprogramming** (多道程序), in which multiple processes were ready to run at a given time, and the OS would switch between them.
+
+**Time sharing**, One way to implement time sharing would be to run one process for a short while, giving it full access to all memory, then stop it, save all of its state to some kind of disk (including all of physical memory), load some other process’s state, run it for a while, and thus implement some kind of crude sharing of the machine. Unfortunately, this approach has a big problem: it is way too slow, particularly as memory grows.
+
+**Address space**
+
+Address space, easy to use abstraction of physical memory, and it is the running program’s view of memory in the system. Understanding this fundamental OS ab- straction of memory is key to understanding how memory is virtualized.
+
+When the OS does this, we say the OS is **virtualising memory**.
+
+**Goals**
+
+The VM system is responsible for providing the illusion of a large, sparse, private address space to programs, which hold all of their instructions and data therein.
+
+- transparency
+- efficiency
+- protection (isolation)
+
+**EVERY ADDRESS YOU SEE IS VIRTUAL**
+
+Any address you can see as a programmer of a user-level program is a virtual address, if you print out an address in a program, it’s a virtual one.
+
+![os-every_address_you_see_is_virtual.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-every_address_you_see_is_virtual.png)
+
+### Chapter 14 - Interlude: Memory API
+
+**Types of Memory**
+
+- **stack memory**, allocations and deallocations of it are managed implicitly by the compiler for you, the programmer.
+- **heap memory**, it is this need for long-lived memory, where all allocations and deallocations are explicitly handled by you, the programmer.
+
+Example
+
+```c
+void func() {     int *x = (int *) malloc(sizeof(int));     ... }
+```
+
+First, you might no- tice that both stack and heap allocation occur on this line: first the com- piler knows to make room for a pointer to an integer when it sees your declaration of said pointer (int *x); subsequently, when the program calls malloc(), it requests space for an integer on the heap; the routine returns the address of such an integer (upon success, or NULL on failure), which is then stored on the stack for use by the program.
+
+**API**
+
+- **malloc()**
+- **free()**
+
+There are really two levels of memory management in the system. The first is level of memory management is performed by the OS, which hands out memory to processes when they run, and takes them back when processes exit (or otherwise die). The second level of management is within each process, for example within the heap when you call malloc() and free().
+
+They are not system calls, but rather library calls. Thus the malloc library manages space within your virtual address space, but itself is built on top of some system calls.
+
+- **mmap()**
+
+You can also obtain memory from the operating system via the `mmap()` call. By passing in the correct arguments, mmap() can create an anonymous memory region within your program — a region which is not associated with any particular file but rather with swap space. This memory can then also be treated like a heap and managed as such.
+
+- **calloc()**
+
+Allocates memory and also zeroes it before returning; this prevents some errors where you assume that memory is zeroed and forget to initialize it yourself.
+
+- **realloc()**
+
+when you’ve allocated space for something (say, an array), and then need to add something to it: realloc() makes a new larger region of memory, copies the old region into it, and returns the pointer to the new region.
+
+**Common Errors**
+
+- Forgetting To Allocate Memory - **segmentation fault**, which is a fancy term for YOU DID SOMETHING WRONG WITH MEMORY YOU FOOLISH PROGRAMMER AND I AM ANGRY. Forget to allocate memory.
+- Not Allocating Enough Memory - **buffer overflow**
+- Forgetting to Initialize Allocated Memory - **uninitialized read**
+- Forgetting To Free Memory - **memory leak**
+- Freeing Memory Before You Are Done With It - **dangling pointer**
+- Freeing Memory Repeatedly - **double free**
+
+**Tools**
+
+- **gdb**, add -g flag to gcc, then run it with gdb. eg. gcc -g null.c -o null -Wall && gdb null
+- **valgrind**, eg. valgrind —leak-check=yes null
+
+## Dynamic Allocation and Segmentation
+
+### Chapter 15 - Mechanism: Address Translation
+
+**hardware-based address translation**
+
+With address translation, the hardware transforms each memory access (e.g., an instruction fetch, load, or store), changing the **virtual** address provided by the instruction to a **physical** address where the desired information is actually located.
+
+Transforming a virtual address into a physical address is exactly the technique we refer to as address translation.
+
+Key to the efficiency of this technique is hardware support, which performs the translation quickly for each access, turning virtual addresses (the process’s view of memory) into physical ones (the actual view).
+
+**Static (Software-based) Relocation**
+
+A piece of software known as the loader takes an executable that is about to be run and rewrites its addresses to the desired offset in physical memory.
+
+**Dynamic (Hardware-based) Relocation**
+
+The **base and bounds** technique is also referred to as dynamic relocation. With dynamic relocation, a little hardware goes a long way. Namely, a **base** register is used to transform virtual addresses (generated by the program) into physical addresses. A **bounds** (or **limit**) register ensures that such addresses are within the confines of the address space. Together they provide a simple and efficient virtualization of memory.
+
+Because this relocation of the address happens at runtime, and because we can move address spaces even after the process has started running, the technique is often referred to as dynamic relocation.
+
+We should note that the base and bounds registers are hardware stru tures kept on the chip (one pair per CPU). Sometimes people call the part of the processor that helps with address translation the **memory management unit (MMU)**.
+
+**Disadvantage**
+
+The simple approach of using a base and bounds register pair to virtualize memory is wasteful. It also makes it quite hard to run a program when the entire address space doesn’t fit into memory; thus, base and bounds is not as flexible as we would like.
+
+![os-base_and_bounds.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-base_and_bounds.png)
+
+**Hardware Support**
+
+The hardware should provide special instructions to modify the base and bounds registers, allowing the OS to change them when different processes run. These instructions are privileged; only in kernel (or privileged) mode can the registers be modified.
+
+![os-dynaimic_relocation_hardware_requirement.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-dynaimic_relocation_hardware_requirement.png)
+
+**Operating System Support**
+
+The combination of hardware support and OS management leads to the implementation of a simple virtual memory.
+
+![os-dynamic_relocation_os_responsibility.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-dynamic_relocation_os_responsibility.png)
+
+**Limited Direct Execution Protocol (Dynamic Relocation)**
+
+![os-dynamic_relocation_LDE.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-dynamic_relocation_LDE.png)
+
+### Chapter 16 Segmentation
+
+**Segmentation: Generalized Base/Bounds**
+
+Considering the disadvantage of the simple base and bounds, instead of having just one base and bounds pair in our **MMU**, why not **have a base and bounds pair per logical segment of the address space**? A segment is just a contiguous portion of the address space of a particular length, and in our canonical address space, we have three logically-different segments: code, stack, and heap.
+
+The hardware structure in our **MMU** required to support segmenta- tion is just what you’d expect: in this case, a set of three base and bounds register pairs.
+
+**Advantage**
+
+Remove the Inner Fragmentation.
+
+What segmentation allows the OS to do is to place each one of those segments in different parts of physical memory, and thus avoid filling physical memory with unused virtual address space.
+
+![os-segmentation.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-segmentation.png)
+
+**THE SEGMENTATION FAULT**
+
+The term segmentation fault or violation arises from a memory access on a segmented machine to an illegal address. Humorously, the term persists, even on machines with no support for segmentation at all. Or not so humorously, if you can’t figure why your code keeps faulting
+
+**Implementation**
+
+One common approach, sometimes referred to as an explicit approach, is to chop up the address space into segments based on the top few bits of the virtual address.
+
+![os-segmentation_implementation.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-segmentation_implementation.png)
+
+**Hardware Support**
+
+Negative growth for stack, and protection bits for code sharing. (to save memory, sometimes it is useful to share certain memory segments between address spaces. In particular, **code sharing** is common and still in use in systems today.)
+
+![os-segmentation_register_with_protection.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-segmentation_register_with_protection.png)
+
+**Fine-grained vs. Coarse-grained Segmentation**
+
+- Coarse-grained, with just a few segments (i.e., code, stack, heap).
+- Fine-grained, to consist of a large number smaller segments, with (further hardware support) a **segment table** of some kind stored in memory.
+
+**Disadvantage**
+
+The general problem that arises is that physical memory quickly becomes full of little holes of free space, making it difficult to allocate new segments, or to grow existing ones. We call this problem **external fragmentation**.
+
+Because segments are variablesized, free memory gets chopped up into odd-sized pieces, and thus satisfying a memory-allocation request can be difficult. One can try to use smart algorithms or periodically compact memory, but the problem is fundamental and hard to avoid. (compact physical memory by rearranging the existing segments, is memory-intensive and generally uses a fair amount of processor time.)
+
+![os-segmentation_compact_memory.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-segmentation_compact_memory.png)
+
+Segmentation still isn’t flexible enough to support our fully generalized, sparse address space.
+
+### Chapter 17 - Free-Space Management
+
+Managing free space can certainly be easy, as we will see when we discuss the concept of paging. It is easy when the space you are managing is divided into fixed-sized units; in such a case, you just keep a list of these fixed-sized units; when a client requests one of them, return the first entry.
+
+Where free-space management becomes more difficult (and interesting) is when the free space you are managing consists of variable-sized units; this arises in a user-level memory-allocation library (as in malloc() and free()) and in an OS managing physical memory when using segmentation to implement virtual memory. In either case, the problem that exists is known as **external fragmentation**: the free space gets chopped into little pieces of different sizes and is thus fragmented; subsequent requests may fail because there is no single contiguous space that can satisfy the request, even though the total amount of free space exceeds the size of the request.
+
+**Target**
+
+The more you know about the exact workload presented to an **allocator**, the more you could do to tune it to work better for that workload.
+
+**Assumptions**
+
+Focus on the great history of allocators found in user-level memory-allocation libraries. The space that this library manages is known historically as the heap, and the geeric data structure used to manage free space in the heap is some kind of **free list**. This structure contains references to all of the free chunks of space in the managed region of memory.
+
+Example
+
+void free(void *ptr) takes a pointer and frees the corresponding chunk. Note the implication of the interface: the user, when freeing the space, does not inform the library of its size; thus, the library must be able to figure out how big a chunk of memory is when handed just a pointer to it.
+
+**Splitting and Coalescing**
+
+- The split is commonly used in allocators when requests are smaller than the size of any particular free chunk.
+- Coalesce free space when a chunk of memory is freed.
+
+**Tracking The Size Of Allocated Regions**
+
+To accomplish this task, most allocators store a little bit of extra information in a **header** block which is kept in memory, usually just before the handed-out chunk of memory.
+
+![os-free_space_management_non_coalesced_free_list.png](https://github.com/ifyouseewendy/ifyouseewenndy.github.io/raw/source/image-repo/os-free_space_management_non_coalesced_free_list.png)
+
+## Paging
+
+### Chapter 18 - Paging: Introduction
+
+**Background**
+
+The operating system takes one of two approaches when solving most any space-management problem.
+
+1. The first approach is to chop things up into **variable-sized** pieces, as we saw with segmenta- tion in virtual memory.
+2. To chop up space into **fixed-sized** pieces. In virtual memory, we call this idea paging.
+
+**Page vs. Page Frame**
+
+- From perspective of address space, the fixed-sized unit is called page.
+- From perspective of physical space, the fixed-sized unit is called page frame.
+
+So, the address translation is to translate page to relevant page frame.
+
+**32 bits vs. 64 bits**
+
+Sometimes we say the OS is 32 bits or 64 bits, we may infer that
+
+- 32 bits OS has 4GB address space
+- 64 bits OS has 10mGB address space
+
+**Advantage**
+
+- First, it does not lead to external fragmentation, as paging (by design) divides memory into fixed-sized units.
+- Second, it is quite flexible, enabling the sparse use of virtual address spaces.
+
+**Translation**
+
+To translate this virtual address that the process generated, we have to first split it into two components: the **virtual page number (VPN)**, and the **offset** within the page.
+
+With our virtual page number, we can now index our page table, to get the **physical frame number (PFN)** (also sometimes called the **physical page number or PPN**).
+
+Note the offset stays the same (i.e., it is not translated), because the offset just tells us which byte within the page we want.
+
+![os-paging_address_translation_process.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_address_translation_process.png)
+
+**Page Table**
+
+The operating system usually keeps a per-process data structure known as a page table.
+
+One of the most important data structures in the memory management subsystem of a modern OS is the page table. In general, a page table stores virtual-to-physical address translations
+
+The page table is just a data structure that is used to map virtual addresses (or really, virtual page numbers) to physical addresses (physical frame numbers). The OS indexes the array by the virtual page number (VPN), and looks up the page-table entry (PTE) at that index in order to find the desired physical frame number (PFN).
+
+![os-paging_page_table.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_page_table.png)
+
+**Storage**
+
+Because page tables are so big, we don’t keep any special on-chip hard- ware in the MMU to store the page table of the currently-running process. Instead, we store the page table for each process in memory somewhere.
+
+**Page Table Entry (PTE)**
+
+![os-paging_x86_pte_example.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_x86_pte_example.png)
+
+**Page Table Base Register (PTBR)**
+
+PTBR contains the physical address of the starting location of the page table.
+
+Code Example
+
+![os-paging_access_memory_code_demo.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_access_memory_code_demo.png)
+
+### Chapter 19 - Paging: Faster Translations (TLBs)
+
+**Background**
+
+Using paging as the core mechanism to support virtual memory can lead to high performance overheads. By chopping the address space into small, fixed-sized units (i.e., pages), paging requires a large amount of mapping information. Going to memory for translation information before every instruction fetch or explicit load or store is prohibitively slow.
+
+**Translation Lookaside Buffer (TLB)**
+
+To speed address translation, we are going to add what is called (for historical reasons) a **translation-lookaside buffer**, or **TLB**. A TLB is part of the chip’s **memory-management unit (MMU)**, and is simply a hardware cache of popular virtual-to-physical address translations; thus, a better name would be an **address-translation cache**.
+
+**Advantage**
+
+By providing a small, dedicated on-chip TLB as an address-translation cache, most memory references will hopefully be handled without having to access the page table in main memory.
+
+**Algorithm**
+
+![os-paging_tlb_control_flow.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_tlb_control_flow.png)
+
+Goal is to improve the TLB **hit rate**.
+
+**TLB Content**
+
+![os-paging_tlb_content.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_tlb_content.png)
+
+TLB contains both VPN and PFN in each entry, in hardware terms, the TLB is known as a **fully-associative** cache.
+
+**TLB Miss Handling**
+
+Two answers are possible: the hardware, or the software (OS).
+
+A modern system that uses **software-managed TLBs**. On a TLB miss, the hardware simply raises an exception, which pauses the current instruction stream, raises the privilege level to kernel mode, and jumps to a trap handler. As you might guess, this trap handler is code within the OS that is written with the express purpose of handling TLB misses.
+
+![os-paging_tlb_control_flow_os_handled.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_tlb_control_flow_os_handled.png)
+
+**Performance Matters**
+
+Like any cache, TLBs rely upon both spatial and temporal locality for success, which are program properties. The idea behind hardware caches is to take advantage of **locality** in instruction and data references. Hardware caches, whether for instructions, data, or address translations (as in our TLB) take advantage of locality by keeping copies of memory in small, fast on-chip memory.
+
+1. **spatial locality**, the idea is that if a program accesses memory at address x, it will likely soon access memory near x.
+2. **temporal locality**, the idea is that an instruction or data item that has been recently accessed will likely be re-accessed soon in the future.
+3. page size, why don’t we just make bigger caches and keep all of our data in them? Because any large cache by definition is slow, and thus defeats the purpose.
+
+**Issue 1: Context Switch**
+
+Specifically, the TLB contains virtual-to-physical translations that are only valid for the currently running process; these translations are not meaningful for other processes. As a result, when switching from one process to another, the hardware or OS (or both) must be careful to ensure that the about-to-be-run process does not accidentally use translations from some previously run process.
+
+1. **flush** the TLB on context switches, thus emptying it before running the next process. But there is a cost: each time a process runs, it must incur TLB misses as it touches its data and code pages. If the OS switches between processes frequently, this cost may be high.
+2. **address space identifier (ASID)**, which you can think of the ASID as a process identifier (PID), to enable sharing of the TLB across context switches.
+
+![os-paging_tlb_with_asid.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_tlb_with_asid.png)
+
+**Issue 2: Replacement Policy**
+
+When we are installing a new entry in the TLB, we have to replace an old one, which one to replace?
+
+- **least-recently-used (LRU)**
+- **random policy**
+
+LRU tries to take advantage of locality in the memory-reference stream, and what the random policy exists for?
+
+Random policy is useful due to its simplicity and ability to avoid corner-case behaviors; for example, a “reasonable” policy such as LRU behaves quite unreasonably when a program loops over n + 1 pages with a TLB of size n; in this case, LRU misses upon every access, whereas random does much better.
+
+**Disadvantage**
+
+1. Exceeding the TLB coverage, and it can be quite a problem for certain programs. Support for large pages is often exploited by programs such as a database management system (a DBMS), which have certain data structures that are both large and randomly-accessed.
+
+    **RAM isn’t always RAM**. Sometimes randomly accessing your address space, particular if the number of pages accessed exceeds the TLB coverage, can lead to severe performance penalties. Because one of our advisors, David Culler, used to always point to the TLB as the source of many performance problems, we name this law in his honor: **Culler’s Law**.
+
+2. TLB access can easily become a bottleneck in the CPU pipeline, in particular with what is called a **physically-indexed cache**. With such a cache, address translation has to take place before the cache is accessed, which can slow things down quite a bit. A **virtually-indexed cach**e solves some performance problems, but introduces new issues into hardware design as well.
+
+**Note: Inspiration of making a cache**
+
+- Problem form
+    - spatial locality
+    - temporal locality
+    - other form
+- Cache miss handling
+- Replace policy
+    - LRU
+    - random
+- Issues, of special situation
+
+### Chapter 20 - Paging: Smaller Tables
+
+**Crux**
+
+How to get rid of all those invalid regions in the page table instead of keeping them all in memory?
+
+**Background**
+
+Page tables are t big and thus consume too much memory.
+
+Assume again a 32-bit address space (2^32 bytes), with 4KB (2^12 byte) pages and a 4-byte page-table entry. An address space thus has roughly one million virtual pages in it ( 2^20 ); multiply by the page-table entry size and you see that our page table is 4MB in size. Recall also: we usually have one page table for every process in the system! With a hundred active processes (not uncommon on a modern system), we will be allocating hundreds of megabytes of memory just for page tables!
+
+**Solution 1 - Bigger Pages**
+
+Big pages lead to waste within each page, a problem known as internal fragmentation. Thus, most systems use relatively small page sizes in the common case: 4KB (as in x86).
+
+**Solution 2 - Hybrid Approach: Paging and Segments**
+
+![os-paging_tlb_hybrid_approach.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_tlb_hybrid_approach.png)
+
+**Algorithm**
+
+Instead of having a single page table for the entire address soopace of the process, have one per logical segment. In this example, we might thus have three page tables.
+
+Remember with segmentation, we had a **base** register that told us where each segment lived in physical memory, and a **bound** or limit register that told us the size of said segment.
+
+1. Each logical segment (code, stack, and heap) has one page table.
+2. Each segment has one pair of base and bounds resisters.
+3. Base register points to the page table of the segment, and bounds is used to indicate the end of the page table.
+
+**Advantage**
+
+In this manner, our hybrid approach realizes a significant memory savings compared to the linear page table; unallocated pages between the stack and the heap no longer take up space in a page table (just to mark them as not valid).
+
+**Disadvantage**
+
+1. It still requires us to use segmentation, as it assumes a certain usage pattern of the address space; if we have a large but sparsely-used heap, for example, we can still end up with a lot of page table waste.
+2. This hybrid causes external fragmentation to arise again. While most of memory is managed in page-sized units, page tables now can be of arbitrary size (in multiples of PTEs). Thus, finding free space for them in memory is more complicated.
+
+**Solution 3 - Multi-level Page Tables**
+
+It turns the linear page table into something like a tree (**page directory**). This approach is so effective that many modern systems employ it (e.g., x86).
+
+**Algorithm**
+
+First, chop up the page table into page-sized units; if an entire page of page-table entries (PTEs) is invalid, don’t allocate that page of the page table at all. To track whether a page of the page table is valid (and if valid, where it is in memory), use a new structure, called the page directory. The page directory thus either can be used to tell you where a page of the page table is, or that the entire page of the page table contains no valid pages.
+
+The page directory, in a simple two-level table, contains one entry per page of the page table. It consists of a number of **page directory entries (PDE)**. A PDE (minimally) has a **valid bit** **and a page frame number (PFN)**, similar to a PTE.
+
+VA contains VPN and offset, and VPN can be splitted into **page directory index** and **page table index**.
+
+1. Use **page directory index** to search page directory, to get **page directory entry**, to get **page frame number**, to get the specific **page table**.
+2. Use **page table index** to search the page table, to get **page table entry**, to get the real **physical frame number**.
+
+![os-paging_multi_level_page_table_demo.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_multi_level_page_table_demo.png)
+
+Demo code
+
+![os-paging_multi_level_page_table_demo_code.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_multi_level_page_table_demo_code.png)
+
+**Advantage**
+
+1. The multi-level table only allocates page-table space in proportion to the amount of address space you are usig; thus it is generally compact and supports sparse address spaces.
+2. If carefully constructed, each portion of the page table fits neatly within a page, making it easier to manage memory; the OS can simply grab the next free page when it needs to allocate or grow a page table.
+
+    Contrast this to a simple (non-paged) linear page table, for a large page table (say 4MB), finding such a large chunk of unused contiguous free physical memory can be quite a challenge. With a multi-level structure, the indirection allows us to place page-table pages wherever we would like in physical memory.
+
+**Disadvantage**
+
+1. Time-space trade-off. It should be noted that there is a cost to multi-level tables; on a TLB miss, two loads from memory will be required to get the right translation information from the page table (one for the page directory, and one for the PTE itself).
+2. Another obvious negative is complexity. Whether it is the hardware or OS handling the page-table lookup (on a TLB miss), doing so is undoubt- nedly more involved than a simple linear page-table lookup.
+
+**Example**
+
+![os-paging_multi_level_page_table_example.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_multi_level_page_table_example.png)
+
+Virtual Address format
+
+![os-paging_multi_level_page_table_example_va.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_multi_level_page_table_example_va.png)
+
+Explanation
+
+![os-paging_multi_level_page_table_example_explanation.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_multi_level_page_table_example_explanation.png]
+
+**Issues**
+
+***What if the page directory gets too big?***
+
+Make it more than two levels, add index to page directory index.
+
+***How to make it extreme space savings?***
+
+Inverted page tables. Instead of having many page tables (one per process of the system), we keep a single page table that has an entry for each physical page of the system. The entry tells us which process is using this page, and which virtual page of that process maps to this physical page.
+
+A hash table is often built over the base structure to speed lookups.
+
+***How to choose page table size?***
+
+In a memory-constrained system (like many older systems), small structures make sense; in a system with a reasonable amount of memory and with workloads that actively use a large number of pages, a bigger table that speeds up TLB misses might be the right choice.
+
+***What if the page tables are too big to fit into memory all at once?***
+
+Thus far, we have assumed that page tables reside in kernel-owned physical memory. Some systems place such page tables in **kernel virtual memory**, thereby allowing the system to swap some of these page tables to disk when memory pressure gets a little tight.
