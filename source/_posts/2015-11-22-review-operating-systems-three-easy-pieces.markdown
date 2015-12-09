@@ -789,17 +789,45 @@ Random policy is useful due to its simplicity and ability to avoid corner-case b
 
 2. TLB access can easily become a bottleneck in the CPU pipeline, in particular with what is called a **physically-indexed cache**. With such a cache, address translation has to take place before the cache is accessed, which can slow things down quite a bit. A **virtually-indexed cach**e solves some performance problems, but introduces new issues into hardware design as well.
 
-**Note: Inspiration of making a cache**
+### Note on Cache Management
 
-- Problem form
-    - spatial locality
-    - temporal locality
-    - other form
-- Cache miss handling
-- Replace policy
-    - LRU
-    - random
-- Issues, of special situation
+Define cache miss and hit, and goal is to improve the cache rate. Normally, better **replacement policy** lead to higher cache rate.
+
+**Find the best replacement policy**
+
+- Find the optimal
+- Find the easiest
+- Improve toward optimal, considering Principle of Locality
+- Think about corner case
+
+**Reference: Optimal Replacement Policy**
+
+Although optimal is not very practical as a real policy, it is incredibly useful as a comparison point in simulation or other studies.
+
+- It makes your improvement meaningful, comparing to optimal policy
+- It can show you how much improvement still possible
+- It can tell you when to stop making your policy better, because it is close enough to the ideal
+
+**Reference: Easiest Replacement Policy**
+
+Random policy, with an extraordinary advantage, can avoid corner case.
+
+**Reference: Principle of Locality**
+
+Programs tend to access certain code sequences (e.g., in a loop) and data structures (e.g., an array accessed by the loop) quite frequently.
+
+- spatial locality
+- temporal locality, e.g., LRU
+- operation expense, e.g., When swapping out pages, dirty pages are much more expensive
+
+**Reference: Types of Cache Misses**
+
+In the computer architecture world, architects sometimes find it useful to characterize misses by type, into one of three categories, sometimes called the Three C’s.
+
+- **Compulsory miss** (cold-start miss) occurs because the cache is empty to begin with and this is the first reference to the item.
+- **Capacity miss** occurs because the cache ran out of space and had to evict an item to bring a new item into the cache.
+- **Conflict miss** arises in hardware because of limits on where an item can be placed in a hardware cache, due to something known as set-associativity; it does not arise in the OS page cache because such caches are always fully-associative, i.e., there are no restrictions on where in memory a page can be placed.
+
 
 ### Chapter 20 - Paging: Smaller Tables
 
