@@ -911,7 +911,7 @@ Virtual Address format
 
 Explanation
 
-![os-paging_multi_level_page_table_example_explanation.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_multi_level_page_table_example_explanation.png]
+![os-paging_multi_level_page_table_example_explanation.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-paging_multi_level_page_table_example_explanation.png)
 
 **Issues**
 
@@ -932,3 +932,246 @@ In a memory-constrained system (like many older systems), small structures make 
 ***What if the page tables are too big to fit into memory all at once?***
 
 Thus far, we have assumed that page tables reside in kernel-owned physical memory. Some systems place such page tables in **kernel virtual memory**, thereby allowing the system to swap some of these page tables to disk when memory pressure gets a little tight.
+
+## Beyond Physical Memory
+
+### Chapter 21 - Beyond Physical Memory: Mechanisms
+
+**Background**
+
+In fact, we’ve been assuming that every address space of every running process fits into memory. We will now relax these big assumptions, and assume that we wish to support many concurrently-running large address spaces.
+
+To support large address spaces, the OS will need a place to stash away portions of address spaces that currently aren’t in great demand. In modern systems, this role is usually served by a hard disk drive.
+
+**Mechanism**
+
+To do so requires more complexity in page-table structures, as a **present bit** (of some kind) must be included to tell us whether the page is present in memory or not. When not, the operating system **page-fault handler** runs to service the **page fault**, and thus arranges for the transfer of the desired page from disk to memory, perhaps first replacing some pages in memory to make room for those soon to be swapped in.
+
+**Swap Space**
+
+To reserve some space on the disk for moving pages back and forth. We will simply assume that the OS can read from and write to the swap space, in page-sized units. To do so, the OS will need to remember the **disk address** of a given page (PTE).
+
+![os-swap_example.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-swap_example.png)
+
+The size of the swap space is important, as ultimately it determines the **maximum number of memory pages** that can be in use by a system at a given time.
+
+We should note that swap space is not the only on-disk location for swapping traffic.
+
+> For example, assume you are running a program binary (e.g., ls, or your own compiled main program). The code pages from this binary are initially found on disk, and when the program runs, they are loaded into memory (either all at once when the program starts execution, or, as in modern systems, one page at a time when needed). However, if the system needs to make room in physical memory for other needs, it can safely re-use the memry space for these code pages, knowing that it can later swap them in again from the on-disk binary in the file system.
+
+**Present Bit**
+
+OS use this piece of information in each page-table entry to flag if the page is in physical memory or swap space.
+
+If the present bit is set to one, it means the page is present in physical memory and everything proceeds as above; if it is set to zero, the page is not in memory but rather on disk somewhere.
+
+**Page Faut**
+
+The act of accessing a page that is not in physical memory is commonly referred to as a **page fault** (it should be called a **page miss**. But when something the hardware doesn’t know how to handle occurs, the hardware simply transfers control to the OS. In perspective of the hardware it is a page fault).
+
+**Page Fault Handler**
+
+Upon a page fault, the OS is invoked to service the page fault. A particular piece of code, known as a **page-fault handler**, runs, and must service the page fault.
+
+The appropriately-named **OS page-fault handler** runso to determine what to do. Virtually all systems handle page faults in software; even with a hardware-managed TLB, the hardware trusts the OS to manage this important duty.
+
+**Page Fault Control Flow**
+
+Hardware
+
+![os-swap_page_fault_control_flow.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-swap_page_fault_control_flow.png)
+
+Software
+
+![os-swap_page_fault_control_flow_software.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-swap_page_fault_control_flow_software.png)
+
+How to handle or how will the OS know where to find the desired page?
+
+1. The OS could use the bits in the PTE normally used for data such as the PFN of the page for a disk address. When the OS receives a page fault for a page, it looks in the PTE to find the address, and issues the request to disk to fetch the page into memory.
+2. When the disk I/O completes, the OS will then update the page table to mark the page as present, update the PFN field of the page-table entry (PTE) to record the in-memory location of the newly-fetched page, and retry the instruction.
+3. Then generate a TLB miss, which would then be serviced and update the TLB with the translation (one could alternately update the TLB when servicing the page fault to avoid this step)
+4. Finally, a last restart would find the translation in the TLB and thus proceed to fetch the desired data or instruction from memory at the translated physical address.
+
+Note that while the I/O is in flight, the process will be in the blocked state. Thus, the OS will be free to run other ready processes while the page fault is being serviced.
+
+***What If Memory Is Full?***
+
+OS might like to first page out one or more pages to make room for the new page(s) the OS is about to bring in. The process of picking a page to kick out, or replace is known as the **page-replacement policy**.
+
+***When Replacements Really Occur?***
+
+There are many reasons for the OS to keep a small portion of memory free more proactively. To keep a small amount of memory free, most operating systems thus have some kind of **high watermark (HW)** and **low watermark (LW)** to help decide when to start evicting pages from memory.
+
+When the OS notices that there are fewer than LW pages available, a background thread that is responsible for freeing memory runs. The thread evicts pages until there are HW pages available. The background thread, sometimes called the **swap daemon** or **page daemon**, then goes to sleep, happy that it has freed some memory for running processes and the OS to use.
+
+So, instead of performing a replacement directly, the algorithm would instead simply check if there are any free pages available. If not, it would inform the **page daemon** that free pages are needed; when the thread frees up some pages, it would re-awaken the original thread, which could then page in the desired page and go about its work.
+
+***How To Make Replacement Efficient?***
+
+Many systems will cluster or group a number of pages and write them out at once to the swap partition, thus increasing the efficiency of the disk.
+
+### Chapter 22 - Beyond Physical Memory: Policies
+
+**Background**
+
+In such a case, this memory pressure forces the OS to start **paging out** pages to make room for actively-used pages. Deciding which page (or pages) to evict is encapsulated within the **replacement policy** of the OS.
+
+**Cache Management**
+
+Given that main memory holds some subset of all the pages in the system, it can rightly be viewed as a cache for virtual memory pages in the system. And our goal as maximizing the number of **cache hits**.
+
+Knowing the number of cache hits and misses let us calculate the **average memory access time (AMAT)** for a program.
+
+![os-replacement_amat.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-replacement_amat.png)
+
+Example
+
+Suppose T(M) = 100ns (10^-7), T(D) = 10ms (10^-2)
+
+- P(Hit) = 90%, P(Miss) = 10%, AMAT = 1ms + 90ns
+- P(Hit) = 99.9%, P(Miss) = 0.1%, AMAT = 0.01ms + 99.9ns
+
+The cost of disk access is so high in modern systems that even a tiny miss rate will quickly dominate the overall AMAT of running programs.
+
+**Polices**
+
+![os-replacement_summary.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-replacement_summary.png)
+
+**Policy 1. Optimal Replacement Policy**
+
+Replaces the page that will be accessed furthest in the future is the optimal policy, resulting in the fewest-possible cache misses.
+
+In the development of scheduling policies, the future is not generally known; you can’t build the optimal policy for a general-purpose operating system.
+
+Although optimal is not very practical as a real policy, it is incredibly useful as a comparison point in simulation or other studies.
+
+- It makes your improvement meaningful, comparing to optimal policy
+- It can show you how much improvement still possible
+- It can tell you when to stop making your policy better, because it is close enough to the ideal
+
+**Policy 2. FIFO**
+
+Normal efficiency, easy to implement, and has corner case.
+
+In some cases, when increasing the cache size, hit rate may get lower. This odd behavior is generally referred to as **Belady’s Anomaly**.
+
+**Policy 3. Random**
+
+Normal efficiency, easy to implement, but remember, it can avoid corner case.
+
+**Policy 4. LRU**
+
+LRU has what is known as a stack property. When increasing the cache size, hit rate will either stay the same or improve.
+
+**Comparison with Workload**
+
+No locality workload
+
+![os-replacement_no_locality_workload.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-replacement_no_locality_workload.png)
+
+The 80-20 Workload, 80% of the references are made to 20% of the pages (the “hot” pages).
+
+![os-replacement_80_20_workload.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-replacement_80_20_workload.png)
+
+The Looping-Sequential Workload
+
+Looping sequential workload, as in it, we refer to 50 pages in sequence, starting at 0, then 1, ..., up to page 49, and then we lp, repeating those accesses.
+
+It represents a worst-case for both LRU and FIFO, but no influence on Random. Turns out that random has some nice properties; one such property is not having weird corner-case behaviors.
+
+![os-replacement_looping_sequential_workload.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-replacement_looping_sequential_workload.png)
+
+**Implementation - Approximating LRU**
+
+To keep track of which pages have been least- and most-recently used, the system has to do some accounting work on every memory reference. Unfortunately, as the number of pages in a system grows, scanning a huge array of times just to find the absolute least-recently-used page is prohibitively expensive.
+
+Idea
+
+Approximating LRU is more feasible from a computational-overhead standpoint, and indeed it is what many modern systems do. The idea requires some hardware support, in the form of a **use bit** (sometimes called the **reference bit**).
+
+- Whenever a page is referenced (i.ooe., read or written), the use bit is set by hardware to 1.
+- The hardware never clears the bit, though (i.e., sets it to 0); that is the responsibility of the OS.
+
+Implementation by Clock Algorithm
+
+- Imagine all the pages of the system arranged in a circular list. A clock hand points to some particular page to begin with.
+- When a replacement must occur, the OS iterating the circular list checking on use bit.
+    - If 1, clear use bit to 0, and find next
+    - If 0, use it
+
+![os-replacement_80_20_workload_with_clock.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-replacement_80_20_workload_with_clock.png)
+
+**Considering Dirty Pages**
+
+Consider the locality by the expense on swapping out pages.
+
+- If a page has been **modified** and is thus **dirty**, it must be written back to disk to evict it, which is expensive.
+- If it has not been modified (and is thus clean), the eviction is free; the physical frame can simply be reused for other purposes without additional I/O.
+Idea
+
+To support this behavior, the hardware should include a **modified bit** (a.k.a. **dirty bit**).
+
+Implementation by Clock Algorithm
+
+The clock algorithm, for example, could be changed to scan for pages that are both unused and clean to evict first; failing to find those, then for unused pages that are dirty, and so forth.
+
+**Other VM Policies**
+
+***When the OS bring a page into memory?***
+
+Page selection policy. The OS simply uses **demand paging**, which means the OS brings the page into memory when it is accessed, “on demand” as it were. Of course, the OS could guess that a page is about to be used, and thus bring it in ahead of time; this behavior is known as **prefetching**.
+
+***How the OS writes pages out to disk?***
+
+Any systems instead collect a number of pending writes together in memory and write them to disk in one (more efficient) write. This behavior is usually called **clustering** or simply **grouping** of writes, and is effective because of the nature of disk drives.
+
+***What about
+ the memory demands of the set of running processes simply exceeds the available physical memory? (condition sometimes referred to as thrashing)***
+
+Given a set of processes, a system could decide not to run a subset of processes, with the hope that the reduced set of processes working sets (the pages that they are using actively) fit in memory and thus can make progress. This approach, generally known as **admission control**, states that it is sometimes better to do less work well than to try to do everything at once poorly.
+
+Some versions of Linux run an **out-of-memory killer** when memory is oversubscribed; this daemon chooses a memory- intensive process and kills it, thus reducing memory in a none-too-subtle manner.
+
+### Chapter 23 - The VAX/VMS Virtual Memory System
+
+**Background**
+
+The VAX-11 minicomputer architecture was introduced in the late 1970’s by Digital Equipment Corporation (DEC).
+
+As an additional issue, VMS is an excellent example of software innovations used to hide some of the inheret flaws of the architecture.
+
+![os-vax_vms_address_space.png](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-vax_vms_address_space.png)
+
+**Reduce Page Table Pressure**
+
+First, by segmenting the user address space into two, the VAX-11 provides a page table for each of these regions (P0 and P1) per process; thus, no page-table space is needed for the unused portion of the address space between the stack and the heap.
+
+Second, the OS reduces memory pressure even further by placing user page tables (for P0 and P1, thus two per process) in kernel virtual memory. Thus, when allocating or growing a page table, the kernel allocates space out of its own virtual memory, in segment S. If memory comes undersevere pressure, the kernel can swap pages of these page tables out to disk, thus making physical memory available for other uses.
+
+**Replacement policy: Segmented FIFO with Page Clustering**
+
+Each process has a maximum number of pages it can keep in memory, known as its **residentn set size (RSS)**. Each of these pages is kept on a FIFO list; when a process exceeds its RSS, the “first-in” page is evicted. FIFO clearly does not need any support from the hardware (no use bit), and is thus easy to implement.
+
+To improve FIFO’s performance, VMS introduced two **second-chance lists** where pages are placed before getting evicted from memory, specifically a global clean-page free list and dirty-page list. The bigger these global second-chance lists are, the closer the segmented FIFO algorithm performs to LRU.
+
+Clustering is used in most modern systems, as the freedom to place pages anywhere within swap space lets the OS group pages, perform fewer and bigger writes, and thus improve performance.
+
+**Optimisation: Be Lazy**
+
+Laziness can put off work until later, which is beneficial within an OS for a number of reasons.
+
+- First, putting off work might reduce the latency of the current operation, thus improving responsiveness; for example, operating systems often report that writes to a file succeeded immediately, and only write them to disk later in the background.
+- Second, and more importantly, laziness sometimes obviates the need to do the work at all; for example, delaying a write until the file is deleted removes the need to do the write at all.
+
+**Lazy Optimisation: Demanding Zero**
+
+With demand zeroing, the OS instead does very little work when the page is added to your address space; it puts an entry in the page table that marks the page inaccessible. If the process then reads or writes the page, a trap into the OS takes place. When handling the trap, the OS notices that this is actually a demand-zero page; at this point, the OS then does the needed work of finding a physical page, zeroing it, and mapping it into the process’s address space. If the process never accesses the page, all of this work is avoided, and thus the virtue of demand zeroing.
+
+**Lazy Optimisation: Copy-on-write**
+
+When the OS needs to copy a page from one address space to another, instead of copying it, it can map it into the target address space and mark it read-only in both address spaces.
+
+- If both address spaces only read the page, no further action is taken, and thus the OS has realized a fast copy without actually moving any data.
+- If, however, one of the address spaces does indeed try to write to the page, it will trap into the OS. The OS will then notice that the page is a COW page, and thus (lazily) allocate a new page, fill it with the data, and map this new page into the address space of the faulting process. The process then continues and now has its own private copy of the page.
+
+In UNIX systems, COW is even more critical, due to the semantics of `fork()` and `exec()`. `fork()` creates an exact copy of the address space of the caller; with a large address space, making such a copy is slow and data intensive. Even worse, most of the address space is immediately over-written by a subsequent call to `exec()`, which overlays the calling process’s address space with that of the soon-to-be-exec’d program. By instead performing a copy-on-write `fork()`, the OS avoids much of the needless copying and thus retains the correct semantics while improving performance.
