@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Reviews] Website Performance Optimization"
+title: "[Review] Website Performance Optimization"
 date: 2015-12-19 15:21:58 +0800
 comments: true
 categories: ['Web']
