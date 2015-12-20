@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-12-13T13:05:13+08:00</updated>
+  <updated>2015-12-20T22:08:07+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,790 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[test]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/12/20/test/"/>
+    <updated>2015-12-20T22:07:14+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/12/20/test</id>
+    <content type="html"><![CDATA[<p>TEST publish</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Reviews] Website Performance Optimization]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/12/19/web-performance-optimization/"/>
+    <updated>2015-12-19T15:21:58+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/12/19/web-performance-optimization</id>
+    <content type="html"><![CDATA[<p>After several years working, I’ve learned many lessons like how to write HTML, how to minify and compress CSS and JavaScript files, where to put the CSS and JavaScript reference, how to do the cache control and etc.. But all the knowledge are scattered, and the real mechanism, like the HTML rendering, seems like a mysterious process to me. So I spent some time digging and learning, the things finally got clear.</p>
+
+<p><strong><em>For short, what’s the basic idea of web performance optimization?</em></strong></p>
+
+<ul>
+  <li>Minimize the number of critical resources, like optimizing CSS (inline, or specify media query), and optimizing JavaScript (defer execution).</li>
+  <li>Minimize the number of critical bytes, like optimizing content efficiency, minify, compress and HTTP cache control.</li>
+  <li>Minimize the critical path length, like preload scanner.</li>
+</ul>
+
+<p><strong>Materials</strong></p>
+
+<ul>
+  <li><a href="https://www.udacity.com/course/website-performance-optimization--ud884">Udacity - Website Performance Optimization</a></li>
+  <li><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/?hl=en">Google Developer - Critical Rendering Path</a></li>
+</ul>
+
+<p><strong>TOC</strong></p>
+
+<ul id="markdown-toc">
+  <li><a href="#optimizing-content-efficiency">Optimizing content efficiency</a>    <ul>
+      <li><a href="#eliminating-unnecessary-downloads">Eliminating unnecessary downloads</a></li>
+      <li><a href="#optimizing-encoding-and-transfer-size-of-text-based-assets">Optimizing encoding and transfer size of text-based assets</a></li>
+      <li><a href="#image-optimization">Image optimization</a></li>
+      <li><a href="#web-font-optimization">Web font optimization</a></li>
+      <li><a href="#http-caching">HTTP caching</a></li>
+    </ul>
+  </li>
+  <li><a href="#critical-rendering-path">Critical Rendering Path</a>    <ul>
+      <li><a href="#critical-rendering-path-1">Critical Rendering Path</a></li>
+      <li><a href="#analysing-critical-rendering-path-performance">Analysing Critical Rendering Path Performance</a></li>
+      <li><a href="#optimizing-the-critical-rendering-path">Optimizing the critical rendering path</a></li>
+    </ul>
+  </li>
+  <li><a href="#browser-rendering-optimization">Browser Rendering Optimization</a></li>
+</ul>
+
+<h2 id="optimizing-content-efficiency">Optimizing content efficiency</h2>
+
+<ul>
+  <li>Apply content-specific optimizations first: CSS, JS, and HTML minifiers.</li>
+  <li>Apply GZIP to compress the minified output.</li>
+</ul>
+
+<h3 id="eliminating-unnecessary-downloads">Eliminating unnecessary downloads</h3>
+
+<p>The fastest and best optimized resource is a resource not sent.</p>
+
+<ul>
+  <li>Inventory all own and third party assets on your pages</li>
+  <li>Measure the performance of each asset: its value and its technical performance</li>
+  <li>Determine if the resources are providing sufficient value</li>
+</ul>
+
+<p>For best results you should periodically inventory and revisit these questions for each and every asset on your pages.</p>
+
+<h3 id="optimizing-encoding-and-transfer-size-of-text-based-assets">Optimizing encoding and transfer size of text-based assets</h3>
+
+<p><strong>Data Compression</strong></p>
+
+<p>Compression is the process of encoding information using fewer bits. Eliminating unnecessary data always yields the best results.</p>
+
+<p><strong>Minification: preprocessing &amp; context-specific optimizations</strong></p>
+
+<ul>
+  <li>Remove comments</li>
+  <li>Remove inefficient ways of defining CSS rules</li>
+  <li>Strip out all the whitespaces (tabs and spaces).</li>
+</ul>
+
+<p>We can keep the original page as our “development version” and then apply the steps above whenever we are ready to release the page on our website.</p>
+
+<blockquote>
+  <p>Case in point, the uncompressed development version of the JQuery library is now approaching ~300KB. The same library, but minified (removed comments, etc.) is about 3x smaller: ~100KB.</p>
+</blockquote>
+
+<p><strong>Text compression with GZIP</strong></p>
+
+<p>GZIP is a generic compressor that can be applied to any stream of bytes. In practice, GZIP performs best on text-based content, often achieving compression rates of as high as 70-90% for larger files.</p>
+
+<p>All modern browsers support and automatically negotiate GZIP compression for all HTTP requests.</p>
+
+<p>A quick and simple way to see GZIP in action is to open Chrome DevTools and inspect the “Size / Content” column in the Network panel: “Size” indicates the transfer size of the asset, and “Content” the uncompressed size of the asset.</p>
+
+<ul>
+  <li><a href="http://www.whatsmyip.org/http-compression-test/">HTTP Compression Test</a></li>
+  <li><a href="https://github.com/h5bp/server-configs-nginx">Nginx HTTP server boilerplate configs</a></li>
+</ul>
+
+<h3 id="image-optimization">Image optimization</h3>
+
+<ul>
+  <li>Prefer vector formats: vector images are resolution and scale independent, which makes them a perfect fit for the multi-device and high-resolution world.</li>
+  <li>Minify and compress SVG assets: XML markup produced by most drawing applications often contains unnecessary metadata which can be removed; ensure that your servers are configured to apply GZIP compression for SVG assets.</li>
+  <li>Pick best raster image format: determine your functional requirements and select the one that suits each particular asset.</li>
+  <li>Experiment with optimal quality settings for raster formats: don’t be afraid to dial down the “quality” settings, the results are often very good and byte savings are significant.</li>
+  <li>Remove unnecessary image metadata: many raster images contain unnecessary metadata about the asset: geo information, camera information, and so on. Use appropriate tools to strip this data.</li>
+  <li>Serve scaled images: resize images on the server and ensure that the “display” size is as close as possible to the “natural” size of the image. Pay close to attention to large images in particular, as they account for largest overhead when resized!</li>
+  <li>Automate, automate, automate: invest into automated tools and infrastructure that will ensure that all of your image assets are always optimized.</li>
+</ul>
+
+<p><strong>Eliminating and replacing images</strong></p>
+
+<ul>
+  <li>Eliminate unnecessary image resources</li>
+  <li>Leverage CSS3 effects where possible</li>
+  <li>Use web fonts instead of encoding text in images</li>
+</ul>
+
+<p><strong>Vector vs. Raster images</strong></p>
+
+<ul>
+  <li>Vector images are ideal for images that consist of geometric shapes</li>
+  <li>Vector images are zoom and resolution-independent</li>
+  <li>Raster images should be used for complex scenes with lots of irregular shapes and details</li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/vector_vs_raster_image.png" alt="vector_vs_raster_image.png" /></p>
+
+<ul>
+  <li>Vector graphics use lines, points, and polygons to represent an image.</li>
+  <li>Raster graphics represent an image by encoding the individual values of each pixel within a rectangular grid.</li>
+</ul>
+
+<p><strong>Implications of high-resolution screens</strong></p>
+
+<ul>
+  <li>High resolution screens have multiple device pixels per CSS pixel</li>
+  <li>High resolution images require significantly higher number of pixels and bytes</li>
+  <li>Image optimization techniques are the same regardless of resolution</li>
+</ul>
+
+<p>High resolution screens also require high-resolution images: prefer vector images whenever possible as they are resolution independent and always deliver sharp results, and if a raster image is required, deliver and optimize multiple variants of each imagewith the help of srcset and picture.</p>
+
+<p><strong>Optimizing vector images</strong></p>
+
+<ul>
+  <li>SVG is an XML-based image format</li>
+  <li>SVG files should be minified to reduce their size</li>
+  <li>SVG files should be compressed with GZIP</li>
+</ul>
+
+<p>All modern browsers support Scalable Vector Graphics (SVG), which is an XML-based image format for two-dimensional graphics: we can embed the SVG markup directly on the page, or as an external resource.</p>
+
+<p><strong>Optimizing raster images</strong></p>
+
+<p>Image optimization boils down to two criteria: optimizing the number of bytes used to encode each image pixel, and optimizing the total number of pixels: the filesize of the image is simply the total number of pixels times the number of bytes used to encode each pixel.</p>
+
+<ul>
+  <li>A raster image is a grid of pixels</li>
+  <li>Each pixel encodes color and transparency information</li>
+  <li>Image compressors use a variety of techniques to reduce the number of required bits per pixel to reduce file size of the image</li>
+</ul>
+
+<p>A raster image is simply a 2-dimensional grid of individual “pixels” - e.g. a 100x100 pixel image is a sequence of 10,000 pixels. In turn, each pixel stores the “RGBA” values: (R) red channel, (G) green channel, (B) blue channel, and (A) alpha (transparency) channel.</p>
+
+<p>Internally, the browser allocates 256 values (shades) for each channel, which translates to 8 bits per channel (2 ^ 8 = 256), and 4 bytes per pixel (4 channels x 8 bits = 32 bits = 4 bytes).</p>
+
+<p>So, a 100 x 100px image, is 39 KB size without losing any information.</p>
+
+<blockquote>
+  <p>100 x 100px image is composed of 10,000 pixels<br />
+10,000 pixels x 4 bytes = 40,000 bytes<br />
+40,000 bytes / 1024 = 39 KB  </p>
+</blockquote>
+
+<p><strong>Lossless vs lossy image compression</strong></p>
+
+<ul>
+  <li>Due to how our eyes work, images are great candidates for lossy compression</li>
+  <li>Image optimization is a function of lossy and lossless compression</li>
+  <li>Differences in image formats are due to the difference in how and which lossy and lossless algorithms are used to optimize the image</li>
+  <li>There is no single best format or “quality setting” for all images: each combination of particular compressor and image contents produce a unique output</li>
+</ul>
+
+<p>In fact, the difference between various image formats, such as GIF, PNG, JPEG, and others, is in the combination of the specific algorithms they use (or omit) when applying the lossy and lossless steps.</p>
+
+<p><strong><em>What is the “optimal” configuration of lossy and lossless optimization?</em></strong></p>
+
+<p>The answer depends on the image contents and your own criteria such as the tradeoff between filesize and artifacts introduced by lossy compression.</p>
+
+<p><strong>Selecting the right image format</strong></p>
+
+<ul>
+  <li>Start by selecting the right universal format: GIF, PNG, JPEG</li>
+  <li>Experiment and select the best settings for each format: quality, palette size, etc.</li>
+  <li>Consider adding WebP and JPEG XR assets for modern clients</li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/select_the_right_image.png" alt="select_the_right_image.png" /></p>
+
+<ul>
+  <li><strong>GIF</strong> limits the color palette to at most 256 colors, which makes it a poor choice for most images.</li>
+  <li><strong>PNG</strong> does not apply any lossy compression algorithms beyond the choice of the size of the color palette. As a result, it will produce the highest quality image, but at a cost of significantly higher filesize than other formats. Use judiciously.</li>
+  <li>If the image asset contains imagery composed of geometric shapes, consider converting it to a vector (<strong>SVG</strong>) format!</li>
+  <li>If the image asset contains text, stop and reconsider. Text in images is not selectable, searchable, or “zoomable”. If you need to convey a custom look (for branding or other reasons), use a <strong>web font</strong> instead.</li>
+  <li><strong>JPEG</strong> uses a combination of lossy and lossless optimization to reduce filesize of the image asset.</li>
+  <li>Also consider adding an additional variant encoded in <strong>WebP</strong> and <strong>JPEG XR</strong>. WebP delivers a 30% filesize decrease over a comparable JPEG image.</li>
+</ul>
+
+<p><strong>Tools and parameter tuning</strong></p>
+
+<ul>
+  <li><a href="http://www.lcdf.org/gifsicle/">gifsicle</a>, create and optimize GIF images</li>
+  <li><a href="http://jpegclub.org/jpegtran/">jpegqran</a>, optimize JPEG images</li>
+  <li><a href="http://optipng.sourceforge.net/">optpng</a>, lossless PNG optimization</li>
+  <li><a href="http://pngquant.org/">pngquant</a>, lossy PNG optimization</li>
+</ul>
+
+<p><strong>Delivering scaled image assets</strong></p>
+
+<p>One of the simplest and most effective image optimization techniques is to ensure that we are not shipping any more pixels than needed to display the asset at its intended size in the browser. Most pages fail this test for many of their image assets: typically, they ship larger assets and rely on the browser to rescale them - which also consumes extra CPU resources - and display them at a lower resolution.</p>
+
+<p>You should ensure that the number of unnecessary pixels is minimal, and that your large assets in particular are delivered as close as possible to their display size.</p>
+
+<h3 id="web-font-optimization">Web font optimization</h3>
+
+<p>Use of webfonts does not need to delay page rendering or have negative impact on other performance metrics. Well optimized use of fonts can deliver a much better overall user experience:</p>
+
+<ul>
+  <li>Audit and monitor your font use: do not use too many fonts on your pages, and for each font, minimize the number of used variants. This will assist in delivering a more consistent and a faster experience for your users.</li>
+  <li>Subset your font resources: many fonts can be subset, or split into multiple unicode-ranges to deliver just the glyphs required by a particular page - this reduces the filesize and improves download speed of the resource. However, when defining the subsets be careful to optimize for font re-use - e.g. you don’t want to download a different but overlapping set of characters on each page. A good practice is to subset based on script - e.g. Latin, Cyrillic, and so on.</li>
+  <li>Deliver optimized font formats to each browser: each font should be provided in WOFF2, WOFF, EOT, and TTF formats. Make sure to apply GZIP compression to EOT and TTF formats, as they are not compressed by default.</li>
+  <li>Specify revalidation and optimal caching policies: fonts are static resources that are infrequently updated. Make sure that your servers provide a long-lived max-age timestamp, and a revalidation token, to allow for efficient font re-use between different pages.</li>
+  <li>Use Font Loading API to optimize the Critical Rendering Path: default lazyloading behavior may result in delayed text rendering. Font Loading API allows us to override this behavior for particular fonts, and to specify custom rendering and timeout strategies for different content on the page. For older browsers that do not support the API, you can use the webfontloader JavaScript library or use the CSS inlining strategy.</li>
+</ul>
+
+<p><strong>Anatomy of a webfont</strong></p>
+
+<p>A webfont is a collection of glyphs, and each glyph is a vector shape that describes a letter or symbol. As a result, the size of a particular font file is determined by two simple variables:</p>
+
+<ul>
+  <li>the complexity of the vector paths of each glyph</li>
+  <li>the number of glyphs in a particular font</li>
+</ul>
+
+<p>Today there are four font container formats in use on the web: EOT, TTF, WOFF, and WOFF2.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/fonts.png" alt="fonts.png" /></p>
+
+<p>Consider using <a href="http://en.wikipedia.org/wiki/Zopfli">Zopfli compression</a> for EOT, TTF, and WOFF formats. Zopfli is a zlib compatible compressor that delivers ~5% filesize reduction over gzip.</p>
+
+<p><strong>Defining font family with @font-face</strong></p>
+
+<p>format selection</p>
+
+<p>A “full” webfont that includes all stylistic variants, which we may not need, plus all the glyphs, which may go unused, can easily result in a multi-megabyte download. To address this, the @font-face CSS rule is specifically designed to allow us to split the font family into a collection of resources: unicode subsets, distinct style variants, and so on.</p>
+
+<p>The @font-face CSS at-rule allows us to define the location of a particular font resource, its style characteristics, and the Unicode codepoints for which it should be used. A combination of such @font-face declarations can be used to construct a “font family”, which the browser will use to evaluate which font resources need to be downloaded and applied to the current page.</p>
+
+<p>Each @font-face declaration provides the name of the font family, which acts as a logical group of multiple declarations, font properties such as style, weight, and stretch, and the src descriptor that specifies a prioritized list of locations for the font resource.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/font_face_1.png" alt="font_face_1.png" /></p>
+
+<p>The browser figures out which resources are required and will select the optimal format on our behalf.</p>
+
+<p>Unicode-range subsetting</p>
+
+<p>In addition to font properties such as style, weight, and stretch, the @font-face rule allows us to define a set of Unicode codepoints supported by each resource. This enables us to split a large Unicode font into smaller subsets (e.g. Latin, Cyrillic, Greek subsets) and only download the glyphs required to render the text on a particular page.</p>
+
+<p>The use of unicode range subsets, and separate files for each stylistic variant of the font allows us to define a composite font family that is both faster and more efficient to download - the visitor will only download the variants and subsets it needs, and they are not forced to download subsets that they may never see or use on the page.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/font_face_2.png" alt="font_face_2.png" /></p>
+
+<p>Unicode-range subsetting is particularly important for Asian languages, where the number of glyphs is much larger than in western languages and a typical ‘full’ font is often measured in megabytes, instead of tens of kilobytes!</p>
+
+<p>There is one small gotcha with unicode-range: <a href="http://caniuse.com/#feat=font-unicode-range">not all browser support it</a>. We have to fallback to providing a single font resource that contains all necessary subsets, and hide the rest from the browser. We can use the open-source <a href="https://github.com/behdad/fonttools/blob/master/Lib/fontTools/subset.py#L16">pyftsubset</a> tool to subset and optimize your fonts.</p>
+
+<p>Font selection and synthesis</p>
+
+<p>Each font family is composed of multiple stylistic variants (regular, bold, italic) and multiple weights for each style, each of which, in turn, may contain very different glyph shapes - e.g. different spacing, sizing, or a different shape altogether.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/font_size.png" alt="font_size.png" /></p>
+
+<p>All other in-between variants (indicated in gray) are automatically mapped to the closest variant by the browser. Similar logic applies to italic variants. it’s a good idea to keep the number of variants small!</p>
+
+<p>What happens if one of our CSS rules specifies a different font weight, or sets the font-style property to italic?</p>
+
+<ul>
+  <li>If an exact font match is not available the browser will substitute the closest match.</li>
+  <li>If no stylistic match is found (e.g. we did not declare any italic variants in example above), then the browser will <strong>synthesize</strong> its own font variant.</li>
+</ul>
+
+<p>For best consistency and visual results you should not rely on font synthesis. Instead, minimize the number of used font variants and specify their locations, such that the browser can download them when they are used on the page.</p>
+
+<p><strong>Optimizing loading and rendering</strong></p>
+
+<p>Font requests are delayed until the render tree is constructed, which can result in delayed text rendering.</p>
+
+<p>Lazy loading of fonts carries an important hidden implication that may delay text rendering: the browser must construct the render tree, which is dependent on the DOM and CSSOM trees, before it will know which font resources it will need to render the text. As a result, font requests are delayed well after other critical resources, and the browser may be blocked from rendering text until the resource is fetched.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/font_rendering.png" alt="font_rendering.png" /></p>
+
+<p>Font requests are dispatched once render tree indicates which font variants are needed to render the specified text on the page</p>
+
+<p>The “race” between the first paint of page content, which can be done shortly after the render tree is built, and the request for the font resource is what creates the “blank text problem” where the browser may render page layout but omits any text.</p>
+
+<ul>
+  <li>Safari hold text rendering until the font download is complete.</li>
+  <li>Chrome and Firefox hold font rendering for up to 3 seconds, after which they use a fallback font, and once the font download has finished they re-render the text once more with the downloaded font.</li>
+  <li>IE immediately renders with the fallback font if the request font is not yet available, and re-renders it once the font download is complete.</li>
+</ul>
+
+<p>Optimizing font rendering with the Font Loading API</p>
+
+<p>Font Loading API provides a scripting interface to define and manipulate CSS font faces, track their download progress, and override their default lazyload behavior.</p>
+
+<p>If we’re certain that a particular font variant will be required, we can define it and tell the browser to initiate an immediate fetch of the font resource:</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/font_loading_api.png" alt="font_loading_api.png" /></p>
+
+<ul>
+  <li>We can hold all text rendering until the font is available.</li>
+  <li>We can implement a custom timeout for each font.</li>
+  <li>We can use the fallback font to unblock rendering and inject a new style that uses desired font once the font is available.</li>
+</ul>
+
+<p>Optimizing font rendering with inlining</p>
+
+<p>To inline the font contents into a CSS stylesheet:</p>
+
+<ul>
+  <li>CSS stylesheets with matching media queries are automatically downloaded by the browser with high priority as they are required to construct the CSSOM.</li>
+  <li>Inlining the font data into CSS stylesheet forces the browser to download the font with high priority and without waiting for the render tree - i.e. this acts as a manual override to the default lazyload behavior.</li>
+</ul>
+
+<p>Optimizing font reuse with HTTP Caching</p>
+
+<p>Font resources are, typically, static resources that don’t see frequent updates. As a result, they are ideally suited for a long max-age expiry.</p>
+
+<p>There is no need to store fonts in localStorage or via other mechanisms - each of those has their set of performance gotchas. The browser’s HTTP cache, in combination with Font Loading API or the webfontloader library, provides the best and most robust mechanism to deliver font resources to the browser.</p>
+
+<h3 id="http-caching">HTTP caching</h3>
+
+<p>The combination of ETag, Cache-Control, and unique URLs allows us to deliver the best of all worlds: long-lived expiry times, control over where the response can be cached, and on-demand updates.</p>
+
+<ul>
+  <li>Use consistent URLs: if you serve the same content on different URLs, then that content will be fetched and stored multiple times. Tip: note that URLs are case sensitive!</li>
+  <li>Ensure the server provides a validation token (ETag): validation tokens eliminate the need to transfer the same bytes when a resource has not changed on the server.</li>
+  <li>Identify which resources can be cached by intermediaries: those with responses that are identical for all users are great candidates to be cached by a CDN and other intermediaries.</li>
+  <li>Determine the optimal cache lifetime for each resource: different resources may have different freshness requirements. Audit and determine the appropriate max-age for each one.</li>
+  <li>Determine the best cache hierarchy for your site: the combination of resource URLs with content fingerprints, and short or no-cache lifetimes for HTML documents allows you to control how quickly updates are picked up by the client.</li>
+  <li>Minimize churn: some resources are updated more frequently than others. If there is a particular part of resource (e.g. JavaScript function, or set of CSS styles) that are often updated, consider delivering that code as a separate file. Doing so allows the remainder of the content (e.g. library code that does not change very often), to be fetched from cache and minimizes the amount of downloaded content whenever an update is fetched.</li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/http_caching.png" alt="http_caching.png" /></p>
+
+<p><strong>Validating cached responses with ETags</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/http_caching_with_ETags.png" alt="http_caching_with_ETags.png" /></p>
+
+<ul>
+  <li>Validation token is communicated by the server via the ETag HTTP header</li>
+  <li>Validation token enables efficient resource update checks: no data transfer if the resource has not changed.</li>
+</ul>
+
+<p><strong>Cache-Control</strong></p>
+
+<ul>
+  <li>Each resource can define its caching policy via Cache-Control HTTP header</li>
+  <li>Cache-Control directives control who can cache the response, under which conditions, and for how long</li>
+</ul>
+
+<p>Cache-Control header was defined as part of the HTTP/1.1 specification and supersedes previous headers (e.g. Expires) used to define response caching policies. All modern browsers support Cache-Control, hence that is all we will need.</p>
+
+<p>“no-cache” indicates that the returned response cannot be used to satisfy a subsequent request to the same URL without first checking with the server if the response has changed. As a result, if a proper validation token (ETag) is present, no-cache will incur a roundtrip to validate the cached response, but can eliminate the download if the resource has not changed.</p>
+
+<p>“no-store” is much simpler, as it simply disallows the browser and all intermediate caches to store any version of the returned response - e.g. one containing private personal or banking data.</p>
+
+<p>If the response is marked as “public” then it can be cached, even if it has HTTP authentication associated with it, and even when the response status code isn’t normally cacheable. Most of the time, “public” isn’t necessary, because explicit caching information (like “max-age”) indicates that the response is cacheable anyway.</p>
+
+<p>“private” responses can be cached by the browser but are typically intended for a single user and hence are not allowed to be cached by any intermediate cache - e.g. an HTML page with private user information can be cached by that user’s browser, but not by a CDN.</p>
+
+<p>“max-age” specifies the maximum time in seconds that the fetched response is allowed to be reused for from the time of the request.</p>
+
+<p><strong>Defining optimal Cache-Control policy</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/http_cache_control_policy.png" alt="http_cache_control_policy.png" /></p>
+
+<p><strong>Invalidating and updating cached responses</strong></p>
+
+<p>What if we want to update or invalidate a cached response? For example, let’s say we’ve told our visitors to cache a CSS stylesheet for up to 24 hours (max-age=86400), but our designer has just committed an update that we would like to make available to all users. How do we notify all the visitors with what is now a “stale” cached copy of our CSS to update their caches? It’s a trick question - we can’t, at least not without changing the URL of the resource.</p>
+
+<p>Simple, we can change the URL of the resource and force the user to download the new response whenever its content changes. Typically, this is done by embedding a fingerprint of the file, or a version number, in its filename - e.g. style.x234dff.css.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/http_update_cache_by_fingerprints.png" alt="http_update_cache_by_fingerprints.png" /></p>
+
+<p>The ability to define per-resource caching policies allows us to define “cache hierarchies” that allow us to control not only how long each is cached for, but also how quickly new versions are seen by visitor.</p>
+
+<p>The HTML is marked with “no-cache”, which means that the browser will always revalidate the document on each request and fetch the latest version if the contents change. Also, within the HTML markup we embed fingerprints in the URLs for CSS and JavaScript assets: if the contents of those files change, then the HTML of the page will change as well and new copy of the HTML response will be downloaded.</p>
+
+<h2 id="critical-rendering-path">Critical Rendering Path</h2>
+
+<h3 id="critical-rendering-path-1">Critical Rendering Path</h3>
+
+<p>Optimizing for performance is all about understanding what happens in these intermediate steps between receiving the HTML, CSS, and JavaScript bytes and the required processing to turn them into rendered pixels - that’s the critical rendering path.</p>
+
+<p>By optimizing the critical rendering path we can significantly improve the time to first render of our pages. Further, understanding the critical rendering path will also serve as a foundation for building well performing interactive applications. It turns out, the process for processing interactive updates is the same, just done in a continuous loop and ideally at 60 frames per second!</p>
+
+<ul>
+  <li>Process HTML markup and build the <strong>DOM tree</strong>.</li>
+  <li>Process CSS markup and build the <strong>CSSOM tree</strong>.</li>
+  <li>Combine the DOM and CSSOM into a <strong>render tree</strong>.</li>
+  <li>Run <strong>layout</strong> on the render tree to compute geometry of each node.</li>
+  <li><strong>Paint</strong> the individual nodes to the screen.</li>
+</ul>
+
+<p>Optimizing the critical rendering path is the process of minimizing the total amount of time spent in steps 1 through 5 in the above sequence. Doing so enables us to render content to the screen as soon as possible and also to reduces the amount of time between screen updates after the initial render.</p>
+
+<p><strong>DOM</strong></p>
+
+<p>The Document Object Model (DOM) is an application programming interface (API) for valid HTML and well-formed XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated.</p>
+
+<p>from <a href="http://www.w3.org/TR/DOM-Level-2-Core/introduction.html">http://www.w3.org/TR/DOM-Level-2-Core/introduction.html</a></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/dom_construction.png" alt="dom_construction.png" /></p>
+
+<p>Every time the browser has to process HTML markup it has to step through all of the steps above: convert bytes to characters, identify tokens, convert tokens to nodes, and build the DOM tree.</p>
+
+<p><strong>CSSOM</strong></p>
+
+<p>The DOM tree captures the properties and relationships of the document markup, but it does not tell us anything about how the element should look when rendered. That’s the responsibility of the CSSOM.</p>
+
+<p>The CSS bytes are converted into characters, then to tokens and nodes, and finally are linked into a tree structure known as the “CSS Object Model”, or CSSOM for short:</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/cssom_construction.png" alt="cssom_construction.png" /></p>
+
+<p><strong><em>Is this the complete CSSOM?</em></strong></p>
+
+<p>No. Note that the above tree is not the complete CSSOM tree and only shows the styles we decided to
+override in our stylesheet. Every browser provides a default set of styles also known as “user agent styles” – that’s what we see when we don’t provide any of our own – and our styles simply override these defaults.</p>
+
+<p><strong><em>Why does the CSSOM have a tree structure?</em></strong></p>
+
+<p>When computing the final set of styles for any object on the page, the browser starts with the most general rule applicable to that node (e.g. if it is a child of body element, then all body styles apply) and then recursively refines the computed styles by applying more specific rules - i.e. the rules “cascade down”.</p>
+
+<p><strong><em>Curious to know how long the CSS processing took?</em></strong></p>
+
+<p>Record a timeline in DevTools and look for “Recalculate Style” event: unlike DOM parsing, the timeline doesn’t show a separate “Parse CSS” entry, and instead captures parsing and CSSOM tree construction, plus the recursive calculation of computed styles under this one event.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/css_render_timeline.png" alt="css_render_timeline.png" /></p>
+
+<p><strong><em>Why we say that CSS is render blocking?</em></strong></p>
+
+<p>Review the rendering process, DOM and CSSOM construct the render tree, then calculate layout, and paint. So CSS is a rendering blocking resource which blocks on rendering process.</p>
+
+<p><strong><em>Why do browsers match CSS selectors from right to left?</em></strong></p>
+
+<p>It sounds like that it is done this way to avoid having to look at all the children of parent (which could be many) rather than all the parents of a child which must be one. Even if the DOM is deep it would only look at one node per level rather than multiple in the RTL matching. </p>
+
+<p>from <a href="http://stackoverflow.com/questions/5797014/why-do-browsers-match-css-selectors-from-right-to-left">Why do browsers match CSS selectors from right to left?</a></p>
+
+<p><strong>Render Blocking CSS</strong></p>
+
+<ul>
+  <li>Get it down to the client as soon and as quickly as possible to optimize the time to first render</li>
+  <li>Use media types and queries to unblock rendering</li>
+</ul>
+
+<p>By default CSS is treated as a render blocking resource, which means that the browser will hold rendering of any processed content until the CSSOM is constructed. Note that “render blocking” only refers to whether the browser will have to hold the initial rendering of the page on that resource. In either case, the CSS asset is still downloaded by the browser, albeit with a lower priority for non-blocking resources (like images).</p>
+
+<p><strong><em>How to make it non-blocking?</em></strong></p>
+
+<p>By using media queries, our presentation can be tailored to specific use cases such as display vs. print, and also to dynamic conditions such as changes in screen orientation, resize events, and more. When declaring your stylesheet assets, pay close attention to the media type and queries, as they will have big performance impact on the critical rendering path!</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span>    <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span>    <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;portrait.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;orientation:portrait&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;print.css&quot;</span>    <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;print&quot;</span><span class="nt">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The third declaration has a dynamic media query which will be evaluated when the page is being loaded. Depending on the orientation of the device when the page is being loaded, portrait.css may or may not be render blocking.</p>
+
+<p>The last declaration is only applied when the page is being printed, hence it is not render blocking when the page is first loaded in the browser.</p>
+
+<p><strong>Render Tree</strong></p>
+
+<p>The CSSOM and DOM trees are combined into a render tree, which is then used to</p>
+
+<ul>
+  <li>compute the layout of each visible element</li>
+  <li>serves as an input to the paint process which renders the pixels to screen</li>
+</ul>
+
+<p>Render tree contains only the nodes required to render the page.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/render_tree_construction.png" alt="render_tree_construction.png" /></p>
+
+<p><strong>Layout Stage</strong></p>
+
+<p>The layout stage calculates the exact position and size within the viewport of the device.</p>
+
+<p>The output of the layout process is a “box model” which precisely captures the exact position and size of each element within the viewport: all of the relative measures are converted to absolute pixels positions on the screen, and so on.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/layout_timeline.png" alt="layout_timeline.png" /></p>
+
+<p><strong>Painting Stage</strong></p>
+
+<p>Now that we know which nodes are visible, their computed styles, and geometry, we can finally pass this information to our final stage which will convert each node in the render tree to actual pixels on the screen - this step is often referred to as “painting” or “rasterizing.”</p>
+
+<p><strong><em>Can painting happen in the meantime dom is parsing?</em></strong></p>
+
+<p>This is a gradual process: browsers won’t wait until all HTML is parsed. Parts of the content will be parsed and displayed, while the process continues with the rest of the contents that keeps coming from the network.</p>
+
+<p>from <a href="http://stackoverflow.com/questions/34269416/when-does-parsing-html-dom-tree-happen">pesla’s answer</a> in SO</p>
+
+<p><strong>Image</strong></p>
+
+<p>Not all resources are critical to deliver the fast first paint. Images do not block the initial render of the page - although, of course, we should try to make sure that we get the images painted as soon as possible also.</p>
+
+<p>Image don’t block on domContentLoaded, but blocks “load” event.</p>
+
+<p><strong>Javascript</strong></p>
+
+<ul>
+  <li>The location of the script in the document is significant.</li>
+  <li>JavaScript can query and modify DOM and CSSOM.</li>
+  <li>JavaScript execution blocks on CSSOM.</li>
+  <li>JavaScript blocks DOM construction unless explicitly declared as async or defer</li>
+</ul>
+
+<p>The location of the script in the document is significant. The script is executed at the exact point where it is inserted in the document. When the HTML parser encounters a script tag, it pauses its process of constructing the DOM and yields control over to the JavaScript engine; once the JavaScript engine has finished running, the browser then picks up from where it left off and resumes the DOM construction.</p>
+
+<p><strong><em>Why we say that JavaScript is parser blocking?</em></strong></p>
+
+<p>It means JavaScript will block the DOM tree parsing process. And also, as it has dependency on CSSOM, so the total process is, DOM parsing blocks on JavaScript execution, and JavaScript execution blocks on CSSOM construction. That’s why we put the CSS link ref in head, and put the JavaScript link just before the close body tag.</p>
+
+<p><strong><em>What if the browser hasn’t finished downloading and building the CSSOM when we want to run our script?</em></strong></p>
+
+<p>The browser will delay script execution until it has finished downloading and constructing the CSSOM, and while we’re waiting, the DOM construction is also blocked!</p>
+
+<p><strong><em>What’s the difference between inline script and external script?</em></strong></p>
+
+<p>Javascript is the same as the CSS and images, being a resource of the HTML, which all need a process of downloading and executing.</p>
+
+<p>The inline script has no extra downloading time, compared to external script, but has the same execution time.</p>
+
+<p><strong><em>Where is the best place to put JavaScript?</em></strong></p>
+
+<p>Library may place in the head, and application logic js is better placed right before closing body tag.</p>
+
+<p>You don’t improve the total parsing time by including <code>&lt;script&gt;</code> at the end of the document. It does enhance the user experience, as the process of parsing and painting isn’t interrupted by <code>&lt;script&gt;</code> that need to be executed.</p>
+
+<p><strong>Navigation Timing API</strong> (Measuring the Critical Rendering Path)</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/navigation_timing_api.png" alt="navigation_timing_api.png" /></p>
+
+<ul>
+  <li><em>domLoading</em>: this is the starting timestamp of the entire process, the browser is about to start parsing the first received bytes of the HTML document.</li>
+  <li><em>domInteractive</em>: marks when DOM is ready.</li>
+  <li><em>domContentLoaded</em>: marks the point when both the DOM is ready and there are no stylesheets that are blocking JavaScript execution - meaning we can now (potentially) construct the render tree. Typically marks when both the DOM and CSSOM are ready. The sooner the domContentLoaded event fires, the sooner other application logic can begin executing. jQuery’s $(document).ready() is hooked on domContentLoaded.</li>
+  <li><em>loadEvent</em>: as a final step in every page load the browser fires an onload event which can trigger additional application logic.</li>
+</ul>
+
+<h3 id="analysing-critical-rendering-path-performance">Analysing Critical Rendering Path Performance</h3>
+
+<ul>
+  <li><strong>Critical Resource</strong>: resource that may block initial rendering of the page.</li>
+  <li><strong>Critical Path Length</strong>: number of roundtrips, or the total time required to fetch all of the critical resources.</li>
+  <li><strong>Critical Bytes</strong>: total amount of bytes required to get to first render of the page, which is the sum of the transfer filesizes of all critical resources. Our first example with a single HTML page contained a single critical resource (the HTML document), the critical path length was also equal to 1 network roundtrip (assuming file is small), and the total critical bytes was just the transfer size of the HTML document itself.</li>
+</ul>
+
+<p><strong>Without Javascript and CSS</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/without_js_and_css_timeline.png" alt="without_js_and_css_timeline.png" /></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/without_js_and_css_crp_diagram.png" alt="without_js_and_css_crp_diagram.png" /></p>
+
+<ul>
+  <li>1 critical resource</li>
+  <li>1 roundtrip</li>
+  <li>5 KB of critical bytes</li>
+</ul>
+
+<p><strong>With Only CSS</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/with_only_css_crp_diagram.png" alt="with_only_css_crp_diagram.png" /></p>
+
+<ul>
+  <li>2 critical resources</li>
+  <li>2 or more roundtrips for the minimum critical path length</li>
+  <li>9 KB of critical bytes</li>
+</ul>
+
+<p><strong>With JavaScript and CSS</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/with_js_and_css_timeline.png" alt="with_js_and_css_timeline.png" /></p>
+
+<p>As Javascript blocks the DOM construction, also depends on the CSSOM, so the domContentLoaded event is blocked until the CSS file is downloaded and parsed.</p>
+
+<p>I’m confusing on the image for a long long time! Finally, when I’m making this note, I get things through. Watch closely to the blue and red line. Blue line fires when the CSSOM has been created. And then Javascript executes, image downloads over, there fires the red line.</p>
+
+<p>Remember, what does domContentLoaded mean? Marks the point when both the DOM is ready and there are no stylesheets that are blocking JavaScript execution - meaning we can now (potentially) construct the render tree. Typically marks when both the DOM and CSSOM are ready.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/with_js_and_css_crp_diagram.png" alt="with_js_and_css_crp_diagram.png" /></p>
+
+<ul>
+  <li>3 critical resources</li>
+  <li>2 or more roundtrips for the minimum critical path length</li>
+  <li>11 KB of critical bytes</li>
+</ul>
+
+<p><strong>With JavaScript (inline) and CSS</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/with_js_inline_and_css_timeline.png" alt="with_js_inline_and_css_timeline.png" /></p>
+
+<p>Same time as the external Javascript, only without downloading process.</p>
+
+<p><strong>With Javascript (inline) and CSS (inline)</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/with_js_inline_and_css_inline_timeline.png" alt="with_js_inline_and_css_inline_timeline.png" /></p>
+
+<p><strong>With JavaScript (async) and CSS</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/with_js_async_and_css_timeline.png" alt="with_js_async_and_css_timeline.png" /></p>
+
+<p>Much better! The domContentLoaded event fires shortly after the HTML is parsed: the browser knows not to block on JavaScript and since there are no other parser blocking scripts the CSSOM construction can also proceed in parallel.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/with_js_async_and_css_crp_diagram.png" alt="with_js_async_and_css_crp_diagram.png" /></p>
+
+<ul>
+  <li>2 critical resources (HTML and CSS)</li>
+  <li>2 or more roundtrips for the minimum critical path length</li>
+  <li>9 KB of critical bytes</li>
+</ul>
+
+<p><strong>With Javascript (async) and CSS (non-blocking)</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/with_js_async_and_css_non_block_crp_diagram.png.png" alt="with_js_async_and_css_non_block_crp_diagram.png.png" /></p>
+
+<ul>
+  <li>1 critical resource</li>
+  <li>1 or more roundtrips for the minimum critical path length</li>
+  <li>5 KB of critical bytes</li>
+</ul>
+
+<p>Demo and CRP diagram</p>
+
+<p>Code from <a href="https://github.com/igrigorik/udacity-webperf/blob/master/assets/ex2-diagram.html">https://github.com/igrigorik/udacity-webperf/blob/master/assets/ex2-diagram.html</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;html&gt;</span>
+</span><span class="line">  <span class="nt">&lt;head&gt;</span>
+</span><span class="line">    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;print.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;print&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/head&gt;</span>
+</span><span class="line">  <span class="nt">&lt;body&gt;</span>
+</span><span class="line">    <span class="nt">&lt;p&gt;</span>
+</span><span class="line">      Hello <span class="nt">&lt;span&gt;</span>web performance<span class="nt">&lt;/span&gt;</span> students!
+</span><span class="line">    <span class="nt">&lt;/p&gt;</span>
+</span><span class="line">    <span class="nt">&lt;div&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;awesome-photo.jpg&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class="line">    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class="line">    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;analytics.js&quot;</span> <span class="na">async</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/body&gt;</span>
+</span><span class="line"><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>CRP diagram by <a href="https://discussions.udacity.com/t/quiz-crp-diagrams/16162/11?u=ifyouseewendy">connie_273453529</a></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/demo_crp_diagram_by_connie.png" alt="demo_crp_diagram_by_connie.png" /></p>
+
+<ul>
+  <li>3 critical resources</li>
+  <li>total (HTML file + style.css + app.js) critical bytes</li>
+  <li>2 roundtrip for the minimum critical path length</li>
+</ul>
+
+<h3 id="optimizing-the-critical-rendering-path">Optimizing the critical rendering path</h3>
+
+<p><strong>Basic idea</strong></p>
+
+<ul>
+  <li>Minimize the number of critical resources.</li>
+  <li>Minimize the number of critical bytes.</li>
+  <li>Minimize the critical path length.</li>
+</ul>
+
+<p>To reduce the number of bytes we can reduce the number of resources (eliminate them or make them non-critical), and also ensure that we minimize the transfer size by compressing and optimizing each resource.</p>
+
+<p>The fewer of these resources there are on the page, the less work the browser has to do to get content on the screen, and the less contention there is for CPU and other resources.</p>
+
+<p>The critical path length is a function of the dependency graph between all the critical resources required by the page and their bytesize: some resource downloads can only be initiated once a previous resource has been processed, and the larger the resource the more roundtrips it will take us to download it.</p>
+
+<p>The general sequence of steps to optimize the critical rendering path is:</p>
+
+<ul>
+  <li>Analyze and characterize your critical path: number of resources, bytes, length.</li>
+  <li>Minimize number of critical resources: eliminate them, defer their download, mark them as async, etc.</li>
+  <li>Optimize the order in which the remaining critical resources are loaded: you want to download all critical assets as early as possible to shorten the critical path length.</li>
+  <li>Optimize the number of critical bytes to reduce the download time (number of roundtrips).</li>
+</ul>
+
+<p>The cardinal rule of web performance is, measure first, then optimize.</p>
+
+<p><strong>Optimize JavaScript Use</strong></p>
+
+<ul>
+  <li>Prefer async JavaScript resources</li>
+  <li>Defer parsing JavaScript</li>
+  <li>Avoid synchronous server calls</li>
+  <li>Avoid long running JavaScript</li>
+</ul>
+
+<p>Any initialization logic and functionality that is non-essential for the first render should be deferred until later. If a long initialization sequence needs to be run, consider splitting it into several stages to allow the browser to process other events in between.</p>
+
+<p>async vs. defer</p>
+
+<p>from <a href="http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html">async vs defer attributes</a></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/web-performance-optimization/async_vs_defer.png" alt="async_vs_defer.png" /></p>
+
+<p><strong>Optimize CSS Use</strong></p>
+
+<ul>
+  <li>Put CSS in the document head</li>
+  <li>Avoid CSS imports. CSS import (@import) directive enables one stylesheet to import rules from another stylesheet file. However, these directives should be avoided because they introduce additional roundtrips into the critical path: the imported CSS resources are discovered only after the CSS stylesheet with the @import rule itself has been received and parsed.</li>
+  <li>Inline render-blocking CSS</li>
+</ul>
+
+<p><strong>The Preload Scanner</strong></p>
+
+<p>from <a href="http://andydavies.me/blog/2013/10/22/how-the-browser-pre-loader-makes-pages-load-faster/">How the Browser Pre-loader Makes Pages Load Faster</a></p>
+
+<p>Internet Explorer, WebKit and Mozilla all implemented pre-loaders in 2008 as a way of overcoming the low network utilisation while waiting for scripts to download and execute.</p>
+
+<p>When the browser is blocked on a script, a second lightweight parser scans the rest of the markup looking for other resources e.g. stylesheets, scripts, images etc., that also need to be retrieved.</p>
+
+<p>The pre-loader then starts retrieving these resources in the background with the aim that by the time the main HTML parser reaches them they may have already been downloaded and so reduce blocking later in the page.</p>
+
+<p><strong>Others</strong></p>
+
+<ul>
+  <li><a href="http://www.stevesouders.com/blog/2009/05/18/flushing-the-document-early/">Flushing the Document Early</a></li>
+  <li><a href="http://blog.cowchimp.com/chunk-scatter-http-chunked-response-analysis-tool/">Chunk Scatter, a fantastic tool for visualizing chunked HTTP responses</a></li>
+  <li><a href="https://developer.chrome.com/devtools/docs/timeline">Performance profiling with the Timeline</a></li>
+  <li><a href="http://www.webpagetest.org/forums/showthread.php?tid=10990">Record a Chrome dev tools timeline by webpagetest</a></li>
+</ul>
+
+<p><strong><em>Why should I profile the site on my phone?</em></strong></p>
+
+<p>Chances are, you are developing your site on a fast laptop or a desktop machine. Mobile phones on the other hand are much more resource constrained: slower CPUs, less RAM and GPU memory, higher connection latencies, and so on. As a result, you should always try to profile and debug your site on mobile hardware to get a better and closer picture of how your users will experience your site on their handset.</p>
+
+<h2 id="browser-rendering-optimization">Browser Rendering Optimization</h2>
+
+<blockquote>
+  <p>TODO <a href="https://www.udacity.com/course/browser-rendering-optimization--ud860">https://www.udacity.com/course/browser-rendering-optimization–ud860</a></p>
+</blockquote>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Some Hash Tricks in Ruby]]></title>
@@ -10057,1792 +10841,6 @@ Example :<br />
     <p>Try <code>mount</code> a rack-based app in Rails.</p>
   </li>
 </ol>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Review] Rebuilding Rails]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/09/27/rebuilding-rails/"/>
-    <updated>2014-09-27T14:48:48+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/09/27/rebuilding-rails</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Book</strong></td>
-      <td>Rebuilding Rails</td>
-    </tr>
-    <tr>
-      <td><strong>Author</strong></td>
-      <td>Noah Gibbs</td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="http://rebuilding-rails.com/">rebuilding-rails.com</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<ul id="markdown-toc">
-  <li><a href="#zero-to-it-works">1. Zero to “It Works!”</a></li>
-  <li><a href="#your-first-controller">2. Your First Controller</a></li>
-  <li><a href="#rails-automatic-loading">3. Rails Automatic Loading</a></li>
-  <li><a href="#rendering-views">4. Rendering Views</a></li>
-  <li><a href="#basic-models">5. Basic Models</a></li>
-  <li><a href="#request-response">6. Request, Response</a></li>
-  <li><a href="#the-littlest-orm">7. The Littlest ORM</a></li>
-  <li><a href="#rack-middleware">8. Rack Middleware</a></li>
-  <li><a href="#real-routing">9. Real Routing</a></li>
-</ul>
-
-<p>My re-building source code</p>
-
-<ul>
-  <li><a href="https://github.com/ifyouseewendy/rulers">rulers</a></li>
-  <li><a href="https://github.com/ifyouseewendy/best_quotes">best_quotes</a></li>
-</ul>
-
-<p>Work flow diagram</p>
-
-<p><img src="https://raw.githubusercontent.com/ifyouseewendy/best_quotes/master/rebuilding-rails.png" alt="img texrebuilding-rails" style="width:562px" /></p>
-
-<h2 id="zero-to-it-works">1. Zero to “It Works!”</h2>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">gem</span><span class="o">.</span><span class="n">add_development_dependency</span> <span class="s2">&quot;rspec&quot;</span>
-</span><span class="line"><span class="n">gem</span><span class="o">.</span><span class="n">add_runtime_dependency</span> <span class="s2">&quot;rest-client&quot;</span>
-</span><span class="line"><span class="n">gem</span><span class="o">.</span><span class="n">add_runtime_dependency</span> <span class="s2">&quot;some_gem&quot;</span><span class="p">,</span> <span class="s2">&quot;1.3.0&quot;</span>
-</span><span class="line"><span class="n">gem</span><span class="o">.</span><span class="n">add_runtime_dependency</span> <span class="s2">&quot;other_gem&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;0.8.2&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Each of these adds a runtime dependency (needed to run the gem at all) or a development dependency (needed to develop or test the gem).</p>
-
-<p>Youʼll need to go into the rulers directory and <code>git add .</code> before you rebuild the gem (<code>git add .; gem build rulers.gemspec; gem install rulers-0.0.1.gem</code>). Thatʼs because rulers.gemspec is actually calling git to find out what files to include in your gem.</p>
-
-<p><strong>Rails structure</strong></p>
-
-<ul>
-  <li>
-    <p><strong>ActiveSupport</strong> is a compatibility library including methods that aren’t necessarily specific to Rails. You’ll see ActiveSupport used by non-Rails libraries because it contains such a lot of useful baseline functionality. ActiveSupport includes methods like how Rails changes words from single to plural, or CamelCase to snake_case. It also includes significantly better time and date support than the Ruby standard library.</p>
-  </li>
-  <li>
-    <p><strong>ActiveModel</strong> hooks into features of your models that aren’t really about the database - for instance, if you want a URL for a given model, ActiveModel helps you there. It’s a thin wrapper around many different ActiveModel implementations to tell Rails how to use them. Most commonly, ActiveModel implementations are ORMs (see ActiveRecord, below), but they can also use non-relational storage like MongoDB, Redis, Memcached or even just local machine memory.</p>
-  </li>
-  <li>
-    <p><strong>ActiveRecord</strong> is an Object-Relational Mapper (ORM). That means that it maps between Ruby objects and tables in a SQL database. When you query from or write to the SQL database in Rails, you do it through ActiveRecord. ActiveRecord also implements ActiveModel. ActiveRecord supports MySQL and SQLite, plus JDBC, Oracle, PostgreSQL and many others.</p>
-  </li>
-  <li>
-    <p><strong>ActionPack</strong> (<em>ActionDispatch, ActionController, Actionview</em>) does routing - the mapping of an incoming URL to a controller and action in Rails. It also sets up your controllers and views, and shepherds a request through its controller action and then through rendering the view. For some of it, ActionPack uses Rack. The template rendering itself is done through an external gem like Erubis for .erb templates, or Haml for .haml templates. ActionPack also handles action- or view-centered functionality like view caching.</p>
-  </li>
-  <li>
-    <p><strong>ActionMailer</strong> is used to send out email, especially email based on templates. It works a lot like you’d hope Rails email would, with controllers, actions and “views” - which for email are text- based templates, not regular web-page templates.</p>
-  </li>
-</ul>
-
-<h2 id="your-first-controller">2. Your First Controller</h2>
-
-<p>Rails encapsulated the Rack information into a “request” object rather than just including the hash right into the controller. Thatʼs a good idea when you want to abstract it a bit – normalize values for certain variables, for instance, or read and set cookies to store session data.</p>
-
-<h2 id="rails-automatic-loading">3. Rails Automatic Loading</h2>
-
-<p>When debugging or printing error messages I like to use STDERR because itʼs a bit harder to redirect than a normal “puts” and so youʼre more likely to see it even when using a log file, background process or similar.</p>
-
-<p>For simple structures, “inspect” shows them exactly as youʼd type them into Ruby – strings with quotes, numbers bare, symbols with a leading colon and so on.</p>
-
-<p><strong>Reloading Means Convenience</strong></p>
-
-<p><code>gem "rulers", :path =&gt; "../rulers"</code> This trick actually relies on deep Bundler trickery and requires you to always “bundle exec” before running things like rackup. If you forget that, it can look like the gem isnʼt there or (worse) look like an old version.</p>
-
-<p><strong>CamelCase and snake_case</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/util.rb</span>
-</span><span class="line"><span class="k">module</span> <span class="nn">Rulers</span>
-</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">to_underscore</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
-</span><span class="line">    <span class="n">string</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/::/</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">.</span>
-</span><span class="line">    <span class="nb">gsub</span><span class="p">(</span><span class="sr">/([A-Z]+)([A-Z][a-z])/</span><span class="p">,</span><span class="s1">&#39;\1_\2&#39;</span><span class="p">)</span><span class="o">.</span>
-</span><span class="line">    <span class="nb">gsub</span><span class="p">(</span><span class="sr">/([a-z\d])([A-Z])/</span><span class="p">,</span><span class="s1">&#39;\1_\2&#39;</span><span class="p">)</span><span class="o">.</span>
-</span><span class="line">    <span class="n">tr</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span>
-</span><span class="line">    <span class="n">downcase</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="c1"># &#39;HTTPController&#39; -&gt; &#39;http_controller&#39;</span>
-</span><span class="line"><span class="c1"># &#39;MD5Controller&#39; -&gt; &#39;md5_controller&#39;</span>
-</span><span class="line"><span class="c1"># &#39;HomeController&#39; -&gt; &#39;home_controller&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong>Put it together</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/dependencies.rb</span>
-</span><span class="line"><span class="k">class</span> <span class="nc">Object</span>
-</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">const_missing</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-</span><span class="line">    <span class="nb">require</span> <span class="no">Rulers</span><span class="o">.</span><span class="n">to_underscore</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span>
-</span><span class="line">    <span class="no">Object</span><span class="o">.</span><span class="n">const_get</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/controller.rb</span>
-</span><span class="line"><span class="k">def</span> <span class="nf">controller_name</span>
-</span><span class="line">  <span class="n">klass</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">class</span>
-</span><span class="line">  <span class="n">klass</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">gsub</span> <span class="sr">/Controller$/</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
-</span><span class="line">  <span class="no">Rulers</span><span class="o">.</span><span class="n">to_underscore</span> <span class="n">klass</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong>Did it work?</strong></p>
-
-<p>When you load a file called whatever_class.rb, youʼre not actually guaranteed that it contains WhateverClass, or that the constant WhateverClass is actually a class. How would you check?</p>
-
-<p>You might try calling const_get(:WhateverClass)… Except that you just made const_get try to load automatically. If you call it on an unloaded class inside the method call where you try to load, youʼll recurse forever and get a “stack level too deep” and a crash. So const_get isnʼt the full answer.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/dependencies.rb</span>
-</span><span class="line"><span class="k">class</span> <span class="nc">Object</span>
-</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">const_missing</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-</span><span class="line">    <span class="k">return</span> <span class="kp">nil</span> <span class="k">if</span> <span class="vi">@calling_const_missing</span>
-</span><span class="line">
-</span><span class="line">    <span class="vi">@calling_const_missing</span> <span class="o">=</span> <span class="kp">true</span>
-</span><span class="line">    <span class="nb">require</span> <span class="no">Rulers</span><span class="o">.</span><span class="n">to_underscore</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span>
-</span><span class="line">    <span class="n">klass</span> <span class="o">=</span> <span class="no">Object</span><span class="o">.</span><span class="n">const_get</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-</span><span class="line">    <span class="vi">@calling_const_missing</span> <span class="o">=</span> <span class="kp">false</span>
-</span><span class="line">
-</span><span class="line">    <span class="n">klass</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>But thereʼs a reason I say “hideously hacky.” Think about ways this could break. For instance – think about what would happen if you hit this in multiple threads at once. Oops!</p>
-
-<p><strong>Re-re-reloading</strong></p>
-
-<p><a href="https://github.com/alexch/rerun">rerun</a></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># best_quotes/Gemfile</span>
-</span><span class="line"><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
-</span><span class="line"><span class="n">gem</span> <span class="s1">&#39;rulers&#39;</span><span class="p">,</span> <span class="ss">:path</span> <span class="o">=&gt;</span> <span class="s2">&quot;../rulers&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
-</span><span class="line">  <span class="n">gem</span> <span class="s1">&#39;rerun&#39;</span>
-</span><span class="line">  <span class="n">gem</span> <span class="s1">&#39;listen&#39;</span><span class="p">,</span> <span class="s1">&#39;=1.3.1&#39;</span> <span class="c1"># for older Ruby</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Running by <code>bundle exec rerun -- rackup -p 3001</code>. The “–” is an old Unix trick. It means “thatʼs all the arguments you get, the rest belong to somebody else.” Specifically, it tells rerun to ignore the “-p” later.</p>
-
-<p><a href="https://github.com/rtomayko/shotgun">shotgun</a></p>
-
-<p>reloading rack development server, forking version of rackup.</p>
-
-<p><strong>In Rails</strong></p>
-
-<ol>
-  <li>
-    <p><a href="https://github.com/rails/rails/blob/master/activesupport/lib/active_support/dependencies.rb">rails/activesupport/lib/active_support/dependencies.rb</a> Rails uses ActiveSupport for its const_missing support. Most of the code is installing a const_missing that can call through to non-Rails versions of const_missing in other classes, and can be removed or re-added and is appropriately modular. It also works hard to support nested modules like MyLibrary::SubModule::SomeClass.</p>
-  </li>
-  <li>
-    <p><a href="http://urbanautomaton.com/blog/2013/08/27/rails-autoloading-hell/#fn1">Rails autoloading — how it works, and when it doesn’t</a> by Simon Coffey.</p>
-  </li>
-</ol>
-
-<h2 id="rendering-views">4. Rendering Views</h2>
-
-<p><strong>Erb and Erubis</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># some_directory/erb_test.rb</span>
-</span><span class="line"><span class="nb">require</span> <span class="s2">&quot;erubis&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="n">template</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">TEMPLATE</span>
-</span><span class="line"><span class="sh">Hello! This is a template.</span>
-</span><span class="line"><span class="sh">It has &lt;%= whatever %&gt;.</span>
-</span><span class="line"><span class="no">TEMPLATE</span>
-</span><span class="line">
-</span><span class="line"><span class="n">eruby</span> <span class="o">=</span> <span class="ss">Erubis</span><span class="p">:</span><span class="ss">:Eruby</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
-</span><span class="line"><span class="nb">puts</span> <span class="n">eruby</span><span class="o">.</span><span class="n">src</span>
-</span><span class="line"><span class="nb">puts</span> <span class="s2">&quot;==========&quot;</span>
-</span><span class="line"><span class="nb">puts</span> <span class="n">eruby</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="ss">:whatever</span> <span class="o">=&gt;</span> <span class="s2">&quot;ponies!&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Run it with <code>ruby erb_test.rb</code></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">bash</span><span class="o">-</span><span class="mi">3</span><span class="o">.</span><span class="mi">2</span><span class="err">$</span> <span class="n">ruby</span> <span class="n">erb_test</span><span class="o">.</span><span class="n">rb</span>
-</span><span class="line"><span class="n">_buf</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span> <span class="n">_buf</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;Hello!   This is a template. It has &#39;</span><span class="p">;</span>
-</span><span class="line"><span class="n">_buf</span> <span class="o">&lt;&lt;</span> <span class="p">(</span> <span class="n">whatever</span> <span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="p">;</span> <span class="n">_buf</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;.&#39;</span><span class="p">;</span>
-</span><span class="line"><span class="n">_buf</span><span class="o">.</span><span class="n">to_s</span>
-</span><span class="line"><span class="o">==========</span>
-</span><span class="line"><span class="no">Hello</span><span class="o">!</span> <span class="no">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">template</span><span class="o">.</span>
-</span><span class="line"><span class="no">It</span> <span class="n">has</span> <span class="n">ponies!</span><span class="o">.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The few lines starting with <code>_buf</code> are interesting. Erubis takes apart our string, appends it to <code>_buf</code> piece by piece, and adds the variables in as well after calling <code>.to_s</code> on them. Then it just returns <code>_buf</code>.</p>
-
-<p><strong>Rack test example</strong></p>
-
-<p><a href="https://github.com/brynary/rack-test">rack-test</a></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">require_relative</span> <span class="s2">&quot;test_helper&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="k">class</span> <span class="nc">TestApp</span> <span class="o">&lt;</span> <span class="ss">Rulers</span><span class="p">:</span><span class="ss">:Application</span>
-</span><span class="line">  <span class="k">def</span> <span class="nf">get_controller_and_action</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-</span><span class="line">    <span class="o">[</span><span class="no">TestController</span><span class="p">,</span> <span class="s2">&quot;index&quot;</span><span class="o">]</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="k">class</span> <span class="nc">TestController</span> <span class="o">&lt;</span> <span class="ss">Rulers</span><span class="p">:</span><span class="ss">:Controlle</span>
-</span><span class="line">  <span class="k">def</span> <span class="nf">index</span>
-</span><span class="line">    <span class="s2">&quot;Hello!&quot;</span>  <span class="c1"># Not rendering a view</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="k">class</span> <span class="nc">RulersAppTest</span> <span class="o">&lt;</span> <span class="ss">Test</span><span class="p">:</span><span class="ss">:Unit</span><span class="o">::</span><span class="no">TestCase</span>
-</span><span class="line"> <span class="kp">include</span> <span class="ss">Rack</span><span class="p">:</span><span class="ss">:Test</span><span class="o">::</span><span class="no">Methods</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">app</span>
-</span><span class="line">    <span class="no">TestApp</span><span class="o">.</span><span class="n">new</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">test_request</span>
-</span><span class="line">    <span class="n">get</span> <span class="s2">&quot;/example/route&quot;</span>
-</span><span class="line">    <span class="n">assert</span> <span class="n">last_response</span><span class="o">.</span><span class="n">ok?</span>
-</span><span class="line">    <span class="n">body</span> <span class="o">=</span> <span class="n">last_response</span><span class="o">.</span><span class="n">body</span>
-</span><span class="line">    <span class="n">assert</span> <span class="n">body</span><span class="o">[</span><span class="s2">&quot;Hello&quot;</span><span class="o">]</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong>Rake test example</strong></p>
-
-<p>Rake actually ships with a “Rake::TestTask”.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># Rakefile</span>
-</span><span class="line"><span class="nb">require</span> <span class="s2">&quot;bundler/gem_tasks&quot;</span>
-</span><span class="line"><span class="nb">require</span> <span class="s2">&quot;rake/testtask&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="ss">Rake</span><span class="p">:</span><span class="ss">:TestTask</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-</span><span class="line">  <span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>  <span class="c1"># this is the default</span>
-</span><span class="line">  <span class="n">t</span><span class="o">.</span><span class="n">libs</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;test&quot;</span>  <span class="c1"># load the test dir</span>
-</span><span class="line">  <span class="n">t</span><span class="o">.</span><span class="n">test_files</span> <span class="o">=</span> <span class="no">Dir</span><span class="o">[</span><span class="s1">&#39;test/*test*.rb&#39;</span><span class="o">]</span>
-</span><span class="line">  <span class="n">t</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kp">true</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><em>A word of caution</em>: Rake will always run your tests by loading them into the same Ruby process, then running each one in turn. This is a lot faster than running them in individual processes, but it means that your tests can mess with each other in annoying ways. If you find yourself saying, “but I didnʼt set that global variable in this test!” think about whether some other test might have done it. For extra fun, the tests donʼt always run in any predictable order.</p>
-
-<p><strong>In Rails</strong></p>
-
-<p>Rails actually allows registering a number of different template engines at once with a number of different extensions so that Erb files are rendered with Erubis, but .haml files are rendered with the HAML templating engine.</p>
-
-<p>You can find the top-level view code in <a href="https://github.com/rails/rails/blob/master/actionview/lib/action_view.rb">actionpack/lib/action_view.rb</a>, and the whole big chunk of Rails view code in actionpack/lib/action_view/. From there, look in <a href="https://github.com/rails/rails/blob/master/actionview/lib/action_view/template/handlers/erb.rb">template/handlers/erb.rb</a> for a pretty compact description of exactly how Rails uses Erubis to render Erb templates. You can see that most of the bulk of Railsʼ version is setup, interface and dealing with string encodings. You save a lot of trouble by knowing that youʼre basically only dealing with ASCII and/or UTF-8 strings.</p>
-
-<h2 id="basic-models">5. Basic Models</h2>
-
-<p>Use <a href="https://github.com/intridea/multi_json">multi_json</a> (a generic swappable back-end for JSON handling) to built a simple system of models based on JSON files.</p>
-
-<p><strong>In Rails</strong></p>
-
-<p>ActiveRecord is an Object-Relational Mapper so that each of your objects represents a database row. ActiveModel is the interface that Rails uses to all of storage including non-relational stores like Cassandra or MongoDB, to fit particular object types into Rails.</p>
-
-<p>For a good overview of ActiveModel, have a look at a blog post from Yehuda Katz on that topic: <a href="http://yehudakatz.com/2010/01/10/activemodel-make-any-ruby-object-feel-like-activerecord/">ActiveModel: Make Any Ruby Object Feel Like ActiveRecord</a></p>
-
-<h2 id="request-response">6. Request, Response</h2>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/controller.rb</span>
-</span><span class="line"><span class="k">module</span> <span class="nn">Rulers</span>
-</span><span class="line">  <span class="k">class</span> <span class="nc">Controller</span>
-</span><span class="line">    <span class="k">def</span> <span class="nf">response</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">{})</span>
-</span><span class="line">      <span class="k">raise</span> <span class="s2">&quot;Already responded!&quot;</span> <span class="k">if</span> <span class="vi">@response</span>
-</span><span class="line">      <span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="n">text</span><span class="o">].</span><span class="n">flatten</span>
-</span><span class="line">      <span class="vi">@response</span> <span class="o">=</span> <span class="ss">Rack</span><span class="p">:</span><span class="ss">:Response</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">def</span> <span class="nf">get_response</span>  <span class="c1"># Only for Rulers</span>
-</span><span class="line">      <span class="vi">@response</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">def</span> <span class="nf">render_response</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-</span><span class="line">      <span class="n">response</span><span class="p">(</span><span class="n">render</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">))</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="c1"># rulers/lib/rulers.rb</span>
-</span><span class="line"><span class="k">module</span> <span class="nn">Ruler</span>
-</span><span class="line">  <span class="k">class</span> <span class="nc">Application</span>
-</span><span class="line">    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>   <span class="c1"># Redefine</span>
-</span><span class="line">      <span class="k">if</span> <span class="n">env</span><span class="o">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;/favicon.ico&#39;</span>
-</span><span class="line">        <span class="k">return</span> <span class="o">[</span><span class="mi">404</span><span class="p">,</span>
-</span><span class="line">          <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;text/html&#39;</span><span class="p">},</span> <span class="o">[]]</span>
-</span><span class="line">      <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">      <span class="n">klass</span><span class="p">,</span> <span class="n">act</span> <span class="o">=</span> <span class="n">get_controller_and_action</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-</span><span class="line">      <span class="n">controller</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-</span><span class="line">      <span class="n">text</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">act</span><span class="p">)</span>
-</span><span class="line">      <span class="k">if</span> <span class="n">controller</span><span class="o">.</span><span class="n">get_response</span>
-</span><span class="line">        <span class="c1"># ensure the code after render_response works</span>
-</span><span class="line">        <span class="n">st</span><span class="p">,</span> <span class="n">hd</span><span class="p">,</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">get_response</span><span class="o">.</span><span class="n">to_a</span>
-</span><span class="line">        <span class="o">[</span><span class="n">st</span><span class="p">,</span> <span class="n">hd</span><span class="p">,</span> <span class="o">[</span><span class="n">rs</span><span class="o">.</span><span class="n">body</span><span class="o">].</span><span class="n">flatten</span><span class="o">]</span>
-</span><span class="line">      <span class="k">else</span>
-</span><span class="line">        <span class="c1"># without explicitly render_response in action,</span>
-</span><span class="line">        <span class="c1"># you can add auto render here</span>
-</span><span class="line">        <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;text/html&#39;</span><span class="p">},</span> <span class="o">[</span><span class="n">text</span><span class="o">]]</span>
-</span><span class="line">      <span class="k">end</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>In Rails, the return value from the controller is ignored. Instead if you donʼt call render (Railsʼ equivalent of render_response), it will automatically call it for you with the same controller name, and the viewʼs name set to the same name as your action.</p>
-
-<p>Rails doesnʼt return the string when you call “render” (well, usually - some calls to render do!). Instead, it keeps track of the fact that you called render and what you called it on. Then it gives you an error if you call it again, or uses the defaults if you get to the end of a controller action without calling it</p>
-
-<p><strong>Instance Variables</strong></p>
-
-<p>The Rails answer is to set instance variables in the controller, then use them in the view. Try creating a new view object, mostly just to use Erubis to evaluate the view file. Then, make it easy to pass in a hash of instance variables which youʼll set on the view object before doing the evaluation.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/controller.rb</span>
-</span><span class="line"><span class="k">module</span> <span class="nn">Rulers</span>
-</span><span class="line">  <span class="k">class</span> <span class="nc">Controller</span>
-</span><span class="line">    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">view_name</span><span class="p">,</span> <span class="n">locals</span> <span class="o">=</span> <span class="p">{})</span>
-</span><span class="line">      <span class="n">filename</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span> <span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="n">controller_name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">view_name</span><span class="si">}</span><span class="s2">.html.erb&quot;</span>
-</span><span class="line">      <span class="n">ivars</span> <span class="o">=</span> <span class="nb">instance_variables</span><span class="o">.</span><span class="n">reduce</span><span class="p">({})</span> <span class="p">{</span><span class="o">|</span><span class="n">ha</span><span class="p">,</span> <span class="n">iv</span><span class="o">|</span> <span class="n">ha</span><span class="o">[</span><span class="n">iv</span><span class="o">]</span> <span class="o">=</span> <span class="nb">instance_variable_get</span><span class="p">(</span><span class="n">iv</span><span class="p">);</span> <span class="n">ha</span> <span class="p">}</span>
-</span><span class="line">      <span class="ss">Rulers</span><span class="p">:</span><span class="ss">:View</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">ivars</span><span class="p">,</span> <span class="n">locals</span><span class="p">)</span><span class="o">.</span><span class="n">result</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong>In Rails</strong></p>
-
-<p>Rails (more specifically, ActionPack) uses Rack in a very similar way, even exposing the Rack Request object with the “request” method. Especially <a href="https://github.com/rails/rails/blob/master/actionpack%2Flib%2Faction_controller%2Fmetal.rb">metal.rb </a>and metal/*.rb. “Rails Metal” is a name for the lower-level Rails which goes mostly straight through to the “bare metal” – that is, to Rack.</p>
-
-<p>You can find a lot of the Rails implementation of Rack in these directories – for instance, metal/redirecting.rb is the implementation of the redirect_to() helper which returns status 302 (redirect) and a location to Rack. You could steal the code and add a redirect_to to Rulers, if you wanted.</p>
-
-<p>You can also find things like forgery (CSRF) protection, multiple renderers (i.e. Erb vs Haml), forcing SSL if requested and cookies in this directory. Some are complex, while others call to Rack very simply and you could move right over to Rulers.</p>
-
-<h2 id="the-littlest-orm">7. The Littlest ORM</h2>
-
-<p>migration</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># best_quotes/mini_migration.rb</span>
-</span><span class="line"><span class="nb">require</span> <span class="s2">&quot;sqlite3&quot;</span>
-</span><span class="line"><span class="n">conn</span> <span class="o">=</span> <span class="ss">SQLite3</span><span class="p">:</span><span class="ss">:Database</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;test.db&quot;</span>
-</span><span class="line"><span class="n">conn</span><span class="o">.</span><span class="n">execute</span> <span class="o">&lt;&lt;</span><span class="no">SQL</span>
-</span><span class="line"><span class="sh">create table my_table (</span>
-</span><span class="line"><span class="sh">  id INTEGER PRIMARY KEY,</span>
-</span><span class="line"><span class="sh">  posted INTEGER,</span>
-</span><span class="line"><span class="sh">  title VARCHAR(30),</span>
-</span><span class="line"><span class="sh">  body VARCHAR(32000));</span>
-</span><span class="line"><span class="no">SQL</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>sqlite model</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-<span class="line-number">54</span>
-<span class="line-number">55</span>
-<span class="line-number">56</span>
-<span class="line-number">57</span>
-<span class="line-number">58</span>
-<span class="line-number">59</span>
-<span class="line-number">60</span>
-<span class="line-number">61</span>
-<span class="line-number">62</span>
-<span class="line-number">63</span>
-<span class="line-number">64</span>
-<span class="line-number">65</span>
-<span class="line-number">66</span>
-<span class="line-number">67</span>
-<span class="line-number">68</span>
-<span class="line-number">69</span>
-<span class="line-number">70</span>
-<span class="line-number">71</span>
-<span class="line-number">72</span>
-<span class="line-number">73</span>
-<span class="line-number">74</span>
-<span class="line-number">75</span>
-<span class="line-number">76</span>
-<span class="line-number">77</span>
-<span class="line-number">78</span>
-<span class="line-number">79</span>
-<span class="line-number">80</span>
-<span class="line-number">81</span>
-<span class="line-number">82</span>
-<span class="line-number">83</span>
-<span class="line-number">84</span>
-<span class="line-number">85</span>
-<span class="line-number">86</span>
-<span class="line-number">87</span>
-<span class="line-number">88</span>
-<span class="line-number">89</span>
-<span class="line-number">90</span>
-<span class="line-number">91</span>
-<span class="line-number">92</span>
-<span class="line-number">93</span>
-<span class="line-number">94</span>
-<span class="line-number">95</span>
-<span class="line-number">96</span>
-<span class="line-number">97</span>
-<span class="line-number">98</span>
-<span class="line-number">99</span>
-<span class="line-number">100</span>
-<span class="line-number">101</span>
-<span class="line-number">102</span>
-<span class="line-number">103</span>
-<span class="line-number">104</span>
-<span class="line-number">105</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/sqlite_model.rb</span>
-</span><span class="line"><span class="nb">require</span> <span class="s2">&quot;sqlite3&quot;</span>
-</span><span class="line"><span class="nb">require</span> <span class="s2">&quot;rulers/util&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="no">DB</span> <span class="o">=</span> <span class="ss">SQLite3</span><span class="p">:</span><span class="ss">:Database</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;test.db&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="k">module</span> <span class="nn">Rulers</span>
-</span><span class="line">  <span class="k">module</span> <span class="nn">Model</span>
-</span><span class="line">    <span class="k">class</span> <span class="nc">SQLite</span>
-</span><span class="line">
-</span><span class="line">      <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
-</span><span class="line">        <span class="k">def</span> <span class="nf">table</span>
-</span><span class="line">          <span class="no">Rulers</span><span class="o">.</span><span class="n">to_underscore</span> <span class="nb">name</span>
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">        <span class="k">def</span> <span class="nf">schema</span>
-</span><span class="line">          <span class="k">return</span> <span class="vi">@schema</span> <span class="k">if</span> <span class="vi">@schema</span>
-</span><span class="line">          <span class="vi">@schema</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span class="line">          <span class="no">DB</span><span class="o">.</span><span class="n">table_info</span><span class="p">(</span><span class="n">table</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span>
-</span><span class="line">            <span class="vi">@schema</span><span class="o">[</span> <span class="n">row</span><span class="o">[</span><span class="s1">&#39;name&#39;</span><span class="o">]</span> <span class="o">]</span> <span class="o">=</span> <span class="n">row</span><span class="o">[</span><span class="s1">&#39;type&#39;</span><span class="o">]</span>
-</span><span class="line">          <span class="k">end</span>
-</span><span class="line">          <span class="vi">@schema</span>
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">        <span class="k">def</span> <span class="nf">to_sql</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
-</span><span class="line">          <span class="k">case</span> <span class="n">val</span>
-</span><span class="line">          <span class="k">when</span> <span class="no">Numeric</span>
-</span><span class="line">            <span class="n">val</span><span class="o">.</span><span class="n">to_s</span>
-</span><span class="line">          <span class="k">when</span> <span class="nb">String</span>
-</span><span class="line">            <span class="s2">&quot;&#39;</span><span class="si">#{</span><span class="n">val</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
-</span><span class="line">          <span class="k">else</span>
-</span><span class="line">            <span class="k">raise</span> <span class="s2">&quot;Can&#39;t change </span><span class="si">#{</span><span class="n">val</span><span class="o">.</span><span class="n">class</span><span class="si">}</span><span class="s2"> to SQL!&quot;</span>
-</span><span class="line">          <span class="k">end</span>
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">        <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-</span><span class="line">          <span class="n">values</span><span class="o">.</span><span class="n">delete</span> <span class="s1">&#39;id&#39;</span>
-</span><span class="line">          <span class="n">keys</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">keys</span> <span class="o">-</span> <span class="o">[</span><span class="s1">&#39;id&#39;</span><span class="o">]</span>
-</span><span class="line">          <span class="n">vals</span> <span class="o">=</span> <span class="n">keys</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="o">|</span>
-</span><span class="line">            <span class="n">values</span><span class="o">[</span><span class="n">key</span><span class="o">]</span> <span class="p">?</span> <span class="n">to_sql</span><span class="p">(</span><span class="n">values</span><span class="o">[</span><span class="n">key</span><span class="o">]</span><span class="p">)</span> <span class="p">:</span> <span class="s1">&#39;null&#39;</span>
-</span><span class="line">          <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">          <span class="no">DB</span><span class="o">.</span><span class="n">execute</span> <span class="o">&lt;&lt;</span><span class="no">SQL</span>
-</span><span class="line"><span class="sh">            INSERT INTO #{table} (#{keys.join(&#39;,&#39;)})</span>
-</span><span class="line"><span class="sh">            VALUES (#{vals.join(&#39;,&#39;)});</span>
-</span><span class="line"><span class="no">SQL</span>
-</span><span class="line">
-</span><span class="line">          <span class="n">data</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">[</span><span class="n">keys</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span><span class="o">]</span>
-</span><span class="line">          <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT last_insert_rowid();&quot;</span>
-</span><span class="line">          <span class="n">data</span><span class="o">[</span><span class="s1">&#39;id&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="no">DB</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
-</span><span class="line">          <span class="nb">self</span><span class="o">.</span><span class="n">new</span> <span class="n">data</span>
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">        <span class="k">def</span> <span class="nf">count</span>
-</span><span class="line">          <span class="no">DB</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&lt;&lt;</span><span class="no">SQL</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
-</span><span class="line"><span class="sh">            SELECT COUNT(*) FROM #{table}</span>
-</span><span class="line"><span class="no">SQL</span>
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">        <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
-</span><span class="line">          <span class="n">row</span> <span class="o">=</span> <span class="no">DB</span><span class="o">.</span><span class="n">execute</span> <span class="o">&lt;&lt;</span><span class="no">SQL</span>
-</span><span class="line"><span class="sh">            SELECT #{schema.keys.join(&#39;,&#39;)} from #{table} where id=#{id}</span>
-</span><span class="line"><span class="no">SQL</span>
-</span><span class="line">          <span class="n">data</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">[</span> <span class="n">schema</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">zip</span> <span class="n">row</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">]</span>
-</span><span class="line">          <span class="nb">self</span><span class="o">.</span><span class="n">new</span> <span class="n">data</span>
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">      <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">      <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>
-</span><span class="line">        <span class="vi">@hash</span> <span class="o">=</span> <span class="n">data</span>
-</span><span class="line">      <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">      <span class="k">def</span> <span class="nf">[]</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-</span><span class="line">        <span class="vi">@hash</span><span class="o">[</span><span class="nb">name</span><span class="o">.</span><span class="n">to_s</span><span class="o">]</span>
-</span><span class="line">      <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">      <span class="k">def</span> <span class="nf">[]=</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-</span><span class="line">        <span class="vi">@hash</span><span class="o">[</span><span class="nb">name</span><span class="o">.</span><span class="n">to_s</span><span class="o">]</span> <span class="o">=</span> <span class="n">value</span>
-</span><span class="line">      <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">      <span class="k">def</span> <span class="nf">save!</span>
-</span><span class="line">        <span class="k">unless</span> <span class="vi">@hash</span><span class="o">[</span><span class="s1">&#39;id&#39;</span><span class="o">]</span>
-</span><span class="line">          <span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">create</span>
-</span><span class="line">          <span class="k">return</span> <span class="kp">true</span>
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">        <span class="n">fields</span> <span class="o">=</span> <span class="vi">@hash</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span>
-</span><span class="line">          <span class="s2">&quot;</span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2">=</span><span class="si">#{</span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class="line">        <span class="k">end</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line">        <span class="no">DB</span><span class="o">.</span><span class="n">execute</span> <span class="o">&lt;&lt;</span><span class="no">SQL</span>
-</span><span class="line"><span class="sh">          UPDATE #{self.class.table}</span>
-</span><span class="line"><span class="sh">          SET #{fields}</span>
-</span><span class="line"><span class="sh">          WHERE id=&quot;#{@hash[&#39;id&#39;]}&quot;</span>
-</span><span class="line"><span class="no">SQL</span>
-</span><span class="line">        <span class="kp">true</span>
-</span><span class="line">      <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">      <span class="k">def</span> <span class="nf">save</span>
-</span><span class="line">        <span class="n">save!</span> <span class="k">rescue</span> <span class="kp">false</span>
-</span><span class="line">      <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>You can add a method to the SQLite model that takes a column name and a type, and then when saving and loading that column, does something type-dependent to it, like the boolean or JSON fields above.</p>
-
-<p>ActiveRecord allows both ways – you can research the <code>before_save</code> and <code>after_initialize</code> callbacks for how to do it on save/ load.</p>
-
-<p><strong>In Rails</strong></p>
-
-<p>ActiveRecord contains mappings of operations like our gem, but also migrations, cross-database compatibility and a huge amount of optimization and general complexity. And thatʼs even though they use the ARel gem for most of the heavy lifting!</p>
-
-<h2 id="rack-middleware">8. Rack Middleware</h2>
-
-<p>With any Ruby web framework, you can modify how it works by adding Rack components around it. I like thinking of them as pancakes, because Rack lets you build your framework and your application like a stack of pancakes.</p>
-
-<p><strong>Built-in middlewares</strong></p>
-
-<ul>
-  <li><strong>Rack::Auth::Basic</strong> - HTTP Basic authentication.</li>
-  <li><strong>Rack::Auth::Digest</strong> - HTTP Digest authentication.</li>
-  <li><strong>Rack::Cascade</strong> - Pass a request to a series of Rack apps, and use the first request that comes back as good. Itʼs a way to mount one Rack app “on top of” another (or many).</li>
-  <li><strong>Rack::Chunked</strong> - A Rack interface to HTTP Chunked transfer.</li>
-  <li><strong>Rack::CommonLogger</strong> - Request logging.</li>
-  <li><strong>Rack::ConditionalGet</strong> - Implement HTTP If-None-Match and If- Modified-Since with ETags and dates.</li>
-  <li><strong>Rack::Config</strong> - Call a given block before each request.</li>
-  <li><strong>Rack::ContentLength</strong> - Set Content-Length automatically.</li>
-  <li><strong>Rack::ContentType</strong> - Try to guess Content-Type and set it. Rack::Deflater - Compress the response with gzip/deflate.</li>
-  <li><strong>Rack::Directory</strong> - Add Apache-style directory listings. This is an endpoint not an intermediate layer, so use it with “run.”</li>
-  <li><strong>Rack::ETag</strong> - Generate ETags from MD5s of the content.</li>
-  <li><strong>Rack::Head</strong> - Remove response body for HEAD requests.</li>
-  <li><strong>Rack::Lint</strong> - Check your responses for correctness.</li>
-  <li><strong>Rack::Lock</strong> - Only allow one thread in at once.</li>
-  <li><strong>Rack::Reloader</strong> - Reload your app when files change.</li>
-  <li><strong>Rack::Runtime</strong> - Times the request, sets X-Runtime in response.</li>
-  <li><strong>Rack::Sendfile</strong> - Use the X-Sendfile header to ask your web server to send a file much faster than Ruby can.</li>
-  <li><strong>Rack::ShowExceptions</strong> - Show a nice exception page if something breaks.</li>
-  <li><strong>Rack::ShowStatus</strong> - Show a pretty page if the result is empty.</li>
-  <li><strong>Rack::Static</strong> - Serve from certain directories as static files instead
-of calling your framework.</li>
-  <li><strong>Rack::URLMap</strong> - Route different directories to different apps or different stacks. You can also use this with a “map” block in config.ru.</li>
-</ul>
-
-<p>Rack::URLMap is a way to tell Rack what paths go to what Rack apps - and if thereʼs could be two that match, the longer path always takes precedence.</p>
-
-<p>Rack::ContentType is to set the default HTML content type for everything. Since itʼs at the top, outside the blocks, it applies to all the blocks.</p>
-
-<p>The lobster, by the way, is a simple test app built into Rack. Youʼll see it as an example in many places.</p>
-
-<p><strong>Thrid-party middlewares</strong></p>
-
-<ul>
-  <li><a href="https://github.com/rack/rack-contrib">rack-contrib</a></li>
-  <li><a href="https://github.com/rack/rack/wiki/List-of-Middleware">middlewares listed in rack wiki</a></li>
-</ul>
-
-<p><strong>In Rails</strong></p>
-
-<p>The primary Rack application object in Rails is called ActionController::Dispatcher.</p>
-
-<p>ActionController::Base allows you to get mini-Rack-apps for each controller action because it inherits from Metal, the basic Rails Rack class. So you can call MyController.action(:myaction) and get a Rack app for that action in your controller.</p>
-
-<p><strong>Calling order of Rack middlewares</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-<span class="line-number">54</span>
-<span class="line-number">55</span>
-<span class="line-number">56</span>
-<span class="line-number">57</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Foo</span>
-</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">arg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Foo#init&#39;</span>
-</span><span class="line">    <span class="vi">@app</span> <span class="o">=</span> <span class="n">app</span>
-</span><span class="line">    <span class="vi">@arg</span> <span class="o">=</span> <span class="n">arg</span>
-</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Foo#initend&#39;</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Foo#call&#39;</span>
-</span><span class="line">    <span class="n">status</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="vi">@app</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-</span><span class="line">    <span class="n">content</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@arg</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Foo#callend&#39;</span>
-</span><span class="line">    <span class="o">[</span> <span class="n">status</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">content</span> <span class="o">]</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="k">class</span> <span class="nc">Bar</span>
-</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">arg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Bar#init&#39;</span>
-</span><span class="line">    <span class="vi">@app</span> <span class="o">=</span> <span class="n">app</span>
-</span><span class="line">    <span class="vi">@arg</span> <span class="o">=</span> <span class="n">arg</span>
-</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Bar#initend&#39;</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Bar#call&#39;</span>
-</span><span class="line">    <span class="n">status</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="vi">@app</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-</span><span class="line">    <span class="n">content</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@arg</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class="line">    <span class="nb">puts</span> <span class="s1">&#39;--&gt; Bar#callend&#39;</span>
-</span><span class="line">    <span class="o">[</span> <span class="n">status</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">content</span> <span class="o">]</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="n">use</span> <span class="no">Foo</span><span class="p">,</span> <span class="s1">&#39;, foo&#39;</span>
-</span><span class="line"><span class="n">use</span> <span class="no">Bar</span><span class="p">,</span> <span class="s1">&#39;, bar&#39;</span>
-</span><span class="line">
-</span><span class="line"><span class="n">run</span> <span class="nb">proc</span> <span class="p">{</span>
-</span><span class="line">  <span class="nb">puts</span> <span class="s1">&#39;--&gt; main#call&#39;</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;text/html&#39;</span><span class="p">},</span> <span class="o">[</span><span class="s1">&#39;Hello, world&#39;</span><span class="o">]]</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="c1"># $ rackup</span>
-</span><span class="line"><span class="c1"># --&gt; Bar#init</span>
-</span><span class="line"><span class="c1"># --&gt; Bar#initend</span>
-</span><span class="line"><span class="c1"># --&gt; Foo#init</span>
-</span><span class="line"><span class="c1"># --&gt; Foo#initend</span>
-</span><span class="line"><span class="c1"># Thin web server (v1.6.1 codename Death Proof)</span>
-</span><span class="line"><span class="c1"># Maximum connections set to 1024</span>
-</span><span class="line"><span class="c1"># Listening on 0.0.0.0:9292, CTRL+C to stop</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1"># --&gt; Foo#call</span>
-</span><span class="line"><span class="c1"># --&gt; Bar#call</span>
-</span><span class="line"><span class="c1"># --&gt; main#call</span>
-</span><span class="line"><span class="c1"># --&gt; Bar#callend</span>
-</span><span class="line"><span class="c1"># --&gt; Foo#callend</span>
-</span><span class="line"><span class="c1"># 127.0.0.1 - wendi [23/Sep/2014 15:56:20] &quot;GET / HTTP/1.1&quot; 200 - 0.0013</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Other samples:</p>
-
-<ul>
-  <li><a href="https://gist.github.com/ifyouseewendy/15dd511d2d939e432068#file-config-lobster-ru">lobster</a></li>
-  <li><a href="https://gist.github.com/ifyouseewendy/15dd511d2d939e432068#file-config-auth-ru">auth</a></li>
-  <li><a href="https://gist.github.com/ifyouseewendy/15dd511d2d939e432068#file-config-benchmark-ru">benchmark</a></li>
-</ul>
-
-<h2 id="real-routing">9. Real Routing</h2>
-
-<p>Rails 3 takes this a half-step farther and makes every action on every controller a full-on Rack app that you can extract and use.</p>
-
-<p>Add RouteObject class.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-<span class="line-number">54</span>
-<span class="line-number">55</span>
-<span class="line-number">56</span>
-<span class="line-number">57</span>
-<span class="line-number">58</span>
-<span class="line-number">59</span>
-<span class="line-number">60</span>
-<span class="line-number">61</span>
-<span class="line-number">62</span>
-<span class="line-number">63</span>
-<span class="line-number">64</span>
-<span class="line-number">65</span>
-<span class="line-number">66</span>
-<span class="line-number">67</span>
-<span class="line-number">68</span>
-<span class="line-number">69</span>
-<span class="line-number">70</span>
-<span class="line-number">71</span>
-<span class="line-number">72</span>
-<span class="line-number">73</span>
-<span class="line-number">74</span>
-<span class="line-number">75</span>
-<span class="line-number">76</span>
-<span class="line-number">77</span>
-<span class="line-number">78</span>
-<span class="line-number">79</span>
-<span class="line-number">80</span>
-<span class="line-number">81</span>
-<span class="line-number">82</span>
-<span class="line-number">83</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">RouteObject</span>
-</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span>
-</span><span class="line">    <span class="vi">@rules</span> <span class="o">=</span> <span class="o">[]</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="c1"># save routing rules</span>
-</span><span class="line">  <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
-</span><span class="line">    <span class="n">options</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span class="line">    <span class="n">options</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">pop</span> <span class="k">if</span> <span class="n">args</span><span class="o">[-</span><span class="mi">1</span><span class="o">].</span><span class="n">is_a?</span><span class="p">(</span><span class="no">Hash</span><span class="p">)</span>
-</span><span class="line">    <span class="n">options</span><span class="o">[</span><span class="ss">:default</span><span class="o">]</span> <span class="o">||=</span> <span class="p">{}</span>
-</span><span class="line">
-</span><span class="line">    <span class="n">dest</span> <span class="o">=</span> <span class="kp">nil</span>
-</span><span class="line">    <span class="n">dest</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">pop</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span>
-</span><span class="line">    <span class="k">raise</span> <span class="s1">&#39;Too many args!&#39;</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span>
-</span><span class="line">
-</span><span class="line">    <span class="n">parts</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-</span><span class="line">    <span class="n">parts</span><span class="o">.</span><span class="n">select!</span><span class="p">{</span><span class="o">|</span><span class="nb">p</span><span class="o">|</span> <span class="o">!</span><span class="nb">p</span><span class="o">.</span><span class="n">empty?</span> <span class="p">}</span>
-</span><span class="line">
-</span><span class="line">    <span class="n">vars</span> <span class="o">=</span> <span class="o">[]</span>
-</span><span class="line">    <span class="n">regexp_parts</span> <span class="o">=</span> <span class="n">parts</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">part</span><span class="o">|</span>
-</span><span class="line">      <span class="k">if</span> <span class="n">part</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;:&#39;</span>
-</span><span class="line">        <span class="n">vars</span> <span class="o">&lt;&lt;</span> <span class="n">part</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
-</span><span class="line">        <span class="s2">&quot;([a-zA-Z0-9_]+)&quot;</span>
-</span><span class="line">      <span class="k">elsif</span> <span class="n">part</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span>
-</span><span class="line">        <span class="n">vars</span> <span class="o">&lt;&lt;</span> <span class="n">part</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
-</span><span class="line">        <span class="s2">&quot;(.*)&quot;</span>
-</span><span class="line">      <span class="k">else</span>
-</span><span class="line">        <span class="n">part</span>
-</span><span class="line">      <span class="k">end</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">    <span class="n">regexp</span> <span class="o">=</span> <span class="n">regexp_parts</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-</span><span class="line">    <span class="vi">@rules</span><span class="o">.</span><span class="n">push</span><span class="p">({</span>
-</span><span class="line">      <span class="ss">:regexp</span> <span class="o">=&gt;</span> <span class="no">Regexp</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;^/</span><span class="si">#{</span><span class="n">regexp</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">),</span>
-</span><span class="line">      <span class="ss">:vars</span> <span class="o">=&gt;</span> <span class="n">vars</span><span class="p">,</span>
-</span><span class="line">      <span class="ss">:dest</span> <span class="o">=&gt;</span> <span class="n">dest</span><span class="p">,</span>
-</span><span class="line">      <span class="ss">:options</span> <span class="o">=&gt;</span> <span class="n">options</span>
-</span><span class="line">    <span class="p">})</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="c1"># match rules to url and route to specific controller action.</span>
-</span><span class="line">  <span class="c1"># </span>
-</span><span class="line">  <span class="c1"># 1. the router just applies them in order -- if more than</span>
-</span><span class="line">  <span class="c1">#    one rule matches, the first one wins.</span>
-</span><span class="line">  <span class="c1"># 2. the second argument can be a Rack application, </span>
-</span><span class="line">  <span class="c1">#    which Rails then calls.</span>
-</span><span class="line">  <span class="k">def</span> <span class="nf">check_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</span><span class="line">    <span class="vi">@rules</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span>
-</span><span class="line">      <span class="n">m</span> <span class="o">=</span> <span class="n">r</span><span class="o">[</span><span class="ss">:regexp</span><span class="o">].</span><span class="n">match</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line">      <span class="k">if</span> <span class="n">m</span>
-</span><span class="line">        <span class="n">options</span> <span class="o">=</span> <span class="n">r</span><span class="o">[</span><span class="ss">:options</span><span class="o">]</span>
-</span><span class="line">        <span class="n">params</span> <span class="o">=</span> <span class="n">options</span><span class="o">[</span><span class="ss">:default</span><span class="o">].</span><span class="n">dup</span>
-</span><span class="line">
-</span><span class="line">        <span class="n">r</span><span class="o">[</span><span class="ss">:vars</span><span class="o">].</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">v</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
-</span><span class="line">          <span class="n">params</span><span class="o">[</span><span class="n">v</span><span class="o">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">captures</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">        <span class="k">if</span> <span class="n">r</span><span class="o">[</span><span class="ss">:dest</span><span class="o">]</span>
-</span><span class="line">          <span class="k">return</span> <span class="n">get_dest</span><span class="p">(</span><span class="n">r</span><span class="o">[</span><span class="ss">:dest</span><span class="o">]</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-</span><span class="line">        <span class="k">else</span>
-</span><span class="line">          <span class="n">controller</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="s1">&#39;controller&#39;</span><span class="o">]</span>
-</span><span class="line">          <span class="n">action</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="s1">&#39;action&#39;</span><span class="o">]</span>
-</span><span class="line">          <span class="k">return</span> <span class="n">get_dest</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">controller</span><span class="si">}</span><span class="s2">#</span><span class="si">#{</span><span class="n">action</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">      <span class="k">end</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">    <span class="kp">nil</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">get_dest</span><span class="p">(</span><span class="n">dest</span><span class="p">,</span> <span class="n">routing_params</span> <span class="o">=</span> <span class="p">{})</span>
-</span><span class="line">    <span class="k">return</span> <span class="n">dest</span> <span class="k">if</span> <span class="n">dest</span><span class="o">.</span><span class="n">respond_to?</span><span class="p">(</span><span class="ss">:call</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">if</span> <span class="n">dest</span> <span class="o">=~</span> <span class="sr">/^([^#]+)#([^#]+)$/</span>
-</span><span class="line">      <span class="nb">name</span> <span class="o">=</span> <span class="vg">$1</span><span class="o">.</span><span class="n">capitalize</span>
-</span><span class="line">      <span class="n">cont</span> <span class="o">=</span> <span class="no">Object</span><span class="o">.</span><span class="n">const_get</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">Controller&quot;</span><span class="p">)</span>
-</span><span class="line">      <span class="k">return</span> <span class="n">cont</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="vg">$2</span><span class="p">,</span> <span class="n">routing_params</span><span class="p">)</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">raise</span> <span class="s2">&quot;No destination: </span><span class="si">#{</span><span class="n">dest</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2">!&quot;</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Define <code>route</code> to save rules in an instance of RouteObject, and use <code>get_rack_app</code> to route to controller actions. </p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">Rulers</span>
-</span><span class="line">  <span class="k">class</span> <span class="nc">Application</span>
-</span><span class="line">    <span class="k">def</span> <span class="nf">route</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-</span><span class="line">      <span class="vi">@route_obj</span> <span class="o">||=</span> <span class="no">RouteObject</span><span class="o">.</span><span class="n">new</span>
-</span><span class="line">      <span class="vi">@route_obj</span><span class="o">.</span><span class="n">instance_eval</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">def</span> <span class="nf">get_rack_app</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-</span><span class="line">      <span class="k">raise</span> <span class="s1">&#39;No routes!&#39;</span> <span class="k">unless</span> <span class="vi">@route_obj</span>
-</span><span class="line">      <span class="vi">@route_obj</span><span class="o">.</span><span class="n">check_url</span> <span class="n">env</span><span class="o">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="o">]</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Update Rulers::Controller to use <code>self.action</code> to initialize rack app, and <code>dispatch</code> to specific action.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># rulers/lib/rulers/controller.rb</span>
-</span><span class="line"><span class="k">module</span> <span class="nn">Rulers</span>
-</span><span class="line">  <span class="k">class</span> <span class="nc">Controller</span>
-</span><span class="line">    <span class="kp">include</span> <span class="ss">Rulers</span><span class="p">:</span><span class="ss">:Model</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-</span><span class="line">      <span class="vi">@env</span> <span class="o">=</span> <span class="n">env</span>
-</span><span class="line">      <span class="vi">@routing_params</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">def</span> <span class="nf">env</span>
-</span><span class="line">      <span class="vi">@env</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">action</span><span class="p">(</span><span class="n">act</span><span class="p">,</span> <span class="nb">p</span> <span class="o">=</span> <span class="p">{})</span>
-</span><span class="line">      <span class="nb">proc</span> <span class="p">{</span><span class="o">|</span><span class="n">e</span><span class="o">|</span> <span class="nb">self</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">act</span><span class="p">,</span> <span class="nb">p</span><span class="p">)</span> <span class="p">}</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">routing_params</span> <span class="o">=</span> <span class="p">{})</span>
-</span><span class="line">      <span class="vi">@routing_params</span> <span class="o">=</span> <span class="n">routing_params</span>
-</span><span class="line">
-</span><span class="line">      <span class="nb">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
-</span><span class="line">      <span class="n">render_response</span> <span class="n">action</span><span class="o">.</span><span class="n">to_sym</span> <span class="k">unless</span> <span class="n">get_response</span>
-</span><span class="line">      <span class="n">st</span><span class="p">,</span> <span class="n">hd</span><span class="p">,</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">get_response</span><span class="o">.</span><span class="n">to_a</span>
-</span><span class="line">      <span class="o">[</span><span class="n">st</span><span class="p">,</span> <span class="n">hd</span><span class="p">,</span> <span class="o">[</span><span class="n">rs</span><span class="o">.</span><span class="n">body</span><span class="o">].</span><span class="n">flatten</span><span class="o">]</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">def</span> <span class="nf">params</span>
-</span><span class="line">      <span class="n">request</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">merge</span> <span class="vi">@routing_params</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong>In Rails</strong></p>
-
-<p>Rails connects lots of tiny Rack applications into a single overall application. Itʼs a complicated, multi-layered construction.</p>
-
-<p>Each Rails controller keeps track of a mini-Rack stack of middleware which can be specified per-action like before_filters.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Review] Git Community Book]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/09/27/git-community-book/"/>
-    <updated>2014-09-27T13:51:25+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/09/27/git-community-book</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Book</strong></td>
-      <td>Git Community Book</td>
-    </tr>
-    <tr>
-      <td><strong>Author</strong></td>
-      <td>people in the Git community</td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="http://alx.github.io/gitbook/">alx.github.io/gitbook</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<ul id="markdown-toc">
-  <li><a href="#git-object-model">Git Object Model</a>    <ul>
-      <li><a href="#the-sha">The SHA</a></li>
-      <li><a href="#the-objects">The Objects</a></li>
-      <li><a href="#different-from-svn">Different from SVN</a></li>
-    </ul>
-  </li>
-  <li><a href="#advanced-git">Advanced Git</a>    <ul>
-      <li><a href="#create-new-empty-branches">Create New Empty Branches</a></li>
-      <li><a href="#modifying-your-history">Modifying Your History</a></li>
-      <li><a href="#advanced-merging">Advanced Merging</a></li>
-      <li><a href="#git-and-email">Git and Email</a></li>
-      <li><a href="#client-side-hookds">Client Side Hookds</a></li>
-      <li><a href="#submodules">Submodules</a></li>
-    </ul>
-  </li>
-  <li><a href="#internals-and-plumbing">Internals and Plumbing</a>    <ul>
-      <li><a href="#how-git-stores-objects">How Git Stores Objects</a></li>
-      <li><a href="#the-git-index">The Git Index</a></li>
-      <li><a href="#the-packfile-index">The Packfile Index</a></li>
-      <li><a href="#raw-git">Raw Git</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="git-object-model">Git Object Model</h2>
-
-<h3 id="the-sha">The SHA</h3>
-
-<ol>
-  <li>Represents object name.</li>
-  <li>40-digit long.</li>
-  <li>Use SHA1 hash to generate based on the object content.</li>
-  <li>Keeps the identity.</li>
-</ol>
-
-<h3 id="the-objects">The Objects</h3>
-
-<p>Every object consists of three things: <strong>type, size, content</strong>.</p>
-
-<p>There are four different types of objects: <strong>blob, tree, commit, tag</strong>.</p>
-
-<p><strong>blob</strong> is a chunk of binary data, used to stroe file data.</p>
-
-<blockquote>
-  <p>The blob is entirely defined by its data, totally independent of its location.</p>
-</blockquote>
-
-<p><strong>tree</strong> is basically like a directory - it references a bunch of other trees and/or blobs.</p>
-
-<blockquote>
-  <p>Since trees and blobs, like all other objects, are named by the SHA1 hash of their contents, two trees have the same SHA1 name if and only if their contents (including, recursively, the contents of all subdirectories) are identical.</p>
-</blockquote>
-
-<p><strong>commit</strong>  points to a single tree, marking it as what the project looked like at a certain point in time. It contains meta-information about that point in time, such as a timestamp, the author of the changes since the last commit, a pointer to the previous commit(s), etc.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">➜  git show --pretty<span class="o">=</span>raw HEAD
-</span><span class="line">commit 6cc1a668111eb54ef4dbe976fff24f2e3d8b95f9
-</span><span class="line">tree 36df675d7ae80e7eef0faac893b266801a4fa94a
-</span><span class="line">parent d448c30aa03fba2884ab87c21081ef0f74d24f7e
-</span><span class="line">author wendi &lt;wendi@umeng.com&gt; 1409022714 +0800
-</span><span class="line">committer wendi &lt;wendi@umeng.com&gt; 1409022733 +0800
-</span><span class="line">
-</span><span class="line">    Update error <span class="nb">type </span>service url
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong>tag</strong> is a way to mark a specific commit as special in some way. It is normally used to tag certain commits as specific releases or something along those lines.</p>
-
-<blockquote>
-  <p>A tag object contains an object name (called simply ‘object’), object type, tag name, the name of the person (“tagger”) who created the tag, and a message, which may contain a signature</p>
-</blockquote>
-
-<h3 id="different-from-svn">Different from SVN</h3>
-
-<p>GIT stores a snapshot, while other SCM systems stores the differences between one commit and the next.</p>
-
-<h2 id="advanced-git">Advanced Git</h2>
-
-<h3 id="create-new-empty-branches">Create New Empty Branches</h3>
-
-<p>Use <strong>symobolic-ref</strong>. A symbolic ref is a regular file that stores a string that begins with ref: refs/. For example, your .git/HEAD is a regular file whose contents is ref: refs/heads/master.</p>
-
-<blockquote>
-  <p>In the past, .git/HEAD was a symbolic link pointing at
-       refs/heads/master. When we wanted to switch to another branch, we did
-       ln -sf refs/heads/newbranch .git/HEAD, and when we wanted to find out
-       which branch we are on, we did readlink .git/HEAD. But symbolic links
-       are not entirely portable, so they are now deprecated and symbolic refs
-       (as described above) are used by default.</p>
-</blockquote>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git symbolic-ref HEAD refs/heads/newbranch
-</span><span class="line">  <span class="c"># no branch is created,</span>
-</span><span class="line">  <span class="c"># and all files are deleted to index.</span>
-</span><span class="line"><span class="nv">$ </span>rm .git/index
-</span><span class="line">git clean -fdx
-</span><span class="line">&lt;<span class="k">do </span>work&gt;
-</span><span class="line">git add your files
-</span><span class="line">git commit -m <span class="s1">&#39;Initial commit&#39;</span>
-</span><span class="line">  <span class="c"># branch &#39;newbranch&#39; is created.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h3 id="modifying-your-history">Modifying Your History</h3>
-
-<p>use <code>git filter-branch</code> to rewrite branches.</p>
-
-<h3 id="advanced-merging">Advanced Merging</h3>
-
-<p>When merging, one parent will be <strong>HEAD</strong>, and the other will be the tip of the other branch, which is stored temporarily in <strong>MERGE_HEAD</strong>.</p>
-
-<p>During the merge, the index holds three versions of each file. Each of these three “file stages” represents a different version of the file:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git show :1:file.txt <span class="c"># the file in a common ancestor of both branches.</span>
-</span><span class="line"><span class="nv">$ </span>git show :2:file.txt <span class="c"># the version from HEAD.</span>
-</span><span class="line"><span class="nv">$ </span>git show :3:file.txt <span class="c"># the version from MERGE_HEAD.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Some special diff options allow diffing the working directory against any of these stages:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git diff -1 file.txt <span class="c"># diff against stage 1</span>
-</span><span class="line"><span class="nv">$ </span>git diff --base file.txt <span class="c"># same as the above</span>
-</span><span class="line"><span class="nv">$ </span>git diff -2 file.txt <span class="c"># diff against stage 2</span>
-</span><span class="line"><span class="nv">$ </span>git diff --ours file.txt <span class="c"># same as the above</span>
-</span><span class="line"><span class="nv">$ </span>git diff -3 file.txt <span class="c"># diff against stage 3</span>
-</span><span class="line"><span class="nv">$ </span>git diff --theirs file.txt <span class="c"># same as the above.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h3 id="git-and-email">Git and Email</h3>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>man git-format-patch <span class="c"># Prepare patches for email submission</span>
-</span><span class="line"><span class="nv">$ </span>man git-am <span class="c"># Apply a series of patches from a mailbox</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><code>git format-patch origin</code> will produce a numbered series of files in the current directory, one of each patch in the current branch but not in origin/HEAD.</p>
-
-<p><code>git am patches.mbox</code></p>
-
-<h3 id="client-side-hookds">Client Side Hookds</h3>
-
-<p>by example, <code>GIT_DIR/hooks/pre-commit</code></p>
-
-<h3 id="submodules">Submodules</h3>
-
-<p>Create the submodules:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>mkdir ~/git
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ~/git
-</span><span class="line"><span class="nv">$ </span><span class="k">for </span>i in a b c d
-</span><span class="line"><span class="k">do</span>
-</span><span class="line"><span class="k">    </span>mkdir <span class="nv">$i</span>
-</span><span class="line">    <span class="nb">cd</span> <span class="nv">$i</span>
-</span><span class="line">    git init
-</span><span class="line">    <span class="nb">echo</span> <span class="s2">&quot;module $i&quot;</span> &gt; <span class="nv">$i</span>.txt
-</span><span class="line">    git add <span class="nv">$i</span>.txt
-</span><span class="line">    git commit -m <span class="s2">&quot;Initial commit, submodule $i&quot;</span>
-</span><span class="line">    <span class="nb">cd</span> ..
-</span><span class="line"><span class="k">done</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Create the superproject and add all the submodules:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>mkdir super
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd </span>super
-</span><span class="line"><span class="nv">$ </span>git init
-</span><span class="line"><span class="nv">$ </span><span class="k">for </span>i in a b c d
-</span><span class="line"><span class="k">do</span>
-</span><span class="line"><span class="k">    </span>git submodule add ~/git/<span class="nv">$i</span>
-</span><span class="line"><span class="k">done</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>See what files git-submodule created:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>ls -a
-</span><span class="line">.  ..  .git  .gitmodules  a  b  c  d
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The <code>git-submodule add</code> command does a couple of things:</p>
-
-<ul>
-  <li>It clones the submodule under the current directory and by default checks out the master branch.</li>
-  <li>It adds the submodule’s clone path to the gitmodules file and adds this file to the index, ready to be committed.</li>
-  <li>It adds the submodule’s current commit ID to the index, ready to be committed.</li>
-</ul>
-
-<p>Commit the superproject:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git commit -m <span class="s2">&quot;Add submodules a, b, c and d.&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Clone the superproject:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ..
-</span><span class="line"><span class="nv">$ </span>git clone super cloned
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd </span>cloned
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Check submodule status:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git submodule status
-</span><span class="line">-d266b9873ad50488163457f025db7cdd9683d88b a
-</span><span class="line">-e81d457da15309b4fef4249aba9b50187999670d b
-</span><span class="line">-c1536a972b9affea0f16e0680ba87332dc059146 c
-</span><span class="line">-d96249ff5d57de5de093e6baff9e0aafa5276a74 d
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Register the submodule into <code>.git/config</code>:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git submodule init
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Clone the submodules and check out the commits specified in the superproject:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git submodule update
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd </span>a
-</span><span class="line"><span class="nv">$ </span>ls -a
-</span><span class="line">.  ..  .git  a.txt
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>One major difference between <code>git-submodule update</code> and <code>git-submodule add</code> is that git-submodule update checks out a specific commit, rather than the tip of a branch. It’s like checking out a tag: <strong>the head is detached</strong>, so you’re not working on a branch.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git branch
-</span><span class="line">* <span class="o">(</span>no branch<span class="o">)</span>
-</span><span class="line">master
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Check out or create a new branch:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git checkout master
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git checkout -b fix-up
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Do work and commit:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;adding a line again&quot;</span> &gt;&gt; a.txt
-</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;Updated the submodule from within the superproject.&quot;</span>
-</span><span class="line"><span class="nv">$ </span>git push
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ..
-</span><span class="line"><span class="nv">$ </span>git diff
-</span><span class="line">diff --git a/a b/a
-</span><span class="line">index d266b98..261dfac 160000
-</span><span class="line">--- a/a
-</span><span class="line">+++ b/a
-</span><span class="line">@@ -1 +1 @@
-</span><span class="line">-Subproject commit d266b9873ad50488163457f025db7cdd9683d88b
-</span><span class="line">+Subproject commit 261dfac35cb99d380eb966e102c1197139f7fa24
-</span><span class="line"><span class="nv">$ </span>git add a
-</span><span class="line"><span class="nv">$ </span>git commit -m <span class="s2">&quot;Updated submodule a.&quot;</span>
-</span><span class="line"><span class="nv">$ </span>git push
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong>Cautions on Submodules</strong>:</p>
-
-<p><em>Always publish the submodule change before publishing the change to the superproject that references it. If you forget to publish the submodule change, others won’t be able to clone the repository:</em></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ~/git/super/a
-</span><span class="line"><span class="nv">$ </span><span class="nb">echo </span>i added another line to this file &gt;&gt; a.txt
-</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;doing it wrong this time&quot;</span>
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ..
-</span><span class="line"><span class="nv">$ </span>git add a
-</span><span class="line"><span class="nv">$ </span>git commit -m <span class="s2">&quot;Updated submodule a again.&quot;</span>
-</span><span class="line"><span class="nv">$ </span>git push
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ~/git/cloned
-</span><span class="line"><span class="nv">$ </span>git pull
-</span><span class="line"><span class="nv">$ </span>git submodule update
-</span><span class="line">error: pathspec <span class="s1">&#39;261dfac35cb99d380eb966e102c1197139f7fa24&#39;</span> did not match any file<span class="o">(</span>s<span class="o">)</span> known to git.
-</span><span class="line">Did you forget to <span class="s1">&#39;git add&#39;</span>?
-</span><span class="line">Unable to checkout <span class="s1">&#39;261dfac35cb99d380eb966e102c1197139f7fa24&#39;</span> in submodule path <span class="s1">&#39;a&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><em>It’s not safe to run git submodule update if you’ve made and committed changes within a submodule without checking out a branch first. They will be silently overwritten</em>:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>cat a.txt
-</span><span class="line">module a
-</span><span class="line"><span class="nv">$ </span><span class="nb">echo </span>line added from private2 &gt;&gt; a.txt
-</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;line added inside private2&quot;</span>
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ..
-</span><span class="line"><span class="nv">$ </span>git submodule update
-</span><span class="line">Submodule path <span class="s1">&#39;a&#39;</span>: checked out <span class="s1">&#39;d266b9873ad50488163457f025db7cdd9683d88b&#39;</span>
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd </span>a
-</span><span class="line"><span class="nv">$ </span>cat a.txt
-</span><span class="line">module a
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="internals-and-plumbing">Internals and Plumbing</h2>
-
-<h3 id="how-git-stores-objects">How Git Stores Objects</h3>
-
-<p><strong>Loose objects</strong> are the simpler format. It is simply the compressed data stored in a single file on disk.</p>
-
-<p>If the sha of your object is <code>ab04d884140f7b0cf8bbf86d6883869f16a46f65</code>, then the file will be stored in the following path:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">GIT_DIR/objects/ab/04d884140f7b0cf8bbf86d6883869f16a46f65
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The Ruby implementation of object storage:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">put_raw_object</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">type</span><span class="p">)</span>
-</span><span class="line">  <span class="n">size</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">length</span><span class="o">.</span><span class="n">to_s</span>
-</span><span class="line">
-</span><span class="line">  <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">type</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">size</span><span class="si">}</span><span class="s2">#body&quot;</span>
-</span><span class="line">  <span class="n">store</span> <span class="o">=</span> <span class="n">header</span> <span class="o">+</span> <span class="n">content</span>
-</span><span class="line">
-</span><span class="line">  <span class="n">sha1</span> <span class="o">=</span> <span class="ss">Digest</span><span class="p">:</span><span class="ss">:SHA1</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="n">store</span><span class="p">)</span>
-</span><span class="line">  <span class="n">path</span> <span class="o">=</span> <span class="vi">@git_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">sha1</span><span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="mi">2</span><span class="o">]</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">sha1</span><span class="o">[</span><span class="mi">2</span><span class="o">.</span><span class="n">.</span><span class="mi">40</span><span class="o">]</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">if</span> <span class="o">!</span><span class="no">File</span><span class="o">.</span><span class="n">exists?</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-</span><span class="line">    <span class="n">content</span> <span class="o">=</span> <span class="ss">Zlib</span><span class="p">:</span><span class="ss">:Deflate</span><span class="o">.</span><span class="n">deflate</span><span class="p">(</span><span class="n">store</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line">    <span class="no">FileUtils</span><span class="o">.</span><span class="n">mkdir_p</span><span class="p">(</span><span class="vi">@directory</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">sha1</span><span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="mi">2</span><span class="o">]</span><span class="p">)</span>
-</span><span class="line">    <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
-</span><span class="line">      <span class="n">f</span><span class="o">.</span><span class="n">write</span> <span class="n">content</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">  <span class="k">return</span> <span class="n">sha1</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong>Packed Objects</strong>. In order to save that space, Git utilizes the packfile. This is a format where Git will only save the part that has changed in the second file, with a pointer to the file it is similar to.</p>
-
-<h3 id="the-git-index">The Git Index</h3>
-
-<p>The index is a binary file (generally kept in .git/index) containing a sorted list of path names.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git ls-files --stage
-</span><span class="line">100644 63c918c667fa005ff12ad89437f2fdc80926e21c 0
-</span><span class="line">100644 5529b198e8d14decbe4ad99db3f7fb632de0439d 0
-</span><span class="line">100644 6ff87c4664981e4397625791c8ea3bbb5f2279a3 0
-</span><span class="line">100644 a37b2152bd26be2c2289e1f57a292534a51a93c7 0
-</span><span class="line">100644 fbefe9a45b00a54b58d94d06eca48b03d40a50e0 0
-</span><span class="line">...
-</span><span class="line">100644 2511aef8d89ab52be5ec6a5e46236b4b6bcd07ea 0
-</span><span class="line">100644 2ade97b2574a9f77e7ae4002a4e07a6a38e46d07 0
-</span><span class="line">100644 d5de8292e05e7c36c4b68857c1cf9855e3d2f70a 0
-</span><span class="line">.gitignore
-</span><span class="line">.mailmap
-</span><span class="line">COPYING
-</span><span class="line">Documentation/.gitignore
-</span><span class="line">Documentation/Makefile
-</span><span class="line">xdiff/xtypes.h
-</span><span class="line">xdiff/xutils.c
-</span><span class="line">xdiff/xutils.h
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<ol>
-  <li>
-    <p>The index contains all the information necessary to generate a single (uniquely determined) tree object.</p>
-  </li>
-  <li>
-    <p>The index enables fast comparisons between the tree object it defines and the working tree.</p>
-  </li>
-  <li>
-    <p>It can efficiently represent information about merge conflicts between different tree objects.</p>
-  </li>
-</ol>
-
-<h3 id="the-packfile-index">The Packfile Index</h3>
-
-<p>Stored in <code>.git/objects/pack</code>.</p>
-
-<p>Importantly, packfile indexes are not neccesary to extract objects from a packfile, they are simply used to quickly retrieve individual objects from a pack.</p>
-
-<h3 id="raw-git">Raw Git</h3>
-
-<p><strong>Creating Blobs</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git <span class="nb">hash</span>-object -w myfile.txt
-</span><span class="line">6ff87c4664981e4397625791c8ea3bbb5f2279a3
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong>Creating Trees</strong></p>
-
-<p>use <code>git mktree</code>.</p>
-
-<p><strong>Creating Commits</strong></p>
-
-<p>use <code>git commit-tree</code>.</p>
-
-<p><strong>Updating a Branch Ref</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">&#39;a5f85ba5875917319471dfd98dfc636c1dc65650&#39;</span> &gt; .git/refs/heads/master
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>a safer way of doing that is to use the <code>git update-ref</code> command:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git update-ref refs/heads/master a5f85ba5875917319471dfd98dfc636c1dc65650
-</span></code></pre></td></tr></table></div></figure></notextile></div>
 ]]></content>
   </entry>
   
