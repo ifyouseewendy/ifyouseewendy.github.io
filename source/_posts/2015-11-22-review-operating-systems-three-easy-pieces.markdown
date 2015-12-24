@@ -274,7 +274,7 @@ Given our assumptions about jobs all arriving at the same time, we could prove t
 
 **Policy 1-2 SJF (Shortest Job First)**
 
-under assumption: 1,2,3,4,5
+under assumption: <del>1,</del>2,3,4,5
 
 Why is FIFO not good?
 
@@ -286,7 +286,9 @@ No, it’s **non-preemptive**. In the old days of batch computing, a number of n
 
 **Policy 1-3 STCF (Shortest Time-to-Completion First) or PSJF (Preemptive Shortest Job First)**
 
-under assumption: 1,2,3,4,5
+under assumption: <del>1,2,3,</del>4,5
+
+Notice that there a significant difference between SJF and STCF. As SJF is non-preemptive, system would run each job to completion before running other jobs. But STCF prefers the shortest time-to-completion jobs, which should preempt CPU to make sense. That's why STCF also has another name, PSFJ, Preemptive Shortest Job First.
 
 **Policy 2 RR (Round-Robin)**
 
