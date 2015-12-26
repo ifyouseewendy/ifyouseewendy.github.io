@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2015-12-26T11:43:49+08:00</updated>
+  <updated>2015-12-26T11:47:17+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -177,7 +177,7 @@ int pthread_join(pthread_t thread, void **value_ptr);
 
 <p>Note that one has to be extremely careful with how values are returned from a thread. In particular, never return a pointer which refers to something allocated on the thread’s call stack.</p>
 
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/s-thread_waiting_demo_wrong.png" alt="os-thread_waiting_demo_wrong.png" /></p>
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-thread_waiting_demo_wrong.png" alt="os-thread_waiting_demo_wrong.png" /></p>
 
 <p>However, when it returns, the value is automatically deallocated (that’s why the stack is so easy to use, after all!), and thus, passing back a pointer to a now deallocated variable will lead to all sorts of bad results.</p>
 
