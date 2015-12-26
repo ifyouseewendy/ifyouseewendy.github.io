@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Review] Operating Systems Three Easy Pieces"
+title: "[Review] Virtualization - Operating Systems Three Easy Pieces"
 date: 2015-11-22 13:44:38 +0800
 comments: true
 categories: ['Books', 'OS']
@@ -30,11 +30,11 @@ Many millions (and these days, even billions) of times every second, the process
 
 The primary way the OS does this is through a general technique that we call virtualization. That is, the OS takes a physical resource (such as the processor, or memory, or a disk) and transforms it into a more general, powerful, and easy-to-use virtual form of itself. Thus, we sometimes refer to the operating system as a **virtual machine**.
 
-**Virtualising the CPU**
+**Virtualizing the CPU**
 
 Turning a single CPU (or small set of them) into a seemingly infinite number of CPUs and thus allowing many programs to seemingly run at once is what we call virtualizing the CPU.
 
-**Virtualising the Memory**
+**Virtualizing the Memory**
 
 Memory is just an array of bytes; to **read** memory, one must specify an **address** to be able to access the data stored there; to **write** (or update) memory, one must also specify the data to be written to the given address.
 
@@ -467,7 +467,7 @@ Well, lottery scheduling has one nice property that stride scheduling does not: 
 
 Address space, easy to use abstraction of physical memory, and it is the running program’s view of memory in the system. Understanding this fundamental OS ab- straction of memory is key to understanding how memory is virtualized.
 
-When the OS does this, we say the OS is **virtualising memory**.
+When the OS does this, we say the OS is **virtualizing memory**.
 
 **Goals**
 
