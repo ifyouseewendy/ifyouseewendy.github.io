@@ -1,0 +1,649 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>[Review] Concurrency - Operating Systems Three Easy Pieces - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="Books, OS Dec 26th, 2015 [Review] Concurrency - Operating Systems Three Easy Pieces Book Operating Systems: Three Easy Pieces Author Remzi H. Arpaci &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2015/12/26/review-concurrency-operating-systems-three-easy-pieces">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2015/12/26/review-concurrency-operating-systems-three-easy-pieces/">[Review] Concurrency - Operating Systems Three Easy Pieces</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/12/19/web-performance-optimization/">[Review] Website Performance Optimization</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/11/30/some-hash-tricks-in-ruby/">Some Hash Tricks in Ruby</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/11/22/review-virtualization-operating-systems-three-easy-pieces/">[Review] Virtualization - Operating Systems Three Easy Pieces</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2015/11/11/preload-eager_load-includes-references-joins/">Preload, Eager_load, Includes, References, and Joins in Rails</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/books/'>Books</a>, <a class='category' href='/blog/categories/os/'>OS</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Dec 26<span>th</span>, 2015</a>
+</span>
+
+    </div>
+    <h1>
+      [Review] Concurrency - Operating Systems Three Easy Pieces
+    </h1>
+  
+</header>
+
+
+  <section><table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>Operating Systems: Three Easy Pieces</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td><a href="http://www.cs.wisc.edu/~remzi">Remzi H. Arpaci-Dusseau</a> and <a href="http://www.cs.wisc.edu/~dusseau">Andrea C. Arpaci-Dusseau</a></td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">pages.cs.wisc.edu/~remzi/OSTEP</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul id="markdown-toc">
+  <li><a href="#concurrency">Concurrency</a>    <ul>
+      <li><a href="#chapter-26---introduction">Chapter 26 - Introduction</a></li>
+      <li><a href="#chapter-27---interlude-thread-api">Chapter 27 - Interlude: Thread API</a></li>
+      <li><a href="#chapter-28---locks">Chapter 28 - Locks</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="concurrency">Concurrency</h1>
+
+<h2 id="chapter-26---introduction">Chapter 26 - Introduction</h2>
+
+<p><strong>Background</strong></p>
+
+<p>With time sharing, we can take a single physical CPU and turn it into multiple virtual CPUs, thus enabling the illusion of multiple programs running at the same time, through time sharing.</p>
+
+<p>With paging (base and bounds, segmentation), we can create the illusion of a large, private virtual memory for each process; this abstraction of the address space enables each program to behave as if it has its own memory when indeed the OS is secretly multiplexing address spaces across physical memory (and sometimes, disk).</p>
+
+<p>But the abstraction of running program we use along is the process, and it’s a classic view of a single point of execution within a program. Now we introduce a new abstraction, thread. And  a <strong>multi-threaded</strong> program has more than one point of execution.</p>
+
+<p>Perhaps another way to think of this is that each thread is very much like a separate process, except for one difference: they share the same address space and thus ca access the same data.</p>
+
+<p><strong>Thread vs. Process</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-thread_vs_process.png" alt="os-thread_vs_process.png" /></p>
+
+<p>Address space</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-thread_address_space.png" alt="os-thread_address_space.png" /></p>
+
+<p><strong>Advantage</strong></p>
+
+<p>Efficiency, as they share the same address space.</p>
+
+<ul>
+  <li>Save storage</li>
+  <li>Easy context switching (no need to change page)</li>
+</ul>
+
+<p><strong>Issues</strong></p>
+
+<ul>
+  <li><strong>Sharing data</strong>, that of accessing shared variables and the need to support atomicity for critical sections.</li>
+  <li><strong>Waiting for another</strong>, sleeping and waking interaction, where one thread must wait for another to complete some action before it continues.</li>
+</ul>
+
+<p><strong>Shared Data</strong></p>
+
+<p>The heart of the problem is <strong>uncontrolled scheduling</strong>.</p>
+
+<p>It is a wonderful and hard problem, and should make your mind hurt (a bit). If it doesn’t, then you don’t understand! Keep working until your head hurts; you then know you’re headed in the right directinn.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-thread_sharing_data.png" alt="os-thread_sharing_data.png" /></p>
+
+<p><strong>Key Concurrency Terms</strong> (from Edsger Dijkstra)</p>
+
+<p>A <strong>critical section</strong> is a piece of code that accesses a shared resource, usually a variable or data structure.</p>
+
+<p>A <strong>race condition</strong> arises if multiple threads of execution enter the critical section at roughly the same time; both attempt to update the shared data structure, leading to a surprising (and perhaps un- desirable) outcome. The results depend on the timing execution of the code.</p>
+
+<p>An <strong>indeterminate</strong> program consists of one or more races onditions; the output of the program varies from run to run, depending on which threads ran when. The outcome is thus not deterministic, something we usually expect from computer systems.</p>
+
+<p>To avoid these problems, threads should use some kind of <strong>mutual exclusion primitives</strong>; doing so guarantees that only a single thread ever enters a critical section, thus avoiding racoes, and resulting in deterministic program outputs.</p>
+
+<p><strong>Atomic</strong></p>
+
+<p>Atomic operations are one of the most powerful underlying techniques in building computer systems.</p>
+
+<p>The idea behind making a series of actions <strong>atomic</strong> is simply expressed with the phrase “all or nothing”; it should either appear as if all of the actions you wish to group together occurred, or that none of them occurred, with no in-between state visible. Sometimes, the grouping of many actions into a single atomic action is called a <strong>transaction</strong>.</p>
+
+<p>In our theme of exploring concurrency, we’ll be using synchronization primitives to turn short sequences of instructions into atomic blocks of execution.</p>
+
+<p><strong>The Wish For Atomicity</strong></p>
+
+<p>Hardware guarantees the instructions is atomic, and provide a general set we call <strong>synchronisation primitives</strong> to ensure atomicity.</p>
+
+<p>Hardware guarantees that the instructions execute atomically. It could not be interrupted mid-instruction, because that is precisely the guarantee we receive from the hardware: when an interrupt occurs, either the instruction has not run at all, or it has run to completion; there is no in-between state.</p>
+
+<p>But, would we really want the hardware to support an “atomic update of B-tree” instruction?</p>
+
+<p>No. Thus, what we will instead do is ask the hardware for a few useful instructions upon which we can build a general set of what we call <strong>synchronization primitives</strong>. By using these hardware synchronization primitives, in combination with some help from the operating system, we will be able to build multi-threaded code that accesses critical sections in a synchronized and controlled manner, and thus reliably produces the correct result despite the challenging nature of concurrent execution.</p>
+
+<p><strong>Why in OS Class?</strong></p>
+
+<p>“History” is the one-word answer; the OS was the first concurrent program, and many techniques were created for use within the OS. Later, with multi-threaded processes, application programmers also had to consider such things.</p>
+
+<p>OS designers, from the very beginning of the introduction of the interrupt, had to worry about how the OS updates internal structures. Not surprisingly, page tables, process lists, file system structures, and virtually every kernel data structure has to be carefully accessed, with the proper synchronization primitives, to work correctly.</p>
+
+<h2 id="chapter-27---interlude-thread-api">Chapter 27 - Interlude: Thread API</h2>
+
+<p><strong>Guidelines</strong></p>
+
+<p>There are a number of small but important things to remember when you use the POSIX thread library.</p>
+
+<ul>
+  <li><strong>Keep it simple</strong>. Above all else, any code to lock or signal between threads should be as simple as possible. Tricky thread interactions lead to bugs.</li>
+  <li>Minimize thread interactions. Try to keep the number of ways in which threads interact to a minimum.</li>
+  <li><strong>Each thread has its own stack</strong>. If you have a locally-allocated variable inside of some function a thread is exe- cuting, it is essentially private to that thread; no other thread can (easily) access it. To share data between threads, the values must be in the heap or otherwise some locale that is globally accessible.</li>
+  <li><strong>Be careful with how you pass arguments to, and return values from, threads.</strong> In particular, any time you are passing a reference to a variable allocated on the stack, you are probably doing something wrong.</li>
+  <li><strong>Check your return codes.</strong> Of course, in any C and UNIX program- ming you do, you should be checking each and every return code, and it’s true here as well.</li>
+  <li><strong>Always use condition variables to signal between threads.</strong> While it is often tempting to use a simple flag, don’t do it.</li>
+  <li><strong>Initialize locks and condition variables.</strong> Failure to do so will lead to code that sometimes works and sometimes fails in very strange ways.</li>
+  <li><strong>Use the manual pages.</strong> On Linux, in particular, the pthread man pages (man -k pthread) are highly informative and discuss much of the nuances pre- sented here, often in even more detail.</li>
+</ul>
+
+<p><strong>Thread Creation</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="cp">#include &lt;pthread.h&gt;</span>
+</span><span class="line"><span class="kt">int</span> <span class="nf">pthread_create</span><span class="p">(</span><span class="n">pthread_t</span> <span class="o">*</span> <span class="kr">thread</span><span class="p">,</span>
+</span><span class="line">                     <span class="k">const</span> <span class="n">pthread_attr_t</span> <span class="o">*</span>  <span class="n">attr</span><span class="p">,</span>
+</span><span class="line">                     <span class="kt">void</span> <span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">start_routine</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
+</span><span class="line">                     <span class="kt">void</span> <span class="o">*</span>  <span class="n">arg</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li><code>thread</code>, is a pointer to a structure of type pthread t; we’ll use this structure to interact with this thread</li>
+  <li><code>attr</code>, is used to specify any attributes this thread might have. Some examples include setting the stack size or perhaps in- formation about the scheduling priority of the thread.</li>
+  <li>The third argument is the most complex, but is really just asking: which function should this thread start running in? In C, we call this a function pointer, and this one tells us the following is expected: a function name (<code>start routine</code>), which is passed a single argument of type void * (as indicated in the parentheses after start routine), and which returns a value of type void * (i.e., a void pointer).</li>
+  <li><code>arg</code>, is exactly the argument to be passed to the function where the thread begins execution.</li>
+</ul>
+
+<p><strong><em>Why do we need these void pointers?</em></strong></p>
+
+<p>Having a void pointer as an argument to the function start routine allows us to pass in any type of argument; having it as a return value allows the thread to return any type of result.</p>
+
+<p><strong>Thread Completion</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="kt">int</span> <span class="nf">pthread_join</span><span class="p">(</span><span class="n">pthread_t</span> <span class="kr">thread</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">value_ptr</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li><code>thread</code> is used to specify which thread to wait for</li>
+  <li><code>value_ptr</code> is a pointer to the return value you expect to get back. Because the routine can return anything, it is defined to return a pointer to void; because the pthread join() routine changes the value of the passed in argument, you need to pass in a pointer to that value, not just the value itself.</li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-thread_waiting_demo.png" alt="os-thread_waiting_demo.png" /></p>
+
+<p>Note that one has to be extremely careful with how values are returned from a thread. In particular, never return a pointer which refers to something allocated on the thread’s call stack.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/s-thread_waiting_demo_wrong.png" alt="os-thread_waiting_demo_wrong.png" /></p>
+
+<p>However, when it returns, the value is automatically deallocated (that’s why the stack is so easy to use, after all!), and thus, passing back a pointer to a now deallocated variable will lead to all sorts of bad results.</p>
+
+<p>Not all code that is multi-threaded uses the join routine. For example, a multi-threaded web server might create a number of worker threads, and then use the main thread to accept requests and pass them to the workers, indefinitely. Such long-lived programs thus may not need to join.</p>
+
+<p><strong>Locks</strong></p>
+
+<p>Providing mutual exclusion to a critical section via locks.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="kt">int</span> <span class="nf">pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</span><span class="line"><span class="kt">int</span> <span class="nf">pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>When you have a region of code you realize is a critical section, and thus needs to be pro- tected by locks in order to operate as desired.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="n">pthread_mutex_t</span> <span class="n">lock</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">Pthread_mutex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</span><span class="line"><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// or whatever your critical section is</span>
+</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">olock</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// Always check for failure</span>
+</span><span class="line"><span class="kt">void</span> <span class="nf">Pthread_mutex_init</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">pthread_mutex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span> <span class="c1">// dynamic initialisation, or PTHREAD_MUTEX_INITIALIZER</span>
+</span><span class="line">    <span class="n">assert</span><span class="p">(</span><span class="n">rc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// always check success!</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="kt">void</span> <span class="nf">Pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span><span class="line">    <span class="n">assert</span><span class="p">(</span><span class="n">rc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="kt">void</span> <span class="nf">Pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span><span class="line">    <span class="n">assert</span><span class="p">(</span><span class="n">rc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>Condition Variables</strong></p>
+
+<p>Condition variables are useful when some kind of signaling must take place between threads, if one thread is waiting for another to do something before it can continue.</p>
+
+<p>To use a condition variable, one has to in addition have a lock that is associated with this condition. When calling either of the above routines, this lock should be held.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">,</span> <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</span><span class="line"><span class="kt">int</span> <span class="nf">pthread_cond_signal</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>pthread_cond_wait(), puts the calling thread to sleep, ad thus waits for some other thread to signal it, usually when something in the program has changed that the now-sleeping thread might care about.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="n">pthread_mutex_t</span> <span class="n">lock</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>
+</span><span class="line"><span class="n">pthread_cond_t</span>  <span class="n">cond</span> <span class="o">=</span> <span class="n">PTHREAD_COND_INITIALIZER</span><span class="p">;</span>
+</span><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</span><span class="line"><span class="k">while</span> <span class="p">(</span><span class="n">ready</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class="line">    <span class="n">Pthread_cond_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cond</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>After initialization of the relevant lock and condition, a thread checks to see if the variable ready has yet been set to something other than zero. If not, the thread simply calls the wait routine in order to sleep until some other thread wakes it.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</span><span class="line"><span class="n">ready</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class="line"><span class="n">Pthread_cond_signal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cond</span><span class="p">);</span>
+</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Notice 1</p>
+
+<p>When signaling (as well as when modifying the global variable ready), we always make sure to have the lock held. This ensures that we don’t accidentally introduce a race condition into our code.</p>
+
+<p>Notice 2</p>
+
+<p>Notice that the wait call takes a lock as its second parameter, whereas the signal call only takes a condition. The reason for this difference is that the wait call, in addition to putting the calling thread to sleep, releases the lock when putting said caller to sleep.</p>
+
+<p>Imagine if it did not: how could the other thread acquire the lock and signal it to wake up? However, before returning after being woken, the pthread_cond_wait() re-acquires the lock, thus ensuring that any time the waiting thread is running between the lock acquire at the beginning of the wait sequence, and the lock release at the end, it holds the lock.</p>
+
+<p>Notice 3</p>
+
+<p>The waiting thread re-checks the condition in a while loop, instead of a simple if statement. Although it rechecks the condition (perhaps adding a little overhead), there are some pthread implementations that could spuriously wake up a waiting thread; in such a case, without rechecking, the waiting thread will continue thinking that the condition has changed even though it has not.</p>
+
+<p>Notice 4</p>
+
+<p>Don’t ever use these ad hoc synchronisations.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="c1">// waitingnwhile (ready == 0)</span>
+</span><span class="line">    <span class="p">;</span> <span class="c1">// spin</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// signaling</span>
+</span><span class="line"><span class="n">ready</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>First, it performs poorly in many cases (spinning for a long time just wastes CPU cycles). Second, it is error prone.</p>
+
+<p><strong>Others</strong></p>
+
+<p>On the link line, you must also explicitly link with the pthreads library, by adding the -pthread flag.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">prompt&gt; gcc -o main main.c -Wall -pthread
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="chapter-28---locks">Chapter 28 - Locks</h2>
+
+<p><strong>The Basic Idea</strong></p>
+
+<p>Programmers annotate source code with locks, putting them around critical sections, and thus ensure that any such critical section executes as if it were a single atomic instruction.</p>
+
+<p>This lock variable (or just “lock” for short) holds the state of the lock at any instant in time. It is either available (or unlocked or free) and thus no thread holds the lock, or acquired (or locked or held), and thus exactly one thread holds the lock and presumably is in a critical section.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_demo.png" alt="os-lock_demo.png" /></p>
+
+<p>In general, we view thre
+ads as entities created by the programmer but scheduled by the OS, in any fashion that the OS chooses. Locks yield some of that control back to the programmer; by putting a lock around a section of code, the programmer can guarantee that no more than a single thread can ever be active within that code.</p>
+
+<p>The name that the <strong>POSIX</strong> library uses for a lock is a <strong>mutex</strong>, as it is used to provide <strong>mutual exclusion</strong> between threads.</p>
+
+<p><strong>Building A Lock</strong></p>
+
+<p>Some hardware support (in the form of a more powerful instruction) plus some operating system support (e.g., in the form of park() and unpark() primitives on Solaris, or futex on Linux).</p>
+
+<p><strong>Evaluating Locks</strong></p>
+
+<ul>
+  <li>The first is whether the lock does its basic task, which is to provide <strong>mutual exclusion</strong>. Basically, does the lock work, preventing multiple threads from entering a critical section?</li>
+  <li>The second is <strong>fairness</strong>. Does each thread contending for the lock get a fair shot at acquiring it once it is free?</li>
+  <li>The final criterion is <strong>performance</strong>, specifically the time overheads added by using the lock.</li>
+</ul>
+
+<p><strong>Controlling Interrupts</strong></p>
+
+<p>Turning off interrupts is only used in limited contexts as a mutual-exclusion primitive. For example, in some cases an operating system itself will use interrupt masking to guarantee atomicity when accessing its own data structures, or at least to prevent certain messy interrupt handling situations from arising. This usage makes sense, as the trust issue disappears inside the OS, which always trusts itself to perform privileged operations anyhow.</p>
+
+<p><strong>Plain Solution</strong></p>
+
+<p>Without hardware support, just use a flag.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_plain_solution.png" alt="os-lock_plain_solution.png" /></p>
+
+<p>The core issue is that the testing and setting part can be interrupted by context switch, and both thread enters the critical section.</p>
+
+<p>You should get used to this thinking about concurrent programming. Maybe pretend yourself as a <strong>malicious scheduler</strong> to understand the concurrent execution.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_no_mutal_exclusion.png" alt="os-lock_no_mutal_exclusion.png" /></p>
+
+<p><strong>Test And Set (Atomic Exchange)</strong></p>
+
+<p>Let hardware provides a transaction-like instrument to ensure the sequence of operations is performed <strong>atomically</strong>.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_test_and_set.png" alt="os-lock_test_and_set.png" /></p>
+
+<p>The key, of course, is that this sequence of operations is performed atomically. The reason it is called “test and set” is that it enables you to “test” the old value (which is what is returned) while simultaneously “setting” the memory location to a new value; as it turns out, this slightly more powerful instruction is enough to build a simple spin lock</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_spin_lock_by_test_and_set.png" alt="os-lock_spin_lock_by_test_and_set.png" /></p>
+
+<p>By making both the test (of the old lock value) and set (of the new value) a single atomic operation, we ensure that only one thread acquires the lock.</p>
+
+<p><strong>Compare-And-Swap</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_compare_and_swap.png" alt="os-lock_compare_and_swap.png" />
+<img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_spin_lock_by_compare_and_swap.png" alt="os-lock_spin_lock_by_compare_and_swap.png" /></p>
+
+<p>compare-and-swap is a more powerful instruction than test-and-set. We will make some use of this power in the future when we briefly delve into <strong>wait-free synchronisation</strong>.</p>
+
+<p><strong>Load-Linked and Store-Conditional</strong></p>
+
+<p>Some platforms provide a pair of instructions that work in concert to help build critical sections. On the MIPS architecture, for example, the load-linked and store-conditional instructions can be used in tandem to build locks and other concurrent structures.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_load_linked_store_conditional.png" alt="os-lock_load_linked_store_conditional.png" />
+<img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_spin_lock_by_load_linked_store_conditional.png" alt="os-lock_spin_lock_by_load_linked_store_conditional.png" /></p>
+
+<p><strong>Fetch-And-Add</strong></p>
+
+<p>Fetch-and-add atomically increments a value while returning the old value at a particular address.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_fetch_and_add.png" alt="os-lock_fetch_and_add.png" /></p>
+
+<p>Fetch-and-add could build a <em>ticket lock</em>, this solution uses a ticket and turn variable in combination to build a lock. The basic operation is pretty simple: when a thread wishes to acquire a lock, it first does an atomic fetch-and-add on the ticket value; that value is now considered this thread’s “turn” (myturn). The globally shared lock-&gt;turn is then used to determine which thread’s turn it is; when (myturn == turn) for a given thread, it is that thread’s turn to enter the critical section. It has the advantage of the fairness, ensures progress for all threads. Once a thread is assigned its ticket value, it will be scheduled at some point in the future</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_ticket_lock_by_fetch_and_add.png" alt="os-lock_ticket_lock_by_fetch_and_add.png" /></p>
+
+<p><strong>Spin Lock</strong></p>
+
+<p>We use a while loop to endlessly check the value of a flag, this technique is known as <strong>spin-waiting</strong>. Spin-waiting wastes time waiting for another thread to release a lock. The waste is exceptionally high on a uniprocessor, where the thread that the waiter is waiting for cannot even run (at least, until a context switch occurs)!</p>
+
+<p><strong>Spin lock</strong> is the simplest type of lock to build, and simply spins, using CPU cycles, until the lock becomes available. To work correctly on a single processor, it requires a <strong>preemptive scheduler</strong>. (Remember that SJF is non-preemptive, but STCF is preemptive, which means permitting one thread to be interrupted).</p>
+
+<p>Evaluating</p>
+
+<ul>
+  <li>√ correctness, the spin lock only allows a single thread to enter the critical section at a time.</li>
+  <li>X fairness, spin locks don’t provide any fairness guarantees. Indeed, a thread spinning may spin forever, under contention. Spin locks are not fair and may lead to starvation.</li>
+  <li>X performance, bad in the single CPU case. The problem gets worse with N threads contending for a lock; N − 1 time slices may be wasted in a similar manner, simply spinning and waiting for a single thread to release the lock.</li>
+</ul>
+
+<p><strong>Avoid Spinning by Yield</strong></p>
+
+<blockquote>
+  <p>“just yield, baby!”</p>
+</blockquote>
+
+<p>Hardware support alone cannot solve the problem. We’ll need OS support too! Assume an operating system primitive <strong>yield()</strong> which a thread can call when it wants to give up the CPU and let another thread run. A thread can be in one of three states (running, ready, or blocked); yield is simply a system call that moves the caller from the <strong>running</strong> state to the <strong>ready</strong> state, and thus promotes another thread to running. Thus, the yielding process essentially <strong>deschedules</strong> itself.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_with_test_and_set_and_yield.png" alt="os-lock_with_test_and_set_and_yield.png" /></p>
+
+<p>This approach eliminates the spinning time, but still costly when context switching. And we have not tackled the starvation problem at all. A thread may get caught in an endless yield loop while other threads repeatedly enter and exit the critical section.</p>
+
+<p><strong>Avoid Spnning by Queues</strong></p>
+
+<p>The scheduler determines which thread runs next; if the scheduler makes a bad choice, a thread runs that must either spin waiting for the lock (our first approach), or yield the CPU immediately (our second approach). Either way, there is potential for waste and no prevention of starvation.</p>
+
+<p>Thus, we must explicitly exert some control over who gets to acquire the lock next after the current holder releases it.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_with_test_and_set_and_yield_and_queue.png" alt="os-lock_with_test_and_set_and_yield_and_queue.png" /></p>
+
+<p>This approach thus doesn’t avoid spin-waiting entirely; a thread might be interrupted while acquiring or releasing the lock, and thus cause other threads to spin-wait for this one to run again. However, the time spent spinning is quite limited (just a few instructions inside the lock and unlock code, instead of the user-defined critical section), and thus this approach may be reasonable.</p>
+
+<p>With just the wrong timing, a thread will be about to park, assuming that it should sleep until the lock is no longer held. A switch at that time to another thread (say, a thread holding the lock) could lead to trouble, for example, if that thread then released the lock. The subsequent park by the first thread would then sleep forever (potentially). This problem is sometimes called the <strong>wakeup/waiting race</strong>.</p>
+
+<p>Solaris solves this problem by adding a third system call: <strong>setpark()</strong>. By calling this routine, a thread can indicate it is about to park. If it then happens t be interrupted and another thread calls unpark before park is actually called, the subsequent park returns immediately instead of sleeping.</p>
+
+<p>You might also notice the interesting fact that the flag does not get set back to 0 when another thread gets woken up. Why is this? Well, it is not an error, but rather a necessity! When a thread is woken up, it will be as if it is returning from park(); however, it does not hold the guard at that point in the code and thus cannot even try to set the flag to 1. Thus, we just pass the lock directly from the thread releasing the lock to the next thread acquiring it; flag is not set to 0 in-between.</p>
+
+<p><strong>Linux Support</strong></p>
+
+<p>Linux provides something called a <strong>futex</strong> which is similar to the Solaris interface but provides a bit more in-kernel functionality. Specifically, each futex has associated with it a specific physical memory location; associated with each such memory location is an in-kernel queue.</p>
+
+<ul>
+  <li><code>futex_wait(address, expected)</code> puts the calling thread to sleep, assouming the value at address is equal to expected. If it is not equal, the call returns immediately.</li>
+  <li><code>futex_wake(address)</code> wakes one thread that is wait- ing on the queue.</li>
+</ul>
+
+<p>Linux approach has the flavor of an old approach that has been used on and off for years, , and is now referred to as a <strong>two-phase lock</strong>. A two-phase lock realizes that spinning can be useful, particularly if the lock is about to be released. So in the first phase, the lock spins for a while, hoping that it can acquire the lock. However, if the lock is not acquired during the first spin phase, a second phase is entered, where the caller is put to sleep, and only woken up when the lock becomes free later.</p>
+
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2015/12/26/review-concurrency-operating-systems-three-easy-pieces/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2015/12/26/review-concurrency-operating-systems-three-easy-pieces/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>

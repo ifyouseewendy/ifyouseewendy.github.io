@@ -6,12 +6,12 @@
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
-  <title>[Review] Operating Systems Three Easy Pieces - Wendi's Blog</title>
+  <title>[Review] Virtualization - Operating Systems Three Easy Pieces - Wendi's Blog</title>
   <meta http-equiv="Content-Type" content="text/html" />
   <meta name="author" content="wendi">
 
   
-  <meta name="description" content="Books, OS Nov 22nd, 2015 [Review] Operating Systems Three Easy Pieces Book Operating Systems: Three Easy Pieces Author Remzi H. Arpaci-Dusseau and &hellip;">
+  <meta name="description" content="Books, OS Nov 22nd, 2015 [Review] Virtualization - Operating Systems Three Easy Pieces Book Operating Systems: Three Easy Pieces Author Remzi H. &hellip;">
   <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
   
 
@@ -20,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2015/11/22/review-operating-systems-three-easy-pieces">
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2015/11/22/review-virtualization-operating-systems-three-easy-pieces">
   <link href="/favicon.td.png" rel="icon">
   <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
@@ -87,6 +87,10 @@
 <ul>
 	
     <li>
+    	<a href="/blog/2015/12/26/review-concurrency-operating-systems-three-easy-pieces/">[Review] Concurrency - Operating Systems Three Easy Pieces</a>
+    </li>
+    
+    <li>
     	<a href="/blog/2015/12/19/web-performance-optimization/">[Review] Website Performance Optimization</a>
     </li>
     
@@ -95,15 +99,11 @@
     </li>
     
     <li>
-    	<a href="/blog/2015/11/22/review-operating-systems-three-easy-pieces/">[Review] Operating Systems Three Easy Pieces</a>
+    	<a href="/blog/2015/11/22/review-virtualization-operating-systems-three-easy-pieces/">[Review] Virtualization - Operating Systems Three Easy Pieces</a>
     </li>
     
     <li>
     	<a href="/blog/2015/11/11/preload-eager_load-includes-references-joins/">Preload, Eager_load, Includes, References, and Joins in Rails</a>
-    </li>
-    
-    <li>
-    	<a href="/blog/2015/08/10/data-types-in-rails/">Data Types in Rails</a>
     </li>
     
 </ul>
@@ -158,7 +158,7 @@
 
     </div>
     <h1>
-      [Review] Operating Systems Three Easy Pieces
+      [Review] Virtualization - Operating Systems Three Easy Pieces
     </h1>
   
 </header>
@@ -247,11 +247,11 @@ How does the OS do so efficiently?</p>
 
 <p>The primary way the OS does this is through a general technique that we call virtualization. That is, the OS takes a physical resource (such as the processor, or memory, or a disk) and transforms it into a more general, powerful, and easy-to-use virtual form of itself. Thus, we sometimes refer to the operating system as a <strong>virtual machine</strong>.</p>
 
-<p><strong>Virtualising the CPU</strong></p>
+<p><strong>Virtualizing the CPU</strong></p>
 
 <p>Turning a single CPU (or small set of them) into a seemingly infinite number of CPUs and thus allowing many programs to seemingly run at once is what we call virtualizing the CPU.</p>
 
-<p><strong>Virtualising the Memory</strong></p>
+<p><strong>Virtualizing the Memory</strong></p>
 
 <p>Memory is just an array of bytes; to <strong>read</strong> memory, one must specify an <strong>address</strong> to be able to access the data stored there; to <strong>write</strong> (or update) memory, one must also specify the data to be written to the given address.</p>
 
@@ -514,7 +514,7 @@ How does the OS do so efficiently?</p>
 
 <p><strong>Policy 1-2 SJF (Shortest Job First)</strong></p>
 
-<p>under assumption: 1,2,3,4,5</p>
+<p>under assumption: <del>1,</del>2,3,4,5</p>
 
 <p>Why is FIFO not good?</p>
 
@@ -526,7 +526,9 @@ How does the OS do so efficiently?</p>
 
 <p><strong>Policy 1-3 STCF (Shortest Time-to-Completion First) or PSJF (Preemptive Shortest Job First)</strong></p>
 
-<p>under assumption: 1,2,3,4,5</p>
+<p>under assumption: <del>1,2,3,</del>4,5</p>
+
+<p>Notice that there a significant difference between SJF and STCF. As SJF is non-preemptive, system would run each job to completion before running other jobs. But STCF prefers the shortest time-to-completion jobs, which should preempt CPU to make sense. That’s why STCF also has another name, PSFJ, Preemptive Shortest Job First.</p>
 
 <p><strong>Policy 2 RR (Round-Robin)</strong></p>
 
@@ -724,7 +726,7 @@ Rule 4b: If a job gives up the CPU before the time slice is up, it stays at the 
 
 <p>Address space, easy to use abstraction of physical memory, and it is the running program’s view of memory in the system. Understanding this fundamental OS ab- straction of memory is key to understanding how memory is virtualized.</p>
 
-<p>When the OS does this, we say the OS is <strong>virtualising memory</strong>.</p>
+<p>When the OS does this, we say the OS is <strong>virtualizing memory</strong>.</p>
 
 <p><strong>Goals</strong></p>
 
@@ -1543,8 +1545,8 @@ Idea</li>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2015/11/22/review-operating-systems-three-easy-pieces/';
-        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2015/11/22/review-operating-systems-three-easy-pieces/';
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2015/11/22/review-virtualization-operating-systems-three-easy-pieces/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2015/11/22/review-virtualization-operating-systems-three-easy-pieces/';
         var disqus_script = 'embed.js';
       
     (function () {
