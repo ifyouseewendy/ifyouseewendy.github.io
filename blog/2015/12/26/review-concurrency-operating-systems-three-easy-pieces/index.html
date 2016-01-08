@@ -186,6 +186,11 @@
       <li><a href="#chapter-26---introduction">Chapter 26 - Introduction</a></li>
       <li><a href="#chapter-27---interlude-thread-api">Chapter 27 - Interlude: Thread API</a></li>
       <li><a href="#chapter-28---locks">Chapter 28 - Locks</a></li>
+      <li><a href="#chapter-29---lock-based-concurrent-data-structures">Chapter 29 - Lock-based Concurrent Data Structures</a></li>
+      <li><a href="#chapter-30---condition-variables">Chapter 30 - Condition Variables</a></li>
+      <li><a href="#chapter-31---semaphores">Chapter 31 - Semaphores</a></li>
+      <li><a href="#chapter-32---common-concurrency-problems">Chapter 32 - Common Concurrency Problems</a></li>
+      <li><a href="#chapter-33---event-based-concurrency-advanced">Chapter 33 - Event-based Concurrency (Advanced)</a></li>
     </ul>
   </li>
 </ul>
@@ -601,6 +606,494 @@ ads as entities created by the programmer but scheduled by the OS, in any fashio
 
 <p>Linux approach has the flavor of an old approach that has been used on and off for years, , and is now referred to as a <strong>two-phase lock</strong>. A two-phase lock realizes that spinning can be useful, particularly if the lock is about to be released. So in the first phase, the lock spins for a while, hoping that it can acquire the lock. However, if the lock is not acquired during the first spin phase, a second phase is entered, where the caller is put to sleep, and only woken up when the lock becomes free later.</p>
 
+<h2 id="chapter-29---lock-based-concurrent-data-structures">Chapter 29 - Lock-based Concurrent Data Structures</h2>
+
+<p><strong>Background</strong></p>
+
+<p>Adding locks to a data structure to make it usable by threads makes the structure <strong>thread safe</strong>. There is always a standard method to make a concurrent data structure: add a big lock. But sometimes we need to ensure the scalability.</p>
+
+<p>To evaluate the concurrent data structures, theres are two factors to concern:</p>
+
+<ul>
+  <li>Correctness</li>
+  <li>Performance. MORE CONCURRENCY ISN’T NECESSARILY FASTER. If the scheme you design adds a lot of overhead (for example, by acquiring and releasing locks frequently, instead of once), the fact that it is more concurrent may not be important. Build both alternatives (simple but less concurrent, and complex but more concurrent) and measure how they do.</li>
+</ul>
+
+<p>Ideally, you’d like to see the threads complete just as quickly on multiple processors as the single thread does on one. Achieving this end is called <strong>perfect scaling</strong>.</p>
+
+<p><strong>Guidelines</strong></p>
+
+<ul>
+  <li>Be careful with acquisition and release of locks around control flow changes</li>
+  <li>Enabling more concurrency does not necessarily increase performance</li>
+  <li>Performance problems should only be remedied once they exist, avoiding premature optimization, is central to any performance-minded developer</li>
+  <li>There is no value in making something faster if doing so will not improve the overall performance of the application.</li>
+</ul>
+
+<p><strong>Concurrent Counters</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_performance_concurrent_counters.png" alt="os-lock_performance_concurrent_counters.png" /></p>
+
+<p>Traditional Counter</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_traditional_counter.png" alt="os-lock_traditional_counter.png" /></p>
+
+<p>In this manner, it is similar to a data structure built with <strong>monitors</strong>, where locks are acquired and released automatically as you call and return from object methods.</p>
+
+<p>The performance of the synchronized counter scales poorly.</p>
+
+<p>Sloppy Counter</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_sloppy_counter.png" alt="os-lock_sloppy_counter.png" /></p>
+
+<p>The sloppy counter works by representing a single logical counter via numerous local physical counters, one per CPU core, as well as a single global counter.
+When a thread running on a given core wishes to increment the counter, it increments its local counter; access to this local counter is synchronized via the corresponding local lock.
+How often this local-to-global transfer occurs is determined by a threshold, which we call S here (for sloppiness). The smaller S is, the more the counter behaves like the non-scalable counter above; the bigger S is, the more scalable the counter, but the further off the global value might be from the actual count.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_sloppy_counter_scaling.png" alt="os-lock_sloppy_counter_scaling.png" /></p>
+
+<p><strong>Concurrent Linked Lists</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_concurrent_link_list.png" alt="os-lock_concurrent_link_list.png" /></p>
+
+<p>One small tricky issue arises if malloc() happens to fail (a rare case); in this case, the code must also release the lock before failing the insert. This kind of exceptional control flow has been shown to be quite error prone; a recent study of Linux kernel patches found that a huge fraction of bugs (nearly 40%) are found on such rarely-taken code paths.</p>
+
+<p>BE WARY OF LOCKS AND CONTROL FLOW</p>
+
+<p>Many functions will begin by acquiring a lock, allocating some memory, or doing other similar stateful operations, when errors arise, the code has to undo all of the state before returning, which is error-prone. Thus, it is best to structure code to minimize this pattern.</p>
+
+<p>Specifically, we can rearrange the code a bit so that the lock and release only surround the actual critical section in the insert code, and that a common exit path is used in the lookup code.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_concurrent_link_list_optimized.png" alt="os-lock_concurrent_link_list_optimized.png" /></p>
+
+<p>Once again we are in a situation where it does not scale particularly well. One technique that researchers have explored to enable more concurrency within a list is something called <strong>hand-over-hand locking</strong> (a.k.a. <strong>lock coupling</strong>).</p>
+
+<p>Instead of having a single lock for the entire list, you instead add a lock per node of the list. When traversing the list, the code first grabs the next node’s lock and then releases the current node’s lock.</p>
+
+<p>It enables a high degree of concurrency in list operations. However, in practice, it is hard to make such a structure faster than the simple single lock approach, as the overheads of acquiring and releasing locks for each node of a list traversal is prohibitive. Perhaps some kind of hybrid (where you grab a new lock every so many nodes) would be worth investigating.</p>
+
+<p><strong>Concurrent Queues</strong></p>
+
+<p>Look at a slightly more concurrent queue designed by Michael and Scott.</p>
+
+<p>There are two locks, one for the head of the queue, and one for the tail. The goal of these two locks is to enable concurrency of enqueue and dequeue operations. One trick used by the Michael and Scott is to add a dummy node (allocated in the queue initialization code); this dummy enables the separation of head and tail operations.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_concurrent_queue.png" alt="os-lock_concurrent_queue.png" /></p>
+
+<p><strong>Concurrent Hash Table</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_concurrent_hash_table.png" alt="os-lock_concurrent_hash_table.png" /></p>
+
+<p>This concurrent hash table is straightforward, is built using the concurrent lists we developed earlier, and works incredibly well. The reason for its good performance is that instead of having a single lock for the entire structure, it uses a lock per hash bucket.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-lock_scaling_hash_table.png" alt="os-lock_scaling_hash_table.png" /></p>
+
+<p>AVOID PREMATURE OPTIMIZATION (KNUTH’S LAW)</p>
+
+<blockquote>
+  <p>“Premature optimization is the root of all evil.”</p>
+</blockquote>
+
+<p>Many operating systems utilized a single lock when first transitioning to multiprocessors, including Sun OS and Linux. In the latter, this lock even had a name, the <strong>big kernel lock (BKL)</strong>. When multi-CPU systems became the norm, only allowing a single active thread in the kernel at a time became a performance bottleneck. Thus, it was finally time to add the optimization of improved concurrency to these systems. Within Linux, the more straightforward approach was taken: replace one lock with many. Within Sun, a more radical decision was made: build a brand new operating system, known as Solaris, that incorporates concurrency more fundamentally from day one.</p>
+
+<h2 id="chapter-30---condition-variables">Chapter 30 - Condition Variables</h2>
+
+<p><strong>Background</strong></p>
+
+<p>There are many cases where a thread wishes to check whether a condition is true before continuing its execution. For example, a parent thread might wish to check whether a child thread has completed before continuing (this is often called a <code>join()</code>).</p>
+
+<p>In multi-threaded programs, it is often useful for a thread to wait for some conditio to become true before proceeding. The simple approach, of just spinning until the condition becomes true, is grossly inefficient and wastes CPU cycles, and in some cases, can be incorrect.</p>
+
+<p><strong>Definition and Routines</strong></p>
+
+<p>To wait for a condition to become true, a thread can make use of what is known as a condition variable. A <strong>condition variable</strong> is an explicit queue that threads can put themselves on when some state of execution (i.e., some condition) is not as desired (by <strong>waiting</strong> on the condition); some other thread, when it changes said state, can then wake one (or more) of those waiting threads and thus allow them to continue (by <strong>signaling</strong> on the condition).</p>
+
+<p>By allowing threads to sleep when some program state is not as desired, CVs enable us to neatly solve a number of important synchronization problems, including the famous (and still important) producer/consumer problem, as well as covering conditions.</p>
+
+<p>A condition variable has two operations associated with it: <strong>wait()</strong> and <strong>signal()</strong>.</p>
+
+<ul>
+  <li>The <strong>wait()</strong> call is executed when a thread wishes to put itself to sleep</li>
+  <li>The <strong>signal()</strong> call is executed when a thread has changed something in the program and thus wants to wake a sleeping thread waiting on this condition.</li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-cv_waiting_demo.png" alt="os-cv_waiting_demo.png" /></p>
+
+<p><strong><em>Is the state variable <code>done</code> necessary?</em></strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-cv_waiting_demo_2.png" alt="os-cv_waiting_demo_2.png" /></p>
+
+<p>Yes. Imagine the case where the child runs immediately and calls thr exit() immediately; in this case, the child will signal, but there is no thread asleep on the condition. When the parent runs, it will simply call wait and be stuck; no thread will ever wake it. From this example, you should appreciate the importance of the state variable done; it records the value the threads are interested in knowing. The sleeping, waking, and locking all are built around it.</p>
+
+<p><strong><em>Is there a need to hold the lock while singaling?</em></strong></p>
+
+<p>Although it is strictly not necessary in all cases, it is likely simplest and best to hold the lock while signaling when using condition variables. The generalization of this tip is correct: hold the lock when calling signal or wait, and you will always be in good shape.</p>
+
+<p><strong>Producer/Consumer (Bounded Buffer)</strong></p>
+
+<p>The producer/consumer problem, or sometimes as the bounded buffer problem, which was first posed by Dijkstra. Indeed, it was this very producer/consumer problem that led Dijkstra and his co-workers to invent the generalized <strong>semaphore</strong> (which can be used as either a lock or a condition variable).</p>
+
+<p>A bounded buffer is also used when you pipe the output of one program into another, e.g.,</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">// grep process is the producer
+</span><span class="line">// wc process is the consumer
+</span><span class="line">// between them is an in-kernel bounded buffer
+</span><span class="line">grep foo file.txt | wc -l
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Basic operations: <code>put()</code> and <code>get()</code>.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-cv_put_and_get_v1.pg" alt="os-cv_put_and_get_v1.png" /></p>
+
+<p><strong>Plain Solution</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-cv_producer_and_consumer_v1.png" alt="os-cv_producer_and_consumer_v1.png" /></p>
+
+<p><strong>Single CV and If</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-cv_producer_and_consumer_single_cv_and_if.png" alt="os-cv_producer_and_consumer_single_cv_and_if.png" /></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-cv_producer_and_consumer_single_cv_and_if_trace.png" alt="os-cv_producer_and_consumer_single_cv_and_if_trace.png" /></p>
+
+<p><strong>Single CV and While</strong></p>
+
+<p>Signaling a thread only wakes them up; it is thus a hint that the state of the world has changed (in this case, that a value has been placed in the buffer), but there is no guarantee that when the woken thread runs, the state will still be as desired. This interpretation of what a signal means is often referred to as <strong>Mesa semantics</strong>, after the first research that built a condition variable in such a manner. Virtually every system ever built employs Mesa semantincs.</p>
+
+<p>Thanks to Mesa semantics, a simple rule to remember with condition variables is to <strong>always use while loops</strong>.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-cv_producer_and_consumer_single_cv_and_while.png" alt="os-cv_producer_and_consumer_single_cv_and_while.png" /></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-cv_producer_and_consumer_single_cv_and_while_trace.png" alt="os-cv_producer_and_consumer_single_cv_and_while_trace.png" /></p>
+
+<p><strong>Two CVs and While</strong></p>
+
+<p>Signaling is clearly needed, but must be more directed. <strong>A consumer should not wake other consumers, only producers</strong>, and vice-versa.</p>
+
+<p>Use two condition variables, instead of one, in order to properly signal which type of thread should wake up when the state of the system changes. Producer threads wait on the condition empty, and signals fill. Conversely, consumer threads wait on fill and signal empty.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-cv_producer_and_consumer_single_two_cv_and_while.png" alt="os-cv_producer_and_consumer_single_two_cv_and_while.png" /></p>
+
+<p><strong>Final Solution</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-cv_producer_and_consumer_final_solution.png" alt="os-cv_producer_and_consumer_final_solution.png" /></p>
+
+<p><strong>Covering Conditions</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-cv_producer_and_consumer_covering_conditions.png" alt="os-cv_producer_and_consumer_covering_conditions.png" /></p>
+
+<p>Assume there are zero bytes free; thread Ta calls <code>allocate(100)</code>, followed by thread Tb which asks for less memory by calling <code>allocate(10)</code>. Both Ta and Tb thus wait on the condition and go to sleep; there aren’t enough free bytes to satisfy either of these requests. At that point, assume a third thread, Tc, calls <code>free(50)</code>. Unfortunately, when it calls signal to wake a waiting thread, it might not wake the correct waiting thread, Tb, which is waiting for only 10 bytes to be freed; Ta should remain waiting, as not enough memory is yet free. Thus, the code in the figure does not work, as the thread waking other threads does not know which thread (or threads) to wake up.</p>
+
+<p>The solution suggested by Lampson and Redell is straightforward: replace the <code>pthread_cond_signal()</code> call in the code above with a call to <code>pthread_cond_broadcast()</code>, which wakes up all waiting threads. Those threads will simply wake up, re-check the condition, and then go immediately back to sleep.</p>
+
+<p>Lampson and Redell call such a condition a <strong>covering condition</strong>, as it covers all the cases where a thread needs to wake up (conservatively); the cost, is that too many threads might be woken.</p>
+
+<p>In general, if you find that your program only works when you change your signals to broadcasts (but you don’t think it should need to), you probably have a bug; fix it! But in cases like the memory allocator above, broadcast may be the most straightforward solution available.</p>
+
+<h2 id="chapter-31---semaphores">Chapter 31 - Semaphores</h2>
+
+<p><strong>Background</strong></p>
+
+<p>As we know now, one needs both locks and condition variables to solve a broad range of relevant and interesting concurrency problems. One of the first people to realize this years ago was Edsger Dijkstra. Dijkstra and colleagues invented the semaphore as a single primitive for all things related to synchronization; as you will see, one can use semaphores as both locks and condition variables.</p>
+
+<p><strong>Definition</strong></p>
+
+<p>A semaphore is an object with an integer value that we can manipulate with two routines; in the POSIX standard, these routines are sem <code>wait()</code> and sem <code>post()</code>. The initial value of the semaphore determines its behaviour.</p>
+
+<p>Semaphores are a powerful and flexible primitive for writing concurrent programs. Some programmers use them exclusively, shunning locks and condition variables, due to their simplicity and utility.</p>
+
+<p>In my view, semaphore is an primitive, which can be made by locks and condition variables, also can’t be used as locks and condition variables.</p>
+
+<p>Initialization</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-semaphore_init.png" alt="os-semaphore_init.png" /></p>
+
+<p>Usage
+<img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-semaphore_definition.png" alt="os-semaphore_definition.png" /></p>
+
+<ul>
+  <li><code>sem_wait()</code> will either return right away (because the value of the semaphore was one or higher when we called <code>sem_wait()</code>), or it will cause the caller to suspend execution waiting for a subsequent post.</li>
+  <li><code>sem_post()</code> does not wait for some particular condition to hold like <code>sem_wait()</code> does. Rather, it simply increments the value of the semaphore and then, if there is a thread waiting to be woken, wakes one of them up.</li>
+  <li>The value of the semaphore, when negative, is equal to the number of waiting threads</li>
+</ul>
+
+<p><strong>Semaphores As Locks</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-semaphore_as_locks.png" alt="os-semaphore_as_locks.png" /></p>
+
+<p>Because locks only have two states (held and not held), this usage is sometimes known as a <strong>binary semaphore</strong>.</p>
+
+<p><strong>Semaphores As Condition Variables</strong></p>
+
+<p>Semaphores are also useful when a thread wants to halt its progress waiting for a
+ condition to become true. In this pattern of usage, we often find a thread waiting for something to happen, and a different thread making that something happen and then signaling that it has happened, thus waking the waiting thread.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-semaphore_as_cv.png" alt="os-semaphore_as_cv.png" /></p>
+
+<p><strong>Producer/Consumer (Bounded Buffer)</strong></p>
+
+<p>Plain Solution</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-semaphore_producer_and_consumer_plain.png" alt="os-semaphore_producer_and_consumer_plain.png" /></p>
+
+<p>The condition variable (semaphore based) controls the execution order, which can let multiple threads enter the critical section at the same time. It still needs a lock.</p>
+
+<p>Adding Mutual Exclusion</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-semaphore_producer_and_consumer_add_mutex.png" alt="os-semaphore_producer_and_consumer_add_mutex.png" /></p>
+
+<p>The consumer holds the mutex and is waiting for the someone to signal full. The producer could si!gnal full but is waiting for the mutex. Thus, the producer and consumer are each stuck waiting for each other: a classic deadlock.</p>
+
+<p>To avoid the deadlock, we can simply move the mutex acquire and release to be just around the critical section. The result is a simple and working bounded buffer, a commonly-used pattern in multi-threaded programs.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-semaphore_producer_and_consumer_add_mutex_correctly.png" alt="os-semaphore_producer_and_consumer_add_mutex_correctly.png" /></p>
+
+<p><strong>Reader-Writer Locks</strong></p>
+
+<p>Another classic problem stems from the desire for a more flexible <strong>locking primitive</strong> that admits that different data structure accesses might require different kinds of locking.</p>
+
+<p>Imagine a number of concurrent list operations, including inserts and simple lookups. While inserts change the state of the list (and thus a traditional critical section makes sense), lookups simply read the data structure; as long as we can guarantee that no insert is on-going, we can allow many lookups to proceed concurrently. The special type of lock we will now develop to support this type of operation is known as a <strong>reader-writer lock</strong>.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-semaphore_reader_writer_lock.png" alt="os-semaphore_reader_writer_lock.png" /></p>
+
+<p>Once a reader has acquired a read lock, more readers will be allowed to acquire the read lock too; however, any thread that wishes to acquire the write lock will have to wait until all readers are finished; the last one to exit the critical section calls sem <code>post()</code> on “writelock” and thus enables a waiting writer to acquire the lock.</p>
+
+<p>This approach works (as desired), but does have some negatives, especially when it comes to fairness. In particular, it would be relatively easy for readers to starve writers. It should be noted that reader-writer locks should be used with some caution. They often add more overhead (especially with more sophisticated implementations), and thus do not end up speeding up performance as compared to just using simple and fast locking primitives.</p>
+
+<p>SIMPLE AND DUMB CAN BE BETTER (HILL’S LAW)</p>
+
+<p>You should never underestimate the notion that the simple and dumb approach can be the best one. Always try the simple and dumb approach first.</p>
+
+<p><strong>The Dining Philosophers</strong></p>
+
+<p>One of the most famous concurrency problems posed, and solved, by Dijkstra, is known as the dining philosopher’s problem.</p>
+
+<p>There are five “philosophers” sitting around a table. Between each pair of philosophers is a single fork (and thus, five total). The philosophers each have times where they think, and don’t need any forks, and times where they eat. In order to eat, a philosopher needs two forks, both the one on their left and the one on their right. The contention for these forks, and the synchronization problems that ensue, are what makes this a problem we study in concurrent programming.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-semaphore_dinning_philosophers.png" alt="os-semaphore_dinning_philosophers.png" /></p>
+
+<p>Broken Solution</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-semaphore_dinning_philosophers_deadlock_solution.png" alt="os-semaphore_dinning_philosophers_deadlock_solution.png" /></p>
+
+<p>The problem is deadlock. If each philosopher happens to grab the fork on their left before any philosopher can grab the fork on their right, each will be stuck holding one fork and waiting for another, forever.</p>
+
+<p>A Solution: Breaking The Dependency</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-semaphore_dinning_philosophers_solution.png" alt="os-semaphore_dinning_philosophers_solution.png" /></p>
+
+<p><strong>Implement Semaphores</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-semaphore_implementation.png" alt="os-semaphore_implementation.png" /></p>
+
+<h2 id="chapter-32---common-concurrency-problems">Chapter 32 - Common Concurrency Problems</h2>
+
+<p><strong>Background</strong></p>
+
+<p>Lu et al has made a study, which analyzes a number of popular concurrent applications in great detail to understand what types of bugs arise in practice.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-concurrency_bugs.png" alt="os-concurrency_bugs.png" /></p>
+
+<p><strong>Non-Deadlock Bugs</strong></p>
+
+<ul>
+  <li>Atomicity violation bugs. The desired serializability among multiple memory accesses is violated (i.e. a code region is intended to be atomic, but the atomicity is not enforced during execution). Solve by locks.</li>
+  <li>Order violation bugs. The desired order between two (groups of) memory accesses is flipped (i.e., A should always be executed before B, but the order is not enforced during execution). Solve by condition variables.</li>
+</ul>
+
+<p><strong>Deadlock Bugs</strong></p>
+
+<p>Deadlock occurs, for example, when a thread (say Thread 1) is holding a lock (L1) and waiting for another one (L2); unfortunately, the thread (Thread 2) that holds lock L2 is waiting for L1 to be released.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-concurrency_deadlock_dependency.png" alt="os-concurrency_deadlock_dependency.png" /></p>
+
+<p><strong>Caused by</strong></p>
+
+<p>One reason is that in large code bases, complex dependencies arise between cmponents. The design of locking strategies in large systems must be carefully done to avoid deadlock in the case of <strong>circular dependencies</strong> that may occur naturally in the code.</p>
+
+<p>Another reason is due to the nature of <strong>encapsulation</strong>. As software developers, we are taught to hide details of implementations and thus make software easier to build in a modular way.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-concurrency_deadlock_by_encapsulation.png" alt="os-concurrency_deadlock_by_encapsulation.png" /></p>
+
+<p><strong>Conditions for Deadlock</strong></p>
+
+<ul>
+  <li><strong>Mutual exclusion</strong>: Threads claim exclusive control of resources that they require (e.g., a thread grabs a lock).</li>
+  <li><strong>Hold-and-wait</strong>: Threads hold resources allocated to them (e.g.,locks that they have already acquired) while waiting for additional resources (e.g., locks that they wish to acquire).</li>
+  <li><strong>No preemption (hold)</strong>: Resources (e.g., locks) cannot be forcibly removed from threads that are holding them.</li>
+  <li><strong>Circular wait (wait)</strong>: There exists a coircular chain of threads such that each thread holds one more resources (e.g., locks) that are being requested by the next thread in the chain.</li>
+</ul>
+
+<p><strong>Prevention Based on Four Conditions</strong></p>
+
+<p>Mutual Exclusion</p>
+
+<p>To avoid the need for mutual exclusion at all. Herlihy had the idea that one could design various data structures to be <strong>wait-free</strong>. The idea here is simple: using powerful hardware instructions, you can build data structures in a manner that does not require explicit locking.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-concurrency_deadlock_wait_free.png" alt="os-concurrency_deadlock_wait_free.png" /></p>
+
+<p>However, this will fail if some other thread successfully swapped in a new head in the meanwhile, causing this thread to retry again with the new head.</p>
+
+<p>Hold-and-wait</p>
+
+<p>The hold-and-wait requirement for deadlock can be avoided by acquiring all locks at once, atomically.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-concurrency_deadlock_hold_and_wait.png" alt="os-concurrency_deadlock_hold_and_wait.png" /></p>
+
+<p>By first grabbing the lock prevention, this code guarantees that no untimely thread switch can occur in the midst of lock acquisition and thus deadlock can once again be avoided.</p>
+
+<p>Note that the solution is problematic for a number of reasons. As before, encapsulation works against us: when calling a routine, this approach requires us to know exactly which locks must be held and to acquire them ahead of time. This technique also is likely to decrease concurrency as all locks must be acquired early on (at once) instead of when they are truly needed.</p>
+
+<p>No Preemption</p>
+
+<p>Because we generally view locks as held until unlock is called, multiple lock acquisition often gets us into trouble because when waiting for one lock we are holding another. Many thread libraries provide a more flexible set of interfaces to help avoid this situation. Specifically, a <code>trylock()</code> routine will grab the lock (if it is available) or return -1 indicating that the lock is held right now and that you should try again later if you want to grab that lock.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-concurrency_deadlock_no_preemption.png" alt="os-concurrency_deadlock_no_preemption.png" /></p>
+
+<p>One new problem does arise, however: <strong>livelock</strong>. It is possible (though perhaps unlikely) that two threads could both be repeatedly attempting this sequence and repeatedly failing to acquire both locks. In this case, both systems are running through this code sequence over and over again (and thus it is not a deadlock), but progress is not being made, hence the name lovelock. One could add a random delay before looping back and trying the entire thing over again, thus decreasing the odds of repeated interference among competing threads.</p>
+
+<p>Another issues arises due to encapsulation: if one of these locks is buried in some routine that is getting called, the jump back to the beginning becomes more complex to implement.</p>
+
+<p>Circular Wait</p>
+
+<p>The best solution in practice is to be careful, develop a lock acquisition order, and thus prevent deadlock from occurring in the first place.</p>
+
+<ul>
+  <li>The most straightforward way to do that is to provide a <strong>total ordering</strong> on lock acquisition. For example, if there are only two locks in the system (L1 and L2), you can prevent deadlock by always acquiring L1 before L2. Such strict ordering ensures that no cyclical wait arises; hence, no deadlock.</li>
+  <li>A <strong>partial ordering</strong> can be a useful way to structure lock acquisition so as to avoid deadlock.</li>
+</ul>
+
+<p><strong>Avoidance via Scheduling</strong></p>
+
+<p>Instead of deadlock prevention, in some scenarios deadlock avoidance is preferable. Avoidance requires some global knowledge of which locks various threads might grab during their execution, and subsequently schedules said threads in a way as to guarantee no deadlock can occur.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-concurrency_deadlock_avoid_via_scheduling.png" alt="os-concurrency_deadlock_avoid_via_scheduling.png" /></p>
+
+<p>Unfortunately, they are only useful in very limited environments, for example, in an embedded system where one has full knowledge of the entire set of tasks that must be run and the locks that they need. Further, such approaches can limit concurrency. Thus, avoidance of deadlock via scheduling is not a widely-used general-purpose solution</p>
+
+<p><strong>Detect and Recover</strong></p>
+
+<p>One final general strategy is to allow deadlocks to occasionally occur, and then take some action once such a deadlock has been detected.</p>
+
+<p>Many database systems employ deadlock detection and recovery techniques. A deadlock detector runs periodically, building a resource graph and checking it for cycles. In the event of a cycle (deadlock), the system needs to be restarted.</p>
+
+<p>DON’T ALWAYS DO IT PERFECTLY (TOM WEST’S LAW)</p>
+
+<p>Tom West says famously, “Not everything worth doing is worth doing well”, which is a terrific engineering maxim. If a bad thing happens rarely, certainly one should not spend a great deal of effort to prevent it, particularly if the cost of the bad thing occurring is small.</p>
+
+<p><strong>Others</strong></p>
+
+<p>Perhaps the best solution is to develop new concurrent programming models: in systems such as <strong>MapReduce</strong> (from Google), programmers can describe certain types of parallel computations without any locks whatsoever.</p>
+
+<h2 id="chapter-33---event-based-concurrency-advanced">Chapter 33 - Event-based Concurrency (Advanced)</h2>
+
+<p><strong>Background</strong></p>
+
+<p>A different style of concurrent programming is often used in both GUI-based applications as well as some types of internet servers. This style, known as event-based concurrency, has become popular in some modern systems, including server-side frameworks such as node.js, but its roots are found in C/UNIX systems that we’ll discuss below.</p>
+
+<p>Event-based servers give control of scheduling to the application itself, but do so at some cost in complexity and difficulty of integration with other aspects of modern systems (e.g., paging). Because of these challenges, no single approach has emerged as best; thus, both threads and events are likely to persist as two different approaches to the same concurrency problem for many years to come.</p>
+
+<p>The problem that event-based concurrency addresses is two-fold.</p>
+
+<ul>
+  <li>The first is that managing concurrency correctly in multi-threaded applications can be challenging.</li>
+  <li>The second is that in a multi-threaded application, the developer has little or no control over what is scheduled at a given moment in time; rather, the programmer simply creates threads and then hopes that the underlying OS schedules them in a reasonable manner across available CPUs.</li>
+</ul>
+
+<p><strong>The Basic Idea: An Event Loop</strong></p>
+
+<p>The approach is quite simple: you simply wait for something (i.e., an “event”) to occur; when it does, you check what type of  event it is and do the small amount of work it requires (which may include issuing I/O requests, or scheduling other events for future handling, etc.). That’s it!</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-event_loop.png" alt="os-event_loop.png" /></p>
+
+<p>Importantly, when a handler processes an event, it is the only activity taking place in the system; thus, deciding which event to handle ext is equivalent to scheduling. This explicit control over scheduling is one of the fundamental advantages of the event- based approach.</p>
+
+<p>But there is a big question: how exactly does an event-based server determine which events are taking place, in particular with regards to network and disk I/O? Specifically, how can an event server tell if a message has arrived for it?</p>
+
+<p><strong>An Important API: select() (or poll())</strong></p>
+
+<p>In most systems, a basic API is available, via either the <strong>select()</strong> or <strong>poll()</strong> system calls. Either way, these basic primitives give us a way to build a non-blocking event loop, which simply checks for incoming packets, reads from sockets with messages upon them, and replies as needed.</p>
+
+<p>What these interfaces enable a program to do is simple: check whether there is any incoming I/O that should be attended to.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-event_select_api.png" alt="os-event_select_api.png" /></p>
+
+<p>First, note that it lets you check whether descriptors can be reand from as well as written to; the former lets a server determine that a new packet has arrived and is in need of processing, whereas the latter lets the service know when it is OK to reply (i.e., the outbound queue is not full).</p>
+
+<p>Second, note the timeout argument. One common usage here is to set the timeout to <code>NULL</code>, which causes <code>select()</code> to block indefinitely, until some descriptor is ready. However, more robust servers will usually specify some kind of timeout; one common technique is to set the timeout to zero, and thus use the call to <code>select()</code> to return immediately.</p>
+
+<p>Now linux uses <strong>epoll</strong>, FreeBSD (Mac OS) uses <strong>kqueue</strong>, and Windows uses <strong>IOCP</strong>.</p>
+
+<p>BLOCKING VS. NON-BLOCKING INTERFACES</p>
+
+<ul>
+  <li>Blocking (or synchronous) interfaces do all of their work before returning to the caller. The usual culprit in blocking calls is I/O of some kind.</li>
+  <li>Non-blocking (or asynchronous) interfaces begin some work but return immediately, thus letting whatever work that needs to be done get done in the background. Non-blocking interfaces can be used in any style of programming (e.g., with threads), but are essential in the event-based approach, as a call that blocks will halt all progress.</li>
+</ul>
+
+<p>DON’T BLOCK IN EVENT-BASED SERVERS</p>
+
+<p>Event-based servers enable fine-grained control over scheduling of tasks. However, to maintain such control, no call that blocks the execution the caller can ever be made; failing to obey this design tip will result in a blocked event-based server.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-event_select_code_demo.png" alt="os-event_select_code_demo.png" /></p>
+
+<p>Advantage</p>
+
+<p>With a single CPU and an event-based application, the problems found in concurrent programs are no longer present. Specifically, because only one event is being handled at a time, there is no need to acquire or release locks; the event-based server cannot be interrupted by another thread because it is decidedly single threaded. Thus, concurrency bugs common in threaded programs do not manifest in the basic event-based approach.</p>
+
+<p><strong>Issue: Blocking System Calls</strong></p>
+
+<p>For example, imagine a request comes from a client into a server to read a file from disk and return its contents to the requesting client (much like a simple HTTP request). Both the open() and read() calls may issue I/O requests to the storage system (when the needed metadata or data is not in memory already), and thus may take a long time to service.</p>
+
+<p>With a thread-based server, this is no issue: while the thread issuing the I/O request suspends (waiting for the I/O to complete), other threads can run, thus enabling the server to make progress. Indeed, this natural <strong>overlap</strong> of I/O and other computation is what makes thread-based programming quite natural and straight-forward.</p>
+
+<p>With an event-based approach, however, there are no other threads to run: just the main event loop. And this implies that if an event handler issues a call that blocks, the entire server will do just that: block until the call completes.</p>
+
+<p>We thus have a rule that must be obeyed in event-based systems: no blocking calls are allowed.</p>
+
+<p>Solution: Asynchronous I/O</p>
+
+<p>To overcome this limit, many modern operating systems have intro- duced new ways to issue I/O requests to the disk system, referred to generically as asynchronous I/O. These interfaces enable an application to issue an I/O request and return control immediately to the caller, before the I/O has completed; additional interfaces enable an application to determine whether various I/Os have completed.</p>
+
+<p>The APIs revolve around a basic structure, the struct aiocb or <strong>AIO control block</strong> in common terminology.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-event_aio_control_block.png" alt="os-event_aio_control_block.png" /></p>
+
+<ul>
+  <li>An application can periodically poll the system via a call to aio error() to determine whether said I/O has yet completed.</li>
+  <li>Some systems provide an approach based on the interrupt. This method uses UNIX signals to inform applications when an asynchronous I/O completes, thus removing the need to repeatedly ask the system.</li>
+</ul>
+
+<p>In systems without asynchronous I/O, the pure event-based approach cannot be implemented. However, clever researchers have derived methods that work fairly well in their place. For example, Pai et al describe a hybrid approach in which events are used to process network packets, and a thread pool is used to manage outstanding I/Os.</p>
+
+<p>UNIX SIGNALS</p>
+
+<p>A huge and fascinating infrastructure known as <strong>signals</strong> is present in all mod ern UNIX variants. At its simplest, signals provide a way to communicate with a process. Specifically, a signal can be delivered to an application; doing so stops the application from whatever it is doing to run a <strong>signal handler</strong>, i.e., some code in the application to handle that signal. When finished, the process just resumes its previous behaviour. A program can be configured to catch that signal. Or when a signal is sent to a process not config- ured to handle that signal, some default behavior is enacted; for SEGV, the process is killed.</p>
+
+<p><strong>Issue: State Management</strong></p>
+
+<p>When an event handler issues an asynchronous I/O, it must package up some program state for the next event handler to use when the I/O finally completes; this additional work is not needed in thread-based programs, as the state the program needs is on the stack of the thread. Adya et al. call this work <strong>manual stack management</strong>, and it is fundamental to event-based programming.</p>
+
+<p>Solution: Continuation</p>
+
+<p>Use an old programming language construct known as a <strong>continuation</strong>. Though it sounds complicated, the idea is rather simple: basically, record the needed information to finish processing this event in some data structure; when the event happens (i.e., when the disk I/O completes), look up the needed information and process the event.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/os-event_state_management.png" alt="os-event_state_management.png" /></p>
+
+<p>Record the socket descriptor (sd) in some kind of data structure (e.g., a hash table), indexed by the file descriptor (fd). When the disk I/O completes, the event handler would use the file descriptor to look up the continuation, which will return the value of the socket descriptor to the caller.</p>
+
+<p><strong>What Is Still Difficult With Events</strong></p>
+
+<p>Multiple CPUS. When systems moved from a single CPU to multiple CPUs, some of the simplicity of the event-based approach disappeared. Specifically, in order to utilize more than one CPU, the event server has to run multiple event handlers in parallel; when doing so, the usual synchronization problems (e.g., critical sections) arise, and the usual solutions (e.g., locks) must be employed. Thus, on modern multicore systems, simple event handling without locks is no longer possible.</p>
+
+<p>Implicit blocking. It does not integrate well with certain kinds of systems activity, such as paging. For example, if an event-handler page faults, it will block, and thus the server will not make progress until the page fault completes. Even though the server has been structured to avoid explicit blocking, this type of implicit blocking due to page faults is hard to avoid and thus can lead to large performance problems when prevalent.</p>
+
+<p>API changes all the time. That event-based code can be hard to manage over time, as the exact semantics of various routines changes]. For example, if a routine changes from non-blocking to blocking, the event handler that calls that routine must also change to accommodate its new nature, by ripping itself into two pieces. Because blocking is so disastrous for event-based servers, a programmer must always be on the lookout for such changes in the semantics of the APIs each event uses.</p>
+
+<p>Async network I/O. Though asynchronous disk I/O is now possible on most platforms, it has taken a long time to get there, and it never quite integrates with asynchronous network I/O in as simple and uniform a manner as you might think. For example, while one would simply like to use the select() interface to manage all outstanding I/Os, usually some combination of select() for networking and the AIO calls for disk I/O are required.</p>
 </section>
 
 
