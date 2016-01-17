@@ -13,10 +13,6 @@ footer: true
 + tel：186-4343-0095
 + email：ifyouseewendy@gmail.com
 
-## Summary
-
-A Web developer, focusing on Ruby and Rails, and working hard to be cutting-edge.
-
 ## Education
 
 *2007-2012* - Software Engineering Institute, East China Normal University
@@ -56,6 +52,12 @@ Implement the analysis and statistics Web product using Ruby on Rails, including
 
 + Solid knowledge of Data Structure and Algorithm.
 + Solid knowledge of code refactoring, performance optimizing, design pattens, network and OO programming.
+
+## Self-Summary
+
++ I'm an enthusiastic and diligent staff. Work hard to make job done, and also think hard to keep efficiency.
++ Technically, my goal is to go deep in Web development. Focusing on Ruby and Rails as a breakpoint, and learning all the other interesting topics in Web.
++ Personally, always remind myself to be a humble learner, with a little patience and a lot of desire.
 
 ## Reference
 
