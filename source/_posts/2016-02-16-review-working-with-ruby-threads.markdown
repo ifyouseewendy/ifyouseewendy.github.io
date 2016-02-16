@@ -3,7 +3,7 @@ layout: post
 title: "[Review] Working With Ruby Threads"
 date: 2016-02-16 13:07:05 +0800
 comments: true
-categories: ['Ruby']
+categories: ['Ruby', 'Concurrency']
 ---
 
 {:.custom}

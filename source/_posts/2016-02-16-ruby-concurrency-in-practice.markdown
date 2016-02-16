@@ -3,7 +3,7 @@ layout: post
 title: "Ruby Concurrency In Practice"
 date: 2016-02-16 19:58:54 +0800
 comments: true
-categories: ['Ruby']
+categories: ['Ruby', 'Concurrency']
 ---
 
 * TOC

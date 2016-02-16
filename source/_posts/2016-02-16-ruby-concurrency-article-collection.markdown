@@ -3,7 +3,7 @@ layout: post
 title: "Ruby Concurrency Article Collection"
 date: 2016-02-16 20:04:50 +0800
 comments: true
-categories: ['Ruby']
+categories: ['Ruby', 'Concurrency']
 ---
 
 This an article collection about concurrency in Ruby, which benefits me a lot and to be continued.

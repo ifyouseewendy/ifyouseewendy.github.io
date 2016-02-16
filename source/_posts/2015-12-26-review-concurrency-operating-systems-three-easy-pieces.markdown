@@ -3,7 +3,7 @@ layout: post
 title: "[Review] Concurrency - Operating Systems Three Easy Pieces"
 date: 2015-12-26 11:33:57 +0800
 comments: true
-categories: ['Books', 'OS']
+categories: ['Books', 'OS', 'Concurrency']
 ---
 
 {:.custom}
