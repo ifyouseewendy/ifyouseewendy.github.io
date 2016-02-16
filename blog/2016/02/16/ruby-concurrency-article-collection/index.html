@@ -1,0 +1,429 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ruby Concurrency Article Collection - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="Concurrency, Ruby Feb 16th, 2016 Ruby Concurrency Article Collection This an article collection about concurrency in Ruby, which benefits me a lot &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-article-collection">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2016/02/16/ruby-concurrency-article-collection/">Ruby Concurrency Article Collection</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/16/ruby-concurrency-in-practice/">Ruby Concurrency in Practice</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/16/ruby-concurrency-in-theory/">Ruby Concurrency in Theory</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/16/review-working-with-ruby-threads/">[Review] Working With Ruby Threads</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/05/ci-zhi-ban-nian-ji/">辞职半年记</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/concurrency/'>Concurrency</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Feb 16<span>th</span>, 2016</a>
+</span>
+
+    </div>
+    <h1>
+      Ruby Concurrency Article Collection
+    </h1>
+  
+</header>
+
+
+  <section><p>This an article collection about concurrency in Ruby, which benefits me a lot and to be continued.</p>
+
+<blockquote>
+  <p><a href="http://www.jstorimer.com/blogs/workingwithcode/7766063-threads-not-just-for-optimizations">Threads, Not Just for Optimisations - Jesse Storimer</a></p>
+</blockquote>
+
+<p>Threads can help us organize our programs.</p>
+
+<p>When a signal is delivered to a multithreaded process that has established a signal handler, the kernel arbitrarily selects one thread in the process to which to deliver the signal and invokes the handler in that thread. So Ruby uses a dedicated thread to handle incoming Unix signals. This has nothing to do with speeding things up, it’s just good programming practice.</p>
+
+<p>When you spawn a new Unix process using fork, you really should either wait for it to finish using Process.wait, or detach from it using Process.detach. The reason is that when the process exits, it leaves behind some information about its exit status. This status info can’t be cleaned up until it’s been consumed by the parent process using Process.wait. When you use something like Process.spawn or backticks, Process.wait is called internally to cleanup the aforementioned status info. So Process.detach is just a thin wrapper around Process.wait, using a background thread to wait for the return value of Process.wait, while the main thread continues execution concurrently. Again, this has nothing to do with speed, but allows the proper housekeeping to be done without burdening the program with extra state.</p>
+
+<blockquote>
+  <p><a href="http://concur.rspace.googlecode.com/hg/talk/concur.html#title-slide">Concurrency is not Parallelism (it’s better) - Rob Pike</a></p>
+</blockquote>
+
+<p>Go provides</p>
+
+<ul>
+  <li>concurrent execution (coroutines. They’re a bit like threads, but they’re much cheaper. Goroutines are multiplexed onto OS threads as required. When a goroutine blocks, that thread blocks but no other goroutine blocks.)</li>
+  <li>synchronization and messaging (channels)</li>
+  <li>multi-way concurrent control (select)</li>
+</ul>
+
+<p>Concurrency vs. Paralelism</p>
+
+<ul>
+  <li>Concurrency is about dealing with lots of things at once.</li>
+  <li>Parallelism is about doing lots of things at once.</li>
+  <li>Not the same, but related.</li>
+  <li>One is about structure (design), one is about execution.</li>
+  <li>Concurrency provides a way to structure a solution to solve a problem that may (but not necessarily) be parallelizable.</li>
+</ul>
+
+<p>Concurrency plus communication</p>
+
+<ul>
+  <li>Concurrency is a way to structure a program by breaking it into pieces that can be executed independently.</li>
+  <li>Communication is the means to coordinate the independent executions.</li>
+  <li>This is the Go model and (like Erlang and others) it’s based on CSP (Communicating Sequential Processes)</li>
+</ul>
+
+<blockquote>
+  <p><a href="https://blog.engineyard.com/2011/ruby-concurrency-and-you">Ruby, Concurrency, and You - Engine Yard</a></p>
+</blockquote>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCAC-ruby_support.png" alt="RCAC-ruby_support.png" /></p>
+
+<blockquote>
+  <p><a href="https://github.com/jruby/jruby/wiki/Concurrency-in-jruby">Concurrency in JRuby</a></p>
+</blockquote>
+
+<p>In general, the safest path to writing concurrent code in JRuby is the same as on any other platform:</p>
+
+<ul>
+  <li>Don’t do it, if you can avoid it.</li>
+  <li>If you must do it, don’t share data across threads.</li>
+  <li>If you must share data across threads, don’t share mutable data.</li>
+  <li>If you must share mutable data across threads, synchronize access to that data.</li>
+</ul>
+
+<p>Thread Safety refers to the ability to perform operations against a shared structure across multiple threads and know there will be no resulting errors or data integrity issues.</p>
+
+<p>Volatility refers to the visibility of changes across threads on multi-core systems that may have thread or core-specific views of system memory.</p>
+
+<p>Atomicity refers to the ability to perform a write to memory based on some view of that memory and to know the write happens before the view is invalid.</p>
+
+<blockquote>
+  <ul>
+    <li><a href="http://www.jstorimer.com/blogs/workingwithcode/8085491-nobody-understands-the-gil%0A">Nobody understands the GIL - Part 1 - Jesse Storimer</a></li>
+    <li><a href="http://www.jstorimer.com/blogs/workingwithcode/8100871-nobody-understands-the-gil-part-2-implementation">Nobody understands the GIL - Part 2: Implementation - Jesse Storimer</a></li>
+    <li><a href="http://www.rubyinside.com/does-the-gil-make-your-ruby-code-thread-safe-6051.html">Does the GIL Make Your Ruby Code Thread-Safe? - Jesse Storimer</a></li>
+  </ul>
+</blockquote>
+
+<p>It’s possible for all of the Ruby implementations to provide thread-safe data structures, but that requires extra overhead that would make single-threaded code slower.</p>
+
+<p>For the MRI core team, the GIL protects the internal state of the system. With a GIL, they don’t require any locks or synchronization around the internal data structures. If two threads can’t be mutating the internals at the same time, then no race conditions can occur. For you, the developer, this will severely limit the parallelism you get from running your Ruby code on MRI.</p>
+
+<p>All that the GIL guarantees is that MRI’s native C implementations of Ruby methods will be executed atomically (but even this has caveats). This behaviour can sometimes help us as Ruby developers, but the GIL is really there for the protection of MRI internals, not as a dependable API for Ruby developers. So the GIL doesn’t ‘solve’ thread-safety issues.</p>
+
+<p>Don’t communicate by sharing state; share state by communicating.</p>
+
+<blockquote>
+  <p><a href="https://www.igvita.com/2008/11/13/concurrency-is-a-myth-in-ruby/">Parallelism is a Myth in Ruby - Ilya Grigorik</a></p>
+</blockquote>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCAC-ruby_gil.png" alt="RCAC-ruby_gil.png" /></p>
+
+<blockquote>
+  <p><a href="https://github.com/jdantonio/Everything-You-Know-About-the-GIL-is-Wrong-RubyConf-2015">Everything You Know About GIL is Wrong - Jerry D’Antonio</a></p>
+</blockquote>
+
+<p>Summary</p>
+
+<ul>
+  <li>Concurrency is not parallelism</li>
+  <li>The GIL protects Ruby’s internal state when the operating system context switches
+    <ul>
+      <li>The GIL does not provide thread safety guarantees to user code</li>
+      <li>But it imposes an implicit memory model</li>
+    </ul>
+  </li>
+  <li>The GIL prevents true parallelism in Ruby</li>
+  <li>But Ruby is pretty good at multiplexing threads performing blocking I/O</li>
+</ul>
+
+<p>Concurrency vs. Parallelism</p>
+
+<p>Non-concurrent programs gain no benefit from running on multiple processors. Concurrent programs get parallelism for free when the runtime supports it.</p>
+
+<ul>
+  <li>Parallelism requires two processor cores. No matter the language/runtime, a processor core can only execute one instruction at a time.</li>
+  <li>Concurrency can happen when there is only one core. Concurrency is about design, improved performance is a side effect</li>
+</ul>
+
+<p>Ruby is selfish</p>
+
+<ul>
+  <li>Ruby is an interpreted language
+    <ul>
+      <li>Ruby is compiled to bytecode within the interpreter</li>
+      <li>Ruby is free to optimize and reorder your code</li>
+    </ul>
+  </li>
+  <li>Every Ruby operation is implemented in C</li>
+  <li>The Ruby runtime is just another program; it is under the control of the compiler and the operating system
+    <ul>
+      <li>The C compiler is free to optimize and reorder instructions during compilation</li>
+      <li>An operating system context switch can occur at any point in the running C code</li>
+    </ul>
+  </li>
+  <li>The GIL protects Ruby, not your code</li>
+</ul>
+
+<p>Ruby is thread safe, your code isn’t.</p>
+
+<ul>
+  <li>Every individual read and write to memory is guaranteed to be thread-safe in Ruby
+    <ul>
+      <li>The GIL prevents interleaved access to memory used by the runtime</li>
+      <li>The GIL prevents interleaved access to individual variables</li>
+      <li>Ruby itself will never become corrupt</li>
+    </ul>
+  </li>
+  <li>Ruby makes no guarantees about your code</li>
+</ul>
+
+<p><a href="https://www.wikiwand.com/en/Memory_model_(programming)">Memory model</a></p>
+
+<ul>
+  <li>“In computing, a memory model describes the interactions of threads through memory and their shared use of the data.” Wikipedia</li>
+  <li>Defines visibility, volatility, atomicity, and synchronization barriers
+    <ul>
+      <li>Java’s current memory model was adopted in 2004 as part of Java</li>
+      <li>The C and C++ memory models were adopted in 2011 with C11 and C++11</li>
+      <li><a href="https://golang.org/ref/mem">The Go Memory Model</a></li>
+    </ul>
+  </li>
+  <li>Ruby does NOT have a documented memory model. The GIL provides an implied memory model but no guarantees</li>
+</ul>
+
+<p>I/O</p>
+
+<p>Ruby programs which perform significant I/O generally benefit from concurrency.</p>
+
+<ul>
+  <li>I/O in Ruby programs is blocking</li>
+  <li>I/O within Ruby is asynchronous</li>
+</ul>
+
+<p>You can’t spell GIL without I/O. The GIL exists to maintain the internal consistency of the Ruby runtime. I/O operations are slow, which is why asynchronous I/O was invented. While I/O is in progress the Ruby thread is blocked so it cannot change the internal state, so Ruby allows other threads to do useful work. All Ruby I/O calls unlock the GIL, as do backtick and <code>system</code> calls. When Ruby thread is waiting on I/O it does not block other threads.</p>
+
+<blockquote>
+  <p><a href="http://merbist.com/2011/02/22/concurrency-in-ruby-explained/">Ruby concurrency explained - Matt Aimonetti</a></p>
+</blockquote>
+
+<p>The thing to keep in mind is that the concurrency models are often defined by the programming language you use. The advantage of the Java threaded approach is that the memory is shared between the threads so you are saving in memory (and startup time), each thread can easily talk to each other via the shared memory. The advantage of PHP is that you don’t have to worry about locks, deadlocks, threadsafe code and all that mess hidden behind threads.</p>
+
+<p>Others programming languages like Erlang and Scala use a third approach: the actor model. The actor model is somewhat a bit of a mix of both solutions, the difference is that actors are a like threads which don’t share the same memory context. Communication between actors is done via exchanged messages ensuring that each actor handles its own state and therefore avoiding corrupt data (two threads can modify the same data at the same time, but an actor can’t receive two messages at the exact same time).</p>
+
+<p>Actors/Fibers</p>
+
+<p>Ruby 1.9, developers now have access to a new type of “lightweight” threads called Fibers. Fibers are not actors and Ruby doesn’t have a native Actor model implementation but some people wrote some actor libs on top of fibers. A fiber is like a simplified thread which isn’t scheduled by the VM but by the programmer. Fibers are like blocks which can be paused and resumed from the outside of from within themselves.</p>
+
+<p>How do fibers help with concurrency? The answer is that they are part of a bigger solution. Ruby 1.9 gave us fibers which allow for a more granular control over the concurrency scheduling, combined with non-blocking IO, high concurrency can be achieved. Fiber allow developers to manually control the scheduling of “concurrent” code but also to have the code within the fiber to auto schedule itself.  Well, the only problem is that if you are doing any type of blocking IO in a fiber, the entire thread is blocked and the other fibers aren’t running. So avoid blocking IOs.</p>
+
+<p>Non blocking IOs/Reactor pattern</p>
+
+<p>The reactor pattern is quite simple to understand really. The heavy work of making blocking IO calls is delegated to an external service (reactor) which can receive concurrent requests. The service handler (reactor) is given callback methods to trigger asynchronously based on the type of response received.</p>
+
+<p>When a request comes in and your code makes a DB query, you are blocking any other requests from being processed. To avoid that, we could wrap our request in a fiber, trigger an async DB call and pause the fiber so another request can get processed as we are waiting for the DB. Once the DB query comes back, it wakes up the fiber it was trigger from, which then sends the response back to the client. Technically, the server can still only send one response at a time, but now fibers can run in parallel and don’t block the main tread by doing blocking IOs (since it’s done by the reactor).</p>
+
+<p>This is the approach used by Twisted, EventMachine and Node.js. Ruby developers can use EventMachine or an EventMachine based webserver like Thin as well as EM clients/drivers to make non blocking async calls.</p>
+
+<blockquote>
+  <p><a href="https://www.quora.com/Node-js/What-is-a-good-comparison-of-the-reactor-pattern-vs-actor-model">Node.js: What is a good comparison of the reactor pattern vs actor model? - Sean Byrnes</a></p>
+</blockquote>
+
+<p>The reactor model follows a purely event driven system where the entire system can be implemented as a single-threaded process with a series of event generators and event handlers. In most implementations there is a “event loop” that continues to run which takes all of the generated events, sends them to all registered event handles and then starts over again.</p>
+
+<p>An actor model is a more abstract method of breaking up execution into different processes that interact with each other. While it is possible to do this similarly to the reactor model, I see this mostly as a series of processes running in different threads and exchanging information through messages or protocols.</p>
+
+<blockquote>
+  <p><a href="http://www.toptal.com/ruby/ruby-concurrency-and-parallelism-a-practical-primer?utm_source=rubyweekly&amp;utm_medium=email">Ruby Concurrency and Parallelism: A Practical Tutorial</a></p>
+</blockquote>
+
+<ul>
+  <li>Ruby concurrency is when two tasks can start, run, and complete in overlapping time periods. It doesn’t necessarily mean, though, that they’ll ever both be running at the same instant (e.g., multiple threads on a single-core machine).</li>
+  <li>Parallelism is when two tasks literally run at the same time.</li>
+</ul>
+
+<blockquote>
+  <p><a href="http://oldmoe.blogspot.jp/2008/08/ruby-fibers-vs-ruby-threads.html">Ruby Fibers Vs Ruby Threads</a></p>
+</blockquote>
+
+<p>Fibers are much faster to create than threads, they eat much less memory too.</p>
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-article-collection/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-article-collection/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>

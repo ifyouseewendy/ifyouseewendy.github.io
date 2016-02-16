@@ -1,0 +1,328 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ruby Concurrency In Practice - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="Concurrency, Ruby Feb 16th, 2016 Ruby Concurrency In Practice Guidance Safest path to concurrency Writing Thread-safe Code Into the Wild Guidance &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-practice">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2016/02/16/ruby-concurrency-article-collection/">Ruby Concurrency Article Collection</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/16/ruby-concurrency-in-practice/">Ruby Concurrency in Practice</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/16/ruby-concurrency-in-theory/">Ruby Concurrency in Theory</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/16/review-working-with-ruby-threads/">[Review] Working With Ruby Threads</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/05/ci-zhi-ban-nian-ji/">辞职半年记</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/concurrency/'>Concurrency</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Feb 16<span>th</span>, 2016</a>
+</span>
+
+    </div>
+    <h1>
+      Ruby Concurrency In Practice
+    </h1>
+  
+</header>
+
+
+  <section><ul id="markdown-toc">
+  <li><a href="#guidance">Guidance</a>    <ul>
+      <li><a href="#safest-path-to-concurrency">Safest path to concurrency</a></li>
+      <li><a href="#writing-thread-safe-code">Writing Thread-safe Code</a></li>
+    </ul>
+  </li>
+  <li><a href="#into-the-wild">Into the Wild</a></li>
+</ul>
+
+<h2 id="guidance">Guidance</h2>
+
+<h3 id="safest-path-to-concurrency">Safest path to concurrency</h3>
+
+<blockquote>
+  <p>from <a href="https://github.com/jruby/jruby/wiki/Concurrency-in-jruby">JRuby wiki</a></p>
+</blockquote>
+
+<ol>
+  <li>Don’t do it.</li>
+  <li>If you must do it, don’t share data across threads.</li>
+  <li>If you must share data across threads, don’t share mutable data.</li>
+  <li>If you must share mutable data across threads, synchronize access to that data.</li>
+</ol>
+
+<p>Do not communicate by sharing data; instead, share data by communicating</p>
+
+<h3 id="writing-thread-safe-code">Writing Thread-safe Code</h3>
+
+<p><strong>Avoid mutating globals</strong></p>
+
+<ul>
+  <li>Constants</li>
+  <li>The AST</li>
+  <li>Class variables/methods</li>
+</ul>
+
+<p><strong>Create more objects, rather than sharing one</strong></p>
+
+<ul>
+  <li>Thread-locals</li>
+  <li>Connection pools</li>
+</ul>
+
+<p><strong>Avoid lazy loading</strong></p>
+
+<ul>
+  <li>No autoload</li>
+</ul>
+
+<p><strong>Prefer data structures over mutexes</strong></p>
+
+<p>Mutexes are notoriously hard to use correctly. For better or worse, you have a lot of things to decide when using a mutex.</p>
+
+<ul>
+  <li>How coarse or fine should this mutex be?</li>
+  <li>Which lines of code need to be in the critical section?</li>
+  <li>Is a deadlock possible here?</li>
+  <li>Do I need a per-instance mutex? Or a global one?</li>
+</ul>
+
+<p>By leaning on a data structure, you remove the burden of correct synchronization from your code and depend on the semantics of the data structure to keep things consistent.</p>
+
+<p><strong>Wrap your threads in an abstraction</strong></p>
+
+<ul>
+  <li>Actor model</li>
+  <li>Reactor Pattern, event-driven I/O</li>
+</ul>
+
+<h2 id="into-the-wild">Into the Wild</h2>
+
+<p><strong>Primitives</strong></p>
+
+<ul>
+  <li><a href="http://ruby-doc.org/core-2.2.2/Thread.html">Thread</a></li>
+  <li><a href="http://ruby-doc.org/core-2.2.2/Mutex.html">Mutex</a></li>
+  <li><a href="http://ruby-doc.org/core-2.2.2/ConditionVariable.html">ConditionVariable</a></li>
+</ul>
+
+<p><strong>Thread-safe Data Structure</strong></p>
+
+<ul>
+  <li><a href="https://github.com/hamstergem/hamster">hamster</a> - Efficient, Immutable, Thread-Safe Collection classes for Ruby</li>
+  <li><a href="https://github.com/ruby-concurrency/thread_safe">thread_safe</a> - Thread-safe collections for Ruby</li>
+  <li><a href="https://github.com/ruby-concurrency/atomic">atomic</a> - Atomic references for Ruby (merged with concurrent-ruby)</li>
+  <li><a href="https://github.com/mperham/connection_pool">connection_pool</a> - Generic connection pooling for Ruby</li>
+</ul>
+
+<p><strong>Abstraction / Framework</strong></p>
+
+<p><a href="https://github.com/celluloid/celluloid">celluloid</a></p>
+
+<p>Actor-based concurrent object framework for Ruby.</p>
+
+<ul>
+  <li><a href="https://github.com/celluloid/reel/">Reel</a> - An “evented” web server based on Celluloid::IO</li>
+  <li><a href="https://github.com/kenichi/angelo">angelo</a> - Sinatra-like DSL for Reel that supports WebSockets and SSE</li>
+</ul>
+
+<p><a href="https://github.com/eventmachine/eventmachine">eventmachine</a></p>
+
+<p>EventMachine is an event-driven I/O and lightweight concurrency library for Ruby. It provides event-driven I/O using the Reactor pattern.</p>
+
+<ul>
+  <li><a href="http://code.macournoyer.com/thin/">Thin</a>, <a href="https://github.com/postrank-labs/goliath/">Goliath</a> - Scalable event-driven servers. Examples:</li>
+  <li><a href="https://github.com/igrigorik/em-http-request">em-http-request</a> - Asynchronous HTTP Client (EventMachine + Ruby)</li>
+  <li><a href="https://github.com/igrigorik/em-synchrony">em-synchrony</a> - Fiber aware EventMachine clients and convenience classes</li>
+</ul>
+
+<p><a href="https://github.com/puma/puma">puma</a></p>
+
+<p>A ruby web server built for concurrency</p>
+
+<p><a href="https://github.com/ruby-concurrency/concurrent-ruby">concurrent-ruby</a></p>
+
+<p>Modern concurrency tools including agents, futures, promises, thread pools, supervisors, and more. Inspired by Erlang, Clojure, Scala, Go, Java, JavaScript, and classic concurrency patterns.</p>
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-practice/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-practice/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>

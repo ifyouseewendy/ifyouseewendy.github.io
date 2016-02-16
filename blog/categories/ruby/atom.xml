@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2016-02-12T11:00:18+08:00</updated>
+  <updated>2016-02-16T20:16:06+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,1156 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Concurrency Article Collection]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-article-collection/"/>
+    <updated>2016-02-16T20:04:50+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-article-collection</id>
+    <content type="html"><![CDATA[<p>This an article collection about concurrency in Ruby, which benefits me a lot and to be continued.</p>
+
+<blockquote>
+  <p><a href="http://www.jstorimer.com/blogs/workingwithcode/7766063-threads-not-just-for-optimizations">Threads, Not Just for Optimisations - Jesse Storimer</a></p>
+</blockquote>
+
+<p>Threads can help us organize our programs.</p>
+
+<p>When a signal is delivered to a multithreaded process that has established a signal handler, the kernel arbitrarily selects one thread in the process to which to deliver the signal and invokes the handler in that thread. So Ruby uses a dedicated thread to handle incoming Unix signals. This has nothing to do with speeding things up, it’s just good programming practice.</p>
+
+<p>When you spawn a new Unix process using fork, you really should either wait for it to finish using Process.wait, or detach from it using Process.detach. The reason is that when the process exits, it leaves behind some information about its exit status. This status info can’t be cleaned up until it’s been consumed by the parent process using Process.wait. When you use something like Process.spawn or backticks, Process.wait is called internally to cleanup the aforementioned status info. So Process.detach is just a thin wrapper around Process.wait, using a background thread to wait for the return value of Process.wait, while the main thread continues execution concurrently. Again, this has nothing to do with speed, but allows the proper housekeeping to be done without burdening the program with extra state.</p>
+
+<blockquote>
+  <p><a href="http://concur.rspace.googlecode.com/hg/talk/concur.html#title-slide">Concurrency is not Parallelism (it’s better) - Rob Pike</a></p>
+</blockquote>
+
+<p>Go provides</p>
+
+<ul>
+  <li>concurrent execution (coroutines. They’re a bit like threads, but they’re much cheaper. Goroutines are multiplexed onto OS threads as required. When a goroutine blocks, that thread blocks but no other goroutine blocks.)</li>
+  <li>synchronization and messaging (channels)</li>
+  <li>multi-way concurrent control (select)</li>
+</ul>
+
+<p>Concurrency vs. Paralelism</p>
+
+<ul>
+  <li>Concurrency is about dealing with lots of things at once.</li>
+  <li>Parallelism is about doing lots of things at once.</li>
+  <li>Not the same, but related.</li>
+  <li>One is about structure (design), one is about execution.</li>
+  <li>Concurrency provides a way to structure a solution to solve a problem that may (but not necessarily) be parallelizable.</li>
+</ul>
+
+<p>Concurrency plus communication</p>
+
+<ul>
+  <li>Concurrency is a way to structure a program by breaking it into pieces that can be executed independently.</li>
+  <li>Communication is the means to coordinate the independent executions.</li>
+  <li>This is the Go model and (like Erlang and others) it’s based on CSP (Communicating Sequential Processes)</li>
+</ul>
+
+<blockquote>
+  <p><a href="https://blog.engineyard.com/2011/ruby-concurrency-and-you">Ruby, Concurrency, and You - Engine Yard</a></p>
+</blockquote>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCAC-ruby_support.png" alt="RCAC-ruby_support.png" /></p>
+
+<blockquote>
+  <p><a href="https://github.com/jruby/jruby/wiki/Concurrency-in-jruby">Concurrency in JRuby</a></p>
+</blockquote>
+
+<p>In general, the safest path to writing concurrent code in JRuby is the same as on any other platform:</p>
+
+<ul>
+  <li>Don’t do it, if you can avoid it.</li>
+  <li>If you must do it, don’t share data across threads.</li>
+  <li>If you must share data across threads, don’t share mutable data.</li>
+  <li>If you must share mutable data across threads, synchronize access to that data.</li>
+</ul>
+
+<p>Thread Safety refers to the ability to perform operations against a shared structure across multiple threads and know there will be no resulting errors or data integrity issues.</p>
+
+<p>Volatility refers to the visibility of changes across threads on multi-core systems that may have thread or core-specific views of system memory.</p>
+
+<p>Atomicity refers to the ability to perform a write to memory based on some view of that memory and to know the write happens before the view is invalid.</p>
+
+<blockquote>
+  <ul>
+    <li><a href="http://www.jstorimer.com/blogs/workingwithcode/8085491-nobody-understands-the-gil%0A">Nobody understands the GIL - Part 1 - Jesse Storimer</a></li>
+    <li><a href="http://www.jstorimer.com/blogs/workingwithcode/8100871-nobody-understands-the-gil-part-2-implementation">Nobody understands the GIL - Part 2: Implementation - Jesse Storimer</a></li>
+    <li><a href="http://www.rubyinside.com/does-the-gil-make-your-ruby-code-thread-safe-6051.html">Does the GIL Make Your Ruby Code Thread-Safe? - Jesse Storimer</a></li>
+  </ul>
+</blockquote>
+
+<p>It’s possible for all of the Ruby implementations to provide thread-safe data structures, but that requires extra overhead that would make single-threaded code slower.</p>
+
+<p>For the MRI core team, the GIL protects the internal state of the system. With a GIL, they don’t require any locks or synchronization around the internal data structures. If two threads can’t be mutating the internals at the same time, then no race conditions can occur. For you, the developer, this will severely limit the parallelism you get from running your Ruby code on MRI.</p>
+
+<p>All that the GIL guarantees is that MRI’s native C implementations of Ruby methods will be executed atomically (but even this has caveats). This behaviour can sometimes help us as Ruby developers, but the GIL is really there for the protection of MRI internals, not as a dependable API for Ruby developers. So the GIL doesn’t ‘solve’ thread-safety issues.</p>
+
+<p>Don’t communicate by sharing state; share state by communicating.</p>
+
+<blockquote>
+  <p><a href="https://www.igvita.com/2008/11/13/concurrency-is-a-myth-in-ruby/">Parallelism is a Myth in Ruby - Ilya Grigorik</a></p>
+</blockquote>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCAC-ruby_gil.png" alt="RCAC-ruby_gil.png" /></p>
+
+<blockquote>
+  <p><a href="https://github.com/jdantonio/Everything-You-Know-About-the-GIL-is-Wrong-RubyConf-2015">Everything You Know About GIL is Wrong - Jerry D’Antonio</a></p>
+</blockquote>
+
+<p>Summary</p>
+
+<ul>
+  <li>Concurrency is not parallelism</li>
+  <li>The GIL protects Ruby’s internal state when the operating system context switches
+    <ul>
+      <li>The GIL does not provide thread safety guarantees to user code</li>
+      <li>But it imposes an implicit memory model</li>
+    </ul>
+  </li>
+  <li>The GIL prevents true parallelism in Ruby</li>
+  <li>But Ruby is pretty good at multiplexing threads performing blocking I/O</li>
+</ul>
+
+<p>Concurrency vs. Parallelism</p>
+
+<p>Non-concurrent programs gain no benefit from running on multiple processors. Concurrent programs get parallelism for free when the runtime supports it.</p>
+
+<ul>
+  <li>Parallelism requires two processor cores. No matter the language/runtime, a processor core can only execute one instruction at a time.</li>
+  <li>Concurrency can happen when there is only one core. Concurrency is about design, improved performance is a side effect</li>
+</ul>
+
+<p>Ruby is selfish</p>
+
+<ul>
+  <li>Ruby is an interpreted language
+    <ul>
+      <li>Ruby is compiled to bytecode within the interpreter</li>
+      <li>Ruby is free to optimize and reorder your code</li>
+    </ul>
+  </li>
+  <li>Every Ruby operation is implemented in C</li>
+  <li>The Ruby runtime is just another program; it is under the control of the compiler and the operating system
+    <ul>
+      <li>The C compiler is free to optimize and reorder instructions during compilation</li>
+      <li>An operating system context switch can occur at any point in the running C code</li>
+    </ul>
+  </li>
+  <li>The GIL protects Ruby, not your code</li>
+</ul>
+
+<p>Ruby is thread safe, your code isn’t.</p>
+
+<ul>
+  <li>Every individual read and write to memory is guaranteed to be thread-safe in Ruby
+    <ul>
+      <li>The GIL prevents interleaved access to memory used by the runtime</li>
+      <li>The GIL prevents interleaved access to individual variables</li>
+      <li>Ruby itself will never become corrupt</li>
+    </ul>
+  </li>
+  <li>Ruby makes no guarantees about your code</li>
+</ul>
+
+<p><a href="https://www.wikiwand.com/en/Memory_model_(programming)">Memory model</a></p>
+
+<ul>
+  <li>“In computing, a memory model describes the interactions of threads through memory and their shared use of the data.” Wikipedia</li>
+  <li>Defines visibility, volatility, atomicity, and synchronization barriers
+    <ul>
+      <li>Java’s current memory model was adopted in 2004 as part of Java</li>
+      <li>The C and C++ memory models were adopted in 2011 with C11 and C++11</li>
+      <li><a href="https://golang.org/ref/mem">The Go Memory Model</a></li>
+    </ul>
+  </li>
+  <li>Ruby does NOT have a documented memory model. The GIL provides an implied memory model but no guarantees</li>
+</ul>
+
+<p>I/O</p>
+
+<p>Ruby programs which perform significant I/O generally benefit from concurrency.</p>
+
+<ul>
+  <li>I/O in Ruby programs is blocking</li>
+  <li>I/O within Ruby is asynchronous</li>
+</ul>
+
+<p>You can’t spell GIL without I/O. The GIL exists to maintain the internal consistency of the Ruby runtime. I/O operations are slow, which is why asynchronous I/O was invented. While I/O is in progress the Ruby thread is blocked so it cannot change the internal state, so Ruby allows other threads to do useful work. All Ruby I/O calls unlock the GIL, as do backtick and <code>system</code> calls. When Ruby thread is waiting on I/O it does not block other threads.</p>
+
+<blockquote>
+  <p><a href="http://merbist.com/2011/02/22/concurrency-in-ruby-explained/">Ruby concurrency explained - Matt Aimonetti</a></p>
+</blockquote>
+
+<p>The thing to keep in mind is that the concurrency models are often defined by the programming language you use. The advantage of the Java threaded approach is that the memory is shared between the threads so you are saving in memory (and startup time), each thread can easily talk to each other via the shared memory. The advantage of PHP is that you don’t have to worry about locks, deadlocks, threadsafe code and all that mess hidden behind threads.</p>
+
+<p>Others programming languages like Erlang and Scala use a third approach: the actor model. The actor model is somewhat a bit of a mix of both solutions, the difference is that actors are a like threads which don’t share the same memory context. Communication between actors is done via exchanged messages ensuring that each actor handles its own state and therefore avoiding corrupt data (two threads can modify the same data at the same time, but an actor can’t receive two messages at the exact same time).</p>
+
+<p>Actors/Fibers</p>
+
+<p>Ruby 1.9, developers now have access to a new type of “lightweight” threads called Fibers. Fibers are not actors and Ruby doesn’t have a native Actor model implementation but some people wrote some actor libs on top of fibers. A fiber is like a simplified thread which isn’t scheduled by the VM but by the programmer. Fibers are like blocks which can be paused and resumed from the outside of from within themselves.</p>
+
+<p>How do fibers help with concurrency? The answer is that they are part of a bigger solution. Ruby 1.9 gave us fibers which allow for a more granular control over the concurrency scheduling, combined with non-blocking IO, high concurrency can be achieved. Fiber allow developers to manually control the scheduling of “concurrent” code but also to have the code within the fiber to auto schedule itself.  Well, the only problem is that if you are doing any type of blocking IO in a fiber, the entire thread is blocked and the other fibers aren’t running. So avoid blocking IOs.</p>
+
+<p>Non blocking IOs/Reactor pattern</p>
+
+<p>The reactor pattern is quite simple to understand really. The heavy work of making blocking IO calls is delegated to an external service (reactor) which can receive concurrent requests. The service handler (reactor) is given callback methods to trigger asynchronously based on the type of response received.</p>
+
+<p>When a request comes in and your code makes a DB query, you are blocking any other requests from being processed. To avoid that, we could wrap our request in a fiber, trigger an async DB call and pause the fiber so another request can get processed as we are waiting for the DB. Once the DB query comes back, it wakes up the fiber it was trigger from, which then sends the response back to the client. Technically, the server can still only send one response at a time, but now fibers can run in parallel and don’t block the main tread by doing blocking IOs (since it’s done by the reactor).</p>
+
+<p>This is the approach used by Twisted, EventMachine and Node.js. Ruby developers can use EventMachine or an EventMachine based webserver like Thin as well as EM clients/drivers to make non blocking async calls.</p>
+
+<blockquote>
+  <p><a href="https://www.quora.com/Node-js/What-is-a-good-comparison-of-the-reactor-pattern-vs-actor-model">Node.js: What is a good comparison of the reactor pattern vs actor model? - Sean Byrnes</a></p>
+</blockquote>
+
+<p>The reactor model follows a purely event driven system where the entire system can be implemented as a single-threaded process with a series of event generators and event handlers. In most implementations there is a “event loop” that continues to run which takes all of the generated events, sends them to all registered event handles and then starts over again.</p>
+
+<p>An actor model is a more abstract method of breaking up execution into different processes that interact with each other. While it is possible to do this similarly to the reactor model, I see this mostly as a series of processes running in different threads and exchanging information through messages or protocols.</p>
+
+<blockquote>
+  <p><a href="http://www.toptal.com/ruby/ruby-concurrency-and-parallelism-a-practical-primer?utm_source=rubyweekly&amp;utm_medium=email">Ruby Concurrency and Parallelism: A Practical Tutorial</a></p>
+</blockquote>
+
+<ul>
+  <li>Ruby concurrency is when two tasks can start, run, and complete in overlapping time periods. It doesn’t necessarily mean, though, that they’ll ever both be running at the same instant (e.g., multiple threads on a single-core machine).</li>
+  <li>Parallelism is when two tasks literally run at the same time.</li>
+</ul>
+
+<blockquote>
+  <p><a href="http://oldmoe.blogspot.jp/2008/08/ruby-fibers-vs-ruby-threads.html">Ruby Fibers Vs Ruby Threads</a></p>
+</blockquote>
+
+<p>Fibers are much faster to create than threads, they eat much less memory too.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Concurrency In Practice]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-practice/"/>
+    <updated>2016-02-16T19:58:54+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-practice</id>
+    <content type="html"><![CDATA[<ul id="markdown-toc">
+  <li><a href="#guidance">Guidance</a>    <ul>
+      <li><a href="#safest-path-to-concurrency">Safest path to concurrency</a></li>
+      <li><a href="#writing-thread-safe-code">Writing Thread-safe Code</a></li>
+    </ul>
+  </li>
+  <li><a href="#into-the-wild">Into the Wild</a></li>
+</ul>
+
+<h2 id="guidance">Guidance</h2>
+
+<h3 id="safest-path-to-concurrency">Safest path to concurrency</h3>
+
+<blockquote>
+  <p>from <a href="https://github.com/jruby/jruby/wiki/Concurrency-in-jruby">JRuby wiki</a></p>
+</blockquote>
+
+<ol>
+  <li>Don’t do it.</li>
+  <li>If you must do it, don’t share data across threads.</li>
+  <li>If you must share data across threads, don’t share mutable data.</li>
+  <li>If you must share mutable data across threads, synchronize access to that data.</li>
+</ol>
+
+<p>Do not communicate by sharing data; instead, share data by communicating</p>
+
+<h3 id="writing-thread-safe-code">Writing Thread-safe Code</h3>
+
+<p><strong>Avoid mutating globals</strong></p>
+
+<ul>
+  <li>Constants</li>
+  <li>The AST</li>
+  <li>Class variables/methods</li>
+</ul>
+
+<p><strong>Create more objects, rather than sharing one</strong></p>
+
+<ul>
+  <li>Thread-locals</li>
+  <li>Connection pools</li>
+</ul>
+
+<p><strong>Avoid lazy loading</strong></p>
+
+<ul>
+  <li>No autoload</li>
+</ul>
+
+<p><strong>Prefer data structures over mutexes</strong></p>
+
+<p>Mutexes are notoriously hard to use correctly. For better or worse, you have a lot of things to decide when using a mutex.</p>
+
+<ul>
+  <li>How coarse or fine should this mutex be?</li>
+  <li>Which lines of code need to be in the critical section?</li>
+  <li>Is a deadlock possible here?</li>
+  <li>Do I need a per-instance mutex? Or a global one?</li>
+</ul>
+
+<p>By leaning on a data structure, you remove the burden of correct synchronization from your code and depend on the semantics of the data structure to keep things consistent.</p>
+
+<p><strong>Wrap your threads in an abstraction</strong></p>
+
+<ul>
+  <li>Actor model</li>
+  <li>Reactor Pattern, event-driven I/O</li>
+</ul>
+
+<h2 id="into-the-wild">Into the Wild</h2>
+
+<p><strong>Primitives</strong></p>
+
+<ul>
+  <li><a href="http://ruby-doc.org/core-2.2.2/Thread.html">Thread</a></li>
+  <li><a href="http://ruby-doc.org/core-2.2.2/Mutex.html">Mutex</a></li>
+  <li><a href="http://ruby-doc.org/core-2.2.2/ConditionVariable.html">ConditionVariable</a></li>
+</ul>
+
+<p><strong>Thread-safe Data Structure</strong></p>
+
+<ul>
+  <li><a href="https://github.com/hamstergem/hamster">hamster</a> - Efficient, Immutable, Thread-Safe Collection classes for Ruby</li>
+  <li><a href="https://github.com/ruby-concurrency/thread_safe">thread_safe</a> - Thread-safe collections for Ruby</li>
+  <li><a href="https://github.com/ruby-concurrency/atomic">atomic</a> - Atomic references for Ruby (merged with concurrent-ruby)</li>
+  <li><a href="https://github.com/mperham/connection_pool">connection_pool</a> - Generic connection pooling for Ruby</li>
+</ul>
+
+<p><strong>Abstraction / Framework</strong></p>
+
+<p><a href="https://github.com/celluloid/celluloid">celluloid</a></p>
+
+<p>Actor-based concurrent object framework for Ruby.</p>
+
+<ul>
+  <li><a href="https://github.com/celluloid/reel/">Reel</a> - An “evented” web server based on Celluloid::IO</li>
+  <li><a href="https://github.com/kenichi/angelo">angelo</a> - Sinatra-like DSL for Reel that supports WebSockets and SSE</li>
+</ul>
+
+<p><a href="https://github.com/eventmachine/eventmachine">eventmachine</a></p>
+
+<p>EventMachine is an event-driven I/O and lightweight concurrency library for Ruby. It provides event-driven I/O using the Reactor pattern.</p>
+
+<ul>
+  <li><a href="http://code.macournoyer.com/thin/">Thin</a>, <a href="https://github.com/postrank-labs/goliath/">Goliath</a> - Scalable event-driven servers. Examples:</li>
+  <li><a href="https://github.com/igrigorik/em-http-request">em-http-request</a> - Asynchronous HTTP Client (EventMachine + Ruby)</li>
+  <li><a href="https://github.com/igrigorik/em-synchrony">em-synchrony</a> - Fiber aware EventMachine clients and convenience classes</li>
+</ul>
+
+<p><a href="https://github.com/puma/puma">puma</a></p>
+
+<p>A ruby web server built for concurrency</p>
+
+<p><a href="https://github.com/ruby-concurrency/concurrent-ruby">concurrent-ruby</a></p>
+
+<p>Modern concurrency tools including agents, futures, promises, thread pools, supervisors, and more. Inspired by Erlang, Clojure, Scala, Go, Java, JavaScript, and classic concurrency patterns.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Concurrency In Theory]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-theory/"/>
+    <updated>2016-02-16T19:35:19+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-theory</id>
+    <content type="html"><![CDATA[<ul id="markdown-toc">
+  <li><a href="#what-is-concurrency">What is concurrency?</a>    <ul>
+      <li><a href="#concurrency-vs-paralelism">Concurrency vs. Paralelism</a></li>
+      <li><a href="#concurrency-plus-communication">Concurrency plus communication</a></li>
+    </ul>
+  </li>
+  <li><a href="#what-does-ruby-support">What does Ruby support?</a>    <ul>
+      <li><a href="#gil">GIL</a></li>
+      <li><a href="#ruby-support">Ruby Support</a></li>
+      <li><a href="#fiber">Fiber</a></li>
+    </ul>
+  </li>
+  <li><a href="#how-to-enhance-concurrency-by-ruby">How to enhance concurrency by Ruby?</a>    <ul>
+      <li><a href="#basics">Basics</a></li>
+      <li><a href="#concurrency-model-software-transactional-memory">Concurrency Model: Software Transactional Memory</a></li>
+      <li><a href="#concurrency-model-actor-model">Concurrency Model: Actor Model</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="what-is-concurrency">What is concurrency?</h2>
+
+<h3 id="concurrency-vs-paralelism">Concurrency vs. Paralelism</h3>
+
+<ul>
+  <li>Concurrency is about dealing with lots of things at once.</li>
+  <li>Parallelism is about doing lots of things at once.</li>
+  <li>Not the same, but related.</li>
+  <li>One is about structure (design), one is about execution.</li>
+  <li>Concurrency provides a way to structure a solution to solve a problem that may (but not necessarily) be parallelizable.</li>
+</ul>
+
+<h3 id="concurrency-plus-communication">Concurrency plus communication</h3>
+
+<ul>
+  <li>Concurrency is a way to structure a program by breaking it into pieces that can be executed independently.</li>
+  <li>Communication is the means to coordinate the independent executions.</li>
+  <li>This is the Go model and (like Erlang and others) it’s based on CSP (Communicating Sequential Processes)</li>
+</ul>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="http://concur.rspace.googlecode.com/hg/talk/concur.html#title-slide">Concurrency is not Parallelism (it’s better) - Rob Pike</a></li>
+</ul>
+
+<h2 id="what-does-ruby-support">What does Ruby support?</h2>
+
+<h3 id="gil">GIL</h3>
+
+<p>A global interpreter lock (GIL) is a mutual-exclusion lock held by a programming language interpreter thread to avoid sharing code that is not thread-safe with other threads. In implementations with a GIL, there is always one GIL for each interpreter process.</p>
+
+<p>Global interpreter lock (GIL) is a mechanism used in computer language interpreters to synchronize the execution of threads so that only one native thread can execute at a time. An interpreter that uses GIL always allows exactly one thread to execute at a time, even if run on a multi-core processor.</p>
+
+<p><strong>Benefits</strong></p>
+
+<ul>
+  <li>increased speed of single-threaded programs (no necessity to acquire or release locks on all data structures separately)</li>
+  <li>easy integration of C libraries that usually are not thread-safe</li>
+  <li>ease of implementation</li>
+</ul>
+
+<p><strong>Drawbacks</strong></p>
+
+<p>Limits the amount of parallelism reachable through concurrency of a single interpreter process with multiple threads. Hence a significant slowdown for CPU-bound thread.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCIT-native_threads.png" alt="RCIT-native_threads.png" /></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCIT-threads_with_GIL.png" alt="RCIT-threads_with_GIL.png" /></p>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Global_interpreter_lock">Global Interpreter Lock - Wikipedia</a></li>
+</ul>
+
+<h3 id="ruby-support">Ruby Support</h3>
+
+<p>Ruby 1.8, uses only a single native thread and runs all Ruby threads within that one native thread. A single OS thread is allocated for the Ruby interpreter, a GIL lock is instantiated, and Ruby threads (‘Green Threads’), are spooled up by our program. This means that threads can never run in parallel, even on multicore CPUs.</p>
+
+<p>Ruby 1.9, allocates a native thread for each Ruby thread. But because some of the C libraries used in this implementation are not themselves thread-safe. Ruby never allows more than one of its native threads to run at the same time. Now the GIL is the bottleneck, and Ruby will never take advantage of multiple cores!</p>
+
+<p>Ruby 1.9, also provides Fiber.</p>
+
+<p>Ruby concurrency without parallelism can still be very useful, though, for tasks that are IO-heavy (e.g., network I/O, disk I/O).  Ruby can release the lock on the GIL on that thread while it blocks on I/O. There is a reason threads were, after all, invented and used even before multi-core servers were common.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCIT-ruby_support.png" alt="RCIT-ruby_support.png" /></p>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="https://blog.engineyard.com/2011/ruby-concurrency-and-you">Ruby, Concurrency, and You - Engine Yard</a></li>
+</ul>
+
+<h3 id="fiber">Fiber</h3>
+
+<p>Fibers are primitives for implementing light weight cooperative concurrency in Ruby (think lightweight threads, minus the thread scheduler and less overhead). Basically they are a means of creating code blocks that can be paused and resumed, much like threads. A fiber is a unit of execution that must be manually scheduled by the application. Fibers run in the context of the threads that schedule them. Each thread can schedule multiple fibers.</p>
+
+<p>As opposed to other stackless light weight concurrency models, each fiber comes with a small 4KB stack. This enables the fiber to be paused from deeply nested function calls within the fiber block.</p>
+
+<p>Normal usage: start an async operation, yield the fiber, and then make the callback resume the fiber once the operation is complete.</p>
+
+<p><strong>Compered to Thread</strong></p>
+
+<p>Fibers are never preempted, the scheduling must be done by the programmer and not the VM.</p>
+
+<p><strong>Why Fiber?</strong></p>
+
+<p>In general, fibers do not provide advantages over a well-designed multithreaded application. However, using fibers can make it easier to port applications that were designed to schedule their own threads. The availability of Fibers allows Actor-style programming, without having to worry about overhead.</p>
+
+<p><strong>Why Fiber is called a semi-coroutine?</strong></p>
+
+<p>Coroutines (cooperative multitasking) are computer program components that generalize subroutines for nonpreemptive multitasking, by allowing multiple entry points for suspending and resuming execution at certain locations. Coroutines are well-suited for implementing more familiar program components such as cooperative tasks, exceptions, event loop, iterators, infinite lists and pipes.</p>
+
+<p>Asymmetric Coroutines can only transfer control back to their caller, where Coroutines are free to transfer control to any other Coroutine, as long as they have a handle to it.</p>
+
+<p>We may infer that Ruby encapsulate a Fiber::Core which supports coroutine, and only expose Fiber as a semi-coroutine data structure.</p>
+
+<p><strong>What’s the performance of Fiber?</strong></p>
+
+<p>Fibers are much faster to create than threads, they eat much less memory too.</p>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="http://ruby-doc.org/core-2.2.2/Fiber.html">Fiber - Ruby Doc</a></li>
+  <li><a href="http://www.infoq.com/news/2007/08/ruby-1-9-fibers">Ruby 1.9 adds Fibers for lightweight concurrency - Werner Schuster</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Coroutine#Implementations_for_Ruby">Coroutine - Wikipedia</a></li>
+  <li><a href="http://oldmoe.blogspot.jp/2008/08/ruby-fibers-vs-ruby-threads.html">Ruby Fibers Vs Ruby Threads - oldmoe</a></li>
+</ul>
+
+<h2 id="how-to-enhance-concurrency-by-ruby">How to enhance concurrency by Ruby?</h2>
+
+<h3 id="basics">Basics</h3>
+
+<p><strong>How to provide more concurrency?</strong></p>
+
+<ul>
+  <li>Multi processing (parallelism), like Resque, Unicorn. Simply to fork a running process to multiply its processing power.</li>
+  <li>Multi threading, like Sidekiq, Puma and Thin. Lighter than processes, requiring less overhead. At some point, you may find it necessary to use a thread pool.</li>
+  <li>Background processing</li>
+  <li>Rely on other concurrency models (event, actor, message-passing)</li>
+</ul>
+
+<p><strong>Multi-processing vs. Multi-threading</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCIT-multi_processing_vs_multi_threading.png" alt="RCIT-multi_processing_vs_multi_threading.png" /></p>
+
+<p><strong>Thread Pooling</strong></p>
+
+<p>A key configuration parameter for a thread pool is typically the number of threads in the pool. These threads can either be instantiated all at once (i.e., when the pool is created) or lazily (i.e., as needed until the maximum number of threads in the pool has been created).</p>
+
+<p><code>Queue</code> and <code>SizedQueue</code> are thread-safe data structures in Ruby, maybe the only two.</p>
+
+<p><a href="https://gist.github.com/ifyouseewendy/a8fc663ae575843f9e8f">demo snippet</a></p>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="https://www.igvita.com/2010/08/18/multi-core-threads-message-passing/">Multi-core, Threads &amp; Message Passing - Ilya Grigorik</a></li>
+  <li><a href="http://adam.herokuapp.com/past/2009/8/13/threads_suck/">Threads Suck -  Adam Wiggins</a></li>
+  <li><a href="https://www.usenix.org/legacy/events/hotos03/tech/full_papers/vonbehren/vonbehren_html/index.html">Why Events Are A Bad Idea - Rob von Behren, Jeremy Condit and Eric Brewer</a></li>
+</ul>
+
+<h3 id="concurrency-model-software-transactional-memory">Concurrency Model: Software Transactional Memory</h3>
+
+<p>Software transactional memory (STM) is a concurrency control mechanism analogous to database transactions for controlling access to shared memory in concurrent computing. It is an alternative to lock-based synchronization. STM is a strategy implemented in software, rather than as a hardware component.</p>
+
+<ul>
+  <li>A thread completes modifications to shared memory without regard for what other threads might be doing, recording every read and write that it is performing in a log.</li>
+  <li>Instead of placing the onus on the writer to make sure it does not adversely affect other operations in progress, it is placed on the reader, who after completing an entire transaction verifies that other threads have not concurrently made changes to memory that it accessed in the past.</li>
+  <li>This final operation, in which the changes of a transaction are validated and, if validation is successful, made permanent, is called a commit. A transaction may also abort at any time, causing all of its prior changes to be rolled back or undone. If a transaction cannot be committed due to conflicting changes, it is typically aborted and re-executed from the beginning until it succeeds.</li>
+</ul>
+
+<p>Clojure has STM support built into the core language.</p>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Software_transactional_memory">Software transactional memory - Wikipedia</a></li>
+</ul>
+
+<h3 id="concurrency-model-actor-model">Concurrency Model: Actor Model</h3>
+
+<p>The actor model has its theoretical roots in concurrency modelling and message passing concepts.</p>
+
+<p>The basic operation of an Actor is easy to understand: like a thread, it runs concurrently with other Actors. However, unlike threads it is not pre-emptable. Instead, each Actor has a mailbox and can call a routine named “receive” to check its mailbox for new messages. The “receive” routine takes a filter, and if no messages in an Actor’s mailbox matches the filter, the Actor sleeps until it receives new messages, at which time it’s rescheduled for execution.</p>
+
+<p>Well, that’s a bit of a naive description. In reality the important part about Actors is that they cannot mutate shared state simultaneously. That means there are no race conditions or deadlocks because there are no mutexes, conditions, and semaphores, only messages and mailboxes.</p>
+
+<p>Actors are an approach to concurrency which has proven remarkably successful in languages like Erlang and Scala. They emphasize message passing as the only means of exchanging state, as opposed to threaded approaches like mutexes, conditions, and semaphores which hopefully guard access and mutation of any shared state, emphasis on the hopefully. Using messaging eliminates several problems in multithreaded programming, including many types of race conditions and deadlocks which result from hope dying in the cold light of reality.</p>
+
+<p><strong>Message Passing</strong></p>
+
+<p>The fundamental idea of the actor model is to use actors as concurrent primitives that can act upon receiving messages in different ways:</p>
+
+<ul>
+  <li>Send a finite number of messages to other actors.</li>
+  <li>Spawn a finite number of new actors.</li>
+  <li>Change its own internal behavior, taking effect when the next incoming message is handled.</li>
+</ul>
+
+<p>For communication, the actor model uses asynchronous message passing. In particular, it does not use any intermediate entities such as channels. Instead, each actor possesses a mailbox and can be addressed. These addresses are not to be confused with identities, and each actor can have no, one or multiple addresses. When an actor sends a message, it must know the address of the recipient. In addition, actors are allowed to send messages to themselves, which they will receive and handle later in a future step.</p>
+
+<p>Messages are sent asynchronously and can take arbitrarily long to eventually arrive in the mailbox of the receiver. Also, the actor models makes no guarantees on the ordering of messages. Queuing and dequeuing of messages in a mailbox are atomic operations, so there cannot be a race condition.</p>
+
+<p>There is no shared state and the interaction between actors is purely based on asynchronous messages.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCIT-actor_message_passing.png" alt="RCIT-actor_message_passing.png" /></p>
+
+<p><strong>Implementation</strong></p>
+
+<ul>
+  <li>Thread-based Actors - the actor is internally backed by a dedicated thread. This obviously limits scalability and requires the thread to suspend and block when waiting for new messages.</li>
+  <li>Event-driven Actors - which does not directly couple actors to threads. Instead, a thread pool can be used for a number of actors. This approach uses a continuation closure to encapsulate the actor and its state. Conceptually, this implementation is very similar to an event loop backed by a threadpool.</li>
+</ul>
+
+<p><strong>Reactor Pattern</strong></p>
+
+<p>The reactor design pattern is an event handling pattern for handling service requests delivered concurrently to a service handler by one or more inputs. The service handler then demultiplexes the incoming requests and dispatches them synchronously to the associated request handlers.</p>
+
+<p>The reactor pattern completely separates application specific code from the reactor implementation, which means that application components can be divided into modular, reusable parts. Also, due to the synchronous calling of request handlers, the reactor pattern allows for simple coarse-grain concurrency while not adding the complexity of multiple threads to the system.</p>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Actor_model">Actor Model - Wikipedia</a></li>
+  <li><a href="http://revactor.github.io/philosophy/">Philosophy - Revactor</a></li>
+  <li><a href="http://on-ruby.blogspot.jp/2008/01/ruby-concurrency-with-actors.html">Ruby Concurrency with Actors - Pat Eyler</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Reactor_pattern">Reactor Pattern - Wikipedia</a></li>
+  <li><a href="http://berb.github.io/diploma-thesis/original/054_actors.html#02">Actor-based Concurrency - Benjamin Erb</a></li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Review] Working With Ruby Threads]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2016/02/16/review-working-with-ruby-threads/"/>
+    <updated>2016-02-16T13:07:05+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2016/02/16/review-working-with-ruby-threads</id>
+    <content type="html"><![CDATA[<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>Working With Ruby Threads</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td><a href="http://www.jstorimer.com/">Jesse Storimer</a></td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="http://www.jstorimer.com/products/working-with-ruby-threads">www.jstorimer.com/products/working-with-ruby-threads</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul id="markdown-toc">
+  <li><a href="#concurrent--parallel">Concurrent != Parallel</a></li>
+  <li><a href="#the-gil-and-mri">The GIL and MRI</a></li>
+  <li><a href="#thread-execution">Thread Execution</a></li>
+  <li><a href="#mutual-exclusion">Mutual Exclusion</a></li>
+  <li><a href="#create-a-pending-order-for-100">Create a pending order for $100</a></li>
+  <li><a href="#ask-5-threads-to-check-the-status-and-collect">Ask 5 threads to check the status, and collect</a></li>
+  <li><a href="#with-this-line-its-guaranteed-that-this-value-is">With this line, it’s guaranteed that this value is</a>    <ul>
+      <li><a href="#signaling-threads-with-condition-variables">Signaling Threads with Condition Variables</a></li>
+      <li><a href="#thread-safe-data-structures">Thread-safe Data Structures</a></li>
+      <li><a href="#writing-thread-safe-code">Writing Thread-safe Code</a></li>
+      <li><a href="#wrap-your-threads-in-an-abstraction">Wrap Your Threads in an Abstraction</a></li>
+    </ul>
+  </li>
+  <li><a href="#these-behave-like-regular-method-calls">these behave like regular method calls</a></li>
+  <li><a href="#this-will-fire-the-next-method-without">this will fire the <code>next</code> method without</a></li>
+  <li><a href="#celluloid-kicks-off-that-method-asynchronously-and-returns-you-a-celluloidfuture-object">Celluloid kicks off that method asynchronously and returns you a Celluloid::Future object.</a></li>
+  <li><a href="#calling-value-on-that-future-object-will-block-until-the-value-has-been-computed">Calling #value on that future object will block until the value has been computed.</a>    <ul>
+      <li><a href="#into-the-wild">Into The Wild</a></li>
+      <li><a href="#closing">Closing</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="concurrent--parallel">Concurrent != Parallel</h2>
+
+<ul>
+  <li>Making it execute in parallel is out of your hands. That responsibility is left to the underlying thread scheduler.</li>
+  <li>Making it concurrent, you enable it to be parallelized when the underlying system allows it.</li>
+</ul>
+
+<p>Example</p>
+
+<ol>
+  <li>You could complete Project A today, then complete Project B tomorrow. (Serial)</li>
+  <li>You could work on Project A for a few hours this morning, then switch to Project B for a few hours this afternoon, and then do the same thing tomorrow. Both projects will be finished at the end of the second day. (Concurrent)</li>
+  <li>Your agency could hire another programmer. He could work on Project B and you could work on Project A. Both projects will be finished at the end of the first day. (Concurrent &amp;&amp; Parallel)</li>
+</ol>
+
+<h2 id="the-gil-and-mri">The GIL and MRI</h2>
+
+<p><strong>MRI allows concurrent execution of Ruby code, but prevents parallel execution of Ruby code.</strong></p>
+
+<p>The GIL prevents parallel execution of Ruby code, but it doesn’t prevent concurrent execution of Ruby code. Remember that concurrent code execution is possible even on a single core CPU by giving each thread a turn with the resources.</p>
+
+<p>MRI doesn’t let a thread hog the GIL when it hits blocking IO. This is a no-brainer optimization for MRI. When a thread is blocked waiting for IO, it won’t be executing any Ruby code. Hence, when a thread is blocking on IO, it releases the GIL so another thread can execute Ruby code.</p>
+
+<p>Example</p>
+
+<p><code>ruby
+require 'open-uri'
+3.times.map do
+  Thread.new do
+    open('http://zombo.com')
+  end
+end.each(&amp;:value)
+</code></p>
+
+<p>Thread A gets the GIL. It starts executing Ruby code. It gets down to Ruby’s Socket APIs and attempts to open a connection to zombo.com. At this point, while Thread A is waiting for its response, it releases the GIL. Now Thread B acquires the GIL and goes through the same steps.</p>
+
+<p>Meanwhile, Thread A is still waiting for its response. Remember that the threads can execute in parallel, so long as they’re not executing Ruby code. So it’s quite possible for Thread A and Thread B to both have initiated their connections, and both be waiting for a response.</p>
+
+<p>Under the hood, each thread is using a ppoll(2) system call to be notified when their connection attempt succeeds or fails. When the ppoll(2) call returns, the socket will have some data ready for consumption. At this point, the threads will need to execute Ruby code to process the data. So now the whole process starts over again.</p>
+
+<p><strong>Why GIL Exists?</strong></p>
+
+<p>MRI core developers have been calling the GIL a feature for some time now, rather than a bug. There are three reasons that the GIL exists:</p>
+
+<ul>
+  <li>To protect MRI internals from race conditions. The same issues that can happen in your Ruby code can happen in MRI’s C code. When it’s running in a multithreaded context, it will need to protect critical parts of the internals with some kind of synchronization mechanism.</li>
+  <li>To facilitate the C extension API</li>
+  <li>To reduce the likelihood of race conditions in your Ruby code. It’s important to note that the GIL only reduces entropy here; it can’t rule it out all together. It’s a bit like wearing fully body armour to walk down the street: it really helps if you get attacked, but most of the time it’s just confining.</li>
+</ul>
+
+<p><strong>MRI with blocking IO encourages a context switch while waiting for the thread to print to stdout</strong></p>
+
+<p>```ruby
+@counter = 0</p>
+
+<p>5.times.map do
+  Thread.new do
+    temp = @counter
+    temp = temp + 1
+    @counter = temp
+  end
+end.each(&amp;:join)</p>
+
+<p>puts @counter
+```</p>
+
+<p>With no synchronization, even with a GIL, it’s possible that a context switch happens between incrementing temp and assigning it back to counter. If this is the case, it’s possible that two threads assign the same value to counter. In the end the result of this little snippet could be less than 5.</p>
+
+<p>It’s rare to get an incorrect answer using MRI with this snippet, but almost guaranteed if you use JRuby or Rubinius. If you insert a puts in the middle of the block passed to Thread.new, then it’s very likely that MRI will produce an incorrect result. Its behaviour with blocking IO encourages a context switch while waiting for the thread to print to stdout.</p>
+
+<p><strong>Compare to JRuby, and Rubinius</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/WWRT-multi_thread_prime_number_generation.png" alt="WWRT-multi_thread_prime_number_generation.png" /></p>
+
+<p>GIL makes MRI run faster in single-threaded way, as no need to accquire or release locks for data structures. But also makes MRI run slower in multi-threaded way, as disabling on parellelism.</p>
+
+<p>JRuby and Rubinius do indeed protect their internals from race conditions. But rather than wrapping a lock around the execution of all Ruby code, they protect their internal data structures with many fine-grained locks. Rubinius, for instance, replaced their GIL with about 50 fine-grained locks.</p>
+
+<h2 id="thread-execution">Thread Execution</h2>
+
+<p><strong>Threads in Ruby</strong></p>
+
+<p>There’s always at least one: the main thread. The main thread has one special property that’s different from other threads. When the main thread exits, all other threads are immediately terminated and the Ruby process exits.</p>
+
+<p>The most important concept to grasp is that threads have a shared address space. A race condition involves two threads racing to perform an operation on some shared state.</p>
+
+<p><code>Thread#join</code></p>
+
+<p>When one thread raises an unhandled exception, it terminates the thread where the exception was raised, but doesn’t affect other threads. Similarly, a thread that crashes from an unhandled exception won’t be noticed until another thread attempts to join it.</p>
+
+<p><code>Thread#status</code></p>
+
+<ul>
+  <li>run: Threads currently running have this status.</li>
+  <li>sleep: Threads currently sleeping, blocked waiting for a mutex, or waiting on IO, have this status.</li>
+  <li>false: Threads that finished executing their block of code, or were successfully killed, have this status.</li>
+  <li>nil: Threads that raised an unhandled exception have this status.</li>
+  <li>aborting: Threads that are currently running, yet dying, have this status.</li>
+</ul>
+
+<p><code>Thread.stop</code></p>
+
+<p>This method puts the current thread to sleep and tells the thread scheduler to schedule some other thread. It will remain in this sleeping state until its alternate, Thread#wakeup is invoked.</p>
+
+<p><code>Thread.pass</code></p>
+
+<p>It asks the thread scheduler to schedule some other thread. Since the current thread doesn’t sleep, it can’t guarantee that the thread scheduler will take the hint.</p>
+
+<p>Avoid <code>Thread#raise</code> and <code>Thread#kill</code></p>
+
+<p>It doesn’t properly respect ensure blocks, which can lead to nasty problems in your code.</p>
+
+<p><strong>How Many Threads Are Too Many?</strong></p>
+
+<p>It depends, there will be a sweet spot between utilizing available resources and context switching overhead.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/WWRT-io_bound.png" alt="WWRT-io_bound.png" />
+<img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/WWRT-cpu_bound.png" alt="WWRT-cpu_bound.png" /></p>
+
+<p>CPU-bound code is inherently bound by the rate at which the CPU can execute instructions. Creating more threads isn’t necessarily faster. On the other hand, introducing more threads improved performance in these two examples by anywhere between 100% and 600%. Finding that sweet spot is certainly worth it.</p>
+
+<p><strong>Thread safety</strong></p>
+
+<p>When your code isn’t thread-safe, the worst that can happen is that your underlying data becomes incorrect, yet your program continues as if it were correct.</p>
+
+<p>The computer is unaware of thread-safety issues. The onus is on you to notice these problems and deal with them. This is one of the hardest problems when it comes to thread safety. There are no exceptions raised or alarm bells rung when the underlying data is no longer correct. Even worse, sometimes it takes a heavy load to expose a race condition like this.</p>
+
+<p>Any concurrent modifications to the same object are not thread-safe.</p>
+
+<h2 id="mutual-exclusion">Mutual Exclusion</h2>
+
+<p><strong>Demo Snippet</strong></p>
+
+<p>```ruby
+# This class represents an ecommerce order
+class Order
+  attr_accessor :amount, :status</p>
+
+<p>def initialize(amount, status)
+    @amount, @status = amount, status
+  end</p>
+
+<p>def pending?
+    status == ‘pending’
+  end</p>
+
+<p>def collect_payment
+    puts “Collecting payment…”
+    self.status = ‘paid’
+  end
+end</p>
+
+<h1 id="create-a-pending-order-for-100">Create a pending order for $100</h1>
+<p>order = Order.new(100.00, ‘pending’)
+mutex = Mutex.new</p>
+
+<h1 id="ask-5-threads-to-check-the-status-and-collect">Ask 5 threads to check the status, and collect</h1>
+<p># payment if it’s ‘pending’
+5.times.map do
+  Thread.new do
+    mutex.synchronize do
+      if order.pending?
+        order.collect_payment
+      end
+    end
+  end
+end.each(&amp;:join)
+```</p>
+
+<p>The block of code inside of a <code>Mutex#synchronize</code> call is often called a critical section, pointing to the fact that this code accesses a shared resource and must be handled correctly.</p>
+
+<p><strong>Memory Visibility (Volatility)</strong></p>
+
+<p>```ruby
+# With this line, it’s possible that another thread
+# updated the status already and this value is stale
+status = order.status</p>
+
+<h1 id="with-this-line-its-guaranteed-that-this-value-is">With this line, it’s guaranteed that this value is</h1>
+<p># consistent with any changes in other threads
+status = mutex.synchronize { order.status }
+```</p>
+
+<p>The reason for this is due to low-level details. The kernel can cache in, for instance, L2 cache before it’s visible in main memory. It’s possible that after the status has been set to ‘paid,’ by one thread, another thread could still see the Order#status as ‘pending’ by reading the value from main memory before the change has propagated there.</p>
+
+<p>The solution to this is something called a memory barrier. Mutexes are implemented with memory barriers, such that when a mutex is locked, a memory barrier provides the proper memory visibility semantics.</p>
+
+<p>Scenarios around memory visibility are difficult to understand and reason about. That’s one reason other programming languages have defined something called a memory model, a well-defined specification describing how and when changes to memory are visible in other threads.</p>
+
+<p>Ruby has no such specification yet, so situations like this are tricky to reason about and may even yield different results with different runtimes. That being said, <strong>mutexes carry an implicit memory barrier</strong>. So, if one thread holds a mutex to write a value, other threads can lock the same mutex to read it and they will see the correct, most recent value.</p>
+
+<p><strong>Performance</strong></p>
+
+<p>Mutexes inhibit parallelism. Restrict the critical section to be as small as possible, while still preserving the safety of your data.</p>
+
+<p><strong>The dreaded deadlock</strong></p>
+
+<p>The <code>try_lock</code> method attempts to acquire the mutex, just like the lock method. But unlike lock, try_lock will not wait if the mutex isn’t available. If another thread already owns the mutex, try_lock will return false. If it successfully acquires the mutex, try_lock will return true.</p>
+
+<p>The downside to this approach is that another kind of issue can arise: <strong>livelocking</strong>. A livelock is similar to a deadlock in that the system is not progressing, but rather than threads stuck sleeping, they would be stuck in some loop with each other with none progressing.</p>
+
+<p>A better solution is to define a mutex hierarchy. In other words, <strong>any time that two threads both need to acquire multiple mutexes, make sure they do it in the same order</strong>.</p>
+
+<h2 id="signaling-threads-with-condition-variables">Signaling Threads with Condition Variables</h2>
+
+<p>Condition variables provide an inter-thread control flow mechanism. A classic usage pattern is Producer-Consumer.</p>
+
+<p><strong>Demo Snippet</strong></p>
+
+<p>```ruby
+require ‘thread’
+require ‘net/http’</p>
+
+<p>mutex    = Mutex.new
+condvar  = ConditionVariable.new
+results  = Array.new</p>
+
+<p>Thread.new do
+  10.times do
+    response = Net::HTTP.get_response(‘dynamic.xkcd.com’, ‘/random/comic/’)
+    random_comic_url = response[‘Location’]</p>
+
+<pre><code>mutex.synchronize do
+  results &lt;&lt; random_comic_url
+  puts 'Produced result'
+  condvar.signal # Signal the ConditionVariable
+end   end end
+</code></pre>
+
+<p>comics_received = 0</p>
+
+<p>until comics_received &gt;= 10
+  mutex.synchronize do
+    while results.empty?
+      condvar.wait(mutex)
+    end</p>
+
+<pre><code>url = results.shift
+puts "You should check out #{url}"   end
+</code></pre>
+
+<p>comics_received += 1
+end
+```</p>
+
+<ol>
+  <li><code>ConditionVariable#signal</code> will wake up exactly one thread that’s waiting on this ConditionVariable.</li>
+  <li><code>ConditionVariable#broadcast</code> will wake up all threads currently waiting on this ConditionVariable.</li>
+</ol>
+
+<h2 id="thread-safe-data-structures">Thread-safe Data Structures</h2>
+
+<p><strong>Implementing a thread-safe, blocking queue</strong></p>
+
+<p>```ruby
+require ‘thread’</p>
+
+<p>class BlockingQueue
+  attr_reader :queue, :mutex, :cv</p>
+
+<p>def initialize
+    @queue = Array.new
+    @mutex = Mutex.new
+    @cv    = ConditionVariable.new
+  end</p>
+
+<p>def push(ele)
+    @mutex.synchronize do
+      @queue.push ele
+      @cv.signal
+    end
+  end</p>
+
+<p>def pop
+    @mutex.synchronize do
+      while @queue.empty?
+        @cv.wait(@mutex)
+      end</p>
+
+<pre><code>  @queue.pop
+end   end end
+</code></pre>
+
+<p>bq = BlockingQueue.new</p>
+
+<p>bq.push ‘a’
+bq.push ‘b’</p>
+
+<p>loop do
+  puts bq.pop
+end
+```</p>
+
+<p><strong>Queue, from the standard lib</strong></p>
+
+<p>This is the only thread-safe data structure that ships with Ruby. Queue is very useful because of its blocking behaviour. Typically, you would use a Queue to distribute workloads to multiple threads, with one thread pushing to the queue, and multiple threads popping.</p>
+
+<p><strong>Array and Hash</strong></p>
+
+<p>Ruby doesn’t ship with any thread-safe Array or Hash implementations. Thread-safety concerns would add overhead to their implementation, which would hurt performance for single-threaded use cases.</p>
+
+<p>You might be thinking: “With all of the great concurrency support available to Java on the JVM, surely the JRuby Array and Hash are thread-safe?” They’re not. For the exact reason mentioned above, using a thread-safe data structure in a single-threaded context would reduce performance.</p>
+
+<p><strong>Immutable data structures</strong></p>
+
+<p>When you need to share objects between threads, share immutable objects. It’s very easy to pass out immutable objects to share, but if you need to have multiple threads modifying an immutable object you still need some form of synchronization.</p>
+
+<p>Immutability is a nice guarantee to have, it’s the simplest path to thread safety when sharing objects.</p>
+
+<p>```ruby
+require ‘hamster/queue’
+require ‘atomic’</p>
+
+<p>@queue_wrapper = Atomic.new(Hamster::Queue.new)</p>
+
+<p>30.times do
+  @queue_wrapper.update { |queue|
+    queue.enqueue(rand(100))
+  }
+end</p>
+
+<p>consumers = []</p>
+
+<p>3.times do
+  consumers « Thread.new do
+    10.times do
+      number = nil
+      @queue_wrapper.update { |queue|
+        number = queue.head
+        queue.dequeue
+      }</p>
+
+<pre><code>  puts "The cubed root of #{number} is #{Math.cbrt(number)}"
+end   end end
+</code></pre>
+
+<p>consumers.each(&amp;:join)
+```</p>
+
+<h2 id="writing-thread-safe-code">Writing Thread-safe Code</h2>
+
+<p>Any guideline has exceptions, but it’s good to know when you’re breaking one, and why.</p>
+
+<p>Idiomatic Ruby code is most often thread-safe Ruby code.</p>
+
+<p><strong>Avoid mutating globals</strong></p>
+
+<p>Any time there is only one shared instance (aka. singleton), it’s a global.</p>
+
+<p>There are other things that fit this definition in Ruby:</p>
+
+<ul>
+  <li>Constants</li>
+  <li>The AST</li>
+  <li>Class variables/methods</li>
+</ul>
+
+<p>A slightly more nefarious example is the AST. Ruby, being such a dynamic language, allows you to change this at runtime. I don’t imagine this would be a common problem, but I saw it come up as an issue with the kaminari rubygem. Some part of the code was defining a method dynamically, then calling alias_method with that method, then removing it.</p>
+
+<p>Again, this has to be a rare example, but it’s good to keep in mind that modifying the AST at runtime is almost always a bad idea, especially when multiple threads are involved. When I say ‘runtime’, I mean during the course of the lifecycle of the application. In other words, it’s expected that the AST will be modified at startup time, most Ruby libraries depend on this behaviour in some way. However, in the case of a Rails application, once it’s been initialized, changes to the AST shouldn’t happen at runtime, just as it’s rare to require new files in the midst of a controller action.</p>
+
+<p><strong>Create more objects, rather than sharing one</strong></p>
+
+<ul>
+  <li>Thread-locals</li>
+  <li>Connection pools</li>
+</ul>
+
+<p>A thread-local lets you define a variable that is global to the scope of the current thread. In other words, it’s a global variable that is locally scoped on a per-thread basis.</p>
+
+<p><code>ruby
+# Instead of
+$redis = Redis.new
+# use
+Thread.current[:redis] = Redis.new
+</code></p>
+
+<p>It’s perfectly acceptable to tell users of your API that they should create one object for each thread, rather than trying to write difficult, thread-safe code that will increase your maintainenace costs.</p>
+
+<p>This N:N connection mapping is fine for small numbers of threads, but gets out of hand when the number of threads starts to increase. For connections, a pool is often a better abstraction.</p>
+
+<p>Resource pool still ensures that your threads aren’t sharing a single connection, but doesn’t require each thread to have its own. Implementing a connection pool is a good exercise in thread-safe programming, you’ll probably need to make use of both thread-locals and mutexes to do it safely.</p>
+
+<p><strong>Avoid lazy loading</strong></p>
+
+<p>A common idiom in Ruby on Rails applications is to lazily load constants at runtime, using something similar to Ruby’s <code>autoload</code>. But <code>autoload</code> in MRI is not thread-safe. It is thread-safe in recent versions of JRuby, but the best practice is simply to eager load files before spawning worker threads. This is done implicitly in Rails 4+, and can be enabled in Rails 3.x using the ` config.threadsafe!` configuration setting.</p>
+
+<p><strong>Prefer data structures over mutexes</strong></p>
+
+<p>Mutexes are notoriously hard to use correctly. For better or worse, you have a lot of things to decide when using a mutex.</p>
+
+<ul>
+  <li>How coarse or fine should this mutex be?</li>
+  <li>Which lines of code need to be in the critical section?</li>
+  <li>Is a deadlock possible here?</li>
+  <li>Do I need a per-instance mutex? Or a global one?</li>
+</ul>
+
+<p>By leaning on a data structure, you remove the burden of correct synchronization from your code and depend on the semantics of the data structure to keep things consistent.</p>
+
+<p>This only works if you choose not to share objects between threads directly. Rather than letting threads access shared objects and implementing the necessary synchronization, you pass shared objects through data structures.</p>
+
+<p><strong>Finding bugs</strong></p>
+
+<p>Like most bugs, if you can reproduce the issue, you can almost certainly track it down and fix it. However, some thread-safety issues may appear in production under heavy load, but can’t be reproduced locally. In this case, there’s no better solution than grokking the code.</p>
+
+<p>Look at the code and assume that 2 threads will be accessing it simulatneously. Step through the possible scenarios. It can be helpful to jot these things down somewhere.</p>
+
+<p><strong>Thread-safety on Rails</strong></p>
+
+<ul>
+  <li>Gem dependencies</li>
+  <li>The request is the boundary. Don’t share objects between requests.</li>
+</ul>
+
+<p>A good example of this is something like a <code>User.current</code> reference.</p>
+
+<p>If you really need a global reference, follow the guidelines from the last chapter. Try using a thread-local, or else a thread-aware object that will preserve data correctness.</p>
+
+<p>The same heuristic is applicable to a background job processor. Each job will be handled by a separate thread. A thread may process multiple jobs in its lifetime, but a job will only be processed by a single thread in its lifecycle.</p>
+
+<p>Again, the path to thread safety is clear: create the necessary objects that you need in the body of the job, rather than sharing any global state.</p>
+
+<h2 id="wrap-your-threads-in-an-abstraction">Wrap Your Threads in an Abstraction</h2>
+
+<p><strong>Single level of abstraction</strong></p>
+
+<p><code>ruby
+module Enumerable
+  def concurrent_each
+    threads = []
+    each do |element|
+      threads &lt;&lt; Thread.new { end yield element }
+      threads.each(&amp;:join)
+    end
+  end
+end
+</code></p>
+
+<p>This is a simple wrapper around Enumerable#each that will spawn a thread for each element being iterated over. It wouldn’t be wise to use this code in production yet because it has no upper bound on the number of threads it will spawn.</p>
+
+<p><strong>Actor model</strong></p>
+
+<p>At a high level, an Actor is a long-lived ‘entity’ that communicates by sending messages.</p>
+
+<p>In the Actor model, each Actor has an ‘address’. If you know the address of an Actor, you can send it a message. These messages go to the Actor’s mailbox, where they’re processed asynchronously when the Actor gets around to it.</p>
+
+<p>What sets Celluloid apart is that it takes this conceptual idea of the Actor model and marries it to Ruby’s object model.</p>
+
+<p>```ruby
+require ‘celluloid/autostart’
+require ‘net/http’</p>
+
+<p>class XKCDFetcher
+  include Celluloid</p>
+
+<p>def next
+    response = Net::HTTP.get_response(‘dynamic.xkcd.com’, ‘/random/comic/’)
+    random_comic_url = response[‘Location’]</p>
+
+<pre><code>random_comic_url   end end ```
+</code></pre>
+
+<p>Including the Celluloid module into any Ruby class will turn instances of that class into full-fledged Celluloid actors. When you create a new actor, you immediately know its ‘address’. So long as you hold a reference to that object, you can send it messages. In Celluloid, sending messages to an actor equates to calling methods on an object.</p>
+
+<p>```ruby
+# this spawns a new thread containing a Celluloid actor
+fetcher = XKCDFetcher.new</p>
+
+<h1 id="these-behave-like-regular-method-calls">these behave like regular method calls</h1>
+<p>fetcher.object_id
+fetcher.inspect</p>
+
+<h1 id="this-will-fire-the-next-method-without">this will fire the <code>next</code> method without</h1>
+<p># waiting for its result
+fetcher.async.next
+fetcher.async.next</p>
+
+<h1 id="celluloid-kicks-off-that-method-asynchronously-and-returns-you-a-celluloidfuture-object">Celluloid kicks off that method asynchronously and returns you a Celluloid::Future object.</h1>
+<p>futures = []
+10.times do
+  futures « fetcher.future.next
+end</p>
+
+<h1 id="calling-value-on-that-future-object-will-block-until-the-value-has-been-computed">Calling #value on that future object will block until the value has been computed.</h1>
+<p>futures.each do |future|
+  puts “You should check out #{future.value}”
+end
+```</p>
+
+<h2 id="into-the-wild">Into The Wild</h2>
+
+<p><strong>How Sidekiq Uses Celluloid</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/WWRT-how_sidekiq_uses_celluloid.png" alt="WWRT-how_sidekiq_uses_celluloid.png" /></p>
+
+<p>The most obvious difference I see between the Sidekiq codebase and a more traditional Ruby codebase is the lack of dependence upon return values.</p>
+
+<p><strong>Puma’s Thread Pool Implementation</strong></p>
+
+<p>At Puma’s multi-threaded core is a thread pool implementation. Once initialized, the pool is responsible for receiving work and feeding it to an available worker thread. The ThreadPool also has an auto-trimming feature, whereby the number of active threads is kept to a minimum, but more threads can be spawned during times of high load. Afterwards, the thread pool would be trimmed down to the minimum again.</p>
+
+<h2 id="closing">Closing</h2>
+
+<p>The safest path to concurrency: (from JRuby wiki)</p>
+
+<ol>
+  <li>Don’t do it.</li>
+  <li>If you must do it, don’t share data across threads.</li>
+  <li>If you must share data across threads, don’t share mutable data.</li>
+  <li>If you must share mutable data across threads, synchronize access to that data.</li>
+</ol>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Some Hash Tricks in Ruby]]></title>
@@ -156,721 +1306,6 @@ STUDENT_LEVELS = Hash.new(Student::Unregistered).merge(
 <p>klass = STUDENT_LEVELS[params[:student_level]]
 student = klass.new(name, birthdate, address, phone)
 ```</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[preload, eager_load, includes, references, and joins in Rails]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins/"/>
-    <updated>2015-11-11T23:25:17+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins</id>
-    <content type="html"><![CDATA[<p>There is always a confusion about these query methods. And after some digging, I’ve made my conclusion here: <code>includes</code> is the outstanding one.</p>
-
-<p>Here comes the demonstation.</p>
-
-<p><strong>Preparation</strong></p>
-
-<p>Environment</p>
-
-<ul>
-  <li>Ruby: 2.2.2</li>
-  <li>Rails: 4.2.2</li>
-</ul>
-
-<p>```ruby
-# model and reference
-class Blog &lt; ActiveRecord::Base
-  has_many :posts</p>
-
-<p># t.string   “name”
-  # t.string   “author”
-end</p>
-
-<p>class Post &lt; ActiveRecord::Base
-  belongs_to :blog</p>
-
-<p># t.string   “title”
-end</p>
-
-<h1 id="seed">seed</h1>
-<p>(1..3).each do |b_id|
-  blog = Blog.create(name: “Blog #{b_id}”, author: ‘someone’)
-  (1..5).each { |p_id| blog.posts.create(title: “Post #{b_id}-#{p_id}”) }
-end
-```</p>
-
-<h3 id="preload">preload</h3>
-
-<p>Always firing two separate queries.</p>
-
-<p><code>sh
-&gt; Blog.preload(:posts)
-  Blog Load (3.2ms)  SELECT "blogs".* FROM "blogs"
-  Post Load (1.2ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" IN (1, 2, 3)
-</code></p>
-
-<h3 id="eagerload">eager_load</h3>
-
-<ul>
-  <li>One query, LEFT OUTER JOINed in any query rather than loaded separately.</li>
-  <li>JOIN first, then query by where clause. So you can query on referenced table, without an iteration of  <code>Enumerable#select</code>.</li>
-  <li>Works just the same as <code>includes</code> + <code>references</code>.</li>
-</ul>
-
-<p>```sh
-&gt; Blog.eager_load(:posts)
-  SQL (0.4ms)  SELECT “blogs”.”id” AS t0_r0, “blogs”.”name” AS t0_r1, “blogs”.”author” AS t0_r2, “blogs”.”created_at” AS t0_r3, “blogs”.”updated_at” AS t0_r4, “posts”.”id” AS t1_r0, “posts”.”title” AS t1_r1, “posts”.”created_at” AS t1_r2, “posts”.”updated_at” AS t1_r3, “posts”.”blog_id” AS t1_r4 FROM “blogs” LEFT OUTER JOIN “posts” ON “posts”.”blog_id” = “blogs”.”id”</p>
-
-<blockquote>
-  <p>Blog.eager_load(:posts).where(name: ‘Blog 1’)
-  SQL (0.4ms)  SELECT “blogs”.”id” AS t0_r0, “blogs”.”name” AS t0_r1, “blogs”.”author” AS t0_r2, “blogs”.”created_at” AS t0_r3, “blogs”.”updated_at” AS t0_r4, “posts”.”id” AS t1_r0, “posts”.”title” AS t1_r1, “posts”.”created_at” AS t1_r2, “posts”.”updated_at” AS t1_r3, “posts”.”blog_id” AS t1_r4 FROM “blogs” LEFT OUTER JOIN “posts” ON “posts”.”blog_id” = “blogs”.”id” WHERE “blogs”.”name” = ?  [[“name”, “Blog 1”]]</p>
-</blockquote>
-
-<blockquote>
-  <p>Blog.eager_load(:posts).where(name: ‘Blog 1’).where(posts: {title: ‘Post 1-1’})
-  SQL (0.4ms)  SELECT “blogs”.”id” AS t0_r0, “blogs”.”name” AS t0_r1, “blogs”.”author” AS t0_r2, “blogs”.”created_at” AS t0_r3, “blogs”.”updated_at” AS t0_r4, “posts”.”id” AS t1_r0, “posts”.”title” AS t1_r1, “posts”.”created_at” AS t1_r2, “posts”.”updated_at” AS t1_r3, “posts”.”blog_id” AS t1_r4 FROM “blogs” LEFT OUTER JOIN “posts” ON “posts”.”blog_id” = “blogs”.”id” WHERE “blogs”.”name” = ? AND “posts”.”title” = ?  [[“name”, “Blog 1”], [“title”, “Post 1-1”]]
-```</p>
-</blockquote>
-
-<h3 id="includes">includes</h3>
-
-<p>Behaves based on situations, intelligent!</p>
-
-<p>Situation 1, just like <code>preload</code></p>
-
-<p>```sh
-&gt; Blog.includes(:posts)
-  Blog Load (2.8ms)  SELECT “blogs”.* FROM “blogs”
-  Post Load (0.7ms)  SELECT “posts”.* FROM “posts” WHERE “posts”.”blog_id” IN (1, 2, 3)</p>
-
-<blockquote>
-  <p>Blog.includes(:posts).where(name: ‘Blog 1’)
-  Blog Load (0.7ms)  SELECT “blogs”.* FROM “blogs” WHERE “blogs”.”name” = ?  [[“name”, “Blog 1”]]
-  Post Load (0.3ms)  SELECT “posts”.* FROM “posts” WHERE “posts”.”blog_id” IN (1)
-```</p>
-</blockquote>
-
-<p>Situation 2, just like <code>eager_load</code>, <strong>fired by querying referenced table</strong></p>
-
-<p><code>sh
-&gt; Blog.includes(:posts).where(name: 'Blog 1').where(posts: {title: 'Post 1-1'})
-  SQL (0.2ms)  SELECT "blogs"."id" AS t0_r0, "blogs"."name" AS t0_r1, "blogs"."author" AS t0_r2, "blogs"."created_at" AS t0_r3, "blogs"."updated_at" AS t0_r4, "posts"."id" AS t1_r0, "posts"."title" AS t1_r1, "posts"."created_at" AS t1_r2, "posts"."updated_at" AS t1_r3, "posts"."blog_id" AS t1_r4 FROM "blogs" LEFT OUTER JOIN "posts" ON "posts"."blog_id" = "blogs"."id" WHERE "blogs"."name" = ? AND "posts"."title" = ?  [["name", "Blog 1"], ["title", "Post 1-1"]]
-</code></p>
-
-<p><strong><em><code>includes</code> or <code>eager_load</code></em></strong></p>
-
-<p>Consider this snippet:</p>
-
-<p>```sh
-&gt; Blog.includes(:posts).each{|blog| puts blog.posts.map(&amp;:title).join(‘,’) }
-  Blog Load (0.3ms)  SELECT “blogs”.* FROM “blogs”
-  Post Load (0.3ms)  SELECT “posts”.* FROM “posts” WHERE “posts”.”blog_id” IN (1, 2, 3)</p>
-
-<blockquote>
-  <p>Blog.eager_load(:posts).each{|blog| puts blog.posts.map(&amp;:title).join(‘,’) }                                                                                                                    SQL (0.9ms)
-  SELECT “blogs”.”id” AS t0_r0, “blogs”.”name” AS t0_r1, “blogs”.”author” AS t0_r2, “blogs”.”created_at” AS t0_r3, “blogs”.”updated_at” AS t0_r4, “posts”.”id” AS t1_r0, “posts”.”title” AS t1_r1, “posts”.”created_at” AS t1_r2, “posts”.”updated_at” AS t1_r3, “posts”.”blog_id” AS t1_r4 FROM “blogs” LEFT OUTER JOIN “posts” ON “posts”.”blog_id” = “blogs”.”id”
-```</p>
-</blockquote>
-
-<p>Both expressions return the same result, so should we prefer two seperated queries by <code>includes</code> (also <code>preload</code>) or the LEFT OUTER JOINed query by <code>eager_load</code>?</p>
-
-<p>There is a <a href="http://www.akitaonrails.com/2008/5/26/rolling-with-rails-2-1-the-first-full-tutorial-part-2">blog post</a> by Fabio Akita talks about the change of Rails 2.1 (see the section entitled “Optimized Eager Loading”). Here are some references:</p>
-
-<blockquote>
-  <p>For some situations, the monster outer join becomes slower than many smaller queries.
-The bottom line is: generally it seems better to split a monster join into smaller ones, as you’ve seen in the above example. This avoid the cartesian product overload problem.</p>
-</blockquote>
-
-<p>Example for SQL data returned from LEFT OUTER JOIN query</p>
-
-<p><code>sh
-sqlite&gt;  SELECT "blogs"."id" AS t0_r0, "blogs"."name" AS t0_r1, "blogs"."author" AS t0_r2, "blogs"."created_at" AS t0_r3, "blogs"."updated_at" AS t0_r4, "posts"."id" AS t1_r0, "posts"."title" AS t1_r1, "posts"."created_at" AS t1_r2, "posts"."updated_at" AS t1_r3, "posts"."blog_id" AS t1_r4 FROM "blogs" LEFT OUTER JOIN "posts" ON "posts"."blog_id" = "blogs"."id";
-1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|1|Post 1-1|2015-11-11 15:22:35.053689|2015-11-11 15:22:35.053689|1
-1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|2|Post 1-2|2015-11-11 15:22:35.058113|2015-11-11 15:22:35.058113|1
-1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|3|Post 1-3|2015-11-11 15:22:35.062776|2015-11-11 15:22:35.062776|1
-1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|4|Post 1-4|2015-11-11 15:22:35.065994|2015-11-11 15:22:35.065994|1
-1|Blog 1|someone|2015-11-11 15:22:35.015095|2015-11-11 15:22:35.015095|5|Post 1-5|2015-11-11 15:22:35.069632|2015-11-11 15:22:35.069632|1
-2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|6|Post 2-1|2015-11-11 15:22:35.078644|2015-11-11 15:22:35.078644|2
-2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|7|Post 2-2|2015-11-11 15:22:35.081845|2015-11-11 15:22:35.081845|2
-2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|8|Post 2-3|2015-11-11 15:22:35.084888|2015-11-11 15:22:35.084888|2
-2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|9|Post 2-4|2015-11-11 15:22:35.087778|2015-11-11 15:22:35.087778|2
-2|Blog 2|someone|2015-11-11 15:22:35.072871|2015-11-11 15:22:35.072871|10|Post 2-5|2015-11-11 15:22:35.090781|2015-11-11 15:22:35.090781|2
-3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|11|Post 3-1|2015-11-11 15:22:35.097479|2015-11-11 15:22:35.097479|3
-3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|12|Post 3-2|2015-11-11 15:22:35.103512|2015-11-11 15:22:35.103512|3
-3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|13|Post 3-3|2015-11-11 15:22:35.108775|2015-11-11 15:22:35.108775|3
-3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|14|Post 3-4|2015-11-11 15:22:35.112654|2015-11-11 15:22:35.112654|3
-3|Blog 3|someone|2015-11-11 15:22:35.093902|2015-11-11 15:22:35.093902|15|Post 3-5|2015-11-11 15:22:35.117601|2015-11-11 15:22:35.117601|3
-</code></p>
-
-<blockquote>
-  <p>The longer and more complex the result set, the more this matters because the more objects Rails would have to deal with. Allocating and deallocating several hundreds or thousands of small duplicated objects is never a good deal.</p>
-</blockquote>
-
-<p>As <code>includes</code> can behave the same as <code>eager_load</code> in one case, but better in the other case. My conclusion is, <strong>prefer <code>includes</code> over <code>eager_load</code></strong>.</p>
-
-<h3 id="references">references</h3>
-
-<ul>
-  <li>Works only with <code>includes</code>, makes <code>includes</code> behaves like <code>eager_load</code></li>
-</ul>
-
-<p><code>sh
-&gt; Blog.includes(:posts).where(name: 'Blog 1').references(:posts)
-  SQL (0.2ms)  SELECT "blogs"."id" AS t0_r0, "blogs"."name" AS t0_r1, "blogs"."author" AS t0_r2, "blogs"."created_at" AS t0_r3, "blogs"."updated_at" AS t0_r4, "posts"."id" AS t1_r0, "posts"."title" AS t1_r1, "posts"."created_at" AS t1_r2, "posts"."updated_at" AS t1_r3, "posts"."blog_id" AS t1_r4 FROM "blogs" LEFT OUTER JOIN "posts" ON "posts"."blog_id" = "blogs"."id" WHERE "blogs"."name" = ?  [["name", "Blog 1"]]
-</code></p>
-
-<h3 id="joins">joins</h3>
-
-<p><em>INNER JOIN</em>, compared to <code>eager_load</code> (<em>LEFT OUTER JOIN</em>).</p>
-
-<p><code>sh
-&gt; Blog.joins(:posts)
-  Blog Load (0.2ms)  SELECT "blogs".* FROM "blogs" INNER JOIN "posts" ON "posts"."blog_id" = "blogs"."id"
-</code></p>
-
-<p><strong>compared to <code>eager_load</code></strong></p>
-
-<p>Query by <code>joins</code> just returns the raw data, whereas the data from <code>eager_load</code> is filtered by Rails.</p>
-
-<p><code>sh
-&gt; Blog.joins(:posts).count
-   (0.3ms)  SELECT COUNT(*) FROM "blogs" INNER JOIN "posts" ON "posts"."blog_id" = "blogs"."id"
- =&gt; 15
-&gt; Blog.eager_load(:posts).count
-   (0.4ms)  SELECT COUNT(DISTINCT "blogs"."id") FROM "blogs" LEFT OUTER JOIN "posts" ON "posts"."blog_id" = "blogs"."id"
- =&gt; 3
-</code></p>
-
-<p>So you need to take caution about iteration on <code>joins</code> query.</p>
-
-<p><code>sh
-&gt; Blog.joins(:posts).each do |blog|
-&gt;   puts blog.posts.map(&amp;:title).join(', ')
-&gt; end
-  Blog Load (0.2ms)  SELECT "blogs".* FROM "blogs" INNER JOIN "posts" ON "posts"."blog_id" = "blogs"."id"
-  Post Load (0.3ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 1]]
-Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
-  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 1]]
-Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
-  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 1]]
-Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
-  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 1]]
-Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
-  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 1]]
-Post 1-1, Post 1-2, Post 1-3, Post 1-4, Post 1-5
-  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 2]]
-Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
-  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 2]]
-Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
-  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 2]]
-Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
-  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 2]]
-Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
-  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 2]]
-Post 2-1, Post 2-2, Post 2-3, Post 2-4, Post 2-5
-  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 3]]
-Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
-  Post Load (0.2ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 3]]
-Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
-  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 3]]
-Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
-  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 3]]
-Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
-  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 3]]
-Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
-</code></p>
-
-<hr />
-
-<p><strong>Reference</strong></p>
-
-<ul>
-  <li><a href="http://blog.diatomenterprises.com/remove-n1-queries-in-your-ruby-on-rails-app/?utm_source=rubyweekly&amp;utm_medium=email">Remove N+1 queries in your Ruby on Rails app</a></li>
-  <li><a href="http://stackoverflow.com/questions/1208636/rails-include-vs-joins?rq=1">Rails :include vs. :joins</a></li>
-  <li><a href="http://blog.bigbinary.com/2013/07/01/preload-vs-eager-load-vs-joins-vs-includes.html">Preload, Eagerload, Includes and Joins</a></li>
-  <li><a href="http://www.akitaonrails.com/2008/5/26/rolling-with-rails-2-1-the-first-full-tutorial-part-2">Rolling with Rails 2.1 - The First Full Tutorial - Part 2</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Data Types in Rails]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2015/08/10/data-types-in-rails/"/>
-    <updated>2015-08-10T17:45:53+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2015/08/10/data-types-in-rails</id>
-    <content type="html"><![CDATA[<p><strong><em>Have you ever got annoyed with data types when you are creating Rails migrations?</em></strong></p>
-
-<p><strong><em>What’s the full list of data types in Rails? Does it differ from MySQL to PostgreSQL?</em></strong></p>
-
-<p><strong><em>When adding a <code>title</code> field to <code>Post</code> table, should we use <code>title</code> as a <code>string</code> or <code>text</code>? Same answer with MySQL and PostgreSQL?</em></strong></p>
-
-<p>You may want to check the Rails guides of <a href="http://edgeguides.rubyonrails.org/active_record_migrations.html">Active Record Migrations</a>, but all you get is disappointment because its lacking of essential information about data types.</p>
-
-<p>Here is a quick entry about data types which I extracts from Rails API and Stack Overflow.</p>
-
-<h2 id="general-data-type">General Data Type</h2>
-
-<blockquote>
-  <p>From <a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#method-i-column">ActiveRecord::ConnectionAdapters::TableDefinition#column</a></p>
-</blockquote>
-
-<p>Instantiates a new column for the table. The type parameter is normally one of the migrations native types, which is one of the following: </p>
-
-<ul>
-  <li><code>:primary_key</code></li>
-  <li><code>:string</code></li>
-  <li><code>:text</code></li>
-  <li><code>:integer</code></li>
-  <li><code>:float</code></li>
-  <li><code>:decimal</code></li>
-  <li><code>:datetime</code></li>
-  <li><code>:time</code></li>
-  <li><code>:date</code></li>
-  <li><code>:binary</code></li>
-  <li><code>:boolean</code></li>
-</ul>
-
-<h2 id="specific-dbms-data-type">Specific DBMS Data Type</h2>
-
-<blockquote>
-  <p>From Psylone’s answer on <a href="http://stackoverflow.com/a/17279395/1331774">Where is the documentation page for ActiveRecord data types?</a></p>
-</blockquote>
-
-<p>Check the specific DB adaptor in source code.</p>
-
-<p><code>ruby MySQL Data Types https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L244-L256 link
-NATIVE_DATABASE_TYPES = {
-  :primary_key =&gt; "int(11) auto_increment PRIMARY KEY",
-  :string      =&gt; { :name =&gt; "varchar", :limit =&gt; 255 },
-  :text        =&gt; { :name =&gt; "text" },
-  :integer     =&gt; { :name =&gt; "int", :limit =&gt; 4 },
-  :float       =&gt; { :name =&gt; "float" },
-  :decimal     =&gt; { :name =&gt; "decimal" },
-  :datetime    =&gt; { :name =&gt; "datetime" },
-  :time        =&gt; { :name =&gt; "time" },
-  :date        =&gt; { :name =&gt; "date" },
-  :binary      =&gt; { :name =&gt; "blob" },
-  :boolean     =&gt; { :name =&gt; "tinyint", :limit =&gt; 1 }
-}
-</code></p>
-
-<p><code>ruby PostgreSQL Data Types https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L77-L112 link
-NATIVE_DATABASE_TYPES = {
-  primary_key: "serial primary key",
-  bigserial: "bigserial",
-  string:      { name: "character varying" },
-  text:        { name: "text" },
-  integer:     { name: "integer" },
-  float:       { name: "float" },
-  decimal:     { name: "decimal" },
-  datetime:    { name: "timestamp" },
-  time:        { name: "time" },
-  date:        { name: "date" },
-  daterange:   { name: "daterange" },
-  numrange:    { name: "numrange" },
-  tsrange:     { name: "tsrange" },
-  tstzrange:   { name: "tstzrange" },
-  int4range:   { name: "int4range" },
-  int8range:   { name: "int8range" },
-  binary:      { name: "bytea" },
-  boolean:     { name: "boolean" },
-  bigint:      { name: "bigint" },
-  xml:         { name: "xml" },
-  tsvector:    { name: "tsvector" },
-  hstore:      { name: "hstore" },
-  inet:        { name: "inet" },
-  cidr:        { name: "cidr" },
-  macaddr:     { name: "macaddr" },
-  uuid:        { name: "uuid" },
-  json:        { name: "json" },
-  jsonb:       { name: "jsonb" },
-  ltree:       { name: "ltree" },
-  citext:      { name: "citext" },
-  point:       { name: "point" },
-  bit:         { name: "bit" },
-  bit_varying: { name: "bit varying" },
-  money:       { name: "money" },
-}
-</code></p>
-
-<p>Or, use <code>ActiveRecord::Base.connection.native_database_types.keys</code> to get all valid data types based on your database adaptor.</p>
-
-<p><code>ruby
-# PostgreSQL
-[1] pry(main)&gt; ActiveRecord::Base.connection.native_database_types.keys
-[
-  [ 0] :primary_key,
-  [ 1] :bigserial,
-  [ 2] :string,
-  [ 3] :text,
-  [ 4] :integer,
-  [ 5] :float,
-  [ 6] :decimal,
-  [ 7] :datetime,
-  [ 8] :time,
-  [ 9] :date,
-  [10] :daterange,
-  [11] :numrange,
-  [12] :tsrange,
-  [13] :tstzrange,
-  [14] :int4range,
-  [15] :int8range,
-  [16] :binary,
-  [17] :boolean,
-  [18] :bigint,
-  [19] :xml,
-  [20] :tsvector,
-  [21] :hstore,
-  [22] :inet,
-  [23] :cidr,
-  [24] :macaddr,
-  [25] :uuid,
-  [26] :json,
-  [27] :jsonb,
-  [28] :ltree,
-  [29] :citext,
-  [30] :point,
-  [31] :bit,
-  [32] :bit_varying,
-  [33] :money
-]
-</code></p>
-
-<p>There is another guide about <a href="http://edgeguides.rubyonrails.org/active_record_postgresql.html">Active Record and PostgreSQL</a>.</p>
-
-<blockquote>
-  <p>From gotqn’s answer on <a href="http://stackoverflow.com/a/25702629/1331774">Rails 4 datatypes?</a></p>
-</blockquote>
-
-<p>Rails data types mapping to different DB data types:</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/data_types_1.png" alt="Data Types 1" />
-<img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/data_types_2.png" alt="Data Types 2" /></p>
-
-<h2 id="data-type-shortcut-when-generating-model">Data Type Shortcut When Generating Model</h2>
-
-<blockquote>
-  <p>From tomascharad’s answer on <a href="http://stackoverflow.com/questions/17918117/rails-4-datatypes">Rails 4 datatypes?</a></p>
-</blockquote>
-
-<p>```sh
-$ rails generate model -h</p>
-
-<p>Available field types:</p>
-
-<pre><code>Just after the field name you can specify a type like text or boolean.
-It will generate the column with the associated SQL type. For instance:
-
-    `rails generate model post title:string body:text`
-
-will generate a title column with a varchar type and a body column with a text
-type. If no type is specified the string type will be used by default.
-You can use the following types:
-
-    integer
-    primary_key
-    decimal
-    float
-    boolean
-    binary
-    string
-    text
-    date
-    time
-    datetime
-
-You can also consider `references` as a kind of type. For instance, if you run:
-
-    `rails generate model photo title:string album:references`
-
-It will generate an `album_id` column. You should generate these kinds of fields when
-you will use a `belongs_to` association, for instance. `references` also supports
-polymorphism, you can enable polymorphism like this:
-
-    `rails generate model product supplier:references{polymorphic}`
-
-For integer, string, text and binary fields, an integer in curly braces will
-be set as the limit:
-
-    `rails generate model user pseudo:string{30}`
-
-For decimal, two integers separated by a comma in curly braces will be used
-for precision and scale:
-
-    `rails generate model product 'price:decimal{10,2}'`
-
-You can add a `:uniq` or `:index` suffix for unique or standard indexes
-respectively:
-
-    `rails generate model user pseudo:string:uniq`
-    `rails generate model user pseudo:string:index`
-
-You can combine any single curly brace option with the index options:
-
-    `rails generate model user username:string{30}:uniq`
-    `rails generate model product supplier:references{polymorphic}:index`
-
-If you require a `password_digest` string column for use with
-has_secure_password, you should specify `password:digest`:
-
-    `rails generate model user password:digest`
-</code></pre>
-
-<p>```</p>
-
-<h2 id="should-you-choose-string-or-text">Should you choose string or text?</h2>
-
-<p>In <strong>MySQL</strong></p>
-
-<blockquote>
-  <p>From tjeezy’s answer and Omar Qureshi’s comment on <a href="http://stackoverflow.com/a/3354452/1331774">Difference between string and text in rails?</a></p>
-</blockquote>
-
-<p><code>
-:string |                   VARCHAR                | :limit =&gt; 1 to 255 (default = 255)
-:text   | TINYTEXT, TEXT, MEDIUMTEXT, or LONGTEXT2 | :limit =&gt; 1 to 4294967296 (default = 65536)
-</code></p>
-
-<p>So you’d better specify the <code>:limit</code> as a reminder to yourself that there is a limit and you should have a validation in the model to ensure that the limit is not exceeded.</p>
-
-<p>And, you can have indexes on <code>varchars</code>, you cannot on <code>text</code>.</p>
-
-<p>In <strong>Postgresql</strong></p>
-
-<blockquote>
-  <p>From PostgreSQL Manual <a href="http://www.postgresql.org/docs/9.3/interactive/datatype-character.html">Character Types</a></p>
-</blockquote>
-
-<p>There is no performance difference among these three types, apart from increased storage space when using the blank-padded type, and a few extra CPU cycles to check the length when storing into a length-constrained column. While <code>character(n)</code> has performance advantages in some other database systems, there is no such advantage in PostgreSQL; in fact <code>character(n)</code> is usually the slowest of the three because of its additional storage costs. In most situations <code>text</code> or <code>character</code> varying should be used instead.</p>
-
-<blockquote>
-  <p>From Omar Qureshi’s answer on <a href="http://stackoverflow.com/questions/3354330/difference-between-string-and-text-in-rails">Difference between string and text in rails?</a></p>
-</blockquote>
-
-<p>If you are using postgres use <code>text</code> wherever you can, unless you have a size constraint since there is no performance penalty for <code>text</code> vs <code>varchar</code>.</p>
-
-<blockquote>
-  <p>From mu is too short’s answer on <a href="http://stackoverflow.com/questions/8129776/rails-3-postgres-how-long-is-a-string-if-you-dont-apply-limit-in-schema">rails 3/postgres - how long is a string if you don’t apply :limit in schema</a> and <a href="http://stackoverflow.com/questions/8694273/changing-a-column-type-to-longer-strings-in-rails/8694483#8694483">Changing a column type to longer strings in rails</a></p>
-</blockquote>
-
-<p><code>
-:string | character varying (255)
-:text   | text
-</code></p>
-
-<p>There’s no reason to use <code>:string</code> (AKA <code>varchar</code>) at all, the database treats <code>text</code> and <code>varchar(n)</code> the same internally except for the extra length constraints for <code>varchar(n)</code>; you should only use <code>varchar(n)</code> (AKA <code>:string</code>) if you have an external constrain on the column size.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby Float Point Arithmetic and Truncation]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2015/04/11/ruby-float-point-arithmetic-and-truncation/"/>
-    <updated>2015-04-11T21:17:56+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2015/04/11/ruby-float-point-arithmetic-and-truncation</id>
-    <content type="html"><![CDATA[<p><strong><em>How to keep precision on float point arithmetic?</em></strong></p>
-
-<p>```ruby
-190000 * ( 783.0 / 10000 )
-# =&gt; 14876.999999999998</p>
-
-<p>( 190000 * 783.0 ) / 10000
-# =&gt; 14877.0
-```</p>
-
-<p><strong><em>How to make a 2 point truncation instead of rounding?</em></strong></p>
-
-<p>```ruby
-195555 * 0.0783
-# =&gt; 15311.956499999998</p>
-
-<p>( 195555 * 0.0783 ).round(2)
-# =&gt; 15311.96
-```</p>
-
-<h3 id="plain-solution">Plain Solution</h3>
-
-<p>```ruby
-# Public: A calculator aims handling Float operation precision and
-# saving the result with truncated 2 point Float.
-#
-# Examples
-#
-#   190000 * 0.0783
-#   # =&gt; 14876.999999999998
-#   190000 * 783 / 10000
-#   # =&gt; 14877
-#
-#   cal = RateCalculator.new(190000, 0.0783)
-#   cal.run
-#   # =&gt; 14877.0
-#
-#
-#   195555 * 0.0783
-#   # =&gt; 15311.956499999998
-#
-#   cal = RateCalculator.new(195555, 0.0783)
-#   # =&gt; 15311.95
-#
-# Returns a Float
-class RateCalculator
-  attr_reader :base, :rate</p>
-
-<p># Internal: Handles 6 point rate.
-  MAGNIFIER = 1000000</p>
-
-<p># Public: Initialization
-  #
-  # base - Integer
-  # rate - Numeric
-  def initialize(base, rate)
-    raise “#initialize: <base /> needs to be Integer” unless base.is_a? Integer</p>
-
-<pre><code>@base = base
-@rate = rate   end
-</code></pre>
-
-<p>def run
-    truncate_2_point MAGNIFIER<em>rate</em>base/MAGNIFIER
-  end</p>
-
-<p>private</p>
-
-<pre><code>def truncate_2_point(float)
-  (float * 100).to_i / 100.0
-end end ```
-</code></pre>
-
-<p>It works, but with so many worries about the unknown conditions.</p>
-
-<h3 id="bigdecimal">BigDecimal</h3>
-
-<p>First, what the hell happens on the precision of float point arithmetic?</p>
-
-<p><code>ruby
-0.1 + 0.2
-# =&gt; 0.30000000000000004
-</code></p>
-
-<p>According to <a href="http://floating-point-gui.de/">What Every Programmer Should Know About Floating-Point Arithmetic</a>, the answer is the binary fraction issue.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/binary_fraction.png" alt="Binary Fraction" /></p>
-
-<blockquote>
-  <p>Specifically, binary can only represent those numbers as a finite fraction where the denominator is a power of 2. Unfortunately, this does not include most of the numbers that can be represented as finite fraction in base 10, like 0.1.</p>
-</blockquote>
-
-<p>To get through the precision problem, Ruby provides the <strong>Arbitrary-Precision Decimal</strong> shipped by <code>BigDecimal</code>. And so sweet, <code>BigDecimal</code> supports several rounding modes, including <code>:truncate</code>.</p>
-
-<p>Here is the final solution.</p>
-
-<p>```ruby
-require ‘bigdecimal’</p>
-
-<h1 id="public-a-calculator-aims-handling-arithmatic-precision-and">Public: A calculator aims handling arithmatic precision and</h1>
-<p># saving the result with 2 points truncated decimal.
-#
-# Examples
-#
-#   190000 * 0.0783
-#   # =&gt; 14876.999999999998
-#   190000 * 783 / 10000
-#   # =&gt; 14877
-#
-#   cal = RateCalculator.new(190000, 0.0783).run
-#   # =&gt; 14877.0
-#
-#
-#   195555 * 0.0783
-#   # =&gt; 15311.956499999998
-#
-#   cal = RateCalculator.new(195555, 0.0783).run
-#   # =&gt; 15311.95
-#
-# Returns a BigDecimal
-class RateCalculator
-  attr_reader :base, :rate</p>
-
-<p>def initialize(base, rate)
-    @base = BigDecimal(base.to_s)
-    @rate = BigDecimal(rate.to_s)
-  end</p>
-
-<p>def run
-    BigDecimal.save_rounding_mode do
-      BigDecimal.mode(BigDecimal::ROUND_MODE, :truncate)
-      (base*rate).round(2)
-    end
-  end
-end</p>
-
-<p>```</p>
-
-<h4 id="reference">Reference</h4>
-
-<ul>
-  <li><a href="http://floating-point-gui.de/">Float Point Guide</a></li>
-  <li><a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/bigdecimal/rdoc/BigDecimal.html">Ruby Doc BigDecimal</a></li>
-  <li><a href="http://makandracards.com/makandra/1178-bigdecimal-arithmetic-in-ruby">BigDecimal arithmetic in Ruby</a></li>
-  <li><a href="http://makandracards.com/makandra/1505-invoices-how-to-properly-round-and-calculate-totals">Invoices: How to properly round and calculate totals</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby Trick: Local Assignment over Method Sending]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2015/03/30/ruby-trick-local-assignment-over-method-sending/"/>
-    <updated>2015-03-30T16:24:59+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2015/03/30/ruby-trick-local-assignment-over-method-sending</id>
-    <content type="html"><![CDATA[<p>There is a weird situation I haven’t noticed before:</p>
-
-<p>```ruby
-class Counter
-  attr_accessor :processed, :processed_names</p>
-
-<p>def initialize
-    @processed = 0
-    @processed_names = []
-  end</p>
-
-<p>def foo
-    processed += 1
-  end</p>
-
-<p>def bar
-    processed_names « ‘a’
-  end
-end</p>
-
-<p>w = Counter.new;
-w.foo # =&gt; NoMethodError: undefined method <code>+' for nil:NilClass</code>
-w.bar # =&gt; [‘a’]
-```</p>
-
-<p><strong><em>Why the hell?</em></strong></p>
-
-<p><strong>Local assignment always has precedence over method sending</strong>. Assignment happened in <code>w.foo</code>, which not in <code>w.bar</code>.</p>
-
-<p>Check this one:</p>
-
-<p>```
-class Person
-  attr_accessor :name</p>
-
-<p>def foo
-    name = ‘John’
-  end
-end</p>
-
-<p>t = Tao.new
-t.name # =&gt; nil
-t.foo  # =&gt; ‘John’
-t.name # =&gt; nil
-```</p>
-
-<p><code>name = 'John'</code> only means a definition of a local variable, which won’t send <code>=</code> to <code>name</code>.</p>
 ]]></content>
   </entry>
   

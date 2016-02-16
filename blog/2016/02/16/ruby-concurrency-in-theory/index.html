@@ -1,0 +1,444 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ruby Concurrency In Theory - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="Concurrency, Ruby Feb 16th, 2016 Ruby Concurrency In Theory What is concurrency? Concurrency vs. Paralelism Concurrency plus communication What does &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-theory">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2016/02/16/ruby-concurrency-article-collection/">Ruby Concurrency Article Collection</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/16/ruby-concurrency-in-practice/">Ruby Concurrency in Practice</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/16/ruby-concurrency-in-theory/">Ruby Concurrency in Theory</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/16/review-working-with-ruby-threads/">[Review] Working With Ruby Threads</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/05/ci-zhi-ban-nian-ji/">辞职半年记</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/concurrency/'>Concurrency</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Feb 16<span>th</span>, 2016</a>
+</span>
+
+    </div>
+    <h1>
+      Ruby Concurrency In Theory
+    </h1>
+  
+</header>
+
+
+  <section><ul id="markdown-toc">
+  <li><a href="#what-is-concurrency">What is concurrency?</a>    <ul>
+      <li><a href="#concurrency-vs-paralelism">Concurrency vs. Paralelism</a></li>
+      <li><a href="#concurrency-plus-communication">Concurrency plus communication</a></li>
+    </ul>
+  </li>
+  <li><a href="#what-does-ruby-support">What does Ruby support?</a>    <ul>
+      <li><a href="#gil">GIL</a></li>
+      <li><a href="#ruby-support">Ruby Support</a></li>
+      <li><a href="#fiber">Fiber</a></li>
+    </ul>
+  </li>
+  <li><a href="#how-to-enhance-concurrency-by-ruby">How to enhance concurrency by Ruby?</a>    <ul>
+      <li><a href="#basics">Basics</a></li>
+      <li><a href="#concurrency-model-software-transactional-memory">Concurrency Model: Software Transactional Memory</a></li>
+      <li><a href="#concurrency-model-actor-model">Concurrency Model: Actor Model</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="what-is-concurrency">What is concurrency?</h2>
+
+<h3 id="concurrency-vs-paralelism">Concurrency vs. Paralelism</h3>
+
+<ul>
+  <li>Concurrency is about dealing with lots of things at once.</li>
+  <li>Parallelism is about doing lots of things at once.</li>
+  <li>Not the same, but related.</li>
+  <li>One is about structure (design), one is about execution.</li>
+  <li>Concurrency provides a way to structure a solution to solve a problem that may (but not necessarily) be parallelizable.</li>
+</ul>
+
+<h3 id="concurrency-plus-communication">Concurrency plus communication</h3>
+
+<ul>
+  <li>Concurrency is a way to structure a program by breaking it into pieces that can be executed independently.</li>
+  <li>Communication is the means to coordinate the independent executions.</li>
+  <li>This is the Go model and (like Erlang and others) it’s based on CSP (Communicating Sequential Processes)</li>
+</ul>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="http://concur.rspace.googlecode.com/hg/talk/concur.html#title-slide">Concurrency is not Parallelism (it’s better) - Rob Pike</a></li>
+</ul>
+
+<h2 id="what-does-ruby-support">What does Ruby support?</h2>
+
+<h3 id="gil">GIL</h3>
+
+<p>A global interpreter lock (GIL) is a mutual-exclusion lock held by a programming language interpreter thread to avoid sharing code that is not thread-safe with other threads. In implementations with a GIL, there is always one GIL for each interpreter process.</p>
+
+<p>Global interpreter lock (GIL) is a mechanism used in computer language interpreters to synchronize the execution of threads so that only one native thread can execute at a time. An interpreter that uses GIL always allows exactly one thread to execute at a time, even if run on a multi-core processor.</p>
+
+<p><strong>Benefits</strong></p>
+
+<ul>
+  <li>increased speed of single-threaded programs (no necessity to acquire or release locks on all data structures separately)</li>
+  <li>easy integration of C libraries that usually are not thread-safe</li>
+  <li>ease of implementation</li>
+</ul>
+
+<p><strong>Drawbacks</strong></p>
+
+<p>Limits the amount of parallelism reachable through concurrency of a single interpreter process with multiple threads. Hence a significant slowdown for CPU-bound thread.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCIT-native_threads.png" alt="RCIT-native_threads.png" /></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCIT-threads_with_GIL.png" alt="RCIT-threads_with_GIL.png" /></p>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Global_interpreter_lock">Global Interpreter Lock - Wikipedia</a></li>
+</ul>
+
+<h3 id="ruby-support">Ruby Support</h3>
+
+<p>Ruby 1.8, uses only a single native thread and runs all Ruby threads within that one native thread. A single OS thread is allocated for the Ruby interpreter, a GIL lock is instantiated, and Ruby threads (‘Green Threads’), are spooled up by our program. This means that threads can never run in parallel, even on multicore CPUs.</p>
+
+<p>Ruby 1.9, allocates a native thread for each Ruby thread. But because some of the C libraries used in this implementation are not themselves thread-safe. Ruby never allows more than one of its native threads to run at the same time. Now the GIL is the bottleneck, and Ruby will never take advantage of multiple cores!</p>
+
+<p>Ruby 1.9, also provides Fiber.</p>
+
+<p>Ruby concurrency without parallelism can still be very useful, though, for tasks that are IO-heavy (e.g., network I/O, disk I/O).  Ruby can release the lock on the GIL on that thread while it blocks on I/O. There is a reason threads were, after all, invented and used even before multi-core servers were common.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCIT-ruby_support.png" alt="RCIT-ruby_support.png" /></p>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="https://blog.engineyard.com/2011/ruby-concurrency-and-you">Ruby, Concurrency, and You - Engine Yard</a></li>
+</ul>
+
+<h3 id="fiber">Fiber</h3>
+
+<p>Fibers are primitives for implementing light weight cooperative concurrency in Ruby (think lightweight threads, minus the thread scheduler and less overhead). Basically they are a means of creating code blocks that can be paused and resumed, much like threads. A fiber is a unit of execution that must be manually scheduled by the application. Fibers run in the context of the threads that schedule them. Each thread can schedule multiple fibers.</p>
+
+<p>As opposed to other stackless light weight concurrency models, each fiber comes with a small 4KB stack. This enables the fiber to be paused from deeply nested function calls within the fiber block.</p>
+
+<p>Normal usage: start an async operation, yield the fiber, and then make the callback resume the fiber once the operation is complete.</p>
+
+<p><strong>Compered to Thread</strong></p>
+
+<p>Fibers are never preempted, the scheduling must be done by the programmer and not the VM.</p>
+
+<p><strong>Why Fiber?</strong></p>
+
+<p>In general, fibers do not provide advantages over a well-designed multithreaded application. However, using fibers can make it easier to port applications that were designed to schedule their own threads. The availability of Fibers allows Actor-style programming, without having to worry about overhead.</p>
+
+<p><strong>Why Fiber is called a semi-coroutine?</strong></p>
+
+<p>Coroutines (cooperative multitasking) are computer program components that generalize subroutines for nonpreemptive multitasking, by allowing multiple entry points for suspending and resuming execution at certain locations. Coroutines are well-suited for implementing more familiar program components such as cooperative tasks, exceptions, event loop, iterators, infinite lists and pipes.</p>
+
+<p>Asymmetric Coroutines can only transfer control back to their caller, where Coroutines are free to transfer control to any other Coroutine, as long as they have a handle to it.</p>
+
+<p>We may infer that Ruby encapsulate a Fiber::Core which supports coroutine, and only expose Fiber as a semi-coroutine data structure.</p>
+
+<p><strong>What’s the performance of Fiber?</strong></p>
+
+<p>Fibers are much faster to create than threads, they eat much less memory too.</p>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="http://ruby-doc.org/core-2.2.2/Fiber.html">Fiber - Ruby Doc</a></li>
+  <li><a href="http://www.infoq.com/news/2007/08/ruby-1-9-fibers">Ruby 1.9 adds Fibers for lightweight concurrency - Werner Schuster</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Coroutine#Implementations_for_Ruby">Coroutine - Wikipedia</a></li>
+  <li><a href="http://oldmoe.blogspot.jp/2008/08/ruby-fibers-vs-ruby-threads.html">Ruby Fibers Vs Ruby Threads - oldmoe</a></li>
+</ul>
+
+<h2 id="how-to-enhance-concurrency-by-ruby">How to enhance concurrency by Ruby?</h2>
+
+<h3 id="basics">Basics</h3>
+
+<p><strong>How to provide more concurrency?</strong></p>
+
+<ul>
+  <li>Multi processing (parallelism), like Resque, Unicorn. Simply to fork a running process to multiply its processing power.</li>
+  <li>Multi threading, like Sidekiq, Puma and Thin. Lighter than processes, requiring less overhead. At some point, you may find it necessary to use a thread pool.</li>
+  <li>Background processing</li>
+  <li>Rely on other concurrency models (event, actor, message-passing)</li>
+</ul>
+
+<p><strong>Multi-processing vs. Multi-threading</strong></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCIT-multi_processing_vs_multi_threading.png" alt="RCIT-multi_processing_vs_multi_threading.png" /></p>
+
+<p><strong>Thread Pooling</strong></p>
+
+<p>A key configuration parameter for a thread pool is typically the number of threads in the pool. These threads can either be instantiated all at once (i.e., when the pool is created) or lazily (i.e., as needed until the maximum number of threads in the pool has been created).</p>
+
+<p><code>Queue</code> and <code>SizedQueue</code> are thread-safe data structures in Ruby, maybe the only two.</p>
+
+<p><a href="https://gist.github.com/ifyouseewendy/a8fc663ae575843f9e8f">demo snippet</a></p>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="https://www.igvita.com/2010/08/18/multi-core-threads-message-passing/">Multi-core, Threads &amp; Message Passing - Ilya Grigorik</a></li>
+  <li><a href="http://adam.herokuapp.com/past/2009/8/13/threads_suck/">Threads Suck -  Adam Wiggins</a></li>
+  <li><a href="https://www.usenix.org/legacy/events/hotos03/tech/full_papers/vonbehren/vonbehren_html/index.html">Why Events Are A Bad Idea - Rob von Behren, Jeremy Condit and Eric Brewer</a></li>
+</ul>
+
+<h3 id="concurrency-model-software-transactional-memory">Concurrency Model: Software Transactional Memory</h3>
+
+<p>Software transactional memory (STM) is a concurrency control mechanism analogous to database transactions for controlling access to shared memory in concurrent computing. It is an alternative to lock-based synchronization. STM is a strategy implemented in software, rather than as a hardware component.</p>
+
+<ul>
+  <li>A thread completes modifications to shared memory without regard for what other threads might be doing, recording every read and write that it is performing in a log.</li>
+  <li>Instead of placing the onus on the writer to make sure it does not adversely affect other operations in progress, it is placed on the reader, who after completing an entire transaction verifies that other threads have not concurrently made changes to memory that it accessed in the past.</li>
+  <li>This final operation, in which the changes of a transaction are validated and, if validation is successful, made permanent, is called a commit. A transaction may also abort at any time, causing all of its prior changes to be rolled back or undone. If a transaction cannot be committed due to conflicting changes, it is typically aborted and re-executed from the beginning until it succeeds.</li>
+</ul>
+
+<p>Clojure has STM support built into the core language.</p>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Software_transactional_memory">Software transactional memory - Wikipedia</a></li>
+</ul>
+
+<h3 id="concurrency-model-actor-model">Concurrency Model: Actor Model</h3>
+
+<p>The actor model has its theoretical roots in concurrency modelling and message passing concepts.</p>
+
+<p>The basic operation of an Actor is easy to understand: like a thread, it runs concurrently with other Actors. However, unlike threads it is not pre-emptable. Instead, each Actor has a mailbox and can call a routine named “receive” to check its mailbox for new messages. The “receive” routine takes a filter, and if no messages in an Actor’s mailbox matches the filter, the Actor sleeps until it receives new messages, at which time it’s rescheduled for execution.</p>
+
+<p>Well, that’s a bit of a naive description. In reality the important part about Actors is that they cannot mutate shared state simultaneously. That means there are no race conditions or deadlocks because there are no mutexes, conditions, and semaphores, only messages and mailboxes.</p>
+
+<p>Actors are an approach to concurrency which has proven remarkably successful in languages like Erlang and Scala. They emphasize message passing as the only means of exchanging state, as opposed to threaded approaches like mutexes, conditions, and semaphores which hopefully guard access and mutation of any shared state, emphasis on the hopefully. Using messaging eliminates several problems in multithreaded programming, including many types of race conditions and deadlocks which result from hope dying in the cold light of reality.</p>
+
+<p><strong>Message Passing</strong></p>
+
+<p>The fundamental idea of the actor model is to use actors as concurrent primitives that can act upon receiving messages in different ways:</p>
+
+<ul>
+  <li>Send a finite number of messages to other actors.</li>
+  <li>Spawn a finite number of new actors.</li>
+  <li>Change its own internal behavior, taking effect when the next incoming message is handled.</li>
+</ul>
+
+<p>For communication, the actor model uses asynchronous message passing. In particular, it does not use any intermediate entities such as channels. Instead, each actor possesses a mailbox and can be addressed. These addresses are not to be confused with identities, and each actor can have no, one or multiple addresses. When an actor sends a message, it must know the address of the recipient. In addition, actors are allowed to send messages to themselves, which they will receive and handle later in a future step.</p>
+
+<p>Messages are sent asynchronously and can take arbitrarily long to eventually arrive in the mailbox of the receiver. Also, the actor models makes no guarantees on the ordering of messages. Queuing and dequeuing of messages in a mailbox are atomic operations, so there cannot be a race condition.</p>
+
+<p>There is no shared state and the interaction between actors is purely based on asynchronous messages.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/RCIT-actor_message_passing.png" alt="RCIT-actor_message_passing.png" /></p>
+
+<p><strong>Implementation</strong></p>
+
+<ul>
+  <li>Thread-based Actors - the actor is internally backed by a dedicated thread. This obviously limits scalability and requires the thread to suspend and block when waiting for new messages.</li>
+  <li>Event-driven Actors - which does not directly couple actors to threads. Instead, a thread pool can be used for a number of actors. This approach uses a continuation closure to encapsulate the actor and its state. Conceptually, this implementation is very similar to an event loop backed by a threadpool.</li>
+</ul>
+
+<p><strong>Reactor Pattern</strong></p>
+
+<p>The reactor design pattern is an event handling pattern for handling service requests delivered concurrently to a service handler by one or more inputs. The service handler then demultiplexes the incoming requests and dispatches them synchronously to the associated request handlers.</p>
+
+<p>The reactor pattern completely separates application specific code from the reactor implementation, which means that application components can be divided into modular, reusable parts. Also, due to the synchronous calling of request handlers, the reactor pattern allows for simple coarse-grain concurrency while not adding the complexity of multiple threads to the system.</p>
+
+<p><em>Reference</em></p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Actor_model">Actor Model - Wikipedia</a></li>
+  <li><a href="http://revactor.github.io/philosophy/">Philosophy - Revactor</a></li>
+  <li><a href="http://on-ruby.blogspot.jp/2008/01/ruby-concurrency-with-actors.html">Ruby Concurrency with Actors - Pat Eyler</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Reactor_pattern">Reactor Pattern - Wikipedia</a></li>
+  <li><a href="http://berb.github.io/diploma-thesis/original/054_actors.html#02">Actor-based Concurrency - Benjamin Erb</a></li>
+</ul>
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-theory/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-theory/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>
