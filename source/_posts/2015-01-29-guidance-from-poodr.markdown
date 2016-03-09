@@ -27,7 +27,7 @@ Design is thus an art, the art of arranging code, and design is more the art of 
 
 The trick to getting the most bang for your design buck is to acquire an understanding of the theories of design and to apply these theories appropriately, at the right time, and in the right amounts. 
 
-Well-designed applications are constructed of reusable code. Small, trustworthy self- contained objects with minimal context, clear interfaces, and injected dependencies are inherently reusable.
+Well-designed applications are constructed of reusable code. Small, trustworthy self-contained objects with minimal context, clear interfaces, and injected dependencies are inherently reusable.
 
 
 ## The Tools of Design
@@ -239,7 +239,7 @@ They explicitly specify the messages that pass between objects, and because obje
 
 #### Asking for “What” Instead of Telling “How”
 
-#### Seeking Contect Independence
+#### Seeking Context Independence
 
 The best possible situation is for an object to be completely independent of its context. An object that could collaborate with others without knowing who they are or what they do could be reused in novel and unanticipated ways.
 
@@ -255,7 +255,7 @@ Listening to Demeter means paying attention to your point of view. If you shift 
 
 
 
-## Reductin Costs with Duck Typing
+## Reduction Costs with Duck Typing
 
 > Interface, across classes and is independent of any single class. The interface represents a set of messages where the messages themselves define the interface. It’s almost as if the interface defines a virtual class; that is, any class that implements the required methods can act like the interface kind of thing.
 
@@ -263,7 +263,7 @@ Listening to Demeter means paying attention to your point of view. If you shift 
 
 ### Polymorphism
 
-**Polymorphism** in OOP refers to the ability of many different objects to respond to the same message. Senders of the message need not care about the class of the receiver; receivers supply their own specific version of the behavior. Polymorphic methods honor an implicit bargain; they agree to be inter- changeable from the sender’s point of view.
+**Polymorphism** in OOP refers to the ability of many different objects to respond to the same message. Senders of the message need not care about the class of the receiver; receivers supply their own specific version of the behavior. Polymorphic methods honor an implicit bargain; they agree to be inter-changeable from the sender’s point of view.
 
 A single message thus has many (poly) forms (morphs).
 
@@ -281,7 +281,7 @@ There are a number of ways to achieve polymorphism:
 
 ### Guidance
 
-When you create duck types you must both document and test their public inter- faces. Fortunately, good tests are the best documentation.
+When you create duck types you must both document and test their public interfaces. Fortunately, good tests are the best documentation.
 
 The decision to create a new duck type relies on judgment. The purpose of design is to lower costs; bring this measuring stick to every situation. If creating a duck type would reduce unstable dependencies, do so. Use your best judgment.
 
@@ -428,7 +428,7 @@ Composition is the act of combining distinct parts into a complex whole such tha
 
 Delegation creates dependencies; the receiving object must recognize the message and know where to send it. Composition often involves delegation but the term means something more. A composed object is made up of parts with which it expects to interact via well-defined interfaces.
 
-Composition indicates a *has-a* relationship where the contained object has no life inde- pendent of its container.
+Composition indicates a *has-a* relationship where the contained object has no life independent of its container.
 
 Aggregation is exactly like composition except that the contained object has an independent life.
 
@@ -473,7 +473,7 @@ Composed objects do not depend on the structure of the class hierarchy, and they
 
 **Benefits**
 
-When using composition, the natural tendency is to create many small objects that con- tain straightforward responsibilities that are accessible through clearly defined interfaces. These small objects have a single responsibility and specify their own behavior. They are transparent.
+When using composition, the natural tendency is to create many small objects that contain straightforward responsibilities that are accessible through clearly defined interfaces. These small objects have a single responsibility and specify their own behavior. They are transparent.
 
 By their very nature, objects that participate in composition are small, structurally independent, and have well-defined interfaces. This allows their seamless transition into pluggable, interchangeable components.
 
@@ -618,5 +618,5 @@ The desire to test duck types creates a need for shareable tests for roles, and 
 + Testing Unique Behavior
 
     - Testing Concrete Subclass Behavior. It’s important to test these specializations without embedding knowledge of the superclass into the test.
-    - Testing Abstract Superclass Behavior. Because Bicycle used tem- plate methods to acquire concrete specializations you can stub the behavior that would normally be supplied by subclasses. Even better, because you understand the Liskov Substitution Principle, you can easily manufacture a testable instance of Bicycle by creating a new subclass for use solely by this test.
+    - Testing Abstract Superclass Behavior. Because Bicycle used template methods to acquire concrete specializations you can stub the behavior that would normally be supplied by subclasses. Even better, because you understand the Liskov Substitution Principle, you can easily manufacture a testable instance of Bicycle by creating a new subclass for use solely by this test.
 

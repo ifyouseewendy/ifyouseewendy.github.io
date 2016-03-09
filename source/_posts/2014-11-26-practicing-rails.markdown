@@ -127,7 +127,7 @@ Keeping these tasks as small as possible is the key. And try to follow the quest
 
 1. Ask some questions: What is the app missing? What did you postpone to get that first feature done?
 2. Try using what you have so far. What would make your life easier if it was built? What annoys you while you’re using your app?
-3. Ifyou’rebuildingthisappforsomeoneelse,watchhowtheyusetheproject. Where are they struggling? What do they complain about?
+3. If you’re building this app for someone else, watch how they use the project. Where are they struggling? What do they complain about?
 
 ## Test Your Code Efficiently
 
@@ -324,7 +324,7 @@ While **morning**:
 > 
 > I heard a lot of people I trust and respect suggest trying waking up a little earlier for a week or so. I did, and it was hard, and I felt totally unproductive.  
 > 
-> But somehow, once I measured my actual productivity, I found out I was twice as pro- ductive in the mornings as the evenings. This is crazy, because it felt like the exact opposite!
+> But somehow, once I measured my actual productivity, I found out I was twice as productive in the mornings as the evenings. This is crazy, because it felt like the exact opposite!
 
 I really need to give it a shot.
 

@@ -50,7 +50,7 @@ Every object consists of three things: **type, size, content**.
 
 There are four different types of objects: **blob, tree, commit, tag**.
 
-**blob** is a chunk of binary data, used to stroe file data.
+**blob** is a chunk of binary data, used to store file data.
 
 > The blob is entirely defined by its data, totally independent of its location.
 
@@ -111,7 +111,7 @@ Annotated tags, however, are stored as full objects in the Git database. They’
 
 ## Configuration
 
-### Ignoreing Files
+### Ignoring Files
 
 Glob patterns are like simplified regular expressions that shells use.
 
@@ -237,7 +237,7 @@ Now that you have the contents of your key in Git, you can create a tag that poi
 $ git tag -a maintainer-pgp-pub 659ef797d181633c87ec71ac3f9ba29fe5775b92
 ```
 
-If you run `git push --tags`, the maintainer-pgp-pub tag will be shared with ev- eryone. If anyone wants to verify a tag, they can directly import your PGP key by pulling the blob directly out of the database and importing it into GPG:
+If you run `git push --tags`, the maintainer-pgp-pub tag will be shared with everyone. If anyone wants to verify a tag, they can directly import your PGP key by pulling the blob directly out of the database and importing it into GPG:
 
 ```sh
 $ git show maintainer-pgp-pub | gpg --import
@@ -1007,7 +1007,7 @@ end
 1. stores blobs for the files that have changed
 2. updates the index
 3. writes out trees
-4. writes commit objects that reference the top- level trees and the commits that came immediately before them.
+4. writes commit objects that reference the top-level trees and the commits that came immediately before them.
 
 ```sh
 $ find .git/objects -type f

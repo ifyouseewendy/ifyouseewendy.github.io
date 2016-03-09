@@ -7,7 +7,7 @@ categories:  [Ruby, Rails]
 ---
 
 {:.custom}
-| **Teacher** | [Marc-André Cournoy](http://macournoyer.com/)
+| **Teacher** | [Marc-André Cournoyer](http://macournoyer.com/)
 | **Link**    | [Owning Rails](http://owningrails.com/)
 
 I've participated Marc's Owning Rails online class recently. AWESOME!
@@ -54,7 +54,7 @@ Passing block directly will omit the block-to-proc process, it can be more effic
 
 
 ```ruby
-=class Router
+class Router
   def initialize
     @routes = {}
   end
@@ -64,7 +64,7 @@ Passing block directly will omit the block-to-proc process, it can be more effic
     @routes.update route
   end
 
-=  def routes(&block)
+  def routes(&block)
     yield
   end
 end
@@ -165,7 +165,7 @@ class Metal
   end
 end
 
-class Base
+class Base < Metal
   include A, B
 end
 

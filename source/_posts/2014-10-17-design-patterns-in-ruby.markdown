@@ -68,7 +68,7 @@ Your system will not work better because you used all 23 of the GoF design patte
 
 Background
 
-> In 1995, Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides set out to redirect all the effort going into building redundant software wheels into some- thing more useful. That year, building on the work of Christopher Alexander, Kent Beck, and others, they published Design Patterns: Elements of Reusable Object-Oriented Software. The book was an instant hit, with the authors rapidly becoming famous (at least in software engineering circles) as the Gang of Four (GoF).
+> In 1995, Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides set out to redirect all the effort going into building redundant software wheels into something more useful. That year, building on the work of Christopher Alexander, Kent Beck, and others, they published Design Patterns: Elements of Reusable Object-Oriented Software. The book was an instant hit, with the authors rapidly becoming famous (at least in software engineering circles) as the Gang of Four (GoF).
 
 Focus on some key questions:
 
@@ -100,9 +100,9 @@ The traditional implementations of many design patterns work, but they make you 
 
 The increasing industry recognition of the value of dynamic and flexible languages such as Ruby has plunged us into yet another wisdom gap.
 
-> Design Patterns was published is the need for wisdom. 
+> Design Patterns was published in the need for wisdom. 
 > 
-> Bruce Tate is fond of pointing out1 that when a new programming technique or language pops up, there is frequently a wisdom gap. The industry needs time to come to grips with the new technique, to figure out the best way to apply it. How many years had to elapse between the first realization that object- oriented programming was the way to go and the time when we really began to use object-oriented technology effectively? Those years were the object-oriented wisdom gap.
+> Bruce Tate is fond of pointing out that when a new programming technique or language pops up, there is frequently a wisdom gap. The industry needs time to come to grips with the new technique, to figure out the best way to apply it. How many years had to elapse between the first realization that object-oriented programming was the way to go and the time when we really began to use object-oriented technology effectively? Those years were the object-oriented wisdom gap.
 
 
 
@@ -218,7 +218,7 @@ report.output_report
 
 ### Using and Abusing
 
-Particular attention to the details of the interface between the context and the strategy as well as to the coupling between them. Remember, the Strategy pattern will do you little good if you couple the con- text and your first strategy so tightly together that you cannot wedge a second or a third strategy into the design.
+Particular attention to the details of the interface between the context and the strategy as well as to the coupling between them. Remember, the Strategy pattern will do you little good if you couple the context and your first strategy so tightly together that you cannot wedge a second or a third strategy into the design.
 
 ### In the Wild
 
@@ -285,7 +285,7 @@ class Employee
   attr_reader :name, :address
   attr_reader :salary
   
-  def initialize( name, title, salary)
+  def initialize(name, title, salary)
    super()
    @name = name
    @title = title
@@ -345,7 +345,7 @@ The advantage in providing more details is that the observers do not have to wor
 
 ### Using and Abusing
 
-*The frequency and timing of the updates.* The subject class can help with all of this by avoiding broadcasting redundant updates. Just because some- one updates an object, it does not mean that anything really changed.
+*The frequency and timing of the updates.* The subject class can help with all of this by avoiding broadcasting redundant updates. Just because someone updates an object, it does not mean that anything really changed.
 
 ```ruby
 def salary=(new_salary)
@@ -404,7 +404,7 @@ ActiveRecord::Observer has been deprecated from Rails 4.0, but we can still get 
 2. **leaf**, the class doing simple, indivisible building blocks of process.
 3. **composite**, a component, also a higher-level object that is build from subcomponents.
 
-The GoF called the design pattern for our “*the sum acts like one of the parts*” situa- tion the Composite pattern. You will know that you need to use the Composite pattern when you are trying to build a hierarchy or tree of objects, and you do not want the code that uses the tree to constantly have to worry about whether it is dealing with a single object or a whole bushy branch of the tree. Once you grasp its *recursive nature*, the Composite pattern is really quite simple.
+The GoF called the design pattern for our “*the sum acts like one of the parts*” situation the Composite pattern. You will know that you need to use the Composite pattern when you are trying to build a hierarchy or tree of objects, and you do not want the code that uses the tree to constantly have to worry about whether it is dealing with a single object or a whole bushy branch of the tree. Once you grasp its *recursive nature*, the Composite pattern is really quite simple.
 
 ### Code Usage
 
@@ -450,7 +450,7 @@ As I say, how you handle this decision is mostly a matter of taste: Make the lea
 
 ***How to traverse the tree structrue which the composite pattern make?***
 
-Each composite object holds references to its subcomponents but the child compo- nents do not know a thing about their parents, it is easy to traverse the tree from the root to the leaves but hard to go the other way.
+Each composite object holds references to its subcomponents but the child components do not know a thing about their parents, it is easy to traverse the tree from the root to the leaves but hard to go the other way.
 
 Add a parent reference in the component class.
 
@@ -486,7 +486,7 @@ end
 
 The error that crops up so frequently with the Composite pattern is assuming that the tree is only one level deep—that is, assuming that all of the child components of a composite object are, in fact, leaf objects and not other composites.
 
-Remember, the power of the Composite pattern is that it allows us to build arbi- trarily deep trees.
+Remember, the power of the Composite pattern is that it allows us to build arbitrarily deep trees.
 
 ### In the Wild
 
@@ -838,7 +838,7 @@ The key thing about the Command pattern is that it separates the thought from th
 
 **Creation Time versus Execution Time**
 
-Assuming you really do need the Command pattern, to make it work you have to be sure that the initial thought is complete. You have to carefully think through the circumstances in which the command object will find itself when it is executed versus when it was created. Yes, this key file was open, and that vital object was initialized when I cre- ated the command. Will it all still be there for me when the command is executed?
+Assuming you really do need the Command pattern, to make it work you have to be sure that the initial thought is complete. You have to carefully think through the circumstances in which the command object will find itself when it is executed versus when it was created. Yes, this key file was open, and that vital object was initialized when I created the command. Will it all still be there for me when the command is executed?
 
 ### In the Wild
 
@@ -879,7 +879,7 @@ An adapter is an object that crosses the chasm between the interface that you ha
 
 ![the adapter](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/adapter.png)
 
-The client expects the target to have a certain interface. But unknown to the client, the target object is really an adapter, and buried inside of the adapter is a reference to a second object, the adaptee, which actually per- forms the work.
+The client expects the target to have a certain interface. But unknown to the client, the target object is really an adapter, and buried inside of the adapter is a reference to a second object, the adaptee, which actually performs the work.
 
 ### Adapt or Modify?
 
@@ -965,7 +965,7 @@ By splitting the protection cleanly off from the workings of the real object, we
 
 ### The Remove Proxy
 
-You could hide the complexity behind a remote proxy, an object that lives on the client machine and looks, to the client code, just like the real BankAccount object. When a request comes in, the remote proxy goes through all the horror of pack- aging up the request, sending it over the network, waiting for a response, unpacking the response, and returning the answer to the unsuspecting client.
+You could hide the complexity behind a remote proxy, an object that lives on the client machine and looks, to the client code, just like the real BankAccount object. When a request comes in, the remote proxy goes through all the horror of packaging up the request, sending it over the network, waiting for a response, unpacking the response, and returning the answer to the unsuspecting client.
 
 From the client’s point of view, it called a method on what it thought was the real BankAccount object and sometime later—perhaps an unusually long time later—the answer came back. This is how virtually all remote procedure call (RPC) systems work.
 
@@ -1050,7 +1050,9 @@ class VirtualProxy
 end
 
 array = VirtualProxy.new { Array.new }
-array << 'hello' array << 'out' array << 'there'
+array << 'hello'
+array << 'out'
+array << 'there'
 ```
 
 ### Using and Abusing
@@ -1105,7 +1107,7 @@ The Decorator pattern lets you start with some basic functionality and layer on 
 
 ### Why Not The Template Method?
 
-The trouble is that the inheritance-based approach requires you to come up with all possi- ble combinations of features up-front, at design time.
+The trouble is that the inheritance-based approach requires you to come up with all possible combinations of features up-front, at design time.
 
 ![out-of-control inheritance](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/out-of-control-inheritance.png)
 
@@ -1310,7 +1312,7 @@ m = Manager.new
 Use `clone`
 
 ```ruby
-m = Manager.instance.close
+m = Manager.instance.clone
 # => TypeError: can't clone instance of singleton Manager
 
 Foo = Manager.clone
@@ -1430,7 +1432,7 @@ The `Inflections` class is a singleton, which saves space and ensures that the s
 
 **Rake::Application in rake** [API](http://ruby-doc.org/stdlib-2.0/libdoc/rake/rdoc/Rake/Application.html)
 
-As it runs, rake—like most build tools—reads in information about what it needs to do: which directories to create, which files to copy, and so on.3 All of this information needs to be available to all of the moving parts of rake, so rake stores it all in a single object (the `Rake::Application` object, to be precise) that is available as a singleton to the entire rake program.
+As it runs, rake—like most build tools—reads in information about what it needs to do: which directories to create, which files to copy, and so on. All of this information needs to be available to all of the moving parts of rake, so rake stores it all in a single object (the `Rake::Application` object, to be precise) that is available as a singleton to the entire rake program.
 
 ## Factory
 
@@ -1486,7 +1488,7 @@ pond = DuckWaterLilyPond.new(3, 2)
 
 **Claasses Are Just Objects, Too**
 
-While the GoF concentrated on inheritance-based implementations of their fac- tories, we can get the same results with much less code by taking advantage of the fact that in Ruby, classes are just objects.
+While the GoF concentrated on inheritance-based implementations of their factories, we can get the same results with much less code by taking advantage of the fact that in Ruby, classes are just objects.
 
 ```ruby
 class Pond
@@ -1753,7 +1755,7 @@ builder.add_turbo_and_dvd_and_harddisk
 
 ### Using and Abusing
 
-It is usually fairly easy to spot code that is missing a builder: You can find the same object creation logic scat- tered all over the place. Another hint that you need a builder is when your code starts producing invalid objects.====
+It is usually fairly easy to spot code that is missing a builder: You can find the same object creation logic scattered all over the place. Another hint that you need a builder is when your code starts producing invalid objects.
 
 Builder pattern sometimes creeps up on you as your application becomes increasingly complex.
 
@@ -1866,7 +1868,7 @@ An internal DSL, according to Fowler, is one in which we start with some impleme
 
 ### Using and Abusing
 
-1. You are limited to what you can parse with a Ruby- based internal DSL.
+1. You are limited to what you can parse with a Ruby-based internal DSL.
 2. Error messages.
 
 ### In the Wild
@@ -1906,7 +1908,7 @@ def new_animal(diet, awake)
 end  
 ```
 
-No matter whether you tailor your objects one method at a time or in module- sized chunks, the ultimate effect is to create a customized object, uniquely made to order for the requirements of the moment.
+No matter whether you tailor your objects one method at a time or in module-sized chunks, the ultimate effect is to create a customized object, uniquely made to order for the requirements of the moment.
 
 
 ### Reflections
@@ -1917,11 +1919,11 @@ Reflection features like `public_methods` and `respond_to?` are handy anytime bu
 
 ### Using and Abusing
 
-Tests are absolutely mandatory for systems that use a lot of meta- programming.
+Tests are absolutely mandatory for systems that use a lot of meta-programming.
 
 ## Convention Over Configuration
 
-> The common message is that you should not just take your lan- guage as you find it, but rather mold it into something closer to the tool that you need to solve the problem at hand.
+> The common message is that you should not just take your language as you find it, but rather mold it into something closer to the tool that you need to solve the problem at hand.
 
 ### Description
 
