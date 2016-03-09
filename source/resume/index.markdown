@@ -26,26 +26,26 @@ footer: true
 
 ### Experience
 
-**2015.9 ~ 2016.1 - Ruby Developer, Self-employed**
+**2015.9 ~ 2016.1 - Web Developer, Self-employed**
 
 > *#TechStack: ActiveAdmin, PostgreSQL, MiniTest, Mina, Puma, Nginx* ([Github](https://github.com/ifyouseewendy/duoduo))
 
-Work as a contractor to implement a financial system.
+Work as a contractor to implement an OA system.
 
 + Make complicated function modules, like managing files of corporation and staff, sending salary.
-+ Participate in a whole development cycle, talking with customers to settle requirements, making system design, coding, testing, and deploying. 
++ Participate in a whole development cycle, talking with customers to settle requirements, making system design, coding, testing, and deploying.
 
 
-**2015.1 ~ 2015.7 - Ruby Developer, [Kaitong AMC](https://www.ktjr.com/index)**
+**2015.1 ~ 2015.7 - Web Developer, [Kaitong AMC](https://www.ktjr.com/index)**
 
 > *#TechStack: Rails, MongoDB, MiniTest, Mina, Unicorn, Nginx* ([Github](https://github.com/ifyouseewendy/baton-web))
 
 Kaitong AMC is an Internet financial startup, aiming to provide a platform between bourses and Internet financial corporations. As the first tech engineer, I've gained much valuable experience from the entrepreneurial endeavor. My job is to
 
-+ Make collaborative solutions with bourses and Internet financial corporations.  
++ Make collaborative solutions with bourses and Internet financial corporations.
 + Implement a docking platform using Ruby on Rails to automate the cooperation.
 
-**2012 ~ 2015 - Ruby Developer, [Umeng](www.umeng.com), [Alibaba inc.](https://www.crunchbase.com/organization/alibaba)**
+**2012 ~ 2015 - Web Developer, [Umeng](www.umeng.com), [Alibaba inc.](https://www.crunchbase.com/organization/alibaba)**
 
 > *#TechStack: Rails, MongoDB, Redis, RSpec, RefineryCMS, Resque, Capistrano, Unicorn, Tengine*
 
@@ -57,18 +57,18 @@ Umeng Analytics is the leading mobile app analytical platform in China. We imple
 + Developer Center, a CMS system for developers to read online documents and download SDK packages.
 + API & OAuth, for third-party company to authenticate, authorize, and query data.
 
-**2011 ~ 2012 - Java Developer (Intern), [DianPing](www.dianping.com)**
+**2011 ~ 2012 - Web Developer (Intern), [DianPing](www.dianping.com)**
 
 > *#TechStack: Struts, Spring, iBaits*
 
-Dianping is the largest group deals site in China. I work as an intern in the Search Group, implementing some backend administer features using Java, including 
+Dianping is the largest group deals site in China. I work as an intern in the Search Group, implementing some backend administer features using Java, including
 
 + Log-related module, configure the operation log with logback, and provide search function in supporting system.
 + Search-optimized module, parse, transfer and store the search resource request to make a search replay when encountering searching problems.
 
 ### Education
 
-2007 ~ 2012 - Software Engineering Institute, East China Normal University
+2008 ~ 2012 - Bachelor, Software Engineering, East China Normal University
 
 
 ### Self-Summary
