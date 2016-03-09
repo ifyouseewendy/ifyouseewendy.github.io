@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2016-03-02T12:08:25+08:00</updated>
+  <updated>2016-03-09T12:26:44+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -68,7 +68,7 @@
     </ul>
   </li>
   <li><a href="#configuration">Configuration</a>    <ul>
-      <li><a href="#ignoreing-files">Ignoreing Files</a></li>
+      <li><a href="#ignoring-files">Ignoring Files</a></li>
       <li><a href="#commit-template">Commit Template</a></li>
       <li><a href="#git-attributes">Git Attributes</a></li>
     </ul>
@@ -194,7 +194,7 @@
 
 <p>There are four different types of objects: <strong>blob, tree, commit, tag</strong>.</p>
 
-<p><strong>blob</strong> is a chunk of binary data, used to stroe file data.</p>
+<p><strong>blob</strong> is a chunk of binary data, used to store file data.</p>
 
 <blockquote>
   <p>The blob is entirely defined by its data, totally independent of its location.</p>
@@ -257,7 +257,7 @@ committer wendi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#119;&#101;&#110;
 
 <h2 id="configuration">Configuration</h2>
 
-<h3 id="ignoreing-files">Ignoreing Files</h3>
+<h3 id="ignoring-files">Ignoring Files</h3>
 
 <p>Glob patterns are like simplified regular expressions that shells use.</p>
 
@@ -385,7 +385,7 @@ $ gpg -a --export F721C45A | git hash-object -w --stdin
 $ git tag -a maintainer-pgp-pub 659ef797d181633c87ec71ac3f9ba29fe5775b92
 </code></p>
 
-<p>If you run <code>git push --tags</code>, the maintainer-pgp-pub tag will be shared with ev- eryone. If anyone wants to verify a tag, they can directly import your PGP key by pulling the blob directly out of the database and importing it into GPG:</p>
+<p>If you run <code>git push --tags</code>, the maintainer-pgp-pub tag will be shared with everyone. If anyone wants to verify a tag, they can directly import your PGP key by pulling the blob directly out of the database and importing it into GPG:</p>
 
 <p><code>sh
 $ git show maintainer-pgp-pub | gpg --import
@@ -1167,7 +1167,7 @@ end
   <li>stores blobs for the files that have changed</li>
   <li>updates the index</li>
   <li>writes out trees</li>
-  <li>writes commit objects that reference the top- level trees and the commits that came immediately before them.</li>
+  <li>writes commit objects that reference the top-level trees and the commits that came immediately before them.</li>
 </ol>
 
 <p><code>sh

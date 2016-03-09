@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2016-03-02T12:08:25+08:00</updated>
+  <updated>2016-03-09T12:26:44+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -832,7 +832,7 @@ irb(main):005:0&gt; helper.content_tag :h1, "Hey there" =&gt; "&lt;h1&gt;Hey the
 <ol>
   <li>Ask some questions: What is the app missing? What did you postpone to get that first feature done?</li>
   <li>Try using what you have so far. What would make your life easier if it was built? What annoys you while you’re using your app?</li>
-  <li>Ifyou’rebuildingthisappforsomeoneelse,watchhowtheyusetheproject. Where are they struggling? What do they complain about?</li>
+  <li>If you’re building this app for someone else, watch how they use the project. Where are they struggling? What do they complain about?</li>
 </ol>
 
 <h2 id="test-your-code-efficiently">Test Your Code Efficiently</h2>
@@ -1055,7 +1055,7 @@ irb(main):005:0&gt; helper.content_tag :h1, "Hey there" =&gt; "&lt;h1&gt;Hey the
 
   <p>I heard a lot of people I trust and respect suggest trying waking up a little earlier for a week or so. I did, and it was hard, and I felt totally unproductive.  </p>
 
-  <p>But somehow, once I measured my actual productivity, I found out I was twice as pro- ductive in the mornings as the evenings. This is crazy, because it felt like the exact opposite!</p>
+  <p>But somehow, once I measured my actual productivity, I found out I was twice as productive in the mornings as the evenings. This is crazy, because it felt like the exact opposite!</p>
 </blockquote>
 
 <p>I really need to give it a shot.</p>

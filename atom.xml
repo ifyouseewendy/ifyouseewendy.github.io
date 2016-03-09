@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2016-03-02T12:08:25+08:00</updated>
+  <updated>2016-03-09T12:26:44+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -6093,13 +6093,13 @@ The bottom line is: generally it seems better to split a monster join into small
               <li><a href="#focus-messages-between-domain-objects">Focus Messages between Domain Objects</a></li>
               <li><a href="#use-sequence-diagrams">Use Sequence Diagrams</a></li>
               <li><a href="#asking-for-what-instead-of-telling-how">Asking for “What” Instead of Telling “How”</a></li>
-              <li><a href="#seeking-contect-independence">Seeking Contect Independence</a></li>
+              <li><a href="#seeking-context-independence">Seeking Context Independence</a></li>
             </ul>
           </li>
           <li><a href="#the-law-of-demeter">The Law of Demeter</a></li>
         </ul>
       </li>
-      <li><a href="#reductin-costs-with-duck-typing">Reductin Costs with Duck Typing</a>        <ul>
+      <li><a href="#reduction-costs-with-duck-typing">Reduction Costs with Duck Typing</a>        <ul>
           <li><a href="#polymorphism">Polymorphism</a></li>
           <li><a href="#recognizing-hidden-ducks">Recognizing Hidden Ducks</a></li>
           <li><a href="#guidance-1">Guidance</a></li>
@@ -6180,7 +6180,7 @@ The bottom line is: generally it seems better to split a monster join into small
 
 <p>The trick to getting the most bang for your design buck is to acquire an understanding of the theories of design and to apply these theories appropriately, at the right time, and in the right amounts. </p>
 
-<p>Well-designed applications are constructed of reusable code. Small, trustworthy self- contained objects with minimal context, clear interfaces, and injected dependencies are inherently reusable.</p>
+<p>Well-designed applications are constructed of reusable code. Small, trustworthy self-contained objects with minimal context, clear interfaces, and injected dependencies are inherently reusable.</p>
 
 <h2 id="the-tools-of-design">The Tools of Design</h2>
 
@@ -6462,7 +6462,7 @@ The bottom line is: generally it seems better to split a monster join into small
 
 <h4 id="asking-for-what-instead-of-telling-how">Asking for “What” Instead of Telling “How”</h4>
 
-<h4 id="seeking-contect-independence">Seeking Contect Independence</h4>
+<h4 id="seeking-context-independence">Seeking Context Independence</h4>
 
 <p>The best possible situation is for an object to be completely independent of its context. An object that could collaborate with others without knowing who they are or what they do could be reused in novel and unanticipated ways.</p>
 
@@ -6476,7 +6476,7 @@ The bottom line is: generally it seems better to split a monster join into small
 
 <p>Listening to Demeter means paying attention to your point of view. If you shift to a message-based perspective, the messages you find will become public interfaces in the objects they lead you to discover. However, if you are bound by the shackles of existing domain objects, you’ll end up assembling their existing public interfaces into long message chains and thus will miss the opportunity to find and construct flexible public interfaces.</p>
 
-<h2 id="reductin-costs-with-duck-typing">Reductin Costs with Duck Typing</h2>
+<h2 id="reduction-costs-with-duck-typing">Reduction Costs with Duck Typing</h2>
 
 <blockquote>
   <p>Interface, across classes and is independent of any single class. The interface represents a set of messages where the messages themselves define the interface. It’s almost as if the interface defines a virtual class; that is, any class that implements the required methods can act like the interface kind of thing.</p>
@@ -6486,7 +6486,7 @@ The bottom line is: generally it seems better to split a monster join into small
 
 <h3 id="polymorphism">Polymorphism</h3>
 
-<p><strong>Polymorphism</strong> in OOP refers to the ability of many different objects to respond to the same message. Senders of the message need not care about the class of the receiver; receivers supply their own specific version of the behavior. Polymorphic methods honor an implicit bargain; they agree to be inter- changeable from the sender’s point of view.</p>
+<p><strong>Polymorphism</strong> in OOP refers to the ability of many different objects to respond to the same message. Senders of the message need not care about the class of the receiver; receivers supply their own specific version of the behavior. Polymorphic methods honor an implicit bargain; they agree to be inter-changeable from the sender’s point of view.</p>
 
 <p>A single message thus has many (poly) forms (morphs).</p>
 
@@ -6508,7 +6508,7 @@ The bottom line is: generally it seems better to split a monster join into small
 
 <h3 id="guidance-1">Guidance</h3>
 
-<p>When you create duck types you must both document and test their public inter- faces. Fortunately, good tests are the best documentation.</p>
+<p>When you create duck types you must both document and test their public interfaces. Fortunately, good tests are the best documentation.</p>
 
 <p>The decision to create a new duck type relies on judgment. The purpose of design is to lower costs; bring this measuring stick to every situation. If creating a duck type would reduce unstable dependencies, do so. Use your best judgment.</p>
 
@@ -6681,7 +6681,7 @@ The bottom line is: generally it seems better to split a monster join into small
 
 <p>Delegation creates dependencies; the receiving object must recognize the message and know where to send it. Composition often involves delegation but the term means something more. A composed object is made up of parts with which it expects to interact via well-defined interfaces.</p>
 
-<p>Composition indicates a <em>has-a</em> relationship where the contained object has no life inde- pendent of its container.</p>
+<p>Composition indicates a <em>has-a</em> relationship where the contained object has no life independent of its container.</p>
 
 <p>Aggregation is exactly like composition except that the contained object has an independent life.</p>
 
@@ -6728,7 +6728,7 @@ The bottom line is: generally it seems better to split a monster join into small
 
 <p><strong>Benefits</strong></p>
 
-<p>When using composition, the natural tendency is to create many small objects that con- tain straightforward responsibilities that are accessible through clearly defined interfaces. These small objects have a single responsibility and specify their own behavior. They are transparent.</p>
+<p>When using composition, the natural tendency is to create many small objects that contain straightforward responsibilities that are accessible through clearly defined interfaces. These small objects have a single responsibility and specify their own behavior. They are transparent.</p>
 
 <p>By their very nature, objects that participate in composition are small, structurally independent, and have well-defined interfaces. This allows their seamless transition into pluggable, interchangeable components.</p>
 
@@ -6906,7 +6906,7 @@ The bottom line is: generally it seems better to split a monster join into small
 
     <ul>
       <li>Testing Concrete Subclass Behavior. It’s important to test these specializations without embedding knowledge of the superclass into the test.</li>
-      <li>Testing Abstract Superclass Behavior. Because Bicycle used tem- plate methods to acquire concrete specializations you can stub the behavior that would normally be supplied by subclasses. Even better, because you understand the Liskov Substitution Principle, you can easily manufacture a testable instance of Bicycle by creating a new subclass for use solely by this test.</li>
+      <li>Testing Abstract Superclass Behavior. Because Bicycle used template methods to acquire concrete specializations you can stub the behavior that would normally be supplied by subclasses. Even better, because you understand the Liskov Substitution Principle, you can easily manufacture a testable instance of Bicycle by creating a new subclass for use solely by this test.</li>
     </ul>
   </li>
 </ul>
@@ -6969,7 +6969,7 @@ The bottom line is: generally it seems better to split a monster join into small
     </ul>
   </li>
   <li><a href="#configuration">Configuration</a>    <ul>
-      <li><a href="#ignoreing-files">Ignoreing Files</a></li>
+      <li><a href="#ignoring-files">Ignoring Files</a></li>
       <li><a href="#commit-template">Commit Template</a></li>
       <li><a href="#git-attributes">Git Attributes</a></li>
     </ul>
@@ -7085,7 +7085,7 @@ The bottom line is: generally it seems better to split a monster join into small
 
 <p>There are four different types of objects: <strong>blob, tree, commit, tag</strong>.</p>
 
-<p><strong>blob</strong> is a chunk of binary data, used to stroe file data.</p>
+<p><strong>blob</strong> is a chunk of binary data, used to store file data.</p>
 
 <blockquote>
   <p>The blob is entirely defined by its data, totally independent of its location.</p>
@@ -7155,7 +7155,7 @@ The bottom line is: generally it seems better to split a monster join into small
 
 <h2 id="configuration">Configuration</h2>
 
-<h3 id="ignoreing-files">Ignoreing Files</h3>
+<h3 id="ignoring-files">Ignoring Files</h3>
 
 <p>Glob patterns are like simplified regular expressions that shells use.</p>
 
@@ -7313,7 +7313,7 @@ The bottom line is: generally it seems better to split a monster join into small
 </pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git tag -a maintainer-pgp-pub 659ef797d181633c87ec71ac3f9ba29fe5775b92
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>If you run <code>git push --tags</code>, the maintainer-pgp-pub tag will be shared with ev- eryone. If anyone wants to verify a tag, they can directly import your PGP key by pulling the blob directly out of the database and importing it into GPG:</p>
+<p>If you run <code>git push --tags</code>, the maintainer-pgp-pub tag will be shared with everyone. If anyone wants to verify a tag, they can directly import your PGP key by pulling the blob directly out of the database and importing it into GPG:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git show maintainer-pgp-pub | gpg --import
@@ -8370,7 +8370,7 @@ The bottom line is: generally it seems better to split a monster join into small
   <li>stores blobs for the files that have changed</li>
   <li>updates the index</li>
   <li>writes out trees</li>
-  <li>writes commit objects that reference the top- level trees and the commits that came immediately before them.</li>
+  <li>writes commit objects that reference the top-level trees and the commits that came immediately before them.</li>
 </ol>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -9199,7 +9199,7 @@ Example :<br />
 <ol>
   <li>Ask some questions: What is the app missing? What did you postpone to get that first feature done?</li>
   <li>Try using what you have so far. What would make your life easier if it was built? What annoys you while you’re using your app?</li>
-  <li>Ifyou’rebuildingthisappforsomeoneelse,watchhowtheyusetheproject. Where are they struggling? What do they complain about?</li>
+  <li>If you’re building this app for someone else, watch how they use the project. Where are they struggling? What do they complain about?</li>
 </ol>
 
 <h2 id="test-your-code-efficiently">Test Your Code Efficiently</h2>
@@ -9422,7 +9422,7 @@ Example :<br />
 
   <p>I heard a lot of people I trust and respect suggest trying waking up a little earlier for a week or so. I did, and it was hard, and I felt totally unproductive.  </p>
 
-  <p>But somehow, once I measured my actual productivity, I found out I was twice as pro- ductive in the mornings as the evenings. This is crazy, because it felt like the exact opposite!</p>
+  <p>But somehow, once I measured my actual productivity, I found out I was twice as productive in the mornings as the evenings. This is crazy, because it felt like the exact opposite!</p>
 </blockquote>
 
 <p>I really need to give it a shot.</p>

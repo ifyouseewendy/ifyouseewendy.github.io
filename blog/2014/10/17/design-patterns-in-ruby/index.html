@@ -369,7 +369,7 @@
 <p>Background</p>
 
 <blockquote>
-  <p>In 1995, Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides set out to redirect all the effort going into building redundant software wheels into some- thing more useful. That year, building on the work of Christopher Alexander, Kent Beck, and others, they published Design Patterns: Elements of Reusable Object-Oriented Software. The book was an instant hit, with the authors rapidly becoming famous (at least in software engineering circles) as the Gang of Four (GoF).</p>
+  <p>In 1995, Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides set out to redirect all the effort going into building redundant software wheels into something more useful. That year, building on the work of Christopher Alexander, Kent Beck, and others, they published Design Patterns: Elements of Reusable Object-Oriented Software. The book was an instant hit, with the authors rapidly becoming famous (at least in software engineering circles) as the Gang of Four (GoF).</p>
 </blockquote>
 
 <p>Focus on some key questions:</p>
@@ -412,9 +412,9 @@
 <p>The increasing industry recognition of the value of dynamic and flexible languages such as Ruby has plunged us into yet another wisdom gap.</p>
 
 <blockquote>
-  <p>Design Patterns was published is the need for wisdom. </p>
+  <p>Design Patterns was published in the need for wisdom. </p>
 
-  <p>Bruce Tate is fond of pointing out1 that when a new programming technique or language pops up, there is frequently a wisdom gap. The industry needs time to come to grips with the new technique, to figure out the best way to apply it. How many years had to elapse between the first realization that object- oriented programming was the way to go and the time when we really began to use object-oriented technology effectively? Those years were the object-oriented wisdom gap.</p>
+  <p>Bruce Tate is fond of pointing out that when a new programming technique or language pops up, there is frequently a wisdom gap. The industry needs time to come to grips with the new technique, to figure out the best way to apply it. How many years had to elapse between the first realization that object-oriented programming was the way to go and the time when we really began to use object-oriented technology effectively? Those years were the object-oriented wisdom gap.</p>
 </blockquote>
 
 <h2 id="design-pattern-classification">Design Pattern Classification</h2>
@@ -546,7 +546,7 @@
 
 <h3 id="using-and-abusing-1">Using and Abusing</h3>
 
-<p>Particular attention to the details of the interface between the context and the strategy as well as to the coupling between them. Remember, the Strategy pattern will do you little good if you couple the con- text and your first strategy so tightly together that you cannot wedge a second or a third strategy into the design.</p>
+<p>Particular attention to the details of the interface between the context and the strategy as well as to the coupling between them. Remember, the Strategy pattern will do you little good if you couple the context and your first strategy so tightly together that you cannot wedge a second or a third strategy into the design.</p>
 
 <h3 id="in-the-wild-1">In the Wild</h3>
 
@@ -664,7 +664,7 @@
 </span><span class="line">  <span class="kp">attr_reader</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:address</span>
 </span><span class="line">  <span class="kp">attr_reader</span> <span class="ss">:salary</span>
 </span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span> <span class="nb">name</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">salary</span><span class="p">)</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">salary</span><span class="p">)</span>
 </span><span class="line">   <span class="k">super</span><span class="p">()</span>
 </span><span class="line">   <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
 </span><span class="line">   <span class="vi">@title</span> <span class="o">=</span> <span class="n">title</span>
@@ -745,7 +745,7 @@
 
 <h3 id="using-and-abusing-2">Using and Abusing</h3>
 
-<p><em>The frequency and timing of the updates.</em> The subject class can help with all of this by avoiding broadcasting redundant updates. Just because some- one updates an object, it does not mean that anything really changed.</p>
+<p><em>The frequency and timing of the updates.</em> The subject class can help with all of this by avoiding broadcasting redundant updates. Just because someone updates an object, it does not mean that anything really changed.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -831,7 +831,7 @@
   <li><strong>composite</strong>, a component, also a higher-level object that is build from subcomponents.</li>
 </ol>
 
-<p>The GoF called the design pattern for our “<em>the sum acts like one of the parts</em>” situa- tion the Composite pattern. You will know that you need to use the Composite pattern when you are trying to build a hierarchy or tree of objects, and you do not want the code that uses the tree to constantly have to worry about whether it is dealing with a single object or a whole bushy branch of the tree. Once you grasp its <em>recursive nature</em>, the Composite pattern is really quite simple.</p>
+<p>The GoF called the design pattern for our “<em>the sum acts like one of the parts</em>” situation the Composite pattern. You will know that you need to use the Composite pattern when you are trying to build a hierarchy or tree of objects, and you do not want the code that uses the tree to constantly have to worry about whether it is dealing with a single object or a whole bushy branch of the tree. Once you grasp its <em>recursive nature</em>, the Composite pattern is really quite simple.</p>
 
 <h3 id="code-usage-1">Code Usage</h3>
 
@@ -905,7 +905,7 @@
 
 <p><strong><em>How to traverse the tree structrue which the composite pattern make?</em></strong></p>
 
-<p>Each composite object holds references to its subcomponents but the child compo- nents do not know a thing about their parents, it is easy to traverse the tree from the root to the leaves but hard to go the other way.</p>
+<p>Each composite object holds references to its subcomponents but the child components do not know a thing about their parents, it is easy to traverse the tree from the root to the leaves but hard to go the other way.</p>
 
 <p>Add a parent reference in the component class.</p>
 
@@ -965,7 +965,7 @@
 
 <p>The error that crops up so frequently with the Composite pattern is assuming that the tree is only one level deep—that is, assuming that all of the child components of a composite object are, in fact, leaf objects and not other composites.</p>
 
-<p>Remember, the power of the Composite pattern is that it allows us to build arbi- trarily deep trees.</p>
+<p>Remember, the power of the Composite pattern is that it allows us to build arbitrarily deep trees.</p>
 
 <h3 id="in-the-wild-3">In the Wild</h3>
 
@@ -1516,7 +1516,7 @@
 
 <p><strong>Creation Time versus Execution Time</strong></p>
 
-<p>Assuming you really do need the Command pattern, to make it work you have to be sure that the initial thought is complete. You have to carefully think through the circumstances in which the command object will find itself when it is executed versus when it was created. Yes, this key file was open, and that vital object was initialized when I cre- ated the command. Will it all still be there for me when the command is executed?</p>
+<p>Assuming you really do need the Command pattern, to make it work you have to be sure that the initial thought is complete. You have to carefully think through the circumstances in which the command object will find itself when it is executed versus when it was created. Yes, this key file was open, and that vital object was initialized when I created the command. Will it all still be there for me when the command is executed?</p>
 
 <h3 id="in-the-wild-5">In the Wild</h3>
 
@@ -1572,7 +1572,7 @@
 
 <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/adapter.png" alt="the adapter" /></p>
 
-<p>The client expects the target to have a certain interface. But unknown to the client, the target object is really an adapter, and buried inside of the adapter is a reference to a second object, the adaptee, which actually per- forms the work.</p>
+<p>The client expects the target to have a certain interface. But unknown to the client, the target object is really an adapter, and buried inside of the adapter is a reference to a second object, the adaptee, which actually performs the work.</p>
 
 <h3 id="adapt-or-modify">Adapt or Modify?</h3>
 
@@ -1686,7 +1686,7 @@
 
 <h3 id="the-remove-proxy">The Remove Proxy</h3>
 
-<p>You could hide the complexity behind a remote proxy, an object that lives on the client machine and looks, to the client code, just like the real BankAccount object. When a request comes in, the remote proxy goes through all the horror of pack- aging up the request, sending it over the network, waiting for a response, unpacking the response, and returning the answer to the unsuspecting client.</p>
+<p>You could hide the complexity behind a remote proxy, an object that lives on the client machine and looks, to the client code, just like the real BankAccount object. When a request comes in, the remote proxy goes through all the horror of packaging up the request, sending it over the network, waiting for a response, unpacking the response, and returning the answer to the unsuspecting client.</p>
 
 <p>From the client’s point of view, it called a method on what it thought was the real BankAccount object and sometime later—perhaps an unusually long time later—the answer came back. This is how virtually all remote procedure call (RPC) systems work.</p>
 
@@ -1810,6 +1810,8 @@
 <span class="line-number">16</span>
 <span class="line-number">17</span>
 <span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
 </pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">VirtualProxy</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="o">&amp;</span><span class="n">creation_block</span><span class="p">)</span>
 </span><span class="line">    <span class="vi">@creation_block</span> <span class="o">=</span> <span class="n">creation_block</span>
@@ -1827,7 +1829,9 @@
 </span><span class="line"><span class="k">end</span>
 </span><span class="line">
 </span><span class="line"><span class="n">array</span> <span class="o">=</span> <span class="no">VirtualProxy</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="nb">Array</span><span class="o">.</span><span class="n">new</span> <span class="p">}</span>
-</span><span class="line"><span class="n">array</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;hello&#39;</span> <span class="n">array</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;out&#39;</span> <span class="n">array</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;there&#39;</span>
+</span><span class="line"><span class="n">array</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;hello&#39;</span>
+</span><span class="line"><span class="n">array</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;out&#39;</span>
+</span><span class="line"><span class="n">array</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;there&#39;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h3 id="using-and-abusing-7">Using and Abusing</h3>
@@ -1902,7 +1906,7 @@
 
 <h3 id="why-not-the-template-method">Why Not The Template Method?</h3>
 
-<p>The trouble is that the inheritance-based approach requires you to come up with all possi- ble combinations of features up-front, at design time.</p>
+<p>The trouble is that the inheritance-based approach requires you to come up with all possible combinations of features up-front, at design time.</p>
 
 <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/out-of-control-inheritance.png" alt="out-of-control inheritance" /></p>
 
@@ -2212,7 +2216,7 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">m</span> <span class="o">=</span> <span class="no">Manager</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">close</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">m</span> <span class="o">=</span> <span class="no">Manager</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">clone</span>
 </span><span class="line"><span class="c1"># =&gt; TypeError: can&#39;t clone instance of singleton Manager</span>
 </span><span class="line">
 </span><span class="line"><span class="no">Foo</span> <span class="o">=</span> <span class="no">Manager</span><span class="o">.</span><span class="n">clone</span>
@@ -2394,7 +2398,7 @@
 
 <p><strong>Rake::Application in rake</strong> <a href="http://ruby-doc.org/stdlib-2.0/libdoc/rake/rdoc/Rake/Application.html">API</a></p>
 
-<p>As it runs, rake—like most build tools—reads in information about what it needs to do: which directories to create, which files to copy, and so on.3 All of this information needs to be available to all of the moving parts of rake, so rake stores it all in a single object (the <code>Rake::Application</code> object, to be precise) that is available as a singleton to the entire rake program.</p>
+<p>As it runs, rake—like most build tools—reads in information about what it needs to do: which directories to create, which files to copy, and so on. All of this information needs to be available to all of the moving parts of rake, so rake stores it all in a single object (the <code>Rake::Application</code> object, to be precise) that is available as a singleton to the entire rake program.</p>
 
 <h2 id="factory">Factory</h2>
 
@@ -2483,7 +2487,7 @@
 
 <p><strong>Claasses Are Just Objects, Too</strong></p>
 
-<p>While the GoF concentrated on inheritance-based implementations of their fac- tories, we can get the same results with much less code by taking advantage of the fact that in Ruby, classes are just objects.</p>
+<p>While the GoF concentrated on inheritance-based implementations of their factories, we can get the same results with much less code by taking advantage of the fact that in Ruby, classes are just objects.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -2915,7 +2919,7 @@
 
 <h3 id="using-and-abusing-11">Using and Abusing</h3>
 
-<p>It is usually fairly easy to spot code that is missing a builder: You can find the same object creation logic scat- tered all over the place. Another hint that you need a builder is when your code starts producing invalid objects.====</p>
+<p>It is usually fairly easy to spot code that is missing a builder: You can find the same object creation logic scattered all over the place. Another hint that you need a builder is when your code starts producing invalid objects.</p>
 
 <p>Builder pattern sometimes creeps up on you as your application becomes increasingly complex.</p>
 
@@ -3070,7 +3074,7 @@
 <h3 id="using-and-abusing-13">Using and Abusing</h3>
 
 <ol>
-  <li>You are limited to what you can parse with a Ruby- based internal DSL.</li>
+  <li>You are limited to what you can parse with a Ruby-based internal DSL.</li>
   <li>Error messages.</li>
 </ol>
 
@@ -3124,7 +3128,7 @@
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>No matter whether you tailor your objects one method at a time or in module- sized chunks, the ultimate effect is to create a customized object, uniquely made to order for the requirements of the moment.</p>
+<p>No matter whether you tailor your objects one method at a time or in module-sized chunks, the ultimate effect is to create a customized object, uniquely made to order for the requirements of the moment.</p>
 
 <h3 id="reflections">Reflections</h3>
 
@@ -3136,12 +3140,12 @@
 
 <h3 id="using-and-abusing-14">Using and Abusing</h3>
 
-<p>Tests are absolutely mandatory for systems that use a lot of meta- programming.</p>
+<p>Tests are absolutely mandatory for systems that use a lot of meta-programming.</p>
 
 <h2 id="convention-over-configuration">Convention Over Configuration</h2>
 
 <blockquote>
-  <p>The common message is that you should not just take your lan- guage as you find it, but rather mold it into something closer to the tool that you need to solve the problem at hand.</p>
+  <p>The common message is that you should not just take your language as you find it, but rather mold it into something closer to the tool that you need to solve the problem at hand.</p>
 </blockquote>
 
 <h3 id="description-13">Description</h3>

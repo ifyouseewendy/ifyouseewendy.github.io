@@ -11,7 +11,7 @@
   <meta name="author" content="wendi">
 
   
-  <meta name="description" content="Rails, Ruby Sep 29th, 2014 Things I Learn from Owning Rails Class Teacher Marc-André Cournoy Link Owning Rails I’ve participated Marc’s Owning Rails &hellip;">
+  <meta name="description" content="Rails, Ruby Sep 29th, 2014 Things I Learn from Owning Rails Class Teacher Marc-André Cournoyer Link Owning Rails I’ve participated Marc’s Owning &hellip;">
   <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
   
 
@@ -168,7 +168,7 @@
   <tbody>
     <tr>
       <td><strong>Teacher</strong></td>
-      <td><a href="http://macournoyer.com/">Marc-André Cournoy</a></td>
+      <td><a href="http://macournoyer.com/">Marc-André Cournoyer</a></td>
     </tr>
     <tr>
       <td><strong>Link</strong></td>
@@ -261,7 +261,7 @@
 <span class="line-number">22</span>
 <span class="line-number">23</span>
 <span class="line-number">24</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="o">=</span><span class="k">class</span> <span class="nc">Router</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Router</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span>
 </span><span class="line">    <span class="vi">@routes</span> <span class="o">=</span> <span class="p">{}</span>
 </span><span class="line">  <span class="k">end</span>
@@ -271,7 +271,7 @@
 </span><span class="line">    <span class="vi">@routes</span><span class="o">.</span><span class="n">update</span> <span class="n">route</span>
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line">
-</span><span class="line"><span class="o">=</span>  <span class="k">def</span> <span class="nf">routes</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">routes</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
 </span><span class="line">    <span class="k">yield</span>
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
@@ -439,7 +439,7 @@
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span><span class="line">
-</span><span class="line"><span class="k">class</span> <span class="nc">Base</span>
+</span><span class="line"><span class="k">class</span> <span class="nc">Base</span> <span class="o">&lt;</span> <span class="no">Metal</span>
 </span><span class="line">  <span class="kp">include</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span>
 </span><span class="line"><span class="k">end</span>
 </span><span class="line">

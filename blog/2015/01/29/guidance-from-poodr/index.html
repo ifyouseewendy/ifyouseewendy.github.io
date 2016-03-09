@@ -213,13 +213,13 @@
               <li><a href="#focus-messages-between-domain-objects">Focus Messages between Domain Objects</a></li>
               <li><a href="#use-sequence-diagrams">Use Sequence Diagrams</a></li>
               <li><a href="#asking-for-what-instead-of-telling-how">Asking for “What” Instead of Telling “How”</a></li>
-              <li><a href="#seeking-contect-independence">Seeking Contect Independence</a></li>
+              <li><a href="#seeking-context-independence">Seeking Context Independence</a></li>
             </ul>
           </li>
           <li><a href="#the-law-of-demeter">The Law of Demeter</a></li>
         </ul>
       </li>
-      <li><a href="#reductin-costs-with-duck-typing">Reductin Costs with Duck Typing</a>        <ul>
+      <li><a href="#reduction-costs-with-duck-typing">Reduction Costs with Duck Typing</a>        <ul>
           <li><a href="#polymorphism">Polymorphism</a></li>
           <li><a href="#recognizing-hidden-ducks">Recognizing Hidden Ducks</a></li>
           <li><a href="#guidance-1">Guidance</a></li>
@@ -300,7 +300,7 @@
 
 <p>The trick to getting the most bang for your design buck is to acquire an understanding of the theories of design and to apply these theories appropriately, at the right time, and in the right amounts. </p>
 
-<p>Well-designed applications are constructed of reusable code. Small, trustworthy self- contained objects with minimal context, clear interfaces, and injected dependencies are inherently reusable.</p>
+<p>Well-designed applications are constructed of reusable code. Small, trustworthy self-contained objects with minimal context, clear interfaces, and injected dependencies are inherently reusable.</p>
 
 <h2 id="the-tools-of-design">The Tools of Design</h2>
 
@@ -582,7 +582,7 @@
 
 <h4 id="asking-for-what-instead-of-telling-how">Asking for “What” Instead of Telling “How”</h4>
 
-<h4 id="seeking-contect-independence">Seeking Contect Independence</h4>
+<h4 id="seeking-context-independence">Seeking Context Independence</h4>
 
 <p>The best possible situation is for an object to be completely independent of its context. An object that could collaborate with others without knowing who they are or what they do could be reused in novel and unanticipated ways.</p>
 
@@ -596,7 +596,7 @@
 
 <p>Listening to Demeter means paying attention to your point of view. If you shift to a message-based perspective, the messages you find will become public interfaces in the objects they lead you to discover. However, if you are bound by the shackles of existing domain objects, you’ll end up assembling their existing public interfaces into long message chains and thus will miss the opportunity to find and construct flexible public interfaces.</p>
 
-<h2 id="reductin-costs-with-duck-typing">Reductin Costs with Duck Typing</h2>
+<h2 id="reduction-costs-with-duck-typing">Reduction Costs with Duck Typing</h2>
 
 <blockquote>
   <p>Interface, across classes and is independent of any single class. The interface represents a set of messages where the messages themselves define the interface. It’s almost as if the interface defines a virtual class; that is, any class that implements the required methods can act like the interface kind of thing.</p>
@@ -606,7 +606,7 @@
 
 <h3 id="polymorphism">Polymorphism</h3>
 
-<p><strong>Polymorphism</strong> in OOP refers to the ability of many different objects to respond to the same message. Senders of the message need not care about the class of the receiver; receivers supply their own specific version of the behavior. Polymorphic methods honor an implicit bargain; they agree to be inter- changeable from the sender’s point of view.</p>
+<p><strong>Polymorphism</strong> in OOP refers to the ability of many different objects to respond to the same message. Senders of the message need not care about the class of the receiver; receivers supply their own specific version of the behavior. Polymorphic methods honor an implicit bargain; they agree to be inter-changeable from the sender’s point of view.</p>
 
 <p>A single message thus has many (poly) forms (morphs).</p>
 
@@ -628,7 +628,7 @@
 
 <h3 id="guidance-1">Guidance</h3>
 
-<p>When you create duck types you must both document and test their public inter- faces. Fortunately, good tests are the best documentation.</p>
+<p>When you create duck types you must both document and test their public interfaces. Fortunately, good tests are the best documentation.</p>
 
 <p>The decision to create a new duck type relies on judgment. The purpose of design is to lower costs; bring this measuring stick to every situation. If creating a duck type would reduce unstable dependencies, do so. Use your best judgment.</p>
 
@@ -801,7 +801,7 @@
 
 <p>Delegation creates dependencies; the receiving object must recognize the message and know where to send it. Composition often involves delegation but the term means something more. A composed object is made up of parts with which it expects to interact via well-defined interfaces.</p>
 
-<p>Composition indicates a <em>has-a</em> relationship where the contained object has no life inde- pendent of its container.</p>
+<p>Composition indicates a <em>has-a</em> relationship where the contained object has no life independent of its container.</p>
 
 <p>Aggregation is exactly like composition except that the contained object has an independent life.</p>
 
@@ -848,7 +848,7 @@
 
 <p><strong>Benefits</strong></p>
 
-<p>When using composition, the natural tendency is to create many small objects that con- tain straightforward responsibilities that are accessible through clearly defined interfaces. These small objects have a single responsibility and specify their own behavior. They are transparent.</p>
+<p>When using composition, the natural tendency is to create many small objects that contain straightforward responsibilities that are accessible through clearly defined interfaces. These small objects have a single responsibility and specify their own behavior. They are transparent.</p>
 
 <p>By their very nature, objects that participate in composition are small, structurally independent, and have well-defined interfaces. This allows their seamless transition into pluggable, interchangeable components.</p>
 
@@ -1026,7 +1026,7 @@
 
     <ul>
       <li>Testing Concrete Subclass Behavior. It’s important to test these specializations without embedding knowledge of the superclass into the test.</li>
-      <li>Testing Abstract Superclass Behavior. Because Bicycle used tem- plate methods to acquire concrete specializations you can stub the behavior that would normally be supplied by subclasses. Even better, because you understand the Liskov Substitution Principle, you can easily manufacture a testable instance of Bicycle by creating a new subclass for use solely by this test.</li>
+      <li>Testing Abstract Superclass Behavior. Because Bicycle used template methods to acquire concrete specializations you can stub the behavior that would normally be supplied by subclasses. Even better, because you understand the Liskov Substitution Principle, you can easily manufacture a testable instance of Bicycle by creating a new subclass for use solely by this test.</li>
     </ul>
   </li>
 </ul>

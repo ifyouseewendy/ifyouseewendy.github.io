@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2016-03-02T12:08:25+08:00</updated>
+  <updated>2016-03-09T12:26:44+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -2326,13 +2326,13 @@ Idea</li>
               <li><a href="#focus-messages-between-domain-objects">Focus Messages between Domain Objects</a></li>
               <li><a href="#use-sequence-diagrams">Use Sequence Diagrams</a></li>
               <li><a href="#asking-for-what-instead-of-telling-how">Asking for “What” Instead of Telling “How”</a></li>
-              <li><a href="#seeking-contect-independence">Seeking Contect Independence</a></li>
+              <li><a href="#seeking-context-independence">Seeking Context Independence</a></li>
             </ul>
           </li>
           <li><a href="#the-law-of-demeter">The Law of Demeter</a></li>
         </ul>
       </li>
-      <li><a href="#reductin-costs-with-duck-typing">Reductin Costs with Duck Typing</a>        <ul>
+      <li><a href="#reduction-costs-with-duck-typing">Reduction Costs with Duck Typing</a>        <ul>
           <li><a href="#polymorphism">Polymorphism</a></li>
           <li><a href="#recognizing-hidden-ducks">Recognizing Hidden Ducks</a></li>
           <li><a href="#guidance-1">Guidance</a></li>
@@ -2413,7 +2413,7 @@ Idea</li>
 
 <p>The trick to getting the most bang for your design buck is to acquire an understanding of the theories of design and to apply these theories appropriately, at the right time, and in the right amounts. </p>
 
-<p>Well-designed applications are constructed of reusable code. Small, trustworthy self- contained objects with minimal context, clear interfaces, and injected dependencies are inherently reusable.</p>
+<p>Well-designed applications are constructed of reusable code. Small, trustworthy self-contained objects with minimal context, clear interfaces, and injected dependencies are inherently reusable.</p>
 
 <h2 id="the-tools-of-design">The Tools of Design</h2>
 
@@ -2656,7 +2656,7 @@ class Gear
 
 <h4 id="asking-for-what-instead-of-telling-how">Asking for “What” Instead of Telling “How”</h4>
 
-<h4 id="seeking-contect-independence">Seeking Contect Independence</h4>
+<h4 id="seeking-context-independence">Seeking Context Independence</h4>
 
 <p>The best possible situation is for an object to be completely independent of its context. An object that could collaborate with others without knowing who they are or what they do could be reused in novel and unanticipated ways.</p>
 
@@ -2670,7 +2670,7 @@ class Gear
 
 <p>Listening to Demeter means paying attention to your point of view. If you shift to a message-based perspective, the messages you find will become public interfaces in the objects they lead you to discover. However, if you are bound by the shackles of existing domain objects, you’ll end up assembling their existing public interfaces into long message chains and thus will miss the opportunity to find and construct flexible public interfaces.</p>
 
-<h2 id="reductin-costs-with-duck-typing">Reductin Costs with Duck Typing</h2>
+<h2 id="reduction-costs-with-duck-typing">Reduction Costs with Duck Typing</h2>
 
 <blockquote>
   <p>Interface, across classes and is independent of any single class. The interface represents a set of messages where the messages themselves define the interface. It’s almost as if the interface defines a virtual class; that is, any class that implements the required methods can act like the interface kind of thing.</p>
@@ -2680,7 +2680,7 @@ class Gear
 
 <h3 id="polymorphism">Polymorphism</h3>
 
-<p><strong>Polymorphism</strong> in OOP refers to the ability of many different objects to respond to the same message. Senders of the message need not care about the class of the receiver; receivers supply their own specific version of the behavior. Polymorphic methods honor an implicit bargain; they agree to be inter- changeable from the sender’s point of view.</p>
+<p><strong>Polymorphism</strong> in OOP refers to the ability of many different objects to respond to the same message. Senders of the message need not care about the class of the receiver; receivers supply their own specific version of the behavior. Polymorphic methods honor an implicit bargain; they agree to be inter-changeable from the sender’s point of view.</p>
 
 <p>A single message thus has many (poly) forms (morphs).</p>
 
@@ -2702,7 +2702,7 @@ class Gear
 
 <h3 id="guidance-1">Guidance</h3>
 
-<p>When you create duck types you must both document and test their public inter- faces. Fortunately, good tests are the best documentation.</p>
+<p>When you create duck types you must both document and test their public interfaces. Fortunately, good tests are the best documentation.</p>
 
 <p>The decision to create a new duck type relies on judgment. The purpose of design is to lower costs; bring this measuring stick to every situation. If creating a duck type would reduce unstable dependencies, do so. Use your best judgment.</p>
 
@@ -2849,7 +2849,7 @@ end
 
 <p>Delegation creates dependencies; the receiving object must recognize the message and know where to send it. Composition often involves delegation but the term means something more. A composed object is made up of parts with which it expects to interact via well-defined interfaces.</p>
 
-<p>Composition indicates a <em>has-a</em> relationship where the contained object has no life inde- pendent of its container.</p>
+<p>Composition indicates a <em>has-a</em> relationship where the contained object has no life independent of its container.</p>
 
 <p>Aggregation is exactly like composition except that the contained object has an independent life.</p>
 
@@ -2896,7 +2896,7 @@ end
 
 <p><strong>Benefits</strong></p>
 
-<p>When using composition, the natural tendency is to create many small objects that con- tain straightforward responsibilities that are accessible through clearly defined interfaces. These small objects have a single responsibility and specify their own behavior. They are transparent.</p>
+<p>When using composition, the natural tendency is to create many small objects that contain straightforward responsibilities that are accessible through clearly defined interfaces. These small objects have a single responsibility and specify their own behavior. They are transparent.</p>
 
 <p>By their very nature, objects that participate in composition are small, structurally independent, and have well-defined interfaces. This allows their seamless transition into pluggable, interchangeable components.</p>
 
@@ -3074,7 +3074,7 @@ end
 
     <ul>
       <li>Testing Concrete Subclass Behavior. It’s important to test these specializations without embedding knowledge of the superclass into the test.</li>
-      <li>Testing Abstract Superclass Behavior. Because Bicycle used tem- plate methods to acquire concrete specializations you can stub the behavior that would normally be supplied by subclasses. Even better, because you understand the Liskov Substitution Principle, you can easily manufacture a testable instance of Bicycle by creating a new subclass for use solely by this test.</li>
+      <li>Testing Abstract Superclass Behavior. Because Bicycle used template methods to acquire concrete specializations you can stub the behavior that would normally be supplied by subclasses. Even better, because you understand the Liskov Substitution Principle, you can easily manufacture a testable instance of Bicycle by creating a new subclass for use solely by this test.</li>
     </ul>
   </li>
 </ul>
@@ -3292,7 +3292,7 @@ irb(main):005:0&gt; helper.content_tag :h1, "Hey there" =&gt; "&lt;h1&gt;Hey the
 <ol>
   <li>Ask some questions: What is the app missing? What did you postpone to get that first feature done?</li>
   <li>Try using what you have so far. What would make your life easier if it was built? What annoys you while you’re using your app?</li>
-  <li>Ifyou’rebuildingthisappforsomeoneelse,watchhowtheyusetheproject. Where are they struggling? What do they complain about?</li>
+  <li>If you’re building this app for someone else, watch how they use the project. Where are they struggling? What do they complain about?</li>
 </ol>
 
 <h2 id="test-your-code-efficiently">Test Your Code Efficiently</h2>
@@ -3515,7 +3515,7 @@ irb(main):005:0&gt; helper.content_tag :h1, "Hey there" =&gt; "&lt;h1&gt;Hey the
 
   <p>I heard a lot of people I trust and respect suggest trying waking up a little earlier for a week or so. I did, and it was hard, and I felt totally unproductive.  </p>
 
-  <p>But somehow, once I measured my actual productivity, I found out I was twice as pro- ductive in the mornings as the evenings. This is crazy, because it felt like the exact opposite!</p>
+  <p>But somehow, once I measured my actual productivity, I found out I was twice as productive in the mornings as the evenings. This is crazy, because it felt like the exact opposite!</p>
 </blockquote>
 
 <p>I really need to give it a shot.</p>
@@ -3773,7 +3773,7 @@ irb(main):005:0&gt; helper.content_tag :h1, "Hey there" =&gt; "&lt;h1&gt;Hey the
 <p>Background</p>
 
 <blockquote>
-  <p>In 1995, Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides set out to redirect all the effort going into building redundant software wheels into some- thing more useful. That year, building on the work of Christopher Alexander, Kent Beck, and others, they published Design Patterns: Elements of Reusable Object-Oriented Software. The book was an instant hit, with the authors rapidly becoming famous (at least in software engineering circles) as the Gang of Four (GoF).</p>
+  <p>In 1995, Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides set out to redirect all the effort going into building redundant software wheels into something more useful. That year, building on the work of Christopher Alexander, Kent Beck, and others, they published Design Patterns: Elements of Reusable Object-Oriented Software. The book was an instant hit, with the authors rapidly becoming famous (at least in software engineering circles) as the Gang of Four (GoF).</p>
 </blockquote>
 
 <p>Focus on some key questions:</p>
@@ -3816,9 +3816,9 @@ irb(main):005:0&gt; helper.content_tag :h1, "Hey there" =&gt; "&lt;h1&gt;Hey the
 <p>The increasing industry recognition of the value of dynamic and flexible languages such as Ruby has plunged us into yet another wisdom gap.</p>
 
 <blockquote>
-  <p>Design Patterns was published is the need for wisdom. </p>
+  <p>Design Patterns was published in the need for wisdom. </p>
 
-  <p>Bruce Tate is fond of pointing out1 that when a new programming technique or language pops up, there is frequently a wisdom gap. The industry needs time to come to grips with the new technique, to figure out the best way to apply it. How many years had to elapse between the first realization that object- oriented programming was the way to go and the time when we really began to use object-oriented technology effectively? Those years were the object-oriented wisdom gap.</p>
+  <p>Bruce Tate is fond of pointing out that when a new programming technique or language pops up, there is frequently a wisdom gap. The industry needs time to come to grips with the new technique, to figure out the best way to apply it. How many years had to elapse between the first realization that object-oriented programming was the way to go and the time when we really began to use object-oriented technology effectively? Those years were the object-oriented wisdom gap.</p>
 </blockquote>
 
 <h2 id="design-pattern-classification">Design Pattern Classification</h2>
@@ -3942,7 +3942,7 @@ report.output_report
 
 <h3 id="using-and-abusing-1">Using and Abusing</h3>
 
-<p>Particular attention to the details of the interface between the context and the strategy as well as to the coupling between them. Remember, the Strategy pattern will do you little good if you couple the con- text and your first strategy so tightly together that you cannot wedge a second or a third strategy into the design.</p>
+<p>Particular attention to the details of the interface between the context and the strategy as well as to the coupling between them. Remember, the Strategy pattern will do you little good if you couple the context and your first strategy so tightly together that you cannot wedge a second or a third strategy into the design.</p>
 
 <h3 id="in-the-wild-1">In the Wild</h3>
 
@@ -4010,7 +4010,7 @@ end</p>
 <p>attr_reader :name, :address
   attr_reader :salary</p>
 
-<p>def initialize( name, title, salary)
+<p>def initialize(name, title, salary)
    super()
    @name = name
    @title = title
@@ -4072,7 +4072,7 @@ observer.update_title(self, old_title, new_title)
 
 <h3 id="using-and-abusing-2">Using and Abusing</h3>
 
-<p><em>The frequency and timing of the updates.</em> The subject class can help with all of this by avoiding broadcasting redundant updates. Just because some- one updates an object, it does not mean that anything really changed.</p>
+<p><em>The frequency and timing of the updates.</em> The subject class can help with all of this by avoiding broadcasting redundant updates. Just because someone updates an object, it does not mean that anything really changed.</p>
 
 <p><code>ruby
 def salary=(new_salary)
@@ -4132,7 +4132,7 @@ end
   <li><strong>composite</strong>, a component, also a higher-level object that is build from subcomponents.</li>
 </ol>
 
-<p>The GoF called the design pattern for our “<em>the sum acts like one of the parts</em>” situa- tion the Composite pattern. You will know that you need to use the Composite pattern when you are trying to build a hierarchy or tree of objects, and you do not want the code that uses the tree to constantly have to worry about whether it is dealing with a single object or a whole bushy branch of the tree. Once you grasp its <em>recursive nature</em>, the Composite pattern is really quite simple.</p>
+<p>The GoF called the design pattern for our “<em>the sum acts like one of the parts</em>” situation the Composite pattern. You will know that you need to use the Composite pattern when you are trying to build a hierarchy or tree of objects, and you do not want the code that uses the tree to constantly have to worry about whether it is dealing with a single object or a whole bushy branch of the tree. Once you grasp its <em>recursive nature</em>, the Composite pattern is really quite simple.</p>
 
 <h3 id="code-usage-1">Code Usage</h3>
 
@@ -4178,7 +4178,7 @@ end
 
 <p><strong><em>How to traverse the tree structrue which the composite pattern make?</em></strong></p>
 
-<p>Each composite object holds references to its subcomponents but the child compo- nents do not know a thing about their parents, it is easy to traverse the tree from the root to the leaves but hard to go the other way.</p>
+<p>Each composite object holds references to its subcomponents but the child components do not know a thing about their parents, it is easy to traverse the tree from the root to the leaves but hard to go the other way.</p>
 
 <p>Add a parent reference in the component class.</p>
 
@@ -4214,7 +4214,7 @@ end
 
 <p>The error that crops up so frequently with the Composite pattern is assuming that the tree is only one level deep—that is, assuming that all of the child components of a composite object are, in fact, leaf objects and not other composites.</p>
 
-<p>Remember, the power of the Composite pattern is that it allows us to build arbi- trarily deep trees.</p>
+<p>Remember, the power of the Composite pattern is that it allows us to build arbitrarily deep trees.</p>
 
 <h3 id="in-the-wild-3">In the Wild</h3>
 
@@ -4574,7 +4574,7 @@ end
 
 <p><strong>Creation Time versus Execution Time</strong></p>
 
-<p>Assuming you really do need the Command pattern, to make it work you have to be sure that the initial thought is complete. You have to carefully think through the circumstances in which the command object will find itself when it is executed versus when it was created. Yes, this key file was open, and that vital object was initialized when I cre- ated the command. Will it all still be there for me when the command is executed?</p>
+<p>Assuming you really do need the Command pattern, to make it work you have to be sure that the initial thought is complete. You have to carefully think through the circumstances in which the command object will find itself when it is executed versus when it was created. Yes, this key file was open, and that vital object was initialized when I created the command. Will it all still be there for me when the command is executed?</p>
 
 <h3 id="in-the-wild-5">In the Wild</h3>
 
@@ -4617,7 +4617,7 @@ end
 
 <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/adapter.png" alt="the adapter" /></p>
 
-<p>The client expects the target to have a certain interface. But unknown to the client, the target object is really an adapter, and buried inside of the adapter is a reference to a second object, the adaptee, which actually per- forms the work.</p>
+<p>The client expects the target to have a certain interface. But unknown to the client, the target object is really an adapter, and buried inside of the adapter is a reference to a second object, the adaptee, which actually performs the work.</p>
 
 <h3 id="adapt-or-modify">Adapt or Modify?</h3>
 
@@ -4708,7 +4708,7 @@ end
 
 <h3 id="the-remove-proxy">The Remove Proxy</h3>
 
-<p>You could hide the complexity behind a remote proxy, an object that lives on the client machine and looks, to the client code, just like the real BankAccount object. When a request comes in, the remote proxy goes through all the horror of pack- aging up the request, sending it over the network, waiting for a response, unpacking the response, and returning the answer to the unsuspecting client.</p>
+<p>You could hide the complexity behind a remote proxy, an object that lives on the client machine and looks, to the client code, just like the real BankAccount object. When a request comes in, the remote proxy goes through all the horror of packaging up the request, sending it over the network, waiting for a response, unpacking the response, and returning the answer to the unsuspecting client.</p>
 
 <p>From the client’s point of view, it called a method on what it thought was the real BankAccount object and sometime later—perhaps an unusually long time later—the answer came back. This is how virtually all remote procedure call (RPC) systems work.</p>
 
@@ -4793,7 +4793,9 @@ class VirtualProxy
 end</p>
 
 <p>array = VirtualProxy.new { Array.new }
-array « ‘hello’ array « ‘out’ array « ‘there’
+array « ‘hello’
+array « ‘out’
+array « ‘there’
 ```</p>
 
 <h3 id="using-and-abusing-7">Using and Abusing</h3>
@@ -4848,7 +4850,7 @@ sum=math_service.add(2,2)
 
 <h3 id="why-not-the-template-method">Why Not The Template Method?</h3>
 
-<p>The trouble is that the inheritance-based approach requires you to come up with all possi- ble combinations of features up-front, at design time.</p>
+<p>The trouble is that the inheritance-based approach requires you to come up with all possible combinations of features up-front, at design time.</p>
 
 <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/out-of-control-inheritance.png" alt="out-of-control inheritance" /></p>
 
@@ -5062,7 +5064,7 @@ end</p>
 <p>Use <code>clone</code></p>
 
 <p>```ruby
-m = Manager.instance.close
+m = Manager.instance.clone
 # =&gt; TypeError: can’t clone instance of singleton Manager</p>
 
 <p>Foo = Manager.clone
@@ -5182,7 +5184,7 @@ end
 
 <p><strong>Rake::Application in rake</strong> <a href="http://ruby-doc.org/stdlib-2.0/libdoc/rake/rdoc/Rake/Application.html">API</a></p>
 
-<p>As it runs, rake—like most build tools—reads in information about what it needs to do: which directories to create, which files to copy, and so on.3 All of this information needs to be available to all of the moving parts of rake, so rake stores it all in a single object (the <code>Rake::Application</code> object, to be precise) that is available as a singleton to the entire rake program.</p>
+<p>As it runs, rake—like most build tools—reads in information about what it needs to do: which directories to create, which files to copy, and so on. All of this information needs to be available to all of the moving parts of rake, so rake stores it all in a single object (the <code>Rake::Application</code> object, to be precise) that is available as a singleton to the entire rake program.</p>
 
 <h2 id="factory">Factory</h2>
 
@@ -5240,7 +5242,7 @@ end</p>
 
 <p><strong>Claasses Are Just Objects, Too</strong></p>
 
-<p>While the GoF concentrated on inheritance-based implementations of their fac- tories, we can get the same results with much less code by taking advantage of the fact that in Ruby, classes are just objects.</p>
+<p>While the GoF concentrated on inheritance-based implementations of their factories, we can get the same results with much less code by taking advantage of the fact that in Ruby, classes are just objects.</p>
 
 <p>```ruby
 class Pond
@@ -5508,7 +5510,7 @@ builder.add_turbo_and_dvd_and_harddisk
 
 <h3 id="using-and-abusing-11">Using and Abusing</h3>
 
-<p>It is usually fairly easy to spot code that is missing a builder: You can find the same object creation logic scat- tered all over the place. Another hint that you need a builder is when your code starts producing invalid objects.====</p>
+<p>It is usually fairly easy to spot code that is missing a builder: You can find the same object creation logic scattered all over the place. Another hint that you need a builder is when your code starts producing invalid objects.</p>
 
 <p>Builder pattern sometimes creeps up on you as your application becomes increasingly complex.</p>
 
@@ -5625,7 +5627,7 @@ ast = parser.expression
 <h3 id="using-and-abusing-13">Using and Abusing</h3>
 
 <ol>
-  <li>You are limited to what you can parse with a Ruby- based internal DSL.</li>
+  <li>You are limited to what you can parse with a Ruby-based internal DSL.</li>
   <li>Error messages.</li>
 </ol>
 
@@ -5670,7 +5672,7 @@ def new_animal(diet, awake)
 end<br />
 ```</p>
 
-<p>No matter whether you tailor your objects one method at a time or in module- sized chunks, the ultimate effect is to create a customized object, uniquely made to order for the requirements of the moment.</p>
+<p>No matter whether you tailor your objects one method at a time or in module-sized chunks, the ultimate effect is to create a customized object, uniquely made to order for the requirements of the moment.</p>
 
 <h3 id="reflections">Reflections</h3>
 
@@ -5682,12 +5684,12 @@ end<br />
 
 <h3 id="using-and-abusing-14">Using and Abusing</h3>
 
-<p>Tests are absolutely mandatory for systems that use a lot of meta- programming.</p>
+<p>Tests are absolutely mandatory for systems that use a lot of meta-programming.</p>
 
 <h2 id="convention-over-configuration">Convention Over Configuration</h2>
 
 <blockquote>
-  <p>The common message is that you should not just take your lan- guage as you find it, but rather mold it into something closer to the tool that you need to solve the problem at hand.</p>
+  <p>The common message is that you should not just take your language as you find it, but rather mold it into something closer to the tool that you need to solve the problem at hand.</p>
 </blockquote>
 
 <h3 id="description-13">Description</h3>
