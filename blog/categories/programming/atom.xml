@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Programming | Wendi's Blog]]></title>
+  <link href="http://blog.ifyouseewendy.com/blog/categories/programming/atom.xml" rel="self"/>
+  <link href="http://blog.ifyouseewendy.com/"/>
+  <updated>2016-05-28T13:21:59+08:00</updated>
+  <id>http://blog.ifyouseewendy.com/</id>
+  <author>
+    <name><![CDATA[wendi]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Name Driven Development]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2016/05/26/name-driven-development/"/>
+    <updated>2016-05-26T18:53:08+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2016/05/26/name-driven-development</id>
+    <content type="html"><![CDATA[<blockquote>
+  <p>“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.” - Martin Fowler</p>
+</blockquote>
+
+<blockquote>
+  <p>“There are only two hard things in Computer Science: cache invalidation and naming things.” — Phil Karlton</p>
+</blockquote>
+
+<p>“Name Driven Development”, this is a ghost topic you can’t find on wiki. I just use it to remind me how much importance a good name can give. Maybe it’s just another bad name😂.</p>
+
+<p>In a nutshell, why naming matters a lot is that it’s so closely related to refactoring. Here are some basic ideas I conclude</p>
+
+<ul>
+  <li>Good name reveals intention, shows legibility, and keeps clarity.</li>
+  <li>Keep refactoring, until the name reveals the intention in an easy way.</li>
+  <li>Don’t bother about naming too much when developing. Let the test and implementation help reveal it’s purpose. Then make a good name.</li>
+</ul>
+
+<p>To tackle this non-existing topic, I’ve googled around, reading and thinking. Here are some notes I made (to be updated).</p>
+
+<hr />
+
+<blockquote>
+  <p><a href="https://ilinkuo.wordpress.com/2013/05/07/whats-in-a-name/#more-137">What’s in a Name? - ilinkuo</a></p>
+</blockquote>
+
+<p>Your Names Tell a Story about Your Design</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/name-drive-development/your_names_tell_a_story_about_your_design.png" alt="your_names_tell_a_story_about_your_design" /></p>
+
+<blockquote>
+  <p><a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code: Chapter 2, “Meaningful Names” - Uncle Bob</a></p>
+
+  <p>The “definitive” guide</p>
+</blockquote>
+
+<p><em>Good</em></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/name-drive-development/meaningful_names_basic.png" alt="meaningful_names_basic" /></p>
+
+<p><em>Better</em></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/name-drive-development/meaningful_names_advanced.png" alt="meaningful_names_advanced" /></p>
+
+<blockquote>
+  <p><a href="http://arlobelshee.com/good-naming-is-a-process-not-a-single-step/">Good naming is a process, not a single step - Arlo Belshee</a></p>
+
+  <p>This serial posts provide a methodology, which explains the naming process in a clear and specific way. The first four steps aim at how to better name considering implementation, then move to thinking of intent, and domain abstraction.</p>
+</blockquote>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/name-drive-development/good_naming_is_a_process.png" alt="good_naming_is_a_process" /></p>
+
+<h3 id="summary">Summary</h3>
+
+<ul>
+  <li>Missing</li>
+  <li>Nonsense</li>
+  <li>Honest</li>
+  <li>Honest and Complete</li>
+  <li>Does the Right Thing</li>
+  <li>Intent</li>
+  <li>Domain Abstraction</li>
+</ul>
+
+<h3 id="why">Why</h3>
+
+<p>The answer to that question lies at the heart of understanding, preventing, and paying off technical debt.</p>
+
+<ul>
+  <li>Indebted code is any code that is hard to scan.</li>
+  <li>Technical debt is anything that increases the difficulty of reading code.</li>
+</ul>
+
+<p><em>Shouldn’t the definition of technical debt be something about the cost and risk of changing code?</em></p>
+
+<p>It turns out that the largest single thing developers <strong>spend time doing is reading code</strong>. More than design, more than writing code, more than scanning, even more than meetings (well, probably).</p>
+
+<p><strong>Bugs come from incomplete understanding</strong>. Incomplete understanding arises when the system is harder to understand than we can store in our heads at once.</p>
+
+<p>So if our definition of technical debt is code that is difficult, expensive, or risky to change, then the root cause of that is code that is hard to scan. And how do we make code easy to scan? Use good names to encapsulate details.</p>
+
+<h3 id="how">How</h3>
+
+<p>If we want to make code more scannable, we need to increase the percentage of relevant information that it screams at you. Which also means hiding the irrelevant information.</p>
+
+<p>The process of reducing debt is simple:</p>
+
+<ul>
+  <li>Look at something.</li>
+  <li>Have an insight.</li>
+  <li>Write it down.
+    <ul>
+      <li>Ccomment. But <strong>comments</strong> aren’t actually part of the code. They duplicate the code, which causes all the usual duplication problems.</li>
+      <li>If your insight is structural then it belongs in a <strong>name</strong>. If it is a runtime insight then use an <strong>assertion</strong>.</li>
+      <li>Assertions need to be easy to find. So don’t litter them around your core code. Express your insight as an example and write it down in a test. And name the test about the insight (not about what code it happens to execute).</li>
+      <li>So, insights belong in names.</li>
+    </ul>
+  </li>
+  <li>Check it in.
+    <ul>
+      <li>Express your intent by naming your commit using a message.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The insight loop is all there is</p>
+
+<ul>
+  <li>Refactoring legacy code is running this loop and writing stuff down in names.</li>
+  <li>Understanding legacy code is running this loop and writing stuff down as examples in tests.</li>
+  <li>TDD is running this loop three times:
+    <ul>
+      <li>First a loop where we look at the customer interview and we write it down as one example in a test.</li>
+      <li>Second a loop where we look at the test and we write it down in names in the code.</li>
+      <li>Third a loop of refactoring the (new) legacy code.</li>
+    </ul>
+  </li>
+  <li>Design is a loop where the place you look is “how hard was it to write this test” and you write down insights by changing names (usually fixing the Does the Right Thing step).</li>
+</ul>
+
+<h3 id="steps">Steps</h3>
+
+<p>Each transition is about refactoring.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/name-drive-development/good_naming_is_a_process_table.png" alt="good_naming_is_a_process_table" /></p>
+
+<blockquote>
+  <p><a href="https://stackoverflow.com/posts/422093/revisions">krosenvold</a> answer on <a href="https://stackoverflow.com/questions/421965/anyone-else-find-naming-classes-and-methods-one-of-the-most-difficult-part-in-pr/423140#423140">Stack Overflow - Anyone else find naming classes and methods one of the most difficult part in programming?</a></p>
+</blockquote>
+
+<p><code>
+function programming_job(){
+    while (i make classes){
+         Give each class a name quickly; always fairly long and descriptive.
+         Implement and test each class to see what they really are.
+         while (not satisfied){
+            Re-visit each class and make small adjustments
+         }
+    }
+}
+</code></p>
+
+<blockquote>
+  <p><a href="http://programmers.stackexchange.com/users/31260/gnat">gnat</a> answered on <a href="http://programmers.stackexchange.com/questions/129961/are-there-good-techniques-or-tests-for-naming-types">Stack Exchange - Are there good techniques or tests for naming types?</a></p>
+</blockquote>
+
+<p>For naming, there are six techniques that were proven to work for me:</p>
+
+<ul>
+  <li>spend a lot of time on inventing names</li>
+  <li>use code reviews</li>
+  <li>don’t hesitate to rename</li>
+  <li>spend a lot of time on inventing names</li>
+  <li>use code reviews</li>
+  <li>don’t hesitate to rename</li>
+</ul>
+
+<blockquote>
+  <p><a href="http://www.gameproducer.net/2008/11/11/the-7-worst-verbs-programmers-use-in-function-calls/">The 7 Worst Verbs Programmers Use In Function Calls - Juuso Hietalahti</a></p>
+</blockquote>
+
+<ul>
+  <li>dispatch</li>
+  <li>do</li>
+  <li>resolve</li>
+  <li>handle</li>
+  <li>manage</li>
+  <li>perform</li>
+  <li>populate</li>
+</ul>
+
+<blockquote>
+  <p><a href="http://objology.blogspot.com/2011/09/one-of-best-bits-of-programming-advice.html">One of the Best Bits of Programming Advice I ever Got</a></p>
+</blockquote>
+
+<p>Don’t make objects that end with ‘er’.</p>
+
+<ul>
+  <li>Managers - Every time I see one of these, I cringe. People will usually tell me what it does, long before they can tell me what it is. Is it a registry? Fine call it a registry. Is it a history or a log? Call it that. Is it a factory? Call it that.</li>
+  <li>Controllers - Only good controller object I’ve made in the last 20 years was an interface to a BallastVoltageController that represented a real world object. The fact that every single MVC implementation in the world has had a different role for Controller ought to tell us something about how well that idea fit.</li>
+  <li>Organizer (and many like them) - Focus is on what it does. This is a great example of how easy it is to turn many of these ‘ers’ into nouns. Call it an Organization. Now we’re focusing on what it is.</li>
+  <li>Analyzer/Renderer/etc - Definitely examples of “worker” objects. What if they had been Analysis/Rendering/etc.</li>
+  <li>Builder/Loader/Reader/Writer/etc - Remove the focus from the objects being manipulated, and tend assume to much responsibility themselves.</li>
+</ul>
+
+<blockquote>
+  <p><a href="http://www.carlopescio.com/2011/04/your-coding-conventions-are-hurting-you.html">Your coding conventions are hurting you - Carlo Pescio</a></p>
+
+  <p>Great article explaining four harmful conventions with obvious examples. There is a following post, <a href="http://www.carlopescio.com/2012/03/life-without-controller-case-1.html">Life without a controller</a></p>
+</blockquote>
+
+<p>From a distance, everything is object oriented, extra-cool, modern-flexible-etc, but as you get closer, you realize it’s just a thin veneer over procedural thinking (and don’t even get me started about being “modern”).</p>
+
+<p>Fake OO names and harmful conventions</p>
+
+<ul>
+  <li>the -er suffix</li>
+  <li>the -able suffix</li>
+  <li>the -Object suffix</li>
+  <li>the I- prefix</li>
+</ul>
+
+<p><strong>Manager, Helper, Handler…</strong></p>
+
+<p>Good ol’ Peter Coad used to say: Challenge any class name that ends in “-er” (e.g. Manager or Controller). If it has no parts, change the name of the class to what each object is managing. If it has parts, put as much work in the parts that the parts know enough to do themselves (that was the “<strong>er-er Principle</strong>”).</p>
+
+<ul>
+  <li>Manager. When you need a Manager, it’s often a sign that the Managed are just plain old data structures, and that the Manager is the smart procedure doing the real work.</li>
+  <li>Handler, again, is an obvious resurrection of procedural thinking. What is an handler if not a damn procedure?</li>
+</ul>
+
+<p><strong>Something-able</strong></p>
+
+<p>It’s like calling a nail “Hammerable”, because you known, that’s what you do with a nail, you hammer it. It encourages procedural thinking, and leads to ineffective abstractions.</p>
+
+<p><strong>Something-Object</strong></p>
+
+<p>When you don’t know how to name something, pick some dominant trait and add Object to the end. Again, the problem is that the “dominant trait” is moving us away from the concept of an object. Object is dropped in just to avoid more careful thinking about the underlying concept.</p>
+
+<p><strong>ISomething</strong></p>
+
+<p>The problem is that it’s too easy to fall into the trap, and just take a concrete class name, put an I in front of it, and lo and behold!, you got an interface name. Sort of calling a concept IDollar instead of Currency.</p>
+
+<p>Eg.</p>
+
+<ul>
+  <li>IList to RandomAccessContainer</li>
+  <li>IEnumerable to Sequence.
+    <ul>
+      <li>A List is an IEnumerable (what??)</li>
+      <li>A List is a Sequence (well, all right!)</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>How to Name Things: the solution to the hardest problem in programming - Peter Hilton <a href="https://skillsmatter.com/skillscasts/5747-how-to-name-things-the-solution-to-the-hardest-problem-in-programming">video</a>, <a href="http://www.slideshare.net/pirhilton/how-to-name-things-the-hardest-problem-in-programming">slide</a></p>
+
+  <p>Taking advice from writers, funny quotes, like Stephen King on refactoring, Hemingway on modelling with personas, .etc.</p>
+</blockquote>
+
+<p>Remember: “rename” is the simplest but most effective refactoring. Use it.</p>
+
+<p><strong>Gater domain-specific vocabulary</strong>. Scan the domain model entities Wikipedia pages for names of related concepts. Read novels set in your customer’s domain to learn their jargon. Find out what they really mean.</p>
+
+<p>Comments: the basics</p>
+
+<ul>
+  <li>Don’t say what the code does (because the code already says that)</li>
+  <li>Don’t explain awkward logic (improve the code to make it clear)</li>
+  <li>Don’t add too many comments (it’s messy and they’ll get out of date)</li>
+  <li>Explain why the code exists
+    <ul>
+      <li>When should I use this code?</li>
+      <li>When shouldn’t I use it?</li>
+      <li>What are the alternatives to this code?</li>
+    </ul>
+  </li>
+</ul>
+
+<p>How to write good comments</p>
+
+<ul>
+  <li>Try to write good code first</li>
+  <li>Try to write a one-sentence comment</li>
+  <li>Refactor the code until the comment is easy to write</li>
+  <li>Now write a good comment</li>
+  <li>Don’t forget the rules of good writing. (eg. remove unnecessary comments)</li>
+</ul>
+
+<p>P.S. Peter also has several posts talking about commenting, check <a href="http://hilton.org.uk/blog/how-to-comment-code">How to comment code</a></p>
+
+]]></content>
+  </entry>
+  
+</feed>

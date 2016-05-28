@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2016-03-09T12:26:44+08:00</updated>
+  <updated>2016-05-28T13:21:59+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,293 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Name Driven Development]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2016/05/26/name-driven-development/"/>
+    <updated>2016-05-26T18:53:08+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2016/05/26/name-driven-development</id>
+    <content type="html"><![CDATA[<blockquote>
+  <p>“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.” - Martin Fowler</p>
+</blockquote>
+
+<blockquote>
+  <p>“There are only two hard things in Computer Science: cache invalidation and naming things.” — Phil Karlton</p>
+</blockquote>
+
+<p>“Name Driven Development”, this is a ghost topic you can’t find on wiki. I just use it to remind me how much importance a good name can give. Maybe it’s just another bad name😂.</p>
+
+<p>In a nutshell, why naming matters a lot is that it’s so closely related to refactoring. Here are some basic ideas I conclude</p>
+
+<ul>
+  <li>Good name reveals intention, shows legibility, and keeps clarity.</li>
+  <li>Keep refactoring, until the name reveals the intention in an easy way.</li>
+  <li>Don’t bother about naming too much when developing. Let the test and implementation help reveal it’s purpose. Then make a good name.</li>
+</ul>
+
+<p>To tackle this non-existing topic, I’ve googled around, reading and thinking. Here are some notes I made (to be updated).</p>
+
+<hr />
+
+<blockquote>
+  <p><a href="https://ilinkuo.wordpress.com/2013/05/07/whats-in-a-name/#more-137">What’s in a Name? - ilinkuo</a></p>
+</blockquote>
+
+<p>Your Names Tell a Story about Your Design</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/name-drive-development/your_names_tell_a_story_about_your_design.png" alt="your_names_tell_a_story_about_your_design" /></p>
+
+<blockquote>
+  <p><a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code: Chapter 2, “Meaningful Names” - Uncle Bob</a></p>
+
+  <p>The “definitive” guide</p>
+</blockquote>
+
+<p><em>Good</em></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/name-drive-development/meaningful_names_basic.png" alt="meaningful_names_basic" /></p>
+
+<p><em>Better</em></p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/name-drive-development/meaningful_names_advanced.png" alt="meaningful_names_advanced" /></p>
+
+<blockquote>
+  <p><a href="http://arlobelshee.com/good-naming-is-a-process-not-a-single-step/">Good naming is a process, not a single step - Arlo Belshee</a></p>
+
+  <p>This serial posts provide a methodology, which explains the naming process in a clear and specific way. The first four steps aim at how to better name considering implementation, then move to thinking of intent, and domain abstraction.</p>
+</blockquote>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/name-drive-development/good_naming_is_a_process.png" alt="good_naming_is_a_process" /></p>
+
+<h3 id="summary">Summary</h3>
+
+<ul>
+  <li>Missing</li>
+  <li>Nonsense</li>
+  <li>Honest</li>
+  <li>Honest and Complete</li>
+  <li>Does the Right Thing</li>
+  <li>Intent</li>
+  <li>Domain Abstraction</li>
+</ul>
+
+<h3 id="why">Why</h3>
+
+<p>The answer to that question lies at the heart of understanding, preventing, and paying off technical debt.</p>
+
+<ul>
+  <li>Indebted code is any code that is hard to scan.</li>
+  <li>Technical debt is anything that increases the difficulty of reading code.</li>
+</ul>
+
+<p><em>Shouldn’t the definition of technical debt be something about the cost and risk of changing code?</em></p>
+
+<p>It turns out that the largest single thing developers <strong>spend time doing is reading code</strong>. More than design, more than writing code, more than scanning, even more than meetings (well, probably).</p>
+
+<p><strong>Bugs come from incomplete understanding</strong>. Incomplete understanding arises when the system is harder to understand than we can store in our heads at once.</p>
+
+<p>So if our definition of technical debt is code that is difficult, expensive, or risky to change, then the root cause of that is code that is hard to scan. And how do we make code easy to scan? Use good names to encapsulate details.</p>
+
+<h3 id="how">How</h3>
+
+<p>If we want to make code more scannable, we need to increase the percentage of relevant information that it screams at you. Which also means hiding the irrelevant information.</p>
+
+<p>The process of reducing debt is simple:</p>
+
+<ul>
+  <li>Look at something.</li>
+  <li>Have an insight.</li>
+  <li>Write it down.
+    <ul>
+      <li>Ccomment. But <strong>comments</strong> aren’t actually part of the code. They duplicate the code, which causes all the usual duplication problems.</li>
+      <li>If your insight is structural then it belongs in a <strong>name</strong>. If it is a runtime insight then use an <strong>assertion</strong>.</li>
+      <li>Assertions need to be easy to find. So don’t litter them around your core code. Express your insight as an example and write it down in a test. And name the test about the insight (not about what code it happens to execute).</li>
+      <li>So, insights belong in names.</li>
+    </ul>
+  </li>
+  <li>Check it in.
+    <ul>
+      <li>Express your intent by naming your commit using a message.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The insight loop is all there is</p>
+
+<ul>
+  <li>Refactoring legacy code is running this loop and writing stuff down in names.</li>
+  <li>Understanding legacy code is running this loop and writing stuff down as examples in tests.</li>
+  <li>TDD is running this loop three times:
+    <ul>
+      <li>First a loop where we look at the customer interview and we write it down as one example in a test.</li>
+      <li>Second a loop where we look at the test and we write it down in names in the code.</li>
+      <li>Third a loop of refactoring the (new) legacy code.</li>
+    </ul>
+  </li>
+  <li>Design is a loop where the place you look is “how hard was it to write this test” and you write down insights by changing names (usually fixing the Does the Right Thing step).</li>
+</ul>
+
+<h3 id="steps">Steps</h3>
+
+<p>Each transition is about refactoring.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/name-drive-development/good_naming_is_a_process_table.png" alt="good_naming_is_a_process_table" /></p>
+
+<blockquote>
+  <p><a href="https://stackoverflow.com/posts/422093/revisions">krosenvold</a> answer on <a href="https://stackoverflow.com/questions/421965/anyone-else-find-naming-classes-and-methods-one-of-the-most-difficult-part-in-pr/423140#423140">Stack Overflow - Anyone else find naming classes and methods one of the most difficult part in programming?</a></p>
+</blockquote>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">function programming_job(){
+</span><span class="line">    while (i make classes){
+</span><span class="line">         Give each class a name quickly; always fairly long and descriptive.
+</span><span class="line">         Implement and test each class to see what they really are.
+</span><span class="line">         while (not satisfied){
+</span><span class="line">            Re-visit each class and make small adjustments
+</span><span class="line">         }
+</span><span class="line">    }
+</span><span class="line">}</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<blockquote>
+  <p><a href="http://programmers.stackexchange.com/users/31260/gnat">gnat</a> answered on <a href="http://programmers.stackexchange.com/questions/129961/are-there-good-techniques-or-tests-for-naming-types">Stack Exchange - Are there good techniques or tests for naming types?</a></p>
+</blockquote>
+
+<p>For naming, there are six techniques that were proven to work for me:</p>
+
+<ul>
+  <li>spend a lot of time on inventing names</li>
+  <li>use code reviews</li>
+  <li>don’t hesitate to rename</li>
+  <li>spend a lot of time on inventing names</li>
+  <li>use code reviews</li>
+  <li>don’t hesitate to rename</li>
+</ul>
+
+<blockquote>
+  <p><a href="http://www.gameproducer.net/2008/11/11/the-7-worst-verbs-programmers-use-in-function-calls/">The 7 Worst Verbs Programmers Use In Function Calls - Juuso Hietalahti</a></p>
+</blockquote>
+
+<ul>
+  <li>dispatch</li>
+  <li>do</li>
+  <li>resolve</li>
+  <li>handle</li>
+  <li>manage</li>
+  <li>perform</li>
+  <li>populate</li>
+</ul>
+
+<blockquote>
+  <p><a href="http://objology.blogspot.com/2011/09/one-of-best-bits-of-programming-advice.html">One of the Best Bits of Programming Advice I ever Got</a></p>
+</blockquote>
+
+<p>Don’t make objects that end with ‘er’.</p>
+
+<ul>
+  <li>Managers - Every time I see one of these, I cringe. People will usually tell me what it does, long before they can tell me what it is. Is it a registry? Fine call it a registry. Is it a history or a log? Call it that. Is it a factory? Call it that.</li>
+  <li>Controllers - Only good controller object I’ve made in the last 20 years was an interface to a BallastVoltageController that represented a real world object. The fact that every single MVC implementation in the world has had a different role for Controller ought to tell us something about how well that idea fit.</li>
+  <li>Organizer (and many like them) - Focus is on what it does. This is a great example of how easy it is to turn many of these ‘ers’ into nouns. Call it an Organization. Now we’re focusing on what it is.</li>
+  <li>Analyzer/Renderer/etc - Definitely examples of “worker” objects. What if they had been Analysis/Rendering/etc.</li>
+  <li>Builder/Loader/Reader/Writer/etc - Remove the focus from the objects being manipulated, and tend assume to much responsibility themselves.</li>
+</ul>
+
+<blockquote>
+  <p><a href="http://www.carlopescio.com/2011/04/your-coding-conventions-are-hurting-you.html">Your coding conventions are hurting you - Carlo Pescio</a></p>
+
+  <p>Great article explaining four harmful conventions with obvious examples. There is a following post, <a href="http://www.carlopescio.com/2012/03/life-without-controller-case-1.html">Life without a controller</a></p>
+</blockquote>
+
+<p>From a distance, everything is object oriented, extra-cool, modern-flexible-etc, but as you get closer, you realize it’s just a thin veneer over procedural thinking (and don’t even get me started about being “modern”).</p>
+
+<p>Fake OO names and harmful conventions</p>
+
+<ul>
+  <li>the -er suffix</li>
+  <li>the -able suffix</li>
+  <li>the -Object suffix</li>
+  <li>the I- prefix</li>
+</ul>
+
+<p><strong>Manager, Helper, Handler…</strong></p>
+
+<p>Good ol’ Peter Coad used to say: Challenge any class name that ends in “-er” (e.g. Manager or Controller). If it has no parts, change the name of the class to what each object is managing. If it has parts, put as much work in the parts that the parts know enough to do themselves (that was the “<strong>er-er Principle</strong>”).</p>
+
+<ul>
+  <li>Manager. When you need a Manager, it’s often a sign that the Managed are just plain old data structures, and that the Manager is the smart procedure doing the real work.</li>
+  <li>Handler, again, is an obvious resurrection of procedural thinking. What is an handler if not a damn procedure?</li>
+</ul>
+
+<p><strong>Something-able</strong></p>
+
+<p>It’s like calling a nail “Hammerable”, because you known, that’s what you do with a nail, you hammer it. It encourages procedural thinking, and leads to ineffective abstractions.</p>
+
+<p><strong>Something-Object</strong></p>
+
+<p>When you don’t know how to name something, pick some dominant trait and add Object to the end. Again, the problem is that the “dominant trait” is moving us away from the concept of an object. Object is dropped in just to avoid more careful thinking about the underlying concept.</p>
+
+<p><strong>ISomething</strong></p>
+
+<p>The problem is that it’s too easy to fall into the trap, and just take a concrete class name, put an I in front of it, and lo and behold!, you got an interface name. Sort of calling a concept IDollar instead of Currency.</p>
+
+<p>Eg.</p>
+
+<ul>
+  <li>IList to RandomAccessContainer</li>
+  <li>IEnumerable to Sequence.
+    <ul>
+      <li>A List is an IEnumerable (what??)</li>
+      <li>A List is a Sequence (well, all right!)</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>How to Name Things: the solution to the hardest problem in programming - Peter Hilton <a href="https://skillsmatter.com/skillscasts/5747-how-to-name-things-the-solution-to-the-hardest-problem-in-programming">video</a>, <a href="http://www.slideshare.net/pirhilton/how-to-name-things-the-hardest-problem-in-programming">slide</a></p>
+
+  <p>Taking advice from writers, funny quotes, like Stephen King on refactoring, Hemingway on modelling with personas, .etc.</p>
+</blockquote>
+
+<p>Remember: “rename” is the simplest but most effective refactoring. Use it.</p>
+
+<p><strong>Gater domain-specific vocabulary</strong>. Scan the domain model entities Wikipedia pages for names of related concepts. Read novels set in your customer’s domain to learn their jargon. Find out what they really mean.</p>
+
+<p>Comments: the basics</p>
+
+<ul>
+  <li>Don’t say what the code does (because the code already says that)</li>
+  <li>Don’t explain awkward logic (improve the code to make it clear)</li>
+  <li>Don’t add too many comments (it’s messy and they’ll get out of date)</li>
+  <li>Explain why the code exists
+    <ul>
+      <li>When should I use this code?</li>
+      <li>When shouldn’t I use it?</li>
+      <li>What are the alternatives to this code?</li>
+    </ul>
+  </li>
+</ul>
+
+<p>How to write good comments</p>
+
+<ul>
+  <li>Try to write good code first</li>
+  <li>Try to write a one-sentence comment</li>
+  <li>Refactor the code until the comment is easy to write</li>
+  <li>Now write a good comment</li>
+  <li>Don’t forget the rules of good writing. (eg. remove unnecessary comments)</li>
+</ul>
+
+<p>P.S. Peter also has several posts talking about commenting, check <a href="http://hilton.org.uk/blog/how-to-comment-code">How to comment code</a></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby Concurrency Article Collection]]></title>
@@ -8981,478 +9268,6 @@ Example :<br />
 
 <p>Better use a seperate script when debugging. I use <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-update_email-sh">update_email.rb</a> to develop on email pattern matching, and copy paste into the final <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-git_filter_branch-sh">git_filter_branch.sh</a>.</p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Review] Practicing Rails]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/11/26/practicing-rails/"/>
-    <updated>2014-11-26T11:32:14+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/11/26/practicing-rails</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Book</strong></td>
-      <td>Practicing Rails</td>
-    </tr>
-    <tr>
-      <td><strong>Author</strong></td>
-      <td>Justin Weiss</td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="https://www.justinweiss.com/book/">www.justinweiss.com/book</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<ul id="markdown-toc">
-  <li><a href="#meta-principles">Meta Principles</a></li>
-  <li><a href="#tiny-apps">Tiny Apps</a>    <ul>
-      <li><a href="#build-a-tiny-app">Build a tiny App</a></li>
-      <li><a href="#owning-the-things-you-learn">Owning the things you learn</a></li>
-    </ul>
-  </li>
-  <li><a href="#build-your-own-app">Build Your Own App</a>    <ul>
-      <li><a href="#where-to-start">Where to start?</a>        <ul>
-          <li><a href="#build-from-ui-down">Build from UI Down</a></li>
-          <li><a href="#thinking-in-resources">Thinking in resources</a></li>
-          <li><a href="#t-shaped-development">T-Shaped development</a></li>
-          <li><a href="#just-in-time-learning">Just-in-time learning</a></li>
-        </ul>
-      </li>
-      <li><a href="#which-feature-do-you-build-next">Which feature do you build next?</a></li>
-    </ul>
-  </li>
-  <li><a href="#test-your-code-efficiently">Test Your Code Efficiently</a>    <ul>
-      <li><a href="#feature-development-process-with-testing">Feature development process with testing</a></li>
-      <li><a href="#organizing-and-structuring-your-tests">Organizing and structuring your tests</a>        <ul>
-          <li><a href="#use-object-oriented-design-to-make-your-tests-better">Use object-oriented design to make your tests better</a></li>
-          <li><a href="#refacoring">Refacoring</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#learning-skill">Learning Skill</a>    <ul>
-      <li><a href="#learning-stage">Learning Stage</a></li>
-      <li><a href="#a-to-dont-list">A to-don’t list</a></li>
-      <li><a href="#guidance">Guidance</a></li>
-      <li><a href="#google-and-stackoverflow-may-not-be-the-answer">Google and StackOverflow may not be the answer</a></li>
-      <li><a href="#dig-into-code-to-understand-it-better">Dig into code to understand it better</a></li>
-      <li><a href="#avoiding-the-temptation-of-the-new">Avoiding the temptation of the new</a></li>
-      <li><a href="#building-a-good-mental-filter">Building a good mental filter</a></li>
-      <li><a href="#push-vs-pull">Push vs. Pull</a></li>
-      <li><a href="#system-learning">System learning</a></li>
-      <li><a href="#when-to-give-new-tech-a-chance">When to give new tech a chance</a></li>
-      <li><a href="#catch-up-with-changes">Catch up with changes</a></li>
-    </ul>
-  </li>
-  <li><a href="#form-a-habit">Form a habit</a>    <ul>
-      <li><a href="#why">Why?</a></li>
-      <li><a href="#how-to-keep-consistent">How to keep consistent?</a>        <ul>
-          <li><a href="#morning-or-evening">Morning or Evening?</a></li>
-        </ul>
-      </li>
-      <li><a href="#how-to-keep-motivated">How to keep motivated?</a>        <ul>
-          <li><a href="#pre-prepare">Pre-prepare</a></li>
-          <li><a href="#processes">Processes</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="meta-principles">Meta Principles</h2>
-
-<ul>
-  <li>
-    <p><strong>As soon as you want to learn something, try it out.</strong></p>
-  </li>
-  <li>
-    <p><strong>When you feel yourself procrastinating or stressed about something, break it apart.</strong></p>
-
-    <p>Large, fuzzy tasks are killer. If the next thing you want to do is tiny, and you can start on it in the next five minutes, you probably will. If it’s big and vague, you’ll put it off until you know how to start it. Which will probably be never.</p>
-  </li>
-  <li>
-    <p><strong>Start backwards.</strong></p>
-
-    <p>When you write an app, start from the UI down. Allow your vision of the feature to guide your development. It’s easy to know if you’re building the right thing when you start from the end and trace back to the beginning. And UI sketches and HTML views are a lot easier to think about than abstract data models.</p>
-  </li>
-  <li>
-    <p><strong>Keep it simple, and add complexity later.</strong></p>
-
-    <p>The most frustrating struggles come from running into problems you don’t know how to solve. You can skip these problems by avoiding new things until you understand the old things. This goes for everything from gems and libraries to patterns and object-oriented design principles.</p>
-  </li>
-  <li>
-    <p><strong>Systems, not motivation.</strong></p>
-
-    <p>You can’t rely on motivation every day. Instead, set up systems and habits, so you don’t have to motivate yourself to work.</p>
-  </li>
-  <li>
-    <p><strong>Struggling should tell you that you’re on the brink of learning something really valuable. Keep it up.</strong></p>
-  </li>
-</ul>
-
-<h2 id="tiny-apps">Tiny Apps</h2>
-
-<p>When you read something interesting, tweak it with a tiny app.</p>
-
-<ul>
-  <li>UI related, with a <code>rails server</code></li>
-  <li>Functional, with a <code>rails console</code>. If setting it up in the console gets annoying, write a test case for it.</li>
-</ul>
-
-<h3 id="build-a-tiny-app">Build a tiny App</h3>
-
-<blockquote>
-  <p>I care about getting the most knowledge in the least amount of time, and scaffolds and other Rails code generators are a great way to do just that.</p>
-</blockquote>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">rails</span> <span class="kp">new</span> <span class="n">test_polymorphic_association</span>
-</span><span class="line"><span class="n">cd</span> <span class="n">test_polymorphic_association</span>
-</span><span class="line"><span class="n">bin</span><span class="o">/</span><span class="n">rails</span> <span class="n">generate</span> <span class="n">scaffold</span> <span class="n">bug</span> <span class="ss">title</span><span class="p">:</span><span class="n">string</span> <span class="ss">description</span><span class="p">:</span><span class="n">text</span>
-</span><span class="line"><span class="n">bin</span><span class="o">/</span><span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong>Some tips for investigating ideas through the Rails console</strong></p>
-
-<p>You can use a lot of Rails features through the <code>app</code> object. app is a special object that has some useful methods for experimenting with your Rails app.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">002</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">bug_path</span> <span class="n">bug</span>
-</span><span class="line"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">003</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">app</span><span class="o">.</span><span class="n">get</span> <span class="s2">&quot;/bugs/1&quot;</span>
-</span><span class="line"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">003</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="nb">puts</span> <span class="n">app</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The <code>helper</code> object provides all of your app’s view and helper methods in the Rails console:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">005</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">helper</span><span class="o">.</span><span class="n">content_tag</span> <span class="ss">:h1</span><span class="p">,</span> <span class="s2">&quot;Hey there&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&lt;h1&gt;Hey there&lt;/h1&gt;&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h3 id="owning-the-things-you-learn">Owning the things you learn</h3>
-
-<p>Explore the boundaries of that concept until you feel like you really get it.</p>
-
-<ol>
-  <li>test the boundaries</li>
-  <li>break and dig it, brainstorm some questions about the idea you’re exploring.</li>
-</ol>
-
-<h2 id="build-your-own-app">Build Your Own App</h2>
-
-<ul>
-  <li><strong>Core Paths</strong>, focus on building an important path through your app as your first feature.</li>
-  <li><strong>Build from UI down</strong>.</li>
-  <li><strong>Avoid large, fuzzy tasks</strong>. At every stage, you should be trying to break large tasks apart into smaller ones.</li>
-</ul>
-
-<h3 id="where-to-start">Where to start?</h3>
-
-<p>Take a few minutes and think what you’re trying to build. Write down every feature that comes to mind. Think of the different paths a user could take through your application, the different things they could do. Describe them in a single sentence.</p>
-
-<p>Then, narrow them down to paths where, if you didn’t have them, your app couldn’t exist. <strong>Core paths</strong>.</p>
-
-<p>In general, less code is better code. And <strong>starting from the view and building toward the model</strong> from there is the best way I know to consistently write less code.</p>
-
-<ul>
-  <li>Finding Core Path</li>
-  <li>View toward Model</li>
-</ul>
-
-<h4 id="build-from-ui-down">Build from UI Down</h4>
-
-<blockquote>
-  <p>Feature development process</p>
-</blockquote>
-
-<ol>
-  <li>Take the small feature from earlier.</li>
-  <li>Think of one simple thing someone could do with that feature.</li>
-  <li>Draw just enough screens for that user to be able to do that thing.</li>
-  <li>Describe the path through that action, as if you were telling someone what you were going to do.</li>
-  <li>As you describe that path, write out the objects, properties of those objects, and other actions you think you need to develop that path.</li>
-</ol>
-
-<h4 id="thinking-in-resources">Thinking in resources</h4>
-
-<p>Rails works well with “resources.” (You can think of a resource as an ActiveRecord model and a controller that has seven actions: <code>index</code>, <code>new</code>, <code>create</code>, <code>show</code>, <code>edit</code>, <code>update</code>, and <code>destroy</code>).</p>
-
-<h4 id="t-shaped-development">T-Shaped development</h4>
-
-<p>When you build something, try to get something rough up as quickly as possible. As long as the core of the feature you want to build is there, it’s fine.</p>
-
-<h4 id="just-in-time-learning">Just-in-time learning</h4>
-
-<p>It means you’re not trying to learn everything at the beginning. That’s the most common way to procrastinate starting something that you’re too nervous to do.</p>
-
-<h3 id="which-feature-do-you-build-next">Which feature do you build next?</h3>
-
-<p>Keeping these tasks as small as possible is the key. And try to follow the questions below.</p>
-
-<ol>
-  <li>Ask some questions: What is the app missing? What did you postpone to get that first feature done?</li>
-  <li>Try using what you have so far. What would make your life easier if it was built? What annoys you while you’re using your app?</li>
-  <li>If you’re building this app for someone else, watch how they use the project. Where are they struggling? What do they complain about?</li>
-</ol>
-
-<h2 id="test-your-code-efficiently">Test Your Code Efficiently</h2>
-
-<h3 id="feature-development-process-with-testing">Feature development process with testing</h3>
-
-<ol>
-  <li>Take your small feature.</li>
-  <li>Think of one simple thing someone could do with that feature.</li>
-  <li>Draw just enough screens for that user to be able to do that thing.</li>
-  <li>Translate that sketch into a failing integration test.</li>
-  <li>Get the first part of that test to pass:</li>
-  <li>Write a failing controller test.</li>
-  <li>Write some failing unit tests.</li>
-  <li>Write enough code to get the unit and controller tests to pass.</li>
-  <li>Repeat until the next part of your integration test passes.</li>
-</ol>
-
-<p><strong><em>What do you test?</em></strong></p>
-
-<ul>
-  <li>Happy path tests.</li>
-  <li>Sad path tests.</li>
-  <li>What-if tests, must be documented.</li>
-</ul>
-
-<p><strong><em>How do you test?</em></strong></p>
-
-<ol>
-  <li>Arrange</li>
-  <li>Act</li>
-  <li>Assert</li>
-</ol>
-
-<p><strong><em>When aren’t you testing enough?</em></strong></p>
-
-<p>Bugs imply that you missed a test somewhere. If you run into a bug in your app that your tests didn’t catch, you’re probably missing a test.</p>
-
-<ol>
-  <li>Write a test that fails while the bug exists.</li>
-  <li>Fix the bug.</li>
-  <li>Make sure the test passes now.</li>
-  <li>Check in both your test and fix, so you don’t run into the problem again.</li>
-</ol>
-
-<p><strong><em>How to keep TDD?</em></strong></p>
-
-<p>Translate that sketch into a failing <strong>integration test</strong>(Capybara).</p>
-
-<ol>
-  <li>Write a failing controller test.</li>
-  <li>Write some failing unit tests.</li>
-  <li>Write enough code to get the unit and controller tests to pass.</li>
-  <li>Repeat until the next part of your integration test passes.</li>
-</ol>
-
-<h3 id="organizing-and-structuring-your-tests">Organizing and structuring your tests</h3>
-
-<h4 id="use-object-oriented-design-to-make-your-tests-better">Use object-oriented design to make your tests better</h4>
-
-<p>With minitest, all of your test suites are just classes, tests are methods. That means you can use your object oriented design skills to reorganize your tests.</p>
-
-<p>Guides to follow:</p>
-
-<ol>
-  <li><strong>For tests, clarity is better than cleverness.</strong> You don’t have anything testing your tests, so you have to be careful not to make things too abstract. Hard-coding values, copy and pasted code, all that kind of stuff is usually OK in tests, if they make the test easier to understand.</li>
-  <li>Organizing your tests is easiest if your test organization matches your code organization. </li>
-  <li>Wait until you feel real pain before refactoring your tests.</li>
-</ol>
-
-<h4 id="refacoring">Refacoring</h4>
-
-<ul>
-  <li>Using Extract Method to write custom assertions.</li>
-  <li>Using Extract Method to make mocks easier to write.</li>
-  <li>Using modules to share tests between test suites.</li>
-</ul>
-
-<h2 id="learning-skill">Learning Skill</h2>
-
-<blockquote>
-  <p>The skill of learning.</p>
-</blockquote>
-
-<h3 id="learning-stage">Learning Stage</h3>
-
-<ol>
-  <li>First stage. Baseline knowledge, bootstrapping your learning process.</li>
-  <li>Second stage. You’re past the basics but not an expert, still require conscious thought.</li>
-  <li>Thrid stage. Skills in the third stage are mastered. They don’t require thought, you use instinct and intuition when you use them.</li>
-</ol>
-
-<p>If all of their skills were at an intermediate level, they’d not only have to think about how to use each of those skills, but how they interacted in this one specific situation, and what kinds of tradeoffs they’ll have to make.</p>
-
-<p>1 + 3 &gt; 2 + 2</p>
-
-<p>So you’ll be much more productive if you have 5 skills in the third stage and 5 skills in the first stage than if you have ten skills in the second stage.</p>
-
-<h3 id="a-to-dont-list">A to-don’t list</h3>
-
-<p>It might seem like you need to master JavaScript before you can write a Rails app. You will, someday. But you won’t get anywhere without starting an app you can get excited about, and you don’t need JavaScript for that first stage. So cross JavaScript off the list. For now.</p>
-
-<p><strong>For now</strong> is powerful. You’re giving yourself permission to set other things aside, so you can focus on something else.</p>
-
-<h3 id="guidance">Guidance</h3>
-
-<p>Search for the things that really resonate with you, the things you get lost in, the things you just want to do for hours.</p>
-
-<p>Take a look at what you know and what you don’t. What you want to learn, and what your app needs you to learn. Set aside some things that seem less important, and turn them into a “Not Right Now” list. Eventually you’ll have a few things you just can’t set aside – learn those thoroughly. And keep moving forward.</p>
-
-<p>Intermediate Rails isn’t about learning all the stuff you learned as a beginner in a little more depth. It’s about the stem of the “T” in T-Shaped Learning. It’s about gaining deep knowledge in a few different areas, one thing at a time. And it’s about using that knowledge to build your own apps, the way you imagined.</p>
-
-<h3 id="google-and-stackoverflow-may-not-be-the-answer">Google and StackOverflow may not be the answer</h3>
-
-<p>This can be the fastest way to get your problem solved, and is much easier than investigating it yourself. But you lose the opportunity to go through the investigation, and you miss the chance to build experience debugging and solving your own problems. This robs you of a chance to get to know your code, the language, and the framework better.</p>
-
-<p>Every problem you run into is an opportunity to learn.</p>
-
-<p>But if you use them to solve a problem, make sure you read the answer, follow references, and immerse yourself in the knowledge the solution brings you. </p>
-
-<p>When you use someone else’s solution to solve your problems, your app will become a mess of inconsistent code that probably only works coincidentally.</p>
-
-<h3 id="dig-into-code-to-understand-it-better">Dig into code to understand it better</h3>
-
-<p>Great developers know how to read and understand code. When you read code, you’ll understand much more than what the documentation tells you. Sometimes, after spending time with the code, you’ll know as much about it as the author does!</p>
-
-<p><strong>Reading code is a skill you’ll have to build like any other, and it’s not like reading a book.</strong></p>
-
-<p>Practice reading code. Learning to read and explore code will teach you things you won’t learn anywhere else. And when you get good enough at reading code, you’ll be able to solve problems you might have thought were impossible before.</p>
-
-<p>Remember, reading code isn’t like reading anything else. It’s about debugging and exploration. <strong>You have to run it.</strong></p>
-
-<h3 id="avoiding-the-temptation-of-the-new">Avoiding the temptation of the new</h3>
-
-<p>You have to separate the things that are interesting because they’re new, from the things that are interesting because they’ll help you get work done.</p>
-
-<h3 id="building-a-good-mental-filter">Building a good mental filter</h3>
-
-<p>Two questions to ask.</p>
-
-<ol>
-  <li>Is this something I need to know right now?</li>
-  <li>If I knew this a year ago, would it have made my life easier today?</li>
-</ol>
-
-<h3 id="push-vs-pull">Push vs. Pull</h3>
-
-<p>Hitting these sites is the “pull” model of receiving tech news. You’re the one digging it up. But these days, I’ve been using the “push” model more and more. I’ve been getting email newsletters, podcasts, things that get delivered to you instead of you looking for them.</p>
-
-<h3 id="system-learning">System learning</h3>
-
-<p>If you find a few good sources, keep a steady learning and practice schedule, and learn things as they become important to you, you’ll make much more progress than those who constantly chase the news sites.</p>
-
-<h3 id="when-to-give-new-tech-a-chance">When to give new tech a chance</h3>
-
-<p>Try it out on a new small project. Then, take the technique as far as it’ll go.</p>
-
-<p>But unfortunately, a lot of the techniques won’t have as much of a benefit in smaller projects. So create a new branch for your experiments, so you don’t wreck your code if you don’t like the technique. And</p>
-
-<ol>
-  <li>Make the change.</li>
-  <li>Look at the old code next to the new.</li>
-  <li>Ask yourself, which code do you prefer?</li>
-  <li>Ask a few other people, which code do they prefer?</li>
-  <li>If the new way is an improvement, go forward with that.</li>
-</ol>
-
-<p><strong>A technique only has value if it improves your code, so a direct comparison is the best way to judge.</strong></p>
-
-<h3 id="catch-up-with-changes">Catch up with changes</h3>
-
-<p>The best way to keep up with changes to your gems is to track down the project’s <em>CHANGELOG</em> file.</p>
-
-<p>These will help you catch up on the big changes from version to version. Usually, they’re just a short summary of each major change.</p>
-
-<h2 id="form-a-habit">Form a habit</h2>
-
-<blockquote>
-  <p>Keep your schedule consistent</p>
-</blockquote>
-
-<h3 id="why">Why?</h3>
-
-<p><strong>Whenever you try to build a new skill, consistency is much more important than the amount of time you spend.</strong></p>
-
-<p>When you first try to keep a schedule, it’ll feel weird. To me, it feels like I’m just pretending, like I’m just copying what someone else told me to do, instead of actually getting anything done. That feeling starts to hit me around the fourth or fifth day in a row, and it goes away after about three weeks. It’s totally normal, but it can be dangerous.</p>
-
-<p>Anytime you change a routine, you’ll face some internal resistance. Our daily routines seem normal to us, that’s what makes them routines. So building the momentum to change those routines takes a lot of effort, since you’re breaking habits that have taken years to form, in just a few weeks.</p>
-
-<p>You might be tempted to spend 6 hours learning one day and take the rest of the week off. But that doesn’t solve the core problem.</p>
-
-<p><strong>Habits are built off of repetition, not total time.</strong> If you try to jam everything all into a single day, you’ll have less repetition. It’ll be easier to skip. And if your schedule is really so packed that you can’t find time every day to work on this stuff, how will you find a big chunk of time one day a week?</p>
-
-<p><strong>Once you’re consistent enough to form a habit, motivation won’t be as much of an issue. It’s just become something I do, so I do it.</strong></p>
-
-<h3 id="how-to-keep-consistent">How to keep consistent?</h3>
-
-<p>By “consistency,” I don’t mean that you have to spend hours every single night on this stuff. When you first build your schedule, go shorter rather than longer. <strong>Aim for 40 minutes a day to start.</strong></p>
-
-<p>If you can’t find the time anywhere else, staying up 40 minutes later at night usually won’t be too painful. Same thing with waking up a little earlier each day.</p>
-
-<p>But 40 minutes is also short enough that it’ll surprise you when it’s over. You’ll start the next task and leave it unfinished.</p>
-
-<p>When you <strong>leave something unfinished</strong>, it’ll stay in the back of your mind. When this happens, you’ll unconsciously be looking for closure, so you’ll be more receptive to related ideas that just pop into your head. You’ll really want to finish it.</p>
-
-<h4 id="morning-or-evening">Morning or Evening?</h4>
-
-<p>Cons on <strong>evening</strong>:</p>
-
-<ol>
-  <li>You don’t really have a set deadline (except sleep), so you can let your motivation carry you beyond the time you set aside.</li>
-  <li>You might also be drained. If you’re tired, it’s easy to convince yourself to skip it, “just this once.” And after a frustrating day at work, you’ll start to tell yourself that you’ve had a rough day, you deserve to just get a good night’s sleep. You’ll catch up tomorrow, right?</li>
-  <li>It’s also easy to push until later. “If I watch one more episode, I’ll start as soon as it’s done. It’ll only be 10 minutes late.” But before you know it, you’re an hour late, you’ve destroyed your sleeping schedule and you’ll pay for it tomorrow, when you’re drained again and you’ll skip again.</li>
-</ol>
-
-<p>While <strong>morning</strong>:</p>
-
-<blockquote>
-  <p>You might feel brain-dead and uncreative in the morning, which can be killer if you’re learning and practicing creative work like learning Rails. And it’s hard to wake up early until you get used to it.  </p>
-
-  <p>I heard a lot of people I trust and respect suggest trying waking up a little earlier for a week or so. I did, and it was hard, and I felt totally unproductive.  </p>
-
-  <p>But somehow, once I measured my actual productivity, I found out I was twice as productive in the mornings as the evenings. This is crazy, because it felt like the exact opposite!</p>
-</blockquote>
-
-<p>I really need to give it a shot.</p>
-
-<h3 id="how-to-keep-motivated">How to keep motivated?</h3>
-
-<p>Of course, to form a habit is the best way. But before that, try these.</p>
-
-<h4 id="pre-prepare">Pre-prepare</h4>
-
-<ol>
-  <li>Separating the decision about where to start from the decision about what to do.</li>
-  <li>It creates an unfinished loop in your mind, they’re just as powerful here.</li>
-</ol>
-
-<h4 id="processes">Processes</h4>
-
-<p>Seinfeld method:</p>
-
-<blockquote>
-  <p>[Jerry Seinfeld] told me to get a big wall calendar that has a whole year on one page and hang it on a prominent wall. The next step was to get a big red magic marker.</p>
-
-  <p>He said for each day that I do my task of writing, I get to put a big red X over that day. “After a few days you’ll have a chain. Just keep at it and the chain will grow longer every day. You’ll like seeing that chain, especially when you get a few weeks under your belt. Your only job next is to not break the chain.”</p>
-
-  <p>“Don’t break the chain,” he said again for emphasis.</p>
-</blockquote>
-
-<p>When you miss a habit and break a chain, you lose all your motivation to keep the streak going. And you lose it at the exact time you need extra motivation to build that streak back up.</p>
-
-<p>So keep consistent with a habit tracker, calendar, or Beeminder.</p>
 ]]></content>
   </entry>
   
