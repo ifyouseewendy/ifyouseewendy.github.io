@@ -9,12 +9,13 @@ footer: true
 > [PDF version](/resume/download/Resume-DiWen.pdf)
 
 
-### Personal Info
+# Di Wen
 
-+ name：Di Wen
-+ birth：1988
-+ tel：186-4343-0095
-+ email：ifyouseewendy@gmail.com
++ Birth: 1988
++ Location: Shanghai
++ Mobile: (86)-18643430095
++ E-mail: [ifyouseewendy@gmail.com](mailto:ifyouseewendy@gmail.com)
+
 
 ### Skills
 
@@ -51,8 +52,7 @@ Kaitong AMC is an Internet financial startup, aiming to provide a platform betwe
 
 Umeng Analytics is the leading mobile app analytical platform in China. We implement analysis and statistics Web product using Ruby on Rails, including
 
-+ Umeng Mainsite, regular product iteration, fixing online issues, refactoring and optimizing website performance.
-+ Umeng Mainsite iPad version, tech design and coding based on API service.
++ Umeng Mainsite, regular product iteration, fixing online issues, refactoring and optimizing website performance. Tech design and implement an iPad version.
 + Admin System, assisting product manager to filter data and make analysis.
 + Developer Center, a CMS system for developers to read online documents and download SDK packages.
 + API & OAuth, for third-party company to authenticate, authorize, and query data.
@@ -61,19 +61,24 @@ Umeng Analytics is the leading mobile app analytical platform in China. We imple
 
 > *#TechStack: Struts, Spring, iBaits*
 
-Dianping is the largest group deals site in China. I work as an intern in the Search Group, implementing some backend administer features using Java, including
+Dianping is the largest group deals site in China. I work as an intern in the Search Group, implementing some backend administer features using Java.
 
-+ Log-related module, configure the operation log with logback, and provide search function in supporting system.
-+ Search-optimized module, parse, transfer and store the search resource request to make a search replay when encountering searching problems.
 
 ### Education
 
 2008 ~ 2012 - Bachelor, Software Engineering, East China Normal University
 
+### Project
+
++ [rmb](https://github.com/ifyouseewendy/rmb) - a gem helps generate money in Chinese Yuan.
++ [stock_knight](https://github.com/ifyouseewendy/stock_knight) - an API wrapper for Stock Fighter.
++ Rails - Patch test code to ActiveSupport and Active Model: GlobalID.
++ ActiveAdmin - Code for importing, adding summation row, and localization.
+
 
 ### Self-Summary
 
-+ I'm an enthusiastic and diligent staff. Work hard to make jobs done, and also think hard to keep efficiency.
++ I'm an diligent and self-driven staff. Work hard to make jobs done, and also think hard to keep efficiency. I won the “Best Staff” award in 2014.
 + Technically, my goal is to keep digging into Web development. Focusing on Ruby and Rails as a breakpoint, and learning all the other interesting topics in Web.
 + Personally, always remind myself to be a humble learner, with a little patience and a lot of desire.
 
@@ -83,5 +88,3 @@ Dianping is the largest group deals site in China. I work as an intern in the Se
 - [Personal Site](http://ifyouseewendy.com)
 - [Github](https://github.com/ifyouseewendy)
 - [StackOverflow](http://stackoverflow.com/users/1331774/ifyouseewendy)
-
-

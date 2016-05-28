@@ -38,7 +38,7 @@ footer: true
 
 > *技术栈: Rails, MongoDB, MiniTest, Mina, Unicorn, Nginx* ([Github](https://github.com/ifyouseewendy/baton-web))
 
-作为公司最早技术员工，收获也体会到创业过程的宝贵经验，独立完成与第三方机构的对接工作
+作为公司早期技术员工，收获也体会到创业过程的宝贵经验，独立完成与第三方机构的对接工作
 
 + 制定与交易所端以及互联网金融公司的合作解决方案
 + 实现对接平台，自动化与第三方机构的对接工作
@@ -68,7 +68,7 @@ footer: true
 
 ## 教育背景
 
-*2007 ~ 2012* - 华东师范大学软件学院
+*2008 ~ 2012* - 华东师范大学软件学院
 
 ## 其他信息
 
@@ -77,4 +77,3 @@ footer: true
 - [Github](https://github.com/ifyouseewendy)
 - [StackOverflow](http://stackoverflow.com/users/1331774/ifyouseewendy)
 - [Douban](http://www.douban.com/people/desperado.w/)
-
