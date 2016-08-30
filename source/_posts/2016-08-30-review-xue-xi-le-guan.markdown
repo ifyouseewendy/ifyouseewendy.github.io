@@ -49,7 +49,7 @@ categories:  ['Books']
 
 根据书中第3章的调查问卷，自己做了如下笔记：
 
-![learned_optimism_questionaire_0826](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/learned_optimism_questionaire_0826.png)
+![learned_optimism_questionaire_0826](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/learned_optimism_questionaire_0826.jpeg)
 
 将最后的总结内容誊写在这：
 
