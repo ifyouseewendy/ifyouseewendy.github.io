@@ -134,7 +134,7 @@
         <loc>
             http://blog.ifyouseewendy.com/blog/2015/12/26/review-concurrency-operating-systems-three-easy-pieces/
         </loc>
-        <lastmod>2016-02-16T20:15:16+08:00</lastmod>
+        <lastmod>2016-08-30T22:09:59+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/2016/02/05/ci-zhi-ban-nian-ji/</loc>
@@ -161,6 +161,10 @@
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/2016/05/26/name-driven-development/</loc>
         <lastmod>2016-05-28T13:21:15+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.ifyouseewendy.com/blog/2016/08/30/review-xue-xi-le-guan/</loc>
+        <lastmod>2016-08-30T22:58:04+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/about/</loc>
@@ -190,11 +194,11 @@
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/archives/</loc>
-        <lastmod>2016-05-28T13:21:15+08:00</lastmod>
+        <lastmod>2016-08-30T22:58:04+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/</loc>
-        <lastmod>2016-05-28T13:21:15+08:00</lastmod>
+        <lastmod>2016-08-30T22:58:04+08:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/resume/</loc>

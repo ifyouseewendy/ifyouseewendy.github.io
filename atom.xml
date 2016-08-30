@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2016-05-29T00:45:48+08:00</updated>
+  <updated>2016-08-30T23:02:57+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,228 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Review] 学习乐观]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2016/08/30/review-xue-xi-le-guan/"/>
+    <updated>2016-08-30T22:03:04+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2016/08/30/review-xue-xi-le-guan</id>
+    <content type="html"><![CDATA[<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>学习乐观</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td><a href="https://en.wikipedia.org/wiki/Martin_Seligman">Martin Seligman</a></td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="https://book.douban.com/subject/4934590/">book.douban.com/subject/4934590/</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul id="markdown-toc">
+  <li><a href="#section">前言</a></li>
+  <li><a href="#section-1">第1章 - 悲观者与乐观者的画像</a></li>
+  <li><a href="#section-2">第2章 - 悲观者的无助源自何处</a></li>
+  <li><a href="#section-3">第3章 - 悲观者严重的挫折</a></li>
+  <li><a href="#section-4">第4章 - 从悲观滑向抑郁</a></li>
+  <li><a href="#section-5">第5章 - 想法决定悲喜人生</a></li>
+  <li><a href="#section-6">第6~11章 - 乐观的好处</a></li>
+  <li><a href="#section-7">第6章 - 乐观奠定成功的事业</a></li>
+  <li><a href="#section-8">第7~8章 - 解释风格对孩子的影响</a></li>
+  <li><a href="#section-9">第12章 - 怎样习得乐观</a></li>
+  <li><a href="#section-10">第15章 - 乐观可以有弹性</a></li>
+  <li><a href="#section-11">总结</a></li>
+</ul>
+
+<h3 id="section">前言</h3>
+
+<p>前两天，看了占东分享的这个关于 Optimism 的演讲 <a href="https://github.com/raganwald/presentations/blob/master/optimism.md">raganwald/presentations</a>。有点感触，一直自认为是悲观主义者。所以在这个演讲的介绍下，找到了 Martin Seligman 博士的这本书 Learned Optimism，中文名为《活出最乐观的自己/学习乐观》。</p>
+
+<p>如果感兴趣，可以尝试下这个在线测试 <a href="https://www.authentichappiness.sas.upenn.edu/questionnaires/optimism-test">optimism-test</a>。如果已经足够乐观，那大可不必阅读这本书。</p>
+
+<p><strong>思维导图</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/learned_optimism.png" alt="learned_optimism" /></p>
+
+<h3 id="section-1">第1章 - 悲观者与乐观者的画像</h3>
+
+<blockquote>
+  <p>悲观的人的特征是，他相信坏事都是因为自己的错，这件事会毁掉他的一切，会持续很久。而乐观的人在遇到同样的厄运时，会认为现在的失败是暂时性的，每个失败都有它的原因，不是自己的错，可能是环境、运气或其他人为原因的后果。这种人不会被失败击倒。在面对恶劣环境时，他们会把它看成是一种挑战，更努力地去克服它。</p>
+</blockquote>
+
+<p>心理学在过去20年最显著的发现就是：人可以选择他想要的思维模式。</p>
+
+<p>我们从个人控制理论开始，主要涉及两个彼此交错的概念：</p>
+
+<ul>
+  <li>习惯性无助 Learned helplessness 是一个放弃的反应，是源自『无论你怎么努力都于事无补』的想法的行为。</li>
+  <li>解释风格 Explanatory style 是习惯性无助的核心，是你对为什么这件事会发生的习惯性的解释方式。（每个人在碰到不如意的事情时，第一件事就是去解释这个不如意。这些解释决定了我们下一步怎么做。我们的解释风格和想法不仅影响着我们的行动，也影响着我们的感觉和情绪。）</li>
+</ul>
+
+<h3 id="section-2">第2章 - 悲观者的无助源自何处</h3>
+
+<p>关于心理学简史：</p>
+
+<ul>
+  <li>心理分析学派、佛洛依德派，强调精神活动的隐意识方面，并大胆的以性为切入点，将人的精神问题归因为童年的心理创伤（佛洛依德认为梦到牙齿掉下来代表着阉割以及手淫的罪恶感，做梦的人害怕他的父亲用阉割的方式惩罚他手淫的罪恶。）</li>
+  <li>行为主义学派，坚持一个人的所有行为只受他得到的奖励和惩罚所决定：一个被奖励的行为可能会重复，而一个被惩罚的行为则可能会被压抑，如此是已。</li>
+  <li>认知心理学，它保留了对改变的乐观信念，认为『自我』可以改进自己。</li>
+</ul>
+
+<h3 id="section-3">第3章 - 悲观者严重的挫折</h3>
+
+<p>解释风格有三种维度——永久性、普遍性和人格化。普遍性和永久性控制着你的行为，你的无助感的持久性，以及无助感涉及的层面；人格化控制着你如何看待自己，对自己的感受。当不好的事情发生时，悲观的人怪罪自己，乐观的人怪罪旁人或环境；当好事情发生时，悲观的人归功于旁人或环境，而乐观的人归功于自己。</p>
+
+<p>根据书中第3章的调查问卷，自己做了如下笔记：</p>
+
+<p><img src="https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/learned_optimism_questionaire_0826.png" alt="learned_optimism_questionaire_0826" /></p>
+
+<p>将最后的总结内容誊写在这：</p>
+
+<ul>
+  <li>总体上，我得到了『中等悲观』的分数。</li>
+  <li>我只在 PvB 上表现出了乐观，即我不会认为事情会普遍的不好。</li>
+  <li>但是我在其他『解释风格』，即永久性和人格化上，我的表现非常糟糕。这说明了
+    <ul>
+      <li>我惯于把坏的事情当做永久、一成不变的状态，而好的事情只作一时之幸</li>
+      <li>我的自尊非常低，关于将错误归咎自己，而将成功归因环境与他人</li>
+    </ul>
+  </li>
+  <li>我理解自己的得分，不禁对自己一直以来希望秉承的『谦虚』和『客观』表示强烈怀疑！</li>
+</ul>
+
+<h3 id="section-4">第4章 - 从悲观滑向抑郁</h3>
+
+<p>抑郁的人通常会在思想、情绪、行为和身体四个方面发生消极的变化。</p>
+
+<blockquote>
+  <p>抑郁症患者通常在刚醒来时情绪处于最低潮，你躺在床上想着过去种种的失败，想着今天可能要面临的失败，假如你躺在床上不起身，这些失败的想法就像一床棉被一样把你包裹着，如果你爬起床，开始一天的活动，通常情绪会变好些。到了下午3点到6点，情绪又会低落下去。晚上通常是一天中最不抑郁的时间，清晨3点到5点，如果你没睡着，则是情绪最差的时候，情绪在一天中是有所变化的。</p>
+</blockquote>
+
+<p>看到这段话，惊得我一身冷汗，好像回到曾经大学宿舍那个冰冷的小屋。回想那段日子，只是觉着自己从悬崖边走过，今天找到了背后真正的含义。</p>
+
+<h3 id="section-5">第5章 - 想法决定悲喜人生</h3>
+
+<p>认知疗法有五种策略</p>
+
+<ul>
+  <li>学会去认识在情绪最低沉时自动冒出来的想法</li>
+  <li>学会与这个自动冒出来的想法抗争</li>
+  <li>学会用不同的解释——重新归因（reattribution）去对抗原有的想法</li>
+  <li>学会如何把自己从抑郁的思绪中引开</li>
+  <li>学会去认识并且质疑那些控制你并引起你抑郁的假设</li>
+</ul>
+
+<blockquote>
+  <p>男人碰到事情会去做，而不会反复去想；而女人喜欢钻牛角尖，把事情翻来覆去的想——反刍（rumination），去分析它为什么是这样。女性看待事情的方式造成女性得抑郁症的比例是男性的两倍。</p>
+</blockquote>
+
+<h3 id="section-6">第6~11章 - 乐观的好处</h3>
+
+<p>作者从个人事业、身体、孩子、体育赛事、企业组织、竞选几个角度阐释了，乐观的人相对表现更好。</p>
+
+<blockquote>
+  <p>你可能会想，谁会碰到较多不幸的事件呢？答案是悲观的人。因为他们比较被动，较少主动采取行动来避免不好的事，而且在事情发生之后也较少采取行动来终止这些事。</p>
+</blockquote>
+
+<p>但是我们需要找到平衡点，即『不盲目乐观』。</p>
+
+<ul>
+  <li>习惯性乐观不是教你自私、自大，让别人不能忍受，它要教你在遇到失败挫折时如何与自己对话。你要学会如何在收到打击时，从更具鼓励性的角度来考虑挫折或困境。</li>
+  <li>使用乐观技术的基本原则是先问，在某一个特定情况下失败的代价是什么。如果失败的代价很高，那么就不应该乐观。</li>
+</ul>
+
+<h3 id="section-7">第6章 - 乐观奠定成功的事业</h3>
+
+<p>之前的阅读，让我提出怀疑：自己暂时偏悲观的人格，一定是坏的吗？如果我是个乐观的人，会比现在活得更好吗？一直以来我要求自己『谦虚』和『客观』，但是这同样部分导致了我在测试中体现的悲观分数。</p>
+
+<p>这一章的阅读可以回答我之前的疑问，主要有以下几个观点：</p>
+
+<ul>
+  <li>传统的成功观点并不完善。要成功，除了具备能力和动机之外，还需要坚持，遇到挫折也不放弃的坚持，而乐观的解释风格则是坚持的灵魂。</li>
+  <li>成功的生活需要大部分时间的乐观和偶尔的悲观。我理解这个平衡点位于『不盲目乐观』。</li>
+  <li>悲观不是一无是处，就像头脑特工队里试图阐释忧忧（sadness）存在的意义一样，悲观让我们更冷静、对事情有更清楚的判断。所以轻度悲观是可以接受的状态。</li>
+</ul>
+
+<p>这一章同样回答了心中另一个问题，国家动用百万资金支持心理研究，除了为解决各体的心理问题外，有什么更实际（物质层面）的意义？</p>
+
+<p>由于销售是个时常遭受挫折的职业，公司花费大量的人力物力对新人进行培训，但是高离职率导致公司需要承担不菲的损失。大都会保险，就是这样一家企业。Seligman 博士帮助大都会筛选入职人员时，将乐观悲观的人格作为一项新的考量，降低了离职率，为公司在财务层面节省了不菲的资金。</p>
+
+<h3 id="section-8">第7~8章 - 解释风格对孩子的影响</h3>
+
+<ul>
+  <li>孩子8岁时，乐观或悲观的解释风格基本定型了。</li>
+  <li>孩子的解释风格会受到三种因素的影响：
+    <ul>
+      <li>孩子从父母身上学到的各种事件的因果分析，尤其是妈妈的</li>
+      <li>孩子听到的批评方式，即如果这些批评是永久的、普遍的、内在的，那么他对自己的看法就会转向悲观</li>
+      <li>孩子早期生活经验中的生离死别和巨大变故。如果这个事故是永久和普遍的，那么绝望的种子会深埋孩子心中；如果这些事件好转了，他会比较乐观。父母离异或经常争吵是最容易引发孩子抑郁的时间。</li>
+    </ul>
+  </li>
+  <li>失去乐观，传统意义上的聪明才智对成功没有没有什么意义。</li>
+</ul>
+
+<h3 id="section-9">第12章 - 怎样习得乐观</h3>
+
+<p>改变悲观的解释风格有两种方法：</p>
+
+<ul>
+  <li>转移注意。当不好的事情发生时，安排一个时间去想它；当消极的想法一出现，就立刻把它写下来。</li>
+  <li>反驳。从长远来看，反驳更有效
+    <ul>
+      <li>保持距离。我们一般都会和别人无理的指责保持一个距离。但是要我们与自己的指责保持距离就很困难，因为我们会认为，如果这个指责来自内心，那么它一定是真的。大错特错！我们在遭受挫折时对自己说的话可能和不怀好意的人说的一样毫无根据。</li>
+      <li>反驳的四个过程
+        <ul>
+          <li>寻找证据</li>
+          <li>其他可能性</li>
+          <li>暗示。即使我的消极想法是对的，那么这个想法的暗示是什么？</li>
+          <li>用处。有时候，这些想法的后果比想法的真实性更重要。回问自己，这些想法是否有破坏性？</li>
+        </ul>
+      </li>
+      <li>记录整个过程，找朋友说出自己的反驳，不断练习。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="section-10">第15章 - 乐观可以有弹性</h3>
+
+<p>依作者观点，抑郁症在美国泛滥的机制是习惯性无助，主要原因则是：</p>
+
+<ul>
+  <li>个人主义的兴起，即『特大号』的自我。这是一个强调个人控制的时代，自我膨胀已经到了危险的地步，个体的无助需要被治疗。我们的欲望、奢求越来越多，失望、无助便随之而来。</li>
+  <li>公共意识的消失。人类需要生活在意义和希望中。关于生命的无意义感，有意义的一个必要条件就是它必须依附到一个比自我更大的东西上去。你可以依附的东西越大，你所拥有的意义越多。而不断发生的政治事件削弱了人们对国家的期望，社会趋势也减弱了人们对神袛和家庭的依赖。公共意识即指对国家、神袛和家庭的看法。</li>
+  <li>简要来说，即对自己的过度关怀和对团体的不够关心。</li>
+</ul>
+
+<p>出路何在：</p>
+
+<ul>
+  <li>找出特大号自我的优势，运用习惯性乐观。</li>
+  <li>改变个人与团体之间的关系，寻找新的平衡点。</li>
+</ul>
+
+<p>如何实践，作者提到了一个词『道德慢跑』，基于这样的观点：我们慢跑是因为我们期望用用每一天的自我牺牲去换取长远的自我利益。同样，我们可以利用增加公共意识来平衡自我和团体的关系，做一场道德慢跑：</p>
+
+<ul>
+  <li>放弃一些享乐行为，把一周中的一个晚上用于从事一件对团体、社区有利的活动</li>
+  <li>当你读到某个领你感动的事迹时，写信给那个人。写信去鼓励那些值得你尊敬的人。一个星期花三个小时来写这种信，惩恶扬善</li>
+  <li>教导你的孩子如何施舍。叫他们把自己零用钱的1/4留下来捐出去，让他们自己去找值得捐的人或事情。</li>
+</ul>
+
+<blockquote>
+  <p>如果你为社区、为团体服务得够久的话，你就会找到生命的意义，你会发现你越来越不容易抑郁，也变得不容易得感冒，你越来越喜欢参加团体的活动而不是关起门来独乐乐。更重要的是，你心灵中的那块空虚，那个个人主义所滋养的无意义感会被填的满满的。</p>
+</blockquote>
+
+<h3 id="section-11">总结</h3>
+
+<p>女朋友发现我在看这本书，一脸坏笑，闪烁其词。『少年，你心理有病啊？』说实话，我确实觉着自己心理有点问题。我的常态是偏失落的，没有大喜大悲，但总是对自己不满。『读鸡汤文有用吗？』每个人看到的不一样吧。我相信，好多时候我们的行为都是处于”the zombie mode”，习惯的行为模式，或者说心理上的条件反射。不经过思考与剖析，有太多想法不可察觉。这本书至于我最大的意义在于提供了一个全新的角度，让我更加了解自己。它说服我让我真正相信乐观是一个优点，而不是一句口号。我也愿意自此调整，摆脱现在『中度悲观』的心理状态。作者最后给出的调节办法，我不觉着深刻有效，本质上还是在认可乐观的前提条件下，进行观察、反思、自我调节的良性循环。书中关于如何培养孩子的乐观心态，如何将乐观应用在企业管理以及预测总统等活动的事例，都非常耐人寻味。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Name Driven Development]]></title>
@@ -9151,123 +9373,6 @@ Example :<br />
 <p>Use <code>init.templatedir</code> config option.</p>
 
 <p>Check this post, <a href="https://coderwall.com/p/jp7d5q/create-a-global-git-commit-hook">Create a global git commit hook</a> by Matt Venables.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Git Filter Branch in Practice]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/12/25/git-filter-branch-in-practice/"/>
-    <updated>2014-12-25T20:54:49+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/12/25/git-filter-branch-in-practice</id>
-    <content type="html"><![CDATA[<p>For some reasons, our company team is migrating our codebase from Github Enterprise to Gitlab. One of the annoying things we should do is to update the invalid author names and emails in our git commits. Specifically, we should</p>
-
-<p><strong>Filter out the author emails which are not ending <code>umeng.com</code>, modify meta info of these commits by a self-defined rule, and update the inconsistent author and committer info.</strong></p>
-
-<p>I’ve used <code>git-filter-branch</code> once to do a similar but simpler job, which updated my own name and email, by using <code>env-filter</code> option in a few lines to complete.</p>
-
-<p>Things are getting a little complicated this time. Our repo has several branches, numbers of collaborators and almost 18,000 commits. I must be careful and patient, to find a safe way before reaching the ultimate horrible “force update”.</p>
-
-<h2 id="major-idea">Major Idea</h2>
-
-<p>Use <code>git filter-branch --commit-filter</code> to update each commit’s author info.</p>
-
-<p>Psuedo-code of updating logic</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;$GIT_AUTHOR_EMAIL&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="k">if</span> <span class="n">email</span><span class="o">.</span><span class="n">match</span> <span class="sr">/@umeng.com/</span>
-</span><span class="line">  <span class="n">commit</span><span class="o">-</span><span class="n">tree</span>
-</span><span class="line"><span class="k">else</span>
-</span><span class="line">  <span class="n">email</span><span class="o">.</span><span class="n">match</span> <span class="sr">/(?&lt;name&gt;*)@(?&lt;domain&gt;*).com/</span> <span class="c1"># psuedo</span>
-</span><span class="line">
-</span><span class="line">  <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class="line">    <span class="s1">&#39;wendy&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;wendi&#39;</span><span class="p">,</span>
-</span><span class="line">    <span class="s1">&#39;ifyouseewendy&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;wendi&#39;</span><span class="p">,</span>
-</span><span class="line">    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">if</span> <span class="n">mapping</span><span class="o">[</span><span class="nb">name</span><span class="o">].</span><span class="n">presents?</span>
-</span><span class="line">    <span class="n">commit_email</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">mapping</span><span class="o">[</span><span class="nb">name</span><span class="o">]</span><span class="si">}</span><span class="s2">@umeng.com&quot;</span>
-</span><span class="line">  <span class="k">else</span>
-</span><span class="line">    <span class="n">commit_email</span> <span class="o">=</span> <span class="s2">&quot;umeng_</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="n">domain</span><span class="si">}</span><span class="s2">@umeng.com&quot;</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="n">commit</span><span class="o">-</span><span class="n">tree</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="step-by-step">Step by Step</h2>
-
-<p><strong>1. Checkout a test branch</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git checkout -b update_git_info
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong>2. Filter author emails</strong></p>
-
-<p>Use <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-generate_stats-rb">generate_stats.rb</a> to</p>
-
-<ol>
-  <li>Gather commits info of <em>author_name</em>, <em>author_email</em>, and <em>committer_email</em>.</li>
-  <li>Run again after finishing the whole job to verify.</li>
-</ol>
-
-<p><strong>3. Prepare a mapping file</strong></p>
-
-<p>For authors whose email domain is not <code>umeng</code>, write the mapping file under this rule:</p>
-
-<ol>
-  <li>Seperated by <code>\s</code></li>
-  <li>First is the valid Umeng name</li>
-  <li>Second to the end, are the names of the invalid email</li>
-</ol>
-
-<p>Sample:</p>
-
-<p>change <code>wendy@xx.com</code> and <code>ifyouseewendy@xx.com</code> to <code>wendi@umeng.com</code>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">wendi wendy ifyouseewendy
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong>4. Leverage mapping file</strong></p>
-
-<p>Write a Ruby script to map names, used in the final script.</p>
-
-<p><a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-update_name-rb">update_name.rb</a>, read a name to change, output the corresponding Umeng author name.</p>
-
-<p><strong>5. Git filter-branch bash script</strong></p>
-
-<p>Here is the final working script, <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-git_filter_branch-sh">git_filter_branch.sh</a>. The bash email pattern matching part was tweaked based on <a href="http://stackoverflow.com/questions/14170873/bash-regex-email-matching">glenn jackman’s answer</a> on Stack Overflow.</p>
-
-<h2 id="things-to-take-caution">Things to Take Caution</h2>
-
-<p>When running <code>git filter-branch --commit-filter &lt;commad&gt;</code>, logic in <code>&lt;command&gt;</code> was the core part to finish my job. Remenber, <strong>DO NOT write <code>echo</code> in command part</strong> for debug use or whatever, as <code>echo</code> will interrupt the filter branch workflow.</p>
-
-<p>Better use a seperate script when debugging. I use <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-update_email-sh">update_email.rb</a> to develop on email pattern matching, and copy paste into the final <a href="https://gist.github.com/ifyouseewendy/9bdf7ad7173f9c78026c#file-git_filter_branch-sh">git_filter_branch.sh</a>.</p>
-
 ]]></content>
   </entry>
   

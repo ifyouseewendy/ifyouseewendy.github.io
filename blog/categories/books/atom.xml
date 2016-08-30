@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2016-05-29T00:45:48+08:00</updated>
+  <updated>2016-08-30T23:02:57+08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,228 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Review] 学习乐观]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2016/08/30/review-xue-xi-le-guan/"/>
+    <updated>2016-08-30T22:03:04+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2016/08/30/review-xue-xi-le-guan</id>
+    <content type="html"><![CDATA[<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>学习乐观</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td><a href="https://en.wikipedia.org/wiki/Martin_Seligman">Martin Seligman</a></td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="https://book.douban.com/subject/4934590/">book.douban.com/subject/4934590/</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul id="markdown-toc">
+  <li><a href="#section">前言</a></li>
+  <li><a href="#section-1">第1章 - 悲观者与乐观者的画像</a></li>
+  <li><a href="#section-2">第2章 - 悲观者的无助源自何处</a></li>
+  <li><a href="#section-3">第3章 - 悲观者严重的挫折</a></li>
+  <li><a href="#section-4">第4章 - 从悲观滑向抑郁</a></li>
+  <li><a href="#section-5">第5章 - 想法决定悲喜人生</a></li>
+  <li><a href="#section-6">第6~11章 - 乐观的好处</a></li>
+  <li><a href="#section-7">第6章 - 乐观奠定成功的事业</a></li>
+  <li><a href="#section-8">第7~8章 - 解释风格对孩子的影响</a></li>
+  <li><a href="#section-9">第12章 - 怎样习得乐观</a></li>
+  <li><a href="#section-10">第15章 - 乐观可以有弹性</a></li>
+  <li><a href="#section-11">总结</a></li>
+</ul>
+
+<h3 id="section">前言</h3>
+
+<p>前两天，看了占东分享的这个关于 Optimism 的演讲 <a href="https://github.com/raganwald/presentations/blob/master/optimism.md">raganwald/presentations</a>。有点感触，一直自认为是悲观主义者。所以在这个演讲的介绍下，找到了 Martin Seligman 博士的这本书 Learned Optimism，中文名为《活出最乐观的自己/学习乐观》。</p>
+
+<p>如果感兴趣，可以尝试下这个在线测试 <a href="https://www.authentichappiness.sas.upenn.edu/questionnaires/optimism-test">optimism-test</a>。如果已经足够乐观，那大可不必阅读这本书。</p>
+
+<p><strong>思维导图</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/learned_optimism.png" alt="learned_optimism" /></p>
+
+<h3 id="section-1">第1章 - 悲观者与乐观者的画像</h3>
+
+<blockquote>
+  <p>悲观的人的特征是，他相信坏事都是因为自己的错，这件事会毁掉他的一切，会持续很久。而乐观的人在遇到同样的厄运时，会认为现在的失败是暂时性的，每个失败都有它的原因，不是自己的错，可能是环境、运气或其他人为原因的后果。这种人不会被失败击倒。在面对恶劣环境时，他们会把它看成是一种挑战，更努力地去克服它。</p>
+</blockquote>
+
+<p>心理学在过去20年最显著的发现就是：人可以选择他想要的思维模式。</p>
+
+<p>我们从个人控制理论开始，主要涉及两个彼此交错的概念：</p>
+
+<ul>
+  <li>习惯性无助 Learned helplessness 是一个放弃的反应，是源自『无论你怎么努力都于事无补』的想法的行为。</li>
+  <li>解释风格 Explanatory style 是习惯性无助的核心，是你对为什么这件事会发生的习惯性的解释方式。（每个人在碰到不如意的事情时，第一件事就是去解释这个不如意。这些解释决定了我们下一步怎么做。我们的解释风格和想法不仅影响着我们的行动，也影响着我们的感觉和情绪。）</li>
+</ul>
+
+<h3 id="section-2">第2章 - 悲观者的无助源自何处</h3>
+
+<p>关于心理学简史：</p>
+
+<ul>
+  <li>心理分析学派、佛洛依德派，强调精神活动的隐意识方面，并大胆的以性为切入点，将人的精神问题归因为童年的心理创伤（佛洛依德认为梦到牙齿掉下来代表着阉割以及手淫的罪恶感，做梦的人害怕他的父亲用阉割的方式惩罚他手淫的罪恶。）</li>
+  <li>行为主义学派，坚持一个人的所有行为只受他得到的奖励和惩罚所决定：一个被奖励的行为可能会重复，而一个被惩罚的行为则可能会被压抑，如此是已。</li>
+  <li>认知心理学，它保留了对改变的乐观信念，认为『自我』可以改进自己。</li>
+</ul>
+
+<h3 id="section-3">第3章 - 悲观者严重的挫折</h3>
+
+<p>解释风格有三种维度——永久性、普遍性和人格化。普遍性和永久性控制着你的行为，你的无助感的持久性，以及无助感涉及的层面；人格化控制着你如何看待自己，对自己的感受。当不好的事情发生时，悲观的人怪罪自己，乐观的人怪罪旁人或环境；当好事情发生时，悲观的人归功于旁人或环境，而乐观的人归功于自己。</p>
+
+<p>根据书中第3章的调查问卷，自己做了如下笔记：</p>
+
+<p><img src="https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/learned_optimism_questionaire_0826.png" alt="learned_optimism_questionaire_0826" /></p>
+
+<p>将最后的总结内容誊写在这：</p>
+
+<ul>
+  <li>总体上，我得到了『中等悲观』的分数。</li>
+  <li>我只在 PvB 上表现出了乐观，即我不会认为事情会普遍的不好。</li>
+  <li>但是我在其他『解释风格』，即永久性和人格化上，我的表现非常糟糕。这说明了
+    <ul>
+      <li>我惯于把坏的事情当做永久、一成不变的状态，而好的事情只作一时之幸</li>
+      <li>我的自尊非常低，关于将错误归咎自己，而将成功归因环境与他人</li>
+    </ul>
+  </li>
+  <li>我理解自己的得分，不禁对自己一直以来希望秉承的『谦虚』和『客观』表示强烈怀疑！</li>
+</ul>
+
+<h3 id="section-4">第4章 - 从悲观滑向抑郁</h3>
+
+<p>抑郁的人通常会在思想、情绪、行为和身体四个方面发生消极的变化。</p>
+
+<blockquote>
+  <p>抑郁症患者通常在刚醒来时情绪处于最低潮，你躺在床上想着过去种种的失败，想着今天可能要面临的失败，假如你躺在床上不起身，这些失败的想法就像一床棉被一样把你包裹着，如果你爬起床，开始一天的活动，通常情绪会变好些。到了下午3点到6点，情绪又会低落下去。晚上通常是一天中最不抑郁的时间，清晨3点到5点，如果你没睡着，则是情绪最差的时候，情绪在一天中是有所变化的。</p>
+</blockquote>
+
+<p>看到这段话，惊得我一身冷汗，好像回到曾经大学宿舍那个冰冷的小屋。回想那段日子，只是觉着自己从悬崖边走过，今天找到了背后真正的含义。</p>
+
+<h3 id="section-5">第5章 - 想法决定悲喜人生</h3>
+
+<p>认知疗法有五种策略</p>
+
+<ul>
+  <li>学会去认识在情绪最低沉时自动冒出来的想法</li>
+  <li>学会与这个自动冒出来的想法抗争</li>
+  <li>学会用不同的解释——重新归因（reattribution）去对抗原有的想法</li>
+  <li>学会如何把自己从抑郁的思绪中引开</li>
+  <li>学会去认识并且质疑那些控制你并引起你抑郁的假设</li>
+</ul>
+
+<blockquote>
+  <p>男人碰到事情会去做，而不会反复去想；而女人喜欢钻牛角尖，把事情翻来覆去的想——反刍（rumination），去分析它为什么是这样。女性看待事情的方式造成女性得抑郁症的比例是男性的两倍。</p>
+</blockquote>
+
+<h3 id="section-6">第6~11章 - 乐观的好处</h3>
+
+<p>作者从个人事业、身体、孩子、体育赛事、企业组织、竞选几个角度阐释了，乐观的人相对表现更好。</p>
+
+<blockquote>
+  <p>你可能会想，谁会碰到较多不幸的事件呢？答案是悲观的人。因为他们比较被动，较少主动采取行动来避免不好的事，而且在事情发生之后也较少采取行动来终止这些事。</p>
+</blockquote>
+
+<p>但是我们需要找到平衡点，即『不盲目乐观』。</p>
+
+<ul>
+  <li>习惯性乐观不是教你自私、自大，让别人不能忍受，它要教你在遇到失败挫折时如何与自己对话。你要学会如何在收到打击时，从更具鼓励性的角度来考虑挫折或困境。</li>
+  <li>使用乐观技术的基本原则是先问，在某一个特定情况下失败的代价是什么。如果失败的代价很高，那么就不应该乐观。</li>
+</ul>
+
+<h3 id="section-7">第6章 - 乐观奠定成功的事业</h3>
+
+<p>之前的阅读，让我提出怀疑：自己暂时偏悲观的人格，一定是坏的吗？如果我是个乐观的人，会比现在活得更好吗？一直以来我要求自己『谦虚』和『客观』，但是这同样部分导致了我在测试中体现的悲观分数。</p>
+
+<p>这一章的阅读可以回答我之前的疑问，主要有以下几个观点：</p>
+
+<ul>
+  <li>传统的成功观点并不完善。要成功，除了具备能力和动机之外，还需要坚持，遇到挫折也不放弃的坚持，而乐观的解释风格则是坚持的灵魂。</li>
+  <li>成功的生活需要大部分时间的乐观和偶尔的悲观。我理解这个平衡点位于『不盲目乐观』。</li>
+  <li>悲观不是一无是处，就像头脑特工队里试图阐释忧忧（sadness）存在的意义一样，悲观让我们更冷静、对事情有更清楚的判断。所以轻度悲观是可以接受的状态。</li>
+</ul>
+
+<p>这一章同样回答了心中另一个问题，国家动用百万资金支持心理研究，除了为解决各体的心理问题外，有什么更实际（物质层面）的意义？</p>
+
+<p>由于销售是个时常遭受挫折的职业，公司花费大量的人力物力对新人进行培训，但是高离职率导致公司需要承担不菲的损失。大都会保险，就是这样一家企业。Seligman 博士帮助大都会筛选入职人员时，将乐观悲观的人格作为一项新的考量，降低了离职率，为公司在财务层面节省了不菲的资金。</p>
+
+<h3 id="section-8">第7~8章 - 解释风格对孩子的影响</h3>
+
+<ul>
+  <li>孩子8岁时，乐观或悲观的解释风格基本定型了。</li>
+  <li>孩子的解释风格会受到三种因素的影响：
+    <ul>
+      <li>孩子从父母身上学到的各种事件的因果分析，尤其是妈妈的</li>
+      <li>孩子听到的批评方式，即如果这些批评是永久的、普遍的、内在的，那么他对自己的看法就会转向悲观</li>
+      <li>孩子早期生活经验中的生离死别和巨大变故。如果这个事故是永久和普遍的，那么绝望的种子会深埋孩子心中；如果这些事件好转了，他会比较乐观。父母离异或经常争吵是最容易引发孩子抑郁的时间。</li>
+    </ul>
+  </li>
+  <li>失去乐观，传统意义上的聪明才智对成功没有没有什么意义。</li>
+</ul>
+
+<h3 id="section-9">第12章 - 怎样习得乐观</h3>
+
+<p>改变悲观的解释风格有两种方法：</p>
+
+<ul>
+  <li>转移注意。当不好的事情发生时，安排一个时间去想它；当消极的想法一出现，就立刻把它写下来。</li>
+  <li>反驳。从长远来看，反驳更有效
+    <ul>
+      <li>保持距离。我们一般都会和别人无理的指责保持一个距离。但是要我们与自己的指责保持距离就很困难，因为我们会认为，如果这个指责来自内心，那么它一定是真的。大错特错！我们在遭受挫折时对自己说的话可能和不怀好意的人说的一样毫无根据。</li>
+      <li>反驳的四个过程
+        <ul>
+          <li>寻找证据</li>
+          <li>其他可能性</li>
+          <li>暗示。即使我的消极想法是对的，那么这个想法的暗示是什么？</li>
+          <li>用处。有时候，这些想法的后果比想法的真实性更重要。回问自己，这些想法是否有破坏性？</li>
+        </ul>
+      </li>
+      <li>记录整个过程，找朋友说出自己的反驳，不断练习。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="section-10">第15章 - 乐观可以有弹性</h3>
+
+<p>依作者观点，抑郁症在美国泛滥的机制是习惯性无助，主要原因则是：</p>
+
+<ul>
+  <li>个人主义的兴起，即『特大号』的自我。这是一个强调个人控制的时代，自我膨胀已经到了危险的地步，个体的无助需要被治疗。我们的欲望、奢求越来越多，失望、无助便随之而来。</li>
+  <li>公共意识的消失。人类需要生活在意义和希望中。关于生命的无意义感，有意义的一个必要条件就是它必须依附到一个比自我更大的东西上去。你可以依附的东西越大，你所拥有的意义越多。而不断发生的政治事件削弱了人们对国家的期望，社会趋势也减弱了人们对神袛和家庭的依赖。公共意识即指对国家、神袛和家庭的看法。</li>
+  <li>简要来说，即对自己的过度关怀和对团体的不够关心。</li>
+</ul>
+
+<p>出路何在：</p>
+
+<ul>
+  <li>找出特大号自我的优势，运用习惯性乐观。</li>
+  <li>改变个人与团体之间的关系，寻找新的平衡点。</li>
+</ul>
+
+<p>如何实践，作者提到了一个词『道德慢跑』，基于这样的观点：我们慢跑是因为我们期望用用每一天的自我牺牲去换取长远的自我利益。同样，我们可以利用增加公共意识来平衡自我和团体的关系，做一场道德慢跑：</p>
+
+<ul>
+  <li>放弃一些享乐行为，把一周中的一个晚上用于从事一件对团体、社区有利的活动</li>
+  <li>当你读到某个领你感动的事迹时，写信给那个人。写信去鼓励那些值得你尊敬的人。一个星期花三个小时来写这种信，惩恶扬善</li>
+  <li>教导你的孩子如何施舍。叫他们把自己零用钱的1/4留下来捐出去，让他们自己去找值得捐的人或事情。</li>
+</ul>
+
+<blockquote>
+  <p>如果你为社区、为团体服务得够久的话，你就会找到生命的意义，你会发现你越来越不容易抑郁，也变得不容易得感冒，你越来越喜欢参加团体的活动而不是关起门来独乐乐。更重要的是，你心灵中的那块空虚，那个个人主义所滋养的无意义感会被填的满满的。</p>
+</blockquote>
+
+<h3 id="section-11">总结</h3>
+
+<p>女朋友发现我在看这本书，一脸坏笑，闪烁其词。『少年，你心理有病啊？』说实话，我确实觉着自己心理有点问题。我的常态是偏失落的，没有大喜大悲，但总是对自己不满。『读鸡汤文有用吗？』每个人看到的不一样吧。我相信，好多时候我们的行为都是处于”the zombie mode”，习惯的行为模式，或者说心理上的条件反射。不经过思考与剖析，有太多想法不可察觉。这本书至于我最大的意义在于提供了一个全新的角度，让我更加了解自己。它说服我让我真正相信乐观是一个优点，而不是一句口号。我也愿意自此调整，摆脱现在『中度悲观』的心理状态。作者最后给出的调节办法，我不觉着深刻有效，本质上还是在认可乐观的前提条件下，进行观察、反思、自我调节的良性循环。书中关于如何培养孩子的乐观心态，如何将乐观应用在企业管理以及预测总统等活动的事例，都非常耐人寻味。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Review] Concurrency - Operating Systems Three Easy Pieces]]></title>
@@ -3546,2182 +3768,6 @@ irb(main):005:0&gt; helper.content_tag :h1, "Hey there" =&gt; "&lt;h1&gt;Hey the
 <p>When you miss a habit and break a chain, you lose all your motivation to keep the streak going. And you lose it at the exact time you need extra motivation to build that streak back up.</p>
 
 <p>So keep consistent with a habit tracker, calendar, or Beeminder.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Review] Design Patterns in Ruby]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/10/17/design-patterns-in-ruby/"/>
-    <updated>2014-10-17T17:40:01+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/10/17/design-patterns-in-ruby</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Book</strong></td>
-      <td>Design Patterns in Ruby</td>
-    </tr>
-    <tr>
-      <td><strong>Author</strong></td>
-      <td>Russ Olsen</td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="http://designpatternsinruby.com/">designpatternsinruby.com</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<ul id="markdown-toc">
-  <li><a href="#meta-design-pattern">Meta Design Pattern</a></li>
-  <li><a href="#about-design-pattern">About Design Pattern</a></li>
-  <li><a href="#design-pattern-classification">Design Pattern Classification</a></li>
-  <li><a href="#the-template-method">The Template Method</a>    <ul>
-      <li><a href="#description">Description</a></li>
-      <li><a href="#using-and-abusing">Using and Abusing</a></li>
-      <li><a href="#in-the-wild">In the Wild</a></li>
-    </ul>
-  </li>
-  <li><a href="#the-strategy">The Strategy</a>    <ul>
-      <li><a href="#description-1">Description</a></li>
-      <li><a href="#comparing-to-the-template-method">Comparing to the Template Method</a></li>
-      <li><a href="#sharing-data-between-the-context-and-strategy">Sharing Data between the Context and Strategy</a></li>
-      <li><a href="#using-and-abusing-1">Using and Abusing</a></li>
-      <li><a href="#in-the-wild-1">In the Wild</a></li>
-    </ul>
-  </li>
-  <li><a href="#the-observer">The Observer</a>    <ul>
-      <li><a href="#description-2">Description</a></li>
-      <li><a href="#code-usage">Code Usage</a></li>
-      <li><a href="#interfaces-pull-or-push">Interfaces. Pull or Push?</a></li>
-      <li><a href="#using-and-abusing-2">Using and Abusing</a></li>
-    </ul>
-  </li>
-  <li><a href="#dont-inform-the-observers-just-yet">Don’t inform the observers just yet</a></li>
-  <li><a href="#now-inform-the-observers">Now inform the observers!</a>    <ul>
-      <li><a href="#in-the-wild-2">In the Wild</a></li>
-      <li><a href="#composite">Composite</a>        <ul>
-          <li><a href="#description-3">Description</a></li>
-          <li><a href="#code-usage-1">Code Usage</a></li>
-          <li><a href="#concerns">Concerns</a></li>
-          <li><a href="#using-and-abusing-3">Using and Abusing</a></li>
-          <li><a href="#in-the-wild-3">In the Wild</a></li>
-        </ul>
-      </li>
-      <li><a href="#the-iterator">The Iterator</a>        <ul>
-          <li><a href="#description-4">Description</a></li>
-          <li><a href="#internal-iterators-vs-external-iterators">Internal Iterators vs. External Iterators</a></li>
-          <li><a href="#the-inimitable-enumerable">The Inimitable Enumerable</a></li>
-          <li><a href="#using-and-abusing-4">Using and Abusing</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#red">red</a>    <ul>
-      <li><a href="#in-the-wild-4">In the Wild</a></li>
-    </ul>
-  </li>
-  <li><a href="#if-you-supply-the-argument-eachobject-will-iterate-over-only">If you supply the argument, each_object will iterate over only</a>    <ul>
-      <li><a href="#the-command">The Command</a>        <ul>
-          <li><a href="#description-5">Description</a></li>
-          <li><a href="#keep-track-of-what-you-have-done">Keep Track of What You Have Done</a></li>
-          <li><a href="#undo-or-redo">Undo or Redo</a></li>
-          <li><a href="#queuing-up-commands">Queuing Up Commands</a></li>
-          <li><a href="#using-and-abusing-5">Using and Abusing</a></li>
-          <li><a href="#in-the-wild-5">In the Wild</a></li>
-        </ul>
-      </li>
-      <li><a href="#the-adapter">The Adapter</a>        <ul>
-          <li><a href="#description-6">Description</a></li>
-          <li><a href="#adapt-or-modify">Adapt or Modify?</a></li>
-          <li><a href="#using-and-abusing-6">Using and Abusing</a></li>
-          <li><a href="#in-the-wild-6">In the Wild</a></li>
-        </ul>
-      </li>
-      <li><a href="#the-proxy">The Proxy</a>        <ul>
-          <li><a href="#description-7">Description</a></li>
-          <li><a href="#the-protection-proxy">The Protection Proxy</a></li>
-          <li><a href="#the-remove-proxy">The Remove Proxy</a></li>
-          <li><a href="#the-virtual-proxy">The Virtual Proxy</a></li>
-          <li><a href="#using-and-abusing-7">Using and Abusing</a></li>
-          <li><a href="#in-the-wild-7">In the Wild</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#client">client</a></li>
-  <li><a href="#the-client-side-mathservice-is-actually-a-remote-proxy-to-the-real">the client-side math_service is actually a remote proxy to the real</a>    <ul>
-      <li><a href="#the-decorator">The Decorator</a>        <ul>
-          <li><a href="#description-8">Description</a></li>
-          <li><a href="#why-not-the-template-method">Why Not The Template Method?</a></li>
-          <li><a href="#code-usage-2">Code Usage</a></li>
-          <li><a href="#using-and-abusing-8">Using and Abusing</a></li>
-          <li><a href="#in-the-wild-8">In the Wild</a></li>
-          <li><a href="#adapter-proxy-or-decorator">Adapter, Proxy or Decorator</a></li>
-        </ul>
-      </li>
-      <li><a href="#singleton">Singleton</a>        <ul>
-          <li><a href="#code-usage-3">Code Usage</a></li>
-          <li><a href="#alternatives">Alternatives</a></li>
-          <li><a href="#using-and-abusing-9">Using and Abusing</a></li>
-          <li><a href="#in-the-wild-9">In the Wild</a></li>
-        </ul>
-      </li>
-      <li><a href="#factory">Factory</a>        <ul>
-          <li><a href="#description-9">Description</a></li>
-          <li><a href="#abstract-factory">Abstract Factory</a></li>
-          <li><a href="#factory--abstract-factory">Factory &amp;&amp; Abstract Factory</a></li>
-          <li><a href="#using-and-abusing-10">Using and Abusing</a></li>
-          <li><a href="#in-the-wild-10">In the Wild</a></li>
-        </ul>
-      </li>
-      <li><a href="#builder">Builder</a>        <ul>
-          <li><a href="#description-10">Description</a></li>
-          <li><a href="#code-usage-4">Code Usage</a></li>
-          <li><a href="#builders-can-ensure-sane-objects">Builders Can Ensure Sane Objects</a></li>
-          <li><a href="#resuable-buidlers">Resuable Buidlers</a></li>
-          <li><a href="#better-builders-with-magic-methods">Better Builders with Magic Methods</a></li>
-          <li><a href="#using-and-abusing-11">Using and Abusing</a></li>
-          <li><a href="#in-the-wild-11">In the Wild</a></li>
-        </ul>
-      </li>
-      <li><a href="#interpreter">Interpreter</a>        <ul>
-          <li><a href="#description-11">Description</a></li>
-          <li><a href="#with-a-parser">With a Parser</a></li>
-          <li><a href="#without-a-parser">Without a Parser</a></li>
-          <li><a href="#using-and-abusing-12">Using and Abusing</a></li>
-          <li><a href="#in-the-wild-12">In the Wild</a></li>
-        </ul>
-      </li>
-      <li><a href="#domain-specific-languages">Domain-Specific Languages</a>        <ul>
-          <li><a href="#description-12">Description</a></li>
-          <li><a href="#using-and-abusing-13">Using and Abusing</a></li>
-          <li><a href="#in-the-wild-13">In the Wild</a></li>
-        </ul>
-      </li>
-      <li><a href="#custom-objects">Custom Objects</a>        <ul>
-          <li><a href="#custom-tailoring-technique">Custom-Tailoring Technique</a></li>
-          <li><a href="#reflections">Reflections</a></li>
-          <li><a href="#using-and-abusing-14">Using and Abusing</a></li>
-        </ul>
-      </li>
-      <li><a href="#convention-over-configuration">Convention Over Configuration</a>        <ul>
-          <li><a href="#description-13">Description</a></li>
-          <li><a href="#using-and-abusing-15">Using and Abusing</a></li>
-        </ul>
-      </li>
-      <li><a href="#reference">Reference</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="meta-design-pattern">Meta Design Pattern</h2>
-
-<ul>
-  <li>Seperate out the things that change from thos that stay the same.</li>
-  <li>Program to an interface, not an implementation.</li>
-  <li>Prefer composition over inheritance.</li>
-  <li>Delegate, delegate, delegate.</li>
-</ul>
-
-<p>Others:</p>
-
-<ul>
-  <li>YAGNI, You ain’t gonna need it.</li>
-  <li>A pattern is not just about code: Intent is critical.</li>
-</ul>
-
-<p><strong>Seperate out the things that change from thos that stay the same.</strong></p>
-
-<p>A key goal of software engineering is to build systems that allow us to contain the damage. In an ideal system, all changes are local.</p>
-
-<p>You get there by separating the things that are likely to change from the things that are likely to stay the same. If you can identify which aspects of your system design are likely to change, you can isolate those bits from the more stable parts.</p>
-
-<p>But how do you keep the changing parts from infecting the stable parts? <em>Program to an interface, not an implementation.</em></p>
-
-<p><strong>Program to an interface, not an implementation.</strong></p>
-
-<p>A good start is to write code that is less tightly coupled to itself in the first place.</p>
-
-<p>The idea here is to program to the most general type you can.</p>
-
-<p><strong>Prefer composition over inheritance.</strong></p>
-
-<p>The trouble is that inheritance comes with some unhappy strings attached. When you create a subclass of an existing class, you are not really creating two separate entities: Instead, you are making two classes that are bound together by a common implementation core. Inheritance, by its very nature, tends to marry the subclass to the superclass.</p>
-
-<p>If our goal is to build systems that are not tightly coupled together, to build systems where a single change does not ripple through the code like a sonic boom, breaking the glassware as it goes, then probably we should not rely on inheritance as much as we do.</p>
-
-<p>We can assemble the behaviors we need through composition. In short, we try to avoid saying that an object is <em>a kind of</em> something and instead say that it <em>has</em> something.</p>
-
-<p><strong>Delegate, delegate, delegate.</strong></p>
-
-<p>The combination of composition and delegation is a powerful and flexible alternative to inheritance. We get most of the benefits of inheritance, much more flexibility, and none of the unpleasant side effects. Of course, nothing comes for free. Delegation requires an extra method call, as the delegating object passes the buck along. This extra method call will have some performance cost—but in most cases, it will be very minor.</p>
-
-<p>Another cost of delegation is the boilerplate code you need to write.</p>
-
-<p><strong>YAGNI, You ain’t gonna need it.</strong></p>
-
-<p>You Ain’t Gonna Need It (YAGNI for short). The YAGNI principle says simply that you should not implement features, or design in flexibility, that you don’t need right now.</p>
-
-<p>A well-designed system is one that will flex gracefully in the face of bug fixes, changing requirements, the ongoing march of technology, and inevitable redesigns. The YAGNI principle says that you should focus on the things that you need right now, building in only the flexibility that you know you need.</p>
-
-<p>The use of design patterns has somehow become associated with a particularly virulent strain of over-engineering, with code that tries to be infinitely flexible at the cost of being understandable, and maybe even at the cost of just plain working. The proper use of design patterns is the art of making your system just flexible enough to deal with the problems you have today, but no more.</p>
-
-<p>Your system will not work better because you used all 23 of the GoF design patterns in every possible combination. Your code will work better only if it focuses on the job it needs to do right now.</p>
-
-<h2 id="about-design-pattern">About Design Pattern</h2>
-
-<p>Background</p>
-
-<blockquote>
-  <p>In 1995, Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides set out to redirect all the effort going into building redundant software wheels into something more useful. That year, building on the work of Christopher Alexander, Kent Beck, and others, they published Design Patterns: Elements of Reusable Object-Oriented Software. The book was an instant hit, with the authors rapidly becoming famous (at least in software engineering circles) as the Gang of Four (GoF).</p>
-</blockquote>
-
-<p>Focus on some key questions:</p>
-
-<ul>
-  <li>How do objects like the ones you tend to find in most systems relate to one another?</li>
-  <li>How should they be coupled together?</li>
-  <li>What should they know about each other?</li>
-  <li>How can we swap out parts that are likely to change frequently?</li>
-</ul>
-
-<p>It’s commonly agreed that the most useful thing about patterns is the way in which they form a vocabulary for articulating design decisions during the normal course of development conversations among programmers.</p>
-
-<p>Design patterns are little spring-loaded solutions to common programming problems. And a reckless use of every design pattern on the menu to solve nonexistent problems gives design patterns a bad name in some circles.</p>
-
-<p><strong>With Ruby</strong></p>
-
-<p>With Ruby, we no longer need to pull out relatively heavyweight design patterns to solve tiny problems. Instead, Ruby allows you to do simple things simply. </p>
-
-<ul>
-  <li>
-    <p>Like a Command object in the GoF sense is essentially a wrapper around some code that knows how to do one specific thing, to run a particular bit of code at some time. Of course, that is also a fairly accurate description of a Ruby code block object or a <code>Proc</code>.</p>
-  </li>
-  <li>
-    <p>Internal Domain Specific Languages. I believe that his treatment of the subject, as an evolution of the Interpreter pattern, is the first significant reference work in publication on the topic.</p>
-  </li>
-</ul>
-
-<p>The Ruby programming language makes implementing patterns so easy that sometimes they fade into the background.</p>
-
-<ul>
-  <li>Ruby is dynamically typed.</li>
-  <li>Ruby has code closures.</li>
-  <li>Ruby classes are real objects.</li>
-  <li>Ruby has an elegant system of code reuse.</li>
-</ul>
-
-<p>The traditional implementations of many design patterns work, but they make you work, too. Ruby allows you to concentrate on the real problems that you are trying to solve instead of the plumbing.</p>
-
-<p>The increasing industry recognition of the value of dynamic and flexible languages such as Ruby has plunged us into yet another wisdom gap.</p>
-
-<blockquote>
-  <p>Design Patterns was published in the need for wisdom. </p>
-
-  <p>Bruce Tate is fond of pointing out that when a new programming technique or language pops up, there is frequently a wisdom gap. The industry needs time to come to grips with the new technique, to figure out the best way to apply it. How many years had to elapse between the first realization that object-oriented programming was the way to go and the time when we really began to use object-oriented technology effectively? Those years were the object-oriented wisdom gap.</p>
-</blockquote>
-
-<h2 id="design-pattern-classification">Design Pattern Classification</h2>
-
-<p><strong>Creational</strong> (5)</p>
-
-<ul>
-  <li>Factory Method</li>
-  <li>Abstract Factory</li>
-  <li>Builder</li>
-  <li>Prototype</li>
-  <li>Singleton</li>
-</ul>
-
-<p><strong>Structural</strong> (7)</p>
-
-<ul>
-  <li>Facade</li>
-  <li>Adapter</li>
-  <li>Proxy</li>
-  <li>Decorator</li>
-  <li>Bridge</li>
-  <li>Composite</li>
-  <li>Flyweight</li>
-</ul>
-
-<p><strong>Behavioural</strong> (11)</p>
-
-<ul>
-  <li>Template Method</li>
-  <li>Observer</li>
-  <li>State</li>
-  <li>Strategy</li>
-  <li>Chain of Responsibility</li>
-  <li>Command</li>
-  <li>Visitor</li>
-  <li>Mediator</li>
-  <li>Memento</li>
-  <li>Iterator</li>
-  <li>Interpreter</li>
-</ul>
-
-<h2 id="the-template-method">The Template Method</h2>
-
-<p>Basic idea is <em>Seperate out the things that change from thos that stay the same.</em> </p>
-
-<h3 id="description">Description</h3>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/template-method.png" alt="template-method" /></p>
-
-<ol>
-  <li>Extract the common part into an abstract base class</li>
-  <li>Create some hook methods as the interface</li>
-  <li>Let the subclass to implement it</li>
-</ol>
-
-<p>The Template Method pattern is simply a fancy way of saying that if you want to vary an algorithm, one way to do so is to code the invariant part in a base class and to encapsulate the variable parts in methods that are defined by a number of subclasses.</p>
-
-<p>The abstract base class controls the higher-level processing through the template method; the sub-classes simply fill in the details.</p>
-
-<p>Non-abstract methods that can be overridden in the concrete classes of the Template Method pattern are called <strong>hook methods</strong>.</p>
-
-<p>Duck typing is a trade-off: You give up the compile-time safety of static typing, and in return you get back a lot of code clarity and programming flexibility.</p>
-
-<h3 id="using-and-abusing">Using and Abusing</h3>
-
-<p>The Template Method pattern is at its best when it is at its leanest—that is, when every abstract method and hook is there for a reason. Try to avoid creating a template class that requires each subclass to override a huge number of obscure methods just to cover every conceivable possibility. You also do not want to create a template class that is encrusted with a multitude of hook methods that no one will ever override.</p>
-
-<h3 id="in-the-wild">In the Wild</h3>
-
-<p>There is another very common example of the Template Method pattern that is perhaps so pervasive that it is hard to see. Think about the <code>initialize</code> method that we use to set up our objects. All we know about <code>initialize</code> is that it is called sometime toward the end of the process of creating a new object instance and that it is a method that we can override in our class to do any specific initialization. Sounds like a hook method to me.</p>
-
-<p><code>Class#new</code> calls <code>allocate</code> first, then <code>initialise</code>. Every class inherits the <code>new</code> method, and defines its own concrete <code>initialise</code> method. So, we can treat <code>Class#new</code> as a template method, and <code>initialise</code> as a hook method.</p>
-
-<h2 id="the-strategy">The Strategy</h2>
-
-<p>Basic idea is <em>Delegate, delegate, delegate</em> and <em>Prefer composition over inheritance</em>.</p>
-
-<h3 id="description-1">Description</h3>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/strategy.png" alt="strategy" /></p>
-
-<ol>
-  <li>Pull the algorithm out into a seperate “strategy” object.</li>
-  <li>All of the startegy objects support the same interface. </li>
-  <li>Let the context choose.</li>
-</ol>
-
-<p>Given that all of the strategy objects look alike from the outside, the user of the strategy—called the <strong>context</strong> class by the GoF—can treat the strategies like interchangeable parts.</p>
-
-<h3 id="comparing-to-the-template-method">Comparing to the Template Method</h3>
-
-<p>The Template Method pattern is built around inheritance.</p>
-
-<p>No matter how carefully you design your code, your subclasses are tangled up with their superclass: It is in the nature of the relationship. On top of this, inheritance-based techniques such as the Template Method pattern limit our runtime flexibility. Once we have selected a particular variation of the algorithm—in our example, once we have created an instance of HTMLReport—changing our mind is hard.</p>
-
-<p><code>ruby
-# The Template Method
-report = HTMLReport.new
-report.output_report
-report = PlainTextReport.new
-report.output_report
-</code></p>
-
-<p>Because the Strategy pattern is based on composition and delegation, rather than on inheritance, it is easy to switch strategies at runtime.</p>
-
-<p><code>ruby
-# The Strategy
-report = Report.new(HTMLFormatter.new)
-report.output_report
-report.formatter = PlainTextFormatter.new
-report.output_report
-</code></p>
-
-<h3 id="sharing-data-between-the-context-and-strategy">Sharing Data between the Context and Strategy</h3>
-
-<ol>
-  <li><em>Pass in everything that the strategy needs as arguments when the context calls the methods on the strategy object.</em> The downside of doing things this way is that if there is a lot of complex data to pass between the context and the strategy, then, well, you are going to be passing a lot of complex data around without any guarantee that it will get used.</li>
-  <li>Having the context object pass a reference to itself to the strategy object.</li>
-</ol>
-
-<h3 id="using-and-abusing-1">Using and Abusing</h3>
-
-<p>Particular attention to the details of the interface between the context and the strategy as well as to the coupling between them. Remember, the Strategy pattern will do you little good if you couple the context and your first strategy so tightly together that you cannot wedge a second or a third strategy into the design.</p>
-
-<h3 id="in-the-wild-1">In the Wild</h3>
-
-<p>Ruby code blocks, which are essentially code wrapped up in an instant object (the Proc object), are wonderfully useful for creating quick, albeit simple, strategy objects.  </p>
-
-<p>Use Proc as the lightweight strategy object. </p>
-
-<p>```ruby
-class Report
-  attr_reader :title, :text
-  attr_accessor :formatter</p>
-
-<p>def initialize(&amp;formatter)
-    @title = ‘Monthly Report’
-    @text = [ ‘Things are going’, ‘really, really well.’ ]
-    @formatter = formatter
-  end</p>
-
-<p>def output_report
-    @formatter.call( self )
-  end
-end
-```</p>
-
-<h2 id="the-observer">The Observer</h2>
-
-<h3 id="description-2">Description</h3>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/observer.png" alt="observer" /></p>
-
-<p>The aiming is to build a system that is highly integrated—that is, a system where every part is aware of the state of the whole.</p>
-
-<p>The GoF called this idea of building a clean interface between the source of the news that some object has changed and the consumers of that news the Observer pattern. The class with the news is the <strong>subject</strong>, and the objects which are interested in getting the news are the <strong>observor</strong>.</p>
-
-<blockquote>
-  <p>It has always seemed to me that the Observer pattern is somewhat misnamed. While the observer object gets top billing—in fact, the only billing—it is actually the subject that does most of the work. It is the subject that is responsible for keeping track of the observers. It is also the subject that needs to inform the observers that a change has come down the pike.</p>
-</blockquote>
-
-<h3 id="code-usage">Code Usage</h3>
-
-<p>```ruby
-module Subject
-  def initialize
-    @observers=[]
-  end</p>
-
-<p>def add_observer(observer)
-    @observers « observer
-  end</p>
-
-<p>def delete_observer(observer)
-    @observers.delete(observer)
-  end</p>
-
-<p>def notify_observers
-    @observers.each do |observer|
-      observer.update(self)
-    end
-  end
-end</p>
-
-<p>class Employee
-  include Subject</p>
-
-<p>attr_reader :name, :address
-  attr_reader :salary</p>
-
-<p>def initialize(name, title, salary)
-   super()
-   @name = name
-   @title = title
-   @salary = salary
-  end</p>
-
-<p>def salary=(new_salary)
-    @salary = new_salary
-    notify_observers
-  end
-end
-```</p>
-
-<p>The Ruby standard library comes with a fine, prebuilt <a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/observer/rdoc/Observable.html">Observable</a> module that provides all of the support you need to make your object, well, observable.</p>
-
-<p>With the observable module, the observable object must:</p>
-
-<ol>
-  <li>assert that it has <code>#changed</code></li>
-  <li>call <code>#notify_observers</code></li>
-</ol>
-
-<p>```ruby
-require ‘observer’
-class Employee
-  include Observable</p>
-
-<p>attr_reader :name, :address
-  attr_reader :salary</p>
-
-<p>def initialize( name, title, salary)
-   @name = name
-   @title = title
-   @salary = salary
-  end</p>
-
-<p>def salary=(new_salary)
-    @salary = new_salary
-    changed
-    notify_observers(self)
-  end
-end
-```</p>
-
-<h3 id="interfaces-pull-or-push">Interfaces. Pull or Push?</h3>
-
-<p>The key decisions that you need to make when implementing the Observer pattern all center on the interface between the subject and the observer.</p>
-
-<p>Just have a single method in the observer whose only argument is the subject. The GoF term for this strategy is the <strong>pull</strong> method, because the observers have to pull whatever details about the change that they need out of the subject.</p>
-
-<p>The other possibility—logically enough termed the <strong>push</strong> method—has the subject send the observers a lot of details about the change:</p>
-
-<p><code>ruby
-observer.update_salary(self, old_salary, new_salary)
-observer.update_title(self, old_title, new_title)
-</code></p>
-
-<p>The advantage in providing more details is that the observers do not have to work quite as hard to keep track of what is going on. The disadvantage of the push model is that if all of the observers are not interested in all of the details, then the work of passing the data around goes for naught.</p>
-
-<h3 id="using-and-abusing-2">Using and Abusing</h3>
-
-<p><em>The frequency and timing of the updates.</em> The subject class can help with all of this by avoiding broadcasting redundant updates. Just because someone updates an object, it does not mean that anything really changed.</p>
-
-<p><code>ruby
-def salary=(new_salary)
-  old_salary = @salary
-  @salary = new_salary
-  if old_salary != new_salary
-    changed
-    notify_observers(self)
-  end
-end
-</code></p>
-
-<p><em>The consistency of the subject as it informs its observers of changes.</em></p>
-
-<p>```ruby
-fred = Employee.new(“Fred”, “Crane Operator”, 30000)</p>
-
-<p>fred.salary = 1000000
-# Warning! Inconsistent state here!
-fred.title = ‘Vice President of Sales’</p>
-
-<h1 id="dont-inform-the-observers-just-yet">Don’t inform the observers just yet</h1>
-<p>fred.salary = 1000000
-fred.title = ‘Vice President of Sales’</p>
-
-<h1 id="now-inform-the-observers">Now inform the observers!</h1>
-<p>fred.changes_complete
-```</p>
-
-<p><em>Badly behaved observers.</em> Like responds by raising an exception?</p>
-
-<h3 id="in-the-wild-2">In the Wild</h3>
-
-<p>Use Proc as Observers. Just use <code>call</code> as the interface when notifying observers.</p>
-
-<p><code>ruby
-module Subject
-  def notify_observers
-    @observers.each do |observer|
-      observer.call(self)
-    end
-  end
-end
-</code></p>
-
-<p>ActiveRecord::Observer has been deprecated from Rails 4.0, but we can still get the feature by the extracted gem. <a href="https://github.com/rails/rails-observers">rails-observers</a></p>
-
-<h2 id="composite">Composite</h2>
-
-<h3 id="description-3">Description</h3>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/composite.png" alt="composite" /></p>
-
-<ol>
-  <li><strong>component</strong>, a common interface or base class for all of your objects.</li>
-  <li><strong>leaf</strong>, the class doing simple, indivisible building blocks of process.</li>
-  <li><strong>composite</strong>, a component, also a higher-level object that is build from subcomponents.</li>
-</ol>
-
-<p>The GoF called the design pattern for our “<em>the sum acts like one of the parts</em>” situation the Composite pattern. You will know that you need to use the Composite pattern when you are trying to build a hierarchy or tree of objects, and you do not want the code that uses the tree to constantly have to worry about whether it is dealing with a single object or a whole bushy branch of the tree. Once you grasp its <em>recursive nature</em>, the Composite pattern is really quite simple.</p>
-
-<h3 id="code-usage-1">Code Usage</h3>
-
-<p>```ruby
-class CompositeTask &lt; Task
-  def initialize(name)
-    super(name)
-    @sub_tasks = []
-  end</p>
-
-<p>def add_sub_task(task)
-    @sub_tasks « task
-  end</p>
-
-<p>def remove_sub_task(task)
-    @sub_tasks.delete(task)
-  end</p>
-
-<p>def get_time_required
-    time=0.0
-    @sub_tasks.each {|task| time += task.get_time_required}
-    time
-  end
-end</p>
-
-<p>class MakeBatterTask &lt; CompositeTask
-  def initialize
-    super(‘Make batter’)
-    add_sub_task( AddDryIngredientsTask.new )
-    add_sub_task( AddLiquidsTask.new )
-    add_sub_task( MixTask.new )
-  end
-end
-```</p>
-
-<h3 id="concerns">Concerns</h3>
-
-<p><strong><em>How to handle the difference between a composite and a leaf?</em></strong></p>
-
-<p>The goal of the Composite pattern is to make the leaf objects <em>more or less</em> indistinguishable from the composite objects. But there is one unavoidable difference between a composite and a leaf: The composite has to manage its children, which probably means that it needs to have a method to get at the children and possibly methods to add and remove child objects. The leaf classes, of course, really do not have any children to manage; that is the nature of leafyness.</p>
-
-<p>As I say, how you handle this decision is mostly a matter of taste: Make the leaf and composite classes different, or burden the leaf classes with embarrassing methods that they do not know how to handle. My own instinct is to leave the methods off of the leaf classes. Leaf objects cannot handle child objects, and we may as well admit it.</p>
-
-<p><strong><em>How to traverse the tree structrue which the composite pattern make?</em></strong></p>
-
-<p>Each composite object holds references to its subcomponents but the child components do not know a thing about their parents, it is easy to traverse the tree from the root to the leaves but hard to go the other way.</p>
-
-<p>Add a parent reference in the component class.</p>
-
-<p>```ruby
-class Task
-  attr_accessor :name, :parent</p>
-
-<p>def initialize(name)
-    @name = name
-    @parent = nil
-  end
-end</p>
-
-<p>class CompositeTask &lt; Task
-  def initialize(name)
-    super(name)
-    @sub_tasks = []
-  end</p>
-
-<p>def add_sub_task(task)
-    @sub_tasks « task
-    task.parent = self
-  end</p>
-
-<p>def remove_sub_task(task)
-    @sub_tasks.delete(task)
-    task.parent = nil
-  end
-end
-```</p>
-
-<h3 id="using-and-abusing-3">Using and Abusing</h3>
-
-<p>The error that crops up so frequently with the Composite pattern is assuming that the tree is only one level deep—that is, assuming that all of the child components of a composite object are, in fact, leaf objects and not other composites.</p>
-
-<p>Remember, the power of the Composite pattern is that it allows us to build arbitrarily deep trees.</p>
-
-<h3 id="in-the-wild-3">In the Wild</h3>
-
-<h2 id="the-iterator">The Iterator</h2>
-
-<h3 id="description-4">Description</h3>
-
-<p>Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.</p>
-
-<p>Iterators in Ruby are a great example of what is right with the language. Instead of providing special-purpose external iterator objects for each aggregate class, Ruby relies on the very flexible idea of Proc objects and code blocks to build internal iterators.</p>
-
-<p><strong>external iterator</strong>, the iterator is a separate object from the aggregate.</p>
-
-<p><code>java
-# in java
-ArrayList list = new ArrayList();
-list.add("red");
-list.add("green");
-list.add("blue");
-for( Iterator i = list.iterator(); i.hasNext();) {
-        System.out.println( "item: " + i.next());
-}
-</code></p>
-
-<p><strong>internal iterator</strong>, the code block-based iterators, all of the iterating action occurs inside the aggregate object.</p>
-
-<p>```ruby
-# in ruby
-def for_each_element(array)
-  i= 0
-  while i &lt; array.length
-    yield(array[i])
-    i += 1
-  end
-end</p>
-
-<p>a = [10, 20, 30]
-for_each_element(a) {|element| puts(“The element is #{element}”)}
-```</p>
-
-<h3 id="internal-iterators-vs-external-iterators">Internal Iterators vs. External Iterators</h3>
-
-<p>With Internal Iterator, the main advantage is simplicity and code clarity.</p>
-
-<p>With External Iterator</p>
-
-<ol>
-  <li>
-    <p>You have more flexibility on iteration control. With an external iterator, you won’t call <code>next</code> until you are good and ready for the next element. With an internal iterator, by contrast, the aggregate relentlessly pushes the code block to accept item after item.</p>
-
-    <p><em>If you are trying to merge the contents of two sorted arrays into a single array that was itself sorte?</em></p>
-
-    <p>the merge is actually fairly easy with an external iterator, simply create an iterator for the two input arrays and then merge the arrays by repeatedly pushing the smallest value from either of the iterators onto the output array.</p>
-  </li>
-  <li>
-    <p>A second advantage of external iterators is that, because they are external, you can share them—you can pass them around to other methods and objects. Of course, this is a bit of a double-edged sword: You get the flexibility but you also have to know what you are doing. In particular, beware of multiple threads getting hold of a non-thread-safe external iterator.</p>
-  </li>
-</ol>
-
-<h3 id="the-inimitable-enumerable">The Inimitable Enumerable</h3>
-
-<p>To mix in <code>Enumerable</code>, you need only make sure that your internal iterator method is named <code>each</code> and that the individual elements that you are going to iterate over have a reasonable implementation of the <code>&lt;=&gt;</code> comparison operator. </p>
-
-<p>```ruby
-class Account
-  attr_accessor :name, :balance</p>
-
-<p>def initialize(name, balance)
-    @name = name
-    @balance = balance
-  end</p>
-
-<p>def &lt;=&gt;(other)
-    balance &lt;=&gt; other.balance
-  end
-end</p>
-
-<p>class Portfolio
-  include Enumerable</p>
-
-<p>def initialize
-    @accounts = []
-  end</p>
-
-<p>def each(&amp;block)
-    @accounts.each(&amp;block)
-  end</p>
-
-<p>def add_account(account)
-    @accounts « account
-  end
-end</p>
-
-<p>my_portfolio.any? {|account| account.balance &gt; 2000}
-my_portfolio.all? {|account| account.balance &gt; = 10}
-```</p>
-
-<h3 id="using-and-abusing-4">Using and Abusing</h3>
-
-<p>The main danger is this: What happens if the aggregate object changes while you are iterating through it?</p>
-
-<p>You may use a shallow copy when initializing.</p>
-
-<p><code>ruby
-class ChangeResistantArrayIterator
-  def initialize(array)
-    @array = Array.new(array)
-    @index = 0
-  end
-  ...
-</code></p>
-
-<p>A Ruby trick example.</p>
-
-<p>```ruby
-array=[‘red’, ‘green’, ‘blue’, ‘purple’]</p>
-
-<p>array.each do | color |
-  puts(color)
-  if color == ‘green’
-    array.delete(color)
-  end
-end</p>
-
-<h1 id="red">red</h1>
-<p># green
-# purple
-```</p>
-
-<p><em>Finally, a multithreaded program is a particularly dangerous home for iterators.</em> You need to take all of the usual care to ensure that one thread does not rip the aggregate rug out from under your iterator.</p>
-
-<h3 id="in-the-wild-4">In the Wild</h3>
-
-<p><strong>IO</strong></p>
-
-<p>The neat thing about the IO object is that it is amphibious—it does both internal and external iterators.</p>
-
-<p>```ruby
-f = File.open(‘names.txt’)
-while not f.eof?
-  puts(f.readline)
-end
-f.close</p>
-
-<p>f = File.open(‘names.txt’)
-f.each {|line| puts(line)}
-f.close
-```</p>
-
-<p><strong>Pathname</strong> <a href="http://ruby-doc.org/stdlib-2.1.0/libdoc/pathname/rdoc/Pathname.html">API</a></p>
-
-<p>Pathname tries to offer one-stop shopping for all your directory and path manipulation needs.</p>
-
-<p>```ruby
-pn.each_filename {|file| puts(“File: #{file}”)}
-# File: usr
-# File: local
-# File: lib
-# File: ruby
-# File: 1.8</p>
-
-<p>pn.each_entry {|entry| puts(“Entry: #{entry}”)}
-# Entry: .
-# Entry: ..
-# Entry: i686-linux
-# Entry: shellwords.rb
-# Entry: mailread.rb
-# …
-```</p>
-
-<p><strong>ObjectSpace</strong> <a href="http://www.ruby-doc.org/core-2.1.3/ObjectSpace.html">API</a></p>
-
-<p>ObjectSpace provides a window into the complete universe of objects that exist within your Ruby interpreter. The fundamental iterator supplied by ObjectSpace is the <code>each_object</code> method. It iterates across all of the Ruby objects—everything that is loaded into your Ruby interpreter:</p>
-
-<p>```ruby
-ObjectSpace.each_object {|object| puts(“Object: #{object}”)}</p>
-
-<h1 id="if-you-supply-the-argument-eachobject-will-iterate-over-only">If you supply the argument, each_object will iterate over only</h1>
-<p># the instances of that class or module.
-ObjectSpace.each_object(Numeric) {|n| puts(“The number is #{n}”)}
-```</p>
-
-<p>Try this execellent <code>subclasses_of</code> method:</p>
-
-<p>```ruby
-def subclasses_of(superclass)
-  subclasses = []</p>
-
-<p>ObjectSpace.each_object(Class) do |k|
-    next if !k.ancestors.include?(superclass) || superclass == k || k.to_s.include?(‘::’) || subclasses.include?(k.to_s)
-    subclasses « k.to_s
-  end</p>
-
-<p>subclasses
-end</p>
-
-<p>subclasses_of(Numeric)
-# =&gt; [“Complex”, “Rational”, “Bignum”, “Float”, “Fixnum”, “Integer”]
-```</p>
-
-<h2 id="the-command">The Command</h2>
-
-<h3 id="description-5">Description</h3>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/command.png" alt="command" /></p>
-
-<p>The idea of factoring out the action code into its own object is the essence of the Command pattern.</p>
-
-<p>The key thing about the Command pattern is that it separates the thought from the deed. When you use this pattern, you are no longer simply saying, “Do this”; instead, you are saying, “Remember how to do this,” and, sometime later, “Do that thing that I told you to remember.”</p>
-
-<p>Command pattern can be useful in</p>
-
-<ol>
-  <li>Keeping track of what you need to do, or what you have already done</li>
-  <li>Undo or redo</li>
-  <li>Queuing up comands</li>
-</ol>
-
-<h3 id="keep-track-of-what-you-have-done">Keep Track of What You Have Done</h3>
-
-<p>```ruby
-class Command
-  attr_reader :description</p>
-
-<p>def initialize(description)
-    @description = description
-  end</p>
-
-<p>def execute
-  end
-end</p>
-
-<p>class CreateFile &lt; Command
-  def initialize(path, contents)
-    super(“Create file: #{path}”)
-    @path = path
-    @contents = contents
-  end</p>
-
-<p>def execute
-    f = File.open(@path, “w”)
-    f.write(@contents)
-    f.close
-  end
-end
-```</p>
-
-<p><strong>Use Composite</strong></p>
-
-<p>When we are trying to keep track of what we are about to do—or have done—we will need a class to collect all of our commands. Hmm, a class that acts like a command, but really is just a front for a number of subcommands. Sounds like a composite:</p>
-
-<p>```ruby
-class CompositeCommand &lt; Command
-  def initialize
-    @commands = []
-  end</p>
-
-<p>def add_command(cmd)
-    @commands « cmd
-  end</p>
-
-<p>def execute
-    @commands.each {|cmd| cmd.execute}
-  end</p>
-
-<p>def description
-    description = ‘’
-    @commands.each {|cmd| description += cmd.description + “\n”}
-    description
-  end
-end</p>
-
-<p>cmds = CompositeCommand.new
-cmds.add_command(CreateFile.new(‘file1.txt’, “hello world\n”))
-cmds.add_command(CopyFile.new(‘file1.txt’, ‘file2.txt’))
-cmds.add_command(DeleteFile.new(‘file1.txt’))</p>
-
-<p>cmds.execute
-```</p>
-
-<h3 id="undo-or-redo">Undo or Redo</h3>
-
-<p>Every undoable command that we create has two methods. Along with the usual <code>execute</code> method, which does the thing, we add an <code>unexecute</code> method, which undoes the same thing.</p>
-
-<p>As delete a file maybe destructive, so we need to save the contents of the original file.</p>
-
-<p>```ruby
-class DeleteFile &lt; Command
-  def initialize(path)
-    super “Delete file: #{path}”
-    @path = path
-  end</p>
-
-<p>def execute
-    if File.exists?(@path)
-      @contents = File.read(@path)
-    end
-    f = File.delete(@path)
-  end</p>
-
-<p>def unexecute
-    if @contents
-      f = File.open(@path,”w”)
-      f.write(@contents)
-      f.close
-    end
-  end
-end<br />
-```</p>
-
-<p>Creating a file with CreateFile could be destructive, too: The file that we are trying to create might already exist and be overwritten as we create the new file. In a real system, we would need to deal with this possibility as well as with a host of issues related to file permissions and ownership. </p>
-
-<p>```ruby
-class CreateFile &lt; Command
-  def initialize(path, contents)
-    super “Create file: #{path}”
-    @path = path
-    @contents = contents
-  end</p>
-
-<p>def execute
-    f = File.open(@path, “w”)
-    f.write(@contents)
-    f.close
-  end
-  def unexecute
-    File.delete(@path)
-  end
-end
-```</p>
-
-<p>Finnaly, add an <code>unexecute</code> method to the <code>CompositeCommad</code> class.</p>
-
-<p>```ruby
-class CompositeCommand &lt; Command
-  # …</p>
-
-<p>def unexecute
-    @commands.reverse.each { |cmd| cmd.unexecute }
-  end</p>
-
-<p># …
-end
-```</p>
-
-<h3 id="queuing-up-commands">Queuing Up Commands</h3>
-
-<blockquote>
-  <p>For example, it frequently takes a minor computer-time eternity to connect to a database. If you need to perform a number of database operations over time, you sometimes face the unpleasant choice of (1) leaving the connection open for the whole time, thereby wasting a scarce resource, or (2) wasting the time it takes to open and close the connection for each operation.</p>
-</blockquote>
-
-<p>The Command pattern offers one way out of this kind of bind. Instead of performing each operation as a stand-alone task, you accumulate all of these commands in a list. Periodically, you can open a connection to the database, execute all of your commands, and flush out this list.</p>
-
-<h3 id="using-and-abusing-5">Using and Abusing</h3>
-
-<p>The key thing about the Command pattern is that it separates the thought from the deed. When you use this pattern, you are no longer simply saying, “Do this”; instead, you are saying, “Remember how to do this,” and, sometime later, “Do that thing that I told you to remember.” Make sure that you really need that complexity before you pull the Command pattern out of your bag of tricks.</p>
-
-<p><strong>Creation Time versus Execution Time</strong></p>
-
-<p>Assuming you really do need the Command pattern, to make it work you have to be sure that the initial thought is complete. You have to carefully think through the circumstances in which the command object will find itself when it is executed versus when it was created. Yes, this key file was open, and that vital object was initialized when I created the command. Will it all still be there for me when the command is executed?</p>
-
-<h3 id="in-the-wild-5">In the Wild</h3>
-
-<p><strong>ActiveRecord::Migration</strong></p>
-
-<p>```ruby
-class CreateBookTable &lt; ActiveRecord::Migration
-  # execute
-  def self.up
-    create_table :books do |t|
-      t.column :title, :string
-      t.column :author, :string
-    end
-  end</p>
-
-<p># unexecute
-  def self.down
-    drop_table :books
-  end
-end
-```</p>
-
-<p><strong>Madeleine</strong></p>
-
-<p><a href="https://github.com/ghostganz/madeleine">repo</a></p>
-
-<blockquote>
-  <p>Imagine how slow your system would be if you had to write out a whole airport’s worth of seat assignments every time someone changed his or her mind and wanted that aisle seat after all.</p>
-</blockquote>
-
-<p>Madeleine is a transactional, high-performance, object persistence framework that does not need any object relational mapping for the simple reason that it does not use a relational database—or any other kind of database, for that matter. Instead, Madeleine relies on the Ruby Marshal package, a facility for converting live Ruby objects into bytes and for turning those bytes back into objects. Unfortunately, being able to marshal your objects to a file is not by itself a complete solution to application persistence.</p>
-
-<p><a href="https://gist.github.com/ifyouseewendy/c0a3ec5da222779885f0">Example gist using Madeleine</a></p>
-
-<h2 id="the-adapter">The Adapter</h2>
-
-<h3 id="description-6">Description</h3>
-
-<p>An adapter is an object that crosses the chasm between the interface that you have and the interface that you need.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/adapter.png" alt="the adapter" /></p>
-
-<p>The client expects the target to have a certain interface. But unknown to the client, the target object is really an adapter, and buried inside of the adapter is a reference to a second object, the adaptee, which actually performs the work.</p>
-
-<h3 id="adapt-or-modify">Adapt or Modify?</h3>
-
-<p>The choice of using an adapter or modifying the object really comes down to how well you understand the class in question and the issue of encapsulation.</p>
-
-<p>Lean toward modifying the class in the following circumstances:</p>
-
-<ul>
-  <li>The modifications are simple and clear.</li>
-  <li>You understand the class you are modifying and the way in which it is used.</li>
-</ul>
-
-<p>Lean toward an adapter solution in the following situations:</p>
-
-<ul>
-  <li>The interface mismatch is extensive and complex. </li>
-  <li>You have no idea how this class works.</li>
-</ul>
-
-<p>Engineering is all about trade-offs. Adapters preserve encapsulation at the cost of some complexity. Modifying a class may buy you some simplification, but at the cost of tinkering with the plumbing.</p>
-
-<h3 id="using-and-abusing-6">Using and Abusing</h3>
-
-<p>One of the advantages that Ruby’s duck typing gives to adapter writers is that it allows us to create adapters that support only that part of the target interface that the client will actually use. Partially implemented adapters are something of a double-edged sword: On the one hand, it is very convenient to implement only what you absolutely need; on the other hand, your program can come to grief if the client decides to call a method that you didn’t think you needed.</p>
-
-<h3 id="in-the-wild-6">In the Wild</h3>
-
-<p><code>ActiveRecord</code> deals with all of these differences by defining a standardized interface, encapsulated in a class called <code>AbstractAdapter</code>. The <code>AbstractAdapter</code> class defines the interface to a database that is used throughout <code>ActiveRecord</code>. </p>
-
-<p><code>AbstractAdapter</code> defines a standard method to execute a SQL select statement and return the results, called <code>select_all</code>. Each individual adapter implements the <code>select_all</code> method in terms of the API of the underlying database system.</p>
-
-<h2 id="the-proxy">The Proxy</h2>
-
-<h3 id="description-7">Description</h3>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/proxy.png" alt="the proxy" /></p>
-
-<p>The Proxy pattern is essentially built around a little white lie. The counterfeit object, called the <strong>proxy</strong> by the GoF, has a reference to the real object, the <strong>subject</strong>, hidden inside. Whenever the client code calls a method on the proxy, the proxy simply forwards the request to the real object.</p>
-
-<p>Inside the proxy is hidden a reference to the other, real object—an object that the GoF referred to as the subject.</p>
-
-<p>Once we have a proxy, we have a place to stand squarely between the client and the real object. The proxy provides the ideal pinch point to exert control.</p>
-
-<p>The proxy serves as a pinch point between the client and the subject:</p>
-
-<ul>
-  <li>“Is this operation authorized?” asks the protection proxy.</li>
-  <li>“Does the subject actually live on this other machine?” asks the remote proxy. </li>
-  <li>“Have I actually created the subject yet?” asks the virtual proxy. </li>
-</ul>
-
-<p>In short, the proxy controls access to the subject.</p>
-
-<h3 id="the-protection-proxy">The Protection Proxy</h3>
-
-<p>A proxy that controls access to the subject.</p>
-
-<p>```ruby
-require ‘etc’</p>
-
-<p>class AccountProtectionProxy
-  def initialize(real_account, owner_name)
-    @subject = real_account
-    @owner_name = owner_name
-  end</p>
-
-<p>def deposit(amount)
-    check_access
-    return @subject.deposit(amount)
-  end</p>
-
-<p>def withdraw(amount)
-    check_access
-    return @subject.withdraw(amount)
-  end</p>
-
-<p>def check_access
-    if Etc.getlogin != @owner_name
-      raise “Illegal access: #{Etc.getlogin} cannot access account.”
-    end
-  end
-end
-```</p>
-
-<p>The advantage of using a proxy for protection is that it gives us a nice separation of concerns: The proxy worries about who is or is not allowed to do what. The only thing that the real bank account object need be concerned with is, well, the bank account.</p>
-
-<p>By splitting the protection cleanly off from the workings of the real object, we can minimize the chance that any important information will inadvertently leak out through our protective shield.</p>
-
-<h3 id="the-remove-proxy">The Remove Proxy</h3>
-
-<p>You could hide the complexity behind a remote proxy, an object that lives on the client machine and looks, to the client code, just like the real BankAccount object. When a request comes in, the remote proxy goes through all the horror of packaging up the request, sending it over the network, waiting for a response, unpacking the response, and returning the answer to the unsuspecting client.</p>
-
-<p>From the client’s point of view, it called a method on what it thought was the real BankAccount object and sometime later—perhaps an unusually long time later—the answer came back. This is how virtually all remote procedure call (RPC) systems work.</p>
-
-<p>```ruby
-require ‘soap/wsdlDriver’</p>
-
-<p>wsdl_url = ‘http://www.webservicex.net/WeatherForecast.asmx?WSDL’</p>
-
-<p>proxy = SOAP::WSDLDriverFactory.new( wsdl_url ).create_rpc_driver
-weather_info = proxy.GetWeatherByZipCode(‘ZipCode’=&gt;’19128’)
-```</p>
-
-<p>Once the proxy object is set up, the client code no longer has to worry about the fact that the service actually lives at www.webservicex.net. Instead, it simply calls GetWeatherByZipCode and leaves all of the network details to the proxy.</p>
-
-<h3 id="the-virtual-proxy">The Virtual Proxy</h3>
-
-<p>In a sense, the virtual proxy is the biggest liar of the bunch. It pretends to be the real object, but it does not even have a reference to the real object until the client code calls a method. Only when the client actually calls a method does the virtual proxy scurry off and create or otherwise get access to the real object.</p>
-
-<p>```ruby
-class VirtualAccountProxy</p>
-
-<p>def initialize(starting_balance=0)
-    @starting_balance=starting_balance
-  end</p>
-
-<p>def deposit(amount)
-    s = subject
-    return s.deposit(amount)
-  end</p>
-
-<p>def withdraw(amount)
-    s = subject
-    return s.withdraw(amount)
-  end</p>
-
-<p>def balance
-    s = subject
-    return s.balance
-  end</p>
-
-<p>def subject
-    @subject || (@subject = BankAccount.new(@starting_balance))
-  end
-end<br />
-```</p>
-
-<p>That approach tangles the proxy and the subject up a little more than we might like. We can improve on this strategy by applying a little of that Ruby code block magic:</p>
-
-<p>```ruby
-class VirtualAccountProxy
-  def initialize(&amp;creation_block)
-    @creation_block = creation_block
-  end</p>
-
-<p># Other methods omitted …</p>
-
-<p>def subject
-    @subject || (@subject = @creation_block.call)
-  end
-end
-```</p>
-
-<p><strong>Leverage Ruby</strong></p>
-
-<p>Use ghost method <code>method_missing</code> and dynamic dispatch <code>send</code>.</p>
-
-<p>```ruby
-class VirtualProxy
-  def initialize(&amp;creation_block)
-    @creation_block = creation_block
-  end</p>
-
-<p>def method_missing(name, *args)
-    s = subject
-    s.send( name, *args)
-  end</p>
-
-<p>def subject
-    @subject = @creation_block.call unless @subject
-    @subject
-  end
-end</p>
-
-<p>array = VirtualProxy.new { Array.new }
-array « ‘hello’
-array « ‘out’
-array « ‘there’
-```</p>
-
-<h3 id="using-and-abusing-7">Using and Abusing</h3>
-
-<p>Overusing <code>method_missing</code>, like overusing inheritance, is a great way to obscure your code.</p>
-
-<h3 id="in-the-wild-7">In the Wild</h3>
-
-<p><strong>drb using a remote proxy</strong></p>
-
-<p>```ruby
-# server
-class MathService
-  def add(a, b)
-    return a + b
-  end
-end</p>
-
-<p>require ‘drb/drb’</p>
-
-<p>math_service=MathService.new
-DRb.start_service(“druby://localhost:3030”, math_service)
-DRb.thread.join</p>
-
-<h1 id="client">client</h1>
-<p>require ‘drb/drb’
-DRb.start_service</p>
-
-<h1 id="the-client-side-mathservice-is-actually-a-remote-proxy-to-the-real">the client-side math_service is actually a remote proxy to the real</h1>
-<p># math service, which is running inside the server-side Ruby interpreter.
-math_service = DRbObject.new_with_uri(“druby://localhost:3030”)
-sum=math_service.add(2,2)
-```</p>
-
-<h2 id="the-decorator">The Decorator</h2>
-
-<blockquote>
-  <p>But what if you simply need to vary the responsibilities of an object? What do you do when sometimes your object needs to do a little more, but sometimes a little less?</p>
-</blockquote>
-
-<h3 id="description-8">Description</h3>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/decorator.png" alt="decorator" /></p>
-
-<p>The ConcreteComponent is the “real” object, the object that implements the basic component functionality.</p>
-
-<p>The Decorator pattern is a straightforward technique that you can use to assemble exactly the functionality that you need at runtime. The Decorator class has a reference to a Component—the next Component in the decorator chain—and it implements all of the methods of the Component type. </p>
-
-<p>Each decorator supports the same core interface, but adds its own twist on that interface. The key implementation idea of the Decorator pattern is that the decorators are essentially shells: Each takes in a method call, adds its own special twist, and passes the call on to the next component in line. </p>
-
-<p>The Decorator pattern lets you start with some basic functionality and layer on extra features, one decorator at a time.</p>
-
-<h3 id="why-not-the-template-method">Why Not The Template Method?</h3>
-
-<p>The trouble is that the inheritance-based approach requires you to come up with all possible combinations of features up-front, at design time.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/out-of-control-inheritance.png" alt="out-of-control inheritance" /></p>
-
-<h3 id="code-usage-2">Code Usage</h3>
-
-<p>```ruby
-class WriterDecorator
-  def initialize(real_writer)
-    @real_writer = real_writer
-  end</p>
-
-<p>def write_line(line)
-    @real_writer.write_line(line)
-  end</p>
-
-<p>def pos
-    @real_writer.pos
-  end</p>
-
-<p>def rewind
-    @real_writer.rewind
-  end</p>
-
-<p>def close
-    @real_writer.close
-  end
-end</p>
-
-<p>class NumberingWriter &lt; WriterDecorator
-  def initialize(real_writer)
-    super(real_writer)
-    @line_number = 1
-  end</p>
-
-<p>def write_line(line)
-    @real_writer.write_line(“#{@line_number}: #{line}”)
-    @line_number += 1
-   end
-end</p>
-
-<p>writer = NumberingWriter.new(SimpleWriter.new(‘final.txt’))
-writer.write_line(‘Hello out there’)
-```</p>
-
-<p><strong>Fowardable module</strong> <a href="http://www.ruby-doc.org/stdlib-2.0/libdoc/forwardable/rdoc/Forwardable.html">API</a></p>
-
-<p>Ruby provides the <strong>Forwardable</strong> module provides delegation of specified methods to a designated object, using the methods <code>def_delegator</code> and <code>def_delegators</code>.</p>
-
-<p>```ruby
-require ‘forwardable’</p>
-
-<p>class WriterDecorator
-  extend Forwardable</p>
-
-<p>def_delegators :@real_writer, :write_line, :rewind, :pos, :close</p>
-
-<p>def initialize(real_writer)
-    @real_writer = real_writer
-  end
-end
-```</p>
-
-<p>The forwardable module is more of a precision weapon than the <code>method_missing</code> technique. But the <code>method_missing</code> technique really shines when you want to delegate large numbers of calls.</p>
-
-<p><strong>Dynamic Alternatives - Wrapping Methods</strong></p>
-
-<ul>
-  <li>Around Alias</li>
-  <li>Refinement Wrapper</li>
-  <li>Prepended Wrapper</li>
-</ul>
-
-<p>Check <a href="http://blog.ifyouseewendy.com/blog/2014/06/03/metaprogrammingi-ruby/#method-wrapper">this</a>.</p>
-
-<p><strong>Dynamic Alternatives - Decorating with Modules</strong></p>
-
-<p>```ruby
-w = SimpleWriter.new(‘out’)
-w.extend(NumberingWriter)
-w.extend(TimeStampingWriter)</p>
-
-<p>w.write_line(‘hello’)
-```</p>
-
-<p>With both of these techniques, it is hard to undo the decoration. Unwrapping an aliased method is likely to be tedious, and you simply cannot un-include a module.</p>
-
-<h3 id="using-and-abusing-8">Using and Abusing</h3>
-
-<ul>
-  <li>The classic Decorator pattern is loved more by the folks who build the thing than by those who use it.</li>
-  <li>One thing to keep in mind when implementing the Decorator pattern is that you need to keep the component interface simple.</li>
-  <li>Another potential drawback of the Decorator pattern is the performance overhead associated with a long chain of decorators.</li>
-  <li>Finally, one drawback of the method-aliasing technique for decorating objects is that it tends to make your code harder to debug.</li>
-</ul>
-
-<h3 id="in-the-wild-8">In the Wild</h3>
-
-<p><strong><code>alias_method_chain</code> in ActiveSupport</strong></p>
-
-<p>```ruby
-def write_line(line)
-  puts(line)
-end</p>
-
-<p>def write_line_with_timestamp(line)
-  write_line_without_timestamp(“#{Time.new}: #{line}”)
-end</p>
-
-<p>alias_method_chain :write_line, :timestamp
-```</p>
-
-<p>The <code>alias_method_chain</code> method will rename the original <code>write_line</code> method to <code>write_line_without_timestamp</code> and rename <code>write_line_with_timestamp</code> to plain old <code>write_line</code>, essentially creating a chain of methods. The nice thing about <code>alias_method_chain</code> is that, as its name suggests, you can chain together a number of enhancing methods.</p>
-
-<h3 id="adapter-proxy-or-decorator">Adapter, Proxy or Decorator</h3>
-
-<p>They are all “<em>one object stands for another</em>”, and the basic idea is <em>Delegate, delegate, delegate</em>.</p>
-
-<ul>
-  <li><strong>The Adapter</strong> hides the fact that some object has the wrong interface by wrapping it with an object that has the right interface. </li>
-  <li><strong>The Proxy</strong> also wraps another object, but not with the intent of changing the interface. Instead, the proxy has the same interface as the object that it is wrapping. The proxy isn’t there to tre; it is there to control. Proxies are good for tasks such as enforcing security, hiding the fact that an object really lives across the network, and delaying the creation of the real object until the last possible moment. </li>
-  <li><strong>The Decorator</strong> enables you to layer features on to a basic object.</li>
-</ul>
-
-<h2 id="singleton">Singleton</h2>
-
-<p>A singleton class has exactly one instance, and access to that one instance is available globally.</p>
-
-<h3 id="code-usage-3">Code Usage</h3>
-
-<ol>
-  <li>Creating the class variable and initializing it with the singleton instance</li>
-  <li>Creating the class-level <code>instance</code> method</li>
-  <li>Make <code>new</code> private.</li>
-</ol>
-
-<p>```ruby
-class SimpleLogger
-  # Lots of code deleted…</p>
-
-<p>@@instance = SimpleLogger.new</p>
-
-<p>def self.instance
-    return @@instance
-  end</p>
-
-<p># make sure there is only one
-  private_class_method :new
-end</p>
-
-<p>logger1 = SimpleLogger.instance   # Returns the logger
-logger2 = SimpleLogger.instance   # Returns exactly the same logger
-```</p>
-
-<p>Creating the singleton instance before you actually need it is called <em>eager instantiation</em>.</p>
-
-<p><strong>Singleton module</strong> <a href="http://www.ruby-doc.org/stdlib-1.9.3/libdoc/singleton/rdoc/Singleton.html">API</a></p>
-
-<p>```ruby
-require ‘singleton’</p>
-
-<p>class SimpleLogger
-  include Singleton</p>
-
-<p># Lots of code deleted…
-end
-```</p>
-
-<p>The Singleton module, waits until someone calls instance before it actually creates its singleton. This technique is known as <em>lazy instantiation</em>.</p>
-
-<h3 id="alternatives">Alternatives</h3>
-
-<p><strong>Global Variables and Constants</strong></p>
-
-<ol>
-  <li>If you use a global variable or a constant for this purpose, there is no way to delay the creation of the singleton object until you need it.</li>
-  <li>Neither of these techniques does anything to prevent someone from creating a second or third instance of your supposedly singleton class.</li>
-</ol>
-
-<p><strong>Class and Module methods</strong></p>
-
-<p>Lazy initialization remains and all of those <code>self.methods</code> and <code>@@variables</code> makes a strange feel.</p>
-
-<h3 id="using-and-abusing-9">Using and Abusing</h3>
-
-<p><strong>Don’t expect the Singleton module really prevent anything</strong></p>
-
-<p>```ruby
-require ‘singleton’</p>
-
-<p>class Manager
-  include Singleton</p>
-
-<p>def manage_resources
-    puts(“I am managing my resources”)
-  end
-end
-```</p>
-
-<p>Use <code>public_class_method</code>.</p>
-
-<p>```ruby
-m = Manager.new # =&gt; private method ‘new’ called for Manager:Class</p>
-
-<p>class Manager
-  public_class_method :new
-end</p>
-
-<p>m = Manager.new
-```</p>
-
-<p>Use <code>clone</code></p>
-
-<p>```ruby
-m = Manager.instance.clone
-# =&gt; TypeError: can’t clone instance of singleton Manager</p>
-
-<p>Foo = Manager.clone
-Foo.instance.manage_resources
-# =&gt; I am managing my resources
-```</p>
-
-<p>The Ruby philosophy is that if you decide to circumvent the very clear intent of the author of the ClassBasedLogger class by cloning it, the language is there to help you out. You are in the driver’s seat, not the language. By keeping almost everything open to modification, Ruby allows you to do the things that you say you want to do—but it is up to you to say the right things.</p>
-
-<p><strong>Coupling concern</strong></p>
-
-<p>Create a singleton, and you have just made it possible for widely separated bits of your program to use that singleton as a secret channel to communicate with each other and, in the process, tightly couple themselves to each other. The horrible consequences of this coupling are why software engineering got out of the global variable business in the first place.</p>
-
-<p>There is only one solution to this problem: <em>Don’t do that</em>.</p>
-
-<p><strong>Considering the count, Do I really only need one instance?</strong></p>
-
-<p><strong>a Need-to-Know Basis</strong></p>
-
-<p>Another mistake that many people make is to spread the knowledge of a class’s singleton-ness far and wide.</p>
-
-<p>```ruby
-require ‘singleton’</p>
-
-<p>class DatabaseConnectionManager
-  include Singleton</p>
-
-<p>def get_connection
-    # Return the database connection…
-  end
-end
-```</p>
-
-<p><em>Which classes are actually aware that DatabaseConnectionManager is a singleton?</em></p>
-
-<p>```ruby
-class PreferenceManager
-  def initialize
-    @reader = PrefReader.new
-    @writer = PrefWriter.new
-    @preferences = { :display_splash=&gt;false, :background_color=&gt;:blue }
-  end</p>
-
-<p>def save_preferences
-    preferences = {}
-    # Preference are in
-    @writer.write(@preferences)
-  end</p>
-
-<p>def get_preferences
-    @preferences = @reader.read
-  end
-end</p>
-
-<p>class PrefWriter
-  def write(preferences)
-    connection = DatabaseConnectionManager.instance.get_connection
-    # Write the preferences out
-  end
-end</p>
-
-<p>class PrefReader
-  def read
-    connection = DatabaseConnectionManager.instance.get_connection
-    # Read the preferences and return them…
-  end
-end
-```</p>
-
-<p>A better approach might be to concentrate the knowledge that <code>DatabaseConnectionManager</code> is a singleton in the <code>PreferenceManager</code> class and simply pass it into the preference reader and writer:</p>
-
-<p>```ruby
-class PreferenceManager
-  def initialize
-    @reader = PrefReader.new
-    @writer = PrefWriter.new
-    @preferences = { :display_splash=&gt;false, :background_color=&gt;:blue }
-  end</p>
-
-<p>def save_preferences
-    preferences = {}
-    # Preference are in
-    @writer.write(DatabaseConnectionManager.instance, @preferences)
-  end</p>
-
-<p>def get_preferences
-    @preferences = @reader.read(DatabaseConnectionManager.instance)
-  end
-end
-```</p>
-
-<p><strong>Test Interferes</strong></p>
-
-<p>As the Singleton saves the state, there is one exceedingly nasty thing about the Singleton pattern is the way that it interferes with unit testing.</p>
-
-<p>One way to deal with this problem is to create two classes: an ordinary (i.e., non-singleton) class that contains all of the code, and a subclass of the first class that is a singleton. </p>
-
-<p>```ruby
-require ‘singleton’</p>
-
-<p>class SimpleLogger
-  # All of the logging functionality in this class…
-end</p>
-
-<p>class SingletonLogger &lt; SimpleLogger
-  include Singleton
-end
-```</p>
-
-<p>The actual application code uses the <code>SingletonLogger</code>, while the tests can use the plain old, non-singleton <code>Logger</code> class.</p>
-
-<h3 id="in-the-wild-9">In the Wild</h3>
-
-<p><strong>Inflections in ActiveSupport</strong></p>
-
-<p>The <code>Inflections</code> class is a singleton, which saves space and ensures that the same inflection rules are available everywhere.</p>
-
-<p><strong>Rake::Application in rake</strong> <a href="http://ruby-doc.org/stdlib-2.0/libdoc/rake/rdoc/Rake/Application.html">API</a></p>
-
-<p>As it runs, rake—like most build tools—reads in information about what it needs to do: which directories to create, which files to copy, and so on. All of this information needs to be available to all of the moving parts of rake, so rake stores it all in a single object (the <code>Rake::Application</code> object, to be precise) that is available as a singleton to the entire rake program.</p>
-
-<h2 id="factory">Factory</h2>
-
-<blockquote>
-  <p>picking the right class for the circumstances</p>
-</blockquote>
-
-<h3 id="description-9">Description</h3>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/factory.png" alt="factory" /></p>
-
-<p>The GoF called this technique of pushing the “which class” decision down on a subclass the Factory Method pattern.</p>
-
-<ul>
-  <li>The <strong>creators</strong> are the base and concrete classes that contain the factory methods.</li>
-  <li>The <strong>products</strong> are the objects being created.</li>
-</ul>
-
-<p>At its heart, this pattern is really just the Template Method pattern applied to the problem of creating new objects. In both the Factory Method pattern and the Template Method pattern, a generic part of the algorithm is coded in the generic base class, and subclasses fill in the blanks left in the base class.  </p>
-
-<p><strong>Parameterized Factory Method</strong></p>
-
-<p>Parameterized factory method is a method that can produce either a plant or an animal, depending on the symbol that is passed in:</p>
-
-<p>```ruby
-class Pond
-  def initialize(number_animals, number_plants)
-    @animals = []
-    number_animals.times do |i|
-      animal = new_organism(:animal, “Animal#{i}”)
-      @animals « animal
-    end</p>
-
-<pre><code>@plants = []
-number_plants.times do |i|
-  plant = new_organism(:plant, "Plant#{i}")
-  @plants &lt;&lt; plant
-end   end   # ... end
-</code></pre>
-
-<p>class DuckWaterLilyPond &lt; Pond
-  def new_organism(type, name)
-    if type == :animal
-      Duck.new(name)
-    elsif type == :plant
-      WaterLily.new(name)
-    else
-      raise “Unknown organism type: #{type}”
-    end
-  end
-end</p>
-
-<p>pond = DuckWaterLilyPond.new(3, 2)
-```</p>
-
-<p><strong>Claasses Are Just Objects, Too</strong></p>
-
-<p>While the GoF concentrated on inheritance-based implementations of their factories, we can get the same results with much less code by taking advantage of the fact that in Ruby, classes are just objects.</p>
-
-<p>```ruby
-class Pond
-  def initialize(number_animals, animal_class,
-                 number_plants, plant_class)
-    @animal_class = animal_class
-    @plant_class = plant_class</p>
-
-<pre><code>@animals = []
-number_animals.times do |i|
-  animal = new_organism(:animal, "Animal#{i}")
-  @animals &lt;&lt; animal
-end
-
-@plants = []
-number_plants.times do |i|
-  plant = new_organism(:plant, "Plant#{i}")
-  @plants &lt;&lt; plant
-end   end
-</code></pre>
-
-<p>def simulate_one_day
-    @plants.each {|plant| plant.grow}
-    @animals.each {|animal| animal.speak}
-    @animals.each {|animal| animal.eat}
-    @animals.each {|animal| animal.sleep}
-  end</p>
-
-<p>def new_organism(type, name)
-    if type == :animal
-      @animal_class.new(name)
-    elsif type == :plant
-      @plant_class.new(name)
-    else
-      raise “Unknown organism type: #{type}”
-    end
-  end
-end</p>
-
-<p>pond = Pond.new(3, Duck, 2, WaterLily)
-pond.simulate_one_day
-```</p>
-
-<h3 id="abstract-factory">Abstract Factory</h3>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/abstract-factory.png" alt="abstract factory" /></p>
-
-<p>An object dedicated to creating a compatible set of objects is called an abstract factory. </p>
-
-<p>The problem is that you need to create sets of compatible objects. The solution is that you write a separate class to handle that creation.</p>
-
-<p>The important thing about the abstract factory is that it encapsulates the knowledge of which product types go together. You can express that encapsulation with classes and subclasses, or you can get to it by storing the class objects as we did in the code above. Either way, you end up with an object that knows which kind of things belong together.</p>
-
-<p>```ruby
-class PondOrganismFactory
-  def new_animal(name)
-    Frog.new(name)
-  end
-  def new_plant(name)
-    Algae.new(name)
-  end
-end</p>
-
-<p>class JungleOrganismFactory
-  def new_animal(name)
-    Tiger.new(name)
-  end
-  def new_plant(name)
-    Tree.new(name)
-  end
-end</p>
-
-<p>class Habitat
-  def initialize(number_animals, number_plants, organism_factory)
-    @organism_factory = organism_factory</p>
-
-<pre><code>@animals = []
-number_animals.times do |i|
-  animal = @organism_factory.new_animal("Animal#{i}")
-  @animals &lt;&lt; animal
-end
-
-@plants = []
-number_plants.times do |i|
-  plant = @organism_factory.new_plant("Plant#{i}")
-  @plants &lt;&lt; plant
-end   end end
-</code></pre>
-
-<p>jungle = Habitat.new(1, 4, JungleOrganismFactory.new)
-jungle.simulate_one_day</p>
-
-<p>pond = Habitat.new( 2, 4, PondOrganismFactory.new)
-pond.simulate_one_day<br />
-```</p>
-
-<p><strong>Claasses Are Just Objects, Too</strong></p>
-
-<p>```ruby
-class OrganismFactory
-  def initialize(plant_class, animal_class)
-    @plant_class = plant_class
-    @animal_class = animal_class
-  end</p>
-
-<p>def new_animal(name)
-    @animal_class.new(name)
-  end</p>
-
-<p>def new_plant(name)
-    @plant_class.new(name)
-  end
-end</p>
-
-<p>jungle_organism_factory = OrganismFactory.new(Tree, Tiger)
-pond_organism_factory = OrganismFactory.new(WaterLily, Frog)</p>
-
-<p>jungle = Habitat.new(1, 4, jungle_organism_factory)
-jungle.simulate_one_day
-pond = Habitat.new( 2, 4, pond_organism_factory)
-pond.simulate_one_day
-```</p>
-
-<p><strong>Naming</strong></p>
-
-<p>Another way that we can simplify the implementation of abstract factories is to rely on a consistent naming convention for the product classes. </p>
-
-<h3 id="factory--abstract-factory">Factory &amp;&amp; Abstract Factory</h3>
-
-<ul>
-  <li>The Factory Method pattern is really the Template Method pattern applied to object creation.</li>
-  <li>the Abstract Factory pattern is simply the Strategy pattern applied to the same problem.</li>
-</ul>
-
-<h3 id="using-and-abusing-10">Using and Abusing</h3>
-
-<p>Not every object needs to be produced by a factory. (<em>You Ain’t Goona Need It</em>).</p>
-
-<p>Engineers do have a tendency to build the Queen Mary (or perhaps the Titanic?) when a canoe will suffice. If you have a choice of exactly one class at the moment, put off adding in a factory.</p>
-
-<h3 id="in-the-wild-10">In the Wild</h3>
-
-<p><strong>Base in ActiveRecord</strong></p>
-
-<p><code>ruby
-adapter = "mysql"
-method_name = "#{adapter}_connection"
-Base.send(method_name, config)
-</code></p>
-
-<h2 id="builder">Builder</h2>
-
-<h3 id="description-10">Description</h3>
-
-<p>Builder pattern, a pattern designed to help you configure those complex objects. The builder class takes charge of assembling all of the components of a complex object.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/buidler.png" alt="builder" /></p>
-
-<p>The client of the builder object the <strong>director</strong> because it directs the builder in the construction of the new object (called the <strong>product</strong>). Builders not only ease the burden of creating complex objects, but also hide the implementation details.</p>
-
-<p>The idea behind the Builder pattern is that if your object is hard to build, if you have to write a lot of code to configure each object, then you should factor all of that creation code into a separate class, the builder.</p>
-
-<p>The builders are less concerned about picking the right class and more focused on helping you configure your object.</p>
-
-<ul>
-  <li>Take control of configuring your object</li>
-  <li>Prevent you from constructing an invalid object</li>
-</ul>
-
-<h3 id="code-usage-4">Code Usage</h3>
-
-<p>```ruby
-class ComputerBuilder
-  attr_reader :computer</p>
-
-<p>def initialize
-    @computer = Computer.new
-  end</p>
-
-<p>def turbo(has_turbo_cpu=true)
-    @computer.motherboard.cpu = TurboCPU.new
-  end</p>
-
-<p>def display=(display)
-    @computer.display=display
-  end</p>
-
-<p>def memory_size=(size_in_mb)
-    @computer.motherboard.memory_size = size_in_mb
-  end</p>
-
-<p>def add_cd(writer=false)
-    @computer.drives « Drive.new(:cd, 760, writer)
-  end</p>
-
-<p>def add_dvd(writer=false)
-    @computer.drives « Drive.new(:dvd, 4000, writer)
-  end</p>
-
-<p>def add_hard_disk(size_in_mb)
-    @computer.drives « Drive.new(:hard_disk, size_in_mb, true)
-  end
-end</p>
-
-<p>builder = ComputerBuilder.new
-builder.turbo
-builder.add_cd(true)
-builder.add_dvd
-builder.add_hard_disk(100000)</p>
-
-<p>computer = builder.computer
-```</p>
-
-<h3 id="builders-can-ensure-sane-objects">Builders Can Ensure Sane Objects</h3>
-
-<p>That final “give me my object” method makes an ideal place to check that the configuration requested by the client really makes sense and that it adheres to the appropriate business rules.</p>
-
-<p><code>ruby
-def computer
-  raise "Not enough memory" if @computer.motherboard.memory_size &lt; 250
-  raise "Too many drives" if @computer.drives.size &gt; 4
-  hard_disk = @computer.drives.find {|drive| drive.type == :hard_disk}
-  raise "No hard disk." unless hard_disk
-  @computer
-end
-</code></p>
-
-<h3 id="resuable-buidlers">Resuable Buidlers</h3>
-
-<p>An important issue to consider when writing and using builders is whether you can use a single builder instance to create multiple objects. </p>
-
-<p>One way to deal with this issue is to equip your builder with a <code>reset</code> method, which reinitializes the object under construction.</p>
-
-<p><code>ruby
-class LaptopBuilder
-  # Lots of code omitted...
-  def reset
-    @computer = LaptopComputer.new
-  end
-end
-</code></p>
-
-<p>The reset method will let you reuse the builder instance, but it also means that you have to start the configuration process all over again for each computer. If you want to perform the configuration once and then have the builder produce any number of objects based on that configuration, you need to store all of the configuration information in instance attributes and create the actual product only when the client asks for it.</p>
-
-<h3 id="better-builders-with-magic-methods">Better Builders with Magic Methods</h3>
-
-<p>Use ghost method <code>method_missing</code>.</p>
-
-<p>```ruby
-def method_missing(name, *args)
-  words = name.to_s.split(“_”)
-  return super(name, *args) unless words.shift == ‘add’
-  words.each do |word|
-    next if word == ‘and’
-    add_cd if word == ‘cd’
-    add_dvd if word == ‘dvd’
-    add_hard_disk(100000) if word == ‘harddisk’
-    turbo if word == ‘turbo’
-  end
-end</p>
-
-<p>builder.add_dvd_and_harddisk
-builder.add_turbo_and_dvd_and_harddisk
-```</p>
-
-<h3 id="using-and-abusing-11">Using and Abusing</h3>
-
-<p>It is usually fairly easy to spot code that is missing a builder: You can find the same object creation logic scattered all over the place. Another hint that you need a builder is when your code starts producing invalid objects.</p>
-
-<p>Builder pattern sometimes creeps up on you as your application becomes increasingly complex.</p>
-
-<h3 id="in-the-wild-11">In the Wild</h3>
-
-<h2 id="interpreter">Interpreter</h2>
-
-<h3 id="description-11">Description</h3>
-
-<p>Interpreter pattern, which suggests that sometimes the best way to solve a problem is to invent a new language for just that purpose. </p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/interpreter.png" alt="Interpreter" /></p>
-
-<p>The heart of the Interpreter pattern is the abstract syntax tree.</p>
-
-<p>The GoF called such values or conditions supplied at the time the AST is interpreted the <code>context</code>.</p>
-
-<ol>
-  <li>The parser reads in the program text and produces a data structure, called an abstract syntax tree (AST).</li>
-  <li>The AST is evaluated against some set of external conditions, or context, to produce the desired computation.</li>
-</ol>
-
-<blockquote>
-  <p>ASTs are, in fact, specialized examples of the Composite pattern, with the nonterminal expressions playing the parts of the composites.</p>
-</blockquote>
-
-<p>You can supply your clients with an API for building up the tree in code, or you can write a parser that takes strings and turns them into the AST.</p>
-
-<h3 id="with-a-parser">With a Parser</h3>
-
-<p>```ruby
-class Parser
-  def initialize(text)
-    @tokens = text.scan(/(|)|[\w.*]+/)
-  end</p>
-
-<p>def next_token
-    @tokens.shift
-  end</p>
-
-<p>def expression
-    token = next_token
-    if token == nil
-      return nil
-    elsif token == ‘(‘
-      result = expression
-      raise ‘Expected )’ unless next_token == ‘)’
-      result
-    elsif token == ‘all’
-      return All.new
-    elsif token == ‘writable’
-      return Writable.new
-    elsif token == ‘bigger’
-      return Bigger.new(next_token.to_i)
-    elsif token == ‘filename’
-      return FileName.new(next_token)
-    elsif token == ‘not’
-      return Not.new(expression)
-    elsif token == ‘and’
-      return And.new(expression, expression)
-    elsif token == ‘or’
-      return Or.new(expression, expression)
-    else
-      raise “Unexpected token: #{token}”
-    end
-  end
-end  </p>
-
-<p>parser = Parser.new “and (and(bigger 1024)(filename *.mp3)) writable”
-ast = parser.expression
-```</p>
-
-<p><strong>Let XML or YAML Do The Parsing</strong></p>
-
-<p>Keep in mind that the main motivation behind building an interpreter is to give your users a natural way to express the kind of processing that needs to be done.</p>
-
-<p><strong>Racc</strong></p>
-
-<p>Racc is modeled (and named) after the venerable UNIX YACC utility. Racc takes as input a description of the grammar for your language and spits out a parser, written in Ruby for that language.</p>
-
-<h3 id="without-a-parser">Without a Parser</h3>
-
-<p>Internal Domain-Specifc Languages.</p>
-
-<p>You may implement your Interpreter pattern in such a way that users could write their pro-grams in actual Ruby code. Maybe you could design your AST API in such a way that the code flows so naturally that your users might be unaware that they are, in fact, writing Ruby code.</p>
-
-<h3 id="using-and-abusing-12">Using and Abusing</h3>
-
-<ul>
-  <li>The complexity issue. (The sheer number of components is why the Interpreter pattern is in practice limited to relatively simple languages.)</li>
-  <li>Program efficiency, it is probably best to limit your use of the Interpreter pattern to areas that do not demand high performance.</li>
-</ul>
-
-<h3 id="in-the-wild-12">In the Wild</h3>
-
-<p><strong>SQL</strong></p>
-
-<p><strong>HTML</strong></p>
-
-<p><strong>Ruby</strong>, of course, an interpreted language.</p>
-
-<p><strong>regular expression</strong></p>
-
-<h2 id="domain-specific-languages">Domain-Specific Languages</h2>
-
-<h3 id="description-12">Description</h3>
-
-<p>The DSL pattern suggests that you should focus on the language itself, not on the interpreter.</p>
-
-<p>External DSLs are external in the sense that there is a parser and an interpreter for the DSL, and there are the programs written in the DSL.</p>
-
-<p>An internal DSL, according to Fowler, is one in which we start with some implementation language, perhaps Ruby, and we simply bend that one language into being our DSL.</p>
-
-<h3 id="using-and-abusing-13">Using and Abusing</h3>
-
-<ol>
-  <li>You are limited to what you can parse with a Ruby-based internal DSL.</li>
-  <li>Error messages.</li>
-</ol>
-
-<h3 id="in-the-wild-13">In the Wild</h3>
-
-<p>The most prominent example of a pure internal DSL in the Ruby world is probably rake, Ruby’s answer to ant or make. </p>
-
-<p><strong>rake</strong>, Ruby’s answer to ant or make.</p>
-
-<h2 id="custom-objects">Custom Objects</h2>
-
-<p>Meta-programming certainly takes a different tack in producing the right object, at its heart this pattern focuses on leveraging the flexibility of Ruby.</p>
-
-<ul>
-  <li>We can start with a simple object and add individual methods or even whole modules full of methods to it. </li>
-  <li>Using <code>class_eval</code>, we can generate completely new methods at runtime.</li>
-  <li>We can take advantage of Ruby’s reflection facilities, which allow a program to examine its own structure</li>
-</ul>
-
-<p>A note:</p>
-
-<blockquote>
-  <p>The <code>attr_accessor</code> method and its friends live in the module <code>Module</code>, which is included by the <code>Object</code> class. If you go looking for the Ruby code for <code>attr_accessor</code>, <code>attr_reader</code>, and <code>attr_writer</code>, however, you are destined to be disappointed. For the sake of efficiency—but purely for efficiency—these methods are written in C.</p>
-</blockquote>
-
-<h3 id="custom-tailoring-technique">Custom-Tailoring Technique</h3>
-
-<p>This custom-tailoring technique is particularly useful when you have lots of orthogonal features that you need to assemble into a single object.</p>
-
-<p>Of course, there really is no rule that says you need to start your customizations with a plain-vanilla instance of Object. In real life, you will likely want to start with an instance of a class that provides some base level of functionality and then tweak the methods from there.</p>
-
-<p>```ruby
-def new_animal(diet, awake)
-  animal = Object.new
-  if diet == :meat
-    animal.extend(Carnivore)
-  else
-    animal.extend(Herbivore)
-  end</p>
-
-<p>…
-end<br />
-```</p>
-
-<p>No matter whether you tailor your objects one method at a time or in module-sized chunks, the ultimate effect is to create a customized object, uniquely made to order for the requirements of the moment.</p>
-
-<h3 id="reflections">Reflections</h3>
-
-<blockquote>
-  <p>If you are meta-programming new functionality into your classes on the fly, how can you tell what any given instance can do?</p>
-</blockquote>
-
-<p>Reflection features like <code>public_methods</code> and <code>respond_to?</code> are handy anytime but become real assets as you dive deeper and deeper into meta-programming, when what your objects can do depends more on their history than on their class.</p>
-
-<h3 id="using-and-abusing-14">Using and Abusing</h3>
-
-<p>Tests are absolutely mandatory for systems that use a lot of meta-programming.</p>
-
-<h2 id="convention-over-configuration">Convention Over Configuration</h2>
-
-<blockquote>
-  <p>The common message is that you should not just take your language as you find it, but rather mold it into something closer to the tool that you need to solve the problem at hand.</p>
-</blockquote>
-
-<h3 id="description-13">Description</h3>
-
-<p>The Convention Over Configuration pattern suggests that you define a convention that a sensible engineer might use anyway.</p>
-
-<ul>
-  <li>
-    <p>Try to deduce how your users will behave.</p>
-  </li>
-  <li>
-    <p>You can give your user a kick start by supplying him or her with a model, a template, or an example to follow. You could also supply a utility to generate the outline or <strong>scaffold</strong> of a class. It is easy to discount the value of this scaffold-generating script.</p>
-  </li>
-</ul>
-
-<h3 id="using-and-abusing-15">Using and Abusing</h3>
-
-<p>One danger in building convention-based systems is that your convention might be incomplete, thereby limiting the range of things that your system can do.</p>
-
-<blockquote>
-  <p>Our message gateway, for example, does not really do a thorough job of transforming host names into Ruby class names. The code in this chapter will work fine with a simple host name like <em>russolsen.com</em>, transforming it into <em>RussOlsenDotCom</em>. But feed our current system something like <em>icl-gis.co</em>m and it will go looking for the very illegal <em>Icl-gisDotComAuthorizer</em> class.</p>
-</blockquote>
-
-<p>Another potential source of trouble is the possibility that a system that uses a lot of conventions may seem like it is operating by magic to the new user. Configuration files may be a pain in the neck to write and maintain, but they do provide a sort of road map—perhaps a very complicated and hard-to-interpret road map, but a map nevertheless—to the inner workings of the system. A well-done convention-based system, by contrast, needs to supply its operational road map in the form of (gasp!) <strong>documentation</strong>.</p>
-
-<p>Also keep in mind that as the convention magic becomes deeper and more complex, you will need ever more thorough unit tests to ensure that your conventions behave, well, conventionally. </p>
-
-<h2 id="reference">Reference</h2>
-
-<ul>
-  <li><a href="https://github.com/nslocum/design-patterns-in-ruby">Examples from the book Design Patterns</a> by <a href="https://github.com/nslocum">Nick Slocum</a></li>
-</ul>
 ]]></content>
   </entry>
   
