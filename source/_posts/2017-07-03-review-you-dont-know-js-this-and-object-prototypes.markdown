@@ -372,7 +372,7 @@ var obj = new Object();
 
 With these two, we could mentally map out the prototype chain. Like this picture illustrates:
 
-![__proto__-vs-prototype.png](https://raw.githubusercontent.com/ifyouseewendy/random-notes/master/assets/__proto__-vs-prototype.png)
+![__proto__-vs-prototype.png](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/you-dont-know-js/__proto__-vs-prototype.png)
 
 ```js
 function Foo() {}
@@ -920,7 +920,7 @@ b2.speak();
 
 OO style features `constructor` which introduces a lot of extra details that you don't _technically_ need to know at all times.
 
-![OO.png](https://raw.githubusercontent.com/ifyouseewendy/random-notes/master/assets/OO.png)
+![OO.png](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/you-dont-know-js/OO.png)
 
 OLOO style
 
@@ -951,5 +951,5 @@ b2.speak();
 
 OLOO-style code has _vastly less stuff_ to worry about, because it embraces the **fact **that the only thing we ever really cared about was the **objects linked to other objects**.
 
-![OLOO.png](https://raw.githubusercontent.com/ifyouseewendy/random-notes/master/assets/OLOO.png)
+![OLOO.png](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/you-dont-know-js/OLOO.png)
 
