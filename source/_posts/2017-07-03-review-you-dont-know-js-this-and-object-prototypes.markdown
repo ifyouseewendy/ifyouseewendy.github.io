@@ -32,19 +32,7 @@ Primary types \(language types\)
 
 Many people mistakenly claim "everything in JavaScript is an object", but this is incorrect. Objects are one of the 6 \(or 7, depending on your perspective\) primitive types. Objects have sub-types, including`function`, and also can be behavior-specialized, like`[object Array]`as the internal label representing the array object sub-type.
 
-| value | Primitives | Object Sub-types | typeof value |
-| :--- | :--- | :--- | :--- |
-| 1 | number | Number | "number" |
-| true | boolean | Boolean | "boolean" |
-| "hello" | string | String | "string" |
-| null | null | - | "object" \(!!\) |
-| undefined | undefined | - | "undefined" |
-| { name: "wendi" } | object | Object | "object" |
-| \[1, 2, 3\] | object | Array | "object" |
-| function\(\) {} | object | Function | "function" \(!!\) |
-| /^abc/ | object | RegExp | "object" |
-| new Date\("2017-07-01"\) | object | Date | "object" |
-| new Error\("shit"\) | object | Error | "object" |
+![types](https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/you-dont-know-js/types.png)
 
 What are object sub-types?
 
