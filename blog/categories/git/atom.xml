@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2016-08-30T23:06:48+08:00</updated>
+  <updated>2017-07-03T14:42:43-04:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Git Reminders]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2014/12/30/git-reminders/"/>
-    <updated>2014-12-30T15:11:29+08:00</updated>
+    <updated>2014-12-30T02:11:29-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2014/12/30/git-reminders</id>
     <content type="html"><![CDATA[<p>After using Git for two years, I’ve finally finished reading these two books, twice. Not only skimming, but also making excerpts and perform experiments in the meantime. These two fabulous books really benefit me a lot, and this is the final notes which construct my Git knowledge base, and comprise the excerpts from both books and experiments on some specific topics.</p>
 
@@ -1350,7 +1350,7 @@ dangling blob 7108f7ecb345ee9d0084193f147cdad4d2998293
   <entry>
     <title type="html"><![CDATA[Readable Git Log by Using Custom Commit Template]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2014/12/29/readable-git-log-by-using-custom-commit-template/"/>
-    <updated>2014-12-29T15:43:39+08:00</updated>
+    <updated>2014-12-29T02:43:39-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2014/12/29/readable-git-log-by-using-custom-commit-template</id>
     <content type="html"><![CDATA[<p>I was thinking of making my git logs more readable for a long time. Sometimes merge log can help to seperate a set of commits as a feature, but <strong>how can we get more info from the sequential log messages inside a set of commits?</strong></p>
 
@@ -1518,7 +1518,7 @@ quote&gt; some content’
   <entry>
     <title type="html"><![CDATA[Git Filter Branch in Practice]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2014/12/25/git-filter-branch-in-practice/"/>
-    <updated>2014-12-25T20:54:49+08:00</updated>
+    <updated>2014-12-25T07:54:49-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2014/12/25/git-filter-branch-in-practice</id>
     <content type="html"><![CDATA[<p>For some reasons, our company team is migrating our codebase from Github Enterprise to Gitlab. One of the annoying things we should do is to update the invalid author names and emails in our git commits. Specifically, we should</p>
 

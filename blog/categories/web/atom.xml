@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2016-08-30T23:06:48+08:00</updated>
+  <updated>2017-07-03T14:42:43-04:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[[Review] Website Performance Optimization]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2015/12/19/web-performance-optimization/"/>
-    <updated>2015-12-19T15:21:58+08:00</updated>
+    <updated>2015-12-19T02:21:58-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2015/12/19/web-performance-optimization</id>
     <content type="html"><![CDATA[<p>After several years working, I’ve learned many lessons like how to write HTML, how to minify and compress CSS and JavaScript files, where to put the CSS and JavaScript reference, how to do the cache control and etc.. But all the knowledge are scattered, and the real mechanism, like the HTML rendering, seems like a mysterious process to me. So I spent some time digging and learning, the things finally got clear.</p>
 
@@ -774,7 +774,7 @@ override in our stylesheet. Every browser provides a default set of styles also 
   <entry>
     <title type="html"><![CDATA[Annoying OAuth Issue on HTTP URL Encoding]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding/"/>
-    <updated>2015-03-04T17:46:12+08:00</updated>
+    <updated>2015-03-04T04:46:12-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding</id>
     <content type="html"><![CDATA[<p>I was developing and maintaining an OAuth service using <code>pelle/oauth-plugin</code> gem. Other than the standard token exchange process, there is a need to authenticate by signature based on user’s passed in parameters. As custom parameters can include custom charactors, here comes the space encoding issue.</p>
 
@@ -878,7 +878,7 @@ end</p>
   <entry>
     <title type="html"><![CDATA[ASCIIcast of Fundamentals of Design by CodeSchool]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2014/06/22/asciicast-of-fundamentals-of-design-by-codeschool/"/>
-    <updated>2014-06-22T23:35:39+08:00</updated>
+    <updated>2014-06-22T11:35:39-04:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2014/06/22/asciicast-of-fundamentals-of-design-by-codeschool</id>
     <content type="html"><![CDATA[<ul id="markdown-toc">
   <li><a href="#typeface-classifications">Typeface Classifications</a>    <ul>

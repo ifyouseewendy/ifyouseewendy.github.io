@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2016-08-30T23:06:48+08:00</updated>
+  <updated>2017-07-03T14:42:43-04:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[preload, eager_load, includes, references, and joins in Rails]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins/"/>
-    <updated>2015-11-11T23:25:17+08:00</updated>
+    <updated>2015-11-11T10:25:17-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins</id>
     <content type="html"><![CDATA[<p>There is always a confusion about these query methods. And after some digging, I’ve made my conclusion here: <code>includes</code> is the outstanding one.</p>
 
@@ -251,7 +251,7 @@ Post 3-1, Post 3-2, Post 3-3, Post 3-4, Post 3-5
   <entry>
     <title type="html"><![CDATA[Data Types in Rails]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2015/08/10/data-types-in-rails/"/>
-    <updated>2015-08-10T17:45:53+08:00</updated>
+    <updated>2015-08-10T05:45:53-04:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2015/08/10/data-types-in-rails</id>
     <content type="html"><![CDATA[<p><strong><em>Have you ever got annoyed with data types when you are creating Rails migrations?</em></strong></p>
 
@@ -521,7 +521,7 @@ has_secure_password, you should specify `password:digest`:
   <entry>
     <title type="html"><![CDATA[Annoying OAuth Issue on HTTP URL Encoding]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding/"/>
-    <updated>2015-03-04T17:46:12+08:00</updated>
+    <updated>2015-03-04T04:46:12-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding</id>
     <content type="html"><![CDATA[<p>I was developing and maintaining an OAuth service using <code>pelle/oauth-plugin</code> gem. Other than the standard token exchange process, there is a need to authenticate by signature based on user’s passed in parameters. As custom parameters can include custom charactors, here comes the space encoding issue.</p>
 
@@ -624,9 +624,9 @@ end</p>
   
   <entry>
     <title type="html"><![CDATA[[Review] Practicing Rails]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/11/26/practicing-rails/"/>
-    <updated>2014-11-26T11:32:14+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/11/26/practicing-rails</id>
+    <link href="http://blog.ifyouseewendy.com/blog/2014/11/25/practicing-rails/"/>
+    <updated>2014-11-25T22:32:14-05:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2014/11/25/practicing-rails</id>
     <content type="html"><![CDATA[<table class="custom">
   <tbody>
     <tr>
@@ -1092,7 +1092,7 @@ irb(main):005:0&gt; helper.content_tag :h1, "Hey there" =&gt; "&lt;h1&gt;Hey the
   <entry>
     <title type="html"><![CDATA[From irb to Rails console]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2014/11/22/from-irb-to-rails-console/"/>
-    <updated>2014-11-22T18:09:51+08:00</updated>
+    <updated>2014-11-22T05:09:51-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2014/11/22/from-irb-to-rails-console</id>
     <content type="html"><![CDATA[<p>From Justing Weiss’s article:</p>
 

@@ -1,0 +1,1643 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>[Review] You Don't Know JS: this &amp; Object Prototypes - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="JavaScript Jul 3rd, 2017 [Review] You Don't Know JS: this &amp; Object Prototypes Book You Don’t Know JS: this &amp; Object Prototypes Author Kyle &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2017/07/03/review-you-dont-know-js-this-and-object-prototypes">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2017/07/03/review-you-dont-know-js-this-and-object-prototypes/">[Review] You Don't Know JS: This &amp; Object Prototypes</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/08/30/review-xue-xi-le-guan/">[Review] 学习乐观</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/05/26/name-driven-development/">Name Driven Development</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/16/ruby-concurrency-article-collection/">Ruby Concurrency Article Collection</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/02/16/ruby-concurrency-in-practice/">Ruby Concurrency in Practice</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>JavaScript</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Jul 3<span>rd</span>, 2017</a>
+</span>
+
+    </div>
+    <h1>
+      [Review] You Don't Know JS: this &amp; Object Prototypes
+    </h1>
+  
+</header>
+
+
+  <section><table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>You Don’t Know JS: this &amp; Object Prototypes</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td><a href="https://github.com/getify">Kyle Simpson</a></td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&amp;%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes">https://github.com/getify/You-Dont-Know-JS/blob/master/this &amp; object prototypes/README.md</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul id="markdown-toc">
+  <li><a href="#objects-in-js">Objects in JS</a>    <ul>
+      <li><a href="#type">1. Type</a></li>
+      <li><a href="#contents">2. Contents</a>        <ul>
+          <li><a href="#properties">Properties</a></li>
+          <li><a href="#computed-property-names">Computed Property Names</a></li>
+          <li><a href="#arrays">Arrays</a></li>
+          <li><a href="#duplicating-objects">Duplicating Objects</a></li>
+          <li><a href="#property-descriptors">Property Descriptors</a></li>
+          <li><a href="#get--">[ [ Get ] ]</a></li>
+          <li><a href="#existence">Existence</a></li>
+        </ul>
+      </li>
+      <li><a href="#iteration">3. Iteration</a></li>
+    </ul>
+  </li>
+  <li><a href="#prototypes">Prototypes</a>    <ul>
+      <li><a href="#my-understanding">1. My understanding</a></li>
+      <li><a href="#what-is-a-prototype">2. What is a prototype?</a></li>
+      <li><a href="#how-to-get-an-objects-prototype">3. How to get an object’s prototype?</a></li>
+      <li><a href="#what-is-the-prototype-">4. What is the <code>prototype</code> ?</a></li>
+      <li><a href="#whats-the-difference-between-proto-and-prototype">5. What’s the difference between <code>__proto__</code> and <code>prototype</code>?</a></li>
+      <li><a href="#whats-process-of-method-lookup-via-prototype-chain">6. What’s process of method lookup via prototype chain?</a></li>
+    </ul>
+  </li>
+  <li><a href="#class">“Class”</a>    <ul>
+      <li><a href="#misconception">1. Misconception</a></li>
+      <li><a href="#constructors">2. “Constructors”</a>        <ul>
+          <li><a href="#does-constructor-mean-was-constructed-by-no">Does “constructor” mean “was constructed by”? NO!</a></li>
+          <li><a href="#what-is-exactly-a-constructor">What is exactly a “constructor”?</a></li>
+          <li><a href="#do-we-have-to-capitalize-the-constructor-function-no">Do we have to capitalize the constructor function? NO!</a></li>
+          <li><a href="#is-constructorreliable-to-be-used-as-a-reference-no">Is <code>.constructor</code>reliable to be used as a reference? NO!</a></li>
+        </ul>
+      </li>
+      <li><a href="#what-happened-when-we-callnew-">3. What happened when we call<code>new</code> ?</a></li>
+      <li><a href="#introspection">4. Introspection</a>        <ul>
+          <li><a href="#instanceof"><code>instanceof</code></a></li>
+          <li><a href="#objectprototypeisprototypeof"><code>Object.prototype.isPrototypeOf()</code></a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#behavior-delegation">Behavior Delegation</a>    <ul>
+      <li><a href="#my-understanding-1">1. My understanding</a></li>
+      <li><a href="#background">2. Background</a>        <ul>
+          <li><a href="#compared-to-traditional-inheritance">Compared to traditional inheritance</a></li>
+          <li><a href="#prototypal-inheritance--differential-inheritance">Prototypal Inheritance &amp;&amp; Differential Inheritance</a></li>
+        </ul>
+      </li>
+      <li><a href="#create-delegations-by-objectcreate">3. Create delegations by <code>Object.create</code></a>        <ul>
+          <li><a href="#how-to-make-plain-object-delegations">How to make plain object delegations?</a></li>
+          <li><a href="#how-to-make-delegations-to-perform-prototypal-inheritance">How to make delegations to perform “prototypal inheritance”?</a></li>
+          <li><a href="#how-to-envision-your-own-objectcreate">How to envision your own <code>Object.create</code>?</a></li>
+        </ul>
+      </li>
+      <li><a href="#towards-delegation-oriented-design">4. Towards Delegation-Oriented Design</a>        <ul>
+          <li><a href="#avoid-shadowing-naming-things-the-same-if-at-all-possible">Avoid shadowing (naming things the same) if at all possible</a></li>
+          <li><a href="#save-state-on-delegators">Save state on delegators</a></li>
+          <li><a href="#comparison">Comparison</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="objects-in-js">Objects in JS</h1>
+
+<p>Source: <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/this %26 object prototypes/ch3.md">You Don’t Know JS: this &amp; Object Prototypes - Chapter 3: Objects</a></p>
+
+<h2 id="type">1. Type</h2>
+
+<p>Primary types (language types)</p>
+
+<ul>
+  <li>number</li>
+  <li>boolean</li>
+  <li>string</li>
+  <li>null</li>
+  <li>undefined</li>
+  <li>object</li>
+</ul>
+
+<p>Many people mistakenly claim “everything in JavaScript is an object”, but this is incorrect. Objects are one of the 6 (or 7, depending on your perspective) primitive types. Objects have sub-types, including<code>function</code>, and also can be behavior-specialized, like<code>[object Array]</code>as the internal label representing the array object sub-type.</p>
+
+<p><img src="https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/you-dont-know-js/types.png" alt="types" /></p>
+
+<p>What are object sub-types?</p>
+
+<p>In JS, object sub-types are actually just built-in functions. Each of these built-in functions can be used as a constructor (that is, a function call with the new operator), with the result being a newly constructed object of the sub-type.</p>
+
+<p>Why do we need object sub-types?</p>
+
+<p>The primitive value <code>"I am a string"</code>is not an object, it’s a primitive literal and immutable value. To perform operations on it, such as checking its length, accessing its individual character contents, etc, a<code>String</code>object is required.the language automatically coerces a<code>"string"</code>primitive to a<code>String</code>object when necessary, which means you almost never need to explicitly create the Object form.</p>
+
+<p>What is exactly the function?</p>
+
+<p>Functions are callable objects which are special in that they have an optional name property and a code property (which is the body of the function that actually does stuff).</p>
+
+<p>How to remember?</p>
+
+<p>Excluding from the self-defined object, we can always use <code>typeof</code> first to check out the primary types and then use <code>instanceof</code> to find out its object sub-types.</p>
+
+<h2 id="contents">2. Contents</h2>
+
+<p>Objects are collections of key/value pairs. The values can be accessed as properties, via<code>.propName</code>or<code>["propName"]</code>syntax. Whenever a property is accessed, the engine actually invokes the internal default<code>[[Get]]</code>operation (and<code>[[Put]]</code>for setting values), which not only looks for the property directly on the object, but which will traverse the<code>[[Prototype]]</code>chain (see Chapter 5) if not found.</p>
+
+<p>Properties have certain characteristics that can be controlled through property descriptors, such as<code>writable</code>and<code>configurable</code>. In addition, objects can have their mutability (and that of their properties) controlled to various levels of immutability using<code>Object.preventExtensions(..)</code>,<code>Object.seal(..)</code>, and<code>Object.freeze(..)</code>.</p>
+
+<p>Properties don’t have to contain values – they can be “accessor properties” as well, with getters/setters. They can also be either <em>enumerable</em> or not, which controls if they show up in<code>for..in</code>loop iterations, for instance.</p>
+
+<h3 id="properties">Properties</h3>
+
+<p>In objects, property names are **always **strings. If you use any other value besides a <code>string</code>(primitive) as the property, it will first be converted to a string.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span> <span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="kc">true</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="nx">myObject</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;baz&quot;</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">];</span>                <span class="c1">// &quot;foo&quot;</span>
+</span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="s2">&quot;3&quot;</span><span class="p">];</span>                    <span class="c1">// &quot;bar&quot;</span>
+</span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="s2">&quot;[object Object]&quot;</span><span class="p">];</span>                  <span class="c1">// &quot;baz&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="computed-property-names">Computed Property Names</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">prefix</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="p">[</span><span class="nx">prefix</span> <span class="o">+</span> <span class="s2">&quot;bar&quot;</span><span class="p">]</span><span class="o">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span>
+</span><span class="line">    <span class="p">[</span><span class="nx">prefix</span> <span class="o">+</span> <span class="s2">&quot;baz&quot;</span><span class="p">]</span><span class="o">:</span> <span class="s2">&quot;world&quot;</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="s2">&quot;foobar&quot;</span><span class="p">];</span> <span class="c1">// hello</span>
+</span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="s2">&quot;foobaz&quot;</span><span class="p">];</span> <span class="c1">// world</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="arrays">Arrays</h3>
+
+<p>Arrays are objects. <strong>Be careful</strong>: If you try to add a property to an array, but the property name looks like a number, it will end up instead as a numeric index (thus modifying the array contents):</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myArray</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span> <span class="p">];</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">myArray</span><span class="p">[</span><span class="s2">&quot;3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;baz&quot;</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">myArray</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>    <span class="c1">// 4</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">myArray</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>        <span class="c1">// &quot;baz&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="duplicating-objects">Duplicating Objects</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">anotherFunction</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/*..*/</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">anotherObject</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">c</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">anotherArray</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">b</span><span class="o">:</span> <span class="nx">anotherObject</span><span class="p">,</span>    <span class="c1">// reference, not a copy!</span>
+</span><span class="line">    <span class="nx">c</span><span class="o">:</span> <span class="nx">anotherArray</span><span class="p">,</span>    <span class="c1">// another reference!</span>
+</span><span class="line">    <span class="nx">d</span><span class="o">:</span> <span class="nx">anotherFunction</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">anotherArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="nx">anotherObject</span><span class="p">,</span> <span class="nx">myObject</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It’s hard to tell which of shallow and deep copy is right without the use case.</p>
+
+<p>One subset solution is that objects which are JSON-safe (that is, can be serialized to a JSON string and then re-parsed to an object with the same structure and values) can easily be <em>duplicated</em> with:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span> <span class="nx">someObj</span> <span class="p">)</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>A shallow copy is fairly understandable and has far less issues, so ES6 has now defined <code>Object.assign(..)</code> for this task. <code>Object.assign(..)</code> takes a target object as its first parameter, and one or more source objects as its subsequent parameters. It iterates over all the <em>enumerable</em> (see below), <em>owned keys (immediately present)</em> on the source object(s) and copies them (via = assignment only) to target.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span> <span class="p">{},</span> <span class="nx">myObject</span> <span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">newObj</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>                        <span class="c1">// 2</span>
+</span><span class="line"><span class="nx">newObj</span><span class="p">.</span><span class="nx">b</span> <span class="o">===</span> <span class="nx">anotherObject</span><span class="p">;</span>        <span class="c1">// true</span>
+</span><span class="line"><span class="nx">newObj</span><span class="p">.</span><span class="nx">c</span> <span class="o">===</span> <span class="nx">anotherArray</span><span class="p">;</span>        <span class="c1">// true</span>
+</span><span class="line"><span class="nx">newObj</span><span class="p">.</span><span class="nx">d</span> <span class="o">===</span> <span class="nx">anotherFunction</span><span class="p">;</span>    <span class="c1">// true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="property-descriptors">Property Descriptors</h3>
+
+<p>Prior to ES5, the JavaScript language gave no direct way for your code to inspect or draw any distinction between the characteristics of properties, such as whether the property was read-only or not. But as of ES5, all properties are described in terms of a <strong>property descriptor</strong>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">getOwnPropertyDescriptor</span><span class="p">(</span> <span class="nx">myObject</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="p">);</span>
+</span><span class="line"><span class="c1">// {</span>
+</span><span class="line"><span class="c1">//    value: 2,</span>
+</span><span class="line"><span class="c1">//    writable: true,</span>
+</span><span class="line"><span class="c1">//    enumerable: true,</span>
+</span><span class="line"><span class="c1">//    configurable: true</span>
+</span><span class="line"><span class="c1">// }</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>We can use<code>Object.defineProperty(..)</code>to add a new property, or modify an existing one (if it’s<code>configurable</code>!), with the desired characteristics.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span> <span class="nx">myObject</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">value</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">writable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">configurable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">enumerable</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class="line"><span class="p">}</span> <span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span> <span class="c1">// 2</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I consider this as something about plumbing facts, which features some higher level operations. Like</p>
+
+<p><strong>Seal</strong>: <code>Object.seal(..)</code> creates a “sealed” object, which means it takes an existing object and essentially calls <code>Object.preventExtensions(..)</code> on it, but also marks all its existing properties as <code>configurable:false</code>.</p>
+
+<p><strong>Freeze</strong>: <code>Object.freeze(..)</code> creates a frozen object, which means it takes an existing object and essentially calls <code>Object.seal(..)</code> on it, but it also marks all “data accessor” properties as <code>writable:false</code>, so that their values cannot be changed.</p>
+
+<p>For details, check <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/this %26 object prototypes/ch3.md#property-descriptors">this section</a></p>
+
+<h3 id="get--">[ [ Get ] ]</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span> <span class="c1">// 2</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The<code>myObject.a</code>is a property access, but it doesn’t <em>just</em> look in <code>myObject</code>for a property of the name <code>a</code>, as it might seem. According to the spec, the code above actually performs a<code>[[Get]]</code>operation (kinda like a function call:<code>[[Get]]()</code>) on the<code>myObject</code>. The default built-in<code>[[Get]]</code>operation for an object <em>first</em> inspects the object for a property of the requested name, and if it finds it, it will return the value accordingly.</p>
+
+<p>One important result of this<code>[[Get]]</code>operation is that if it cannot through any means come up with a value for the requested property, it instead returns the value<code>undefined</code>(instead of a<code>ReferenceError</code>).</p>
+
+<p>Define an **accessor descriptor **(getter and putter)</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="c1">// define a getter for `a`</span>
+</span><span class="line">    <span class="nx">get</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_a_</span><span class="p">;</span>
+</span><span class="line">    <span class="p">},</span>
+</span><span class="line">
+</span><span class="line">    <span class="c1">// define a setter for `a`</span>
+</span><span class="line">    <span class="nx">set</span> <span class="nx">a</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">this</span><span class="p">.</span><span class="nx">_a_</span> <span class="o">=</span> <span class="nx">val</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span> <span class="c1">// 4</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="existence">Existence</h3>
+
+<p>We showed earlier that a property access like<code>myObject.a</code>may result in an<code>undefined</code>value if either the explicit<code>undefined</code>is stored there or the<code>a</code>property doesn’t exist at all. So, if the value is the same in both cases, how else do we distinguish them?</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="k">in</span> <span class="nx">myObject</span><span class="p">);</span>                <span class="c1">// true</span>
+</span><span class="line"><span class="p">(</span><span class="s2">&quot;b&quot;</span> <span class="k">in</span> <span class="nx">myObject</span><span class="p">);</span>                <span class="c1">// false</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span> <span class="s2">&quot;a&quot;</span> <span class="p">);</span>    <span class="c1">// true</span>
+</span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span> <span class="s2">&quot;b&quot;</span> <span class="p">);</span>    <span class="c1">// false</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The<code>in</code>operator will check to see if the property is <em>in</em> the object, or if it exists at any higher level of the <em><code>[[Prototype]]</code></em> chain object traversal (see Chapter 5). By contrast, <em><code>hasOwnProperty(..)</code></em> checks to see if <em>only</em> <code>myObject</code>has the property or not, and will <em>not</em> consult the<code>[[Prototype]]</code>chain.</p>
+
+<p><code>hasOwnProperty(..)</code>is accessible for all normal objects via delegation to<code>Object.prototype</code>(see Chapter 5). But it’s possible to create an object that does not link to<code>Object.prototype</code>(via<code>Object.create(null)</code>– see Chapter 5). In this case, a method call like<code>myObject.hasOwnProperty(..)</code>would fail.</p>
+
+<p>In that scenario, a more robust way of performing such a check is<code>Object.prototype.hasOwnProperty.call(myObject,"a")</code>, which borrows the base<code>hasOwnProperty(..)</code>method and uses_explicit<em><code>this</code>_binding</em>(see Chapter 2) to apply it against our<code>myObject</code>.</p>
+
+<h2 id="iteration">3. Iteration</h2>
+
+<p>The<code>for..in</code>loop iterates over the list of enumerable properties on an object (including its<code>[[Prototype]]</code>chain). But what if you instead want to iterate over the values?</p>
+
+<p><code>for..in</code>loops applied to arrays can give somewhat unexpected results, in that the enumeration of an array will include not only all the numeric indices, but also any enumerable properties. It’s a good idea to use<code>for..in</code>loops <em>only</em> on objects, and traditional<code>for</code>loops with numeric index iteration for the values stored in arrays.</p>
+
+<p>ES5 also added several iteration helpers for arrays, including <code>forEach(..)</code>, <code>every(..)</code>, and <code>some(..)</code>.</p>
+
+<ul>
+  <li><code>forEach(..)</code>will iterate over all values in the array, and ignores any callback return values.</li>
+  <li><code>every(..)</code>keeps going until the end <em>or</em> the callback returns a<code>false</code>(or “falsy”) value, whereas</li>
+  <li><code>some(..)</code>keeps going until the end <em>or</em> the callback returns a <code>true</code>(or “truthy”) value.</li>
+</ul>
+
+<p>As contrasted with iterating over an array’s indices in a numerically ordered way (<code>for</code>loop or other iterators), the order of iteration over an object’s properties is **not guaranteed **and may vary between different JS engines. **Do not rely **on any observed ordering for anything that requires consistency among environments, as any observed agreement is unreliable.</p>
+
+<p>You can also iterate over **the values **in data structures (arrays, objects, etc) using the ES6<code>for..of</code>syntax, which looks for either a built-in or custom<code>@@iterator</code>object consisting of a<code>next()</code>method to advance through the data values one at a time.</p>
+
+<h1 id="prototypes">Prototypes</h1>
+
+<p>Source: <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/this %26 object prototypes/ch5.md">You Don’t Know JS: this &amp; Object Prototypes - Chapter 5: Prototypes</a></p>
+
+<h2 id="my-understanding">1. My understanding</h2>
+
+<p>After reading this part, I realize that <code>Arary</code>, <code>Function</code>, <code>Object</code>are all functions. I should admit that this refreshes my impression on JS. I know functions are first-class citizen in JS but it seems that it is all built on functions. Every object is created by functions:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="c1">// simple primitives are auto boxing: new Number(1)</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// object created by constructor</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s2">&quot;2017-07-01&quot;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// object literal</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1">// is equivalent to: Object.create(Object.prototype);</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">foo</span><span class="o">:</span> <span class="s2">&quot;hello&quot;</span> <span class="p">}</span> <span class="c1">// is equivalent to</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span>
+</span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">        <span class="nx">foo</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="line">            <span class="nx">writable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="line">            <span class="nx">configurable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="line">            <span class="nx">value</span><span class="o">:</span> <span class="s1">&#39;hello&#39;</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="what-is-a-prototype">2. What is a prototype?</h2>
+
+<p>Objects in JavaScript have an internal property, denoted in the specification as<code>[[Prototype]]</code>, which is simply a reference to another object. Almost all objects are given a non-<code>null</code>value for this property, at the time of their creation.</p>
+
+<h2 id="how-to-get-an-objects-prototype">3. How to get an object’s prototype?</h2>
+
+<p>via <code>__proto__</code>or <code>Object.getPrototypeOf</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;wendi&quot;</span> <span class="p">};</span>
+</span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
+</span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span>
+</span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>So where is <code>__proto__</code>defined? <code>Object.prototype.__proto__</code></p>
+
+<p>We could roughly envision <code>__proto__</code> implemented like this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="s2">&quot;__proto__&quot;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span> <span class="k">this</span> <span class="p">);</span>
+</span><span class="line">    <span class="p">},</span>
+</span><span class="line">    <span class="nx">set</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="c1">// setPrototypeOf(..) as of ES6</span>
+</span><span class="line">        <span class="nb">Object</span><span class="p">.</span><span class="nx">setPrototypeOf</span><span class="p">(</span> <span class="k">this</span><span class="p">,</span> <span class="nx">o</span> <span class="p">);</span>
+</span><span class="line">            <span class="k">return</span> <span class="nx">o</span><span class="p">;</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>**Note: **The JavaScript community unofficially coined a term for the double-underscore, specifically the leading one in properties like<code>__proto__</code>: “dunder”. So, the “cool kids” in JavaScript would generally pronounce<code>__proto__</code>as “dunder proto”.</p>
+
+<h2 id="what-is-the-prototype-">4. What is the <code>prototype</code> ?</h2>
+
+<p><code>prototype</code> is an object automatically created as a special property of a <strong>function</strong>, which is used to establish the delegation (inheritance) chain, aka prototype chain.</p>
+
+<p>When we create a function <code>a</code>, <code>prototype</code> is automatically created as a special property on <code>a</code> and saves the function code on as the <code>constructor</code> on <code>prototype</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// Object {constructor: function}</span>
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I’d love to consider this property as the place to store the properties (including methods) of a function object. That’s also the reason why utility functions in JS are defined like <code>Array.prototype.forEach()</code> , <code>Function.prototype.bind()</code>, <code>Object.prototype.toString().</code></p>
+
+<p>Why to emphasize the property of a <strong>function</strong>?</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="p">{}.</span><span class="nx">prototype</span> <span class="c1">// undefined;</span>
+</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">(){}).</span><span class="nx">prototype</span> <span class="c1">// Object {constructor: function}</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// The example above shows object does not have the prototype property.</span>
+</span><span class="line"><span class="c1">// But we have Object.prototype, which implies an interesting fact that</span>
+</span><span class="line"><span class="k">typeof</span> <span class="nb">Object</span> <span class="o">===</span> <span class="s2">&quot;function&quot;</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="whats-the-difference-between-proto-and-prototype">5. What’s the difference between <code>__proto__</code> and <code>prototype</code>?</h2>
+
+<p><code>__proto__</code>a reference works on every <strong>object</strong> to refer to its <code>[[Prototype]]</code>property.</p>
+
+<p><code>prototype</code> is an object automatically created as a special property of a <strong>function</strong>, which is used to store the properties (including methods) of a function object.</p>
+
+<p>With these two, we could mentally map out the prototype chain. Like this picture illustrates:</p>
+
+<p><img src="https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/you-dont-know-js/__proto__-vs-prototype.png" alt="__proto__-vs-prototype.png" /></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
+</span><span class="line"><span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Refer to: <a href="https://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript">__proto__ VS. prototype in JavaScript</a></p>
+
+<h2 id="whats-process-of-method-lookup-via-prototype-chain">6. What’s process of method lookup via prototype chain?</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span> <span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">baz</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> <span class="k">this</span><span class="p">.</span><span class="nx">bar</span><span class="p">();</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;baz&quot;</span><span class="p">);</span> <span class="p">};</span>
+</span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">baz</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// foo</span>
+</span><span class="line"><span class="c1">// bar</span>
+</span><span class="line"><span class="c1">// baz</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The top-end of every _normal _<code>[[Prototype]]</code>chain is the built-in <code>Object.prototype</code>. This object includes a variety of common utilities used all over JS.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="nb">Object</span><span class="p">()</span>
+</span><span class="line"><span class="nx">hasOwnProperty</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">hasOwnProperty</span><span class="p">()</span>
+</span><span class="line"><span class="nx">isPrototypeOf</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">isPrototypeOf</span><span class="p">()</span>
+</span><span class="line"><span class="nx">propertyIsEnumerable</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">propertyIsEnumerable</span><span class="p">()</span>
+</span><span class="line"><span class="nx">toLocaleString</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">toLocaleString</span><span class="p">()</span>
+</span><span class="line"><span class="nx">toString</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">toString</span><span class="p">()</span>
+</span><span class="line"><span class="nx">valueOf</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">valueOf</span><span class="p">()</span>
+</span><span class="line"><span class="nx">__defineGetter__</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">__defineGetter__</span><span class="p">()</span>
+</span><span class="line"><span class="nx">__defineSetter__</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">__defineSetter__</span><span class="p">()</span>
+</span><span class="line"><span class="nx">__lookupGetter__</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">__lookupGetter__</span><span class="p">()</span>
+</span><span class="line"><span class="nx">__lookupSetter__</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">__lookupSetter__</span><span class="p">()</span>
+</span><span class="line"><span class="nx">get</span> <span class="nx">__proto__</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">__proto__</span><span class="p">()</span>
+</span><span class="line"><span class="nx">set</span> <span class="nx">__proto__</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">__proto__</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h1 id="class">“Class”</h1>
+
+<p>Source: <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch4.md">You Don’t Know JS: this &amp; Object Prototypes - Chapter 4: Mixing (Up) “Class” Objects</a></p>
+
+<h2 id="misconception">1. Misconception</h2>
+
+<p>There’s a peculiar kind of behavior in JavaScript that has been shamelessly abused for years to <em>hack</em> something that <em>looks</em> like “classes”. JS developers have strived to simulate as much as they can of class-orientation.</p>
+
+<p>JS has had <em>some</em> class-like syntactic elements (like<code>new</code>and<code>instanceof</code>) for quite awhile, and more recently in ES6, some additions, like the<code>class</code>keyword (see Appendix A). But does that mean JavaScript actually <em>has</em> classes? Plain and simple: <strong>No.</strong></p>
+
+<p>**Classes mean copies. **JavaScript **does not automatically **create copies (as classes imply) between objects.</p>
+
+<p>Read <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/this %26 object prototypes/ch4.md">You Don’t Know JS: this &amp; Object Prototypes - Chapter 4: Mixing (Up) “Class” Objects</a> for details:</p>
+
+<ul>
+  <li>Why does JavaScript not feature class inheritance?</li>
+  <li>Why does mixin pattern (both explicit and implicit) as the common sort of emulating class copy behavior, not work in JavaScript?</li>
+</ul>
+
+<h2 id="constructors">2. “Constructors”</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="c1">// ...</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// true</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The<code>Foo.prototype</code>object by default (at declaration time on line 1 of the snippet!) gets a public, non-enumerable property called<code>.constructor</code>, and this property is a reference back to the function (<code>Foo</code>in this case) that the object is associated with.</p>
+
+<h3 id="does-constructor-mean-was-constructed-by-no">Does “constructor” mean “was constructed by”? NO!</h3>
+
+<p>The fact is,<code>.constructor</code>on an object arbitrarily points, by default, at a function who, reciprocally, has a reference back to the object – a reference which it calls<code>.prototype</code>. The words “constructor” and “prototype” only have a loose default meaning that might or might not hold true later. The best thing to do is remind yourself, “constructor does not mean constructed by”.</p>
+
+<h3 id="what-is-exactly-a-constructor">What is exactly a “constructor”?</h3>
+
+<p>In other words, in JavaScript, it’s most appropriate to say that a “constructor” is <strong>any function called with the</strong><code>new</code><strong>keyword</strong> in front of it. Functions aren’t constructors, but function calls are “constructor calls” if and only if<code>new</code>is used.</p>
+
+<h3 id="do-we-have-to-capitalize-the-constructor-function-no">Do we have to capitalize the constructor function? NO!</h3>
+
+<p>By convention in the JavaScript world, “class”es are named with a capital letter, so the fact that it’s <code>Foo</code> instead of <code>foo</code> is a strong clue that we intend it to be a “class”. But the capital letter doesn’t mean <strong>anything</strong> at all to the JS engine.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">new</span> <span class="nx">foo</span><span class="p">()</span> <span class="c1">// foo {}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// Object {constructor: function}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>In reality,<code>Foo</code>is no more a “constructor” than any other function in your program. Functions themselves are <strong>not</strong> constructors. However, when you put the<code>new</code>keyword in front of a normal function call, that makes that function call a “constructor call”. In fact,<code>new</code>sort of hijacks any normal function and calls it in a fashion that constructs an object, <strong>in addition to whatever else it was going to do</strong>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">NothingSpecial</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s2">&quot;Don&#39;t mind me!&quot;</span> <span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NothingSpecial</span><span class="p">();</span>
+</span><span class="line"><span class="c1">// &quot;Don&#39;t mind me!&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">a</span><span class="p">;</span> <span class="c1">// {}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>NothingSpecial</code>is just a plain old normal function, but when called with<code>new</code>, it constructs an object, almost as a side-effect, which we happen to assign to <em><code>a</code></em>. The <strong>call</strong> was a constructor call, but <code>NothingSpecial</code> is not, in and of itself, a constructor.</p>
+
+<h3 id="is-constructorreliable-to-be-used-as-a-reference-no">Is <code>.constructor</code>reliable to be used as a reference? NO!</h3>
+
+<p>Some arbitrary object-property reference like<code>a1.constructor</code>cannot actually be <em>trusted</em> to be the assumed default function reference. Moreover, as we’ll see shortly, just by simple omission,<code>a1.constructor</code>can even end up pointing somewhere quite surprising and insensible.<code>a1.constructor</code>is extremely unreliable, and an unsafe reference to rely upon in your code.<strong>Generally, such references should be avoided where possible.</strong></p>
+
+<p><code>.constructor</code>is not a magic immutable property. It <em>is</em> non-enumerable (see snippet above), but its value is writable (can be changed), and moreover, you can add or overwrite (intentionally or accidentally) a property of the name<code>constructor</code>on any object in any<code>[[Prototype]]</code>chain, with any value you see fit.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">constructor</span>  <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// true</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// false</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If you create a new object, and replace a function’s default<code>.prototype</code>object reference, the new object will not by default magically get a<code>.constructor</code>on it.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">};</span> <span class="c1">// create a new prototype object</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">a1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="nx">a1</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// false!</span>
+</span><span class="line"><span class="nx">a1</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">;</span> <span class="c1">// true!</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>What’s happening?<code>a1</code>has no<code>.constructor</code>property, so it delegates up the<code>[[Prototype]]</code>chain to<code>Foo.prototype</code>. But that object doesn’t have a<code>.constructor</code>either (like the default<code>Foo.prototype</code>object would have had!), so it keeps delegating, this time up to<code>Object.prototype</code>, the top of the delegation chain.<em>That</em> object indeed has a<code>.constructor</code>on it, which points to the built-in<code>Object(..)</code>function.</p>
+
+<p>Of course, you can add<code>.constructor</code>back to the<code>Foo.prototype</code>object, but this takes manual work, especially if you want to match native behavior and have it be non-enumerable.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">};</span> <span class="c1">// create a new prototype object</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// Need to properly &quot;fix&quot; the missing `.constructor`</span>
+</span><span class="line"><span class="c1">// property on the new object serving as `Foo.prototype`.</span>
+</span><span class="line"><span class="c1">// See Chapter 3 for `defineProperty(..)`.</span>
+</span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="s2">&quot;constructor&quot;</span> <span class="p">,</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">enumerable</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">writable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">configurable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">value</span><span class="o">:</span> <span class="nx">Foo</span>    <span class="c1">// point `.constructor` at `Foo`</span>
+</span><span class="line"><span class="p">}</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>That’s a lot of manual work to fix<code>.constructor</code>. Moreover, all we’re really doing is perpetuating the misconception that “constructor” means “was constructed by”. That’s an <em>expensive</em> illusion.</p>
+
+<h2 id="what-happened-when-we-callnew-">3. What happened when we call<code>new</code> ?</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">New</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="nx">func</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">res</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">=</span> <span class="nx">func</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">ret</span> <span class="o">=</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">((</span><span class="k">typeof</span> <span class="nx">ret</span> <span class="o">===</span> <span class="s2">&quot;object&quot;</span> <span class="o">||</span> <span class="k">typeof</span> <span class="nx">ret</span> <span class="o">===</span> <span class="s2">&quot;function&quot;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">ret</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">New</span><span class="p">(</span><span class="nx">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// equals to</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ol>
+  <li>It creates a new object. The type of this object, is simply <em>object</em></li>
+  <li>It sets this new object’s internal, inaccessible, <em>[[prototype]]</em>(i.e. <strong>__proto__</strong>) property to be the constructor function’s external, accessible, <em>prototype</em> object (every function object automatically has a <em>prototype</em> property).</li>
+  <li>It makes the <code>this</code>variable point to the newly created object.</li>
+  <li>It executes the constructor function, using the newly created object whenever <code>this</code>is mentioned.</li>
+  <li>It returns the newly created object, unless the constructor function returns a non-<code>null</code>object reference. In this case, that object reference is returned instead.</li>
+</ol>
+
+<p>Reference</p>
+
+<ul>
+  <li><a href="https://stackoverflow.com/questions/1646698/what-is-the-new-keyword-in-javascript">What is the ‘new’ keyword in JavaScript?</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new">new operator - MDN</a></li>
+</ul>
+
+<h2 id="introspection">4. Introspection</h2>
+
+<h3 id="instanceof"><code>instanceof</code></h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">a</span> <span class="k">instanceof</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The<code>instanceof</code>operator takes a plain object as its left-hand operand and a<strong>function</strong>as its right-hand operand. The question<code>instanceof</code>answers is:<strong>in the entire</strong><code>[[Prototype]]</code><strong>chain of</strong><code>a</code><strong>, does the object arbitrarily pointed to by</strong><code>Foo.prototype</code><strong>ever appear?</strong></p>
+
+<p>What if you have two arbitrary objects, say<code>a</code>and<code>b</code>, and want to find out if <em>the objects</em> are related to each other through a<code>[[Prototype]]</code>chain?</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="c1">// helper utility to see if `o1` is</span>
+</span><span class="line"><span class="c1">// related to (delegates to) `o2`</span>
+</span><span class="line"><span class="kd">function</span> <span class="nx">isRelatedTo</span><span class="p">(</span><span class="nx">o1</span><span class="p">,</span> <span class="nx">o2</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">function</span> <span class="nx">F</span><span class="p">(){}</span>
+</span><span class="line">    <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">o2</span><span class="p">;</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">o1</span> <span class="k">instanceof</span> <span class="nx">F</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span> <span class="nx">a</span> <span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">isRelatedTo</span><span class="p">(</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span> <span class="p">);</span> <span class="c1">// true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="objectprototypeisprototypeof"><code>Object.prototype.isPrototypeOf()</code></h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span> <span class="nx">a</span> <span class="p">);</span> <span class="c1">// true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The question<code>isPrototypeOf(..)</code>answers is:<strong>in the entire</strong><code>[[Prototype]]</code><strong>chain of</strong><code>a</code><strong>, does</strong><code>Foo.prototype</code><strong>ever appear?</strong></p>
+
+<p>What if you have two arbitrary objects, say<code>a</code>and<code>b</code>, and want to find out if <em>the objects</em> are related to each other through a<code>[[Prototype]]</code>chain?</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="c1">// Simply: does `a` appear anywhere in</span>
+</span><span class="line"><span class="c1">// `b`s [[Prototype]] chain?</span>
+</span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span> <span class="nx">b</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h1 id="behavior-delegation">Behavior Delegation</h1>
+
+<p>Source: <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/this %26 object prototypes/ch6.md">You Don’t Know JS: this &amp; Object Prototypes - Chapter 6: Behavior Delegation</a></p>
+
+<h2 id="my-understanding-1">1. My understanding</h2>
+
+<p>Considering we don’t actually have <code>class</code> in JavaScript, but we want the benefit of behaviour sharing around code entities. JavaScript employs behaviour delegation as the <code>[[Prototype]]</code>mechanism. It kinda differs from the traditional class-instance  thinking, but it’s still in the spectrum of OO, as a form of plain objects linking (delegation) instead of inheritance.</p>
+
+<p>Classical inheritance is a code arrangement technique. For the cost of arranging objects in a hierarchy, you get message delegation for free. Delegation arranges objects in a horizontal space (side-by-side as peers) instead of a vertical hierarchy. So, can I say one outweighs another between behaviour delegation and traditional class theory? No, they are different assumptions that we don’t have true <code>class</code> in JavaScript.</p>
+
+<p>Behavior delegation looks like a side-effect outcome on the way JavaScript strives to simulate class-oriented code to meet the expectations of most OO developers. For instance, <code>new</code> creates an automatic message delegation just like inheritance, name of <code>constructor</code> , introducing <code>class</code>in ES6. It’s probable that people added <code>prototype</code> aiming to simulate class behaviours.</p>
+
+<p>Anyway, behaviour delegation works and I consider it as the right mental model to illustrate the chaos in JavaScript, which is much better than the contrived class thinking.</p>
+
+<h2 id="background">2. Background</h2>
+
+<p>JavaScript is <strong>almost unique</strong> among languages as perhaps the only language with the right to use the label “object oriented”, because it’s one of a very short list of languages where <strong>an object can be created directly, without a class at all.</strong></p>
+
+<p>In JavaScript, there are no abstract patterns/blueprints for objects called “classes” as there are in class-oriented languages. <strong>JavaScript just has objects</strong>. In JavaScript, we don’t make <em>copies</em> from one object (“class”) to another (“instance”). <strong>We make links between objects.</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="c1">// ...</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span> <span class="nx">a</span> <span class="p">)</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span> <span class="c1">// true</span>
+</span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span> <span class="nx">b</span> <span class="p">)</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span> <span class="c1">// true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>When<code>a</code>is created by calling<code>new Foo()</code>, one of the things (see Chapter 2 for all four steps) that happens is that<code>a</code>gets an internal<code>[[Prototype]]</code>link to the object that<code>Foo.prototype</code>is pointing at. <strong>We end up with two objects, linked to each other.</strong></p>
+
+<p>The actual mechanism, the essence of what’s important to the functionality we can leverage in JavaScript, is <strong>all about objects being linked to other objects.</strong></p>
+
+<h3 id="compared-to-traditional-inheritance">Compared to traditional inheritance</h3>
+
+<p>In class-oriented languages, multiple copies (aka, “instances”) of a class can be made, like stamping something out from a mold. But in JavaScript, there are no such copy-actions performed. You don’t create multiple instances of a class. You can create multiple objects that <code>[[Prototype]]</code>link to a common object. But by default, no copying occurs, and thus these objects don’t end up totally separate and disconnected from each other, but rather, quite <strong>linked</strong>.</p>
+
+<p>“inheritance” (and “prototypal inheritance”) and all the other OO terms just do not make sense when considering how JavaScript <em>actually</em> works (not just applied to our forced mental models).</p>
+
+<p>Instead, “delegation” is a more appropriate term, because <strong>these relationships are not **<em>copies</em></strong> but delegation <strong><em>links</em></strong>.</p>
+
+<h3 id="prototypal-inheritance--differential-inheritance">Prototypal Inheritance &amp;&amp; Differential Inheritance</h3>
+
+<p>This mechanism is often called “<strong>prototypal inheritance</strong>” (we’ll explore the code in detail shortly), which is commonly said to be the dynamic-language version of “classical inheritance”. The word “inheritance” has a very strong meaning (see Chapter 4), with plenty of mental precedent. Merely adding “prototypal” in front to distinguish the <em>actually nearly opposite</em> behavior in JavaScript has left in its wake nearly two decades of miry confusion.”Inheritance” implies a <em>copy</em> operation, and JavaScript doesn’t copy object properties (natively, by default). Instead, JS creates a link between two objects, where one object can essentially <em>delegate</em> property/function access to another object. “<strong>Delegation</strong>” is a much more accurate term for JavaScript’s object-linking mechanism.</p>
+
+<p>Another term which is sometimes thrown around in JavaScript is “<strong>differential inheritance</strong>”. The idea here is that we describe an object’s behavior in terms of what is <em>different</em> from a more general descriptor. For example, you explain that a car is a kind of vehicle, but one that has exactly 4 wheels, rather than re-describing all the specifics of what makes up a general vehicle (engine, etc).</p>
+
+<p>But just like with “prototypal inheritance”, “differential inheritance” pretends that your mental model is more important than what is physically happening in the language. It overlooks the fact that object <code>B</code>is not actually differentially constructed, but is instead built with specific characteristics defined, alongside “holes” where nothing is defined. It is in these “holes” (gaps in, or lack of, definition) that delegation <em>can</em> take over and, on the fly, “fill them in” with delegated behavior.</p>
+
+<h2 id="create-delegations-by-objectcreate">3. Create delegations by <code>Object.create</code></h2>
+
+<p><code>Object.create(..)</code> creates a “new” object out of thin air, and links that new object’s internal <code>[[Prototype]]</code>to the object you specify.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;wendi&quot;</span> <span class="p">};</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">name</span> <span class="c1">// &quot;wendi&quot;</span>
+</span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nx">a</span> <span class="c1">// true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="how-to-make-plain-object-delegations">How to make plain object delegations?</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">something</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s2">&quot;Tell me something good...&quot;</span> <span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span> <span class="nx">foo</span> <span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">bar</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nx">foo</span> <span class="c1">// true</span>
+</span><span class="line"><span class="nx">bar</span><span class="p">.</span><span class="nx">something</span><span class="p">();</span> <span class="c1">// Tell me something good...</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="how-to-make-delegations-to-perform-prototypal-inheritance">How to make delegations to perform “prototypal inheritance”?</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
+</span><span class="line"><span class="kd">function</span> <span class="nx">Bar</span><span class="p">()</span> <span class="p">{};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bar</span><span class="p">();</span>
+</span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span> <span class="c1">// foo</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Inspection: <code>Bar.prototype</code> has changed</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
+</span><span class="line"><span class="kd">function</span> <span class="nx">Bar</span><span class="p">()</span> <span class="p">{};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// Object {constructor: function}</span>
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// Foo {}</span>
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span> <span class="p">};</span>
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// Foo {bar: function}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Inspection: <code>Bar.prototype</code> is not a reference (separated) to <code>Foo.prototype</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
+</span><span class="line"><span class="kd">function</span> <span class="nx">Bar</span><span class="p">()</span> <span class="p">{};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span> <span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// Object {foo: function, constructor: function}</span>
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// Function {bar: function}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Why not?</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">Bar</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span>
+</span><span class="line"><span class="c1">// Cause it ends up Bar is no longer a function object.</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">)</span>
+</span><span class="line"><span class="c1">// This links Bar.prototype to Foo, which is the function object. Foo.foo() is not a function.</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+</span><span class="line"><span class="c1">// It just makes Bar.prototype be another reference to Foo.prototype</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="c1">// It creates a new object, but Foo might have unexpected behaviours in constructor calling</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>ES6-standardized techniques</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="c1">// pre-ES6</span>
+</span><span class="line"><span class="c1">// throws away default existing `Bar.prototype`</span>
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// ES6+</span>
+</span><span class="line"><span class="c1">// modifies existing `Bar.prototype`</span>
+</span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">setPrototypeOf</span><span class="p">(</span> <span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="how-to-envision-your-own-objectcreate">How to envision your own <code>Object.create</code>?</h3>
+
+<p>This polyfill shows a very basic idea without handling the second parameter <code>propertiesObject</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">createAndLinkObject</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">function</span> <span class="nx">F</span><span class="p">(){}</span>
+</span><span class="line">    <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">o</span><span class="p">;</span>
+</span><span class="line">    <span class="k">return</span> <span class="k">new</span> <span class="nx">F</span><span class="p">();</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Polyfill on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create - MDN</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span> <span class="o">!=</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">Temp</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
+</span><span class="line">    <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">prototype</span><span class="p">,</span> <span class="nx">propertiesObject</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">if</span><span class="p">(</span><span class="nx">prototype</span> <span class="o">!==</span> <span class="nb">Object</span><span class="p">(</span><span class="nx">prototype</span><span class="p">))</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">throw</span> <span class="nx">TypeError</span><span class="p">(</span>
+</span><span class="line">          <span class="s1">&#39;Argument must be an object, or null&#39;</span>
+</span><span class="line">        <span class="p">);</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">      <span class="nx">Temp</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">prototype</span> <span class="o">||</span> <span class="p">{};</span>
+</span><span class="line">      <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Temp</span><span class="p">();</span>
+</span><span class="line">      <span class="nx">Temp</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class="line">      <span class="k">if</span> <span class="p">(</span><span class="nx">propertiesObject</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperties</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">propertiesObject</span><span class="p">);</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">      <span class="c1">// to imitate the case of Object.create(null)</span>
+</span><span class="line">      <span class="k">if</span><span class="p">(</span><span class="nx">prototype</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">         <span class="nx">result</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">      <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+</span><span class="line">    <span class="p">};</span>
+</span><span class="line">  <span class="p">})();</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="towards-delegation-oriented-design">4. Towards Delegation-Oriented Design</h2>
+
+<p>Pseudo-code for class theory</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kr">class</span> <span class="nx">Task</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">id</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="c1">// constructor `Task()`</span>
+</span><span class="line">    <span class="nx">Task</span><span class="p">(</span><span class="nx">ID</span><span class="p">)</span> <span class="p">{</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">ID</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="nx">outputTask</span><span class="p">()</span> <span class="p">{</span> <span class="nx">output</span><span class="p">(</span> <span class="nx">id</span> <span class="p">);</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kr">class</span> <span class="nx">XYZ</span> <span class="nx">inherits</span> <span class="nx">Task</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">label</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="c1">// constructor `XYZ()`</span>
+</span><span class="line">    <span class="nx">XYZ</span><span class="p">(</span><span class="nx">ID</span><span class="p">,</span><span class="nx">Label</span><span class="p">)</span> <span class="p">{</span> <span class="kr">super</span><span class="p">(</span> <span class="nx">ID</span> <span class="p">);</span> <span class="nx">label</span> <span class="o">=</span> <span class="nx">Label</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="nx">outputTask</span><span class="p">()</span> <span class="p">{</span> <span class="kr">super</span><span class="p">();</span> <span class="nx">output</span><span class="p">(</span> <span class="nx">label</span> <span class="p">);</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kr">class</span> <span class="nx">ABC</span> <span class="nx">inherits</span> <span class="nx">Task</span> <span class="p">{</span>
+</span><span class="line">    <span class="c1">// ...</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Pseudo-code for delegation theory</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">Task</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">setID</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ID</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">ID</span><span class="p">;</span> <span class="p">},</span>
+</span><span class="line">    <span class="nx">outputID</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="p">);</span> <span class="p">}</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// make `XYZ` delegate to `Task`</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">XYZ</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span> <span class="nx">Task</span> <span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">XYZ</span><span class="p">.</span><span class="nx">prepareTask</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ID</span><span class="p">,</span><span class="nx">Label</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">this</span><span class="p">.</span><span class="nx">setID</span><span class="p">(</span> <span class="nx">ID</span> <span class="p">);</span>
+</span><span class="line">    <span class="k">this</span><span class="p">.</span><span class="nx">label</span> <span class="o">=</span> <span class="nx">Label</span><span class="p">;</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">XYZ</span><span class="p">.</span><span class="nx">outputTaskDetails</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">this</span><span class="p">.</span><span class="nx">outputID</span><span class="p">();</span>
+</span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">label</span> <span class="p">);</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// ABC = Object.create( Task );</span>
+</span><span class="line"><span class="c1">// ABC ... = ...</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="avoid-shadowing-naming-things-the-same-if-at-all-possible">Avoid shadowing (naming things the same) if at all possible</h3>
+
+<p>With the class design pattern, we intentionally named<code>outputTask</code>the same on both parent (<code>Task</code>) and child (<code>XYZ</code>), so that we could take advantage of overriding (polymorphism). In behavior delegation, we do the opposite: <strong>we avoid if at all possible naming things the same</strong> at different levels of the<code>[[Prototype]]</code>chain (called <strong>shadowing</strong>), because having those name collisions creates awkward/brittle syntax to disambiguate references, and we want to avoid that if we can.</p>
+
+<p>This design pattern calls for less of general method names which are prone to overriding and instead more of descriptive method names, specific to the type of behavior each object is doing.<strong>This can actually create easier to understand/maintain code</strong>, because the names of methods (not only at definition location but strewn throughout other code) are more obvious (self documenting).</p>
+
+<p>Setting properties on an object was more nuanced than just adding a new property to the object or changing an existing property’s value. Usually, shadowing is more complicated and nuanced than it’s worth, <strong>so you should try to avoid it if possible</strong>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">anotherObject</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span> <span class="nx">anotherObject</span> <span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">anotherObject</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span> <span class="c1">// 2</span>
+</span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span> <span class="c1">// 2</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">anotherObject</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span> <span class="s2">&quot;a&quot;</span> <span class="p">);</span> <span class="c1">// true</span>
+</span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span> <span class="s2">&quot;a&quot;</span> <span class="p">);</span> <span class="c1">// false</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">a</span><span class="o">++</span><span class="p">;</span> <span class="c1">// oops, implicit shadowing!</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">anotherObject</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span> <span class="c1">// 2</span>
+</span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span> <span class="c1">// 3</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span> <span class="s2">&quot;a&quot;</span> <span class="p">);</span> <span class="c1">// true</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Though it may appear that<code>myObject.a++</code>should (via delegation) look-up and just increment the<code>anotherObject.a</code>property itself <em>in place</em>, instead the<code>++</code>operation corresponds to<code>myObject.a = myObject.a + 1</code>.</p>
+
+<p>That’s the reason why we use delegation on prototype chain, we should avoid using the same name as traditional class inheritance would do.</p>
+
+<h3 id="save-state-on-delegators">Save state on delegators</h3>
+
+<p>In general, with<code>[[Prototype]]</code>delegation involved, <strong>you want state to be on the delegators</strong>(<code>XYZ</code>,<code>ABC</code>), not on the delegate (<code>Task</code>). We benefit it from the implicit call-site <code>this</code>binding rules.</p>
+
+<h3 id="comparison">Comparison</h3>
+
+<p>OO style</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">(</span><span class="nx">who</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">this</span><span class="p">.</span><span class="nx">me</span> <span class="o">=</span> <span class="nx">who</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">identify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="s2">&quot;I am &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">me</span><span class="p">;</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">Bar</span><span class="p">(</span><span class="nx">who</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">Foo</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="k">this</span><span class="p">,</span> <span class="nx">who</span> <span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">speak</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">alert</span><span class="p">(</span> <span class="s2">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">identify</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="p">);</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">b1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bar</span><span class="p">(</span> <span class="s2">&quot;b1&quot;</span> <span class="p">);</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">b2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bar</span><span class="p">(</span> <span class="s2">&quot;b2&quot;</span> <span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">b1</span><span class="p">.</span><span class="nx">speak</span><span class="p">();</span>
+</span><span class="line"><span class="nx">b2</span><span class="p">.</span><span class="nx">speak</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>OO style features <code>constructor</code> which introduces a lot of extra details that you don’t <em>technically</em> need to know at all times.</p>
+
+<p><img src="https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/you-dont-know-js/OO.png" alt="OO.png" /></p>
+
+<p>OLOO style</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">Foo</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">who</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">this</span><span class="p">.</span><span class="nx">me</span> <span class="o">=</span> <span class="nx">who</span><span class="p">;</span>
+</span><span class="line">    <span class="p">},</span>
+</span><span class="line">    <span class="nx">identify</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="s2">&quot;I am &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">me</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">Bar</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span> <span class="nx">Foo</span> <span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">speak</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">alert</span><span class="p">(</span> <span class="s2">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">identify</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="p">);</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">b1</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span> <span class="nx">Bar</span> <span class="p">);</span>
+</span><span class="line"><span class="nx">b1</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span> <span class="s2">&quot;b1&quot;</span> <span class="p">);</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">b2</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span> <span class="nx">Bar</span> <span class="p">);</span>
+</span><span class="line"><span class="nx">b2</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span> <span class="s2">&quot;b2&quot;</span> <span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">b1</span><span class="p">.</span><span class="nx">speak</span><span class="p">();</span>
+</span><span class="line"><span class="nx">b2</span><span class="p">.</span><span class="nx">speak</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>OLOO-style code has <em>vastly less stuff</em> to worry about, because it embraces the <strong>fact **that the only thing we ever really cared about was the **objects linked to other objects</strong>.</p>
+
+<p><img src="https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/you-dont-know-js/OLOO.png" alt="OLOO.png" /></p>
+
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2017/07/03/review-you-dont-know-js-this-and-object-prototypes/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2017/07/03/review-you-dont-know-js-this-and-object-prototypes/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>

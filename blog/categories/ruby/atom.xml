@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2016-08-30T23:06:48+08:00</updated>
+  <updated>2017-07-03T14:42:43-04:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Ruby Concurrency Article Collection]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-article-collection/"/>
-    <updated>2016-02-16T20:04:50+08:00</updated>
+    <updated>2016-02-16T07:04:50-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-article-collection</id>
     <content type="html"><![CDATA[<p>This an article collection about concurrency in Ruby, which benefits me a lot and to be continued.</p>
 
@@ -241,7 +241,7 @@
   <entry>
     <title type="html"><![CDATA[Ruby Concurrency In Practice]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-practice/"/>
-    <updated>2016-02-16T19:58:54+08:00</updated>
+    <updated>2016-02-16T06:58:54-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-practice</id>
     <content type="html"><![CDATA[<ul id="markdown-toc">
   <li><a href="#guidance">Guidance</a>    <ul>
@@ -365,7 +365,7 @@
   <entry>
     <title type="html"><![CDATA[Ruby Concurrency In Theory]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-theory/"/>
-    <updated>2016-02-16T19:35:19+08:00</updated>
+    <updated>2016-02-16T06:35:19-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-theory</id>
     <content type="html"><![CDATA[<ul id="markdown-toc">
   <li><a href="#what-is-concurrency">What is concurrency?</a>    <ul>
@@ -605,7 +605,7 @@
   <entry>
     <title type="html"><![CDATA[[Review] Working With Ruby Threads]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2016/02/16/review-working-with-ruby-threads/"/>
-    <updated>2016-02-16T13:07:05+08:00</updated>
+    <updated>2016-02-16T00:07:05-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/02/16/review-working-with-ruby-threads</id>
     <content type="html"><![CDATA[<table class="custom">
   <tbody>
@@ -1166,7 +1166,7 @@ end
   <entry>
     <title type="html"><![CDATA[Some Hash Tricks in Ruby]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2015/11/30/some-hash-tricks-in-ruby/"/>
-    <updated>2015-11-30T16:17:38+08:00</updated>
+    <updated>2015-11-30T03:17:38-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2015/11/30/some-hash-tricks-in-ruby</id>
     <content type="html"><![CDATA[<blockquote>
   <p>from <a href="http://blog.honeybadger.io/advanced-ruby-hash-techniques/">http://blog.honeybadger.io/advanced-ruby-hash-techniques/</a></p>
