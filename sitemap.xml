@@ -173,7 +173,21 @@
         <lastmod>2017-07-03T14:37:00-04:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.ifyouseewendy.com/about/</loc>
+        <loc>http://blog.ifyouseewendy.com/blog/2018/03/18/mr-curiosity/</loc>
+        <lastmod>2018-03-18T12:31:06-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.ifyouseewendy.com/</loc>
+        <lastmod>2018-03-18T12:31:06-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.ifyouseewendy.com/archive/style/</loc>
+        <lastmod>2017-07-03T14:37:00-04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://blog.ifyouseewendy.com/archive/book/2014-09-23-lin-da-li-shi-shen-chu-de-you-lu.html
+        </loc>
         <lastmod>2017-07-03T14:37:00-04:00</lastmod>
     </url>
     <url>
@@ -189,30 +203,20 @@
         <lastmod>2017-07-03T14:37:00-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://blog.ifyouseewendy.com/archive/book/2014-09-23-lin-da-li-shi-shen-chu-de-you-lu.html
-        </loc>
-        <lastmod>2017-07-03T14:37:00-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ifyouseewendy.com/archive/style/</loc>
-        <lastmod>2017-07-03T14:37:00-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ifyouseewendy.com/blog/archives/</loc>
-        <lastmod>2017-07-03T14:37:00-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ifyouseewendy.com/</loc>
-        <lastmod>2017-07-03T14:37:00-04:00</lastmod>
-    </url>
-    <url>
         <loc>http://blog.ifyouseewendy.com/resume/</loc>
         <lastmod>2017-07-03T14:37:00-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/resume/zh/</loc>
         <lastmod>2017-07-03T14:37:00-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.ifyouseewendy.com/about/</loc>
+        <lastmod>2017-07-03T14:37:00-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.ifyouseewendy.com/blog/archives/</loc>
+        <lastmod>2018-03-18T12:31:06-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/robots.txt</loc>
