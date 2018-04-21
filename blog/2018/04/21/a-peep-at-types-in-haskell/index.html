@@ -1,0 +1,358 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A Peep at Types in Haskell - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="Programming Apr 21st, 2018 A Peep at Types in Haskell Functional programming is a shining and trending topic on the other side of the spectrum of &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2018/04/21/a-peep-at-types-in-haskell">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2018/04/21/a-peep-at-types-in-haskell/">A Peep at Types in Haskell</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2018/03/18/mr-curiosity/">Mr. Curiosity</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2017/07/03/review-you-dont-know-js-this-and-object-prototypes/">[Review] You Don't Know JS: This &amp; Object Prototypes</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/08/30/review-xue-xi-le-guan/">[Review] 学习乐观</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/05/26/name-driven-development/">Name Driven Development</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/programming/'>Programming</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Apr 21<span>st</span>, 2018</a>
+</span>
+
+    </div>
+    <h1>
+      A Peep at Types in Haskell
+    </h1>
+  
+</header>
+
+
+  <section><p>Functional programming is a shining and trending topic on the other side of the spectrum of programming, which has been
+proven to be a better choice in some specific area of problem solving. I could still remember the mind blowing of various
+ideas and thoughts in FP when I first learnt Elm two years ago. It just shows me yet another possibility of thinking
+after being immersed in the world I took for granted, all kinds of the imperative languages, C, Java, Ruby, Javascript.
+It’s a whole new world.</p>
+
+<p>Recently, I picked up the FP learning by taking part in a book reading club in the company I work, for
+<a href="http://haskellbook.com/">“Haskell Programming from first principles”</a>. My girlfriend was teasing me that I’ve never
+showed up in a Haskell class at the university, why the heck you talk about it all the time now. I should admit that I might
+still feel bored if I could jump back in time. It’s just I don’t have the mind power or experience to think about the
+problem in a big picture at that time. Anyway, I’m glad it’s never too late. It’s been two months for the fun journey.
+I want to share some thoughts on it.</p>
+
+<p>I just finished reading about algebraic data types in Haskell. Basically, it’s done talking about type systems in the
+book. By getting to know types in Haskell, I questioned about why type exists all the time. I cannot help myself
+thinking about how would I solve the same problem in OO world, like what is the difference about how data is
+structured between OO and FP. Gradually, keeping punching my head, I feel like I start to see something through. I start
+to realize that, <strong>programming is all about data and operations</strong>. Different paradigms, OO and FP, are two different
+approaches. Under the big picture, languages choose to implement different characteristics, like
+inheritance, encapsulation, polymorphism, prototype, immutability, static and dynamic types, etc, to reach a same goal,
+to represent and manipulate data in an effective way.</p>
+
+<p>Since it’s all about data, what is data? I consider it as a general name for all possible values, like primitive ones, <code>1, 'a',
+True</code>, which are usually bulit into the language, like a list <code>[]</code> and a map <code>{}</code>, working as a group of values following some basic
+simple rules. To better fit the language into modeling various realistic problems, OO introduces class, which packs up the states
+(data) and methods (operation) together (In some sense, class is a set of data and rules applied onto the data). In the meantime, FP
+provides a different path, with type as a representation of a set of data and function (operation) as a way to transform data. For
+example, in OO <code>obj</code> has a state <code>value</code>, and <code>obj.foo</code> might migrate the state. In FP, we just do <code>foo(value)</code>
+directly. (The limitation or visibility of the operation comes from encapsulation in OO, but type matching in FP)</p>
+
+<p>So what is type? Type, in short, is a set of values (data). For example, <code>Int8</code> is a built-in type in Haskell as a set of 256
+numbers, starting from -128 to 127, <code>Char</code> is a set of all possible charaters, <code>String</code> is a list of <code>Char</code>. How
+to represent a binary tree:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">  2
+</span><span class="line">  /   \
+</span><span class="line">1      3</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>What exactly do we need to know about the tree? Three nodes with three values, and the connections among them.</p>
+
+<p>In OO, we are going to create a structure regarding the node, with a state recording the value and two links for the
+connection.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Node</span>
+</span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:left</span><span class="p">,</span> <span class="n">right</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span class="line">    <span class="vi">@value</span> <span class="o">=</span> <span class="n">value</span>
+</span><span class="line">    <span class="n">left</span> <span class="o">=</span> <span class="kp">nil</span>
+</span><span class="line">    <span class="n">right</span> <span class="o">=</span> <span class="kp">nil</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">root</span>        <span class="o">=</span> <span class="no">Node</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span class="line"><span class="n">root</span><span class="o">.</span><span class="n">left</span>   <span class="o">=</span> <span class="no">Node</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class="line"><span class="n">root</span><span class="o">.</span><span class="n">right</span>  <span class="o">=</span> <span class="no">Node</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>To make it a tree, instead of a plie of nodes, we can create a structure like</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">BinaryTree</span>
+</span><span class="line">  <span class="kp">attr_reader</span> <span class="ss">:root_node</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">root_value</span><span class="p">)</span>
+</span><span class="line">    <span class="vi">@root_node</span> <span class="o">=</span> <span class="no">Node</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">root_value</span><span class="p">)</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="n">node_value</span><span class="p">)</span>
+</span><span class="line">    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>So a final representation for the binary tree in Ruby, it’ll be</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">bt</span> <span class="o">=</span> <span class="no">BinaryTree</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>What about in Haskell? At first, we create a type to represent the tree like below, which basically means a binary tree
+is either a leaf, or a node with a value and two nodes, which are both binary trees.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="kr">data</span> <span class="kt">BinaryTree</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">Leaf</span> <span class="o">|</span> <span class="kt">Node</span> <span class="p">(</span><span class="kt">BinaryTree</span> <span class="n">a</span><span class="p">)</span> <span class="n">a</span> <span class="p">(</span><span class="kt">BinaryTree</span> <span class="n">a</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>To represent the tree,</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="nf">bt</span> <span class="ow">=</span> <span class="kt">Node</span> <span class="p">(</span><span class="kt">Node</span> <span class="kt">Leaf</span> <span class="mi">2</span> <span class="kt">Leaf</span><span class="p">)</span> <span class="mi">1</span> <span class="p">(</span><span class="kt">Node</span> <span class="kt">Leaf</span> <span class="mi">3</span> <span class="kt">Leaf</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It’s done! To be honest, I was totally blown away by the second I understand how things work here. It’s neat, elegant
+and way over my thinking.</p>
+
+<p>Cool, so how it works? Between two cases in two languages. Here is my understanding: in the perspective of a
+compiler (or interpreter),</p>
+
+<ul>
+  <li>In Ruby, it sees a reference to a chunk of memory, which contains the necessary info about getting to know that, there
+is an object, which has a state and maybe a reference to its parent, which contains operations allowed to do.</li>
+  <li>In Haskell, it sees a sequence of tokens, literally all the data about it. According to the types definition, it
+could parse out the tokens in the right pattern, thus understand it.</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/ifyouseewendy/ifyouseewendy.github.io/source/image-repo/binary-tree-oo-and-haskell.png" alt="binary-tree-oo-and-haskell" /></p>
+
+<p>Bascially, this is a note of thinking while I was learning it. I’m still digesting and trying to find out a path to fit the FP ideas into my system of knowledge.</p>
+
+<p>At last, I want to share some materials which is truly helpful to me</p>
+
+<ul>
+  <li><a href="http://www.defmacro.org/2006/06/19/fp.html">Functional Programming For The Rest of Us - Slava Akhmechet</a> Such a pleasant article as a beginner read, the history, the features, everything you need to know</li>
+  <li><a href="https://youtu.be/yVuEPwNuCHw">Types, and why you should care - Ron Minsky</a> An intro video about the pros and cons
+about types</li>
+  <li><a href="https://youtu.be/V1po0BT7kac">Type Systems Will Make You a Better JavaScript Developer - Jared Forsyth</a> A video talking about why Facebook Flow works effectively for JS. I use it at work, but sometimes I stumble upon it and end up complaining about its stupidity. Next time, I’ll watch the video again.</li>
+  <li><a href="https://flow.org/en/docs/lang/">Type Systems - Facebook Flow</a> I find it as a good supplyment after getting understand
+the types in Haskell, maybe because it is a standalone type system?</li>
+</ul>
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2018/04/21/a-peep-at-types-in-haskell/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2018/04/21/a-peep-at-types-in-haskell/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>
