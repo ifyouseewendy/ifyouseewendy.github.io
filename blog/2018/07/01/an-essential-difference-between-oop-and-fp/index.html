@@ -1,0 +1,470 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>An Essential Difference Between OOP and FP - Wendi's Blog</title>
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta name="author" content="wendi">
+
+  
+  <meta name="description" content="Programming Jul 1st, 2018 An Essential Difference Between OOP and FP A few months ago, I told my friend that I was learning Haskell recently. After &hellip;">
+  <meta name="keywords" content="Ruby, Rails, Tech, Web"/>
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ifyouseewendy.com/blog/2018/07/01/an-essential-difference-between-oop-and-fp">
+  <link href="/favicon.td.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Wendi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/jquery-1.9.1.min.js"></script>
+  <script src="/javascripts/octopress.js"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48830538-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+  <!-- <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a> -->
+  <a href='/'>
+    <img src="/images/taxi-driver2.png" width="100" height="100" title="wendi" >
+  </a>
+</header>
+
+
+  <div class="main-container">
+    <div class="main wrapper clearfix" >
+    	
+    	<aside>
+        
+          <div class="search-container">
+            <form action="http://google.com/search" method="get">
+              <fieldset role="search">
+                <input type="hidden" name="q" value="site:blog.ifyouseewendy.com" />
+                <input class="search-field" type="text" name="q" results="0" placeholder=""/>
+                <input class="submit" type="submit" value=""/>
+              </fieldset>
+            </form>
+          </div>
+        
+        <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+              <!-- <h3>Tags</h3> -->
+
+
+<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2018/07/01/an-essential-difference-between-oop-and-fp/">An Essential Difference Between OOP and FP</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2018/04/21/a-peep-at-types-in-haskell/">A Peep at Types in Haskell</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2018/03/18/mr-curiosity/">Mr. Curiosity</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2017/07/03/review-you-dont-know-js-this-and-object-prototypes/">[Review] You Don't Know JS: This &amp; Object Prototypes</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2016/08/30/review-xue-xi-le-guan/">[Review] 学习乐观</a>
+    </li>
+    
+</ul>
+
+
+            
+        	</li>
+        	<li>
+        		<ul>
+                <li>Github - <a href="http://www.github.com/ifyouseewendy" target="_blank">github.com/ifyouseewendy</a></li>
+                <li>Twitter - <a href="http://www.twitter.com/ifyouseewendy" target="_blank">@ifyouseewendy</a></li>
+                <li>Email - <a href="mailto:ifyouseewendy@gmail.com" target="_blank">ifyouseewendy at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+
+      </aside>
+      
+      <div>
+<article>
+	<header>
+  
+    <div class="article-tags">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/programming/'>Programming</a>
+  
+</span>
+
+
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<span class='date'>
+  <a href='#'>Jul 1<span>st</span>, 2018</a>
+</span>
+
+    </div>
+    <h1>
+      An Essential Difference Between OOP and FP
+    </h1>
+  
+</header>
+
+
+  <section><p>A few months ago, I told my friend that I was learning Haskell recently. After giving him
+a quick introduction, he asked me an intuitive but hard question that I was not able to give
+the answer, “What is the difference between OOP and FP?”.</p>
+
+<p>I thought hard, I asked around and I took it on my way learning Haskell, but apparently there
+are no easy answers, considering they usually appear at the opposite position on the spectrum
+of programming paradgim.</p>
+
+<p>Anyway, today when I was reviewing my notes for recapping type system in Haskell, the question
+got popped up again. But this time, I think I’ve got an answer:</p>
+
+<p>Other than the obvious language characteristics, <strong>the essential difference between OOP and FP
+is how they structure values and operations</strong>. OOP groups values and operations together in the
+objects, while FP separates values and operations apart strictly.</p>
+
+<p>Seriously, is that an answer? I konw, it’s not perfect, but definitely helpful to myself. I’ll make
+a detailed explanation.</p>
+
+<h2 id="what-is-a-program">What is a program?</h2>
+
+<p>We use programming languages to write programs, which can be considered as a series of calculations
+executed in many stacks of control flows. It’s not hard to figure out that, in essence, a program is
+about <strong>operating values</strong>.</p>
+
+<p>As the definition for <em>turing complete</em> says, language is about <em>data-manipulation</em>.</p>
+
+<blockquote>
+  <p>In computability theory, a system of data-manipulation rules (such as a computer’s instruction set,
+a programming language, or a cellular automaton) is said to be Turing complete or computationally
+universal if it can be used to simulate any Turing machine.</p>
+</blockquote>
+
+<h2 id="what-is-a-value">What is a value?</h2>
+
+<p><strong><em>The first question is what are basic values?</em></strong></p>
+
+<p>No matter what language you are using, there must be</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">1
+</span><span class="line">'c'
+</span><span class="line">True # somehow boolean value can also be considered as a integer</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong><em>But what if I want to represent more compliated values?</em></strong></p>
+
+<p>We use data structures:</p>
+
+<ul>
+  <li>List, <code>[1,2,3]</code>, a set of independent values</li>
+  <li>Tuple, <code>(1,2,3)</code>, several values compound over each other as one value</li>
+  <li>Tree, values structured with a purpose to be manipulated easily</li>
+  <li>Dictionary? It seems like a combination for value and algorithm</li>
+</ul>
+
+<p><strong><em>Apparently, that’s not enough for us to carve the real world. What’s the ultimate way to represent data no matter how complicated it is?</em></strong></p>
+
+<p>It depends on what mechanism a language supports. Here jumps in the discussion for difference between
+OOP and FP language, which I’ll take Ruby and Haskell as examples.</p>
+
+<p>In Ruby, we use class to model the real world problem and use objects to hold values, which we also call
+it state in OO.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">class</span> <span class="nc">Person</span>
+</span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Di&quot;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>As we can see, class defines what pattern of data (<code>name</code> and <code>age</code>) we want to hold.
+After initializing, an object will wrap the plain data <code>"Di"</code> and <code>18</code> together as a
+whole new value.</p>
+
+<p>In Haskell, we use type to model the real world values and everytime we create a customized type,
+there will also come with a data constructor, which holds the values together.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="s">&quot;Di&quot;</span> <span class="mi">18</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>As a summary, no matter how complicated the value is, we can always represent it by
+applying this kind of mechanisms the language provides over and over again.</p>
+
+<h2 id="how-to-operate-value">How to operate value?</h2>
+
+<p>By rules, laws, or formulas. In another saying, methods or functions.</p>
+
+<p>In Ruby, we define methods in class definition to empower the object to apply onto its states.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">class</span> <span class="nc">Person</span>
+</span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">gets_older</span><span class="p">;</span> <span class="n">age</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Bart&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>When we call <code>person.gets_older</code>, we’ll alter the <code>age</code> value by incrementing it by one. If we
+have a peek into our memory, there will be data blobs like in below. Each object exists as
+a bundle of values and operations.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"> <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>
+</span><span class="line"> <span class="o">|</span><span class="n">_class_</span><span class="kt">:</span> <span class="kt">Person</span>  <span class="o">|</span>   <span class="o">|</span><span class="n">_class_</span><span class="kt">:</span> <span class="kt">Person</span>  <span class="o">|</span>   <span class="o">|</span><span class="n">_class_</span><span class="kt">:</span> <span class="kt">Person</span>  <span class="o">|</span>
+</span><span class="line"> <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>
+</span><span class="line"> <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Bart&quot;</span>     <span class="o">|</span>   <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Lisa&quot;</span>     <span class="o">|</span>   <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Maggie&quot;</span>   <span class="o">|</span>
+</span><span class="line"> <span class="o">|</span><span class="n">age</span><span class="kt">:</span>  <span class="mi">10</span>         <span class="o">|</span>   <span class="o">|</span><span class="n">age</span><span class="kt">:</span>  <span class="mi">8</span>          <span class="o">|</span>   <span class="o">|</span><span class="n">age</span><span class="kt">:</span>  <span class="mi">1</span>          <span class="o">|</span>
+</span><span class="line"> <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>
+</span><span class="line"> <span class="o">|#</span><span class="n">gets_older</span>      <span class="o">|</span>   <span class="o">|#</span><span class="n">gets_older</span>      <span class="o">|</span>   <span class="o">|#</span><span class="n">gets_older</span>      <span class="o">|</span>
+</span><span class="line"> <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>However, in Haskell, we make use of functions to operate values, with limits put on their types.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span>
+</span><span class="line"><span class="nf">person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="s">&quot;Bart&quot;</span> <span class="mi">10</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">getsOlder</span> <span class="ow">::</span> <span class="kt">Person</span> <span class="ow">-&gt;</span> <span class="kt">Person</span>
+</span><span class="line"><span class="nf">getsOlder</span> <span class="p">(</span><span class="kt">Person</span> <span class="n">name</span> <span class="n">age</span><span class="p">)</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="n">name</span> <span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>When we call <code>getsOlder person</code>, we’ll create a new copy of person data with <code>age</code> incremented
+by one, conforming to immutability. As a comparison, if we look into our memory, we’ll see what’s
+in below.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"> <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>
+</span><span class="line"> <span class="o">|</span><span class="n">_type_</span><span class="kt">:</span> <span class="kt">Person</span>   <span class="o">|</span>   <span class="o">|</span><span class="n">_type_</span><span class="kt">:</span> <span class="kt">Person</span>   <span class="o">|</span>   <span class="o">|</span><span class="n">_type_</span><span class="kt">:</span> <span class="kt">Person</span>   <span class="o">|</span>
+</span><span class="line"> <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>
+</span><span class="line"> <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Bart&quot;</span>     <span class="o">|</span>   <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Lisa&quot;</span>     <span class="o">|</span>   <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Maggie&quot;</span>   <span class="o">|</span>
+</span><span class="line"> <span class="o">|</span><span class="n">age</span><span class="kt">:</span>  <span class="mi">10</span>         <span class="o">|</span>   <span class="o">|</span><span class="n">age</span><span class="kt">:</span> <span class="mi">8</span>           <span class="o">|</span>   <span class="o">|</span><span class="n">age</span><span class="kt">:</span> <span class="mi">1</span>           <span class="o">|</span>
+</span><span class="line"> <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>
+</span><span class="line">
+</span><span class="line"><span class="o">+---------------------------------------------------------------+</span>
+</span><span class="line">
+</span><span class="line"> <span class="o">+---------------------+</span>
+</span><span class="line"> <span class="o">|</span><span class="n">_type_</span><span class="kt">:</span> <span class="kt">Function</span>     <span class="o">|</span>
+</span><span class="line"> <span class="o">|</span>                     <span class="o">|</span>
+</span><span class="line"> <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="n">getsOlder</span>      <span class="o">|</span>
+</span><span class="line"> <span class="o">|</span><span class="n">sig</span><span class="kt">:</span> <span class="kt">Person</span> <span class="ow">-&gt;</span> <span class="kt">Person</span><span class="o">|</span>
+</span><span class="line"> <span class="o">+---------------------+</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="wrap-up">Wrap up</h2>
+
+<p>As a conclusion, I think OOP and FP take a different approach to operating values. OOP packs up
+values and permitted operations together via objects, wheras FP separates values and operations
+apart strictly.</p>
+
+<p><em>PS. How does polymorphism fit in the discussion?</em></p>
+
+<p>We can keep following the imaginary memory snapshot above. In OOP, it’ll work as long as
+objects repond to the same method, whereas in Haskell, we can loose the function to allow
+more general types passed in.</p>
+
+<p>In Ruby, it’s about duck typing.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">class</span> <span class="nc">Person</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">gets_older</span><span class="p">;</span> <span class="n">age</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">Duck</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">gets_older</span><span class="p">;</span> <span class="n">age</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">as_time_goes_by</span><span class="p">(</span><span class="n">a_living</span><span class="p">)</span>
+</span><span class="line">  <span class="n">a_living</span><span class="o">.</span><span class="n">gets_older</span> <span class="c1"># no matter it&#39;s a person or a duck</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>In Haskell, we use type to represent a set of values and typeclass to enforce rules on what kind
+of operations can be applied onto the type (the set of values).</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span> <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Show</span><span class="p">)</span>
+</span><span class="line"><span class="kr">data</span> <span class="kt">Duck</span> <span class="ow">=</span> <span class="kt">Duck</span> <span class="kt">Integer</span> <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Show</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="kr">class</span> <span class="kt">Living</span> <span class="n">a</span> <span class="kr">where</span>
+</span><span class="line">  <span class="n">getsOlder</span> <span class="ow">::</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">a</span>
+</span><span class="line">
+</span><span class="line"><span class="kr">instance</span> <span class="kt">Living</span> <span class="kt">Person</span> <span class="kr">where</span>
+</span><span class="line">  <span class="n">getsOlder</span> <span class="p">(</span><span class="kt">Person</span> <span class="n">name</span> <span class="n">age</span><span class="p">)</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="n">name</span> <span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="kr">instance</span> <span class="kt">Living</span> <span class="kt">Duck</span> <span class="kr">where</span>
+</span><span class="line">  <span class="n">getsOlder</span> <span class="p">(</span><span class="kt">Duck</span> <span class="n">age</span><span class="p">)</span> <span class="ow">=</span> <span class="kt">Duck</span> <span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">asTimeGoesBy</span> <span class="ow">::</span> <span class="kt">Living</span> <span class="n">a</span> <span class="ow">=&gt;</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">a</span>
+</span><span class="line"><span class="nf">asTimeGoesBy</span> <span class="n">living</span> <span class="ow">=</span> <span class="n">getsOlder</span> <span class="n">living</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+</section>
+
+
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+    <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, and theme <a href='https://github.com/alexharris/calm-shallow-sea'>calm-shallow-sea</a>.</span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'ifyouseewendy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ifyouseewendy.com/blog/2018/07/01/an-essential-difference-between-oop-and-fp/';
+        var disqus_url = 'http://blog.ifyouseewendy.com/blog/2018/07/01/an-essential-difference-between-oop-and-fp/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>

@@ -181,8 +181,14 @@
         <lastmod>2018-04-21T17:05:06-04:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://blog.ifyouseewendy.com/blog/2018/07/01/an-essential-difference-between-oop-and-fp/
+        </loc>
+        <lastmod>2018-07-01T23:14:46-04:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.ifyouseewendy.com/</loc>
-        <lastmod>2018-04-21T17:05:06-04:00</lastmod>
+        <lastmod>2018-07-01T23:14:46-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/archive/style/</loc>
@@ -220,7 +226,7 @@
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/archives/</loc>
-        <lastmod>2018-04-21T17:05:06-04:00</lastmod>
+        <lastmod>2018-07-01T23:14:46-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/robots.txt</loc>
