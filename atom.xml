@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2018-07-01T23:14:46-04:00</updated>
+  <updated>2019-04-15T12:20:42-04:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,74 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What I've done in 2019]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2019/04/15/what-ive-done-in-2019/"/>
+    <updated>2019-04-15T11:59:16-04:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2019/04/15/what-ive-done-in-2019</id>
+    <content type="html"><![CDATA[<blockquote>
+  <p>A weekly log on my life and personal growth</p>
+</blockquote>
+
+<h2 id="w16-0408---0412">W16 (04/08 - 04/12)</h2>
+
+<ul>
+  <li>Listen to <a href="https://changelog.com/podcast/341?utm_medium=email&amp;utm_campaign=Weekly%20-%20Issue%20250&amp;utm_content=Weekly%20-%20Issue%20250+CID_3afe8cb9c4b1c3d53cfff50448829a21&amp;utm_source=changelog%20email&amp;utm_term=Wasmer%20is%20taking%20WebAssembly%20beyond%20the%20browser">Wasmer is taking WebAssembly beyond the browser</a>
+    <ul>
+      <li>Surprisingly find and listen to this new released podcast, which happens to match exactly with what we are working on. </li>
+    </ul>
+  </li>
+  <li>Finish reading <a href="https://www.goodreads.com/book/show/23485557-the-value-of-simple?from_search=true">The Value of Simple</a>
+    <ul>
+      <li>A great to book to start one’s personal finance adventure, especially for Canadians. It’s to be noted that the author also provides a list of tools and book guides, which is super helpful.</li>
+    </ul>
+  </li>
+  <li>Start my first <a href="https://quip.com/8agjAbpkTxTx/Monthly-Expense#TZHACANmrl0">Monthly Expense</a> review</li>
+  <li>Research on <a href="https://quip.com/SsMFA531heag/Pay-back-mortgage-or-invest-in-bond">Pay back mortgage or invest in bond?</a> and discuss with friends</li>
+  <li>House work to welcome spring</li>
+</ul>
+
+<h2 id="w15-0401---0405">W15 (04/01 - 04/05)</h2>
+
+<ul>
+  <li>Lost the basketball game in semi-final
+    <ul>
+      <li>继去年在半决赛一分惜败后，这次输了两分 😥</li>
+    </ul>
+  </li>
+  <li>Watch <a href="https://movie.douban.com/subject/1294438/">Persona</a>
+    <ul>
+      <li>看过之后非常困惑，整个过程就是慢慢跟不上导演的节奏。即便如此，很多画面深刻地印在了我的脑海，回来的路上一直不断地回放。在豆瓣上看到了这篇影评我很赞同，基本上解释了我所有的疑问。即使单纯作为一遍散文来读，也是很有收获，<a href="https://movie.douban.com/review/1275074/">Persona (假面)：沉默的假面</a></li>
+    </ul>
+  </li>
+  <li>Finish reading <a href="https://www.goodreads.com/book/show/23885906-wealthing-like-rabbits">Wealthing Like Rabbits</a> 
+    <ul>
+      <li>It’s a good start for my personal financial learning. The examples in the book are really persuasive, which I appreciate the most. However, I don’t really agree with the saving part. I understand the fact that we should figure out what we truly need or what the money could buy us indeed, but what I infer from the part is kinda what the author tries to avoid, which is to sacrifice your living quality for future. Especially, to ask for used baby clothes from a friend implicitly sounds manipulative to me.</li>
+    </ul>
+  </li>
+  <li>Finish the second chapter of <a href="https://interpreterbook.com/"><em>Writing An Interpreter In Go</em></a> for parsing techniques</li>
+  <li>Skim over the <a href="https://www.goodreads.com/book/show/42977609-programming-webassembly-with-rust"><em>Programming WebAssembly with Rust</em></a>.
+    <ul>
+      <li>It’s an ok book that I put my main focus on WebAssembly even though half of the book are examples for using Rust to write WA modules. It gives me some context knowledge of WA, like how it’s developed over time and how it gets used inside and outside of the browser.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="w14-0325---0329">W14 (03/25 - 03/29)</h2>
+
+<ul>
+  <li>First glance at WebAssembly with my note <a href="https://quip.com/zFqEAHsgPhfs/From-Compiler-to-WebAssembly">From Compiler to WebAssembly</a>
+    <ul>
+      <li>Lin Clark’s <a href="https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/">A cartoon intro to WebAssembly</a> is such a good read</li>
+      <li>Excited to see this happens to be an extension of my Go learning with <a href="https://interpreterbook.com/">Writing an interpreter in Golang</a></li>
+    </ul>
+  </li>
+  <li>Start building my  <a href="https://quip.com/RpYkAB7LjzV6">Financial Knowledge Base</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[An Essential Difference Between OOP and FP]]></title>
@@ -8218,130 +8286,6 @@ The bottom line is: generally it seems better to split a monster join into small
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><code>name = 'John'</code> only means a definition of a local variable, which won’t send <code>=</code> to <code>name</code>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Annoying OAuth Issue on HTTP URL Encoding]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding/"/>
-    <updated>2015-03-04T04:46:12-05:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2015/03/04/annoying-oauth-issue-on-http-url-encoding</id>
-    <content type="html"><![CDATA[<p>I was developing and maintaining an OAuth service using <code>pelle/oauth-plugin</code> gem. Other than the standard token exchange process, there is a need to authenticate by signature based on user’s passed in parameters. As custom parameters can include custom charactors, here comes the space encoding issue.</p>
-
-<ul>
-  <li>Why the service approves my test script by passing <code>name=wendi</code> but refuses <code>name=Di Wen</code> ?</li>
-  <li>Why the <code>CGI.escape('Di Wen')</code> outputs <code>"Di+Wen"</code>, while <code>URI.escape('Di Wen')</code> outpus <code>Di%20Wen</code> ?</li>
-</ul>
-
-<p>This is definitely an annoying issue. I’ve run into it sometime before, but today I need to make a clear mind.</p>
-
-<p><strong>What’s the HTTP standard way to encode space in URL?</strong></p>
-
-<p><code>%20</code>, according to the <a href="http://www.w3schools.com/tags/ref_urlencode.asp">HTML URL Encoding Reference</a> by W3schools.</p>
-
-<p><strong>Why the hell some libary encode space to <code>+</code>?</strong></p>
-
-<p>Because of the <code>application/x-www-form-urlencoded</code> <em>MIME</em> type.</p>
-
-<p>Refered to Wikipedia, <a href="http://en.wikipedia.org/wiki/Percent-encoding#The_application.2Fx-www-form-urlencoded_type">Percent Encoding</a></p>
-
-<blockquote>
-  <p>The encoding used by default is based on a very early version of the general URI percent-encoding rules, with a number of modifications such as newline normalization and replacing spaces with “+” instead of “%20”. The Internet media type of data encoded this way is application/x-www-form-urlencoded, and it is currently defined (still in a very outdated manner) in the HTML and XForms specifications.</p>
-</blockquote>
-
-<p>And <a href="http://stackoverflow.com/users/634419/anomie">Anomie</a> has a summary <a href="http://stackoverflow.com/a/5433216/1331774">answer</a>,</p>
-
-<blockquote>
-  <p>The query string format is actually a different but related encoding, application/x-www-form-urlencoded, defined in RFC 1866 along with HTML 2.0. It was based on RFC 1738, but specified that spaces (not all whitespace, just the character with ASCII code 0x20) are replaced by ‘+’ and that line breaks are to be encoded as CRLF (i.e. %0D%0A). The former is likely because that saves 2 bytes for a very common character in form submissions at the expense of using an extra 2 bytes for a much less common character, and the latter is to avoid problems when transferring between systems using different end-of-line codings. Non-ASCII characters were left unconsidered.</p>
-</blockquote>
-
-<blockquote>
-  <p>UTF-8 coding in URIs came over a decade later, in RFC 3986, although individual protocols may have specified this or another encoding of non-ASCII characters earlier. To maintain backwards compatibility, all UTF-8 octets must be percent-encoded.</p>
-</blockquote>
-
-<p><strong>What’s the Rule of Thumb in Ruby world?</strong></p>
-
-<p><a href="http://stackoverflow.com/users/409475/ernest">Ernest</a> makes a <a href="http://stackoverflow.com/questions/2824126/whats-the-difference-between-uri-escape-and-cgi-escape">specification</a> about the escape methods over <code>URI</code>, <code>CGI</code>, and <code>Addressable</code>, and gives a conclusion</p>
-
-<blockquote>
-  <ul>
-    <li>Do not use URI.escape or similar</li>
-    <li>Use CGI::escape if you only need form escape</li>
-    <li>If you need to work with URIs, use Addressable, it offers url encoding, form encoding and normalizes URLs.</li>
-  </ul>
-</blockquote>
-
-<p><strong>So, what’s the solution to my question?</strong></p>
-
-<p>The <code>pelle/oauth-plugin</code> gem failed my test script with <code>CGI</code> by</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="no">CGI</span><span class="o">.</span><span class="n">escape</span> <span class="s1">&#39;Di Wen&#39;</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="s2">&quot;Di+Wen&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="c1"># expecting &quot;Di%2BWen&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Also failed <code>URI</code> and <code>Addressable</code> by</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="no">URI</span><span class="o">.</span><span class="n">escape</span> <span class="s1">&#39;Di@Wen&#39;</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="s2">&quot;Di@Wen&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="ss">Addressable</span><span class="p">:</span><span class="ss">:URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;Di@Wen&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">normalize</span>
-</span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;Addressable::URI:0x81f58abc URI:Di@Wen&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="c1"># expecting &quot;Di%40Wen&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>After some digging into the gem, I’ve found its encoding method</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># Escape +value+ by URL encoding all non-reserved character.</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1"># See Also: {OAuth core spec version 1.0, section 5.1}[http://oauth.net/core/1.0#rfc.section.5.1]</span>
-</span><span class="line"><span class="k">def</span> <span class="nf">escape</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-</span><span class="line">  <span class="ss">URI</span><span class="p">:</span><span class="ss">:escape</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">to_s</span><span class="p">,</span> <span class="ss">OAuth</span><span class="p">:</span><span class="ss">:RESERVED_CHARACTERS</span><span class="p">)</span>
-</span><span class="line"><span class="k">rescue</span> <span class="no">ArgumentError</span>
-</span><span class="line">  <span class="ss">URI</span><span class="p">:</span><span class="ss">:escape</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">force_encoding</span><span class="p">(</span><span class="ss">Encoding</span><span class="p">:</span><span class="ss">:UTF_8</span><span class="p">),</span> <span class="ss">OAuth</span><span class="p">:</span><span class="ss">:RESERVED_CHARACTERS</span><span class="p">)</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line">
-</span><span class="line"><span class="ss">OAuth</span><span class="p">:</span><span class="ss">:RESERVED_CHARACTERS</span> <span class="c1"># =&gt; /[^a-zA-Z0-9\-\.\_\~]/</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Following the comment, comes along the OAuth standard specification about <a href="http://oauth.net/core/1.0/#rfc.section.5.1">Parameter Encoding</a></p>
-
-<blockquote>
-  <p>All parameter names and values are escaped using the [RFC3986] percent-encoding (%xx) mechanism. Characters not in the unreserved character set ([RFC3986] section 2.3) MUST be encoded. Characters in the unreserved character set MUST NOT be encoded. Hexadecimal characters in encodings MUST be upper case. Text names and values MUST be encoded as UTF-8 octets before percent-encoding them per [RFC3629].</p>
-</blockquote>
-
-<blockquote>
-  <pre><code>unreserved = ALPHA, DIGIT, '-', '.', '_', '~'
-</code></pre>
-</blockquote>
-
-<p>Under the standard spec and refering to the gem’s implementation, I’ve finally solved my stupid issue.</p>
-
 ]]></content>
   </entry>
   
