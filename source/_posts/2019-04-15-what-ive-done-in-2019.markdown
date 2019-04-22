@@ -8,6 +8,12 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W17 (04/15 - 04/21)
+
+* Finish the first draft of my [financial planning and investment](https://quip.com/RbITAH4Spbvt/Planning-investing)
+* Have a trip to Detroit with Jasmine
+    * MOCA, DIA, Pistons vs Bucks game, Belle Isle
+
 ## W16 (04/08 - 04/12)
 
 * Listen to [Wasmer is taking WebAssembly beyond the browser](https://changelog.com/podcast/341?utm_medium=email&utm_campaign=Weekly%20-%20Issue%20250&utm_content=Weekly%20-%20Issue%20250+CID_3afe8cb9c4b1c3d53cfff50448829a21&utm_source=changelog%20email&utm_term=Wasmer%20is%20taking%20WebAssembly%20beyond%20the%20browser)
