@@ -8,6 +8,18 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W18 (04/22 - 04/26)
+
+* Start reading [Quiet: The Power of Introverts in a World That Can't Stop Talking](https://www.amazon.ca/Quiet-Power-Introverts-World-Talking/dp/0307352153/ref=sr_1_1?keywords=quiet&qid=1555941549&s=gateway&sr=8-1)
+    * Being an introvert has been a bittersweet journey for me. Hope this book could help know myself better. (Recommended by Mitch)
+* Start taking an online course on economics
+    * 薛兆丰的经济学课。作为 financial learning 的后续，本来已经开始读 Value Investing，但是发现好多普遍又根本的问题更吸引我。
+* Watch [风中有朵雨做的云](https://movie.douban.com/subject/26728669/)
+    *  我很同意这个故事有“知音”体，人物关系复杂又随意，所以导演打乱了时间序是为了掩盖还是故作玄虚？我不是在乎。我喜欢这里边的人物，没有人让我出戏。最迷的还是光影，没机会去影院，但是在家就已经让我沉醉了。
+* Get my 🚲
+
+![w18-bike](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w18-bike.jpg)
+
 ## W17 (04/15 - 04/21)
 
 * Finish the first draft of my [financial planning and investment](https://quip.com/RbITAH4Spbvt/Planning-investing)
