@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+
+## W19 (04/29 - 05-03)
+
+* Research on a few candidates on portfolios and start building [My portfolio](https://quip.com/TCQjAdmOkJMR)
+* Visit Stratford to enjoy spring and celebrate Jasmine's birthday
+
+![w19-jasmine-birthday](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w19-jasmine-birthday.jpg)
+
 ## W18 (04/22 - 04/26)
 
 * Start reading [Quiet: The Power of Introverts in a World That Can't Stop Talking](https://www.amazon.ca/Quiet-Power-Introverts-World-Talking/dp/0307352153/ref=sr_1_1?keywords=quiet&qid=1555941549&s=gateway&sr=8-1)
