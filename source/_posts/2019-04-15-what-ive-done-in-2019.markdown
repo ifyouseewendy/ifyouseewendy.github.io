@@ -8,6 +8,12 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W20 (05/06 - 05/10)
+
+* Such a busy week, for being on call at work. I didn't have much energy on pushing personal growth stuff.
+  However, it's been a fantastic week for various sports games.
+
+![w20-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w20-collage.jpeg)
 
 ## W19 (04/29 - 05-03)
 
