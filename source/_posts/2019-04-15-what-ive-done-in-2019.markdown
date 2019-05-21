@@ -8,6 +8,12 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W21 (05/13 - 05/17)
+
+* Keep my reading on _Quiet_
+
+![w21-nick](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w21-nick.jpg)
+
 ## W20 (05/06 - 05/10)
 
 * Such a busy week, for being on call at work. I didn't have much energy on pushing personal growth stuff.
