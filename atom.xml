@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2019-05-21T13:36:10-04:00</updated>
+  <updated>2019-05-27T12:02:11-04:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,281 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on DDD Quickly]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2019/05/27/notes-on-ddd/"/>
+    <updated>2019-05-27T11:43:15-04:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2019/05/27/notes-on-ddd</id>
+    <content type="html"><![CDATA[<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>Domain Driven Design Quickly</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td>Floyd Marinescu &amp; Abel Avram</td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="https://www.infoq.com/minibooks/domain-driven-design-quickly">InfoQ</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul id="markdown-toc">
+  <li><a href="#what-is-ddd">What is DDD?</a></li>
+  <li><a href="#the-ubiquitous-language">The Ubiquitous Language</a></li>
+  <li><a href="#model-driven-design">Model-Driven Design</a>    <ul>
+      <li><a href="#building-blocks">building blocks</a></li>
+      <li><a href="#layered-architecture">Layered Architecture</a></li>
+      <li><a href="#express-model-with-entities-value-objects-and-services">Express Model with Entities, Value Objects and Services</a></li>
+      <li><a href="#struct-model-with-modules">Struct model with Modules</a></li>
+      <li><a href="#manage-a-domain-object">Manage a domain object</a></li>
+    </ul>
+  </li>
+  <li><a href="#refactoring-toward-deeper-insight">Refactoring Toward Deeper Insight</a></li>
+  <li><a href="#preserving-model-integrity">Preserving Model Integrity</a>    <ul>
+      <li><a href="#bounded-context">Bounded Context</a></li>
+      <li><a href="#continuous-integration">Continuous integration</a></li>
+      <li><a href="#context-map">Context map</a></li>
+      <li><a href="#shared-kernel">Shared Kernel</a></li>
+      <li><a href="#customer-supplier">Customer-supplier</a></li>
+      <li><a href="#conformist">Conformist</a></li>
+      <li><a href="#anticorruption-layer">Anticorruption layer</a></li>
+      <li><a href="#separate-ways">Separate ways</a></li>
+      <li><a href="#open-host-service">Open host service</a></li>
+      <li><a href="#distillation">Distillation</a></li>
+    </ul>
+  </li>
+  <li><a href="#advices">Advices</a></li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-mind-map.png" alt="ddd-mind-map" /></p>
+
+<h2 id="what-is-ddd">What is DDD?</h2>
+
+<p>The main idea is to identify the <strong>domain model</strong> and design your system around it. Usually, a software designer will talk with the domain expert to figure out the domain.</p>
+
+<blockquote>
+  <p>You cannot create a banking software system unless you have a good understanding of what banking is all about, one must understand the domain of banking.
+How can we make the software fit harmoniously with the domain? The best way to do it is to make software a reflection of the domain. Software needs to incorporate the core concepts and elements of the domain, and to precisely realize the relationships between them. Software has to <strong>model</strong> the domain.</p>
+</blockquote>
+
+<p>So, what is domain model? It’s an abstraction of the domain. It’s an internal representation of the target domain.</p>
+
+<blockquote>
+  <p>A model is an abstraction of the domain. It is not just the knowledge in a domain expert’s head; it is a rigorously organized and selective abstraction of that knowledge. The model is our internal representation of the target domain,</p>
+</blockquote>
+
+<h2 id="the-ubiquitous-language">The Ubiquitous Language</h2>
+
+<p>A core <strong>principle</strong> of DDD is to use a language to communicate the domain. Use the model as the backbone of a language. Request that the team use the language consistently in all communications, and also in the code. While sharing knowledge and hammering out the model, the team uses speech, writing and diagrams. Make sure this language appears consistently in all the communication forms used by the team; for this reason, the language is called <strong>the Ubiquitous Language</strong>.</p>
+
+<p>Building a language like that has a clear outcome: the model and the language are strongly interconnected with one another. A change in the language should become a change to the model.</p>
+
+<h2 id="model-driven-design">Model-Driven Design</h2>
+
+<h3 id="building-blocks">building blocks</h3>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-building-blocks.png" alt="ddd-building-blocks" /></p>
+
+<h3 id="layered-architecture">Layered Architecture</h3>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-layered-architecture.png" alt="ddd-layered-architecture" /></p>
+
+<h3 id="express-model-with-entities-value-objects-and-services">Express Model with Entities, Value Objects and Services</h3>
+
+<p><strong>Entity</strong>: implementing entities in software means creating identity.</p>
+
+<p><strong>Value Object</strong>: is an object that is used to describe certain aspects of a domain, being immutable, having no identity, thus can be shared.</p>
+
+<p>It is recommended to select as entities only those objects which conform to the entity definition. And make the rest of the objects Value Objects.</p>
+
+<p><strong>Service</strong>: without an internal state, its purpose is to simply provide functionality for the domain. There are three characters of a Service</p>
+
+<ol>
+  <li>The operation performed by the Service refers to a domain concept which does not naturally belong to an Entity or Value Object.</li>
+  <li>The operation performed refers to other objects in the domain.</li>
+  <li>The operation is stateless.</li>
+</ol>
+
+<p>While using Services, is important to keep the domain layer isolated. It is easy to get confused between services which belong to the domain layer, and those belonging to the infrastructure.</p>
+
+<h3 id="struct-model-with-modules">Struct model with Modules</h3>
+
+<p>Modules are used as a method of organizing related concepts and tasks in order to reduce complexity. Choose Modules that tell the story of the system and contain a cohesive set of concepts.</p>
+
+<p>It is recommended to group highly related classes into modules to provide maximum cohesion possible. There are several types of cohesion. Two of the most used are <em>communicational cohesion *and *functional cohesion</em>.</p>
+
+<ul>
+  <li>Communicational cohesion is achieved when parts of the module operate on the same data. It makes sense to group them, because there is a strong relationship between them.</li>
+  <li>Functional cohesion is achieved when all parts of the module work together to perform a well-defined task. This is considered the best type of cohesion.</li>
+</ul>
+
+<h3 id="manage-a-domain-object">Manage a domain object</h3>
+
+<p><strong>Ownership &amp; Boundary: Aggregates</strong></p>
+
+<p>Aggregate is a domain pattern used to define object ownership and boundaries.</p>
+
+<p>An Aggregate is a group of associated objects which are considered as one unit with regard to data changes. The Aggregate is demarcated by a boundary which separates the objects inside from those outside. Each Aggregate has one root. The root is an Entity, which has global identity and it’s responsible for maintaining the invariants, and it is the only object accessible from outside.</p>
+
+<ol>
+  <li>Cluster the Entities and Value Objects into Aggregates and define boundaries around each.</li>
+  <li>Choose one Entity to be the root of each Aggregate, and control all access to the objects inside the boundary through the root.</li>
+</ol>
+
+<p><strong>Creation: Factories</strong></p>
+
+<p>Factories are used to encapsulate the knowledge necessary for object creation, and they are especially useful to create Aggregates. When the root of the Aggregate is created, all the objects contained by the Aggregate are created along with it, and all the invariants are enforced.</p>
+
+<p>It is important for the creation process to be atomic. Another observation is that Factories need to create new objects from scratch.</p>
+
+<p><strong>Storage: Repositories</strong></p>
+
+<p>A client needs a practical means of acquiring references to preexisting domain objects. Use a Repository to encapsulate all the logic needed to obtain object references.</p>
+
+<p>The Repository acts as a storage place for globally accessible objects.</p>
+
+<ul>
+  <li>For each type of object that needs global access, create an object that can provide the illusion of an in-memory collection of all objects of that type.</li>
+  <li>Set up access through a well-known global interface.</li>
+  <li>Provide methods to add and remove objects, which will encapsulate the actual insertion or removal of data in the data store.</li>
+  <li>Provide methods that select objects based on some criteria and return fully instantiated objects or collections of objects whose attribute values meet the criteria, thereby encapsulating the actual storage and query technology. Use a Specification.</li>
+  <li>Provide repositories only for Aggregate roots that actually need direct access.</li>
+  <li>Keep the client focused on the model, delegating all object storage and access to the Repositories.
+It can be noted that the implementation of a repository can be closely liked to the infrastructure, but that the repository interface will be pure domain model.</li>
+</ul>
+
+<p>There is a relationship between Factory and Repository. They are both patterns of the model-driven design, and they both help us to manage the life cycle of domain objects.</p>
+
+<ul>
+  <li>While the Factory should create new objects, while the Repository should find already created objects. When a new object is to be added to the Repository, it should be created first using the Factory, and then it should be given to the Repository which will store it like in the example below.</li>
+  <li>Another way this is noted is that Factories are “pure domain”, but that Repositories can contain links to the infrastructure, e g the database.</li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-factories-and-repositories.png" alt="ddd-factories-and-repositories" /></p>
+
+<h2 id="refactoring-toward-deeper-insight">Refactoring Toward Deeper Insight</h2>
+
+<p>A good model is the result of deep thinking, insight, experience, and flair.
+Refactoring is done in small steps. The result is also a series of small improvements. There are times when lots of small changes add very little value to the design, and there are times when few changes make a lot of difference. It’s a Breakthrough. Each refinement adds more clarity to the design. This creates in turn the premises for a Breakthrough.</p>
+
+<p>To reach a Breakthrough, we need to make the implicit concepts explicit.</p>
+
+<ul>
+  <li>Listen to the language</li>
+  <li>Use domain literature</li>
+  <li>Constraint, Process and Specification.
+    <ul>
+      <li>A Constraint is a simple way to express an invariant. Whatever happens to the object data, the invariant is respected. This is simply done by putting the invariant logic into a Constraint.</li>
+      <li>Processes are usually expressed in code with procedures. The best way to implement processes is to use a Service.</li>
+      <li>a Specification is used to test an object to see if it satisfies a certain criteria.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="preserving-model-integrity">Preserving Model Integrity</h2>
+
+<p>It is so easy to start from a good model and progress toward an inconsistent one. The internal consistency of a model is called <strong>unification</strong>. Instead of trying to keep one big model that will fall apart later, we should consciously divide it into several models. Several models well integrated can evolve independently as long as they obey the contract they are bound to.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-data-integrity-patterns.png" alt="ddd-data-integrity-patterns" /></p>
+
+<h3 id="bounded-context">Bounded Context</h3>
+
+<p>The main idea is to define the scope of a model, to draw up the boundaries of its context, then do the most possible to keep the model unified. Explicitly define the context within which a model applies. Explicitly set boundaries in terms of team organization, usage within specific parts of the application, and physical manifestations such as code bases and database schemas. A model should be small enough to be assigned to one team.</p>
+
+<p>**A Bounded Context is not a Module. **A Bounded Context provides the logical frame inside of which the model evolves. Modules are used to organize the elements of a model, so Bounded Context encompasses the Module.</p>
+
+<h3 id="continuous-integration">Continuous integration</h3>
+
+<p>Continuous Integration is a necessary process within a Bounded Context. Another necessary requirement is to perform automated tests.</p>
+
+<h3 id="context-map">Context map</h3>
+
+<p>A Context Map is a document which outlines the different Bounded Contexts and the relationships between them.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-context-map.png" alt="ddd-context-map" /></p>
+
+<p>Each Bounded Context should have a name which should be part of the Ubiquitous Language. A common practice is to define the contexts, then create modules for each context, and use a naming convention to indicate the context each module belongs to.</p>
+
+<h3 id="shared-kernel">Shared Kernel</h3>
+
+<p>The purpose is to reduce duplication, but still keep two separate contexts.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-shared-kernel.png" alt="ddd-shared-kernel" /></p>
+
+<h3 id="customer-supplier">Customer-supplier</h3>
+
+<p>There are times when two subsystems have a special relationship: one depends a lot on the other. The contexts in which those two subsystems exist are different, and the processing result of one system is fed into the other. Establish a clear customer/supplier relationship between the two teams.</p>
+
+<p>A Customer-Supplier relationship is viable when both teams are interested in the relationship. When two development teams have a Customer-Supplier relationship in which the supplier team has no motivation to provide for the customer team’s needs, the customer team is helpless.</p>
+
+<p>The customer team has few options:</p>
+
+<ul>
+  <li><strong>Conform</strong> entirely to supplier team’s model</li>
+  <li>Protect itself by using an <strong>Anticorruption Layer</strong></li>
+  <li><strong>Separate Ways</strong>. We need to closely evaluate the benefits of integration and use it only if there is real value in doing so. If we reach the conclusion that integration is more trouble than it is worth, then we should go the Separate Ways.</li>
+</ul>
+
+<h3 id="conformist">Conformist</h3>
+
+<p>If the customer has to use the supplier team’s model, and if that is well done, it may be time for conformity. The customer team could adhere to the supplier team’s model, conforming entirely to it.
+Compared to the Shared Kernel, but there is an important difference. The customer team cannot make changes to the kernel. They can only use it as part of their model, and they can build on the existing code provided.</p>
+
+<h3 id="anticorruption-layer">Anticorruption layer</h3>
+
+<p>From our model’s perspective, the Anticorruption Layer is a natural part of the model; it does not look like something foreign. It operates with concepts and actions familiar to our model. But the Anticorruption Layer talks to the external model using the external language not the client one. This layer works as a two way translator between two domains and languages.</p>
+
+<p>How should we implement the Anticorruption Layer? A very good solution is to see the layer as a Service from the client model. The Service will be done as a Façade, along with a Adapter and translator.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-anticorruption-layer.png" alt="ddd-anticorruption-layer" /></p>
+
+<p>Adapter is to convert the interface of a class to the one understood by the client. Translator is to do object and data conversion.</p>
+
+<h3 id="separate-ways">Separate ways</h3>
+
+<p>Before going on Separate Ways we need to make sure that we won’t be coming back to an integrated system.</p>
+
+<p>The Separate Ways pattern addresses the case when an enterprise application can be made up of several smaller applications which have little or nothing in common from a modeling perspective. From the user’s perspective this is one application, but from a modeling and design point of view it may done using separate models with distinct implementations.</p>
+
+<h3 id="open-host-service">Open host service</h3>
+
+<p>When we try to integrate two subsystems, we usually create a translation layer between them. This layer acts as a buffer between the client subsystem and the external subsystem we want to integrate with. This layer can be a consistent one, depending on the complexity of relationships and how the external subsystem was designed. If the external subsystem turns out to be used not by one client subsystem, but by several ones, we need to create translation layers for all of them.</p>
+
+<p>The solution is to see the external subsystem as a provider of services. If we can wrap a set of Services around it, then all the other subsystems will access these Services, and we won’t need any translation layer.</p>
+
+<p>Define a protocol that gives access to your subsystem as a set of Services. Open the protocol so that all who need to integrate with you can use it.</p>
+
+<h3 id="distillation">Distillation</h3>
+
+<p>A large domain has a large model even after we have refined it and created many abstractions. It can remain big even after many refactorings. In situations like this, it may be time for a distillation. The idea is to define a Core Domain which represents the essence of the domain. The byproducts of the distillation process will be Generic Subdomains which will comprise the other parts of the domain.</p>
+
+<p>When working with a large model, we should try to separate the essential concepts from generic ones. Identify cohesive subdomains that are not the motivation for your project. Factor out generic models of these subdomains and place them in separate Modules. There are different ways to implement a Generic Subdomain:</p>
+
+<ul>
+  <li>Off-the-shelf Solution</li>
+  <li>Outsourcing</li>
+  <li>Existing Model</li>
+  <li>In-House Implementation</li>
+</ul>
+
+<h2 id="advices">Advices</h2>
+
+<p>Keep in mind some of the pitfalls of domain modeling:</p>
+
+<ol>
+  <li>Stay hands-on. Modelers need to code.</li>
+  <li>Focus on concrete scenarios. Abstract thinking has to be anchored in concrete cases.</li>
+  <li>Don’t try to apply DDD to everything. Draw a context map and decide on where you will make a push for DDD and where you will not. And then don’t worry about it outside those boundaries.</li>
+  <li>Experiment a lot and expect to make lots of mistakes. Modeling is a creative process.</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What I've done in 2019]]></title>
@@ -8261,91 +8536,6 @@ The bottom line is: generally it seems better to split a monster join into small
   <li><a href="http://makandracards.com/makandra/1505-invoices-how-to-properly-round-and-calculate-totals">Invoices: How to properly round and calculate totals</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby Trick: Local Assignment over Method Sending]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2015/03/30/ruby-trick-local-assignment-over-method-sending/"/>
-    <updated>2015-03-30T04:24:59-04:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2015/03/30/ruby-trick-local-assignment-over-method-sending</id>
-    <content type="html"><![CDATA[<p>There is a weird situation I haven’t noticed before:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Counter</span>
-</span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:processed</span><span class="p">,</span> <span class="ss">:processed_names</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span>
-</span><span class="line">    <span class="vi">@processed</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class="line">    <span class="vi">@processed_names</span> <span class="o">=</span> <span class="o">[]</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">foo</span>
-</span><span class="line">    <span class="n">processed</span> <span class="o">+=</span> <span class="mi">1</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">bar</span>
-</span><span class="line">    <span class="n">processed_names</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;a&#39;</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="n">w</span> <span class="o">=</span> <span class="no">Counter</span><span class="o">.</span><span class="n">new</span><span class="p">;</span>
-</span><span class="line"><span class="n">w</span><span class="o">.</span><span class="n">foo</span> <span class="c1"># =&gt; NoMethodError: undefined method `+&#39; for nil:NilClass`</span>
-</span><span class="line"><span class="n">w</span><span class="o">.</span><span class="n">bar</span> <span class="c1"># =&gt; [&#39;a&#39;]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong><em>Why the hell?</em></strong></p>
-
-<p><strong>Local assignment always has precedence over method sending</strong>. Assignment happened in <code>w.foo</code>, which not in <code>w.bar</code>.</p>
-
-<p>Check this one:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Person</span>
-</span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:name</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">foo</span>
-</span><span class="line">    <span class="nb">name</span> <span class="o">=</span> <span class="s1">&#39;John&#39;</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="n">t</span> <span class="o">=</span> <span class="no">Tao</span><span class="o">.</span><span class="n">new</span>
-</span><span class="line"><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="c1"># =&gt; nil</span>
-</span><span class="line"><span class="n">t</span><span class="o">.</span><span class="n">foo</span>  <span class="c1"># =&gt; &#39;John&#39;</span>
-</span><span class="line"><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="c1"># =&gt; nil</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><code>name = 'John'</code> only means a definition of a local variable, which won’t send <code>=</code> to <code>name</code>.</p>
 ]]></content>
   </entry>
   

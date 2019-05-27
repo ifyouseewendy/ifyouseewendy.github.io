@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2019-05-21T13:36:10-04:00</updated>
+  <updated>2019-05-27T12:02:11-04:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,281 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on DDD Quickly]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2019/05/27/notes-on-ddd/"/>
+    <updated>2019-05-27T11:43:15-04:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2019/05/27/notes-on-ddd</id>
+    <content type="html"><![CDATA[<table class="custom">
+  <tbody>
+    <tr>
+      <td><strong>Book</strong></td>
+      <td>Domain Driven Design Quickly</td>
+    </tr>
+    <tr>
+      <td><strong>Author</strong></td>
+      <td>Floyd Marinescu &amp; Abel Avram</td>
+    </tr>
+    <tr>
+      <td><strong>Link</strong></td>
+      <td><a href="https://www.infoq.com/minibooks/domain-driven-design-quickly">InfoQ</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul id="markdown-toc">
+  <li><a href="#what-is-ddd">What is DDD?</a></li>
+  <li><a href="#the-ubiquitous-language">The Ubiquitous Language</a></li>
+  <li><a href="#model-driven-design">Model-Driven Design</a>    <ul>
+      <li><a href="#building-blocks">building blocks</a></li>
+      <li><a href="#layered-architecture">Layered Architecture</a></li>
+      <li><a href="#express-model-with-entities-value-objects-and-services">Express Model with Entities, Value Objects and Services</a></li>
+      <li><a href="#struct-model-with-modules">Struct model with Modules</a></li>
+      <li><a href="#manage-a-domain-object">Manage a domain object</a></li>
+    </ul>
+  </li>
+  <li><a href="#refactoring-toward-deeper-insight">Refactoring Toward Deeper Insight</a></li>
+  <li><a href="#preserving-model-integrity">Preserving Model Integrity</a>    <ul>
+      <li><a href="#bounded-context">Bounded Context</a></li>
+      <li><a href="#continuous-integration">Continuous integration</a></li>
+      <li><a href="#context-map">Context map</a></li>
+      <li><a href="#shared-kernel">Shared Kernel</a></li>
+      <li><a href="#customer-supplier">Customer-supplier</a></li>
+      <li><a href="#conformist">Conformist</a></li>
+      <li><a href="#anticorruption-layer">Anticorruption layer</a></li>
+      <li><a href="#separate-ways">Separate ways</a></li>
+      <li><a href="#open-host-service">Open host service</a></li>
+      <li><a href="#distillation">Distillation</a></li>
+    </ul>
+  </li>
+  <li><a href="#advices">Advices</a></li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-mind-map.png" alt="ddd-mind-map" /></p>
+
+<h2 id="what-is-ddd">What is DDD?</h2>
+
+<p>The main idea is to identify the <strong>domain model</strong> and design your system around it. Usually, a software designer will talk with the domain expert to figure out the domain.</p>
+
+<blockquote>
+  <p>You cannot create a banking software system unless you have a good understanding of what banking is all about, one must understand the domain of banking.
+How can we make the software fit harmoniously with the domain? The best way to do it is to make software a reflection of the domain. Software needs to incorporate the core concepts and elements of the domain, and to precisely realize the relationships between them. Software has to <strong>model</strong> the domain.</p>
+</blockquote>
+
+<p>So, what is domain model? It’s an abstraction of the domain. It’s an internal representation of the target domain.</p>
+
+<blockquote>
+  <p>A model is an abstraction of the domain. It is not just the knowledge in a domain expert’s head; it is a rigorously organized and selective abstraction of that knowledge. The model is our internal representation of the target domain,</p>
+</blockquote>
+
+<h2 id="the-ubiquitous-language">The Ubiquitous Language</h2>
+
+<p>A core <strong>principle</strong> of DDD is to use a language to communicate the domain. Use the model as the backbone of a language. Request that the team use the language consistently in all communications, and also in the code. While sharing knowledge and hammering out the model, the team uses speech, writing and diagrams. Make sure this language appears consistently in all the communication forms used by the team; for this reason, the language is called <strong>the Ubiquitous Language</strong>.</p>
+
+<p>Building a language like that has a clear outcome: the model and the language are strongly interconnected with one another. A change in the language should become a change to the model.</p>
+
+<h2 id="model-driven-design">Model-Driven Design</h2>
+
+<h3 id="building-blocks">building blocks</h3>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-building-blocks.png" alt="ddd-building-blocks" /></p>
+
+<h3 id="layered-architecture">Layered Architecture</h3>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-layered-architecture.png" alt="ddd-layered-architecture" /></p>
+
+<h3 id="express-model-with-entities-value-objects-and-services">Express Model with Entities, Value Objects and Services</h3>
+
+<p><strong>Entity</strong>: implementing entities in software means creating identity.</p>
+
+<p><strong>Value Object</strong>: is an object that is used to describe certain aspects of a domain, being immutable, having no identity, thus can be shared.</p>
+
+<p>It is recommended to select as entities only those objects which conform to the entity definition. And make the rest of the objects Value Objects.</p>
+
+<p><strong>Service</strong>: without an internal state, its purpose is to simply provide functionality for the domain. There are three characters of a Service</p>
+
+<ol>
+  <li>The operation performed by the Service refers to a domain concept which does not naturally belong to an Entity or Value Object.</li>
+  <li>The operation performed refers to other objects in the domain.</li>
+  <li>The operation is stateless.</li>
+</ol>
+
+<p>While using Services, is important to keep the domain layer isolated. It is easy to get confused between services which belong to the domain layer, and those belonging to the infrastructure.</p>
+
+<h3 id="struct-model-with-modules">Struct model with Modules</h3>
+
+<p>Modules are used as a method of organizing related concepts and tasks in order to reduce complexity. Choose Modules that tell the story of the system and contain a cohesive set of concepts.</p>
+
+<p>It is recommended to group highly related classes into modules to provide maximum cohesion possible. There are several types of cohesion. Two of the most used are <em>communicational cohesion *and *functional cohesion</em>.</p>
+
+<ul>
+  <li>Communicational cohesion is achieved when parts of the module operate on the same data. It makes sense to group them, because there is a strong relationship between them.</li>
+  <li>Functional cohesion is achieved when all parts of the module work together to perform a well-defined task. This is considered the best type of cohesion.</li>
+</ul>
+
+<h3 id="manage-a-domain-object">Manage a domain object</h3>
+
+<p><strong>Ownership &amp; Boundary: Aggregates</strong></p>
+
+<p>Aggregate is a domain pattern used to define object ownership and boundaries.</p>
+
+<p>An Aggregate is a group of associated objects which are considered as one unit with regard to data changes. The Aggregate is demarcated by a boundary which separates the objects inside from those outside. Each Aggregate has one root. The root is an Entity, which has global identity and it’s responsible for maintaining the invariants, and it is the only object accessible from outside.</p>
+
+<ol>
+  <li>Cluster the Entities and Value Objects into Aggregates and define boundaries around each.</li>
+  <li>Choose one Entity to be the root of each Aggregate, and control all access to the objects inside the boundary through the root.</li>
+</ol>
+
+<p><strong>Creation: Factories</strong></p>
+
+<p>Factories are used to encapsulate the knowledge necessary for object creation, and they are especially useful to create Aggregates. When the root of the Aggregate is created, all the objects contained by the Aggregate are created along with it, and all the invariants are enforced.</p>
+
+<p>It is important for the creation process to be atomic. Another observation is that Factories need to create new objects from scratch.</p>
+
+<p><strong>Storage: Repositories</strong></p>
+
+<p>A client needs a practical means of acquiring references to preexisting domain objects. Use a Repository to encapsulate all the logic needed to obtain object references.</p>
+
+<p>The Repository acts as a storage place for globally accessible objects.</p>
+
+<ul>
+  <li>For each type of object that needs global access, create an object that can provide the illusion of an in-memory collection of all objects of that type.</li>
+  <li>Set up access through a well-known global interface.</li>
+  <li>Provide methods to add and remove objects, which will encapsulate the actual insertion or removal of data in the data store.</li>
+  <li>Provide methods that select objects based on some criteria and return fully instantiated objects or collections of objects whose attribute values meet the criteria, thereby encapsulating the actual storage and query technology. Use a Specification.</li>
+  <li>Provide repositories only for Aggregate roots that actually need direct access.</li>
+  <li>Keep the client focused on the model, delegating all object storage and access to the Repositories.
+It can be noted that the implementation of a repository can be closely liked to the infrastructure, but that the repository interface will be pure domain model.</li>
+</ul>
+
+<p>There is a relationship between Factory and Repository. They are both patterns of the model-driven design, and they both help us to manage the life cycle of domain objects.</p>
+
+<ul>
+  <li>While the Factory should create new objects, while the Repository should find already created objects. When a new object is to be added to the Repository, it should be created first using the Factory, and then it should be given to the Repository which will store it like in the example below.</li>
+  <li>Another way this is noted is that Factories are “pure domain”, but that Repositories can contain links to the infrastructure, e g the database.</li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-factories-and-repositories.png" alt="ddd-factories-and-repositories" /></p>
+
+<h2 id="refactoring-toward-deeper-insight">Refactoring Toward Deeper Insight</h2>
+
+<p>A good model is the result of deep thinking, insight, experience, and flair.
+Refactoring is done in small steps. The result is also a series of small improvements. There are times when lots of small changes add very little value to the design, and there are times when few changes make a lot of difference. It’s a Breakthrough. Each refinement adds more clarity to the design. This creates in turn the premises for a Breakthrough.</p>
+
+<p>To reach a Breakthrough, we need to make the implicit concepts explicit.</p>
+
+<ul>
+  <li>Listen to the language</li>
+  <li>Use domain literature</li>
+  <li>Constraint, Process and Specification.
+    <ul>
+      <li>A Constraint is a simple way to express an invariant. Whatever happens to the object data, the invariant is respected. This is simply done by putting the invariant logic into a Constraint.</li>
+      <li>Processes are usually expressed in code with procedures. The best way to implement processes is to use a Service.</li>
+      <li>a Specification is used to test an object to see if it satisfies a certain criteria.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="preserving-model-integrity">Preserving Model Integrity</h2>
+
+<p>It is so easy to start from a good model and progress toward an inconsistent one. The internal consistency of a model is called <strong>unification</strong>. Instead of trying to keep one big model that will fall apart later, we should consciously divide it into several models. Several models well integrated can evolve independently as long as they obey the contract they are bound to.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-data-integrity-patterns.png" alt="ddd-data-integrity-patterns" /></p>
+
+<h3 id="bounded-context">Bounded Context</h3>
+
+<p>The main idea is to define the scope of a model, to draw up the boundaries of its context, then do the most possible to keep the model unified. Explicitly define the context within which a model applies. Explicitly set boundaries in terms of team organization, usage within specific parts of the application, and physical manifestations such as code bases and database schemas. A model should be small enough to be assigned to one team.</p>
+
+<p>**A Bounded Context is not a Module. **A Bounded Context provides the logical frame inside of which the model evolves. Modules are used to organize the elements of a model, so Bounded Context encompasses the Module.</p>
+
+<h3 id="continuous-integration">Continuous integration</h3>
+
+<p>Continuous Integration is a necessary process within a Bounded Context. Another necessary requirement is to perform automated tests.</p>
+
+<h3 id="context-map">Context map</h3>
+
+<p>A Context Map is a document which outlines the different Bounded Contexts and the relationships between them.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-context-map.png" alt="ddd-context-map" /></p>
+
+<p>Each Bounded Context should have a name which should be part of the Ubiquitous Language. A common practice is to define the contexts, then create modules for each context, and use a naming convention to indicate the context each module belongs to.</p>
+
+<h3 id="shared-kernel">Shared Kernel</h3>
+
+<p>The purpose is to reduce duplication, but still keep two separate contexts.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-shared-kernel.png" alt="ddd-shared-kernel" /></p>
+
+<h3 id="customer-supplier">Customer-supplier</h3>
+
+<p>There are times when two subsystems have a special relationship: one depends a lot on the other. The contexts in which those two subsystems exist are different, and the processing result of one system is fed into the other. Establish a clear customer/supplier relationship between the two teams.</p>
+
+<p>A Customer-Supplier relationship is viable when both teams are interested in the relationship. When two development teams have a Customer-Supplier relationship in which the supplier team has no motivation to provide for the customer team’s needs, the customer team is helpless.</p>
+
+<p>The customer team has few options:</p>
+
+<ul>
+  <li><strong>Conform</strong> entirely to supplier team’s model</li>
+  <li>Protect itself by using an <strong>Anticorruption Layer</strong></li>
+  <li><strong>Separate Ways</strong>. We need to closely evaluate the benefits of integration and use it only if there is real value in doing so. If we reach the conclusion that integration is more trouble than it is worth, then we should go the Separate Ways.</li>
+</ul>
+
+<h3 id="conformist">Conformist</h3>
+
+<p>If the customer has to use the supplier team’s model, and if that is well done, it may be time for conformity. The customer team could adhere to the supplier team’s model, conforming entirely to it.
+Compared to the Shared Kernel, but there is an important difference. The customer team cannot make changes to the kernel. They can only use it as part of their model, and they can build on the existing code provided.</p>
+
+<h3 id="anticorruption-layer">Anticorruption layer</h3>
+
+<p>From our model’s perspective, the Anticorruption Layer is a natural part of the model; it does not look like something foreign. It operates with concepts and actions familiar to our model. But the Anticorruption Layer talks to the external model using the external language not the client one. This layer works as a two way translator between two domains and languages.</p>
+
+<p>How should we implement the Anticorruption Layer? A very good solution is to see the layer as a Service from the client model. The Service will be done as a Façade, along with a Adapter and translator.</p>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-anticorruption-layer.png" alt="ddd-anticorruption-layer" /></p>
+
+<p>Adapter is to convert the interface of a class to the one understood by the client. Translator is to do object and data conversion.</p>
+
+<h3 id="separate-ways">Separate ways</h3>
+
+<p>Before going on Separate Ways we need to make sure that we won’t be coming back to an integrated system.</p>
+
+<p>The Separate Ways pattern addresses the case when an enterprise application can be made up of several smaller applications which have little or nothing in common from a modeling perspective. From the user’s perspective this is one application, but from a modeling and design point of view it may done using separate models with distinct implementations.</p>
+
+<h3 id="open-host-service">Open host service</h3>
+
+<p>When we try to integrate two subsystems, we usually create a translation layer between them. This layer acts as a buffer between the client subsystem and the external subsystem we want to integrate with. This layer can be a consistent one, depending on the complexity of relationships and how the external subsystem was designed. If the external subsystem turns out to be used not by one client subsystem, but by several ones, we need to create translation layers for all of them.</p>
+
+<p>The solution is to see the external subsystem as a provider of services. If we can wrap a set of Services around it, then all the other subsystems will access these Services, and we won’t need any translation layer.</p>
+
+<p>Define a protocol that gives access to your subsystem as a set of Services. Open the protocol so that all who need to integrate with you can use it.</p>
+
+<h3 id="distillation">Distillation</h3>
+
+<p>A large domain has a large model even after we have refined it and created many abstractions. It can remain big even after many refactorings. In situations like this, it may be time for a distillation. The idea is to define a Core Domain which represents the essence of the domain. The byproducts of the distillation process will be Generic Subdomains which will comprise the other parts of the domain.</p>
+
+<p>When working with a large model, we should try to separate the essential concepts from generic ones. Identify cohesive subdomains that are not the motivation for your project. Factor out generic models of these subdomains and place them in separate Modules. There are different ways to implement a Generic Subdomain:</p>
+
+<ul>
+  <li>Off-the-shelf Solution</li>
+  <li>Outsourcing</li>
+  <li>Existing Model</li>
+  <li>In-House Implementation</li>
+</ul>
+
+<h2 id="advices">Advices</h2>
+
+<p>Keep in mind some of the pitfalls of domain modeling:</p>
+
+<ol>
+  <li>Stay hands-on. Modelers need to code.</li>
+  <li>Focus on concrete scenarios. Abstract thinking has to be anchored in concrete cases.</li>
+  <li>Don’t try to apply DDD to everything. Draw a context map and decide on where you will make a push for DDD and where you will not. And then don’t worry about it outside those boundaries.</li>
+  <li>Experiment a lot and expect to make lots of mistakes. Modeling is a creative process.</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Review] 学习乐观]]></title>
@@ -3301,473 +3576,6 @@ end
   </li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Review] Practicing Rails]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2014/11/25/practicing-rails/"/>
-    <updated>2014-11-25T22:32:14-05:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2014/11/25/practicing-rails</id>
-    <content type="html"><![CDATA[<table class="custom">
-  <tbody>
-    <tr>
-      <td><strong>Book</strong></td>
-      <td>Practicing Rails</td>
-    </tr>
-    <tr>
-      <td><strong>Author</strong></td>
-      <td>Justin Weiss</td>
-    </tr>
-    <tr>
-      <td><strong>Link</strong></td>
-      <td><a href="https://www.justinweiss.com/book/">www.justinweiss.com/book</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<ul id="markdown-toc">
-  <li><a href="#meta-principles">Meta Principles</a></li>
-  <li><a href="#tiny-apps">Tiny Apps</a>    <ul>
-      <li><a href="#build-a-tiny-app">Build a tiny App</a></li>
-      <li><a href="#owning-the-things-you-learn">Owning the things you learn</a></li>
-    </ul>
-  </li>
-  <li><a href="#build-your-own-app">Build Your Own App</a>    <ul>
-      <li><a href="#where-to-start">Where to start?</a>        <ul>
-          <li><a href="#build-from-ui-down">Build from UI Down</a></li>
-          <li><a href="#thinking-in-resources">Thinking in resources</a></li>
-          <li><a href="#t-shaped-development">T-Shaped development</a></li>
-          <li><a href="#just-in-time-learning">Just-in-time learning</a></li>
-        </ul>
-      </li>
-      <li><a href="#which-feature-do-you-build-next">Which feature do you build next?</a></li>
-    </ul>
-  </li>
-  <li><a href="#test-your-code-efficiently">Test Your Code Efficiently</a>    <ul>
-      <li><a href="#feature-development-process-with-testing">Feature development process with testing</a></li>
-      <li><a href="#organizing-and-structuring-your-tests">Organizing and structuring your tests</a>        <ul>
-          <li><a href="#use-object-oriented-design-to-make-your-tests-better">Use object-oriented design to make your tests better</a></li>
-          <li><a href="#refacoring">Refacoring</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#learning-skill">Learning Skill</a>    <ul>
-      <li><a href="#learning-stage">Learning Stage</a></li>
-      <li><a href="#a-to-dont-list">A to-don’t list</a></li>
-      <li><a href="#guidance">Guidance</a></li>
-      <li><a href="#google-and-stackoverflow-may-not-be-the-answer">Google and StackOverflow may not be the answer</a></li>
-      <li><a href="#dig-into-code-to-understand-it-better">Dig into code to understand it better</a></li>
-      <li><a href="#avoiding-the-temptation-of-the-new">Avoiding the temptation of the new</a></li>
-      <li><a href="#building-a-good-mental-filter">Building a good mental filter</a></li>
-      <li><a href="#push-vs-pull">Push vs. Pull</a></li>
-      <li><a href="#system-learning">System learning</a></li>
-      <li><a href="#when-to-give-new-tech-a-chance">When to give new tech a chance</a></li>
-      <li><a href="#catch-up-with-changes">Catch up with changes</a></li>
-    </ul>
-  </li>
-  <li><a href="#form-a-habit">Form a habit</a>    <ul>
-      <li><a href="#why">Why?</a></li>
-      <li><a href="#how-to-keep-consistent">How to keep consistent?</a>        <ul>
-          <li><a href="#morning-or-evening">Morning or Evening?</a></li>
-        </ul>
-      </li>
-      <li><a href="#how-to-keep-motivated">How to keep motivated?</a>        <ul>
-          <li><a href="#pre-prepare">Pre-prepare</a></li>
-          <li><a href="#processes">Processes</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="meta-principles">Meta Principles</h2>
-
-<ul>
-  <li>
-    <p><strong>As soon as you want to learn something, try it out.</strong></p>
-  </li>
-  <li>
-    <p><strong>When you feel yourself procrastinating or stressed about something, break it apart.</strong></p>
-
-    <p>Large, fuzzy tasks are killer. If the next thing you want to do is tiny, and you can start on it in the next five minutes, you probably will. If it’s big and vague, you’ll put it off until you know how to start it. Which will probably be never.</p>
-  </li>
-  <li>
-    <p><strong>Start backwards.</strong></p>
-
-    <p>When you write an app, start from the UI down. Allow your vision of the feature to guide your development. It’s easy to know if you’re building the right thing when you start from the end and trace back to the beginning. And UI sketches and HTML views are a lot easier to think about than abstract data models.</p>
-  </li>
-  <li>
-    <p><strong>Keep it simple, and add complexity later.</strong></p>
-
-    <p>The most frustrating struggles come from running into problems you don’t know how to solve. You can skip these problems by avoiding new things until you understand the old things. This goes for everything from gems and libraries to patterns and object-oriented design principles.</p>
-  </li>
-  <li>
-    <p><strong>Systems, not motivation.</strong></p>
-
-    <p>You can’t rely on motivation every day. Instead, set up systems and habits, so you don’t have to motivate yourself to work.</p>
-  </li>
-  <li>
-    <p><strong>Struggling should tell you that you’re on the brink of learning something really valuable. Keep it up.</strong></p>
-  </li>
-</ul>
-
-<h2 id="tiny-apps">Tiny Apps</h2>
-
-<p>When you read something interesting, tweak it with a tiny app.</p>
-
-<ul>
-  <li>UI related, with a <code>rails server</code></li>
-  <li>Functional, with a <code>rails console</code>. If setting it up in the console gets annoying, write a test case for it.</li>
-</ul>
-
-<h3 id="build-a-tiny-app">Build a tiny App</h3>
-
-<blockquote>
-  <p>I care about getting the most knowledge in the least amount of time, and scaffolds and other Rails code generators are a great way to do just that.</p>
-</blockquote>
-
-<p><code>ruby
-rails new test_polymorphic_association
-cd test_polymorphic_association
-bin/rails generate scaffold bug title:string description:text
-bin/rake db:migrate
-</code></p>
-
-<p><strong>Some tips for investigating ideas through the Rails console</strong></p>
-
-<p>You can use a lot of Rails features through the <code>app</code> object. app is a special object that has some useful methods for experimenting with your Rails app.</p>
-
-<p><code>ruby
-irb(main):002:0&gt; app.bug_path bug
-irb(main):003:0&gt; app.get "/bugs/1"
-irb(main):003:0&gt; puts app.response.body.first(200)
-</code></p>
-
-<p>The <code>helper</code> object provides all of your app’s view and helper methods in the Rails console:</p>
-
-<p><code>ruby
-irb(main):005:0&gt; helper.content_tag :h1, "Hey there" =&gt; "&lt;h1&gt;Hey there&lt;/h1&gt;"
-</code></p>
-
-<h3 id="owning-the-things-you-learn">Owning the things you learn</h3>
-
-<p>Explore the boundaries of that concept until you feel like you really get it.</p>
-
-<ol>
-  <li>test the boundaries</li>
-  <li>break and dig it, brainstorm some questions about the idea you’re exploring.</li>
-</ol>
-
-<h2 id="build-your-own-app">Build Your Own App</h2>
-
-<ul>
-  <li><strong>Core Paths</strong>, focus on building an important path through your app as your first feature.</li>
-  <li><strong>Build from UI down</strong>.</li>
-  <li><strong>Avoid large, fuzzy tasks</strong>. At every stage, you should be trying to break large tasks apart into smaller ones.</li>
-</ul>
-
-<h3 id="where-to-start">Where to start?</h3>
-
-<p>Take a few minutes and think what you’re trying to build. Write down every feature that comes to mind. Think of the different paths a user could take through your application, the different things they could do. Describe them in a single sentence.</p>
-
-<p>Then, narrow them down to paths where, if you didn’t have them, your app couldn’t exist. <strong>Core paths</strong>.</p>
-
-<p>In general, less code is better code. And <strong>starting from the view and building toward the model</strong> from there is the best way I know to consistently write less code.</p>
-
-<ul>
-  <li>Finding Core Path</li>
-  <li>View toward Model</li>
-</ul>
-
-<h4 id="build-from-ui-down">Build from UI Down</h4>
-
-<blockquote>
-  <p>Feature development process</p>
-</blockquote>
-
-<ol>
-  <li>Take the small feature from earlier.</li>
-  <li>Think of one simple thing someone could do with that feature.</li>
-  <li>Draw just enough screens for that user to be able to do that thing.</li>
-  <li>Describe the path through that action, as if you were telling someone what you were going to do.</li>
-  <li>As you describe that path, write out the objects, properties of those objects, and other actions you think you need to develop that path.</li>
-</ol>
-
-<h4 id="thinking-in-resources">Thinking in resources</h4>
-
-<p>Rails works well with “resources.” (You can think of a resource as an ActiveRecord model and a controller that has seven actions: <code>index</code>, <code>new</code>, <code>create</code>, <code>show</code>, <code>edit</code>, <code>update</code>, and <code>destroy</code>).</p>
-
-<h4 id="t-shaped-development">T-Shaped development</h4>
-
-<p>When you build something, try to get something rough up as quickly as possible. As long as the core of the feature you want to build is there, it’s fine.</p>
-
-<h4 id="just-in-time-learning">Just-in-time learning</h4>
-
-<p>It means you’re not trying to learn everything at the beginning. That’s the most common way to procrastinate starting something that you’re too nervous to do.</p>
-
-<h3 id="which-feature-do-you-build-next">Which feature do you build next?</h3>
-
-<p>Keeping these tasks as small as possible is the key. And try to follow the questions below.</p>
-
-<ol>
-  <li>Ask some questions: What is the app missing? What did you postpone to get that first feature done?</li>
-  <li>Try using what you have so far. What would make your life easier if it was built? What annoys you while you’re using your app?</li>
-  <li>If you’re building this app for someone else, watch how they use the project. Where are they struggling? What do they complain about?</li>
-</ol>
-
-<h2 id="test-your-code-efficiently">Test Your Code Efficiently</h2>
-
-<h3 id="feature-development-process-with-testing">Feature development process with testing</h3>
-
-<ol>
-  <li>Take your small feature.</li>
-  <li>Think of one simple thing someone could do with that feature.</li>
-  <li>Draw just enough screens for that user to be able to do that thing.</li>
-  <li>Translate that sketch into a failing integration test.</li>
-  <li>Get the first part of that test to pass:</li>
-  <li>Write a failing controller test.</li>
-  <li>Write some failing unit tests.</li>
-  <li>Write enough code to get the unit and controller tests to pass.</li>
-  <li>Repeat until the next part of your integration test passes.</li>
-</ol>
-
-<p><strong><em>What do you test?</em></strong></p>
-
-<ul>
-  <li>Happy path tests.</li>
-  <li>Sad path tests.</li>
-  <li>What-if tests, must be documented.</li>
-</ul>
-
-<p><strong><em>How do you test?</em></strong></p>
-
-<ol>
-  <li>Arrange</li>
-  <li>Act</li>
-  <li>Assert</li>
-</ol>
-
-<p><strong><em>When aren’t you testing enough?</em></strong></p>
-
-<p>Bugs imply that you missed a test somewhere. If you run into a bug in your app that your tests didn’t catch, you’re probably missing a test.</p>
-
-<ol>
-  <li>Write a test that fails while the bug exists.</li>
-  <li>Fix the bug.</li>
-  <li>Make sure the test passes now.</li>
-  <li>Check in both your test and fix, so you don’t run into the problem again.</li>
-</ol>
-
-<p><strong><em>How to keep TDD?</em></strong></p>
-
-<p>Translate that sketch into a failing <strong>integration test</strong>(Capybara).</p>
-
-<ol>
-  <li>Write a failing controller test.</li>
-  <li>Write some failing unit tests.</li>
-  <li>Write enough code to get the unit and controller tests to pass.</li>
-  <li>Repeat until the next part of your integration test passes.</li>
-</ol>
-
-<h3 id="organizing-and-structuring-your-tests">Organizing and structuring your tests</h3>
-
-<h4 id="use-object-oriented-design-to-make-your-tests-better">Use object-oriented design to make your tests better</h4>
-
-<p>With minitest, all of your test suites are just classes, tests are methods. That means you can use your object oriented design skills to reorganize your tests.</p>
-
-<p>Guides to follow:</p>
-
-<ol>
-  <li><strong>For tests, clarity is better than cleverness.</strong> You don’t have anything testing your tests, so you have to be careful not to make things too abstract. Hard-coding values, copy and pasted code, all that kind of stuff is usually OK in tests, if they make the test easier to understand.</li>
-  <li>Organizing your tests is easiest if your test organization matches your code organization. </li>
-  <li>Wait until you feel real pain before refactoring your tests.</li>
-</ol>
-
-<h4 id="refacoring">Refacoring</h4>
-
-<ul>
-  <li>Using Extract Method to write custom assertions.</li>
-  <li>Using Extract Method to make mocks easier to write.</li>
-  <li>Using modules to share tests between test suites.</li>
-</ul>
-
-<h2 id="learning-skill">Learning Skill</h2>
-
-<blockquote>
-  <p>The skill of learning.</p>
-</blockquote>
-
-<h3 id="learning-stage">Learning Stage</h3>
-
-<ol>
-  <li>First stage. Baseline knowledge, bootstrapping your learning process.</li>
-  <li>Second stage. You’re past the basics but not an expert, still require conscious thought.</li>
-  <li>Thrid stage. Skills in the third stage are mastered. They don’t require thought, you use instinct and intuition when you use them.</li>
-</ol>
-
-<p>If all of their skills were at an intermediate level, they’d not only have to think about how to use each of those skills, but how they interacted in this one specific situation, and what kinds of tradeoffs they’ll have to make.</p>
-
-<p>1 + 3 &gt; 2 + 2</p>
-
-<p>So you’ll be much more productive if you have 5 skills in the third stage and 5 skills in the first stage than if you have ten skills in the second stage.</p>
-
-<h3 id="a-to-dont-list">A to-don’t list</h3>
-
-<p>It might seem like you need to master JavaScript before you can write a Rails app. You will, someday. But you won’t get anywhere without starting an app you can get excited about, and you don’t need JavaScript for that first stage. So cross JavaScript off the list. For now.</p>
-
-<p><strong>For now</strong> is powerful. You’re giving yourself permission to set other things aside, so you can focus on something else.</p>
-
-<h3 id="guidance">Guidance</h3>
-
-<p>Search for the things that really resonate with you, the things you get lost in, the things you just want to do for hours.</p>
-
-<p>Take a look at what you know and what you don’t. What you want to learn, and what your app needs you to learn. Set aside some things that seem less important, and turn them into a “Not Right Now” list. Eventually you’ll have a few things you just can’t set aside – learn those thoroughly. And keep moving forward.</p>
-
-<p>Intermediate Rails isn’t about learning all the stuff you learned as a beginner in a little more depth. It’s about the stem of the “T” in T-Shaped Learning. It’s about gaining deep knowledge in a few different areas, one thing at a time. And it’s about using that knowledge to build your own apps, the way you imagined.</p>
-
-<h3 id="google-and-stackoverflow-may-not-be-the-answer">Google and StackOverflow may not be the answer</h3>
-
-<p>This can be the fastest way to get your problem solved, and is much easier than investigating it yourself. But you lose the opportunity to go through the investigation, and you miss the chance to build experience debugging and solving your own problems. This robs you of a chance to get to know your code, the language, and the framework better.</p>
-
-<p>Every problem you run into is an opportunity to learn.</p>
-
-<p>But if you use them to solve a problem, make sure you read the answer, follow references, and immerse yourself in the knowledge the solution brings you. </p>
-
-<p>When you use someone else’s solution to solve your problems, your app will become a mess of inconsistent code that probably only works coincidentally.</p>
-
-<h3 id="dig-into-code-to-understand-it-better">Dig into code to understand it better</h3>
-
-<p>Great developers know how to read and understand code. When you read code, you’ll understand much more than what the documentation tells you. Sometimes, after spending time with the code, you’ll know as much about it as the author does!</p>
-
-<p><strong>Reading code is a skill you’ll have to build like any other, and it’s not like reading a book.</strong></p>
-
-<p>Practice reading code. Learning to read and explore code will teach you things you won’t learn anywhere else. And when you get good enough at reading code, you’ll be able to solve problems you might have thought were impossible before.</p>
-
-<p>Remember, reading code isn’t like reading anything else. It’s about debugging and exploration. <strong>You have to run it.</strong></p>
-
-<h3 id="avoiding-the-temptation-of-the-new">Avoiding the temptation of the new</h3>
-
-<p>You have to separate the things that are interesting because they’re new, from the things that are interesting because they’ll help you get work done.</p>
-
-<h3 id="building-a-good-mental-filter">Building a good mental filter</h3>
-
-<p>Two questions to ask.</p>
-
-<ol>
-  <li>Is this something I need to know right now?</li>
-  <li>If I knew this a year ago, would it have made my life easier today?</li>
-</ol>
-
-<h3 id="push-vs-pull">Push vs. Pull</h3>
-
-<p>Hitting these sites is the “pull” model of receiving tech news. You’re the one digging it up. But these days, I’ve been using the “push” model more and more. I’ve been getting email newsletters, podcasts, things that get delivered to you instead of you looking for them.</p>
-
-<h3 id="system-learning">System learning</h3>
-
-<p>If you find a few good sources, keep a steady learning and practice schedule, and learn things as they become important to you, you’ll make much more progress than those who constantly chase the news sites.</p>
-
-<h3 id="when-to-give-new-tech-a-chance">When to give new tech a chance</h3>
-
-<p>Try it out on a new small project. Then, take the technique as far as it’ll go.</p>
-
-<p>But unfortunately, a lot of the techniques won’t have as much of a benefit in smaller projects. So create a new branch for your experiments, so you don’t wreck your code if you don’t like the technique. And</p>
-
-<ol>
-  <li>Make the change.</li>
-  <li>Look at the old code next to the new.</li>
-  <li>Ask yourself, which code do you prefer?</li>
-  <li>Ask a few other people, which code do they prefer?</li>
-  <li>If the new way is an improvement, go forward with that.</li>
-</ol>
-
-<p><strong>A technique only has value if it improves your code, so a direct comparison is the best way to judge.</strong></p>
-
-<h3 id="catch-up-with-changes">Catch up with changes</h3>
-
-<p>The best way to keep up with changes to your gems is to track down the project’s <em>CHANGELOG</em> file.</p>
-
-<p>These will help you catch up on the big changes from version to version. Usually, they’re just a short summary of each major change.</p>
-
-<h2 id="form-a-habit">Form a habit</h2>
-
-<blockquote>
-  <p>Keep your schedule consistent</p>
-</blockquote>
-
-<h3 id="why">Why?</h3>
-
-<p><strong>Whenever you try to build a new skill, consistency is much more important than the amount of time you spend.</strong></p>
-
-<p>When you first try to keep a schedule, it’ll feel weird. To me, it feels like I’m just pretending, like I’m just copying what someone else told me to do, instead of actually getting anything done. That feeling starts to hit me around the fourth or fifth day in a row, and it goes away after about three weeks. It’s totally normal, but it can be dangerous.</p>
-
-<p>Anytime you change a routine, you’ll face some internal resistance. Our daily routines seem normal to us, that’s what makes them routines. So building the momentum to change those routines takes a lot of effort, since you’re breaking habits that have taken years to form, in just a few weeks.</p>
-
-<p>You might be tempted to spend 6 hours learning one day and take the rest of the week off. But that doesn’t solve the core problem.</p>
-
-<p><strong>Habits are built off of repetition, not total time.</strong> If you try to jam everything all into a single day, you’ll have less repetition. It’ll be easier to skip. And if your schedule is really so packed that you can’t find time every day to work on this stuff, how will you find a big chunk of time one day a week?</p>
-
-<p><strong>Once you’re consistent enough to form a habit, motivation won’t be as much of an issue. It’s just become something I do, so I do it.</strong></p>
-
-<h3 id="how-to-keep-consistent">How to keep consistent?</h3>
-
-<p>By “consistency,” I don’t mean that you have to spend hours every single night on this stuff. When you first build your schedule, go shorter rather than longer. <strong>Aim for 40 minutes a day to start.</strong></p>
-
-<p>If you can’t find the time anywhere else, staying up 40 minutes later at night usually won’t be too painful. Same thing with waking up a little earlier each day.</p>
-
-<p>But 40 minutes is also short enough that it’ll surprise you when it’s over. You’ll start the next task and leave it unfinished.</p>
-
-<p>When you <strong>leave something unfinished</strong>, it’ll stay in the back of your mind. When this happens, you’ll unconsciously be looking for closure, so you’ll be more receptive to related ideas that just pop into your head. You’ll really want to finish it.</p>
-
-<h4 id="morning-or-evening">Morning or Evening?</h4>
-
-<p>Cons on <strong>evening</strong>:</p>
-
-<ol>
-  <li>You don’t really have a set deadline (except sleep), so you can let your motivation carry you beyond the time you set aside.</li>
-  <li>You might also be drained. If you’re tired, it’s easy to convince yourself to skip it, “just this once.” And after a frustrating day at work, you’ll start to tell yourself that you’ve had a rough day, you deserve to just get a good night’s sleep. You’ll catch up tomorrow, right?</li>
-  <li>It’s also easy to push until later. “If I watch one more episode, I’ll start as soon as it’s done. It’ll only be 10 minutes late.” But before you know it, you’re an hour late, you’ve destroyed your sleeping schedule and you’ll pay for it tomorrow, when you’re drained again and you’ll skip again.</li>
-</ol>
-
-<p>While <strong>morning</strong>:</p>
-
-<blockquote>
-  <p>You might feel brain-dead and uncreative in the morning, which can be killer if you’re learning and practicing creative work like learning Rails. And it’s hard to wake up early until you get used to it.  </p>
-
-  <p>I heard a lot of people I trust and respect suggest trying waking up a little earlier for a week or so. I did, and it was hard, and I felt totally unproductive.  </p>
-
-  <p>But somehow, once I measured my actual productivity, I found out I was twice as productive in the mornings as the evenings. This is crazy, because it felt like the exact opposite!</p>
-</blockquote>
-
-<p>I really need to give it a shot.</p>
-
-<h3 id="how-to-keep-motivated">How to keep motivated?</h3>
-
-<p>Of course, to form a habit is the best way. But before that, try these.</p>
-
-<h4 id="pre-prepare">Pre-prepare</h4>
-
-<ol>
-  <li>Separating the decision about where to start from the decision about what to do.</li>
-  <li>It creates an unfinished loop in your mind, they’re just as powerful here.</li>
-</ol>
-
-<h4 id="processes">Processes</h4>
-
-<p>Seinfeld method:</p>
-
-<blockquote>
-  <p>[Jerry Seinfeld] told me to get a big wall calendar that has a whole year on one page and hang it on a prominent wall. The next step was to get a big red magic marker.</p>
-
-  <p>He said for each day that I do my task of writing, I get to put a big red X over that day. “After a few days you’ll have a chain. Just keep at it and the chain will grow longer every day. You’ll like seeing that chain, especially when you get a few weeks under your belt. Your only job next is to not break the chain.”</p>
-
-  <p>“Don’t break the chain,” he said again for emphasis.</p>
-</blockquote>
-
-<p>When you miss a habit and break a chain, you lose all your motivation to keep the streak going. And you lose it at the exact time you need extra motivation to build that streak back up.</p>
-
-<p>So keep consistent with a habit tracker, calendar, or Beeminder.</p>
 ]]></content>
   </entry>
   
