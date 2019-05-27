@@ -8,27 +8,34 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
-## W21 (05/13 - 05/17)
+
+## W22 (05/20 - 05/26)
+
+* Finish reading [Domain-driven Design Quick](https://www.infoq.com/minibooks/domain-driven-design-quickly) last week and concluded some [notes](http://blog.ifyouseewendy.com/blog/2019/05/27/notes-on-ddd/) here. It makes a lot of sense to me on connecting the dots I’ve collected over time. The book is also a great one as an intro which helps me grash the main idea of DDD. The next step is to gain more insight in practice.
+* GoT 潦草终结，没等到我的夜王反推大陆，难过。看完了[一拳超人](https://movie.douban.com/subject/26339248/)，超级喜欢，见识了终极大招：Consecutive Normal Punch!
+* Finally, what makes my week? [A stupid big smile](https://media.giphy.com/media/JPrylygv1Vnr3bB0QH/giphy.gif) ([..bounce version](https://media.giphy.com/media/XG0WTXvFuZdEnCyL45/giphy.gif))
+
+## W21 (05/13 - 05/19)
 
 * Keep my reading on _Quiet_
 
 ![w21-nick](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w21-nick.jpg)
 
-## W20 (05/06 - 05/10)
+## W20 (05/06 - 05/12)
 
 * Such a busy week, for being on call at work. I didn't have much energy on pushing personal growth stuff.
   However, it's been a fantastic week for various sports games.
 
 ![w20-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w20-collage.jpeg)
 
-## W19 (04/29 - 05-03)
+## W19 (04/29 - 05-05)
 
 * Research on a few candidates on portfolios and start building [My portfolio](https://quip.com/TCQjAdmOkJMR)
 * Visit Stratford to enjoy spring and celebrate Jasmine's birthday
 
 ![w19-jasmine-birthday](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w19-jasmine-birthday.jpg)
 
-## W18 (04/22 - 04/26)
+## W18 (04/22 - 04/28)
 
 * Start reading [Quiet: The Power of Introverts in a World That Can't Stop Talking](https://www.amazon.ca/Quiet-Power-Introverts-World-Talking/dp/0307352153/ref=sr_1_1?keywords=quiet&qid=1555941549&s=gateway&sr=8-1)
     * Being an introvert has been a bittersweet journey for me. Hope this book could help know myself better. (Recommended by Mitch)
