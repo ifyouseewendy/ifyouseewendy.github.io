@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W23 (05/27 - 06/02)
+
+* Work wise, I feel pretty good on spending one hour reading in the morning everyday. After reading through ¼ of [Domain Driven Rails](https://blog.arkency.com/domain-driven-rails/), (which is a pretty good book, taking Rails as example to talk about DDD), I make it a pause consciously as I need more experience (or mistakes) to digest better. To put it into practice, I start building our new service using [Hanami](http://hanamirb.org/), which I've got a pretty positive feeling for being our DDD choice. Other than that, finish reading the first two chapters of [GOPL](https://www.gopl.io/).
+* I really enjoy this episode of Tim Ferris Show that I listened twice. [Ramit Sethi — Automating Finances, Negotiating Prenups, Disagreeing with Tim, and More (#371)](https://tim.blog/2019/05/07/ramit-sethi/)
+* After two months learning and researching, I finally set up my FIRE account on May 29th, 2019 🎉
+* Such a relief after visiting Nadine and Casey.
+* The best weekend this year, for pushing trivial stuff forward proactively, reading books, watching sports (Liverpool 2:0 Tottenham Hotspur, Raptors 1:1 Warriors), having hotpot, watching shows, enjoying the great weather, and wasting time together with Jasmine. Everything is perfect.
+* [Just dance](https://media.giphy.com/media/f9H9ZXcZ46YR4EMnBN/giphy.gif)
 
 ## W22 (05/20 - 05/26)
 
