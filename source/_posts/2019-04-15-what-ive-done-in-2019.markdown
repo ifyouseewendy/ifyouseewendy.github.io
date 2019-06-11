@@ -8,6 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W24 (06/03 - 06/09)
+
+* Keep reading [The Go Programming Language](https://www.gopl.io/) and finish first half of the book (Chapter 7 Interface)
+* [Naval - How to Get Rich](https://nav.al/how-to-get-rich) This is another podcast I enjoy a lot, which is not mainly about finance, but different thoughts and angles to see the world.
+* Finish the show [Chernobyl](https://movie.douban.com/subject/27098632/), a cold dark reality mixing with special politic circumstance. I can definitely not sense the similarity with my dear god country.
+* Enjoy the French Open semi-final, at which Djokovic lost to Thiem by 5:7 at the fifth set. Sad.
+* Have a great trip to [African Lion Safari](https://www.google.ca/maps/place/African+Lion+Safari/@43.3409762,-80.1800999,17z/data=!3m1!4b1!4m5!3m4!1s0x882c7f322d46f773:0x7c093dc107321082!8m2!3d43.3409762!4d-80.1800999?hl=en) at the weekend. Simba is truly a big cat.
+
+![w24-nick](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w24-nick.jpg)
+
 ## W23 (05/27 - 06/02)
 
 * Work wise, I feel pretty good on spending one hour reading in the morning everyday. After reading through ¼ of [Domain Driven Rails](https://blog.arkency.com/domain-driven-rails/), (which is a pretty good book, taking Rails as example to talk about DDD), I make it a pause consciously as I need more experience (or mistakes) to digest better. To put it into practice, I start building our new service using [Hanami](http://hanamirb.org/), which I've got a pretty positive feeling for being our DDD choice. Other than that, finish reading the first two chapters of [GOPL](https://www.gopl.io/).
