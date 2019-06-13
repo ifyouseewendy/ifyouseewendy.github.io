@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2019-06-11T13:14:54-04:00</updated>
+  <updated>2019-06-12T22:44:42-04:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -297,7 +297,7 @@ Compared to the Shared Kernel, but there is an important difference. The custome
   <p>A weekly log on my life and personal growth</p>
 </blockquote>
 
-<p>W24 (06/03 - 06/09)</p>
+<h2 id="w24-0603---0609">W24 (06/03 - 06/09)</h2>
 
 <ul>
   <li>Keep reading <a href="https://www.gopl.io/">The Go Programming Language</a> and finish first half of the book (Chapter 7 Interface)</li>
