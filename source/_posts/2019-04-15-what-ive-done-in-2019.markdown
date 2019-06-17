@@ -8,6 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+
+## W25 (06/10 - 06/16)
+
+* Restart reading through [The Rust Programming Language](https://doc.rust-lang.org/). Some ideas start to make more sense to me after the recent Go learning, eg slice, rune and reference.
+* Watch Raptors winning the title with Jasmine and David at Apollo. This might be the season I watch the most games. Such an intense journey. Besides that, finally, Sarri joined Juventus 😳 and AD joined Lakers 😊
+* After two months searching, we finally found a favourite breeder and sent the deposit for having a female English type Golden Retriever at mid Aug. Excited.
+* Submit the third round of application for my parents’ visitor VISA 🤞
+
+![w25-raptors](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w25-raptors.jpg)
+
 ## W24 (06/03 - 06/09)
 
 * Keep reading [The Go Programming Language](https://www.gopl.io/) and finish first half of the book (Chapter 7 Interface)
