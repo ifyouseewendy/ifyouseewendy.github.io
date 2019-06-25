@@ -9,6 +9,16 @@ categories: ['Life']
 > A weekly log on my life and personal growth
 
 
+## W26 (06/17 - 06/23)
+
+* Keep my read over [The Rust Programming Language](https://doc.rust-lang.org/), with practice at work.
+* Start playing around [https://github.com/kanaka/mal](https://github.com/kanaka/mal), which is a practice for using different language to implement a simple Lisp. I’m working on the Ruby version now, then I’ll try the Rust one.
+* Finish the fourth and fifth chapter of *Quiet*
+* Celebrate our first 💒 anniversary, taking a photo in the morning, having lunch at Watami, and going hiking with friends at Knutz Park.
+* Set up our BBQ grill, and have a perfect night
+
+![w26-anniversary](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w26-anniversary.jpg)
+
 ## W25 (06/10 - 06/16)
 
 * Restart reading through [The Rust Programming Language](https://doc.rust-lang.org/). Some ideas start to make more sense to me after the recent Go learning, eg slice, rune and reference.
