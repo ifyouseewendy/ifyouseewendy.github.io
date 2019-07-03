@@ -9,6 +9,16 @@ categories: ['Life']
 > A weekly log on my life and personal growth
 
 
+## W27 (06/24 - 06/30)
+
+* Read an hour [The Rust Programming Language](https://doc.rust-lang.org/) everyday through chapter 15. I’ll finish next week, but I need more practice.
+* Keep implementing [https://github.com/kanaka/mal](https://github.com/kanaka/mal). I’m at Step 3 now.
+* Finish watching [Formula 1: Drive to Survive](https://movie.douban.com/subject/30465634/). Such exciting documentary over the F1 2018 season. It shows me another angle to think about the game, especially for the racers struggling on the edge. The problem they are trying to solve is interesting, how to improve from top 15 to top 10. We also watched the Austrian Grand Prix. Such a crazy win for Max Verstappen.
+* 看了[大佛普拉斯](https://movie.douban.com/subject/27059130/)，嵌套着画外人讲画内人的黑色幽默，好看的
+* Trail at Shade's Mills Conservation Area
+
+![w27-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w27-collage.jpg)
+
 ## W26 (06/17 - 06/23)
 
 * Keep my read over [The Rust Programming Language](https://doc.rust-lang.org/), with practice at work.
