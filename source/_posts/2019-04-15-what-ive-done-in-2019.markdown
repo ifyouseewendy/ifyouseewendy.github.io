@@ -9,6 +9,14 @@ categories: ['Life']
 > A weekly log on my life and personal growth
 
 
+## W28 (07/01 - 07/07)
+
+* Finish reading [The Rust Programming Language](https://doc.rust-lang.org/). I cannot say I fully understand ownership and lifetime, but I think I’ve grasped the idea of it. Looking forward to jumping into the wild world.
+* I like this article [Classes vs. Data Structures](https://blog.cleancoder.com/uncle-bob/2019/06/16/ObjectsAndDataStructures.html) by Uncle Bob articulating the subtle difference between these two. I figured this idea out when learning Haskell out last year, which gives me another orthogonal thinking against OO in terms of data and operation. In short, “An Object is a set of functions that operate upon implied data elements. A Data Structure is a set of data elements operated upon by implied functions”.
+* Remember the smile of Brad
+
+![w28-brad](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w28-brad.jpg)
+
 ## W27 (06/24 - 06/30)
 
 * Read an hour [The Rust Programming Language](https://doc.rust-lang.org/) everyday through chapter 15. I’ll finish next week, but I need more practice.
