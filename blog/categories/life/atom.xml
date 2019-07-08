@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Life | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/life/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2019-07-03T15:04:42-04:00</updated>
+  <updated>2019-07-08T14:41:45-04:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -21,6 +21,16 @@
     <content type="html"><![CDATA[<blockquote>
   <p>A weekly log on my life and personal growth</p>
 </blockquote>
+
+<h2 id="w28-0701---0707">W28 (07/01 - 07/07)</h2>
+
+<ul>
+  <li>Finish reading <a href="https://doc.rust-lang.org/">The Rust Programming Language</a>. I cannot say I fully understand ownership and lifetime, but I think I’ve grasped the idea of it. Looking forward to jumping into the wild world.</li>
+  <li>I like this article <a href="https://blog.cleancoder.com/uncle-bob/2019/06/16/ObjectsAndDataStructures.html">Classes vs. Data Structures</a> by Uncle Bob articulating the subtle difference between these two. I figured this idea out when learning Haskell out last year, which gives me another orthogonal thinking against OO in terms of data and operation. In short, “An Object is a set of functions that operate upon implied data elements. A Data Structure is a set of data elements operated upon by implied functions”.</li>
+  <li>Remember the smile of Brad</li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w28-brad.jpg" alt="w28-brad" /></p>
 
 <h2 id="w27-0624---0630">W27 (06/24 - 06/30)</h2>
 
