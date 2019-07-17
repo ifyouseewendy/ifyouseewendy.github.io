@@ -8,6 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W29 (07/08 - 07/14)
+
+* Re-read *Programming WebAssembly with Rust*. After getting to know Rust and having a general idea about WebAssembly, it makes much more sense to me now, especially that I follow the code exercise to write some raw wat this time [ifyouseewendy/wasm-rust-playground](https://github.com/ifyouseewendy/wasm-rust-playground)
+* Have a talk with Syrus, which definitely makes me believe recording this weekly log is worthwhile. I’m glad that we build up a connection with the wasmer team.
+* Play a co-op PS game [A Way Out](https://www.ea.com/games/a-way-out) with Jasmine, which is pretty fun.
+* Watch [Shaun of the Dead](https://movie.douban.com/subject/1308755/) on the big screen at Princess Original 😍. This might be my 8th time watching it. Once every year.
+* Watch the sensational final between Djokovic and Federer at Wimbledon. Such a weird game that Federer outplayed Djokovic at every metric on statistics, but lost due to few big points.
+* Ride to the company using my 🚲!!! (second time since I bought it three months ago, good job)
+
+![w29-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w29-collage.jpg)
 
 ## W28 (07/01 - 07/07)
 
