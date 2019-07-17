@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2019-07-08T14:41:45-04:00</updated>
+  <updated>2019-07-16T22:38:23-04:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -296,6 +296,19 @@ Compared to the Shared Kernel, but there is an important difference. The custome
     <content type="html"><![CDATA[<blockquote>
   <p>A weekly log on my life and personal growth</p>
 </blockquote>
+
+<h2 id="w29-0708---0714">W29 (07/08 - 07/14)</h2>
+
+<ul>
+  <li>Re-read <em>Programming WebAssembly with Rust</em>. After getting to know Rust and having a general idea about WebAssembly, it makes much more sense to me now, especially that I follow the code exercise to write some raw wat this time <a href="https://github.com/ifyouseewendy/wasm-rust-playground">ifyouseewendy/wasm-rust-playground</a></li>
+  <li>Have a talk with Syrus, which definitely makes me believe recording this weekly log is worthwhile. I’m glad that we build up a connection with the wasmer team.</li>
+  <li>Play a co-op PS game <a href="https://www.ea.com/games/a-way-out">A Way Out</a> with Jasmine, which is pretty fun.</li>
+  <li>Watch <a href="https://movie.douban.com/subject/1308755/">Shaun of the Dead</a> on the big screen at Princess Original 😍. This might be my 8th time watching it. Once every year.</li>
+  <li>Watch the sensational final between Djokovic and Federer at Wimbledon. Such a weird game that Federer outplayed Djokovic at every metric on statistics, but lost due to few big points.</li>
+  <li>Ride to the company using my 🚲!!! (second time since I bought it three months ago, good job)</li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w29-collage.jpg" alt="w29-collage" /></p>
 
 <h2 id="w28-0701---0707">W28 (07/01 - 07/07)</h2>
 
