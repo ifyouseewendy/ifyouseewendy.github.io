@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W30 (07/15 - 07/21)
+
+* Finish reading [WebAssembly 标准入门](https://book.douban.com/subject/30396640/), a good intro for WASM spec.
+* Go to Leslie Ting's [Speculation](https://stratfordsummermusic.ca/artist.php?id=214) at Stratford with friends. I enjoy the [4′33](https://www.wikiwand.com/en/4%E2%80%B233%E2%80%B3) part, which brings me to a meditation state.
+* 和喜福看了两部王竞导演的电影，[万箭穿心](https://movie.douban.com/subject/10537853/)和[一年到头](https://movie.douban.com/subject/2363843/)，真是纠结拧巴，让人无力张口辩驳（所以才有了天注定吗？）
+* Enjoy the nice weekend with strawberry picking and VR playing.
+
+![w30-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w30-collage.jpg)
+
 ## W29 (07/08 - 07/14)
 
 * Re-read *Programming WebAssembly with Rust*. After getting to know Rust and having a general idea about WebAssembly, it makes much more sense to me now, especially that I follow the code exercise to write some raw wat this time [ifyouseewendy/wasm-rust-playground](https://github.com/ifyouseewendy/wasm-rust-playground)
