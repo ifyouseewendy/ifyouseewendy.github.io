@@ -8,6 +8,17 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+
+## W31 (07/22 - 07/28)
+
+* Good working week, by putting my most focus on wrapping up work before my two weeks vacation 😍 We made a few great improvements over our DDD-ish Rails app.
+* Watch [Amelie](https://movie.douban.com/subject/1292215/) again at Princess Original, still fascinated by its unrestrained delight.
+* Start of my vacation with Fifa 19 and Call of Duty WWII
+
+![w31-mr-bernard](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w31-mr-bernard.jpg)
+
+^Hectic Monday
+
 ## W30 (07/15 - 07/21)
 
 * Finish reading [WebAssembly 标准入门](https://book.douban.com/subject/30396640/), a good intro for WASM spec.
