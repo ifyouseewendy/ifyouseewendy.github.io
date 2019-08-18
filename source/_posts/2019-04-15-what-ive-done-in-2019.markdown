@@ -8,6 +8,28 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W32-33 (07/29 - 08/11) Vacation
+
+一年一度的旅行终于到来。今年的主题是趁着下一代来临前最后一聚。地点选在温哥华，维多利亚和班芙。史称加西之旅。
+
+虽然旅途是 7.31（周三）出发，但是因为周一周二公司年会，我懒得飞来飞去选了远程参加，所以实际上，我之前的周末就开始放飞自我了。擦擦 PS 的灰，买了 Fifa19 和 Call of Duty: WWII；和朋友玩 VR，吃日料，玩牌，逛公园；跟喜福吃火锅看综艺；开始读 Good Math 和人性的枷锁。好久没这么轻松了。最直接的感受是，这几天早上可以神清气爽自然醒，让我怀疑是不是脑子放下了工作就少去了紧张和压力。周二收拾行李，把赵四送走，开始旅程。
+
+（写不动游记，简单记些流水好了）
+
+* 7.31 - 抵达温哥华。午餐 Marutama 拉面，入住 Airbnb，到附近的 Jericho Beach 闲逛。晚上 Gyukaku 烤肉，到 Lighthouse Park 徒步，赶到海边发现太阳已经下山。
+* 8.1 - 早餐 JJ Bean，到 Tsawwassen 轮渡去 Victoria。下午 Buchart Garden，Fishhook 午餐，然后 Downtown 闲逛。晚上回来已经夜里，在宽窄巷子串串烧烤小龙虾。
+* 8.2 - A&W 早餐，在家 Mario Party。中午 Lynn Canyon 徒步，然后 English Bay, Stanley Park 骑行。晚上海鲜大餐。
+* 8.3 - 中午郝记羊肉，然后 Flyover Canada，Gastown。晚上 Kokoro 日本拉面，然后在 Granville Island 看了烟花。
+* 8.4 - 早起飞去卡尔加里，中午在 OMO 日本铁板烧，开去班芙。Airbnb 超级赞，下午去 Banff Gondola，上去第一眼有点惊到我了。幅员辽阔，心旷神怡。晚上在 The Park 西餐。
+* 8.5 - Lake Louise 划船，应该是本次行程我个人眼里的高光了，像是划进了画一样。之后是梦莲湖。晚上在家 BBQ，德州。
+* 8.6 - 中午在 Tavern Pizza，然后 Fairmont 酒店下午茶，之后是 Emerald Lake。晚上回来去 High Roller 打了保龄，之后部队火锅，继续德州。
+* 8.7 - 早餐 Wild Flouver，之后开到 Peyto Lake 徒步，欣赏景色。一路美景开到 Columbia Icefield，体验 Anthabasca 冰川。晚上麦当劳，收拾行李，打牌。
+* 8.8 - 告别班芙，开回卡尔加里。逛了 Costco，在 Popeye 吃午餐。早早到机场，在候机口德州。五点飞回温哥华，晚上正宗小郡肝串串香。
+* 8.9 - 中午 Marutama 拉面，然后到渔人码头，离港观鲸。一路颠簸，好在看到了很多 Orca 和傻呵呵的海狮。回程路上听到了司机 Trevor 的传奇故事，买了他的 Natural Hy。晚上海鲜加部队火锅，最后一次德州。
+* 8.10 - 早餐 JJ Bean，十一点半拥抱，散伙。我和喜福飞机延误，十一点才飞回多伦多。
+* 8.11 - 和大舅视频，看了英超第一轮曼联 4:0 切尔西。下午出门和 Amy 魏哥午餐，接赵四和三哥回家。一起看乐队夏天最后一集。晚上和老妈视频，给大家算本次行程开销。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GZPkZxGW_Ts" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## W31 (07/22 - 07/28)
 
@@ -142,7 +164,7 @@ categories: ['Life']
 ## W16 (04/08 - 04/12)
 
 * Listen to [Wasmer is taking WebAssembly beyond the browser](https://changelog.com/podcast/341?utm_medium=email&utm_campaign=Weekly%20-%20Issue%20250&utm_content=Weekly%20-%20Issue%20250+CID_3afe8cb9c4b1c3d53cfff50448829a21&utm_source=changelog%20email&utm_term=Wasmer%20is%20taking%20WebAssembly%20beyond%20the%20browser)
-    * Surprisingly find and listen to this new released podcast, which happens to match exactly with what we are working on. 
+    * Surprisingly find and listen to this new released podcast, which happens to match exactly with what we are working on.
 * Finish reading [The Value of Simple](https://www.goodreads.com/book/show/23485557-the-value-of-simple?from_search=true)
     * A great to book to start one's personal finance adventure, especially for Canadians. It's to be noted that the author also provides a list of tools and book guides, which is super helpful.
 * Start my first [Monthly Expense](https://quip.com/8agjAbpkTxTx/Monthly-Expense#TZHACANmrl0) review
@@ -155,7 +177,7 @@ categories: ['Life']
     * 继去年在半决赛一分惜败后，这次输了两分 😥
 * Watch [Persona](https://movie.douban.com/subject/1294438/)
     * 看过之后非常困惑，整个过程就是慢慢跟不上导演的节奏。即便如此，很多画面深刻地印在了我的脑海，回来的路上一直不断地回放。在豆瓣上看到了这篇影评我很赞同，基本上解释了我所有的疑问。即使单纯作为一遍散文来读，也是很有收获，[Persona (假面)：沉默的假面](https://movie.douban.com/review/1275074/)
-* Finish reading [Wealthing Like Rabbits](https://www.goodreads.com/book/show/23885906-wealthing-like-rabbits) 
+* Finish reading [Wealthing Like Rabbits](https://www.goodreads.com/book/show/23885906-wealthing-like-rabbits)
     * It's a good start for my personal financial learning. The examples in the book are really persuasive, which I appreciate the most. However, I don't really agree with the saving part. I understand the fact that we should figure out what we truly need or what the money could buy us indeed, but what I infer from the part is kinda what the author tries to avoid, which is to sacrifice your living quality for future. Especially, to ask for used baby clothes from a friend implicitly sounds manipulative to me.
 * Finish the second chapter of [_Writing An Interpreter In Go_](https://interpreterbook.com/) for parsing techniques
 * Skim over the [_Programming WebAssembly with Rust_](https://www.goodreads.com/book/show/42977609-programming-webassembly-with-rust).
