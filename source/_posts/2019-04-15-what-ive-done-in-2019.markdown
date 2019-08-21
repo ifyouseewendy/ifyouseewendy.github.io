@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W34 (08/12 - 08/18)
+
+* Work-wise, catch up after vacation and start looking into how [Artichoke](https://github.com/artichoke/artichoke) works, which is a project on compiling mruby into Web Assembly. After reading the Go book and Rust book, finally, I start coding in C 😇
+* Pick up our new home member, Nikki, who is a puppy girl of English type golden retriever.
+* 利用每天的失眠，看完了毛姆的[人性的枷锁](https://book.douban.com/subject/26803714/)。主人公的故事大概在三十岁戛然而止，而我正好在这个年纪捡起这本书。看到了好多我心中的疑虑，关于人生的意义书中也给出了明确的答案。我没法认可或是怀疑，因为最终也都是要自己一点点寻找。期待下一次重读。
+
+![w34-nikki](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w34-nikki.jpg)
+
 ## W32-33 (07/29 - 08/11) Vacation
 
 一年一度的旅行终于到来。今年的主题是趁着下一代来临前最后一聚。地点选在温哥华，维多利亚和班芙。史称加西之旅。
