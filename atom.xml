@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2019-08-18T12:31:54-04:00</updated>
+  <updated>2019-08-20T21:43:29-04:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -296,6 +296,16 @@ Compared to the Shared Kernel, but there is an important difference. The custome
     <content type="html"><![CDATA[<blockquote>
   <p>A weekly log on my life and personal growth</p>
 </blockquote>
+
+<h2 id="w34-0812---0818">W34 (08/12 - 08/18)</h2>
+
+<ul>
+  <li>Work-wise, catch up after vacation and start looking into how <a href="https://github.com/artichoke/artichoke">Artichoke</a> works, which is a project on compiling mruby into Web Assembly. After reading the Go book and Rust book, finally, I start coding in C 😇</li>
+  <li>Pick up our new home member, Nikki, who is a puppy girl of English type golden retriever.</li>
+  <li>利用每天的失眠，看完了毛姆的<a href="https://book.douban.com/subject/26803714/">人性的枷锁</a>。主人公的故事大概在三十岁戛然而止，而我正好在这个年纪捡起这本书。看到了好多我心中的疑虑，关于人生的意义书中也给出了明确的答案。我没法认可或是怀疑，因为最终也都是要自己一点点寻找。期待下一次重读。</li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w34-nikki.jpg" alt="w34-nikki" /></p>
 
 <h2 id="w32-33-0729---0811-vacation">W32-33 (07/29 - 08/11) Vacation</h2>
 
