@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+W35 (08/19 - 08/25)
+
+* 这周的工作，一天团建，三天 Hackday，以组织的名义认真划水。
+* 养狗第一周，我和喜福都是精力被榨干。六点半起，遛狗喂猫，不想上班。什么“从今天起，砍柴喂马，春暖花开”都是骗人的。
+* 爸妈的签证第三次申请，几近曲折，竟然有发了递签信又收回的时候，这周终于过了 ✅
+
+![w35-nikki-at-peace](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w35-nikki-at-peace.gif)
+
 ## W34 (08/12 - 08/18)
 
 * Work-wise, catch up after vacation and start looking into how [Artichoke](https://github.com/artichoke/artichoke) works, which is a project on compiling mruby into Web Assembly. After reading the Go book and Rust book, finally, I start coding in C 😇
