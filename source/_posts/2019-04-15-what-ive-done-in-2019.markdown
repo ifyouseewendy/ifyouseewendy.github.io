@@ -8,7 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
-W35 (08/19 - 08/25)
+## W36 (08/26 - 09/01)
+
+* Get a basic idea on how [MRuby](http://mruby.org/) works. Such a fun experience.
+* Read a chapter of Super Thinking on decision making. I love the reasoning about disadvantages of pro-con list, that the cost-benefit analysis comes into play. One new thing I learnt is the [Le Chatelier's principle](https://www.wikiwand.com/en/Le_Chatelier%27s_principle), aka The Equilibrium Law or homeostasis, which roughly means "system always kicks back (in some situation)". Neat.
+* 超级开心喜福一次就通过了路试，终于结束我们互相看不顺眼的学车之旅了 🎉
+* 这个 Labour Day 长周末主要是看比赛和伺候狗子。Nikki is our brand new $2000 alarm, organic. 六点半的阳光，总能带给我希望，砥砺前行 😐
+
+![w36-a-day-of-nikki](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w36-a-day-of-nikki.jpg)
+
+## W35 (08/19 - 08/25)
 
 * 这周的工作，一天团建，三天 Hackday，以组织的名义认真划水。
 * 养狗第一周，我和喜福都是精力被榨干。六点半起，遛狗喂猫，不想上班。什么“从今天起，砍柴喂马，春暖花开”都是骗人的。
