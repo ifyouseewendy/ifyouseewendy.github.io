@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+
+## W37 (09/02 - 09/08)
+
+* Finish [rustlings](https://github.com/rust-lang/rustlings?ref=hackr.io) and start reading [Too Many Lists](https://rust-unofficial.github.io/too-many-lists).
+* Teach Nikki the second command, "d-o-w-n".
+* 看了很多精彩比赛，男篮世界杯，F1 蒙扎，美网。印象最深的还是我国面对逆波兰了，疼啊疼。
+
+![w37-anjing](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w37-anjing.jpg)
+
 ## W36 (08/26 - 09/01)
 
 * Get a basic idea on how [MRuby](http://mruby.org/) works. Such a fun experience.
