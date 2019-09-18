@@ -9,6 +9,18 @@ categories: ['Life']
 > A weekly log on my life and personal growth
 
 
+## W38 (09/09 - 09/15)
+
+* 周一是赵四一周岁生日！你真是越来越招人喜欢，尤其是狗子来了咱们家之后。祝你保持对这个世界的冷漠，永远年轻，永远无所事事。
+* 周二告别了魏哥，Amy 和 Molly，虽然早有准备，但还是会觉着生活断了根线。有缘再见啦！
+* Go to St. Louis for StrangeLoop 2019. There are three talks that I really like
+    * [How to teach programming (and other things) - Felienne Hermans](https://www.youtube.com/watch?v=g1ib43q3uXQ&feature=youtu.be) It brings up an interesting idea that people prefer "exploration and self-taught" over "explanation and exercise" only in computer science, which worths us a second thoughts.
+    * [Towards an open and Reason(ML)able web - Parker Ziegler](https://www.youtube.com/watch?v=ItASl4SdPO0) Great intro to ReasonML. I’ve got more interest in OCaml now.
+    * [Parser Parser Combinators for Program Transformation" by Rijnard van Tonder](https://www.youtube.com/watch?v=JMZLBB_BFNg) Try this fancy tool for program transformation [comby.live](https://comby.live/)
+* 去参加这个会议的私心在于能跟表格团聚。四年半不见，还是一如既往的舒服。最后一晚在 Bailey’s Range 喝的飞起，开心。
+
+![w38-strange-loop](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w38-strange-loop.jpg)
+
 ## W37 (09/02 - 09/08)
 
 * Finish [rustlings](https://github.com/rust-lang/rustlings?ref=hackr.io) and start reading [Too Many Lists](https://rust-unofficial.github.io/too-many-lists).
