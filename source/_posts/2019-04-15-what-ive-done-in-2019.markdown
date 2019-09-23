@@ -8,6 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W39 (09/16 - 09/22)
+
+* 这周没写代码，基本都在开会，讨论，写文档。比我想象中的轻松。
+* 喜福去温哥华出差，我每天下午在家办公伺候主子和狗子。与狗子斗智斗勇，好几次被搞的神烦。不断告诫自己要有耐心，狗子的表现基本是我脾气的投影
+* 周末一起带狗子去 Waterloo Park 转了一圈，其实也只公园一角。每天在家风风火火巡天入地，来了大草原就咩咩找妈妈。开玩笑，狗子请起，来嗨！
+* Podcasts sharing
+    * [S1E2 – good kid, m.A.A.d. city – dissect](https://dissectpodcast.com/2016/08/25/s1e2-good-kid-m-a-a-d-city/)
+    * [A Queen Of Sorts - 30 for 30 Podcasts](https://30for30podcasts.com/episodes/a-queen-of-sorts/)
+
+![w39-cat-dog-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w39-cat-dog-collage.jpg)
 
 ## W38 (09/09 - 09/15)
 
