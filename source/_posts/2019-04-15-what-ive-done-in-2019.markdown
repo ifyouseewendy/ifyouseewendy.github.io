@@ -8,6 +8,13 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W40 (09/23 - 09/29)
+
+* 每周的工作已有了范式。面对干不完的活，周一周二三都自带鸡血，周四开始彷徨，周五认真划水。没有太多精力回来继续之前的学习。
+* 爸妈周五晚上到达，一路奔波我都在担心出差错，但是很好，一切顺利。周末很开心，陪着他们四处闲逛。
+
+![w40-dancing-pa-ma](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w40-dancing-pa-ma.gif)
+
 ## W39 (09/16 - 09/22)
 
 * 这周没写代码，基本都在开会，讨论，写文档。比我想象中的轻松。
