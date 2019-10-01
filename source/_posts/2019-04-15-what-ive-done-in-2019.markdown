@@ -178,13 +178,16 @@ categories: ['Life']
 * After two months learning and researching, I finally set up my FIRE account on May 29th, 2019 🎉
 * Such a relief after visiting Nadine and Casey.
 * The best weekend this year, for pushing trivial stuff forward proactively, reading books, watching sports (Liverpool 2:0 Tottenham Hotspur, Raptors 1:1 Warriors), having hotpot, watching shows, enjoying the great weather, and wasting time together with Jasmine. Everything is perfect.
-* [Just dance](https://media.giphy.com/media/f9H9ZXcZ46YR4EMnBN/giphy.gif)
+
+![w23-just-dance](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w23-just-dance.gif)
 
 ## W22 (05/20 - 05/26)
 
 * Finish reading [Domain-driven Design Quick](https://www.infoq.com/minibooks/domain-driven-design-quickly) last week and concluded some [notes](http://blog.ifyouseewendy.com/blog/2019/05/27/notes-on-ddd/) here. It makes a lot of sense to me on connecting the dots I’ve collected over time. The book is also a great one as an intro which helps me grash the main idea of DDD. The next step is to gain more insight in practice.
 * GoT 潦草终结，没等到我的夜王反推大陆，难过。看完了[一拳超人](https://movie.douban.com/subject/26339248/)，超级喜欢，见识了终极大招：Consecutive Normal Punch!
-* Finally, what makes my week? [A stupid big smile](https://media.giphy.com/media/JPrylygv1Vnr3bB0QH/giphy.gif) ([..bounce version](https://media.giphy.com/media/XG0WTXvFuZdEnCyL45/giphy.gif))
+* Finally, what makes my week?
+
+![w22-bounce-smile.gif](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w22-bounce-smile.gif)
 
 ## W21 (05/13 - 05/19)
 
