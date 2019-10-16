@@ -8,6 +8,17 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W42 (10/07 - 10/13)
+
+* Attend [Speaker Labs](https://www.speakerlabs.ca/). In addition to the public speaking skills, there is one takeaway particularly for me
+    * No matter how much effort I put into ignoring other people’s opinion, I should admit, I do care. That’s one source of truth which makes me anxious, uncomfortable and not happy.
+    * It’s not wrong to care about other people’s opinions, which is exactly how we gain effective feedback from the world. However, the most difficult part is to show yourself to the world, be exposed, be vulnerable, and make the first step.
+* Start reading [The Power of Now](https://www.goodreads.com/book/show/6708.The_Power_of_Now)
+    * An exercise: Take any routine activity that normally is only a means to an end and give it your fullest attention, so that it becomes an end in itself. For example, every time you walk up and down the stairs in your house or place of work, pay close attention to every step, every movement, even your breathing. Be totally present.
+* 周末把赵四和 Nikki 送走，跟喜福和爸妈开启一周的加东之旅。周末在 Kingston，没人的湖滨小镇，欣赏秋色。
+
+![w42-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w42-collage.jpg)
+
 ## W41 (09/30 - 10/06)
 
 * 想起一年前这个时候还是独自生活，现在有了喜福，赵四，Nikki，加上爸妈最近来访，时间完全被炸开了。很难再找到一整块安静自在的时间，哪怕去浪费。我希望这会是生活中好的变化，准确来说，我需要更好的适应让它变成好的变化。暂时想到这么几点：下班不再为工作烦心；跟喜欢的人（🐱🐶）不要在意时间的得失；接受属于自己的时间多数都是琐碎的。
