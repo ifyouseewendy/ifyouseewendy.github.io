@@ -8,6 +8,18 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W43 (10/14 - 10/20)
+
+这一周一直在路上，跟喜福带着爸妈东部之旅
+
+* 10.12 - 10.14 Kingston
+* 10.15 - 10.17 Montreal
+* 10.18 - 10.19 Ottawa
+
+我一直很喜欢秋天，肃穆，萧瑟，每天五点钟都像星期日的晚霞，不自觉地怅然若失。来加拿大第三年，之前只在路上偶尔感叹秋天的颜色，转眼就入了冬。今年走出去，发现秋天并不短暂，只是我从未认真寻找。
+
+![w43-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w43-collage.jpg)
+
 ## W42 (10/07 - 10/13)
 
 * Attend [Speaker Labs](https://www.speakerlabs.ca/). In addition to the public speaking skills, there is one takeaway particularly for me
