@@ -8,6 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W44 (10/21 - 10/27)
+
+* Keep reading [The Power of Now](https://www.goodreads.com/book/show/6708.The_Power_of_Now)
+    * I got blown away by the main idea that "you get into presence by watching the mind", so simple but so powerful. This is the first time that I read a spiritual book, which makes me surprised and suspicious at the same time. You can never prove it scientifically, but you can just follow the angle it provides and reflect it in your mind. I like it so far.
+* 不管工作上多少事情，每天下班基本都切断了联系，享受跟爸妈在一起的时光。周中一起打麻将，周末去逛了 Niagara Fall。
+* 本来的打算是今年不买衣服，希望自己不断减少外在带来的满足感。但是喜福质问我这不是长久之计，这里的关系不应是切断，而是保持在一个稳定的低需求上。我设想了下理想的状况：所有的衣服都有最简单的颜色样式，舒服质量好，每天打开衣柜让我不花一点时间思考。周末随大家去商场买买买，搞了一堆无差别内衣裤，希望一点点迁移到外衣裤上。
+* Nikki 长大了，开始练习一嘴叼俩球了...赵四也成熟了，继承了家里的传统，看热闹打麻将。
+
+![w44-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w44-collage.jpg)
+
 ## W43 (10/14 - 10/20)
 
 这一周一直在路上，跟喜福带着爸妈东部之旅
