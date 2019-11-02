@@ -8,7 +8,7 @@ group :development do
   gem 'rdiscount', '~> 2.0.7'
   gem 'kramdown', '~> 1.4.2'
   gem 'pygments.rb'
-  gem 'haml', '~> 3.1.7'
+  gem 'haml', '~> 5.0.0'
   gem 'compass', '~> 0.12.7'
   gem 'sass'
   gem 'sass-globbing'
