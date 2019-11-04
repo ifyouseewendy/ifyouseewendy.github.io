@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W45 (10/28 - 11/03)
+
+* 这周的节奏很稳定，白天认真工作，晚上吃饭打麻将。爸妈来玩的最后一周了，一个月的时间过得飞快。
+* 一周的阴雨绵绵，基本扫清了树上剩余的叶子，算是对这美丽的季节做了告别。今年的秋天有很多难忘的回忆，感谢大自然的美好。
+* 喜福的 PR 面试通过，这两周会拿到枫叶卡，一切顺利 ✌️
+* 在同事的带领下，第一次尝试了 pumpkin carving 🎃，比我预想的要有趣。我发现手工是能让我进入平静状态的。因为步骤简单，所以容易达到专注；因为行动大过思考，所以容易进入摒弃思考的专注状态。按照 The Power of Now 的理念，这就是人们想要的平静。
+
+![w45-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w45-collage.jpg)
+
 ## W44 (10/21 - 10/27)
 
 * Keep reading [The Power of Now](https://www.goodreads.com/book/show/6708.The_Power_of_Now)
