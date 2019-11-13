@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W46 (11/04 - 11/10)
+
+* 跟爸妈不舍告别，互以眼泪相赠，期待明年再相逢。
+* 日子又回到从前的状态，遛狗喂猫，认真工作，打球，看电影看比赛，但是我能感受到自己心态的变化。我相信我在变耐心，有意识的告诉自己不被时间影响，不因未来而焦虑。
+* 第一次带 Nikki 去上课，发现要学的好多呀。老师发了一本四五百页的讲义，课后还要温习和练习。为了狗子，这门课我不能弃。
+* 周末去看了 [Joker](https://movie.douban.com/subject/27119724/)，没有让我失望，很期待今年 Joaquin Phoenix 会得奖。
+
+![w46-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w46-collage.jpg)
+
 ## W45 (10/28 - 11/03)
 
 * 这周的节奏很稳定，白天认真工作，晚上吃饭打麻将。爸妈来玩的最后一周了，一个月的时间过得飞快。
