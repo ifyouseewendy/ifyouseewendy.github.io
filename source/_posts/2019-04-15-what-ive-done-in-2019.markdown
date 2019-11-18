@@ -8,6 +8,17 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+
+## W47 (11/11 - 11/17)
+
+* Nikki 迎来了她狗生的第一场大雪，喜出望外，到各处的洁白无痕的雪堆中蹦迪。周二带她去上了第二节课，深深地感受到做熊孩子家长的无奈，已经深呼吸的耐心在课程后半段消失殆尽，信好有喜福在旁边接手救场。回来的路上不断反思，貌似在狗狗教育的上只有不进则退，不用“正确”的方式就几乎就在养成“错误”。调整好心态，继续粗发。
+* 周四是公司 eng offsite，上午一直在认真 social，嘘寒问暖搞的我口干舌燥。中午很意外地碰到一堆坐在角落吃饭的朋友，开始互相吐槽活动的无聊，成立完自闭小组后果断趁机以团队活动为由早早离场。
+* 周五是 31 岁生日，正赶上我们组团建，大家去扔斧子，然后给我和 Stephen 一起过了生日。晚上照例和喜福吃饭庆祝，很平和很美好。回想 30 岁时候，自己好像在痛苦思索寻找一个不知道问题的答案，现在已经很平静接受 31 岁的现实。突然觉着自己很傻逼，哪里是时间给我什么触动呢，不过是愚蠢的对数字的敏感罢了。
+* Re-watch the [Blade Runner](https://movie.douban.com/subject/1291839/) based on the story setting, in Nov 2019.
+* Do our homework and book the trip to Cancun during Christmas time.
+
+![w47-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w47-collage.jpg)
+
 ## W46 (11/04 - 11/10)
 
 * 跟爸妈不舍告别，互以眼泪相赠，期待明年再相逢。
