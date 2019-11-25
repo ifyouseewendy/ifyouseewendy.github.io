@@ -8,6 +8,13 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W48 (11/18 - 11/24)
+
+* 最近工作很忙碌，准备了半年的项目，Mitch 下周要去给 CEO 做 demo。大家齐心协力赶进度，很期待下周的结果。
+* 这周来回路上还有散步的时间听完了 [Serial 第一季](https://serialpodcast.org/season-one)。基本上讲了一个发生在 99 年，怎么看都像有冤情，但就是没有关键证据洗脱罪名的案件。这个播客帮忙采访回溯了当年的各种细节，2014 年播出也收获了很多新的反馈，狱中主角得以重新开启申诉。但是我翻到网站的最后更新2019年3月，州最高法院 4:3 驳回了重新审理的申诉，心里有点失落，真相在哪里？
+* 自从干了 Power of Now 的鸡汤，有意识的告诉自己（并且相信）在工作生活中向生活倾斜，周末也过的更加精彩。和喜福一起收拾屋子，去院子捡落叶，带 Nikki 出门玩，看球看剧，吃火锅，还一起做了个 wishlist 的项目，很开心。
+
+![w48-who-is-eating-mud](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w48-who-is-eating-mud.jpg)
 
 ## W47 (11/11 - 11/17)
 
