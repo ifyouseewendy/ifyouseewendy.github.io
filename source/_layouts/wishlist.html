@@ -1,0 +1,62 @@
+<html>
+
+{% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
+{% include head.html %}
+
+<head>
+  <script type="text/javascript" src="/javascripts/frappe-gantt.js"></script>
+  <script type="text/javascript" src="/javascripts/2019-timeline-script.js"></script>
+  <link rel="stylesheet" href="/stylesheets/frappe-gantt.css" type="text/css"/>
+
+  <style>
+    #gantt {
+      font-family: STXihei, "Microsoft YaHei", sans-serif;
+    }
+    #gantt .handle {
+      width: 0 !important;
+    }
+    #gantt .upper-text {
+      font-size: x-large;
+    }
+
+    .gantt-container .details-container {
+        margin-left: 10%;
+        background: #fff;
+        display: inline-block;
+        padding: 12px;
+        box-shadow: 0 0 4px;
+        border: 1px solid #ccc;
+    }
+    .gantt-container .details-container #detail-link {
+      text-decoration: none;
+    }
+    .gantt-container .details-container #detail-link:link {
+      color: #a3a3ff;
+    }
+    .gantt-container .details-container #detail-link:visited {
+      color: #8a8aff;
+    }
+
+    .gantt-container .popup-wrapper {
+      font-family: STXihei, "Microsoft YaHei", sans-serif;
+    }
+    .gantt-container .pointer {
+      visibility: hidden;
+    }
+    .gantt-container .popup-wrapper .title {
+      padding: 0 0 10px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  {% include header.html %}
+
+  <div class="container">
+
+    {{ content | expand_urls: root_url }}
+
+  </div>
+</body>
+</html>
