@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W49 (11/25 - 12/01)
+
+* I’m actively shifting my focus and time to daily life in terms of work life balance, but apparently I’m leaning over so much that I lost my balance, particularly the morning time. I just keep wondering is it worth it? To sacrifice my high productivity for dog walking and cat feeding
+* 周二课堂上刚刚欣慰见到 Nikki 的进步，就发觉她好像大步迈进了青春期，各种斗志昂扬的不听话。连着三天我都忍不住生气，只能跟喜福报团取暖，互相安慰。
+* 这一周的兴奋被迪巴拉的神奇任意球承包了
+
+![w49-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w49-collage.jpg)
+
 ## W48 (11/18 - 11/24)
 
 * 最近工作很忙碌，准备了半年的项目，Mitch 下周要去给 CEO 做 demo。大家齐心协力赶进度，很期待下周的结果。
