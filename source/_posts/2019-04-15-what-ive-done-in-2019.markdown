@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W50 (12/02 - 12/08)
+
+* 周中同事问了一个简单的 Rust 问题，发现两个月不用，脑子又基本忘光了。所以周末开始了这一年第三次阅读 [The Rust Programming Language](https://doc.rust-lang.org/book/#the-rust-programming-language)。这回不用一章章读了，顺着脑子里的问题去寻找就好了。
+* 周四晚上和 David, Alex 去 Apollo 看了 [The Twilight Zone](https://www.imdb.com/title/tt0052520/) 的 60 年重映，作为 59 年开播的科幻黑色故事集，可以说是当时的黑镜。有些东西真的是被时间冲不破的，或者说 60 年完全掀不起时间的波澜。我常常幻想，如果把黑白换成彩色影像，那当时和现在有什么区别？
+* 这周做了四次晚饭，还去了趟菜市场，人生巅峰，值得表扬 ☺️
+
+![w50-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w50-collage.jpg)
+
 ## W49 (11/25 - 12/01)
 
 * I’m actively shifting my focus and time to daily life in terms of work life balance, but apparently I’m leaning over so much that I lost my balance, particularly the morning time. I just keep wondering is it worth it? To sacrifice my high productivity for dog walking and cat feeding
