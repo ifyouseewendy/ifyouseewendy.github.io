@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W51 (12/09 - 12/15)
+
+* Pick up my Rust learning by finishing reading and practicing [rust-unofficial/too-many-lists](https://github.com/rust-unofficial/too-many-lists), which is such an interesting read. What I enjoy the most is the feeling (or illusion) of getting a new or deeper understanding about something I thought I knew.
+* Nikki 为期六周的 Level 1 课程这周二结束了，我们短暂的学生家长体验也到期了。Nikki 作为班级最调皮捣蛋的，每次上课都大声说话，开始两次课真是让我们头疼欲裂。没办法，只能硬挺保持耐心，跟喜福报团取暖。现在回看，如果以天为跨度，那多是无奈，但是如果放大到每周，那确实一直都在进步。最后一课期末考试，Nikki 让所有人刮目相看（要我说只是正常发挥在家的水准而已）获得了第三名，一旁老父亲老母亲欣慰不已。
+* 姥爷突然离世，2019年12月13日。我心里没有特别难过，伤心主要来自对妈妈和大舅的感同身受。一晚上都有点恍惚，脑子在不断搜索记忆，希望留下一些美好的画面。至此，我不曾怀疑的理应存在的爷爷奶奶姥姥姥爷全都消失在了这个世界。感谢你们给的爱和回忆。
+
+![w51-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w51-collage.jpg)
+
 ## W50 (12/02 - 12/08)
 
 * 周中同事问了一个简单的 Rust 问题，发现两个月不用，脑子又基本忘光了。所以周末开始了这一年第三次阅读 [The Rust Programming Language](https://doc.rust-lang.org/book/#the-rust-programming-language)。这回不用一章章读了，顺着脑子里的问题去寻找就好了。
