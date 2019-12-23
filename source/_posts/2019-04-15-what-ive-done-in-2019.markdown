@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W52 (12/16 - 12/22)
+
+* Super happy to wrap up all the work before Christmas vacation, looking forward to our 2020.
+* 组里的年终聚会再次展现了自己的手工天赋，成功制作了唯一的圣诞危房。
+* 这周家里的厨艺争霸异常激烈，喜福的小酥肉非常完美，可能和我的怒炸排骨不相上下。
+* 接下来是 16 天的假期：在家呆四天，去坎昆度假七天，再回来休整五天。想做的事情很多，继续 Rust 学习，看爱尔兰人，找本闲书看，去海边装死，新年回来去上第一堂滑雪课。期待。
+
+![w52-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w52-collage.jpg)
+
 ## W51 (12/09 - 12/15)
 
 * Pick up my Rust learning by finishing reading and practicing [rust-unofficial/too-many-lists](https://github.com/rust-unofficial/too-many-lists), which is such an interesting read. What I enjoy the most is the feeling (or illusion) of getting a new or deeper understanding about something I thought I knew.
