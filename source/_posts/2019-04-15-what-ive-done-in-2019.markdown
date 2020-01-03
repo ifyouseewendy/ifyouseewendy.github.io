@@ -201,7 +201,13 @@ categories: ['Life']
 * 8.10 - 早餐 JJ Bean，十一点半拥抱，散伙。我和喜福飞机延误，十一点才飞回多伦多。
 * 8.11 - 和大舅视频，看了英超第一轮曼联 4:0 切尔西。下午出门和 Amy 魏哥午餐，接赵四和三哥回家。一起看乐队夏天最后一集。晚上和老妈视频，给大家算本次行程开销。
 
+YouTube
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/GZPkZxGW_Ts" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Youku
+
+<iframe width="498" height="510" src="http://player.youku.com/embed/XNDMyMDQ5MTk3Mg==" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## W30 (07/22 - 07/28)
 
