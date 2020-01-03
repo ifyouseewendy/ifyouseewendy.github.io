@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2020-01-03T11:48:58-05:00</updated>
+  <updated>2020-01-03T12:03:31-05:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What we've done in 2019]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2020/01/03/what-weve-done-in-2019/"/>
+    <updated>2020-01-03T11:54:56-05:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2020/01/03/what-weve-done-in-2019</id>
+    <content type="html"><![CDATA[<svg id="gantt"></svg>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Notes on DDD Quickly]]></title>
@@ -8674,255 +8683,6 @@ The bottom line is: generally it seems better to split a monster join into small
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>There’s no reason to use <code>:string</code> (AKA <code>varchar</code>) at all, the database treats <code>text</code> and <code>varchar(n)</code> the same internally except for the extra length constraints for <code>varchar(n)</code>; you should only use <code>varchar(n)</code> (AKA <code>:string</code>) if you have an external constrain on the column size.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby Float Point Arithmetic and Truncation]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2015/04/11/ruby-float-point-arithmetic-and-truncation/"/>
-    <updated>2015-04-11T09:17:56-04:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2015/04/11/ruby-float-point-arithmetic-and-truncation</id>
-    <content type="html"><![CDATA[<p><strong><em>How to keep precision on float point arithmetic?</em></strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="mi">190000</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">783</span><span class="o">.</span><span class="mi">0</span> <span class="o">/</span> <span class="mi">10000</span> <span class="p">)</span>
-</span><span class="line"><span class="c1"># =&gt; 14876.999999999998</span>
-</span><span class="line">
-</span><span class="line"><span class="p">(</span> <span class="mi">190000</span> <span class="o">*</span> <span class="mi">783</span><span class="o">.</span><span class="mi">0</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
-</span><span class="line"><span class="c1"># =&gt; 14877.0</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong><em>How to make a 2 point truncation instead of rounding?</em></strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="mi">195555</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mo">07</span><span class="mi">83</span>
-</span><span class="line"><span class="c1"># =&gt; 15311.956499999998</span>
-</span><span class="line">
-</span><span class="line"><span class="p">(</span> <span class="mi">195555</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mo">07</span><span class="mi">83</span> <span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</span><span class="line"><span class="c1"># =&gt; 15311.96</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h3 id="plain-solution">Plain Solution</h3>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># Public: A calculator aims handling Float operation precision and</span>
-</span><span class="line"><span class="c1"># saving the result with truncated 2 point Float.</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1"># Examples</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1">#   190000 * 0.0783</span>
-</span><span class="line"><span class="c1">#   # =&gt; 14876.999999999998</span>
-</span><span class="line"><span class="c1">#   190000 * 783 / 10000</span>
-</span><span class="line"><span class="c1">#   # =&gt; 14877</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1">#   cal = RateCalculator.new(190000, 0.0783)</span>
-</span><span class="line"><span class="c1">#   cal.run</span>
-</span><span class="line"><span class="c1">#   # =&gt; 14877.0</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1">#   195555 * 0.0783</span>
-</span><span class="line"><span class="c1">#   # =&gt; 15311.956499999998</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1">#   cal = RateCalculator.new(195555, 0.0783)</span>
-</span><span class="line"><span class="c1">#   # =&gt; 15311.95</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1"># Returns a Float</span>
-</span><span class="line"><span class="k">class</span> <span class="nc">RateCalculator</span>
-</span><span class="line">  <span class="kp">attr_reader</span> <span class="ss">:base</span><span class="p">,</span> <span class="ss">:rate</span>
-</span><span class="line">
-</span><span class="line">  <span class="c1"># Internal: Handles 6 point rate.</span>
-</span><span class="line">  <span class="no">MAGNIFIER</span> <span class="o">=</span> <span class="mi">1000000</span>
-</span><span class="line">
-</span><span class="line">  <span class="c1"># Public: Initialization</span>
-</span><span class="line">  <span class="c1">#</span>
-</span><span class="line">  <span class="c1"># base - Integer</span>
-</span><span class="line">  <span class="c1"># rate - Numeric</span>
-</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">rate</span><span class="p">)</span>
-</span><span class="line">    <span class="k">raise</span> <span class="s2">&quot;#initialize: &lt;base&gt; needs to be Integer&quot;</span> <span class="k">unless</span> <span class="n">base</span><span class="o">.</span><span class="n">is_a?</span> <span class="nb">Integer</span>
-</span><span class="line">
-</span><span class="line">    <span class="vi">@base</span> <span class="o">=</span> <span class="n">base</span>
-</span><span class="line">    <span class="vi">@rate</span> <span class="o">=</span> <span class="n">rate</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">run</span>
-</span><span class="line">    <span class="n">truncate_2_point</span> <span class="no">MAGNIFIER</span><span class="o">*</span><span class="n">rate</span><span class="o">*</span><span class="n">base</span><span class="o">/</span><span class="no">MAGNIFIER</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="kp">private</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">def</span> <span class="nf">truncate_2_point</span><span class="p">(</span><span class="n">float</span><span class="p">)</span>
-</span><span class="line">      <span class="p">(</span><span class="n">float</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">to_i</span> <span class="o">/</span> <span class="mi">100</span><span class="o">.</span><span class="mi">0</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>It works, but with so many worries about the unknown conditions.</p>
-
-<h3 id="bigdecimal">BigDecimal</h3>
-
-<p>First, what the hell happens on the precision of float point arithmetic?</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="mi">0</span><span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">0</span><span class="o">.</span><span class="mi">2</span>
-</span><span class="line"><span class="c1"># =&gt; 0.30000000000000004</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>According to <a href="http://floating-point-gui.de/">What Every Programmer Should Know About Floating-Point Arithmetic</a>, the answer is the binary fraction issue.</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/binary_fraction.png" alt="Binary Fraction" /></p>
-
-<blockquote>
-  <p>Specifically, binary can only represent those numbers as a finite fraction where the denominator is a power of 2. Unfortunately, this does not include most of the numbers that can be represented as finite fraction in base 10, like 0.1.</p>
-</blockquote>
-
-<p>To get through the precision problem, Ruby provides the <strong>Arbitrary-Precision Decimal</strong> shipped by <code>BigDecimal</code>. And so sweet, <code>BigDecimal</code> supports several rounding modes, including <code>:truncate</code>.</p>
-
-<p>Here is the final solution.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;bigdecimal&#39;</span>
-</span><span class="line">
-</span><span class="line"><span class="c1"># Public: A calculator aims handling arithmatic precision and</span>
-</span><span class="line"><span class="c1"># saving the result with 2 points truncated decimal.</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1"># Examples</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1">#   190000 * 0.0783</span>
-</span><span class="line"><span class="c1">#   # =&gt; 14876.999999999998</span>
-</span><span class="line"><span class="c1">#   190000 * 783 / 10000</span>
-</span><span class="line"><span class="c1">#   # =&gt; 14877</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1">#   cal = RateCalculator.new(190000, 0.0783).run</span>
-</span><span class="line"><span class="c1">#   # =&gt; 14877.0</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1">#   195555 * 0.0783</span>
-</span><span class="line"><span class="c1">#   # =&gt; 15311.956499999998</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1">#   cal = RateCalculator.new(195555, 0.0783).run</span>
-</span><span class="line"><span class="c1">#   # =&gt; 15311.95</span>
-</span><span class="line"><span class="c1">#</span>
-</span><span class="line"><span class="c1"># Returns a BigDecimal</span>
-</span><span class="line"><span class="k">class</span> <span class="nc">RateCalculator</span>
-</span><span class="line">  <span class="kp">attr_reader</span> <span class="ss">:base</span><span class="p">,</span> <span class="ss">:rate</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">rate</span><span class="p">)</span>
-</span><span class="line">    <span class="vi">@base</span> <span class="o">=</span> <span class="no">BigDecimal</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span>
-</span><span class="line">    <span class="vi">@rate</span> <span class="o">=</span> <span class="no">BigDecimal</span><span class="p">(</span><span class="n">rate</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">def</span> <span class="nf">run</span>
-</span><span class="line">    <span class="no">BigDecimal</span><span class="o">.</span><span class="n">save_rounding_mode</span> <span class="k">do</span>
-</span><span class="line">      <span class="no">BigDecimal</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="ss">BigDecimal</span><span class="p">:</span><span class="ss">:ROUND_MODE</span><span class="p">,</span> <span class="ss">:truncate</span><span class="p">)</span>
-</span><span class="line">      <span class="p">(</span><span class="n">base</span><span class="o">*</span><span class="n">rate</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h4 id="reference">Reference</h4>
-
-<ul>
-  <li><a href="http://floating-point-gui.de/">Float Point Guide</a></li>
-  <li><a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/bigdecimal/rdoc/BigDecimal.html">Ruby Doc BigDecimal</a></li>
-  <li><a href="http://makandracards.com/makandra/1178-bigdecimal-arithmetic-in-ruby">BigDecimal arithmetic in Ruby</a></li>
-  <li><a href="http://makandracards.com/makandra/1505-invoices-how-to-properly-round-and-calculate-totals">Invoices: How to properly round and calculate totals</a></li>
-</ul>
 
 ]]></content>
   </entry>
