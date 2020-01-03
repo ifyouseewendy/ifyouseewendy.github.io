@@ -8,6 +8,22 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W52-53 (12/23 - 01/05) Vacation
+
+12.25 - 01.01 把 Nikki 和赵四安顿好，我们踏上了🇲🇽坎昆之旅。这次完全没做计划，一切顺其自然。从冰天雪地跳到阳光沙滩，这个冲击感很美妙。每天可以不在乎时间，完全自由同样难能可贵。我们一半的时间在躺着，在酒店在沙滩，看电影看书。一半的时间在附近的景点，丛林金字塔和水上乐园。
+
+* 玛雅的金字塔是我来之前最向往的，我们去了 Chichen Itza, Coba 和 Tulum。金字塔虽然不如我想象中壮观，但是了解各种细节才知道其中奥妙，尤其关于当时人们对宇宙、时间、神的理解。玛雅人以手脚数目 20 作为计数单位，随之而来的是每个月 20 天，一年 18 个月，留下 5 天禁忌日。纪年也如此，不是十进制的 2020-01-01，而是BC3000年左右的元年开始算起，以二十进制计算天数：13.0.7.2.7（这俨然是一个 IP 地址🤔）。传说中的 2012-12-21 只是大数字进一变成了 13.0.0.0.0 而已。（这个 [Mayan Calendar Converter](https://maya.nmai.si.edu/calendar/maya-calendar-converter) 有详细的介绍）。玛雅的文字和汉字一样是方块字，但不同的是玛雅人是在田字格内画画，还涂着颜色，非常绚烂。知乎上这篇讲解很好看：[破解失传的古文字（象形文字、楔形文字等）最初是如何被破译的？](https://www.zhihu.com/question/20774349/answer/41256347)
+* 行程最后一天的 Xcaret 是最大亮点，一座建在丛林和海滩上的主题乐园。我们再次体验了快艇摩托伞，一起在天空享受宁静。对于高度近视的我，确实分不清海天是如何相接。体验最好的是里边的一条人造河，从起点到终点游泳划行一个小时，全程都是玛雅的石头建筑和绿色丛林。这是我此次旅行最美妙的时光。
+* 闲暇时间刷了一些想看好久的书和电影：
+  * [爱尔兰人](https://movie.douban.com/subject/6981153/)让我回到了大学时光，猛刷罗伯特德尼罗和阿尔帕西诺的日子。四个小时的电影，如果好看是真的享受。[婚姻故事](https://movie.douban.com/subject/27202818/)很不错，但是好像不适合两个人一起看；[美国工厂](https://movie.douban.com/subject/30390700/)这个纪录片就有意思了，评论说的没错，这是十八世纪资本主义和二十一世纪资本主义的冲突；[谋杀疑案](https://movie.douban.com/subject/15077774/) 是个亚当桑德勒标签化的傻逼电影。
+  * [世界小史](https://book.douban.com/subject/26292964/)是本很好的历史读物，粗糙但是有大视角；[一个叫欧维的男人决定去死](https://book.douban.com/subject/26672693/)也很好读，故事人物典型老套，但是笔触非常幽默顺畅。看了大半本[统计学关我什么事](https://book.douban.com/subject/30229508/)，非常浅显，我主要是来看到底什么是贝叶斯的。来时的路上开了躺了很久的[道德经](https://www.amazon.cn/gp/product/B0177JL1O0/ref=ppx_yo_dt_b_d_asin_title_o01?ie=UTF8&psc=1)（这个版本很不错），看了前四分之一，非常让我大开眼界，时间是打不破智慧的。木心的[文学回忆录](https://book.douban.com/subject/20440644/)也走了四分之一，正好配着刚看过的世界小史，从文学的视角再捋一遍。
+
+![w52-53-cancun-trip](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2019/w52-53-cancun-trip.jpg)
+
+视频 [YouTube](https://youtu.be/earZfWDeeBU), [Youku](https://v.youku.com/v_show/id_XNDQ5MjQyMDYzNg==.html)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/earZfWDeeBU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## W51 (12/16 - 12/22)
 
 * Super happy to wrap up all the work before Christmas vacation, looking forward to our 2020.
@@ -201,13 +217,9 @@ categories: ['Life']
 * 8.10 - 早餐 JJ Bean，十一点半拥抱，散伙。我和喜福飞机延误，十一点才飞回多伦多。
 * 8.11 - 和大舅视频，看了英超第一轮曼联 4:0 切尔西。下午出门和 Amy 魏哥午餐，接赵四和三哥回家。一起看乐队夏天最后一集。晚上和老妈视频，给大家算本次行程开销。
 
-YouTube
+视频 [YouTube](https://www.youtube.com/watch?v=GZPkZxGW_Ts&feature=youtu.be), [Youku](https://v.youku.com/v_show/id_XNDMyMDQ5MTk3Mg==.html)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GZPkZxGW_Ts" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-Youku
-
-<iframe width="498" height="510" src="http://player.youku.com/embed/XNDMyMDQ5MTk3Mg==" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GZPkZxGW_Ts" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## W30 (07/22 - 07/28)
 
