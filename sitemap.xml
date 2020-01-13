@@ -7,16 +7,16 @@
         <lastmod>2019-07-30T11:26:11-04:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.ifyouseewendy.com/blog/2014/06/02/rails-includes-vs-joins/</loc>
+        <loc>http://blog.ifyouseewendy.com/blog/2014/06/03/rails-includes-vs-joins/</loc>
         <lastmod>2019-07-30T11:26:11-04:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.ifyouseewendy.com/blog/2014/06/02/metaprogrammingi-ruby/</loc>
+        <loc>http://blog.ifyouseewendy.com/blog/2014/06/03/metaprogrammingi-ruby/</loc>
         <lastmod>2019-07-30T11:26:11-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://blog.ifyouseewendy.com/blog/2014/06/02/inside-activesupport-notifications/
+            http://blog.ifyouseewendy.com/blog/2014/06/03/inside-activesupport-notifications/
         </loc>
         <lastmod>2019-07-30T11:26:11-04:00</lastmod>
     </url>
@@ -51,7 +51,7 @@
         <lastmod>2019-07-30T11:26:11-04:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.ifyouseewendy.com/blog/2014/11/19/encryption-in-ruby/</loc>
+        <loc>http://blog.ifyouseewendy.com/blog/2014/11/20/encryption-in-ruby/</loc>
         <lastmod>2019-07-30T11:26:11-04:00</lastmod>
     </url>
     <url>
@@ -59,11 +59,11 @@
         <lastmod>2019-07-30T11:26:11-04:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.ifyouseewendy.com/blog/2014/11/22/quotes-from-ira-glass/</loc>
+        <loc>http://blog.ifyouseewendy.com/blog/2014/11/23/quotes-from-ira-glass/</loc>
         <lastmod>2019-07-30T11:26:11-04:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.ifyouseewendy.com/blog/2014/11/25/practicing-rails/</loc>
+        <loc>http://blog.ifyouseewendy.com/blog/2014/11/26/practicing-rails/</loc>
         <lastmod>2019-07-30T11:26:11-04:00</lastmod>
     </url>
     <url>
@@ -85,7 +85,7 @@
         <lastmod>2019-07-30T11:26:11-04:00</lastmod>
     </url>
     <url>
-        <loc>http://blog.ifyouseewendy.com/blog/2015/02/26/great-expectations-2015/</loc>
+        <loc>http://blog.ifyouseewendy.com/blog/2015/02/27/great-expectations-2015/</loc>
         <lastmod>2019-07-30T11:26:11-04:00</lastmod>
     </url>
     <url>
@@ -132,7 +132,7 @@
     </url>
     <url>
         <loc>
-            http://blog.ifyouseewendy.com/blog/2015/12/25/review-concurrency-operating-systems-three-easy-pieces/
+            http://blog.ifyouseewendy.com/blog/2015/12/26/review-concurrency-operating-systems-three-easy-pieces/
         </loc>
         <lastmod>2019-07-30T11:26:11-04:00</lastmod>
     </url>
@@ -199,8 +199,12 @@
         <lastmod>2020-01-03T11:59:53-05:00</lastmod>
     </url>
     <url>
+        <loc>http://blog.ifyouseewendy.com/blog/2020/01/13/what-weve-done-in-2020/</loc>
+        <lastmod>2020-01-13T12:35:26-05:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.ifyouseewendy.com/</loc>
-        <lastmod>2020-01-03T11:59:53-05:00</lastmod>
+        <lastmod>2020-01-13T12:35:26-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/archive/style/</loc>
@@ -238,7 +242,7 @@
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/blog/archives/</loc>
-        <lastmod>2020-01-03T11:59:53-05:00</lastmod>
+        <lastmod>2020-01-13T12:35:26-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/robots.txt</loc>
@@ -246,6 +250,6 @@
     </url>
     <url>
         <loc>http://blog.ifyouseewendy.com/2019-timeline/</loc>
-        <lastmod>2020-01-03T11:59:53-05:00</lastmod>
+        <lastmod>2020-01-13T12:35:26-05:00</lastmod>
     </url>
 </urlset>

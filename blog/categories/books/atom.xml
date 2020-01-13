@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2020-01-03T12:03:31-05:00</updated>
+  <updated>2020-01-13T12:45:57-05:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -291,7 +291,7 @@ Compared to the Shared Kernel, but there is an important difference. The custome
   <entry>
     <title type="html"><![CDATA[[Review] 学习乐观]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2016/08/30/review-xue-xi-le-guan/"/>
-    <updated>2016-08-30T10:03:04-04:00</updated>
+    <updated>2016-08-30T22:03:04+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/08/30/review-xue-xi-le-guan</id>
     <content type="html"><![CDATA[<table class="custom">
   <tbody>
@@ -512,9 +512,9 @@ Compared to the Shared Kernel, but there is an important difference. The custome
   
   <entry>
     <title type="html"><![CDATA[[Review] Concurrency - Operating Systems Three Easy Pieces]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2015/12/25/review-concurrency-operating-systems-three-easy-pieces/"/>
-    <updated>2015-12-25T22:33:57-05:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2015/12/25/review-concurrency-operating-systems-three-easy-pieces</id>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/12/26/review-concurrency-operating-systems-three-easy-pieces/"/>
+    <updated>2015-12-26T11:33:57+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/12/26/review-concurrency-operating-systems-three-easy-pieces</id>
     <content type="html"><![CDATA[<table class="custom">
   <tbody>
     <tr>
@@ -1410,7 +1410,7 @@ grep foo file.txt | wc -l
   <entry>
     <title type="html"><![CDATA[[Review] Virtualization - Operating Systems Three Easy Pieces]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2015/11/22/review-virtualization-operating-systems-three-easy-pieces/"/>
-    <updated>2015-11-22T00:44:38-05:00</updated>
+    <updated>2015-11-22T13:44:38+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2015/11/22/review-virtualization-operating-systems-three-easy-pieces</id>
     <content type="html"><![CDATA[<table class="custom">
   <tbody>
@@ -2769,7 +2769,7 @@ Idea</li>
   <entry>
     <title type="html"><![CDATA[[Review] Guidance from POODR]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2015/01/29/guidance-from-poodr/"/>
-    <updated>2015-01-29T02:20:13-05:00</updated>
+    <updated>2015-01-29T15:20:13+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2015/01/29/guidance-from-poodr</id>
     <content type="html"><![CDATA[<table class="custom">
   <tbody>

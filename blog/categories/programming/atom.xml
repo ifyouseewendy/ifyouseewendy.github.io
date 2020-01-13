@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2020-01-03T12:03:31-05:00</updated>
+  <updated>2020-01-13T12:45:57-05:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -352,7 +352,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
   <entry>
     <title type="html"><![CDATA[Name Driven Development]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2016/05/26/name-driven-development/"/>
-    <updated>2016-05-26T06:53:08-04:00</updated>
+    <updated>2016-05-26T18:53:08+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/05/26/name-driven-development</id>
     <content type="html"><![CDATA[<blockquote>
   <p>“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.” - Martin Fowler</p>

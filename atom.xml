@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2020-01-03T12:03:31-05:00</updated>
+  <updated>2020-01-13T12:45:57-05:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What we've done in 2020]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2020/01/13/what-weve-done-in-2020/"/>
+    <updated>2020-01-13T12:34:18-05:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2020/01/13/what-weve-done-in-2020</id>
+    <content type="html"><![CDATA[<blockquote>
+  <p>A weekly log on my life and personal growth</p>
+</blockquote>
+
+<h2 id="w1-0106---0112">W1 (01/06 - 01/12)</h2>
+
+<ul>
+  <li>喜福这两周在温哥华出差（玩耍），我独自在家享受另一个“假期”。每天上午去公司，吃好午饭，下午回来陪 Nikki。开始几天做什么都没啥心情，叫外卖，躺沙发，工作也心不在焉；后来慢慢调整好状态，周末学习 Rust，看球，吉祥麻将，做晚饭，带 Nikki 和赵四散步，过得很充实。</li>
+  <li>这一个多月很大的改变是对做饭的态度。从前我的标准很明确：能少做就不做；如果实在要做，从准备到开吃，20 分钟是我能接受的上限。所以也间接导致，为什么我如此钟爱火锅。去年爸妈在家里的一个多月，我认识到了一个不让人惊讶我却也未曾察觉（因为一直理所当然）的事实：为什么他们会做各种美味，而同时厨房又干净整洁？其实答案很简单，只是因为他们花了太多时间在厨房啊。在那之后，我试着改变对做饭的看法，耐心也不断加入思考，跟喜福刷的抖音推荐全都是菜谱。不断尝试，也不断有收获，一旦有了喜福正向的反馈，我发现自己开始享受做饭的时光了。</li>
+  <li>周末闲下来，反思了一下对 Nikki 的训练。自从 level 1 课程结束后我们好像就不够再上心，生活里有几处明显的困扰，我们也没有动力去寻求改变。遛弯是最麻烦的。每次出去路上，Nikki 闻到什么感兴趣的味道，都会用力 pull；看到任何生物，人、狗、小汽车都会 bark；回来路上到了拐角黑狗 Leiney 的家门口， 都会不自觉开始发疯，growl，bite leash，最严重的是，如果喜福在还会扑她。我找了很多视频看，基本上得到了这样的结论：狗狗的听力和嗅觉都比人类敏锐，导致的问题也很显而易见，就是易受打扰。从家里到遛弯，一扇门之隔，对狗狗却是整个世界的改变。这个过程不可以是跳跃式的，而是需要循序渐进的。我开始在屋子里遛 Nikki，然后在门外边的小走廊，最后到 Driveway，只有上一步做好了，才去尝试下一步。这不是什么新奇的发现，之前的书和课程上也有提过，只是我们没有认真去做，希望接下来我们会有更多耐心。</li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w1-collage.jpg" alt="w1-collage" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What we've done in 2019]]></title>
@@ -2688,7 +2709,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
   <entry>
     <title type="html"><![CDATA[[Review] 学习乐观]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2016/08/30/review-xue-xi-le-guan/"/>
-    <updated>2016-08-30T10:03:04-04:00</updated>
+    <updated>2016-08-30T22:03:04+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/08/30/review-xue-xi-le-guan</id>
     <content type="html"><![CDATA[<table class="custom">
   <tbody>
@@ -2910,7 +2931,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
   <entry>
     <title type="html"><![CDATA[Name Driven Development]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2016/05/26/name-driven-development/"/>
-    <updated>2016-05-26T06:53:08-04:00</updated>
+    <updated>2016-05-26T18:53:08+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/05/26/name-driven-development</id>
     <content type="html"><![CDATA[<blockquote>
   <p>“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.” - Martin Fowler</p>
@@ -3197,7 +3218,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
   <entry>
     <title type="html"><![CDATA[Ruby Concurrency Article Collection]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-article-collection/"/>
-    <updated>2016-02-16T07:04:50-05:00</updated>
+    <updated>2016-02-16T20:04:50+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-article-collection</id>
     <content type="html"><![CDATA[<p>This an article collection about concurrency in Ruby, which benefits me a lot and to be continued.</p>
 
@@ -3422,7 +3443,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
   <entry>
     <title type="html"><![CDATA[Ruby Concurrency In Practice]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-practice/"/>
-    <updated>2016-02-16T06:58:54-05:00</updated>
+    <updated>2016-02-16T19:58:54+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-practice</id>
     <content type="html"><![CDATA[<ul id="markdown-toc">
   <li><a href="#guidance">Guidance</a>    <ul>
@@ -3546,7 +3567,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
   <entry>
     <title type="html"><![CDATA[Ruby Concurrency In Theory]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-theory/"/>
-    <updated>2016-02-16T06:35:19-05:00</updated>
+    <updated>2016-02-16T19:35:19+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-theory</id>
     <content type="html"><![CDATA[<ul id="markdown-toc">
   <li><a href="#what-is-concurrency">What is concurrency?</a>    <ul>
@@ -3786,7 +3807,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
   <entry>
     <title type="html"><![CDATA[[Review] Working With Ruby Threads]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2016/02/16/review-working-with-ruby-threads/"/>
-    <updated>2016-02-16T00:07:05-05:00</updated>
+    <updated>2016-02-16T13:07:05+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/02/16/review-working-with-ruby-threads</id>
     <content type="html"><![CDATA[<table class="custom">
   <tbody>
@@ -4534,7 +4555,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
   <entry>
     <title type="html"><![CDATA[辞职半年记]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2016/02/05/ci-zhi-ban-nian-ji/"/>
-    <updated>2016-02-05T02:10:31-05:00</updated>
+    <updated>2016-02-05T15:10:31+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/02/05/ci-zhi-ban-nian-ji</id>
     <content type="html"><![CDATA[<blockquote>
   <p>2012年7月19日，在友盟入职。
@@ -4670,9 +4691,9 @@ the types in Haskell, maybe because it is a standalone type system?</li>
   
   <entry>
     <title type="html"><![CDATA[[Review] Concurrency - Operating Systems Three Easy Pieces]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2015/12/25/review-concurrency-operating-systems-three-easy-pieces/"/>
-    <updated>2015-12-25T22:33:57-05:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2015/12/25/review-concurrency-operating-systems-three-easy-pieces</id>
+    <link href="http://blog.ifyouseewendy.com/blog/2015/12/26/review-concurrency-operating-systems-three-easy-pieces/"/>
+    <updated>2015-12-26T11:33:57+08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2015/12/26/review-concurrency-operating-systems-three-easy-pieces</id>
     <content type="html"><![CDATA[<table class="custom">
   <tbody>
     <tr>
@@ -5609,7 +5630,7 @@ How often this local-to-global transfer occurs is determined by a threshold, whi
   <entry>
     <title type="html"><![CDATA[[Review] Website Performance Optimization]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2015/12/19/web-performance-optimization/"/>
-    <updated>2015-12-19T02:21:58-05:00</updated>
+    <updated>2015-12-19T15:21:58+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2015/12/19/web-performance-optimization</id>
     <content type="html"><![CDATA[<p>After several years working, I’ve learned many lessons like how to write HTML, how to minify and compress CSS and JavaScript files, where to put the CSS and JavaScript reference, how to do the cache control and etc.. But all the knowledge are scattered, and the real mechanism, like the HTML rendering, seems like a mysterious process to me. So I spent some time digging and learning, the things finally got clear.</p>
 
@@ -6384,7 +6405,7 @@ override in our stylesheet. Every browser provides a default set of styles also 
   <entry>
     <title type="html"><![CDATA[Some Hash Tricks in Ruby]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2015/11/30/some-hash-tricks-in-ruby/"/>
-    <updated>2015-11-30T03:17:38-05:00</updated>
+    <updated>2015-11-30T16:17:38+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2015/11/30/some-hash-tricks-in-ruby</id>
     <content type="html"><![CDATA[<blockquote>
   <p>from <a href="http://blog.honeybadger.io/advanced-ruby-hash-techniques/">http://blog.honeybadger.io/advanced-ruby-hash-techniques/</a></p>
@@ -6597,7 +6618,7 @@ override in our stylesheet. Every browser provides a default set of styles also 
   <entry>
     <title type="html"><![CDATA[[Review] Virtualization - Operating Systems Three Easy Pieces]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2015/11/22/review-virtualization-operating-systems-three-easy-pieces/"/>
-    <updated>2015-11-22T00:44:38-05:00</updated>
+    <updated>2015-11-22T13:44:38+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2015/11/22/review-virtualization-operating-systems-three-easy-pieces</id>
     <content type="html"><![CDATA[<table class="custom">
   <tbody>
@@ -7956,7 +7977,7 @@ Idea</li>
   <entry>
     <title type="html"><![CDATA[preload, eager_load, includes, references, and joins in Rails]]></title>
     <link href="http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins/"/>
-    <updated>2015-11-11T10:25:17-05:00</updated>
+    <updated>2015-11-11T23:25:17+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2015/11/11/preload-eager_load-includes-references-joins</id>
     <content type="html"><![CDATA[<p>There is always a confusion about these query methods. And after some digging, I’ve made my conclusion here: <code>includes</code> is the outstanding one.</p>
 
@@ -8270,419 +8291,6 @@ The bottom line is: generally it seems better to split a monster join into small
   <li><a href="http://blog.bigbinary.com/2013/07/01/preload-vs-eager-load-vs-joins-vs-includes.html">Preload, Eagerload, Includes and Joins</a></li>
   <li><a href="http://www.akitaonrails.com/2008/5/26/rolling-with-rails-2-1-the-first-full-tutorial-part-2">Rolling with Rails 2.1 - The First Full Tutorial - Part 2</a></li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Data Types in Rails]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2015/08/10/data-types-in-rails/"/>
-    <updated>2015-08-10T05:45:53-04:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2015/08/10/data-types-in-rails</id>
-    <content type="html"><![CDATA[<p><strong><em>Have you ever got annoyed with data types when you are creating Rails migrations?</em></strong></p>
-
-<p><strong><em>What’s the full list of data types in Rails? Does it differ from MySQL to PostgreSQL?</em></strong></p>
-
-<p><strong><em>When adding a <code>title</code> field to <code>Post</code> table, should we use <code>title</code> as a <code>string</code> or <code>text</code>? Same answer with MySQL and PostgreSQL?</em></strong></p>
-
-<p>You may want to check the Rails guides of <a href="http://edgeguides.rubyonrails.org/active_record_migrations.html">Active Record Migrations</a>, but all you get is disappointment because its lacking of essential information about data types.</p>
-
-<p>Here is a quick entry about data types which I extracts from Rails API and Stack Overflow.</p>
-
-<h2 id="general-data-type">General Data Type</h2>
-
-<blockquote>
-  <p>From <a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#method-i-column">ActiveRecord::ConnectionAdapters::TableDefinition#column</a></p>
-</blockquote>
-
-<p>Instantiates a new column for the table. The type parameter is normally one of the migrations native types, which is one of the following: </p>
-
-<ul>
-  <li><code>:primary_key</code></li>
-  <li><code>:string</code></li>
-  <li><code>:text</code></li>
-  <li><code>:integer</code></li>
-  <li><code>:float</code></li>
-  <li><code>:decimal</code></li>
-  <li><code>:datetime</code></li>
-  <li><code>:time</code></li>
-  <li><code>:date</code></li>
-  <li><code>:binary</code></li>
-  <li><code>:boolean</code></li>
-</ul>
-
-<h2 id="specific-dbms-data-type">Specific DBMS Data Type</h2>
-
-<blockquote>
-  <p>From Psylone’s answer on <a href="http://stackoverflow.com/a/17279395/1331774">Where is the documentation page for ActiveRecord data types?</a></p>
-</blockquote>
-
-<p>Check the specific DB adaptor in source code.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>MySQL Data Types</span><a href="https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L244-L256">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">NATIVE_DATABASE_TYPES</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class="line">  <span class="ss">:primary_key</span> <span class="o">=&gt;</span> <span class="s2">&quot;int(11) auto_increment PRIMARY KEY&quot;</span><span class="p">,</span>
-</span><span class="line">  <span class="ss">:string</span>      <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;varchar&quot;</span><span class="p">,</span> <span class="ss">:limit</span> <span class="o">=&gt;</span> <span class="mi">255</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">:text</span>        <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;text&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">:integer</span>     <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="ss">:limit</span> <span class="o">=&gt;</span> <span class="mi">4</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">:float</span>       <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;float&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">:decimal</span>     <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;decimal&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">:datetime</span>    <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;datetime&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">:time</span>        <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;time&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">:date</span>        <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;date&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">:binary</span>      <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;blob&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">:boolean</span>     <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;tinyint&quot;</span><span class="p">,</span> <span class="ss">:limit</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>PostgreSQL Data Types</span><a href="https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L77-L112">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">NATIVE_DATABASE_TYPES</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class="line">  <span class="n">primary_key</span><span class="p">:</span> <span class="s2">&quot;serial primary key&quot;</span><span class="p">,</span>
-</span><span class="line">  <span class="ss">bigserial</span><span class="p">:</span> <span class="s2">&quot;bigserial&quot;</span><span class="p">,</span>
-</span><span class="line">  <span class="ss">string</span><span class="p">:</span>      <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;character varying&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">text</span><span class="p">:</span>        <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">integer</span><span class="p">:</span>     <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">float</span><span class="p">:</span>       <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">decimal</span><span class="p">:</span>     <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;decimal&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">datetime</span><span class="p">:</span>    <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;timestamp&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">time</span><span class="p">:</span>        <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;time&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">date</span><span class="p">:</span>        <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">daterange</span><span class="p">:</span>   <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;daterange&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">numrange</span><span class="p">:</span>    <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;numrange&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">tsrange</span><span class="p">:</span>     <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;tsrange&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">tstzrange</span><span class="p">:</span>   <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;tstzrange&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">int4range</span><span class="p">:</span>   <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;int4range&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">int8range</span><span class="p">:</span>   <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;int8range&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">binary</span><span class="p">:</span>      <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;bytea&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">boolean</span><span class="p">:</span>     <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">bigint</span><span class="p">:</span>      <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;bigint&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">xml</span><span class="p">:</span>         <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;xml&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">tsvector</span><span class="p">:</span>    <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;tsvector&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">hstore</span><span class="p">:</span>      <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;hstore&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">inet</span><span class="p">:</span>        <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;inet&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">cidr</span><span class="p">:</span>        <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;cidr&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">macaddr</span><span class="p">:</span>     <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;macaddr&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">uuid</span><span class="p">:</span>        <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;uuid&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">json</span><span class="p">:</span>        <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">jsonb</span><span class="p">:</span>       <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;jsonb&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">ltree</span><span class="p">:</span>       <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;ltree&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">citext</span><span class="p">:</span>      <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;citext&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">point</span><span class="p">:</span>       <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;point&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">bit</span><span class="p">:</span>         <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;bit&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="n">bit_varying</span><span class="p">:</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;bit varying&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="ss">money</span><span class="p">:</span>       <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;money&quot;</span> <span class="p">},</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Or, use <code>ActiveRecord::Base.connection.native_database_types.keys</code> to get all valid data types based on your database adaptor.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># PostgreSQL</span>
-</span><span class="line"><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">native_database_types</span><span class="o">.</span><span class="n">keys</span>
-</span><span class="line"><span class="o">[</span>
-</span><span class="line">  <span class="o">[</span> <span class="mi">0</span><span class="o">]</span> <span class="ss">:primary_key</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span> <span class="mi">1</span><span class="o">]</span> <span class="ss">:bigserial</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span> <span class="mi">2</span><span class="o">]</span> <span class="ss">:string</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span> <span class="mi">3</span><span class="o">]</span> <span class="ss">:text</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span> <span class="mi">4</span><span class="o">]</span> <span class="ss">:integer</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span> <span class="mi">5</span><span class="o">]</span> <span class="ss">:float</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span> <span class="mi">6</span><span class="o">]</span> <span class="ss">:decimal</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span> <span class="mi">7</span><span class="o">]</span> <span class="ss">:datetime</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span> <span class="mi">8</span><span class="o">]</span> <span class="ss">:time</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span> <span class="mi">9</span><span class="o">]</span> <span class="ss">:date</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">10</span><span class="o">]</span> <span class="ss">:daterange</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">11</span><span class="o">]</span> <span class="ss">:numrange</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">12</span><span class="o">]</span> <span class="ss">:tsrange</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">13</span><span class="o">]</span> <span class="ss">:tstzrange</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">14</span><span class="o">]</span> <span class="ss">:int4range</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">15</span><span class="o">]</span> <span class="ss">:int8range</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">16</span><span class="o">]</span> <span class="ss">:binary</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">17</span><span class="o">]</span> <span class="ss">:boolean</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">18</span><span class="o">]</span> <span class="ss">:bigint</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">19</span><span class="o">]</span> <span class="ss">:xml</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">20</span><span class="o">]</span> <span class="ss">:tsvector</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">21</span><span class="o">]</span> <span class="ss">:hstore</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">22</span><span class="o">]</span> <span class="ss">:inet</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">23</span><span class="o">]</span> <span class="ss">:cidr</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">24</span><span class="o">]</span> <span class="ss">:macaddr</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">25</span><span class="o">]</span> <span class="ss">:uuid</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">26</span><span class="o">]</span> <span class="ss">:json</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">27</span><span class="o">]</span> <span class="ss">:jsonb</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">28</span><span class="o">]</span> <span class="ss">:ltree</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">29</span><span class="o">]</span> <span class="ss">:citext</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">30</span><span class="o">]</span> <span class="ss">:point</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">31</span><span class="o">]</span> <span class="ss">:bit</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">32</span><span class="o">]</span> <span class="ss">:bit_varying</span><span class="p">,</span>
-</span><span class="line">  <span class="o">[</span><span class="mi">33</span><span class="o">]</span> <span class="ss">:money</span>
-</span><span class="line"><span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>There is another guide about <a href="http://edgeguides.rubyonrails.org/active_record_postgresql.html">Active Record and PostgreSQL</a>.</p>
-
-<blockquote>
-  <p>From gotqn’s answer on <a href="http://stackoverflow.com/a/25702629/1331774">Rails 4 datatypes?</a></p>
-</blockquote>
-
-<p>Rails data types mapping to different DB data types:</p>
-
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/data_types_1.png" alt="Data Types 1" />
-<img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/data_types_2.png" alt="Data Types 2" /></p>
-
-<h2 id="data-type-shortcut-when-generating-model">Data Type Shortcut When Generating Model</h2>
-
-<blockquote>
-  <p>From tomascharad’s answer on <a href="http://stackoverflow.com/questions/17918117/rails-4-datatypes">Rails 4 datatypes?</a></p>
-</blockquote>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-<span class="line-number">54</span>
-<span class="line-number">55</span>
-<span class="line-number">56</span>
-<span class="line-number">57</span>
-<span class="line-number">58</span>
-<span class="line-number">59</span>
-<span class="line-number">60</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>rails generate model -h
-</span><span class="line">
-</span><span class="line">Available field types:
-</span><span class="line">
-</span><span class="line">    Just after the field name you can specify a <span class="nb">type </span>like text or boolean.
-</span><span class="line">    It will generate the column with the associated SQL type. For instance:
-</span><span class="line">
-</span><span class="line">        <span class="sb">`</span>rails generate model post title:string body:text<span class="sb">`</span>
-</span><span class="line">
-</span><span class="line">    will generate a title column with a varchar <span class="nb">type </span>and a body column with a text
-</span><span class="line">    type. If no <span class="nb">type </span>is specified the string <span class="nb">type </span>will be used by default.
-</span><span class="line">    You can use the following types:
-</span><span class="line">
-</span><span class="line">        integer
-</span><span class="line">        primary_key
-</span><span class="line">        decimal
-</span><span class="line">        float
-</span><span class="line">        boolean
-</span><span class="line">        binary
-</span><span class="line">        string
-</span><span class="line">        text
-</span><span class="line">        date
-</span><span class="line">        <span class="nb">time</span>
-</span><span class="line"><span class="nb">        </span>datetime
-</span><span class="line">
-</span><span class="line">    You can also consider <span class="sb">`</span>references<span class="sb">`</span> as a kind of type. For instance, <span class="k">if </span>you run:
-</span><span class="line">
-</span><span class="line">        <span class="sb">`</span>rails generate model photo title:string album:references<span class="sb">`</span>
-</span><span class="line">
-</span><span class="line">    It will generate an <span class="sb">`</span>album_id<span class="sb">`</span> column. You should generate these kinds of fields when
-</span><span class="line">    you will use a <span class="sb">`</span>belongs_to<span class="sb">`</span> association, <span class="k">for </span>instance. <span class="sb">`</span>references<span class="sb">`</span> also supports
-</span><span class="line">    polymorphism, you can <span class="nb">enable </span>polymorphism like this:
-</span><span class="line">
-</span><span class="line">        <span class="sb">`</span>rails generate model product supplier:references<span class="o">{</span>polymorphic<span class="o">}</span><span class="sb">`</span>
-</span><span class="line">
-</span><span class="line">    For integer, string, text and binary fields, an integer in curly braces will
-</span><span class="line">    be <span class="nb">set </span>as the limit:
-</span><span class="line">
-</span><span class="line">        <span class="sb">`</span>rails generate model user pseudo:string<span class="o">{</span>30<span class="o">}</span><span class="sb">`</span>
-</span><span class="line">
-</span><span class="line">    For decimal, two integers separated by a comma in curly braces will be used
-</span><span class="line">    <span class="k">for </span>precision and scale:
-</span><span class="line">
-</span><span class="line">        <span class="sb">`</span>rails generate model product <span class="s1">&#39;price:decimal{10,2}&#39;</span><span class="sb">`</span>
-</span><span class="line">
-</span><span class="line">    You can add a <span class="sb">`</span>:uniq<span class="sb">`</span> or <span class="sb">`</span>:index<span class="sb">`</span> suffix <span class="k">for </span>unique or standard indexes
-</span><span class="line">    respectively:
-</span><span class="line">
-</span><span class="line">        <span class="sb">`</span>rails generate model user pseudo:string:uniq<span class="sb">`</span>
-</span><span class="line">        <span class="sb">`</span>rails generate model user pseudo:string:index<span class="sb">`</span>
-</span><span class="line">
-</span><span class="line">    You can combine any single curly brace option with the index options:
-</span><span class="line">
-</span><span class="line">        <span class="sb">`</span>rails generate model user username:string<span class="o">{</span>30<span class="o">}</span>:uniq<span class="sb">`</span>
-</span><span class="line">        <span class="sb">`</span>rails generate model product supplier:references<span class="o">{</span>polymorphic<span class="o">}</span>:index<span class="sb">`</span>
-</span><span class="line">
-</span><span class="line">    If you require a <span class="sb">`</span>password_digest<span class="sb">`</span> string column <span class="k">for </span>use with
-</span><span class="line">    has_secure_password, you should specify <span class="sb">`</span>password:digest<span class="sb">`</span>:
-</span><span class="line">
-</span><span class="line">        <span class="sb">`</span>rails generate model user password:digest<span class="sb">`</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="should-you-choose-string-or-text">Should you choose string or text?</h2>
-
-<p>In <strong>MySQL</strong></p>
-
-<blockquote>
-  <p>From tjeezy’s answer and Omar Qureshi’s comment on <a href="http://stackoverflow.com/a/3354452/1331774">Difference between string and text in rails?</a></p>
-</blockquote>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">:string |                   VARCHAR                | :limit <span class="o">=</span>&gt; 1 to 255 <span class="o">(</span><span class="nv">default</span> <span class="o">=</span> 255<span class="o">)</span>
-</span><span class="line">:text   | TINYTEXT, TEXT, MEDIUMTEXT, or LONGTEXT2 | :limit <span class="o">=</span>&gt; 1 to 4294967296 <span class="o">(</span><span class="nv">default</span> <span class="o">=</span> 65536<span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>So you’d better specify the <code>:limit</code> as a reminder to yourself that there is a limit and you should have a validation in the model to ensure that the limit is not exceeded.</p>
-
-<p>And, you can have indexes on <code>varchars</code>, you cannot on <code>text</code>.</p>
-
-<p>In <strong>Postgresql</strong></p>
-
-<blockquote>
-  <p>From PostgreSQL Manual <a href="http://www.postgresql.org/docs/9.3/interactive/datatype-character.html">Character Types</a></p>
-</blockquote>
-
-<p>There is no performance difference among these three types, apart from increased storage space when using the blank-padded type, and a few extra CPU cycles to check the length when storing into a length-constrained column. While <code>character(n)</code> has performance advantages in some other database systems, there is no such advantage in PostgreSQL; in fact <code>character(n)</code> is usually the slowest of the three because of its additional storage costs. In most situations <code>text</code> or <code>character</code> varying should be used instead.</p>
-
-<blockquote>
-  <p>From Omar Qureshi’s answer on <a href="http://stackoverflow.com/questions/3354330/difference-between-string-and-text-in-rails">Difference between string and text in rails?</a></p>
-</blockquote>
-
-<p>If you are using postgres use <code>text</code> wherever you can, unless you have a size constraint since there is no performance penalty for <code>text</code> vs <code>varchar</code>.</p>
-
-<blockquote>
-  <p>From mu is too short’s answer on <a href="http://stackoverflow.com/questions/8129776/rails-3-postgres-how-long-is-a-string-if-you-dont-apply-limit-in-schema">rails 3/postgres - how long is a string if you don’t apply :limit in schema</a> and <a href="http://stackoverflow.com/questions/8694273/changing-a-column-type-to-longer-strings-in-rails/8694483#8694483">Changing a column type to longer strings in rails</a></p>
-</blockquote>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">:string | character varying <span class="o">(</span>255<span class="o">)</span>
-</span><span class="line">:text   | text
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>There’s no reason to use <code>:string</code> (AKA <code>varchar</code>) at all, the database treats <code>text</code> and <code>varchar(n)</code> the same internally except for the extra length constraints for <code>varchar(n)</code>; you should only use <code>varchar(n)</code> (AKA <code>:string</code>) if you have an external constrain on the column size.</p>
 
 ]]></content>
   </entry>
