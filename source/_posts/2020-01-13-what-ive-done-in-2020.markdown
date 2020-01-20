@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "What we've done in 2020"
+title: "What I've done in 2020"
 date: 2020-01-13 12:34:18 -0500
 comments: true
 categories: ['Life']
@@ -13,7 +13,7 @@ categories: ['Life']
 * 喜福继续在温哥华出差。我发现当我完全接受要每天独自照看猫猫狗狗之后，心里也就不会有什么怨言，只是想着怎么会做的更好。“接受”是我在逐渐学会的两个字。套用 Naval 提到佛家观点：Desire is a contract you make with yourself to be unhappy until you get what you want. 我们应该 pick our battle，有那么一两件非常在乎的事情，要渴望要争取，其他就让他去，心平气和去面对。
 * 周二周三公司开新年 kickoff，其实就是换个地方鼓舞士气。我一向对这种活动不感冒，去了半场下午赶快溜回家。周末两天下了暴雪，白茫茫一片，出门扫了三次雪，舒坦。
 * 周中入坑了犹豫许久的文明六...我完全能理解大家都说玩上这游戏会发问“时间都去哪了”的疑问。里边的设定太巧妙了，正好满足了自己对历史不断加深的兴趣，边玩边查各种 wiki。然而，周六一口气玩了四个半小时之后，头昏脑涨，我准备轻易不要再碰了。
-* 周日晚上带着 Nikki 去机场接了喜福，终于呀，不用再视频训狗了。
+* 周日狠狠地收拾了一下屋子，晚上带着 Nikki 去机场接了喜福，终于不用再视频面狗了。
 
 ![w2-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w2-collage.jpg)
 
