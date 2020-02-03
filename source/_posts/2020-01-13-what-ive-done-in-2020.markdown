@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W4 (01/27 - 02/02)
+
+* A typical great week in work. It starts by following a weird issue, falls into a rabbit hole and somehow gets resolved at the end of the week :)
+* 和喜福很好地贯彻了九点关电视的规矩，正如我们所预料，间接推动了我们早早上床。这一周的睡眠非常棒！周四的 date night 在 Loloan Lobby，周六的 movie night 看了祈祷落寞时，继续保持✊
+* 周末去滑雪，看球看小徳（17冠后无比期待啊），玩文明。喜福 carry 了各种吃吃吃吃，火锅、部队锅、排骨、酥肉，还能说什么，优秀！
+
+![w4-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w4-collage.jpg)
+
 ## W3 (01/20 - 01/26)
 
 * 周一和 Manager one one 关于 2019 年的 perf review，很开心拿到了 exponential。我也是刚刚反应过来，来到公司三年，第一年 promotion，之后的两年 exponential。有时候应该多给自己些自信和鼓励，也许自己做的比想象中要好。当然也一起深入聊了其他我更关心的话题，例如有哪些需要提高，下一步有什么打算。其实很明确，我自己也清楚：我应该更多加入大家的讨论，多提供意见，哪怕是不成熟的想法；下一步要不要做 staff，主要卡在我是否有主观的强烈意愿，然后才能指导下一步去考虑自己要做哪些改变。我想了半年还是不清楚，好在眼前的工作一直都有挑战，我也很享受。日历里定了个提醒，每个季度都提醒自己停下来想一想。
