@@ -8,6 +8,17 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W5 (02/03 - 02/09)
+
+* Following up a weird HTTP connection issue in the whole week. I enjoy the excitement and progress everyday. I'm almost there :crossed_fingers:
+* 最近的睡眠非常好。有两天尝试了不喝咖啡，但是午饭过后困意来袭，还是有点难过。顺便也想了下要怎样戒烟。其实我对自己很有信心，只是时间的问题，还没找到，也去寻找有效的替代品。
+* 这一周的文明玩的飞起，每天晚上一个半小时，周末终于艰难地赢了一局电脑 :v:
+* 周四的 date night 去吃了 Bao，周六的 movie night 看了 Martin Scorecese 的 [After hours](https://movie.douban.com/subject/1303531/)
+* 周六享受了这个冬天最惬意的一次滑雪。蓝天白云，大太阳。没有寒风，只有在缆车上的宁静和下坡时的速度。
+* 这周看完了 Richard Bach 的 [Illusions](https://www.goodreads.com/book/show/29946.Illusions?from_search=true&qid=QPiOBMxjKQ&rank=2)。非常好看的一本小书，幽默哲理版的禅师问道。想想最近看的道德经，The Power of Now, The Book of Life (Jiddu Krishnamurti)，总觉着有条隐形的线在牵连，但是我又理不清头绪，继续读下去就好。
+
+![w5-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w5-collage.jpg)
+
 ## W4 (01/27 - 02/02)
 
 * A typical great week in work. It starts by following a weird issue, falls into a rabbit hole and somehow gets resolved at the end of the week :)
