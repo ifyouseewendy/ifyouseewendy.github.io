@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W6 (02/10 - 02/16)
+
+* Finally wrap up my research over the HTTP connection issue right at the Friday afternoon. Perfect ending!
+* 周四的 #date-night 去吃了家附近的中东菜 Naranj，意想不到的好吃。之后去 Princess 看了[超时空接触](https://movie.douban.com/subject/1295647/)，应该是第四遍看了。这次注意到了年轻的马修麦康纳，没想到这哥们贯穿了两部我最喜欢的科幻（另一部是星际穿越）。周六的 #movie-night 看了[平原上的夏洛克](https://movie.douban.com/subject/33400376/)，一般般。
+* 周六的滑雪有了长足的进步。这周做了一个关于重心的练习，真正感受到了 the inside edge of the outside ski。
+* 受国内疫情影响，每晚都坚持和国内的朋友奋战麻将，开心的一笔
+
+![w6-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w6-collage.jpg)
+
 ## W5 (02/03 - 02/09)
 
 * Following up a weird HTTP connection issue in the whole week. I enjoy the excitement and progress everyday. I'm almost there :crossed_fingers:
