@@ -8,6 +8,18 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W8 (02/24 - 03/01)
+
+* 最近的工作压力很大，要跟进的要学习的东西很多，不知道什么时候能熬到一个能喘息的阶段。本来下个月要去伦敦开会，上周刚刚办了签证， 但是最近疫情肆虐，所有出行都被公司取消了。好消息是落实了涨薪，新拿到了一些股票。
+* 周四的 #date-night 去吃了串串马路边边，自从开始在家研究炸盐酥鸡炸鱿鱼炸酥肉，外边的吃起来就相形见绌了。周末去大卫家看了[能召回前世的布米叔叔](https://movie.douban.com/subject/4280102/)，有点沉闷又非常特别，那个意境有刻在脑海里。
+* 八周的滑雪课程结束了。教练是个七十岁的老爷，Paul，很慈祥也很健忘，同一个练习被他当新知识教了三遍。鉴于他的认真，我们大家都没有反驳，只是互相交换下眼神继续点头附和。课程过半的时候，我才发现学到了东西。其实要领不多，只是高速行进的过程不给你太多思考的空间，只能不断练习，慢慢这些要领内化成了下意识。
+  * Lean forward
+  * Separate upper and lower body
+  * Make upper body still. Don’t turn shoulders. (bartender practice). Always look downhill, even during turning (skate stop practice).
+  * Use your outside ski and feel the inside edge. (step out practice)
+
+![w8-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w8-collage.jpg)
+
 ## W7 (02/17 - 02/23)
 
 * 工作又进入了熟悉的节奏，兴致匆匆到座位，忙忙碌碌，转眼就到了下班时间。面对干不完的活，每天推进一点点，享受这个过程，也时刻提醒自己不要焦虑。
