@@ -8,6 +8,17 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W9 (03/02 - 03/08)
+
+* 这周在做 WebAssembly runtime benchmark，边看边学，搞的很起劲。
+* EST 转 EDT，时间被偷走一小时，另外周三晚上的 amber alert 完全打乱了我的睡眠。
+* 周末我文联赛 2:0 战胜国米，虽然心里暗忖输球可以看萨里下课，但是这下半场应该是我本赛季看的最好看的半场了。但是我又不敢相信这状态可以长久保持，因为夸德拉多都爆表了。还是要冷静，降低预期。
+* 周日和大宇哥聊了好久。生活很美好，也各有烦恼。一年没见，很想念国内的好朋友们。今年应该找时间回去开心玩耍。
+* 喜福的 Vlog 最近做的飞起，一只“赵四的冬季恋歌”送给大家
+
+<iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=94335334&cid=161048693&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+[Youtube](https://www.youtube.com/watch?v=jkrWaiW9o1w)
+
 ## W8 (02/24 - 03/01)
 
 * 最近的工作压力很大，要跟进的要学习的东西很多，不知道什么时候能熬到一个能喘息的阶段。本来下个月要去伦敦开会，上周刚刚办了签证， 但是最近疫情肆虐，所有出行都被公司取消了。好消息是落实了涨薪，新拿到了一些股票。
