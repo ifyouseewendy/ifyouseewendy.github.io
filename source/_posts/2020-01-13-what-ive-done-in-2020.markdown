@@ -8,6 +8,19 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W10 (03/09 - 03/15)
+
+* I've been working on a benchmark project for WebAssembly runtimes this week: [wasm-runtime-benchmark](https://github.com/ifyouseewendy/wasm-runtime-benchmark)
+* 周一迫不及待地看完了[Drive to Survive 2](https://movie.douban.com/subject/34678530/)，没有让我失望。Red Bull 换车手风波和巴西站完美结合在了一起，让我有了另一个视角的认识。基本上 Gasly 的挣扎是我喜欢这个纪录片的完美体现：这个世界过于关注人们怎样从第十走到第一，但现实中的挣扎发生在每一步，从第十五到第十三是同样巨大的进步。新的赛季非常期待 Lec, Albon 和 Gas 的表现。（疫情影响，第一站澳大利亚被取消了）
+* 周三赶上了疫情侵袭前最后一场欧冠，马竞加时3:1利物浦，刺激！
+* 周四开始公司要求在家办公，形势越来越严峻了。公司给了1k的预算让大家布置在家办公的环境，本来就远程的员工也同样享受。好多次了，让我对这家公司有越来越多的认同。
+* 关于疫情，本来和喜福都是抱着无畏的心态，毕竟我们这个年龄段的死亡率非常低，老年人更受针对。直到我意识到，如果我不够注意最终得病，即使治愈也很有可能作为感染源间接导致其他人（尤其老年人）得病，那我也是有责任的。所以大家互相负责，谨慎为好。
+* 这周股市暴跌，创造历史的两次熔断。虽然我的 portofolio 无法幸免，但是总有种跃跃欲试的期待。周末买了几本书，关于之前发生的金融危机，顺着兴趣去读就好。最终并不一定非要杀入场内吧，但是希望趁着这个机会多对经济有些了解。
+* 周末和喜福看了[收件人未详](https://movie.douban.com/subject/1305530/)。直到金基德大名这么久，才发现是看的第一部。果然有种生猛在里边。人的欲望，氤氲的气氛，特殊的年代。每个人都如此的不合理，是时代给了世界荒唐的理由。我很喜欢。
+* 冬天貌似就这么结束了，我们是怎么知道的呢 :thinking:
+
+![w10-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w10-collage.jpg)
+
 ## W9 (03/02 - 03/08)
 
 * 这周在做 WebAssembly runtime benchmark，边看边学，搞的很起劲。
@@ -94,3 +107,15 @@ categories: ['Life']
 * 周末闲下来，反思了一下对 Nikki 的训练。自从 level 1 课程结束后我们好像就不够再上心，生活里有几处明显的困扰，我们也没有动力去寻求改变。遛弯是最麻烦的。每次出去路上，Nikki 闻到什么感兴趣的味道，都会用力 pull；看到任何生物，人、狗、小汽车都会 bark；回来路上到了拐角黑狗 Leiney 的家门口， 都会不自觉开始发疯，growl，bite leash，最严重的是，如果喜福在还会扑她。我找了很多视频看，基本上得到了这样的结论：狗狗的听力和嗅觉都比人类敏锐，导致的问题也很显而易见，就是易受打扰。从家里到遛弯，一扇门之隔，对狗狗却是整个世界的改变。这个过程不可以是跳跃式的，而是需要循序渐进的。我开始在屋子里遛 Nikki，然后在门外边的小走廊，最后到 Driveway，只有上一步做好了，才去尝试下一步。这不是什么新奇的发现，之前的书和课程上也有提过，只是我们没有认真去做，希望接下来我们会有更多耐心。
 
 ![w1-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w1-collage.jpg)
+
+## 今年的最爱
+
+电影
+
+* [Drive to Survive 2](https://movie.douban.com/subject/34678530/)
+* [收件人未详](https://movie.douban.com/subject/1305530/)
+
+书
+
+* [一个叫欧维的男人决定去死](https://book.douban.com/subject/26672693/)
+* [Illusions : The Adventures of a Reluctant Messiah](https://book.douban.com/subject/1761167/)
