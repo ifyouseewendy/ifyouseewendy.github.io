@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Life | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/life/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2020-03-16T19:32:13-04:00</updated>
+  <updated>2020-03-23T21:01:51-04:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -22,6 +22,16 @@
   <p>A weekly log on my life and personal growth</p>
 </blockquote>
 
+<h2 id="w11-0316---0322">W11 (03/16 - 03/22)</h2>
+
+<ul>
+  <li>疫情影响下第一周完整的WFH，有点工作过度，但是推进了不少工作。做了一个 WebAssembly runtime 的 benchmark: <a href="https://github.com/ifyouseewendy/wasm-runtime-benchmark"> wasm-runtime-benchmark</a>，读完了<a href="https://rust-lang.github.io/async-book/01_getting_started/01_chapter.html">Asynchronous Programming in Rust</a>，很享受在家自由安静的时光。</li>
+  <li>每天固定出门遛狗，呼吸新鲜空气。下午和喜福也尽可能出门散步。还好路上几乎见不到人，没有太多担心。</li>
+  <li>这周跟赛聊了两次天，为他这股丧劲难过。好像最近的股市一样，你以为到了谷底，其实还没有。帮不了太多，只能希望他看到积极的一面。</li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w11-collage.jpg" alt="w11-collage" /></p>
+
 <h2 id="w10-0309---0315">W10 (03/09 - 03/15)</h2>
 
 <ul>
@@ -31,7 +41,7 @@
   <li>周四开始公司要求在家办公，形势越来越严峻了。公司给了1k的预算让大家布置在家办公的环境，本来就远程的员工也同样享受。好多次了，让我对这家公司有越来越多的认同。</li>
   <li>关于疫情，本来和喜福都是抱着无畏的心态，毕竟我们这个年龄段的死亡率非常低，老年人更受针对。直到我意识到，如果我不够注意最终得病，即使治愈也很有可能作为感染源间接导致其他人（尤其老年人）得病，那我也是有责任的。所以大家互相负责，谨慎为好。</li>
   <li>这周股市暴跌，创造历史的两次熔断。虽然我的 portofolio 无法幸免，但是总有种跃跃欲试的期待。周末买了几本书，关于之前发生的金融危机，顺着兴趣去读就好。最终并不一定非要杀入场内吧，但是希望趁着这个机会多对经济有些了解。</li>
-  <li>周末和喜福看了<a href="https://movie.douban.com/subject/1305530/">收件人未详</a>。直到金基德大名这么久，才发现是看的第一部。果然有种生猛在里边。人的欲望，氤氲的气氛，特殊的年代。每个人都如此的不合理，是时代给了世界荒唐的理由。我很喜欢。</li>
+  <li>周末和喜福看了<a href="https://movie.douban.com/subject/1305530/">收件人未详</a>。知道金基德大名这么久，才发现是看的第一部。果然有种生猛在里边。人的欲望，氤氲的气氛，特殊的年代。每个人都如此的不合理，是时代给了世界荒唐的理由。我很喜欢。</li>
   <li>冬天貌似就这么结束了，我们是怎么知道的呢 :thinking:</li>
 </ul>
 
