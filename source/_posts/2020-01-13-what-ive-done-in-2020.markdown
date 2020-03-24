@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W11 (03/16 - 03/22)
+
+* 疫情影响下第一周完整的WFH，有点工作过度，但是推进了不少工作。做了一个 WebAssembly runtime 的 benchmark: [ wasm-runtime-benchmark](https://github.com/ifyouseewendy/wasm-runtime-benchmark)，读完了[Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/01_getting_started/01_chapter.html)，很享受在家自由安静的时光。
+* 每天固定出门遛狗，呼吸新鲜空气。下午和喜福也尽可能出门散步。还好路上几乎见不到人，没有太多担心。
+* 这周跟赛聊了两次天，为他这股丧劲难过。好像最近的股市一样，你以为到了谷底，其实还没有。帮不了太多，只能希望他看到积极的一面。
+
+![w11-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w11-collage.jpg)
+
 ## W10 (03/09 - 03/15)
 
 * I've been working on a benchmark project for WebAssembly runtimes this week: [wasm-runtime-benchmark](https://github.com/ifyouseewendy/wasm-runtime-benchmark)
