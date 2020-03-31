@@ -8,6 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W12 (03/23 - 03/29)
+
+* Two weeks WFH now. I kinda over work and mess up the boundary between life and
+work, but I enjoyed it so far. I'm connecting the dots on my learning over Rust
+and WebAssembly. It's really fun.
+* 暂时在家的娱乐方式是，打游戏 :smile: 上周和同事中午打 CS:GO，这周于天航推荐玩 Hollow Knight，周末又和朋友一起线上 Mario Kart。
+* 这周看了 [Senna](https://movie.douban.com/subject/3718778/) 和 [Hotel Mumbai](https://movie.douban.com/subject/26794701/)，都很不错。
+
+![w12-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w12-collage.jpg)
+
 ## W11 (03/16 - 03/22)
 
 * 疫情影响下第一周完整的WFH，有点工作过度，但是推进了不少工作。做了一个 WebAssembly runtime 的 benchmark: [ wasm-runtime-benchmark](https://github.com/ifyouseewendy/wasm-runtime-benchmark)，读完了[Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/01_getting_started/01_chapter.html)，很享受在家自由安静的时光。
