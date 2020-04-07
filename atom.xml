@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2020-03-30T21:31:31-04:00</updated>
+  <updated>2020-04-06T21:15:13-04:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -21,6 +21,18 @@
     <content type="html"><![CDATA[<blockquote>
   <p>A weekly log on my life and personal growth</p>
 </blockquote>
+
+<h2 id="w13-0330---0405">W13 (03/30 - 04/05)</h2>
+
+<ul>
+  <li>WFH 第三周，工作进展很多，花了两天时间完成了一个很大的 milestone，超级有成就感。这几个月一直在积累和学习的 Rust + WebAssembly 终于到了 inflection point，这个感觉太美妙。</li>
+  <li>春天来了，阳光也明媚了很多，和喜福每天固定出门散步，吸几口空气也成了享受。</li>
+  <li>闲暇时间玩了很多 Hollow Knight，可能玩过了一半了吧，很轻松治愈。</li>
+  <li>上个月报名了一个线上课程，Standford <a href="https://courses.edx.org/courses/course-v1:StanfordOnline+SOE.YCSCS1+1T2020/course/">Compilers</a>。周末跟着上完了第一周的课程，很有趣，希望自己能坚持跟下去。</li>
+  <li>周末拽着喜福看了想看好久的 Stalker，那张著名的海报以及塔科夫斯基的大名对我很有吸引力，但是开始看才发现，缓慢诗意的镜头用另一种方式来形容是瞌睡连连，和喜福从头到尾懵逼脸。</li>
+</ul>
+
+<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w13-collage.jpg" alt="w13-collage" /></p>
 
 <h2 id="w12-0323---0329">W12 (03/23 - 03/29)</h2>
 
