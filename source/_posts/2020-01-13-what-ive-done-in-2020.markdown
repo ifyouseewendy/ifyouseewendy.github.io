@@ -8,6 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W13 (03/30 - 04/05)
+
+* WFH 第三周，工作进展很多，花了两天时间完成了一个很大的 milestone，超级有成就感。这几个月一直在积累和学习的 Rust + WebAssembly 终于到了 inflection point，这个感觉太美妙。
+* 春天来了，阳光也明媚了很多，和喜福每天固定出门散步，吸几口空气也成了享受。
+* 闲暇时间玩了很多 Hollow Knight，可能玩过了一半了吧，很轻松治愈。
+* 上个月报名了一个线上课程，Standford [Compilers](https://courses.edx.org/courses/course-v1:StanfordOnline+SOE.YCSCS1+1T2020/course/)。周末跟着上完了第一周的课程，很有趣，希望自己能坚持跟下去。
+* 周末拽着喜福看了想看好久的 Stalker，那张著名的海报以及塔科夫斯基的大名对我很有吸引力，但是开始看才发现，缓慢诗意的镜头用另一种方式来形容是瞌睡连连，和喜福从头到尾懵逼脸。
+
+![w13-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w13-collage.jpg)
+
 ## W12 (03/23 - 03/29)
 
 * Two weeks WFH now. I kinda over work and mess up the boundary between life and
