@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W14 (04/06 - 04/12)
+
+* 这周看了好几部电影。每天吃饭一起看会儿请回答1988，看了一个月终于看完了。这股暖流还没让我感到不适，比 This is us 强很多。周末看了金福南杀人事件和摄影机不要停，都很好看。
+* 喜福的炒乌冬厉害了，把一个我不喜欢吃的东西做成吃不够，还要连吃两天，点名表扬。
+* 子怡给我们发了张B超图，好神奇，非常期待呀。
+* 长周末一直在玩 Hollow Knight，本来以为就快打完了，但是发现呵呵，才刚上路。有点沉迷了，自己要量力而行，不然没有在享受这个过程。
+
+![w14-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w14-collage.jpg)
+
 ## W13 (03/30 - 04/05)
 
 * WFH 第三周，工作进展很多，花了两天时间完成了一个很大的 milestone，超级有成就感。这几个月一直在积累和学习的 Rust + WebAssembly 终于到了 inflection point，这个感觉太美妙。
