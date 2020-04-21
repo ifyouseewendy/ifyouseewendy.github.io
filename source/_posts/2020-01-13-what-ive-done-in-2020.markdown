@@ -8,6 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W15 (04/13 - 04/19)
+
+* 长周末打了太多游戏，回到工作中没法静下心来，尤其还遇到一个特别难搞的问题，每天都不在状态 :pensive:
+* 这周尝试了锅包肉，非常成功地还原了家里的味道，但是距离饭店水准，还有一定距离。
+* Hollow Knight 终于见到了大 boss，不着急解决它。现在完成度 82%，基本上到了各种打怪和各种障碍跳来跳去的过程，玩的手疼。真的要歇一歇了。
+* 周末的电影选了 [The Ballad of Buster Scruggs](https://movie.douban.com/subject/26952704/)。科恩兄弟的视角总是让人摸不着头脑，每个故事都很有意思值得琢磨，一以贯之的主题应了老子那句：天地不仁，以万物为刍狗。
+
+![w15-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w15-collage.jpg)
+
+
 ## W14 (04/06 - 04/12)
 
 * 这周看了好几部电影。每天吃饭一起看会儿请回答1988，看了一个月终于看完了。这股暖流还没让我感到不适，比 This is us 强很多。周末看了金福南杀人事件和摄影机不要停，都很好看。
