@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby '2.6.3'
 
 group :development do
-  gem 'rake', '~> 0.9'
+  gem 'rake', '~> 12.3'
   gem 'jekyll', '~> 0.11.0'
   gem 'rdiscount', '~> 2.0.7'
   gem 'kramdown', '~> 1.4.2'
