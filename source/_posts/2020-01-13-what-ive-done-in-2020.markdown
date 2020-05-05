@@ -8,6 +8,13 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W17 (04/27 / 05/03)
+
+* 继续处在 WFH 的疲惫中，不知道怎么调整状态放松心情。每天都是重复不变的日子，开始时候我还很享受，现在很明显需要一个 long break。身体上开始有反应，背部时常隐隐作痛，心理上也很慵懒，只有上午能保持积极的状态。周末和喜福一起说走就走，地图上找了个靠近休伦湖边的小镇 Bayfield。开了两个小时到地方，下去看了十分钟景色，然后返程。特殊时期的旅途。
+* 这周的最大的沉迷是 [Tiger King](https://movie.douban.com/subject/34971810/)，看了一半时候我还不知道到底在讲什么，各色猎奇的元素，雨露均沾。很粗旷很市井文学，最神的是这是个纪录片。我活的越久，越觉着没见过世面，也充满疑问。
+
+![w17-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w17-collage.jpg)
+
 ## W16(04/20 - 04/26)
 
 * 这周很明显的感受到了精神上的疲惫，只有每天早上精力充沛，下午就急转直下慢慢失去耐心。只能说略显便秘地解决了工作上两个小难题。
