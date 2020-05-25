@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W20 (05/18 - 05/24)
+
+* 进入夏天，阳光明媚，Nikki 每天都和赵四出门疯跑，然后回来躺在地板上大声喘气，得意地笑。
+* 周四带 Nikki 去上 Level II 的课程。老师还是很负责的，户外进行，一个班级也三只🐶。Nikki 还是那个 crazy girl，见到了世界就充满好奇，对主人爱答不理。
+* 安省进入第一阶段的疫情恢复，周五出门和 David 打了一次网球，久违的自由啊。
+* 这周看完了 [The Last Dance](https://movie.douban.com/subject/30223100/)，帮主的派头还有那么多背后的故事都很吸引我。自己的巅峰自己下，GOAT。Amy 好久前推荐双雪涛这个作家，这周看了他的中篇小说集，[平原上的摩西](https://book.douban.com/subject/26803179/)。作者是个沈阳人，与我年龄相仿，故事里那些人物和故事，带给我很多儿时回忆。东北文学，从来不会在阳光明媚。侠义是人们心中的标杆，智慧散发市井的气息。人们都过度张扬着，人们都过度隐忍着。
+
+![w20-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w20-collage.jpg)
+
 ## W19 (05/11 - 05/17)
 
 * 调整了应对 WFH 的心态，这周做了些改变：去跑了一次步，浑身酸疼；不打游戏；看书。多多少少起了些作用，心情上不会很浮躁，平静很多。周五公司强制休息，加上周一的 Victoria Day，周末有了个四天的小长假。自己设定的基调是：don't check the time. 取消闹铃，平时也不看手机，只是随心做想做的事情，很享受。
