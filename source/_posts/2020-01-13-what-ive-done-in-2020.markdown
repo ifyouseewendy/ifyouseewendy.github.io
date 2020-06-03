@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W21 (05/25 - 05/31)
+
+* 这两周停止玩游戏，开始看书，练习冥想，工作和生活有了很好的起色。不看手机，减少打扰，尽可能去享受当下，认真做在做的事情。
+* 上上周开始看 [Ozark](https://movie.douban.com/subject/26735549/)，刚刚看完了第一季，超级棒。夹缝中求生存，内外受敌，节奏非常好。和喜福每天晚上一集，非常享受。
+* 搬家去温哥华开始提上日程。联系了燕姐，明确了要为卖房做哪些准备。周末开始，修理坏掉的窗帘架，彻底清理地毯，拔掉后院的蒲公英，清除前院被狗狗尿过的死草。感谢有你，Nikki 😦
+
+![w21-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w21-collage.jpg)
+
 ## W20 (05/18 - 05/24)
 
 * 进入夏天，阳光明媚，Nikki 每天都和赵四出门疯跑，然后回来躺在地板上大声喘气，得意地笑。
