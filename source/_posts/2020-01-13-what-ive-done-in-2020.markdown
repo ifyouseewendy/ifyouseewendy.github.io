@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W22 (06/01 - 06/07)
+
+* 天气渐好，多了很多散步的时间。最近心态调整的很好，做什么事情都不着急，心安理得地没有焦虑，享受慵懒的夏日时光。
+* 和喜福看完了 Ozark 第二季，还是很喜欢，从绝命毒师走向纸牌屋。
+* 周末结束了为期十周的 Compilers 课程，收获主要是帮我连起了很多零散的知识，对编译原理有了一套系统的认识。[[Review] SOE-YCSCS1 Compilers](http://blog.ifyouseewendy.com/blog/2020/06/07/review-soe-ycscs1-compilers/)
+
+![w22-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w22-collage.jpg)
+
 ## W21 (05/25 - 05/31)
 
 * 这两周停止玩游戏，开始看书，练习冥想，工作和生活有了很好的起色。不看手机，减少打扰，尽可能去享受当下，认真做在做的事情。
