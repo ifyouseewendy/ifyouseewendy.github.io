@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W23 (06/08 - 06/14)
+
+* 工作上比较稳定地输出，压力不大。想来已经在 Script 忙活了一年，platform 基本完成，很期待下半年开始做各种产品。
+* 周末和喜福继续对家里修修补补，然后叫江伟峰来家里 Fifa 20。
+* 晚上睡不着的时候，断断续续读完了[蒋勋说宋词](https://book.douban.com/subject/10482102/)。上学时候完全不懂得欣赏其中的美，只留下片段机械记忆。我很喜欢作者从大的历史背景入手，介绍为什么诗衰词盛，到不同词人有怎样不同的风格。尤其在和平年代开始，大家从浪漫主义的家国情怀逐步转向更加私人和情绪化，开始关注生活的稀疏平常。我觉着很美好。
+
+![w23-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w23-collage.jpg)
+
 ## W22 (06/01 - 06/07)
 
 * 天气渐好，多了很多散步的时间。最近心态调整的很好，做什么事情都不着急，心安理得地没有焦虑，享受慵懒的夏日时光。
