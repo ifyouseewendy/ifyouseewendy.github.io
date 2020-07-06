@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W26 (06/29 - 07/05)
+
+* 这周只需要工作两天，五天的 long long long weekend，主要在放松和收拾房子。燕姐周二过来仔细看了一圈，跟我们说了一些需要修补的地方，基本没有什么大问题，目测下下周就可以上市。这流程走的有点快，我们也没想到。
+* 休闲时光，看了几场球，F1 今年第一场，打了两次网球，踢了好多场 Fifa。
+* 周末和喜福打包衣服，我们秉持的原则是，过去一年没穿过就可以捐掉了。最后整理出 40% 要扔掉的衣服。有点不舍，但该是正确的决定。
+
+![w26-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w26-collage.jpg)
+
 ## W25 (06/22 - 06/28)
 
 * 周一是结婚两周年纪念，没有什么特殊安排，只是延续了之前照相的传统。去年多了赵四，今年多了 Nikki，明年呢？
