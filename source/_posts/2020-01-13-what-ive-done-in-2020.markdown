@@ -8,6 +8,24 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W29 (07/20 - 07/26)
+
+* 这周的工作效率不错，虽然还是有各种琐事，但是该工作时候能静下心来。记得之前看过一个"use procrastination against itself"的办法：
+
+  > So basically, when procrastinating, we tend to justify our inactions: just 1 more minute on Twitter,
+  > just one last scroll on my newfeed, lemme just check this subreddit really quick.  With reverse
+  > procrastination, you trick your brain into doing your intended task: Ok lemme just open Visual
+  > Studio Code and edit this one file then im good, I'll just change this one line of code, I'll just
+  > do 5 pushups then i'll stop. Then when you're on your 5th pushup, you say "surprise mr lazy pants,
+  > im actually doing 10!" Once you get to do that one task, try to trick again your brain into doing
+  > another simple, easy task and before you know it youre in "the zone".
+
+* 搬家的事情还在推进，基本打包完毕，喜福每天都在卖卖卖各种家具和小东西。我们列了一个理想房子的各种要求，周末一起跟两个 agent 视频聊了聊，对市场和我们自己的预期有了更好的了解，约定好下个月中旬开始看房。
+* 攒了半年的头发和胡子终于不耐其扰，周末去简单修理了一下，:older_man: 的青春又回来了
+* 我文的意甲联赛终于踉踉跄跄的拿到了冠军，开心，也伴着对欧冠的担忧。九连冠，想想自己应该只落下不到十场比赛，也是一个小成就了。
+
+![w29-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w29-collage.jpg)
+
 ## W28 (07/13 - 07/19)
 
 * 辛苦了几个礼拜打包、清理、拍照，周一早上终于把房子[挂了出去](https://matrix.onregional.ca/Matrix/Public/Portal.aspx?ID=5005412776)。有点不安，但是很快收到很多看房的请求。我和喜福只能带着猫狗流浪，在疫情期间，无处可去。周二有十三组人要来看房，我和喜福不耐其扰，在 Hamilton 找了个 Airbnb，想着躲掉这一周的风波。但是没想到，晚上燕姐告诉我们有了个合适的 bully offer，一起电话讨论，到半夜十一点半，敲定细节，签下合约，房子就这么卖掉了 :tada:  (Vlog [加拿大卖房记](https://www.youtube.com/watch?v=pGoUZeUa0KU))
