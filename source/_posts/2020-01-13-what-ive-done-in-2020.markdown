@@ -8,6 +8,13 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W36 (09/07 - 09/13)
+
+* 这周的工作很饱满，没有被生活的琐事打扰，七点工作，三点半结束，井井有条。房子的事情，敲定了一个室内设计公司，下面要详谈各种细节。周日搬到了另外一个 Airbnb，终于摆脱了之前昏暗阴冷的半地下室了。
+* 来了温哥华之后很为 Nikki 犯愁，遇到陌生环境，各种不听话变本加厉，我经历了三次彻底的苦恼，跟喜福也很认真地讨论过两次。这周开始俩人一起看 [Zak George's Guide to a Well-Behaved Dog](https://www.goodreads.com/book/show/42504741-zak-george-s-guide-to-a-well-behaved-dog?from_search=true&from_srp=true&qid=H30MYgDAKj&rank=1)，找寻我们的不足与希望。
+
+![w36-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w36-collage.jpg)
+
 ## W35 (08/31 - 09/06)
 
 * 两个月的四天工作周结束了，这周回归正常。最近生活变动，很早就和老板说不要安排繁复工作，只完成了很多小任务。现在只想时间过的快些，开启下一阶段的忙碌，所以工作日和周末区别不大，反倒工作会让这一天更轻松顺畅。
