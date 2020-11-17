@@ -8,11 +8,23 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W45 (11/09 - 11/15)
+
+* 这周的工作非常充实，花了很多时间去思考一个棘手但是有意思的问题。每天抱着期待着起床，一转眼时间就过去的感觉非常棒。
+* 上周日给 Nikki 喂了从饭店外带的猪骨头，结果半夜就咩咩的叫，打开房门冲到客厅，趁我一个不注意就蹲下方便了。唉，这一晚上发生了三次，后面两次我就不紧不慢，干脆穿好衣服带她出门了。第二天去看了兽医，吃了几天药终于止住了。可怜的狗子，你的传统美食也无福消受。
+* 每天睡前一小会儿看完了 The Social Dilemma。即使作为业内人士，也觉着现在产品的发展思路让人恐惧。像抖音这种，定点投喂每个人想看到的东西已经成了核心竞争力，难怪世界会越发向两极分化的方向走去。
+* 最近被占东安利了 espresso，买了各种设备开始化学实验。暂时只能说有迹可循，但是一天稳定两杯，失眠是当仁不让来敲门了 :slightly_smiling_face:
+* 周四的 date night 去吃了家附近的 [Austin Fish & Chips](https://goo.gl/maps/4SUm1JjinRGznMzm7)，周六的 movie night 喜福选了[南方车站的聚会](https://movie.douban.com/subject/27668250/)，作为白日焰火的影迷，我很喜欢其中的美学倾向，但是桂纶镁？胡歌？:neutral_face:
+* Victor 很早向我推荐了 [Originals](https://book.douban.com/subject/26708996/)，之前看了一章觉着太文邹，周末捡起来发现非常有趣。社科类的读本写好了是会比小说好看的。
+* 周日是 32 岁的生日。我是个拧巴的人，每到生日就犯情绪摆臭脸。跟喜福很认真的分析了一下，我其实找不到太多原因，可能是童年记忆里只记得一次大哭的经历。另外，一个人非要在某一天特别快乐，也是个奇怪的命题。我更希望每天都平和快乐。所以，收到爸妈、好友和喜福的一句祝福我就很知足了，只是我美好生活中另一个寻常的一天。
+
+![w45-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w45-collage.jpg)
+
 ## W44 (11/02 - 11/08)
 
 * 周一和喜福一起请假，趁着好天气去 Whistler 秋游。最开心的要属 Nikki 了，在 Rainbow Park 找到了自己狗生的天堂：遥望远处的落基山脉，近处是 Alta Lake 平静的湖面。最特别的是一个为狗狗准备的专属码头。Nikki 一次次跳到湖中奋力划水，天气凉也抵不过内心火热。
 * 上周认真做的计划，这周有很好的执行。每天的工作都很充实，最重要的是相信自己走在正确的轨道上。
-* 和喜福的每月计划，因为疫情和今年的慌乱中断了大半年，这周重新捡起来。周四恢复了 date night，去尝试了一家很棒的泰国菜（Ma Now）；周六恢复了 movie night，一起看 Uncut Gems；自己恢复锻炼再次尝试骑行，投资了一辆单车，骑了一次才发现我也生活在山城：谷歌地图 40 分钟的路线，我花了 80 分钟，中间连续爬坡无奈只能交出黄色领骑衫，下来推车。
+* 和喜福的每月计划，因为疫情和今年的慌乱中断了大半年，这周重新捡起来。周四恢复了 date night，去尝试了一家很棒的泰国菜（[Ma Now](https://goo.gl/maps/pFavist2Ae8cVgp59)）；周六恢复了 movie night，一起看 [Uncut Gems](https://movie.douban.com/subject/27045860/)；自己恢复锻炼再次尝试骑行，投资了一辆单车，骑了一次才发现我也生活在山城：谷歌地图 40 分钟的路线，我花了 80 分钟，中间连续爬坡无奈只能交出黄色领骑衫，下来推车。
 * 周末去买齐了各种工具，把后院被 Nikki 咬坏的栅栏修理好，割草施肥，然后去前院整理落叶，再割草施肥。这个秋天的工作完美结束。
 
 ![w44-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w44-collage.jpg)
