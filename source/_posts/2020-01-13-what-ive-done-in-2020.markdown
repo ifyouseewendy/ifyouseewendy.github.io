@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W46 (11/16 - 11/22)
+
+* 工作上，也许是整个下半年最开心的一周了。不断思考、实验、讨论，最终找到解决方案，和同事一起分享喜悦。
+* 这周读完了两本书：[The Magic of Thinking Big](https://book.douban.com/subject/1944612/) 是本有年头的鸡汤书，算是有些帮助，哪怕是盲目的自信呢；[Six Easy Pieces](https://book.douban.com/subject/6424727/) 来自费曼的物理讲义，选取最基础的六个篇章回顾物理学的脉络。上学时候的知识最终都成了一座座记忆的孤岛，这本书为我重新搭起了桥梁，用一个最基本的角度理解看待这个世界。
+* 周末天气放晴，骑车去 Mundy Park 在树林里穿梭，跟路上的行人微笑，看各式各样的狗狗开心的漫步。
+* 周四的 date night 去吃了[渔人](https://goo.gl/maps/F5T2Xqb237kHoWyu6)烤鱼；周六的 movie night 看了 [The Squid and the Whale](https://movie.douban.com/subject/1437377/)，轻松又有趣，很像另一个版本的 Woody Allen，当知识分子走近生活的琐碎，一样的局促不安。
+
+![w46-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w46-collage.jpg)
+
 ## W45 (11/09 - 11/15)
 
 * 这周的工作非常充实，花了很多时间去思考一个棘手但是有意思的问题。每天抱着期待着起床，一转眼时间就过去的感觉非常棒。
