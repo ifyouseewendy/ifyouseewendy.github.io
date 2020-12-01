@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W47 (11/23 - 11/29)
+
+* 上周末和 Nikki 堵气，可能一直下雨连着几天没带她出门疯跑，所以各种不听话。到了周一我还继续郁闷，下午出门去骑车散心，回来后终于缓和了一些。跟狗狗生气真是件愚蠢的事，尤其甭管你有多气，她就岿然不动。最终只能我自己心理建设，以理服己。第二天冒着雨陪她去跑了一个半小时，然后终于看到她躺在地上疲惫又平静的笑。
+* 周四的 date night 去吃了 [ARISU Korean BBQ](https://goo.gl/maps/1cMHa1An1hXD9DC29)；周六的 movie night 看了[末代皇帝](https://movie.douban.com/subject/1293172/)，我唏嘘又难过。一个人的渺小，无关乎身份，在历史的洪流中晃荡裹挟，即使自知也无奈。有兴盛就有其衰竭，到头来你想从中寻找答案，很简单，“潮起潮落，是什么都不为”。
+* 最近在重听 Pink Floyd 的 [The Division Bell](https://genius.com/albums/Pink-floyd/The-division-bell)，听的入迷，带着耳机就能飘进另外一个世界。去仔细看了当时创作的背景和歌词，表面看是怨恨和追问，关于 Waters 的离开，但是显然他们成功营造了一种超脱疏离的氛围，好像在宇宙中追寻时间和答案。
+* 11.25 马拉多纳去世，这动荡不安的一年。
+
+![47-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/47-collage.jpg)
+
 ## W46 (11/16 - 11/22)
 
 * 工作上，也许是整个下半年最开心的一周了。不断思考、实验、讨论，最终找到解决方案，和同事一起分享喜悦。
