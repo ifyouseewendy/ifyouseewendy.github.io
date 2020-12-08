@@ -8,6 +8,17 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W48 (11/30 - 12/06)
+
+* 这周没怎么工作，三天hackday，周五请假忙活各种琐事：给车后边装了自行车架，想着到远方骑车；买了一整套的滑雪装备，准备下周开始走起。
+* 周四的 date night 去吃了[半山烧烤](https://goo.gl/maps/tdYZgpxTDTzj5Sw97)，味道不错，环境好的不像吃烧烤的地方，可能也是因为冷清的缘故 :man_facepalming:。​周六的 movien night 重看了我最喜欢的一部 Wes Anderson: [Royal Tenenbaum](https://movie.douban.com/subject/1306031/)。
+* 这周读了两本非常好看的书：
+  * [10% Happier](https://book.douban.com/subject/25847219/)，有点作者半自传的性质，但是主线很明确，关于冥想和 Mindfulness （这个词到底要怎么对应到中文呢？我的理解是”觉察“，看到有人翻译成“正念“，但是加了”正“字不正是在做主观的判断吗？）。Mindfulness 是目的，冥想是方法。核心思想是刻意地通过冥想这种练习，不加判断地观察我们的想法，而不是无时无刻又不自知地让想法在脑中恣意发散。那些下意识的冲动与偏见，对过去的纠结与不安，对未来的担忧与焦虑都来源于此。我比较喜欢作者始终抱着怀疑的态度，道出了许多我自己心中的问题。最核心的当属怎么处理”不争“，人不该有野心吗？在乎的事情也要放任自流吗？作者给出了个简单的答案，追寻过程而不是结果，基本和我在别处看到的一致（pick up your battle）。但我还不确定，先把冥想实践起来。
+  * [Writing Down the Bones](https://book.douban.com/subject/2263709/) 是一本关于写作的小书，作者提倡的方法让我大开眼界：规定时间练习写作，时间开始，把脑子里所有的想法一股脑地倾泻到纸面，不要在意标点、错字、修辞、甚至逻辑，只管去写，去捕捉和描述此时此刻脑子里出现的一切，直到时间终止。非常巧合，这也是一种冥想的方法，用写作去冥想。看过之后，我每天有尝试去写五分钟，最明显的感受是：写作在帮我感知世界。
+* 上周和 Nikki 吵完架，这周乖乖带她去玩耍。每天操场上狠跑几圈，跟几个狗友打闹一会儿，然后开启雷达四处搜找泥坑，蹦蹦跳跳，喝水打滚。直到有一天，遇到了白胡子老爷，看我家白狗眨眼变黑狗，带我去了附近的树林，找到了一条清澈的小溪。这里马上变成了疯狗的水上乐园，再也不愁给她洗澡了。大自然，是你派老爷爷来找我的吧？
+
+![w48-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w48-collage.jpg)
+
 ## W47 (11/23 - 11/29)
 
 * 上周末和 Nikki 堵气，可能一直下雨连着几天没带她出门疯跑，所以各种不听话。到了周一我还继续郁闷，下午出门去骑车散心，回来后终于缓和了一些。跟狗狗生气真是件愚蠢的事，尤其甭管你有多气，她就岿然不动。最终只能我自己心理建设，以理服己。第二天冒着雨陪她去跑了一个半小时，然后终于看到她躺在地上疲惫又平静的笑。
@@ -15,7 +26,7 @@ categories: ['Life']
 * 最近在重听 Pink Floyd 的 [The Division Bell](https://genius.com/albums/Pink-floyd/The-division-bell)，听的入迷，带着耳机就能飘进另外一个世界。去仔细看了当时创作的背景和歌词，表面看是怨恨和追问，关于 Waters 的离开，但是显然他们成功营造了一种超脱疏离的氛围，好像在宇宙中追寻时间和答案。
 * 11.25 马拉多纳去世，这动荡不安的一年。
 
-![47-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/47-collage.jpg)
+![w47-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w47-collage.jpg)
 
 ## W46 (11/16 - 11/22)
 
