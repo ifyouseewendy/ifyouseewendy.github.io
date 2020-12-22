@@ -8,6 +8,17 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W50 (12/14 - 12/20)
+
+* 圣诞假期前的最后一周，每天都在加班加点的工作。弄了三个礼拜的项目，终于在周四晚上全部跑通，周五给大家做了 demo，非常完美。
+* 各种家具陆陆续续到了，家里堆的满满当当，每天慢慢弄一点，先把办公室弄好，终于不用在临时的餐桌和硬板凳上工作了。
+* 周四的 date night 去吃了 [Green Leaf Cafe](https://goo.gl/maps/BZvwbUjU8SBSbz346)，这家的炙寿司超级赞；周六的 movie night 和喜福看了 [The Gentlemen](https://movie.douban.com/subject/30211998/)，熟悉的盖里奇，把节奏和幽默发挥的更加纯熟，科林法瑞尔笑死我。
+* 周中晚上休息， 慢慢把[万物·文明](https://book.douban.com/subject/27081128/)这本图册翻完了，作者用各种漫画插画的方式讲述了史前和古代的文明历程。很好地弥补了我对这段历史的空白和无知。我很喜欢结尾作者引用社会生物学家 Edward O. Wilson 的这段话，
+
+> 我们今天拥有的技术手段可以说已经接近神力，而我们的社会体制还滞留在中世纪，我们的情感更是自石器时代开始就没有任何进步。我们只能学会在这样的现实里过活。
+
+![w50-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w50-collage.jpg)
+
 ## W49 (12/07 / 12/13)
 
 * 工作上开始搞一个新的难题。开始时候一脸茫然，然后不断加深了解、试验、推翻、重新尝试，最后一切慢慢变得清晰。这个过程有多少纠结与思考就有多少开心与成就。
