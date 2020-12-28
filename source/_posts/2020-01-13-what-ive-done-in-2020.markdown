@@ -8,6 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W51 (12/21 - 12/27)
+
+* 圣诞假期第一周，和喜福安静窝在家里。每天遛狗放风，剩下时间在看书、装家具、吃吃喝喝。开始两天还不习惯无所事事，之后就完全进入“关闭闹铃”状态了，假期就是要没有压力，忘记时间，做喜欢的事。
+* 圣诞前两天，很应景地下了一场大雪，太阳放肆地明媚了两天，就又缩到云雾里，继续让雨一直下。
+* 周末看到明远的公众号推荐温哥华周边的徒步，我们带着 Nikki 去了 [Buntzen Park](https://goo.gl/maps/drZiwHEVqDc5Suhk7)。现在出门散步，最后都很自然地变成去各种狗公园打卡。这里有一片狗狗海滩，Nikki 一进来就撒腿奔向水面，不管刮着多大风雨，冷暖不自知，玩就对了。
+* 这周陆续看完了[枪炮、病菌与钢铁](https://book.douban.com/subject/1813841/)，[The Almanack of Naval Ravikant](https://book.douban.com/subject/35219712/)，[没有一条道路是重复的](https://book.douban.com/subject/20397289/)，[Stranger Things Season 1](https://movie.douban.com/subject/26359270/)。我今年已经中了 Naval 的毒，他的各种采访已经听过很多遍，这回整理成书依然惊叹他的各种归纳与整理。
+* 周四的 date night 又去吃了半山烧烤，不得不说这家的牛肉面让我们记忆犹新；周六的 movie night 看了[特工](https://movie.douban.com/subject/26683421/)。
+
+![w51-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w51-collage.jpg)
+
 ## W50 (12/14 - 12/20)
 
 * 圣诞假期前的最后一周，每天都在加班加点的工作。弄了三个礼拜的项目，终于在周四晚上全部跑通，周五给大家做了 demo，非常完美。
