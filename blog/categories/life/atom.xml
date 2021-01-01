@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Life | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/life/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2020-12-28T14:07:17-08:00</updated>
+  <updated>2021-01-01T12:33:10-08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What we've done in 2020]]></title>
+    <link href="http://blog.ifyouseewendy.com/blog/2021/01/01/what-weve-done-in-2020/"/>
+    <updated>2021-01-01T12:24:53-08:00</updated>
+    <id>http://blog.ifyouseewendy.com/blog/2021/01/01/what-weve-done-in-2020</id>
+    <content type="html"><![CDATA[<svg id="gantt-2020"></svg>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What I've done in 2020]]></title>
@@ -675,7 +684,7 @@ and WebAssembly. It’s really fun.</li>
     <link href="http://blog.ifyouseewendy.com/blog/2020/01/03/what-weve-done-in-2019/"/>
     <updated>2020-01-03T11:54:56-05:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2020/01/03/what-weve-done-in-2019</id>
-    <content type="html"><![CDATA[<svg id="gantt"></svg>
+    <content type="html"><![CDATA[<svg id="gantt-2019"></svg>
 ]]></content>
   </entry>
   
@@ -1328,81 +1337,6 @@ However, it’s been a fantastic week for various sports games.</li>
 <h3 id="section-3">尾声</h3>
 
 <p>我不确定这半年的休假时间是否值得，足够有意义。可能错过了一些好的工作机会，我也懊悔自己没能看足够的书籍让自己的技术有所长进，一些预定计划也在变化中没能实现。但不管怎样，我确信自己是在努力让这个过程变得值得，有意义。对于过往的发生，我没办法改变，只能抱着积极的心态，用心总结，然后面对，想方设法把之后做好。过年的时间是一段终结，Github 的 Streak 也在今天断掉，我要乐于接受这段空白的休息。之后怎样我还在思考，但不断努力，不断改进，让自己变好才是最终的希望。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Great Expectations 2015]]></title>
-    <link href="http://blog.ifyouseewendy.com/blog/2015/02/27/great-expectations-2015/"/>
-    <updated>2015-02-27T12:52:00+08:00</updated>
-    <id>http://blog.ifyouseewendy.com/blog/2015/02/27/great-expectations-2015</id>
-    <content type="html"><![CDATA[<h2 id="target">Target</h2>
-
-<p><strong>Algorithm</strong></p>
-
-<ul>
-  <li>Reading Algorithms 4th thoroughly.</li>
-  <li>Algorithm course on Coursera.</li>
-</ul>
-
-<p><strong>English</strong></p>
-
-<ul>
-  <li>Words, need an efficient way to study new and review regularly</li>
-  <li>Listening, keep on Friends or podcast.</li>
-</ul>
-
-<p>Key point is to make it a regular stuff.</p>
-
-<p><strong>Source Code Reading</strong></p>
-
-<ul>
-  <li>Find or create a written, detailed, repeatable process to follow.</li>
-  <li><a href="http://www.justinweiss.com/blog/2015/02/03/finding-your-way-around-a-new-rails-project/?utm_source=Weissblog+Subscribers&amp;utm_campaign=80c8a475a1-The_best_way_to_fight_being_overwhelmed2_5_2015&amp;utm_medium=email&amp;utm_term=0_2494b7d197-80c8a475a1-120246897">Finding Your Way Around a New Rails Project</a></li>
-</ul>
-
-<h2 id="habit">Habit</h2>
-
-<p><em>#lift.do</em></p>
-
-<p><strong>Get Up Early</strong></p>
-
-<ul>
-  <li>Review yesterday <em>#dayone</em></li>
-  <li>Schedule on new day <em>#sunrise</em> <em>#omnifocus</em></li>
-</ul>
-
-<p><strong>Record Daily Life</strong></p>
-
-<ul>
-  <li>Knowledge <em>#evernote</em></li>
-  <li>Life trivia <em>#dayone</em></li>
-  <li>Financial status, monthly</li>
-</ul>
-
-<p><strong>One Hour Tech Reading</strong></p>
-
-<p>Need to keep quiet and focused, books or source code.</p>
-
-<h2 id="workday">Workday</h2>
-
-<blockquote>
-  <p>What should be a workday like?</p>
-</blockquote>
-
-<ul>
-  <li>08:00 Get up, do the reviewing and scheduling.</li>
-  <li>10:00 Company stuff I</li>
-  <li>12:00 Lunch</li>
-  <li>13:00 Company stuff II</li>
-  <li>16:00 Tech read</li>
-  <li>17:00 Email subscriptions and browsing </li>
-  <li>18:00 Company stuff IIII</li>
-  <li>20:00 Back home</li>
-  <li>22:30 Dear Diary</li>
-  <li>23:00 Go to bed and random read.</li>
-</ul>
 
 ]]></content>
   </entry>
