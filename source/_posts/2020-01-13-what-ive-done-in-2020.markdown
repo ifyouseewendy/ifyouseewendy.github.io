@@ -522,10 +522,42 @@ and WebAssembly. It's really fun.
 
 电影
 
-* [Drive to Survive 2](https://movie.douban.com/subject/34678530/)
+* [绅士们 The Gentlemen](https://movie.douban.com/subject/30211998/)
+* [沉默的真相](https://movie.douban.com/subject/33447642/)
+* [黑钱胜地 Ozark Season](https://movie.douban.com/subject/26735549/)
+* [最后的舞动 The Last Dance‎](https://movie.douban.com/subject/30223100/)
+* [养虎为患 Tiger King‎](https://movie.douban.com/subject/34971810/)
+* [巴斯特·斯克鲁格斯的歌谣 The Ballad of Buster Scruggs‎](https://movie.douban.com/subject/26952704/)
+* [摄影机不要停！ カメラを止めるな！](https://movie.douban.com/subject/30234315/)
+* [永远的车神 Senna](https://movie.douban.com/subject/3718778/)
+* [疾速争胜 第二季 Drive to Survive 2](https://movie.douban.com/subject/34678530/)
 * [收件人未详](https://movie.douban.com/subject/1305530/)
 
 书
 
-* [一个叫欧维的男人决定去死](https://book.douban.com/subject/26672693/)
+* [The Story of Us](https://waitbutwhy.com/2019/08/story-of-us.html)
+* [Wait But Why Year One](https://book.douban.com/subject/33430632/)
+* [美丽新世界](https://book.douban.com/subject/25838937/)
+* [Writing Down the Bones](https://book.douban.com/subject/2263709/)
+* [10% Happier](https://book.douban.com/subject/25847219/)
+* [Six Easy Pieces](https://book.douban.com/subject/6424727/)
+* [上帝掷骰子吗?](https://book.douban.com/subject/25742211/)
 * [Illusions : The Adventures of a Reluctant Messiah](https://book.douban.com/subject/1761167/)
+* [一个叫欧维的男人决定去死](https://book.douban.com/subject/26672693/)
+* [世界小史](https://book.douban.com/subject/26292964/)
+
+播客
+
+* [How to Get Rich: Every Episode](https://nav.al/rich)
+
+游戏
+
+* [神秘海域4：盗贼末路 Uncharted 4: A Thief's End](https://douc.cc/1rDxjK)
+* [空洞骑士 Hollow Knight](https://douc.cc/03EcCD)
+
+吃
+
+* [Yook Korean Grilled BBQ & Bistro](https://g.page/yookvancouver?share)
+* [Anh and Chi](https://g.page/anhandchi?share)
+* [渔人](https://goo.gl/maps/F5T2Xqb237kHoWyu6)
+* [京门涮肉](https://goo.gl/maps/7DBYGHTBU979f4bU7)
