@@ -8,6 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W52 (12/28 - 01/03)
+
+ * 十六天的假期，转眼就过去了。当处在一种熟悉又自在的节奏里，日子过的不讲理地快 😢
+ * 周三去滑雪，天气非常的遭。地面下暴雨，山上下暴雪，能见度几乎等同于我摘下六百度的眼镜。第一圈结束我就想回家了，但是毕竟开了好久的车排了好久的队，后边慢慢适应后好了很多。独自坐在缆车上，回想以前按照自己的野路子滑，一次都没摔过。去年系统学习后，今年这两次都在努力寻找回忆纠正动作，结果每次都要摔两跤。比较意外的是，摔在雪面上很舒服，拿脸刹车也是一种释放，心态上让我更放松。雪场的路人一般会说，Enjoy, have a good run，但是我心里想的是，meh, I'll have a good fall.
+ * 元旦和高中和大学的朋友视频庆祝，料想不知道什么时候能回国相聚，还是线上云喝一波吧。
+ * 周四的 date night 正好是31号，和喜福的朋友一起去吃了太二酸菜鱼；周六的 movie night 一起看了[BlacKkKlansman](https://movie.douban.com/subject/27133913/)。
+ * 周中和喜福刷完了 [Stranger Things Season 2‎](https://movie.douban.com/subject/26844438/)，这种走奇幻风的剧只能走深坑路线，并没有办法持续的吸引人；我读完了刘瑜的[观念的水位](https://book.douban.com/subject/20463108/)，WaitButWhy 的 [Year One](https://book.douban.com/subject/33430632/) 和 [The Story of Us](https://waitbutwhy.com/2019/08/story-of-us.html)，后边这两本可能是我假期的最大收获。记得电影里经常出现偷车贼熟练的找到点火的两根电线，碰在一起吱吱作响，对，看这两本书时我脑子里就是这个声音。
+
+![w52-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w52-collage.jpg)
+
 ## W51 (12/21 - 12/27)
 
 * 圣诞假期第一周，和喜福安静窝在家里。每天遛狗放风，剩下时间在看书、装家具、吃吃喝喝。开始两天还不习惯无所事事，之后就完全进入“关闭闹铃”状态了，假期就是要没有压力，忘记时间，做喜欢的事。
