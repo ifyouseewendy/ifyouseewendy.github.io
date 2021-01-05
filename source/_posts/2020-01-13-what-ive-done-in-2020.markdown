@@ -10,7 +10,7 @@ categories: ['Life']
 
 <details>
 
-<summary>今年的最爱</summary>
+<summary>今年的最爱 (Year's Favourites)</summary>
 
 <p>电影</p>
 <ul>
@@ -61,6 +61,9 @@ categories: ['Life']
 
 <p>吃</p>
 <ul>
+<li><a href='https://goo.gl/maps/BZvwbUjU8SBSbz346'>Green Leaf Cafe</a> </li>
+<li><a href='https://goo.gl/maps/tdYZgpxTDTzj5Sw97'>半山烧烤</a> </li>
+<li><a href='https://goo.gl/maps/dKpkSUHfKbgqf3Eh8'>Narita Sushi</a> </li>
 <li><a href='https://g.page/yookvancouver?share'>Yook Korean Grilled BBQ &amp; Bistro</a> </li>
 <li><a href='https://g.page/anhandchi?share'>Anh and Chi</a></li>
 <li><a href='https://goo.gl/maps/F5T2Xqb237kHoWyu6'>渔人</a></li>
@@ -74,7 +77,7 @@ categories: ['Life']
  * 十六天的假期，转眼就过去了。当处在一种熟悉又自在的节奏里，日子过的不讲理地快 😢
  * 周三去滑雪，天气非常的遭。地面下暴雨，山上下暴雪，能见度几乎等同于我摘下六百度的眼镜。第一圈结束我就想回家了，但是毕竟开了好久的车排了好久的队，后边慢慢适应后好了很多。独自坐在缆车上，回想以前按照自己的野路子滑，一次都没摔过。去年系统学习后，今年这两次都在努力寻找回忆纠正动作，结果每次都要摔两跤。比较意外的是，摔在雪面上很舒服，拿脸刹车也是一种释放，心态上让我更放松。雪场的路人一般会说，Enjoy, have a good run，但是我心里想的是，meh, I'll have a good fall.
  * 元旦和高中和大学的朋友视频庆祝，料想不知道什么时候能回国相聚，还是线上云喝一波吧。
- * 周四的 date night 正好是31号，和喜福的朋友一起去吃了太二酸菜鱼；周六的 movie night 一起看了[BlacKkKlansman](https://movie.douban.com/subject/27133913/)。
+ * 周四的 #date-night 正好是31号，和喜福的朋友一起去吃了[太二酸菜鱼](https://goo.gl/maps/GKCNpxLgEK5DTSJX9)；周六的 #movie-night 一起看了[BlacKkKlansman](https://movie.douban.com/subject/27133913/)。
  * 周中和喜福刷完了 [Stranger Things Season 2‎](https://movie.douban.com/subject/26844438/)，这种走奇幻风的剧只能走深坑路线，并没有办法持续的吸引人；我读完了刘瑜的[观念的水位](https://book.douban.com/subject/20463108/)，WaitButWhy 的 [Year One](https://book.douban.com/subject/33430632/) 和 [The Story of Us](https://waitbutwhy.com/2019/08/story-of-us.html)，后边这两本可能是我假期的最大收获。记得电影里经常出现偷车贼熟练的找到点火的两根电线，碰在一起吱吱作响，对，看这两本书时我脑子里就是这个声音。
 
 ![w52-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w52-collage.jpg)
@@ -85,7 +88,7 @@ categories: ['Life']
 * 圣诞前两天，很应景地下了一场大雪，太阳放肆地明媚了两天，就又缩到云雾里，继续让雨一直下。
 * 周末看到明远的公众号推荐温哥华周边的徒步，我们带着 Nikki 去了 [Buntzen Park](https://goo.gl/maps/drZiwHEVqDc5Suhk7)。现在出门散步，最后都很自然地变成去各种狗公园打卡。这里有一片狗狗海滩，Nikki 一进来就撒腿奔向水面，不管刮着多大风雨，冷暖不自知，玩就对了。
 * 这周陆续看完了[枪炮、病菌与钢铁](https://book.douban.com/subject/1813841/)，[The Almanack of Naval Ravikant](https://book.douban.com/subject/35219712/)，[没有一条道路是重复的](https://book.douban.com/subject/20397289/)，[Stranger Things Season 1](https://movie.douban.com/subject/26359270/)。我今年已经中了 Naval 的毒，他的各种采访已经听过很多遍，这回整理成书依然惊叹他的各种归纳与整理。
-* 周四的 date night 又去吃了半山烧烤，不得不说这家的牛肉面让我们记忆犹新；周六的 movie night 看了[特工](https://movie.douban.com/subject/26683421/)。
+* 周四的 #date-night 又去吃了半山烧烤，不得不说这家的牛肉面让我们记忆犹新；周六的 #movie-night 看了[特工](https://movie.douban.com/subject/26683421/)。
 
 ![w51-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w51-collage.jpg)
 
@@ -93,7 +96,7 @@ categories: ['Life']
 
 * 圣诞假期前的最后一周，每天都在加班加点的工作。弄了三个礼拜的项目，终于在周四晚上全部跑通，周五给大家做了 demo，非常完美。
 * 各种家具陆陆续续到了，家里堆的满满当当，每天慢慢弄一点，先把办公室弄好，终于不用在临时的餐桌和硬板凳上工作了。
-* 周四的 date night 去吃了 [Green Leaf Cafe](https://goo.gl/maps/BZvwbUjU8SBSbz346)，这家的炙寿司超级赞；周六的 movie night 和喜福看了 [The Gentlemen](https://movie.douban.com/subject/30211998/)，熟悉的盖里奇，把节奏和幽默发挥的更加纯熟，科林法瑞尔笑死我。
+* 周四的 #date-night 去吃了 [Green Leaf Cafe](https://goo.gl/maps/BZvwbUjU8SBSbz346)，这家的炙寿司超级赞；周六的 #movie-night 和喜福看了 [The Gentlemen](https://movie.douban.com/subject/30211998/)，熟悉的盖里奇，把节奏和幽默发挥的更加纯熟，科林法瑞尔笑死我。
 * 周中晚上休息， 慢慢把[万物·文明](https://book.douban.com/subject/27081128/)这本图册翻完了，作者用各种漫画插画的方式讲述了史前和古代的文明历程。很好地弥补了我对这段历史的空白和无知。我很喜欢结尾作者引用社会生物学家 Edward O. Wilson 的这段话，
 
 > 我们今天拥有的技术手段可以说已经接近神力，而我们的社会体制还滞留在中世纪，我们的情感更是自石器时代开始就没有任何进步。我们只能学会在这样的现实里过活。
@@ -107,14 +110,14 @@ categories: ['Life']
 * 这周最开心的一天当属我文欧冠小组赛最后一轮3:0巴萨。一年年的陪伴，看着球队人员变动，状态起伏，只为等那么几场好球。并不一定要战胜强大的对手或是赢得关键的比赛， 真心期待的是变化，哪怕是再小不过的进步。这场踢的没有足够好，但是有进步。希望不会是最后一场梅罗大战。
 * 今冬第一次滑雪，最好的体验是一个人在缆车上度过了黄昏，天色渐暗，一摸粉红逐渐变成深橙色，再到黑夜来临，星光满天。中间有一刹那我突然在眼前不远看到了北斗七星，非常明亮，而且不需要抬头，只须转头就在那里。俯瞰城市的景色也很棒，Grouse Mountain 有 1200 米，隐约看到城市华灯初上，一部分明亮一部分笼罩在云雾之中。我猜下面的人看到的是乌云，而我的视野却是云层顶端，一团团白色巨大的云朵。
 * 上周我在翻刘瑜的散文集，读到一篇她为[美丽新世界](https://book.douban.com/subject/25838937/)写的[序](https://book.douban.com/review/3095110/)，我瞬间被吸引了。赶紧找来读，发现比我想象还要夸张。各种匪夷所思的设定，乍看惊人但是都有迹可循，从当代的技术和约定俗成延伸开去，无限放大，带着读者穿越时间回看现在。我想本质上赫胥黎在说的是伦理和政治，关于生育的权利，关于幸福的定义，关于群体和个人的冲突。再仔细想想，还有一份熟悉的惊讶来自于这本书写于 1932 年？！所以抛开科技和信息的爆炸，本质上我们在进步吗？
-* 周四的 date night 去吃了[鸿羊轩](https://goo.gl/maps/HBHAGybvcmGE3BLj7)；周六的 movie night 看了[无声婚礼](https://movie.douban.com/subject/3419943/)，是个很不错的寓言故事，关于前苏联的黑色幽默，但它只简单抛出来问题，我更希望故事能继续延续去讨论一种可能。
+* 周四的 #date-night 去吃了[鸿羊轩](https://goo.gl/maps/HBHAGybvcmGE3BLj7)；周六的 #movie-night 看了[无声婚礼](https://movie.douban.com/subject/3419943/)，是个很不错的寓言故事，关于前苏联的黑色幽默，但它只简单抛出来问题，我更希望故事能继续延续去讨论一种可能。
 
 ![w49-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w49-collage.jpg)
 
 ## W48 (11/30 - 12/06)
 
 * 这周没怎么工作，三天hackday，周五请假忙活各种琐事：给车后边装了自行车架，想着到远方骑车；买了一整套的滑雪装备，准备下周开始走起。
-* 周四的 date night 去吃了[半山烧烤](https://goo.gl/maps/tdYZgpxTDTzj5Sw97)，味道不错，环境好的不像吃烧烤的地方，可能也是因为冷清的缘故 :man_facepalming:。​周六的 movien night 重看了我最喜欢的一部 Wes Anderson: [Royal Tenenbaum](https://movie.douban.com/subject/1306031/)。
+* 周四的 #date-night 去吃了[半山烧烤](https://goo.gl/maps/tdYZgpxTDTzj5Sw97)，味道不错，环境好的不像吃烧烤的地方，可能也是因为冷清的缘故 :man_facepalming:。​周六的 movien night 重看了我最喜欢的一部 Wes Anderson: [Royal Tenenbaum](https://movie.douban.com/subject/1306031/)。
 * 这周读了两本非常好看的书：
   * [10% Happier](https://book.douban.com/subject/25847219/)，有点作者半自传的性质，但是主线很明确，关于冥想和 Mindfulness （这个词到底要怎么对应到中文呢？我的理解是”觉察“，看到有人翻译成“正念“，但是加了”正“字不正是在做主观的判断吗？）。Mindfulness 是目的，冥想是方法。核心思想是刻意地通过冥想这种练习，不加判断地观察我们的想法，而不是无时无刻又不自知地让想法在脑中恣意发散。那些下意识的冲动与偏见，对过去的纠结与不安，对未来的担忧与焦虑都来源于此。我比较喜欢作者始终抱着怀疑的态度，道出了许多我自己心中的问题。最核心的当属怎么处理”不争“，人不该有野心吗？在乎的事情也要放任自流吗？作者给出了个简单的答案，追寻过程而不是结果，基本和我在别处看到的一致（pick up your battle）。但我还不确定，先把冥想实践起来。
   * [Writing Down the Bones](https://book.douban.com/subject/2263709/) 是一本关于写作的小书，作者提倡的方法让我大开眼界：规定时间练习写作，时间开始，把脑子里所有的想法一股脑地倾泻到纸面，不要在意标点、错字、修辞、甚至逻辑，只管去写，去捕捉和描述此时此刻脑子里出现的一切，直到时间终止。非常巧合，这也是一种冥想的方法，用写作去冥想。看过之后，我每天有尝试去写五分钟，最明显的感受是：写作在帮我感知世界。
@@ -125,7 +128,7 @@ categories: ['Life']
 ## W47 (11/23 - 11/29)
 
 * 上周末和 Nikki 堵气，可能一直下雨连着几天没带她出门疯跑，所以各种不听话。到了周一我还继续郁闷，下午出门去骑车散心，回来后终于缓和了一些。跟狗狗生气真是件愚蠢的事，尤其甭管你有多气，她就岿然不动。最终只能我自己心理建设，以理服己。第二天冒着雨陪她去跑了一个半小时，然后终于看到她躺在地上疲惫又平静的笑。
-* 周四的 date night 去吃了 [ARISU Korean BBQ](https://goo.gl/maps/1cMHa1An1hXD9DC29)；周六的 movie night 看了[末代皇帝](https://movie.douban.com/subject/1293172/)，我唏嘘又难过。一个人的渺小，无关乎身份，在历史的洪流中晃荡裹挟，即使自知也无奈。有兴盛就有其衰竭，到头来你想从中寻找答案，很简单，“潮起潮落，是什么都不为”。
+* 周四的 #date-night 去吃了 [ARISU Korean BBQ](https://goo.gl/maps/1cMHa1An1hXD9DC29)；周六的 #movie-night 看了[末代皇帝](https://movie.douban.com/subject/1293172/)，我唏嘘又难过。一个人的渺小，无关乎身份，在历史的洪流中晃荡裹挟，即使自知也无奈。有兴盛就有其衰竭，到头来你想从中寻找答案，很简单，“潮起潮落，是什么都不为”。
 * 最近在重听 Pink Floyd 的 [The Division Bell](https://genius.com/albums/Pink-floyd/The-division-bell)，听的入迷，带着耳机就能飘进另外一个世界。去仔细看了当时创作的背景和歌词，表面看是怨恨和追问，关于 Waters 的离开，但是显然他们成功营造了一种超脱疏离的氛围，好像在宇宙中追寻时间和答案。
 * 11.25 马拉多纳去世，这动荡不安的一年。
 
@@ -136,7 +139,7 @@ categories: ['Life']
 * 工作上，也许是整个下半年最开心的一周了。不断思考、实验、讨论，最终找到解决方案，和同事一起分享喜悦。
 * 这周读完了两本书：[The Magic of Thinking Big](https://book.douban.com/subject/1944612/) 是本有年头的鸡汤书，算是有些帮助，哪怕是盲目的自信呢；[Six Easy Pieces](https://book.douban.com/subject/6424727/) 来自费曼的物理讲义，选取最基础的六个篇章回顾物理学的脉络。上学时候的知识最终都成了一座座记忆的孤岛，这本书为我重新搭起了桥梁，用一个最基本的角度理解看待这个世界。
 * 周末天气放晴，骑车去 Mundy Park 在树林里穿梭，跟路上的行人微笑，看各式各样的狗狗开心的漫步。
-* 周四的 date night 去吃了[渔人](https://goo.gl/maps/F5T2Xqb237kHoWyu6)烤鱼；周六的 movie night 看了 [The Squid and the Whale](https://movie.douban.com/subject/1437377/)，轻松又有趣，很像另一个版本的 Woody Allen，当知识分子走近生活的琐碎，一样的局促不安。
+* 周四的 #date-night 去吃了[渔人](https://goo.gl/maps/F5T2Xqb237kHoWyu6)烤鱼；周六的 #movie-night 看了 [The Squid and the Whale](https://movie.douban.com/subject/1437377/)，轻松又有趣，很像另一个版本的 Woody Allen，当知识分子走近生活的琐碎，一样的局促不安。
 
 ![w46-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w46-collage.jpg)
 
@@ -156,7 +159,7 @@ categories: ['Life']
 
 * 最近被占东安利了 espresso，买了各种设备开始化学实验。暂时只能说有迹可循，但是一天稳定两杯，失眠是当仁不让来敲门了 :slightly_smiling_face:
 
-* 周四的 date night 去吃了家附近的 [Austin Fish & Chips](https://goo.gl/maps/4SUm1JjinRGznMzm7)，周六的 movie night 喜福选了[南方车站的聚会](https://movie.douban.com/subject/27668250/)，作为白日焰火的影迷，我很喜欢其中的美学倾向，但是桂纶镁？胡歌？:neutral_face:
+* 周四的 #date-night 去吃了家附近的 [Austin Fish & Chips](https://goo.gl/maps/4SUm1JjinRGznMzm7)，周六的 #movie-night 喜福选了[南方车站的聚会](https://movie.douban.com/subject/27668250/)，作为白日焰火的影迷，我很喜欢其中的美学倾向，但是桂纶镁？胡歌？:neutral_face:
 
 * Victor 很早向我推荐了 [Originals](https://book.douban.com/subject/26708996/)，之前看了一章觉着太文邹，周末捡起来发现非常有趣。社科类的读本写好了是会比小说好看的。
 
@@ -167,7 +170,7 @@ categories: ['Life']
 
 * 周一和喜福一起请假，趁着好天气去 Whistler 秋游。最开心的要属 Nikki 了，在 Rainbow Park 找到了自己狗生的天堂：遥望远处的落基山脉，近处是 Alta Lake 平静的湖面。最特别的是一个为狗狗准备的专属码头。Nikki 一次次跳到湖中奋力划水，天气凉也抵不过内心火热。
 * 上周认真做的计划，这周有很好的执行。每天的工作都很充实，最重要的是相信自己走在正确的轨道上。
-* 和喜福的每月计划，因为疫情和今年的慌乱中断了大半年，这周重新捡起来。周四恢复了 date night，去尝试了一家很棒的泰国菜（[Ma Now](https://goo.gl/maps/pFavist2Ae8cVgp59)）；周六恢复了 movie night，一起看 [Uncut Gems](https://movie.douban.com/subject/27045860/)；自己恢复锻炼再次尝试骑行，投资了一辆单车，骑了一次才发现我也生活在山城：谷歌地图 40 分钟的路线，我花了 80 分钟，中间连续爬坡无奈只能交出黄色领骑衫，下来推车。
+* 和喜福的每月计划，因为疫情和今年的慌乱中断了大半年，这周重新捡起来。周四恢复了 #date-night，去尝试了一家很棒的泰国菜（[Ma Now](https://goo.gl/maps/pFavist2Ae8cVgp59)）；周六恢复了 #movie-night，一起看 [Uncut Gems](https://movie.douban.com/subject/27045860/)；自己恢复锻炼再次尝试骑行，投资了一辆单车，骑了一次才发现我也生活在山城：谷歌地图 40 分钟的路线，我花了 80 分钟，中间连续爬坡无奈只能交出黄色领骑衫，下来推车。
 * 周末去买齐了各种工具，把后院被 Nikki 咬坏的栅栏修理好，割草施肥，然后去前院整理落叶，再割草施肥。这个秋天的工作完美结束。
 
 ![w44-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w44-collage.jpg)
@@ -538,7 +541,7 @@ and WebAssembly. It's really fun.
 * Following up a weird HTTP connection issue in the whole week. I enjoy the excitement and progress everyday. I'm almost there :crossed_fingers:
 * 最近的睡眠非常好。有两天尝试了不喝咖啡，但是午饭过后困意来袭，还是有点难过。顺便也想了下要怎样戒烟。其实我对自己很有信心，只是时间的问题，还没找到，也去寻找有效的替代品。
 * 这一周的文明玩的飞起，每天晚上一个半小时，周末终于艰难地赢了一局电脑 :v:
-* 周四的 date night 去吃了 Bao，周六的 movie night 看了 Martin Scorecese 的 [After hours](https://movie.douban.com/subject/1303531/)
+* 周四的 #date-night 去吃了 Bao，周六的 #movie-night 看了 Martin Scorecese 的 [After hours](https://movie.douban.com/subject/1303531/)
 * 周六享受了这个冬天最惬意的一次滑雪。蓝天白云，大太阳。没有寒风，只有在缆车上的宁静和下坡时的速度。
 * 这周看完了 Richard Bach 的 [Illusions](https://www.goodreads.com/book/show/29946.Illusions?from_search=true&qid=QPiOBMxjKQ&rank=2)。非常好看的一本小书，幽默哲理版的禅师问道。想想最近看的道德经，The Power of Now, The Book of Life (Jiddu Krishnamurti)，总觉着有条隐形的线在牵连，但是我又理不清头绪，继续读下去就好。
 
@@ -547,7 +550,7 @@ and WebAssembly. It's really fun.
 ## W4 (01/27 - 02/02)
 
 * A typical great week in work. It starts by following a weird issue, falls into a rabbit hole and somehow gets resolved at the end of the week :)
-* 和喜福很好地贯彻了九点关电视的规矩，正如我们所预料，间接推动了我们早早上床。这一周的睡眠非常棒！周四的 date night 在 Loloan Lobby，周六的 movie night 看了祈祷落寞时，继续保持✊
+* 和喜福很好地贯彻了九点关电视的规矩，正如我们所预料，间接推动了我们早早上床。这一周的睡眠非常棒！周四的 #date-night 在 Loloan Lobby，周六的 #movie-night 看了祈祷落寞时，继续保持✊
 * 周末去滑雪，看球看小徳（17冠后无比期待啊），玩文明。喜福 carry 了各种吃吃吃吃，火锅、部队锅、排骨、酥肉，还能说什么，优秀！
 
 ![w4-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2020/w4-collage.jpg)
