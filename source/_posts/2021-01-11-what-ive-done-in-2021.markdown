@@ -8,6 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W4 (01/25 - 01/31)
+
+* 工作很顺利，做了一个新的 msgpack prototype，给大家展示都觉着没什么问题，下面就是一点点完善最终实现出来。
+* 最近在联系 PWL 做 financial planning/investment，周末终于把去年的花销统计好，和喜福简单做了些计划。
+* 周末和小哥、小鸡和大偏连战了三天 OpenRA，Europe 打得不亦乐乎。
+* 周四的 #date-night 和喜福去吃了[京门涮肉](https://goo.gl/maps/kAAS4y976qiKR9BV9)，非常赞；周六的 #movie-night 一起看了 [Heathers](https://movie.douban.com/subject/1293821/)，本来以为是轻松的青春电影，但是慢慢发现所有人都很怪，逐渐就拐成了黑色 cult 片。
+* 这周的阅读是[历史原来可以这样学（三、四）](https://book.douban.com/subject/34855123/)，还是林新浩的科普读物，对我这种历史盲人来讲看到了光明与愉悦。
+
+![w4-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w4-collage.jpg)
+
 ## W3 (01/18 - 01/24)
 
 * 做了两个礼拜的项目，终于在这周可以收尾。最近在纠结是应该追求更自由的工作方式更有纪律。自由的好处是，看天吃饭，用“想”字来做决定，坏处也是显而易见，到了晚上还在问自己是否完成了工作；而保持纪律呢，会有困顿着工作的时候，但也会有更稳定的产出，尤其固定时间下班就不需要再去纠结。我个人的经验经常摇摆，目前来看最好的做法是尊重纪律，适当给予自己灵活。另外，这周花了好多精力在和组长对线，关于加薪和更新股票，希望下周会有好结果。
