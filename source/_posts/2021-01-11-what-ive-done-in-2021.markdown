@@ -8,6 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W14 (04/05 - 04/11)
+
+* 开始两天很难专注工作，没有什么大的动力和压力，周三终于调整过来。我最不想做事的时候，是什么都还没做的时候，而一旦开始专注，哪怕只有半天，就会带来惯性。所以这就是“Just do it"的意义吗？
+* 周中给爸妈订了五月底的机票，生活多了很多盼头。周末喜福的朋友来家里做客，疫情原因不可以进屋，所以在阳台和后院一起 BBQ、玩牌、享受阳光，非常惬意。
+* 最近和大家 StarCraft2 练习的很不错，有些地图可以稳定地虐四个专家了。周六晚上开始 2v2 操作，和人斗其乐无穷啊。
+* 周四的 #date-night 因为餐馆禁令只能中断；周六的 #movie-night 看了波兰斯基的[不道德的审判](https://movie.douban.com/subject/1301601/)，我和喜福都想到了[杀戮](https://movie.douban.com/subject/4913185/)，戏剧化的表现方式，全靠台词和表演去营造风味和张力。
+* 这周的阅读是[Golden Retriever Training Vol. 2: Dog Training for your grown-up Golden Retriever](https://www.goodreads.com/book/show/49012971-golden-retriever-training-vol-2)，为了更好地训练 Nikki；[半小时漫画中国史](https://book.douban.com/subject/27003014/)和[有趣得让人睡不着的地理](https://book.douban.com/subject/34437274/) 为了更好的睡眠 #weekly-read
+
+![w14-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w14-collage.jpg)
+
 ## W13 (03/29 - 04/04)
 
 * 这周的简报：天气逐渐好转，阳台打理好弄了两次 BBQ；我们家两位妈妈因缘巧合同一天阴历生日，周三大家一起遥祝；自从买了婴儿床，赵四就鸠占鹊巢，每天都霸在里边，睡觉、思索、露肚皮；周四早上惯例带 Nikki 散步，在小巷碰到邻居站在阳台观望搭话，他说自己也有条金毛，是陪了他十八年的 bro，走下楼跟 Nikki 打招呼，临走从冰箱里塞了根牛大骨给我们，Nikki 这一天都没消停，啃个不停。
