@@ -8,13 +8,23 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W16 (04/19 - 04/25)
+
+* 这周的工作不错，很快地完成了既定任务。这两个月在尝试把早上的咖啡挪到午饭后，下午的效率明显好了很多。每次头昏脑胀，都会被出门散步缓解。
+* 周末去试驾了 2021 Sienna，回来做些功课然后交了订金。一个好的 family man 要从开面包车开始。
+* 断断续续想看又克制地带喜福看完了[Drive To Survive Season 3](https://movie.douban.com/subject/35004928/)，上个赛季就在期待 Pierre Gasly 的故事，这回看到了跟更多幕后，还是非常感动。除此，Sergio Perez 的故事作为压轴也是异常精彩。新赛季对他们无比期待。
+* 周四的 #date-night 餐馆禁令中断；周六的 #movie-night 看了[徒手攀岩](https://movie.douban.com/subject/30167509/)，心脏病都要出来了，很受鼓舞，看到另一种存在，用谨慎的无畏去追求卓越与自由。
+* 这周的阅读是第二本双雪涛，[猎人](https://book.douban.com/subject/33455193/)，说不上非常喜欢，有那么几篇会意犹未尽。#weekly-read
+
+![w16-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w16-collage.jpg)
+
 ## W15 (04/12 - 04/18)
 
 * 夏天来了，一连两个礼拜大晴天，气温也骤升。周三面对炎热的天气，我不得不脱掉秋裤，换上背心裤衩迎接天意。每天中午都和喜福带 Nikki 去公园散步，绿意盎然，好像忘记了之前几个月连绵不断的阴雨。周末开始打理院子，翻出去年的笔记，继续上午看视频学习，去杂草，补种子，浇水，施肥，预计要搞个一个月。
 * 周中看了欧冠四分之一拜仁对巴黎的比赛。从第一分钟到最后一分钟都在急速运转，高手过招，甚是过瘾。今年对看球的热情被我文打磨殆尽，终于可以淋漓畅快一把，不紧张、不兴奋，但是由衷地赞叹比赛的精彩。
 * 周末和占东、小鸡、伍神把 StarCraft2 打到了新高度，时间跟飞一样，literally 没有喘息的机会。当然几乎一直在挣扎一直在被虐。
 * 周四的 #date-night 餐馆禁令中断；周六的 #movie-night 看了[孤味](https://movie.douban.com/subject/34805873/)，对这种亲情片感受不大。
-* 这周的阅读是李诞的[冷场](https://book.douban.com/subject/30365801/)，本来是想找他的新书，但是没有渠道只好翻了本之前的短篇集。他在天马行空地打趣，偶尔有严肃的时候，又没那么严肃。有点纠结。但是你如果认真去看呢，他又会佛系地告诉你别认真嘛，不值得。
+* 这周的阅读是李诞的[冷场](https://book.douban.com/subject/30365801/)，本来是想找他的新书，但是没有渠道只好翻了本之前的短篇集。他在天马行空地打趣，偶尔有严肃的时候，又没那么严肃。有点纠结。但是你如果认真去看呢，他又会佛系地告诉你别认真嘛，不值得。#weekly-read
 
 ![w15-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w15-collage.jpg)
 
