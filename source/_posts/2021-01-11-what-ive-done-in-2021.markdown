@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W17 (04/26 - 05/02)
+
+* 这周的工作很认真，完成了很多活，为下周的休假做好准备。预计五月份休息一周，六月份休息一周，七月份两周然后开始亲子假。
+* 周末带 Nikki 去了 Hayward Lake，在湖边奔跑了两个半小时，没停歇，身边的狗狗换了一批又一批，只剩下欢乐的她。
+* 最近的游戏打的有点略多，周中也是经常玩到半夜，看书的时间骤减，这周的阅读任务没有完成。
+* 周四的 #date-night 餐馆禁令中断；周六的 #movie-night 看了[人生果实](https://movie.douban.com/subject/26874505/)，讲述老年爱情故事的纪录片，好喜欢里边的老奶奶，平和又积极。慈祥，是老年的美丽。
+
+![w17-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w17-collage.jpg)
+
 ## W16 (04/19 - 04/25)
 
 * 这周的工作不错，很快地完成了既定任务。这两个月在尝试把早上的咖啡挪到午饭后，下午的效率明显好了很多。每次头昏脑胀，都会被出门散步缓解。
