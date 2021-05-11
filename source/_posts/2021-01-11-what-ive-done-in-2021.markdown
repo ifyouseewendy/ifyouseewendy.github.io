@@ -8,11 +8,19 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W18 (05/03 - 05/09)
+
+* 这周休假，配合国内五一，休了个九天小长假。每天的基本操作是和喜福带 Nikki 去各种狗公园，方圆二十公里的基本都走过了；下午回来大吃一顿，我们潜心研究了羊肉串的做法，第一次尝试后做了些改良，第二次就近乎完美了；晚上打游戏到深夜。这样的日子清净，悠闲，怎么能过的够。
+* 周四的 #date-night 餐馆禁令中断；周六的 #movie-night 响应母亲节，看了[你好，李焕英](https://movie.douban.com/subject/34841067/)，有组织有预谋地先戳笑点再戳泪点，可惜抓不到我。导演对母亲的真情怀念毋庸置疑，但是表现上和初中命题作文没有本质区别。
+* 这周的阅读是 [Talking to Strangers](https://book.douban.com/subject/32777812/)，马尔科姆·格拉德威尔的新书，因为他很赶的上新新媒体，自己也一直在做播客，所以新书在 Audible 是自读的，也有群众演员配合，整体效果很好。但是内容上没有太多新意，用了几个有趣的社会调查确认了一些也许大家不那么意外的概念。#weekly-read
+
+![w18-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w18-collage.jpg)
+
 ## W17 (04/26 - 05/02)
 
 * 这周的工作很认真，完成了很多活，为下周的休假做好准备。预计五月份休息一周，六月份休息一周，七月份两周然后开始亲子假。
 * 周末带 Nikki 去了 Hayward Lake，在湖边奔跑了两个半小时，没停歇，身边的狗狗换了一批又一批，只剩下欢乐的她。
-* 最近的游戏打的有点略多，周中也是经常玩到半夜，看书的时间骤减，这周的阅读任务没有完成。
+* 最近的游戏打的有点略多，周中也是经常玩到半夜，看书的时间骤减，这周的阅读任务没有完成。#weekly-read
 * 周四的 #date-night 餐馆禁令中断；周六的 #movie-night 看了[人生果实](https://movie.douban.com/subject/26874505/)，讲述老年爱情故事的纪录片，好喜欢里边的老奶奶，平和又积极。慈祥，是老年的美丽。
 
 ![w17-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w17-collage.jpg)
