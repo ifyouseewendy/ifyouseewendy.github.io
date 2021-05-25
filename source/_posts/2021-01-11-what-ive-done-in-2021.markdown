@@ -8,6 +8,16 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W20 (05/17 - 05/23)
+
+* 天气好了，每天中午送喜福和 Nikki 去公园遛弯，我去骑车四处瞎逛。骑车是件惬意的事儿，尤其漫无目的，攀爬俯冲，伴着微风享受美景。
+* 这周看了很多球赛：我文赢得意大利杯，英超和意甲大结局，跟大舅边聊天边看球，非常开心。
+* 继续每天晚上练习 StarCraft 2，周末和大家连线。我没有像以前觉着打游戏是在“浪费时间”，而是尽可能享受和朋友玩耍，以及自己不断进步的快乐。
+* 周四的 #date-night 餐馆禁令中断；周六的 #movie-night 继续哈内克，看了 [Funny Games](https://movie.douban.com/subject/1892527/)，没想到这次导演在明目张胆玩观众，这股病态的劲头让我想到发条橙。
+* 这周的阅读是 [Shoe Dog](https://book.douban.com/subject/26738885/)，Nike 创始人 Phil Knight 的回忆录。这本书断断续续在 Audible 上听完，故事性很强，脑补出一个真实的六七十年代的创业故事。说实话我没有得到有用的“经验”，但是阅读本身是愉悦的。#weekly-read
+
+![w20-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w20-collage.jpg)
+
 ## W19 (05/10 - 05/16)
 
 * 这周很不错，工作顺利，生活也很美好。还有两个月 Annie 就要来了，留给我工作和打游戏的时间不多啦。
