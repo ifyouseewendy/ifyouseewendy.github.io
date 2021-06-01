@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W21 (05/24 - 05/30)
+
+* 这周的大新闻是爸妈到来，快两年的分离，终于熬到了头。一切顺利，酒店隔离一晚，顺利拿到核酸检测报告，然后回家隔离。周末一起烧烤，打扑克，吃吃喝喝，享受欢聚的时光。
+* 一年一度的欧冠决赛，看的心不在焉，没想到切尔西命那么硬，中途换帅成了常规战术，这样的阵容能走到最后，怎么说呢，羡慕。
+* 周四的 #date-night 餐馆禁令中断；周六的 #movie-night 和喜福看了[第十一回](https://movie.douban.com/subject/30279836/)，欣赏无能，拍的过于话剧风，每个人都不好好说话，高于生活但是完全飘在了空中，距离感太强烈。
+* 这周的阅读是第一本伊藤润二，[漩涡](https://book.douban.com/subject/1440468/)。披着恐怖的外衣，探索着想象力的边界。画风很超脱，夸张的背后是每个人的心魔。
+
+![w21-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w21-collage.jpg)
+
 ## W20 (05/17 - 05/23)
 
 * 天气好了，每天中午送喜福和 Nikki 去公园遛弯，我去骑车四处瞎逛。骑车是件惬意的事儿，尤其漫无目的，攀爬俯冲，伴着微风享受美景。
