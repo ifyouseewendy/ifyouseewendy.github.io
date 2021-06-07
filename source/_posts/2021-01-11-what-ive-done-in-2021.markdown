@@ -8,12 +8,21 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W22 (05/31 - 06/06)
+
+* 认真工作，不能让自己的心过于涣散，跟老板聊天也表明自己的态度，现在的生活非常开心，工作上没有太大野心，只是安心完成工作。
+* 爸妈还不能出门，在家里忙这忙那，轮番给我们秀厨艺，喜福也偶尔参与比拼，我负责专心品尝，拍手称赞。周末终于等来了我的老北京铜锅，在阴雨天一起涮羊肉，美哉。
+* 周四的 #date-night 终于恢复啦，去吃了重庆小面，但是味道一般般，从老板的东北口音就可见一斑。周的 #movie-night 加上老妈，一起看了[鬼子来了](https://movie.douban.com/subject/1291858/)。上次看还是大学，这次更加玩味，人物的对白和节奏非常姜文，幽默与讽刺也饶有深度。
+* 这周的阅读继续伊藤润二，看了[鱼](https://book.douban.com/subject/1442678/)和 [Fragments of Horror](https://book.douban.com/subject/26365779/)。还是上周的漩涡比较上头，我脑子里还时常回想各种🌀。#weekly-read
+
+![w22-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w22-collage.jpg)
+
 ## W21 (05/24 - 05/30)
 
 * 这周的大新闻是爸妈到来，快两年的分离，终于熬到了头。一切顺利，酒店隔离一晚，顺利拿到核酸检测报告，然后回家隔离。周末一起烧烤，打扑克，吃吃喝喝，享受欢聚的时光。
 * 一年一度的欧冠决赛，看的心不在焉，没想到切尔西命那么硬，中途换帅成了常规战术，这样的阵容能走到最后，怎么说呢，羡慕。
 * 周四的 #date-night 餐馆禁令中断；周六的 #movie-night 和喜福看了[第十一回](https://movie.douban.com/subject/30279836/)，欣赏无能，拍的过于话剧风，每个人都不好好说话，高于生活但是完全飘在了空中，距离感太强烈。
-* 这周的阅读是第一本伊藤润二，[漩涡](https://book.douban.com/subject/1440468/)。披着恐怖的外衣，探索着想象力的边界。画风很超脱，夸张的背后是每个人的心魔。
+* 这周的阅读是第一本伊藤润二，[漩涡](https://book.douban.com/subject/1440468/)。披着恐怖的外衣，探索着想象力的边界。画风很超脱，夸张的背后是每个人的心魔。#weekly-read
 
 ![w21-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w21-collage.jpg)
 
