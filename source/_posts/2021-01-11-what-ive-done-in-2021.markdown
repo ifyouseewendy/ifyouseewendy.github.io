@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W24 (06/14 - 06/20)
+
+* 这周休假，带爸妈去逛街公园。新买的小船在 Buntzen Lake 下水，飘荡在湖面上感受很不错，凉爽又安静。周末朋友来家里玩耍，妈妈秀了一桌东北菜，夏天大家都忙着四处玩耍，估计是生产前最后一次小聚。
+* 周四的 #date-night 带爸妈尝试了 Daon 小章鱼饭；周六的 #movie-night 响应父亲节主题，一起看了[困在时间里的父亲](https://movie.douban.com/subject/33432655/)。我的感受不大，也许是距离尚远，也许是不想走进那种状况。
+* 这周的阅读是第一本爱丽丝·门罗[《逃离》](https://book.douban.com/subject/3831788/)。读的时候磕磕绊绊，可能是翻译的问题，我很难一口气读完，只能每隔一段时间重新捡起。当我意识到有时候脑子里会想起书中的故事时，我发现都蛮让人回味。尤其书中出现的地方，我多数都有去过，空间上拉近了很多距离，好像就发生在身边。#weekly-read
+
+![w24-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w24-collage.jpg)
+
 ## W23 (06/07 - 06/13)
 
 * 慢慢适应了有爸妈的生活，每天各种好吃的轮番轰炸。这周他们隔离结束，一起去逛了White Rock, Golden Ear, Stanley Park。下周我休假，继续四处闲逛。
