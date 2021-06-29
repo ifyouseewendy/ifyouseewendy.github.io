@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W25 (06/21 - 06/27)
+
+* 夏天来了，这周的天气是灾难性的热，BC 的温度达到了历史最高，生活在40度的室内，没有空调，想死的心都有。还好有精彩的欧洲杯相伴。我意还算顺利，加时战胜比利时，暂时还没有大冷，无比期待下周与比利时的四分之一决赛。
+* 这周和喜福结婚三周年，按照惯例，继续套娃拍照，只是这次有爸妈见证，晚上一起聚餐 happy。Nikki 也过了两周岁的生日，带她去吃了冰淇淋庆祝，祝你永远作一只疯疯癫癫的傻狗。
+* 周四的 #date-night 带喜福和爸妈去了 [Hanayuki Sushi](https://goo.gl/maps/MdLrEhwAaAa7za1o6)，非常不错，爸妈也开始对日料感兴趣；周六的 #movie-night 一起看了韩国电影[铁雨](https://movie.douban.com/subject/26863778/)，虽然已经知道是朝韩问题的商业片，但是过程是爽快又美好的。
+* 这周没有阅读 😔 #weekly-read
+
+![w25-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w25-collage.jpg)
+
 ## W24 (06/14 - 06/20)
 
 * 这周休假，带爸妈去逛街公园。新买的小船在 Buntzen Lake 下水，飘荡在湖面上感受很不错，凉爽又安静。周末朋友来家里玩耍，妈妈秀了一桌东北菜，夏天大家都忙着四处玩耍，估计是生产前最后一次小聚。
