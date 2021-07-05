@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W26 (06/28 - 07/04)
+
+* 继续看球看的飞起。西班牙克罗地亚和瑞士法国的两场八分之一决赛会长久留在人们心中，相同的剧本常规时间3:3，在加时赛走入了不同方向，精彩。最最开心的是四分之一意大利2:1比利时，印象中就没看过这样的意大利，酣畅淋漓。论一名好教练的重要性。
+* 周二是爸爸生日，和喜福准备礼物，做晚餐，也包括一个给”安妮爷爷“的生日蛋糕。周末一起去 Buntzen Lake 划船，看 Nikki 抢别狗家的小球树枝，晚上 BBQ，四个人斗地主。
+* 周四的 #date-night 去吃了[颐东](https://goo.gl/maps/3ifBHsQxnU18gPZNA)广式餐厅，还像上次一样味道丰富，爸妈也觉着很特别。周六的 #movie-night 一起重温了[心迷宫](https://movie.douban.com/subject/25917973/)，不如几年前惊艳，但依旧精彩，这个名字就说明了一切。
+* 这周的阅读是[陪你慢慢长大](https://book.douban.com/subject/27593934/)，“写给孩子的信”合集。很高兴看到书中好多想法我都不赞同，那些响亮的名字也依旧受时代局限，感到不少安慰。
+
+![w26-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w26-collage.jpg)
+
 ## W25 (06/21 - 06/27)
 
 * 夏天来了，这周的天气是灾难性的热，BC 的温度达到了历史最高，生活在40度的室内，没有空调，想死的心都有。还好有精彩的欧洲杯相伴。我意还算顺利，加时战胜比利时，暂时还没有大冷，无比期待下周与比利时的四分之一决赛。
