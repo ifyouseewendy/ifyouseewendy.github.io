@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W29 (07/19 - 07/25)
+
+* 假期第一周，每天打游戏、遛狗、打扑克、看电影、看奥运。作息被全部打乱，忘记时间，忘记星期，享受最后的安宁时光。
+* 周中又去了 Whistler 的 Rainbow Lake，我们在湖边野餐，Nikki 在湖边不停歇玩了三个小时。这里是 Nikki 的天堂，有个小码头，Nikki 加速飞奔跳水游泳，开心的不行。
+* 周四的 #date-night 去了 Green Leaf，一起尝试了炙寿司大拼盘；周六的 #movie-night 带喜福重看了[刑房](https://movie.douban.com/subject/1482090/)两部，陪爸妈重看了[驴得水](https://movie.douban.com/subject/25921812/)。
+* 这周玩的太狠，没有读书😢
+
+![w29-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w29-collage.jpg)
+
 ## W28 (07/12 - 07/18)
 
 * 假期前最后一周工作，认真且珍惜最后的工作时光。周四和大家告别，明年一月见。周末和爸妈打扑克，和朋友继续星际2，打的飞起来。这游戏最快乐的地方在于无止尽的深入，可以看到自己不断进步。
