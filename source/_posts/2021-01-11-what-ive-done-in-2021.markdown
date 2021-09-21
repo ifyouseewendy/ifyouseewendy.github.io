@@ -8,6 +8,13 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W37 (09/13 - 09/19)
+
+* 这周的 highlight 是整理草坪，学习实践了全套的 overseeding，每天出去干两小时农活，疲惫身体，愉悦心情。
+* 看完了[讲给大家的中国历史04](https://book.douban.com/subject/30306994/)，现在用求知的心态读历史很有趣，脑子里浆糊似的时间和典故都一点点变清楚。晚上照顾孩子闲暇把[Suits](https://movie.douban.com/subject/26436601/)看到了第六季，这个剧已经很模式化了，两个人物聊天结束，一定要在临走前回头丢一句狠话。支撑我一直看下去的是看着看着主角变得让人费解嫌弃，各色配角都逐渐丰满而有趣。
+
+![w37-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w37-collage.jpg)
+
 ## W36 (09/06 - 09/12)
 
 * 又到了秋天，天空凉爽透亮。我的走出家门计划除了打球遛狗，现在多了一项用心打理草坪。我们家赵四三岁了，小奶猫变成了粘人的大猫，有了狗子和孩子后才发现赵四是最省事的宝宝。每天沉浸在自己的世界，去各个窗口放风，傍晚时分孤单，陪着我们看电视睡觉，早上起来上蹿下跳，不给吃的就一直喵喵大叫。有你真好呀。
