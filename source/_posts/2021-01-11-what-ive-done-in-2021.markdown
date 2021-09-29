@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W38 (09/20 - 09/27)
+
+* 爸妈的 Super VISA 有了进展，带他们去做各种体检；五月份订的 2021 Sienna 终于到货了，去提车然后全家出行，带着安妮和 Nikki 去公园玩耍。
+* 周四的 #date-night 和喜福去吃了久违的渔人，尝试了酸菜鱼，比较一般；周中和喜福看了[鱿鱼游戏](https://movie.douban.com/subject/34812928/)，旧瓶装新酒，制作精良但还是大逃杀的内核。
+* 这周的阅读是[讲给大家的中国历史05](https://book.douban.com/subject/30435244/)，杨照的书读起来很顺畅，有人说这个系列是微博体，每篇内容很短，但是我很喜欢作者的角度，讲历史讲解为思想史，不只是朝代年份的堆积，而更多思考人在特定的背景下做了什么选择。#weekly-read
+
+![w38-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w38-collage.jpg)
+
 ## W37 (09/13 - 09/19)
 
 * 这周的 highlight 是整理草坪，学习实践了全套的 overseeding，每天出去干两小时农活，疲惫身体，愉悦心情。
