@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W41 (10/11 - 10/17)
+
+* 这周的 highlight 是周二和爸爸带 Nikki 去爬山，高磊大神推荐的 trail，[Frosty Mountain Trail](https://www.alltrails.com/explore/trail/canada/british-columbia/frosty-mountain-trail?ref=result-card)。上下各8公里，爬升1.2公里。因为是周中，一路上几乎没有人，Nikki 放肆奔跑，忙前忙后，全程无休。山顶有 Alpine Larch，是种落叶松，所以秋季会变成金黄色，大家叫它金松。一路上从泥泞到飘雪，真的是走进了冬天。五小时下来，我和爸几乎没有放慢速度，但也都感到了疲惫，只有 Nikki 还活蹦乱跳，到山底的湖水中游泳。
+* 小安妮变得越来越爱笑，大小眼提起一边嘴角的媚笑，眯起眼的哈哈大笑，闭着眼也会嘴角上扬，让全家人融化。
+* 周四的 #date-night 和喜福去了家附近的 Rio 巴西烤肉，肉有点烤的太干，但是出于肉食动物的本能，我俩吃的很过瘾。
+* 这周的阅读是[微积分的力量](https://book.douban.com/subject/35292688/)，很有趣的体验，作者梳理了微积分的发展历程，并且给出很多实际应用的案例。最核心的一点，微积分是一种思维方式，关于整体和部分，关于无穷和极限。#weekly-read
+
+![w41-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w41-collage.jpg)
+
 ## W40 (10/04 - 10/10)
 
 * 安妮乖宝宝好久没有在后半夜闹人了，很稳定的睡三个小时，醒来吃好就继续睡去。我的夜班生活可以告一段落，交给喜福陪着安妮睡，晚上不再专门泵奶而是直接喂给安妮。
