@@ -8,6 +8,15 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W42 (10/18 - 10/24)
+
+* 这周继续登山，高磊大神带我入了些装备，正式入坑。周二加我爸三个人 [Joffrey Lakes Park](https://www.alltrails.com/explore/trail/canada/british-columbia/joffre-lakes) 走起。一共三个湖，往返11公里，开始的一段爬升就看出了和常年徒步的区别， 我和爸很快就呼哧带喘跟不上节奏了。还好一旦走到第二个湖就觉着这趟值了。雪上加高原湖，有了班芙的体验。到达第三个湖，我们继续爬了一段山脊，在山上的露营地喝了一杯现煮咖啡，怎么说呢，在山顶吃啥喝啥都香香。
+* 一起遛狗的好伙伴 George 要回台湾继承家业了，他们家美金毛 Neo 只能留守加拿大。临走前一起来家里小聚，想想就替他们悲伤。
+* 咪哥搬来温哥华，迫不及待带他尝试了渔人，因为没有鲶鱼只好试了蝶鱼，肉质美妙像蟹肉，骨头轻奇似牛蛙，体验不错，除了第二天隔空厕所喊话。
+* 这周的阅读是[吴军数学通识讲义](https://book.douban.com/subject/35426737/)，本以为有些厚度，结果读起来畅通无阻，帮我系统地梳理了数学知识。#weekly-read
+
+![w42-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w42-collage.jpg)
+
 ## W41 (10/11 - 10/17)
 
 * 这周的 highlight 是周二和爸爸带 Nikki 去爬山，高磊大神推荐的 trail，[Frosty Mountain Trail](https://www.alltrails.com/explore/trail/canada/british-columbia/frosty-mountain-trail?ref=result-card)。上下各8公里，爬升1.2公里。因为是周中，一路上几乎没有人，Nikki 放肆奔跑，忙前忙后，全程无休。山顶有 Alpine Larch，是种落叶松，所以秋季会变成金黄色，大家叫它金松。一路上从泥泞到飘雪，真的是走进了冬天。五小时下来，我和爸几乎没有放慢速度，但也都感到了疲惫，只有 Nikki 还活蹦乱跳，到山底的湖水中游泳。
