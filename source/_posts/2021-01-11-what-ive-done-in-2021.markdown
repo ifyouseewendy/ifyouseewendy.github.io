@@ -8,6 +8,17 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W44 (11/01 - 11/07)
+
+* 我们家天使小安妮一天天长大，还不到一百天，三到六个月的衣服就快穿不下了。每天吃好饭拉好屎换好尿布，尤其对着手机镜头的时候，笑的不行不行的，全家人都乐此不疲的来围观，被童真亲切地抚慰。
+* 最近我文的比赛看的很享受，虽然积分榜遥遥落后，之前联赛连着便秘输球，但是好像在囧叔的带领下，能在一场场比赛中看到些许希望，这感受是之前的两三年没有的。今年的联赛还不能指望，但是人员上的进出，球队整体上的士气，希望明年能回归正轨。
+* Tim Ferris 近期的播客 [Ramit Sethi — Build a Rich Life with Your Partner](https://tim.blog/2021/07/26/ramit-sethi-2/) 听的很入我心。对于父母的一代，一辈子走过是个积累的过程，即使钱还在人没了，也可能是种并不让人排斥的幸福的走法。从我们的传统观念出发，父母教我们如何省钱， 我们步入社会学习如何挣钱，但是没人告诉我们要怎样正确的花钱。Ramit 举了很多例子，关于家庭如何更有效利用金钱，让钱花在有意义(meaningful)的事情上，或者丰富人生体验上(adventurous)。
+* 关于每个家庭寻找自己的 rich life，尤其是如何花钱。
+* 周四的 #date-night 和喜福尝试了 Coquitlam 新开的 [Marutama](https://goo.gl/maps/6RRutzs6eW8uca3d8)，熟悉的味道从不让人失望。
+* 这周的阅读是 [How to Play Chess](https://www.goodreads.com/book/show/30002835-how-to-play-chess)，半儿童读物，正适合我这种刚刚熟悉规则的选手，虐虐喜福很有帮助。
+
+![w44-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w44-collage.jpg)
+
 ## W43 (10/25 - 10/31)
 
 * 周三送爸爸回国，繁琐的程序，终于在去机场的路上全部敲定。妈妈挥泪送别，我也有些伤心，但是这次与以往不同，我可以牵着妈妈回家。机场这个让人离别惆怅的地方，自从出国生活，在机场留下的失落记忆远多过开心和喜悦。
