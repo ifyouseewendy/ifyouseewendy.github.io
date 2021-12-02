@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W47 (11/22 - 11/28)
+
+* 喜福爸妈的 Super VISA 终于下来了，一年的等待，总算有了好的结果。
+* 国际比赛日回归，我文继续连败，0:4切尔西，0:1亚特兰大，看的我难过又服气。如果是玩FM，除了德利赫特、洛卡特利和基耶萨，全都一次性换掉好了。
+* 这周的阅读继续那不勒斯四部曲，第三本，[离开的，留下的](https://book.douban.com/subject/27104959/)。两个女主人到中年，儿时的选择和性格的优劣都在时间中无限放大，另一个角度也可以说，需要付出越来越多的代价去修正任何一个“错误”。作者的心理描写太过强大，让我没办法拒绝每个人心中暗黑的一面，它是如此真实。#weekly-read
+
+![w47-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w47-collage.jpg)
+
 ## W46 (11/15 - 11/21)
 
 * 周一是三十三岁生日，正好赶上安妮百天，全家人一起庆祝。喜福给我送上一年一度的手绘贺卡，妈妈做了一碗断了的长寿面，我给安妮买了一堆五颜六色的大气球，安妮剪了头发，换上新衣，美美的拍照。
@@ -33,7 +41,7 @@ categories: ['Life']
 * Tim Ferris 近期的播客 [Ramit Sethi — Build a Rich Life with Your Partner](https://tim.blog/2021/07/26/ramit-sethi-2/) 听的很入我心。对于父母的一代，一辈子走过是个积累的过程，即使钱还在人没了，也可能是种并不让人排斥的幸福的走法。从我们的传统观念出发，父母教我们如何省钱， 我们步入社会学习如何挣钱，但是没人告诉我们要怎样正确的花钱。Ramit 举了很多例子，关于家庭如何更有效利用金钱，让钱花在有意义(meaningful)的事情上，或者丰富人生体验上(adventurous)。
 * 关于每个家庭寻找自己的 rich life，尤其是如何花钱。
 * 周四的 #date-night 和喜福尝试了 Coquitlam 新开的 [Marutama](https://goo.gl/maps/6RRutzs6eW8uca3d8)，熟悉的味道从不让人失望。
-* 这周的阅读是 [How to Play Chess](https://www.goodreads.com/book/show/30002835-how-to-play-chess)，半儿童读物，正适合我这种刚刚熟悉规则的选手，虐虐喜福很有帮助。
+* 这周的阅读是 [How to Play Chess](https://www.goodreads.com/book/show/30002835-how-to-play-chess)，半儿童读物，正适合我这种刚刚熟悉规则的选手，虐虐喜福很有帮助。#weekly-read
 
 ![w44-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w44-collage.jpg)
 
