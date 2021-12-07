@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W48 (11/29 - 12/05)
+
+* 安妮马上四个月了，有了嘹亮的嗓门，这意味着嘹亮的笑声和撕心裂肺的哭声。她能坚定地挺起脖子，不再像汽车里的摇头小娃娃那般摇头晃脑，抱在怀里也不喜欢躺着看天，而是喜欢坐着，目光追随着前方或者眼前玩具。她看到妈妈和奶奶会给一个甜死人的笑，瞥见我的话看心情，偶尔发呆思考眼前的家伙是谁，偶尔聪慧占据高地认出了这个叫ba的男人，赏赐一个微笑。我和喜福开始尝试戒夜奶的行动，拉长她吃奶的间隔，在晚八点到早八点的时间段吃一到两次。争取在回去上班前实现这个愿望。
+* 周四的 #date-night 和喜福尝试了 [Kai Japanese Restaurant](https://goo.gl/maps/hFyd9DkNsjF1RNWcA)，也许是好久不吃生的，我们都觉着他们家的 sashimi 很棒。
+* 这周的阅读是第四本[失踪的孩子](https://book.douban.com/subject/30172069/)，完结了那不勒斯四部曲。这本中年危机加结尾，岁月的烦恼远多过甜蜜。整体上作者着眼于女性，但实际上在说的是人性。我有种错觉，就像一本书不会以幸福事件串联一样，一个人的一生是由一连串跳跃的悲剧，以及对它的反应定义的。#weekly-read
+
+![w48-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w48-collage.jpg)
+
 ## W47 (11/22 - 11/28)
 
 * 喜福爸妈的 Super VISA 终于下来了，一年的等待，总算有了好的结果。
