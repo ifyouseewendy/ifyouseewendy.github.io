@@ -8,6 +8,14 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W50 (12/13 - 12/19)
+
+* 这周下了好几场雪。睁开眼看到外边白晃晃，带 Nikki 在公园疯跑，一起享受踩在雪地上咔嚓的声响，超级凉爽的空气，以及嘴巴呼出的白气。找了家雪具店把雪板和雪鞋调整好，准备月底开始走起。也难得见了好多朋友，圣诞将至，大家都有闲暇。
+* 周四的 #date-night 我们和 Vic, Lily 一起[耕食记](https://goo.gl/maps/rtn2am3viwVSKvS7A)，他们也惊叹于这家书本一样的菜谱，翻着翻着就忘了前面的菜。这次的去骨炸小黄鱼非常棒。周末和喜福开始在 PS 上玩 [It Takes Two](https://www.hazelight.se/games/it-takes-two/)，操作简单难度适中，玩过分手厨房后可以尝试这个来修复。
+* 这周的阅读是 [Winnie-the-Pooh](https://www.goodreads.com/book/show/99107.Winnie_the_Pooh?from_search=true&from_srp=true&qid=fTbhi8x2ue&rank=1)。几周前我跟 Ray 调侃 Winnie 熊因为长相问题被禁，他开心的不行， 反手给我买了这本书，说曾是他忙碌成人生活中抚慰心灵的良药。我很快读完，也认同这种说法。并不是我想象中单纯的儿童读物，而是颇有禅意的故事集。
+
+![w50-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w50-collage.jpg)
+
 ## W49 (12/06 - 12/12)
 
 * 全家一起为安妮制定了戒夜奶计划，想办法拉长吃奶间隔，准备一整套睡前仪式，但是效果欠佳。后半夜的任何努力都需要极大的耐心，面对娃的终极武器——嘶吼哭闹，计划只能屈服给变化。
