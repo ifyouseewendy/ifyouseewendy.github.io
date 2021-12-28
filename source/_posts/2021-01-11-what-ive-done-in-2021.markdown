@@ -8,11 +8,20 @@ categories: ['Life']
 
 > A weekly log on my life and personal growth
 
+## W51 (12/20 - 12/26)
+
+* 圣诞节迎来今年最大一场雪，心情非常愉悦。我对圣诞没什么特殊的情谊，倒是见到雪就莫名的开心。试着理清楚为什么，想到这么几点：1. 单纯景色上的愉悦。明亮、干净、目之所及都统一穿起白套装，整齐又轻快；2. 走在雪地的感受。脚踩进雪地的咔嚓声音动听（穿矮帮靴脚感更佳）；凉爽的空气，吸进去畅快呼出来一团白气；迎面而来的雪花，不像雨水一样冷酷，而是漫漫飘飘的状态落在身上；3. 雪天的回忆。儿时滑冰的景象，去学校的路上，昏黄路灯下和朋友在雪地散歩。我对雪天没有阴雨天昏暗的记忆，全部是明亮的，即使偶有化雪时的泥泞，也是春天来临的信号。
+* 安妮最近习得的新技能，抱着妈妈的手臂吹气，发出噗噗的放屁声，哈哈大笑。
+* 周四的 #date-night 和喜福尝试了[豆捞坊](https://g.page/thedolarshopcanada?share)，猪肚锅底鲜香，牛肉非常滑嫩，只是价格过分不值得。隔壁桌的爸爸穿戴商务套装，点了所有菜单上几个最贵的菜，对面坐着上中学的女儿，全程戴着耳机，相对无言。我跟喜福说，这是我最不希望到达的状态。
+* 这周的阅读是 [How to Take Smart Notes](https://book.douban.com/subject/30216624/)，关于久闻的 Slip Box 笔记法以及对写作的影响，受益匪浅。自己回顾了现有的笔记体系，翻看了 https://zk.zettel.page/ 做更多了解，尝试了几个软件，选定 [Obsidian](https://obsidian.md/) 开始尝试这个新方法。#weekly-read
+
+![w51-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w51-collage.jpg)
+
 ## W50 (12/13 - 12/19)
 
 * 这周下了好几场雪。睁开眼看到外边白晃晃，带 Nikki 在公园疯跑，一起享受踩在雪地上咔嚓的声响，超级凉爽的空气，以及嘴巴呼出的白气。找了家雪具店把雪板和雪鞋调整好，准备月底开始走起。也难得见了好多朋友，圣诞将至，大家都有闲暇。
 * 周四的 #date-night 我们和 Vic, Lily 一起[耕食记](https://goo.gl/maps/rtn2am3viwVSKvS7A)，他们也惊叹于这家书本一样的菜谱，翻着翻着就忘了前面的菜。这次的去骨炸小黄鱼非常棒。周末和喜福开始在 PS 上玩 [It Takes Two](https://www.hazelight.se/games/it-takes-two/)，操作简单难度适中，玩过分手厨房后可以尝试这个来修复。
-* 这周的阅读是 [Winnie-the-Pooh](https://www.goodreads.com/book/show/99107.Winnie_the_Pooh?from_search=true&from_srp=true&qid=fTbhi8x2ue&rank=1)。几周前我跟 Ray 调侃 Winnie 熊因为长相问题被禁，他开心的不行， 反手给我买了这本书，说曾是他忙碌成人生活中抚慰心灵的良药。我很快读完，也认同这种说法。并不是我想象中单纯的儿童读物，而是颇有禅意的故事集。
+* 这周的阅读是 [Winnie-the-Pooh](https://www.goodreads.com/book/show/99107.Winnie_the_Pooh?from_search=true&from_srp=true&qid=fTbhi8x2ue&rank=1)。几周前我跟 Ray 调侃 Winnie 熊因为长相问题被禁，他开心的不行， 反手给我买了这本书，说曾是他忙碌成人生活中抚慰心灵的良药。我很快读完，也认同这种说法。并不是我想象中单纯的儿童读物，而是颇有禅意的故事集。#weekly-read
 
 ![w50-collage](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/2021/w50-collage.jpg)
 
