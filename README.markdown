@@ -17,6 +17,22 @@ It should all apply to our current stable version (found in the `master`
 branch). If this is not the case, [please submit a
 fix to our docs repo](https://github.com/octopress/docs).
 
+## Note
+
+Set up the repo on a new machine, refer to http://octopress.org/docs/deploying/github/
+
+```
+bundle install
+
+rake setup_github_pages
+cd _deploy
+git pull
+
+rake -T # see a list of tasks
+rake generate
+rake deploy
+```
+
 ## Contributing
 
 [![Build Status](https://travis-ci.org/imathis/octopress.png?branch=master)](https://travis-ci.org/imathis/octopress)
