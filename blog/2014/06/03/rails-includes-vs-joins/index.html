@@ -219,15 +219,15 @@ SELECT "products &hellip;">
 <span class="line-number">26</span>
 <span class="line-number">27</span>
 <span class="line-number">28</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
 </span><span class="line">  <span class="n">has_many</span> <span class="ss">:comments</span>
 </span><span class="line"><span class="k">end</span>
 </span><span class="line">
-</span><span class="line"><span class="k">class</span> <span class="nc">Comment</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class="line"><span class="k">class</span> <span class="nc">Comment</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
 </span><span class="line">  <span class="n">belongs_to</span> <span class="ss">:post</span>
 </span><span class="line"><span class="k">end</span>
 </span><span class="line">
-</span><span class="line"><span class="k">class</span> <span class="nc">BugTest</span> <span class="o">&lt;</span> <span class="ss">Minitest</span><span class="p">:</span><span class="ss">:Test</span>
+</span><span class="line"><span class="k">class</span> <span class="nc">BugTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">test_association_stuff</span>
 </span><span class="line">    <span class="n">post1</span> <span class="o">=</span> <span class="no">Post</span><span class="o">.</span><span class="n">create!</span>
 </span><span class="line">    <span class="n">post2</span> <span class="o">=</span> <span class="no">Post</span><span class="o">.</span><span class="n">create!</span>

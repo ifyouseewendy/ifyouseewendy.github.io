@@ -235,7 +235,7 @@ Example :<br />
 <p>Make git serve it.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git config --global commit.template ~/.gitmessage
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git config --global commit.template ~/.gitmessage
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Now when committing, git enables the template:</p>
@@ -268,34 +268,34 @@ Example :<br />
 <span class="line-number">26</span>
 <span class="line-number">27</span>
 <span class="line-number">28</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git touch README <span class="o">&amp;&amp;</span> git commit
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git touch README <span class="o">&amp;&amp;</span> git commit
 </span><span class="line">
 </span><span class="line">
-</span><span class="line"><span class="c"># = Rule 1, use meta operation</span>
+</span><span class="line"><span class="c1"># = Rule 1, use meta operation</span>
 </span><span class="line">
-</span><span class="line"><span class="c"># Add: new function to rule the world</span>
-</span><span class="line"><span class="c"># Mod: query_date logic</span>
-</span><span class="line"><span class="c"># Rem: user.rake is not used anymore</span>
-</span><span class="line"><span class="c"># Ren: hello-world to hell-world</span>
-</span><span class="line"><span class="c"># Fix: #1900, stupid typo</span>
-</span><span class="line"><span class="c"># Ref: extract to an abstract class.</span>
-</span><span class="line"><span class="c"># Opt: cache in get_active_table</span>
+</span><span class="line"><span class="c1"># Add: new function to rule the world</span>
+</span><span class="line"><span class="c1"># Mod: query_date logic</span>
+</span><span class="line"><span class="c1"># Rem: user.rake is not used anymore</span>
+</span><span class="line"><span class="c1"># Ren: hello-world to hell-world</span>
+</span><span class="line"><span class="c1"># Fix: #1900, stupid typo</span>
+</span><span class="line"><span class="c1"># Ref: extract to an abstract class.</span>
+</span><span class="line"><span class="c1"># Opt: cache in get_active_table</span>
 </span><span class="line">
-</span><span class="line"><span class="c"># = Rule 2, leave a &quot;*&quot; at the end to flag folding</span>
+</span><span class="line"><span class="c1"># = Rule 2, leave a &quot;*&quot; at the end to flag folding</span>
 </span><span class="line">
-</span><span class="line"><span class="c"># Mod: query_date logic*</span>
-</span><span class="line"><span class="c">#</span>
-</span><span class="line"><span class="c"># Use chronic to guess date.</span>
-</span><span class="line"><span class="c">#</span>
-</span><span class="line"><span class="c"># Chronic.parse(&#39;may 27th&#39;, :guess =&gt; false)</span>
-</span><span class="line"><span class="c"># #=&gt; Sun May 27 00:00:00 PDT 2007..Mon May 28 00:00:00 PDT 2007</span>
+</span><span class="line"><span class="c1"># Mod: query_date logic*</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1"># Use chronic to guess date.</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1"># Chronic.parse(&#39;may 27th&#39;, :guess =&gt; false)</span>
+</span><span class="line"><span class="c1"># #=&gt; Sun May 27 00:00:00 PDT 2007..Mon May 28 00:00:00 PDT 2007</span>
 </span><span class="line">
-</span><span class="line"><span class="c"># Please enter the commit message for your changes. Lines starting</span>
-</span><span class="line"><span class="c"># with &#39;#&#39; will be ignored, and an empty message aborts the commit.</span>
-</span><span class="line"><span class="c"># On branch master</span>
-</span><span class="line"><span class="c"># Changes to be committed:</span>
-</span><span class="line"><span class="c">#	new file:   README</span>
-</span><span class="line"><span class="c">#</span>
+</span><span class="line"><span class="c1"># Please enter the commit message for your changes. Lines starting</span>
+</span><span class="line"><span class="c1"># with &#39;#&#39; will be ignored, and an empty message aborts the commit.</span>
+</span><span class="line"><span class="c1"># On branch master</span>
+</span><span class="line"><span class="c1"># Changes to be committed:</span>
+</span><span class="line"><span class="c1">#	new file:   README</span>
+</span><span class="line"><span class="c1">#</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h2 id="validate-on-rules">Validate on Rules</h2>
@@ -318,7 +318,7 @@ Example :<br />
 <span class="line-number">14</span>
 <span class="line-number">15</span>
 <span class="line-number">16</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1">#!/usr/bin/env ruby</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="ch">#!/usr/bin/env ruby</span>
 </span><span class="line">
 </span><span class="line"><span class="c1"># Init repo</span>
 </span><span class="line"><span class="nb">exit</span> <span class="mi">0</span> <span class="k">if</span> <span class="sb">`git log --oneline -1 2&gt;/dev/null`</span><span class="o">.</span><span class="n">empty?</span>
@@ -363,31 +363,31 @@ Example :<br />
 <span class="line-number">23</span>
 <span class="line-number">24</span>
 <span class="line-number">25</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="c"># Rule 1</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span><span class="c1"># Rule 1</span>
 </span><span class="line">
-</span><span class="line"><span class="nv">$ </span>git commit -m <span class="s1">&#39;Add README&#39;</span>
+</span><span class="line">$ git commit -m <span class="s1">&#39;Add README&#39;</span>
 </span><span class="line"><span class="o">[</span>POLICY<span class="o">]</span> Your message is not formatted correctly
 </span><span class="line"><span class="o">[</span>POLICY<span class="o">]</span> Please check ~/.gitmessage
 </span><span class="line">
-</span><span class="line"><span class="nv">$ </span>git commit -m <span class="s1">&#39;Add: README&#39;</span>
+</span><span class="line">$ git commit -m <span class="s1">&#39;Add: README&#39;</span>
 </span><span class="line"><span class="o">[</span>master e492ec1<span class="o">]</span> Add: README
-</span><span class="line"> 1 file changed, 0 insertions<span class="o">(</span>+<span class="o">)</span>, 0 deletions<span class="o">(</span>-<span class="o">)</span>
-</span><span class="line"> create mode 100644 README
+</span><span class="line"> <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+</span><span class="line"> create mode <span class="m">100644</span> README
 </span><span class="line">
-</span><span class="line"><span class="c"># Rule 2</span>
+</span><span class="line"><span class="c1"># Rule 2</span>
 </span><span class="line">
-</span><span class="line"><span class="nv">$ </span>git commit -m <span class="s1">&#39;Add: README</span>
+</span><span class="line">$ git commit -m <span class="s1">&#39;Add: README</span>
 </span><span class="line"><span class="s1">quote&gt; </span>
 </span><span class="line"><span class="s1">quote&gt; some content&#39;</span>
 </span><span class="line"><span class="o">[</span>POLICY<span class="o">]</span> Your message is not formatted correctly
 </span><span class="line"><span class="o">[</span>POLICY<span class="o">]</span> Please check ~/.gitmessage
 </span><span class="line">
-</span><span class="line"><span class="nv">$ </span>git commit -m <span class="s1">&#39;Add: README*</span>
+</span><span class="line">$ git commit -m <span class="s1">&#39;Add: README*</span>
 </span><span class="line"><span class="s1">quote&gt; </span>
 </span><span class="line"><span class="s1">quote&gt; some content&#39;</span>
 </span><span class="line"><span class="o">[</span>master 5fdd0f4<span class="o">]</span> Add: README*
-</span><span class="line"> 1 file changed, 0 insertions<span class="o">(</span>+<span class="o">)</span>, 0 deletions<span class="o">(</span>-<span class="o">)</span>
-</span><span class="line"> create mode 100644 README
+</span><span class="line"> <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+</span><span class="line"> create mode <span class="m">100644</span> README
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Here is the final <code>git log --oneline</code> look,</p>
@@ -399,13 +399,13 @@ Example :<br />
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">* 0435fa9 2014-12-29 Ref: code smells like..teen spirit <span class="o">[</span>wendi<span class="o">]</span>
-</span><span class="line">* 13423ff 2014-12-29 Fix: <span class="c">#1984 big bro 404 error* [wendi]</span>
-</span><span class="line">* 0c5b9f9 2014-12-29 Add: pygments.rb to <span class="nb">enable </span>highlight* <span class="o">[</span>wendi<span class="o">]</span>
-</span><span class="line">* e99d1b5 2014-12-29 Mod: heading sytle <span class="o">[</span>wendi<span class="o">]</span>
-</span><span class="line">* 95576cc 2014-12-29 Ren: README.md <span class="o">[</span>wendi<span class="o">]</span>
-</span><span class="line">* 2f5c632 2014-12-29 Add: README <span class="o">[</span>wendi<span class="o">]</span>
-</span><span class="line">* 6673bd7 2014-12-29 Init <span class="o">[</span>wendi<span class="o">]</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>* 0435fa9 <span class="m">2014</span>-12-29 Ref: code smells like..teen spirit <span class="o">[</span>wendi<span class="o">]</span>
+</span><span class="line">* 13423ff <span class="m">2014</span>-12-29 Fix: <span class="c1">#1984 big bro 404 error* [wendi]</span>
+</span><span class="line">* 0c5b9f9 <span class="m">2014</span>-12-29 Add: pygments.rb to <span class="nb">enable</span> highlight* <span class="o">[</span>wendi<span class="o">]</span>
+</span><span class="line">* e99d1b5 <span class="m">2014</span>-12-29 Mod: heading sytle <span class="o">[</span>wendi<span class="o">]</span>
+</span><span class="line">* 95576cc <span class="m">2014</span>-12-29 Ren: README.md <span class="o">[</span>wendi<span class="o">]</span>
+</span><span class="line">* 2f5c632 <span class="m">2014</span>-12-29 Add: README <span class="o">[</span>wendi<span class="o">]</span>
+</span><span class="line">* 6673bd7 <span class="m">2014</span>-12-29 Init <span class="o">[</span>wendi<span class="o">]</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><strong><em>How to make self-defined hook ship with every project?</em></strong></p>

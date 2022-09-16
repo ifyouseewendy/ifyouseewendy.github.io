@@ -176,7 +176,7 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="mi">190000</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">783</span><span class="o">.</span><span class="mi">0</span> <span class="o">/</span> <span class="mi">10000</span> <span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="mi">190000</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">783</span><span class="o">.</span><span class="mi">0</span> <span class="o">/</span> <span class="mi">10000</span> <span class="p">)</span>
 </span><span class="line"><span class="c1"># =&gt; 14876.999999999998</span>
 </span><span class="line">
 </span><span class="line"><span class="p">(</span> <span class="mi">190000</span> <span class="o">*</span> <span class="mi">783</span><span class="o">.</span><span class="mi">0</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
@@ -190,7 +190,7 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="mi">195555</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mo">07</span><span class="mi">83</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="mi">195555</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mo">07</span><span class="mi">83</span>
 </span><span class="line"><span class="c1"># =&gt; 15311.956499999998</span>
 </span><span class="line">
 </span><span class="line"><span class="p">(</span> <span class="mi">195555</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mo">07</span><span class="mi">83</span> <span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -248,7 +248,7 @@
 <span class="line-number">47</span>
 <span class="line-number">48</span>
 <span class="line-number">49</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># Public: A calculator aims handling Float operation precision and</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># Public: A calculator aims handling Float operation precision and</span>
 </span><span class="line"><span class="c1"># saving the result with truncated 2 point Float.</span>
 </span><span class="line"><span class="c1">#</span>
 </span><span class="line"><span class="c1"># Examples</span>
@@ -307,7 +307,7 @@
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="mi">0</span><span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">0</span><span class="o">.</span><span class="mi">2</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">0</span><span class="o">.</span><span class="mi">2</span>
 </span><span class="line"><span class="c1"># =&gt; 0.30000000000000004</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -361,7 +361,7 @@
 <span class="line-number">36</span>
 <span class="line-number">37</span>
 <span class="line-number">38</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;bigdecimal&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;bigdecimal&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="c1"># Public: A calculator aims handling arithmatic precision and</span>
 </span><span class="line"><span class="c1"># saving the result with 2 points truncated decimal.</span>
@@ -394,7 +394,7 @@
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">run</span>
 </span><span class="line">    <span class="no">BigDecimal</span><span class="o">.</span><span class="n">save_rounding_mode</span> <span class="k">do</span>
-</span><span class="line">      <span class="no">BigDecimal</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="ss">BigDecimal</span><span class="p">:</span><span class="ss">:ROUND_MODE</span><span class="p">,</span> <span class="ss">:truncate</span><span class="p">)</span>
+</span><span class="line">      <span class="no">BigDecimal</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="no">BigDecimal</span><span class="o">::</span><span class="no">ROUND_MODE</span><span class="p">,</span> <span class="ss">:truncate</span><span class="p">)</span>
 </span><span class="line">      <span class="p">(</span><span class="n">base</span><span class="o">*</span><span class="n">rate</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </span><span class="line">    <span class="k">end</span>
 </span><span class="line">  <span class="k">end</span>

@@ -245,14 +245,14 @@
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">➜  git show --pretty<span class="o">=</span>raw HEAD
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>➜  git show --pretty<span class="o">=</span>raw HEAD
 </span><span class="line">commit 6cc1a668111eb54ef4dbe976fff24f2e3d8b95f9
 </span><span class="line">tree 36df675d7ae80e7eef0faac893b266801a4fa94a
 </span><span class="line">parent d448c30aa03fba2884ab87c21081ef0f74d24f7e
-</span><span class="line">author wendi &lt;wendi@umeng.com&gt; 1409022714 +0800
-</span><span class="line">committer wendi &lt;wendi@umeng.com&gt; 1409022733 +0800
+</span><span class="line">author wendi &lt;wendi@umeng.com&gt; <span class="m">1409022714</span> +0800
+</span><span class="line">committer wendi &lt;wendi@umeng.com&gt; <span class="m">1409022733</span> +0800
 </span><span class="line">
-</span><span class="line">    Update error <span class="nb">type </span>service url
+</span><span class="line">    Update error <span class="nb">type</span> service url
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><strong>tag</strong> is a way to mark a specific commit as special in some way. It is normally used to tag certain commits as specific releases or something along those lines.</p>
@@ -289,15 +289,15 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git symbolic-ref HEAD refs/heads/newbranch
-</span><span class="line">  <span class="c"># no branch is created,</span>
-</span><span class="line">  <span class="c"># and all files are deleted to index.</span>
-</span><span class="line"><span class="nv">$ </span>rm .git/index
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git symbolic-ref HEAD refs/heads/newbranch
+</span><span class="line">  <span class="c1"># no branch is created,</span>
+</span><span class="line">  <span class="c1"># and all files are deleted to index.</span>
+</span><span class="line">$ rm .git/index
 </span><span class="line">git clean -fdx
-</span><span class="line">&lt;<span class="k">do </span>work&gt;
+</span><span class="line">&lt;<span class="k">do</span> work&gt;
 </span><span class="line">git add your files
 </span><span class="line">git commit -m <span class="s1">&#39;Initial commit&#39;</span>
-</span><span class="line">  <span class="c"># branch &#39;newbranch&#39; is created.</span>
+</span><span class="line">  <span class="c1"># branch &#39;newbranch&#39; is created.</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h3 id="modifying-your-history">Modifying Your History</h3>
@@ -313,9 +313,9 @@
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git show :1:file.txt <span class="c"># the file in a common ancestor of both branches.</span>
-</span><span class="line"><span class="nv">$ </span>git show :2:file.txt <span class="c"># the version from HEAD.</span>
-</span><span class="line"><span class="nv">$ </span>git show :3:file.txt <span class="c"># the version from MERGE_HEAD.</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git show :1:file.txt <span class="c1"># the file in a common ancestor of both branches.</span>
+</span><span class="line">$ git show :2:file.txt <span class="c1"># the version from HEAD.</span>
+</span><span class="line">$ git show :3:file.txt <span class="c1"># the version from MERGE_HEAD.</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Some special diff options allow diffing the working directory against any of these stages:</p>
@@ -326,20 +326,20 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git diff -1 file.txt <span class="c"># diff against stage 1</span>
-</span><span class="line"><span class="nv">$ </span>git diff --base file.txt <span class="c"># same as the above</span>
-</span><span class="line"><span class="nv">$ </span>git diff -2 file.txt <span class="c"># diff against stage 2</span>
-</span><span class="line"><span class="nv">$ </span>git diff --ours file.txt <span class="c"># same as the above</span>
-</span><span class="line"><span class="nv">$ </span>git diff -3 file.txt <span class="c"># diff against stage 3</span>
-</span><span class="line"><span class="nv">$ </span>git diff --theirs file.txt <span class="c"># same as the above.</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git diff -1 file.txt <span class="c1"># diff against stage 1</span>
+</span><span class="line">$ git diff --base file.txt <span class="c1"># same as the above</span>
+</span><span class="line">$ git diff -2 file.txt <span class="c1"># diff against stage 2</span>
+</span><span class="line">$ git diff --ours file.txt <span class="c1"># same as the above</span>
+</span><span class="line">$ git diff -3 file.txt <span class="c1"># diff against stage 3</span>
+</span><span class="line">$ git diff --theirs file.txt <span class="c1"># same as the above.</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h3 id="git-and-email">Git and Email</h3>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>man git-format-patch <span class="c"># Prepare patches for email submission</span>
-</span><span class="line"><span class="nv">$ </span>man git-am <span class="c"># Apply a series of patches from a mailbox</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ man git-format-patch <span class="c1"># Prepare patches for email submission</span>
+</span><span class="line">$ man git-am <span class="c1"># Apply a series of patches from a mailbox</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><code>git format-patch origin</code> will produce a numbered series of files in the current directory, one of each patch in the current branch but not in origin/HEAD.</p>
@@ -366,16 +366,16 @@
 <span class="line-number">10</span>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>mkdir ~/git
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ~/git
-</span><span class="line"><span class="nv">$ </span><span class="k">for </span>i in a b c d
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ mkdir ~/git
+</span><span class="line">$ <span class="nb">cd</span> ~/git
+</span><span class="line">$ <span class="k">for</span> i in a b c d
 </span><span class="line"><span class="k">do</span>
-</span><span class="line"><span class="k">    </span>mkdir <span class="nv">$i</span>
+</span><span class="line">    mkdir <span class="nv">$i</span>
 </span><span class="line">    <span class="nb">cd</span> <span class="nv">$i</span>
 </span><span class="line">    git init
-</span><span class="line">    <span class="nb">echo</span> <span class="s2">&quot;module $i&quot;</span> &gt; <span class="nv">$i</span>.txt
+</span><span class="line">    <span class="nb">echo</span> <span class="s2">&quot;module </span><span class="nv">$i</span><span class="s2">&quot;</span> &gt; <span class="nv">$i</span>.txt
 </span><span class="line">    git add <span class="nv">$i</span>.txt
-</span><span class="line">    git commit -m <span class="s2">&quot;Initial commit, submodule $i&quot;</span>
+</span><span class="line">    git commit -m <span class="s2">&quot;Initial commit, submodule </span><span class="nv">$i</span><span class="s2">&quot;</span>
 </span><span class="line">    <span class="nb">cd</span> ..
 </span><span class="line"><span class="k">done</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -389,12 +389,12 @@
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>mkdir super
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd </span>super
-</span><span class="line"><span class="nv">$ </span>git init
-</span><span class="line"><span class="nv">$ </span><span class="k">for </span>i in a b c d
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ mkdir super
+</span><span class="line">$ <span class="nb">cd</span> super
+</span><span class="line">$ git init
+</span><span class="line">$ <span class="k">for</span> i in a b c d
 </span><span class="line"><span class="k">do</span>
-</span><span class="line"><span class="k">    </span>git submodule add ~/git/<span class="nv">$i</span>
+</span><span class="line">    git submodule add ~/git/<span class="nv">$i</span>
 </span><span class="line"><span class="k">done</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -402,7 +402,7 @@
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>ls -a
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ ls -a
 </span><span class="line">.  ..  .git  .gitmodules  a  b  c  d
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -417,7 +417,7 @@
 <p>Commit the superproject:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git commit -m <span class="s2">&quot;Add submodules a, b, c and d.&quot;</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git commit -m <span class="s2">&quot;Add submodules a, b, c and d.&quot;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Clone the superproject:</p>
@@ -425,9 +425,9 @@
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ..
-</span><span class="line"><span class="nv">$ </span>git clone super cloned
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd </span>cloned
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ <span class="nb">cd</span> ..
+</span><span class="line">$ git clone super cloned
+</span><span class="line">$ <span class="nb">cd</span> cloned
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Check submodule status:</p>
@@ -437,7 +437,7 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git submodule status
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git submodule status
 </span><span class="line">-d266b9873ad50488163457f025db7cdd9683d88b a
 </span><span class="line">-e81d457da15309b4fef4249aba9b50187999670d b
 </span><span class="line">-c1536a972b9affea0f16e0680ba87332dc059146 c
@@ -447,7 +447,7 @@
 <p>Register the submodule into <code>.git/config</code>:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git submodule init
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git submodule init
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Clone the submodules and check out the commits specified in the superproject:</p>
@@ -456,9 +456,9 @@
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git submodule update
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd </span>a
-</span><span class="line"><span class="nv">$ </span>ls -a
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git submodule update
+</span><span class="line">$ <span class="nb">cd</span> a
+</span><span class="line">$ ls -a
 </span><span class="line">.  ..  .git  a.txt
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -467,7 +467,7 @@
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git branch
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git branch
 </span><span class="line">* <span class="o">(</span>no branch<span class="o">)</span>
 </span><span class="line">master
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -475,11 +475,11 @@
 <p>Check out or create a new branch:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git checkout master
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git checkout master
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git checkout -b fix-up
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git checkout -b fix-up
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Do work and commit:</p>
@@ -499,21 +499,21 @@
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 <span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;adding a line again&quot;</span> &gt;&gt; a.txt
-</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;Updated the submodule from within the superproject.&quot;</span>
-</span><span class="line"><span class="nv">$ </span>git push
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ..
-</span><span class="line"><span class="nv">$ </span>git diff
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ <span class="nb">echo</span> <span class="s2">&quot;adding a line again&quot;</span> &gt;&gt; a.txt
+</span><span class="line">$ git commit -a -m <span class="s2">&quot;Updated the submodule from within the superproject.&quot;</span>
+</span><span class="line">$ git push
+</span><span class="line">$ <span class="nb">cd</span> ..
+</span><span class="line">$ git diff
 </span><span class="line">diff --git a/a b/a
-</span><span class="line">index d266b98..261dfac 160000
+</span><span class="line">index d266b98..261dfac <span class="m">160000</span>
 </span><span class="line">--- a/a
 </span><span class="line">+++ b/a
 </span><span class="line">@@ -1 +1 @@
 </span><span class="line">-Subproject commit d266b9873ad50488163457f025db7cdd9683d88b
 </span><span class="line">+Subproject commit 261dfac35cb99d380eb966e102c1197139f7fa24
-</span><span class="line"><span class="nv">$ </span>git add a
-</span><span class="line"><span class="nv">$ </span>git commit -m <span class="s2">&quot;Updated submodule a.&quot;</span>
-</span><span class="line"><span class="nv">$ </span>git push
+</span><span class="line">$ git add a
+</span><span class="line">$ git commit -m <span class="s2">&quot;Updated submodule a.&quot;</span>
+</span><span class="line">$ git push
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><strong>Cautions on Submodules</strong>:</p>
@@ -533,16 +533,16 @@
 <span class="line-number">11</span>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ~/git/super/a
-</span><span class="line"><span class="nv">$ </span><span class="nb">echo </span>i added another line to this file &gt;&gt; a.txt
-</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;doing it wrong this time&quot;</span>
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ..
-</span><span class="line"><span class="nv">$ </span>git add a
-</span><span class="line"><span class="nv">$ </span>git commit -m <span class="s2">&quot;Updated submodule a again.&quot;</span>
-</span><span class="line"><span class="nv">$ </span>git push
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ~/git/cloned
-</span><span class="line"><span class="nv">$ </span>git pull
-</span><span class="line"><span class="nv">$ </span>git submodule update
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ <span class="nb">cd</span> ~/git/super/a
+</span><span class="line">$ <span class="nb">echo</span> i added another line to this file &gt;&gt; a.txt
+</span><span class="line">$ git commit -a -m <span class="s2">&quot;doing it wrong this time&quot;</span>
+</span><span class="line">$ <span class="nb">cd</span> ..
+</span><span class="line">$ git add a
+</span><span class="line">$ git commit -m <span class="s2">&quot;Updated submodule a again.&quot;</span>
+</span><span class="line">$ git push
+</span><span class="line">$ <span class="nb">cd</span> ~/git/cloned
+</span><span class="line">$ git pull
+</span><span class="line">$ git submodule update
 </span><span class="line">error: pathspec <span class="s1">&#39;261dfac35cb99d380eb966e102c1197139f7fa24&#39;</span> did not match any file<span class="o">(</span>s<span class="o">)</span> known to git.
 </span><span class="line">Did you forget to <span class="s1">&#39;git add&#39;</span>?
 </span><span class="line">Unable to checkout <span class="s1">&#39;261dfac35cb99d380eb966e102c1197139f7fa24&#39;</span> in submodule path <span class="s1">&#39;a&#39;</span>
@@ -560,15 +560,15 @@
 <span class="line-number">8</span>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>cat a.txt
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ cat a.txt
 </span><span class="line">module a
-</span><span class="line"><span class="nv">$ </span><span class="nb">echo </span>line added from private2 &gt;&gt; a.txt
-</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;line added inside private2&quot;</span>
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd</span> ..
-</span><span class="line"><span class="nv">$ </span>git submodule update
+</span><span class="line">$ <span class="nb">echo</span> line added from private2 &gt;&gt; a.txt
+</span><span class="line">$ git commit -a -m <span class="s2">&quot;line added inside private2&quot;</span>
+</span><span class="line">$ <span class="nb">cd</span> ..
+</span><span class="line">$ git submodule update
 </span><span class="line">Submodule path <span class="s1">&#39;a&#39;</span>: checked out <span class="s1">&#39;d266b9873ad50488163457f025db7cdd9683d88b&#39;</span>
-</span><span class="line"><span class="nv">$ </span><span class="nb">cd </span>a
-</span><span class="line"><span class="nv">$ </span>cat a.txt
+</span><span class="line">$ <span class="nb">cd</span> a
+</span><span class="line">$ cat a.txt
 </span><span class="line">module a
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -581,7 +581,7 @@
 <p>If the sha of your object is <code>ab04d884140f7b0cf8bbf86d6883869f16a46f65</code>, then the file will be stored in the following path:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">GIT_DIR/objects/ab/04d884140f7b0cf8bbf86d6883869f16a46f65
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>GIT_DIR/objects/ab/04d884140f7b0cf8bbf86d6883869f16a46f65
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The Ruby implementation of object storage:</p>
@@ -605,19 +605,19 @@
 <span class="line-number">17</span>
 <span class="line-number">18</span>
 <span class="line-number">19</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">put_raw_object</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">type</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">def</span> <span class="nf">put_raw_object</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">type</span><span class="p">)</span>
 </span><span class="line">  <span class="n">size</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">length</span><span class="o">.</span><span class="n">to_s</span>
 </span><span class="line">
 </span><span class="line">  <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">type</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">size</span><span class="si">}</span><span class="s2">#body&quot;</span>
 </span><span class="line">  <span class="n">store</span> <span class="o">=</span> <span class="n">header</span> <span class="o">+</span> <span class="n">content</span>
 </span><span class="line">
-</span><span class="line">  <span class="n">sha1</span> <span class="o">=</span> <span class="ss">Digest</span><span class="p">:</span><span class="ss">:SHA1</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="n">store</span><span class="p">)</span>
-</span><span class="line">  <span class="n">path</span> <span class="o">=</span> <span class="vi">@git_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">sha1</span><span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="mi">2</span><span class="o">]</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">sha1</span><span class="o">[</span><span class="mi">2</span><span class="o">.</span><span class="n">.</span><span class="mi">40</span><span class="o">]</span>
+</span><span class="line">  <span class="n">sha1</span> <span class="o">=</span> <span class="no">Digest</span><span class="o">::</span><span class="no">SHA1</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="n">store</span><span class="p">)</span>
+</span><span class="line">  <span class="n">path</span> <span class="o">=</span> <span class="vi">@git_dir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">sha1</span><span class="o">[</span><span class="mi">0</span><span class="o">...</span><span class="mi">2</span><span class="o">]</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">sha1</span><span class="o">[</span><span class="mi">2</span><span class="o">..</span><span class="mi">40</span><span class="o">]</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">if</span> <span class="o">!</span><span class="no">File</span><span class="o">.</span><span class="n">exists?</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-</span><span class="line">    <span class="n">content</span> <span class="o">=</span> <span class="ss">Zlib</span><span class="p">:</span><span class="ss">:Deflate</span><span class="o">.</span><span class="n">deflate</span><span class="p">(</span><span class="n">store</span><span class="p">)</span>
+</span><span class="line">    <span class="n">content</span> <span class="o">=</span> <span class="no">Zlib</span><span class="o">::</span><span class="no">Deflate</span><span class="o">.</span><span class="n">deflate</span><span class="p">(</span><span class="n">store</span><span class="p">)</span>
 </span><span class="line">
-</span><span class="line">    <span class="no">FileUtils</span><span class="o">.</span><span class="n">mkdir_p</span><span class="p">(</span><span class="vi">@directory</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">sha1</span><span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="mi">2</span><span class="o">]</span><span class="p">)</span>
+</span><span class="line">    <span class="no">FileUtils</span><span class="o">.</span><span class="n">mkdir_p</span><span class="p">(</span><span class="vi">@directory</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">sha1</span><span class="o">[</span><span class="mi">0</span><span class="o">...</span><span class="mi">2</span><span class="o">]</span><span class="p">)</span>
 </span><span class="line">    <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
 </span><span class="line">      <span class="n">f</span><span class="o">.</span><span class="n">write</span> <span class="n">content</span>
 </span><span class="line">    <span class="k">end</span>
@@ -650,16 +650,16 @@
 <span class="line-number">16</span>
 <span class="line-number">17</span>
 <span class="line-number">18</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git ls-files --stage
-</span><span class="line">100644 63c918c667fa005ff12ad89437f2fdc80926e21c 0
-</span><span class="line">100644 5529b198e8d14decbe4ad99db3f7fb632de0439d 0
-</span><span class="line">100644 6ff87c4664981e4397625791c8ea3bbb5f2279a3 0
-</span><span class="line">100644 a37b2152bd26be2c2289e1f57a292534a51a93c7 0
-</span><span class="line">100644 fbefe9a45b00a54b58d94d06eca48b03d40a50e0 0
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git ls-files --stage
+</span><span class="line"><span class="m">100644</span> 63c918c667fa005ff12ad89437f2fdc80926e21c <span class="m">0</span>
+</span><span class="line"><span class="m">100644</span> 5529b198e8d14decbe4ad99db3f7fb632de0439d <span class="m">0</span>
+</span><span class="line"><span class="m">100644</span> 6ff87c4664981e4397625791c8ea3bbb5f2279a3 <span class="m">0</span>
+</span><span class="line"><span class="m">100644</span> a37b2152bd26be2c2289e1f57a292534a51a93c7 <span class="m">0</span>
+</span><span class="line"><span class="m">100644</span> fbefe9a45b00a54b58d94d06eca48b03d40a50e0 <span class="m">0</span>
 </span><span class="line">...
-</span><span class="line">100644 2511aef8d89ab52be5ec6a5e46236b4b6bcd07ea 0
-</span><span class="line">100644 2ade97b2574a9f77e7ae4002a4e07a6a38e46d07 0
-</span><span class="line">100644 d5de8292e05e7c36c4b68857c1cf9855e3d2f70a 0
+</span><span class="line"><span class="m">100644</span> 2511aef8d89ab52be5ec6a5e46236b4b6bcd07ea <span class="m">0</span>
+</span><span class="line"><span class="m">100644</span> 2ade97b2574a9f77e7ae4002a4e07a6a38e46d07 <span class="m">0</span>
+</span><span class="line"><span class="m">100644</span> d5de8292e05e7c36c4b68857c1cf9855e3d2f70a <span class="m">0</span>
 </span><span class="line">.gitignore
 </span><span class="line">.mailmap
 </span><span class="line">COPYING
@@ -694,7 +694,7 @@
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git <span class="nb">hash</span>-object -w myfile.txt
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git hash-object -w myfile.txt
 </span><span class="line">6ff87c4664981e4397625791c8ea3bbb5f2279a3
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -709,13 +709,13 @@
 <p><strong>Updating a Branch Ref</strong></p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">&#39;a5f85ba5875917319471dfd98dfc636c1dc65650&#39;</span> &gt; .git/refs/heads/master
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ <span class="nb">echo</span> <span class="s1">&#39;a5f85ba5875917319471dfd98dfc636c1dc65650&#39;</span> &gt; .git/refs/heads/master
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>a safer way of doing that is to use the <code>git update-ref</code> command:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git update-ref refs/heads/master a5f85ba5875917319471dfd98dfc636c1dc65650
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git update-ref refs/heads/master a5f85ba5875917319471dfd98dfc636c1dc65650
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 </section>
 

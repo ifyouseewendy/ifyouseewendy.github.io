@@ -217,7 +217,7 @@
 <span class="line-number">11</span>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">NATIVE_DATABASE_TYPES</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="no">NATIVE_DATABASE_TYPES</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">  <span class="ss">:primary_key</span> <span class="o">=&gt;</span> <span class="s2">&quot;int(11) auto_increment PRIMARY KEY&quot;</span><span class="p">,</span>
 </span><span class="line">  <span class="ss">:string</span>      <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;varchar&quot;</span><span class="p">,</span> <span class="ss">:limit</span> <span class="o">=&gt;</span> <span class="mi">255</span> <span class="p">},</span>
 </span><span class="line">  <span class="ss">:text</span>        <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;text&quot;</span> <span class="p">},</span>
@@ -268,8 +268,8 @@
 <span class="line-number">34</span>
 <span class="line-number">35</span>
 <span class="line-number">36</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">NATIVE_DATABASE_TYPES</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class="line">  <span class="n">primary_key</span><span class="p">:</span> <span class="s2">&quot;serial primary key&quot;</span><span class="p">,</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="no">NATIVE_DATABASE_TYPES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">  <span class="ss">primary_key</span><span class="p">:</span> <span class="s2">&quot;serial primary key&quot;</span><span class="p">,</span>
 </span><span class="line">  <span class="ss">bigserial</span><span class="p">:</span> <span class="s2">&quot;bigserial&quot;</span><span class="p">,</span>
 </span><span class="line">  <span class="ss">string</span><span class="p">:</span>      <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;character varying&quot;</span> <span class="p">},</span>
 </span><span class="line">  <span class="ss">text</span><span class="p">:</span>        <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span> <span class="p">},</span>
@@ -301,7 +301,7 @@
 </span><span class="line">  <span class="ss">citext</span><span class="p">:</span>      <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;citext&quot;</span> <span class="p">},</span>
 </span><span class="line">  <span class="ss">point</span><span class="p">:</span>       <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;point&quot;</span> <span class="p">},</span>
 </span><span class="line">  <span class="ss">bit</span><span class="p">:</span>         <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;bit&quot;</span> <span class="p">},</span>
-</span><span class="line">  <span class="n">bit_varying</span><span class="p">:</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;bit varying&quot;</span> <span class="p">},</span>
+</span><span class="line">  <span class="ss">bit_varying</span><span class="p">:</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;bit varying&quot;</span> <span class="p">},</span>
 </span><span class="line">  <span class="ss">money</span><span class="p">:</span>       <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;money&quot;</span> <span class="p">},</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -346,8 +346,8 @@
 <span class="line-number">36</span>
 <span class="line-number">37</span>
 <span class="line-number">38</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># PostgreSQL</span>
-</span><span class="line"><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">native_database_types</span><span class="o">.</span><span class="n">keys</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># PostgreSQL</span>
+</span><span class="line"><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">native_database_types</span><span class="o">.</span><span class="n">keys</span>
 </span><span class="line"><span class="o">[</span>
 </span><span class="line">  <span class="o">[</span> <span class="mi">0</span><span class="o">]</span> <span class="ss">:primary_key</span><span class="p">,</span>
 </span><span class="line">  <span class="o">[</span> <span class="mi">1</span><span class="o">]</span> <span class="ss">:bigserial</span><span class="p">,</span>
@@ -463,17 +463,17 @@
 <span class="line-number">58</span>
 <span class="line-number">59</span>
 <span class="line-number">60</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>rails generate model -h
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ rails generate model -h
 </span><span class="line">
 </span><span class="line">Available field types:
 </span><span class="line">
-</span><span class="line">    Just after the field name you can specify a <span class="nb">type </span>like text or boolean.
+</span><span class="line">    Just after the field name you can specify a <span class="nb">type</span> like text or boolean.
 </span><span class="line">    It will generate the column with the associated SQL type. For instance:
 </span><span class="line">
 </span><span class="line">        <span class="sb">`</span>rails generate model post title:string body:text<span class="sb">`</span>
 </span><span class="line">
-</span><span class="line">    will generate a title column with a varchar <span class="nb">type </span>and a body column with a text
-</span><span class="line">    type. If no <span class="nb">type </span>is specified the string <span class="nb">type </span>will be used by default.
+</span><span class="line">    will generate a title column with a varchar <span class="nb">type</span> and a body column with a text
+</span><span class="line">    type. If no <span class="nb">type</span> is specified the string <span class="nb">type</span> will be used by default.
 </span><span class="line">    You can use the following types:
 </span><span class="line">
 </span><span class="line">        integer
@@ -486,29 +486,29 @@
 </span><span class="line">        text
 </span><span class="line">        date
 </span><span class="line">        <span class="nb">time</span>
-</span><span class="line"><span class="nb">        </span>datetime
+</span><span class="line">        datetime
 </span><span class="line">
-</span><span class="line">    You can also consider <span class="sb">`</span>references<span class="sb">`</span> as a kind of type. For instance, <span class="k">if </span>you run:
+</span><span class="line">    You can also consider <span class="sb">`</span>references<span class="sb">`</span> as a kind of type. For instance, <span class="k">if</span> you run:
 </span><span class="line">
 </span><span class="line">        <span class="sb">`</span>rails generate model photo title:string album:references<span class="sb">`</span>
 </span><span class="line">
 </span><span class="line">    It will generate an <span class="sb">`</span>album_id<span class="sb">`</span> column. You should generate these kinds of fields when
-</span><span class="line">    you will use a <span class="sb">`</span>belongs_to<span class="sb">`</span> association, <span class="k">for </span>instance. <span class="sb">`</span>references<span class="sb">`</span> also supports
-</span><span class="line">    polymorphism, you can <span class="nb">enable </span>polymorphism like this:
+</span><span class="line">    you will use a <span class="sb">`</span>belongs_to<span class="sb">`</span> association, <span class="k">for</span> instance. <span class="sb">`</span>references<span class="sb">`</span> also supports
+</span><span class="line">    polymorphism, you can <span class="nb">enable</span> polymorphism like this:
 </span><span class="line">
 </span><span class="line">        <span class="sb">`</span>rails generate model product supplier:references<span class="o">{</span>polymorphic<span class="o">}</span><span class="sb">`</span>
 </span><span class="line">
 </span><span class="line">    For integer, string, text and binary fields, an integer in curly braces will
-</span><span class="line">    be <span class="nb">set </span>as the limit:
+</span><span class="line">    be <span class="nb">set</span> as the limit:
 </span><span class="line">
-</span><span class="line">        <span class="sb">`</span>rails generate model user pseudo:string<span class="o">{</span>30<span class="o">}</span><span class="sb">`</span>
+</span><span class="line">        <span class="sb">`</span>rails generate model user pseudo:string<span class="o">{</span><span class="m">30</span><span class="o">}</span><span class="sb">`</span>
 </span><span class="line">
 </span><span class="line">    For decimal, two integers separated by a comma in curly braces will be used
-</span><span class="line">    <span class="k">for </span>precision and scale:
+</span><span class="line">    <span class="k">for</span> precision and scale:
 </span><span class="line">
 </span><span class="line">        <span class="sb">`</span>rails generate model product <span class="s1">&#39;price:decimal{10,2}&#39;</span><span class="sb">`</span>
 </span><span class="line">
-</span><span class="line">    You can add a <span class="sb">`</span>:uniq<span class="sb">`</span> or <span class="sb">`</span>:index<span class="sb">`</span> suffix <span class="k">for </span>unique or standard indexes
+</span><span class="line">    You can add a <span class="sb">`</span>:uniq<span class="sb">`</span> or <span class="sb">`</span>:index<span class="sb">`</span> suffix <span class="k">for</span> unique or standard indexes
 </span><span class="line">    respectively:
 </span><span class="line">
 </span><span class="line">        <span class="sb">`</span>rails generate model user pseudo:string:uniq<span class="sb">`</span>
@@ -516,10 +516,10 @@
 </span><span class="line">
 </span><span class="line">    You can combine any single curly brace option with the index options:
 </span><span class="line">
-</span><span class="line">        <span class="sb">`</span>rails generate model user username:string<span class="o">{</span>30<span class="o">}</span>:uniq<span class="sb">`</span>
+</span><span class="line">        <span class="sb">`</span>rails generate model user username:string<span class="o">{</span><span class="m">30</span><span class="o">}</span>:uniq<span class="sb">`</span>
 </span><span class="line">        <span class="sb">`</span>rails generate model product supplier:references<span class="o">{</span>polymorphic<span class="o">}</span>:index<span class="sb">`</span>
 </span><span class="line">
-</span><span class="line">    If you require a <span class="sb">`</span>password_digest<span class="sb">`</span> string column <span class="k">for </span>use with
+</span><span class="line">    If you require a <span class="sb">`</span>password_digest<span class="sb">`</span> string column <span class="k">for</span> use with
 </span><span class="line">    has_secure_password, you should specify <span class="sb">`</span>password:digest<span class="sb">`</span>:
 </span><span class="line">
 </span><span class="line">        <span class="sb">`</span>rails generate model user password:digest<span class="sb">`</span>
@@ -535,8 +535,8 @@
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">:string |                   VARCHAR                | :limit <span class="o">=</span>&gt; 1 to 255 <span class="o">(</span><span class="nv">default</span> <span class="o">=</span> 255<span class="o">)</span>
-</span><span class="line">:text   | TINYTEXT, TEXT, MEDIUMTEXT, or LONGTEXT2 | :limit <span class="o">=</span>&gt; 1 to 4294967296 <span class="o">(</span><span class="nv">default</span> <span class="o">=</span> 65536<span class="o">)</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>:string <span class="p">|</span>                   VARCHAR                <span class="p">|</span> :limit <span class="o">=</span>&gt; <span class="m">1</span> to <span class="m">255</span> <span class="o">(</span><span class="nv">default</span> <span class="o">=</span> <span class="m">255</span><span class="o">)</span>
+</span><span class="line">:text   <span class="p">|</span> TINYTEXT, TEXT, MEDIUMTEXT, or LONGTEXT2 <span class="p">|</span> :limit <span class="o">=</span>&gt; <span class="m">1</span> to <span class="m">4294967296</span> <span class="o">(</span><span class="nv">default</span> <span class="o">=</span> <span class="m">65536</span><span class="o">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>So you’d better specify the <code>:limit</code> as a reminder to yourself that there is a limit and you should have a validation in the model to ensure that the limit is not exceeded.</p>
@@ -563,8 +563,8 @@
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">:string | character varying <span class="o">(</span>255<span class="o">)</span>
-</span><span class="line">:text   | text
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>:string <span class="p">|</span> character varying <span class="o">(</span><span class="m">255</span><span class="o">)</span>
+</span><span class="line">:text   <span class="p">|</span> text
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>There’s no reason to use <code>:string</code> (AKA <code>varchar</code>) at all, the database treats <code>text</code> and <code>varchar(n)</code> the same internally except for the extra length constraints for <code>varchar(n)</code>; you should only use <code>varchar(n)</code> (AKA <code>:string</code>) if you have an external constrain on the column size.</p>

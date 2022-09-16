@@ -225,7 +225,7 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
 </span><span class="line"><span class="mi">3</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span>
 </span><span class="line">  <span class="no">Thread</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span>
 </span><span class="line">    <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;http://zombo.com&#39;</span><span class="p">)</span>
@@ -262,7 +262,7 @@
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="vi">@counter</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="vi">@counter</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span class="line">
 </span><span class="line"><span class="mi">5</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span>
 </span><span class="line">  <span class="no">Thread</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span>
@@ -375,7 +375,7 @@
 <span class="line-number">31</span>
 <span class="line-number">32</span>
 <span class="line-number">33</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># This class represents an ecommerce order</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># This class represents an ecommerce order</span>
 </span><span class="line"><span class="k">class</span> <span class="nc">Order</span>
 </span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:amount</span><span class="p">,</span> <span class="ss">:status</span>
 </span><span class="line">
@@ -421,7 +421,7 @@
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># With this line, it&#39;s possible that another thread</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># With this line, it&#39;s possible that another thread</span>
 </span><span class="line"><span class="c1"># updated the status already and this value is stale</span>
 </span><span class="line"><span class="n">status</span> <span class="o">=</span> <span class="n">order</span><span class="o">.</span><span class="n">status</span>
 </span><span class="line">
@@ -490,7 +490,7 @@
 <span class="line-number">32</span>
 <span class="line-number">33</span>
 <span class="line-number">34</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;thread&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;thread&#39;</span>
 </span><span class="line"><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="n">mutex</span>    <span class="o">=</span> <span class="no">Mutex</span><span class="o">.</span><span class="n">new</span>
@@ -499,7 +499,7 @@
 </span><span class="line">
 </span><span class="line"><span class="no">Thread</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span>
 </span><span class="line">  <span class="mi">10</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
-</span><span class="line">    <span class="n">response</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="s1">&#39;dynamic.xkcd.com&#39;</span><span class="p">,</span> <span class="s1">&#39;/random/comic/&#39;</span><span class="p">)</span>
+</span><span class="line">    <span class="n">response</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="s1">&#39;dynamic.xkcd.com&#39;</span><span class="p">,</span> <span class="s1">&#39;/random/comic/&#39;</span><span class="p">)</span>
 </span><span class="line">    <span class="n">random_comic_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">[</span><span class="s1">&#39;Location&#39;</span><span class="o">]</span>
 </span><span class="line">
 </span><span class="line">    <span class="n">mutex</span><span class="o">.</span><span class="n">synchronize</span> <span class="k">do</span>
@@ -572,7 +572,7 @@
 <span class="line-number">35</span>
 <span class="line-number">36</span>
 <span class="line-number">37</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;thread&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;thread&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="k">class</span> <span class="nc">BlockingQueue</span>
 </span><span class="line">  <span class="kp">attr_reader</span> <span class="ss">:queue</span><span class="p">,</span> <span class="ss">:mutex</span><span class="p">,</span> <span class="ss">:cv</span>
@@ -655,10 +655,10 @@
 <span class="line-number">26</span>
 <span class="line-number">27</span>
 <span class="line-number">28</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;hamster/queue&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;hamster/queue&#39;</span>
 </span><span class="line"><span class="nb">require</span> <span class="s1">&#39;atomic&#39;</span>
 </span><span class="line">
-</span><span class="line"><span class="vi">@queue_wrapper</span> <span class="o">=</span> <span class="no">Atomic</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">Hamster</span><span class="p">:</span><span class="ss">:Queue</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+</span><span class="line"><span class="vi">@queue_wrapper</span> <span class="o">=</span> <span class="no">Atomic</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">Hamster</span><span class="o">::</span><span class="no">Queue</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
 </span><span class="line">
 </span><span class="line"><span class="mi">30</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
 </span><span class="line">  <span class="vi">@queue_wrapper</span><span class="o">.</span><span class="n">update</span> <span class="p">{</span> <span class="o">|</span><span class="n">queue</span><span class="o">|</span>
@@ -720,7 +720,7 @@
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># Instead of</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># Instead of</span>
 </span><span class="line"><span class="vg">$redis</span> <span class="o">=</span> <span class="no">Redis</span><span class="o">.</span><span class="n">new</span>
 </span><span class="line"><span class="c1"># use</span>
 </span><span class="line"><span class="no">Thread</span><span class="o">.</span><span class="n">current</span><span class="o">[</span><span class="ss">:redis</span><span class="o">]</span> <span class="o">=</span> <span class="no">Redis</span><span class="o">.</span><span class="n">new</span>
@@ -785,7 +785,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">Enumerable</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">module</span> <span class="nn">Enumerable</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">concurrent_each</span>
 </span><span class="line">    <span class="n">threads</span> <span class="o">=</span> <span class="o">[]</span>
 </span><span class="line">    <span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
@@ -819,14 +819,14 @@
 <span class="line-number">11</span>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;celluloid/autostart&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;celluloid/autostart&#39;</span>
 </span><span class="line"><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="k">class</span> <span class="nc">XKCDFetcher</span>
 </span><span class="line">  <span class="kp">include</span> <span class="no">Celluloid</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">next</span>
-</span><span class="line">    <span class="n">response</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="s1">&#39;dynamic.xkcd.com&#39;</span><span class="p">,</span> <span class="s1">&#39;/random/comic/&#39;</span><span class="p">)</span>
+</span><span class="line">    <span class="n">response</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="s1">&#39;dynamic.xkcd.com&#39;</span><span class="p">,</span> <span class="s1">&#39;/random/comic/&#39;</span><span class="p">)</span>
 </span><span class="line">    <span class="n">random_comic_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">[</span><span class="s1">&#39;Location&#39;</span><span class="o">]</span>
 </span><span class="line">
 </span><span class="line">    <span class="n">random_comic_url</span>
@@ -858,7 +858,7 @@
 <span class="line-number">20</span>
 <span class="line-number">21</span>
 <span class="line-number">22</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># this spawns a new thread containing a Celluloid actor</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># this spawns a new thread containing a Celluloid actor</span>
 </span><span class="line"><span class="n">fetcher</span> <span class="o">=</span> <span class="no">XKCDFetcher</span><span class="o">.</span><span class="n">new</span>
 </span><span class="line">
 </span><span class="line"><span class="c1"># these behave like regular method calls</span>

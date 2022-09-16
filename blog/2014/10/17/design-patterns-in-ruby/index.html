@@ -516,7 +516,7 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># The Template Method</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># The Template Method</span>
 </span><span class="line"><span class="n">report</span> <span class="o">=</span> <span class="no">HTMLReport</span><span class="o">.</span><span class="n">new</span>
 </span><span class="line"><span class="n">report</span><span class="o">.</span><span class="n">output_report</span>
 </span><span class="line"><span class="n">report</span> <span class="o">=</span> <span class="no">PlainTextReport</span><span class="o">.</span><span class="n">new</span>
@@ -530,7 +530,7 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># The Strategy</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># The Strategy</span>
 </span><span class="line"><span class="n">report</span> <span class="o">=</span> <span class="no">Report</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">HTMLFormatter</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
 </span><span class="line"><span class="n">report</span><span class="o">.</span><span class="n">output_report</span>
 </span><span class="line"><span class="n">report</span><span class="o">.</span><span class="n">formatter</span> <span class="o">=</span> <span class="no">PlainTextFormatter</span><span class="o">.</span><span class="n">new</span>
@@ -568,7 +568,7 @@
 <span class="line-number">12</span>
 <span class="line-number">13</span>
 <span class="line-number">14</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Report</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">Report</span>
 </span><span class="line">  <span class="kp">attr_reader</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:text</span>
 </span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:formatter</span>
 </span><span class="line">
@@ -638,7 +638,7 @@
 <span class="line-number">36</span>
 <span class="line-number">37</span>
 <span class="line-number">38</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">Subject</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">module</span> <span class="nn">Subject</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span>
 </span><span class="line">    <span class="vi">@observers</span><span class="o">=[]</span>
 </span><span class="line">  <span class="k">end</span>
@@ -706,7 +706,7 @@
 <span class="line-number">17</span>
 <span class="line-number">18</span>
 <span class="line-number">19</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;observer&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;observer&#39;</span>
 </span><span class="line"><span class="k">class</span> <span class="nc">Employee</span>
 </span><span class="line">  <span class="kp">include</span> <span class="no">Observable</span>
 </span><span class="line">
@@ -737,7 +737,7 @@
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">observer</span><span class="o">.</span><span class="n">update_salary</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">old_salary</span><span class="p">,</span> <span class="n">new_salary</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">observer</span><span class="o">.</span><span class="n">update_salary</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">old_salary</span><span class="p">,</span> <span class="n">new_salary</span><span class="p">)</span>
 </span><span class="line"><span class="n">observer</span><span class="o">.</span><span class="n">update_title</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">old_title</span><span class="p">,</span> <span class="n">new_title</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -755,7 +755,7 @@
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">salary</span><span class="o">=</span><span class="p">(</span><span class="n">new_salary</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">def</span> <span class="nf">salary</span><span class="o">=</span><span class="p">(</span><span class="n">new_salary</span><span class="p">)</span>
 </span><span class="line">  <span class="n">old_salary</span> <span class="o">=</span> <span class="vi">@salary</span>
 </span><span class="line">  <span class="vi">@salary</span> <span class="o">=</span> <span class="n">new_salary</span>
 </span><span class="line">  <span class="k">if</span> <span class="n">old_salary</span> <span class="o">!=</span> <span class="n">new_salary</span>
@@ -780,7 +780,7 @@
 <span class="line-number">11</span>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">fred</span> <span class="o">=</span> <span class="no">Employee</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Fred&quot;</span><span class="p">,</span> <span class="s2">&quot;Crane Operator&quot;</span><span class="p">,</span> <span class="mi">30000</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">fred</span> <span class="o">=</span> <span class="no">Employee</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Fred&quot;</span><span class="p">,</span> <span class="s2">&quot;Crane Operator&quot;</span><span class="p">,</span> <span class="mi">30000</span><span class="p">)</span>
 </span><span class="line">
 </span><span class="line"><span class="n">fred</span><span class="o">.</span><span class="n">salary</span> <span class="o">=</span> <span class="mi">1000000</span>
 </span><span class="line"><span class="c1"># Warning! Inconsistent state here!</span>
@@ -808,7 +808,7 @@
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">Subject</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">module</span> <span class="nn">Subject</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">notify_observers</span>
 </span><span class="line">    <span class="vi">@observers</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">observer</span><span class="o">|</span>
 </span><span class="line">      <span class="n">observer</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
@@ -864,7 +864,7 @@
 <span class="line-number">27</span>
 <span class="line-number">28</span>
 <span class="line-number">29</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">CompositeTask</span> <span class="o">&lt;</span> <span class="no">Task</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">CompositeTask</span> <span class="o">&lt;</span> <span class="no">Task</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
 </span><span class="line">    <span class="k">super</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
 </span><span class="line">    <span class="vi">@sub_tasks</span> <span class="o">=</span> <span class="o">[]</span>
@@ -934,7 +934,7 @@
 <span class="line-number">23</span>
 <span class="line-number">24</span>
 <span class="line-number">25</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Task</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">Task</span>
 </span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:parent</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
@@ -987,7 +987,7 @@
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="err">#</span> <span class="n">in</span> <span class="n">java</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span></span><span class="err">#</span> <span class="n">in</span> <span class="n">java</span>
 </span><span class="line"><span class="n">ArrayList</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
 </span><span class="line"><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;red&quot;</span><span class="o">);</span>
 </span><span class="line"><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;green&quot;</span><span class="o">);</span>
@@ -1010,7 +1010,7 @@
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># in ruby</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># in ruby</span>
 </span><span class="line"><span class="k">def</span> <span class="nf">for_each_element</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
 </span><span class="line">  <span class="n">i</span><span class="o">=</span> <span class="mi">0</span>
 </span><span class="line">  <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">array</span><span class="o">.</span><span class="n">length</span>
@@ -1077,7 +1077,7 @@
 <span class="line-number">29</span>
 <span class="line-number">30</span>
 <span class="line-number">31</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Account</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">Account</span>
 </span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:balance</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">balance</span><span class="p">)</span>
@@ -1122,12 +1122,12 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">ChangeResistantArrayIterator</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">ChangeResistantArrayIterator</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
 </span><span class="line">    <span class="vi">@array</span> <span class="o">=</span> <span class="nb">Array</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
 </span><span class="line">    <span class="vi">@index</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span class="line">  <span class="k">end</span>
-</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line">  <span class="o">...</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>A Ruby trick example.</p>
@@ -1144,7 +1144,7 @@
 <span class="line-number">10</span>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">array</span><span class="o">=[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="o">]</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">array</span><span class="o">=[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="o">]</span>
 </span><span class="line">
 </span><span class="line"><span class="n">array</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">color</span> <span class="o">|</span>
 </span><span class="line">  <span class="nb">puts</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
@@ -1175,7 +1175,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">f</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;names.txt&#39;</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">f</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;names.txt&#39;</span><span class="p">)</span>
 </span><span class="line"><span class="k">while</span> <span class="ow">not</span> <span class="n">f</span><span class="o">.</span><span class="n">eof?</span>
 </span><span class="line">  <span class="nb">puts</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">)</span>
 </span><span class="line"><span class="k">end</span>
@@ -1204,7 +1204,7 @@
 <span class="line-number">12</span>
 <span class="line-number">13</span>
 <span class="line-number">14</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">pn</span><span class="o">.</span><span class="n">each_filename</span> <span class="p">{</span><span class="o">|</span><span class="n">file</span><span class="o">|</span> <span class="nb">puts</span><span class="p">(</span><span class="s2">&quot;File: </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)}</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">pn</span><span class="o">.</span><span class="n">each_filename</span> <span class="p">{</span><span class="o">|</span><span class="n">file</span><span class="o">|</span> <span class="nb">puts</span><span class="p">(</span><span class="s2">&quot;File: </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)}</span>
 </span><span class="line"><span class="c1"># File: usr</span>
 </span><span class="line"><span class="c1"># File: local</span>
 </span><span class="line"><span class="c1"># File: lib</span>
@@ -1229,7 +1229,7 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">ObjectSpace</span><span class="o">.</span><span class="n">each_object</span> <span class="p">{</span><span class="o">|</span><span class="n">object</span><span class="o">|</span> <span class="nb">puts</span><span class="p">(</span><span class="s2">&quot;Object: </span><span class="si">#{</span><span class="n">object</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)}</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="no">ObjectSpace</span><span class="o">.</span><span class="n">each_object</span> <span class="p">{</span><span class="o">|</span><span class="n">object</span><span class="o">|</span> <span class="nb">puts</span><span class="p">(</span><span class="s2">&quot;Object: </span><span class="si">#{</span><span class="n">object</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)}</span>
 </span><span class="line">
 </span><span class="line"><span class="c1"># If you supply the argument, each_object will iterate over only</span>
 </span><span class="line"><span class="c1"># the instances of that class or module.</span>
@@ -1251,7 +1251,7 @@
 <span class="line-number">11</span>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">subclasses_of</span><span class="p">(</span><span class="n">superclass</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">def</span> <span class="nf">subclasses_of</span><span class="p">(</span><span class="n">superclass</span><span class="p">)</span>
 </span><span class="line">  <span class="n">subclasses</span> <span class="o">=</span> <span class="o">[]</span>
 </span><span class="line">
 </span><span class="line">  <span class="no">ObjectSpace</span><span class="o">.</span><span class="n">each_object</span><span class="p">(</span><span class="no">Class</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span>
@@ -1310,7 +1310,7 @@
 <span class="line-number">22</span>
 <span class="line-number">23</span>
 <span class="line-number">24</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Command</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">Command</span>
 </span><span class="line">  <span class="kp">attr_reader</span> <span class="ss">:description</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
@@ -1366,7 +1366,7 @@
 <span class="line-number">24</span>
 <span class="line-number">25</span>
 <span class="line-number">26</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">CompositeCommand</span> <span class="o">&lt;</span> <span class="no">Command</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">CompositeCommand</span> <span class="o">&lt;</span> <span class="no">Command</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span>
 </span><span class="line">    <span class="vi">@commands</span> <span class="o">=</span> <span class="o">[]</span>
 </span><span class="line">  <span class="k">end</span>
@@ -1421,7 +1421,7 @@
 <span class="line-number">19</span>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">DeleteFile</span> <span class="o">&lt;</span> <span class="no">Command</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">DeleteFile</span> <span class="o">&lt;</span> <span class="no">Command</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </span><span class="line">    <span class="k">super</span> <span class="s2">&quot;Delete file: </span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span class="line">    <span class="vi">@path</span> <span class="o">=</span> <span class="n">path</span>
@@ -1462,7 +1462,7 @@
 <span class="line-number">14</span>
 <span class="line-number">15</span>
 <span class="line-number">16</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">CreateFile</span> <span class="o">&lt;</span> <span class="no">Command</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">CreateFile</span> <span class="o">&lt;</span> <span class="no">Command</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">contents</span><span class="p">)</span>
 </span><span class="line">    <span class="k">super</span> <span class="s2">&quot;Create file: </span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span class="line">    <span class="vi">@path</span> <span class="o">=</span> <span class="n">path</span>
@@ -1491,7 +1491,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">CompositeCommand</span> <span class="o">&lt;</span> <span class="no">Command</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">CompositeCommand</span> <span class="o">&lt;</span> <span class="no">Command</span>
 </span><span class="line">  <span class="c1"># ...</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">unexecute</span>
@@ -1536,7 +1536,7 @@
 <span class="line-number">12</span>
 <span class="line-number">13</span>
 <span class="line-number">14</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">CreateBookTable</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Migration</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">CreateBookTable</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
 </span><span class="line">  <span class="c1"># execute</span>
 </span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">up</span>
 </span><span class="line">    <span class="n">create_table</span> <span class="ss">:books</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
@@ -1654,7 +1654,7 @@
 <span class="line-number">22</span>
 <span class="line-number">23</span>
 <span class="line-number">24</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;etc&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;etc&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="k">class</span> <span class="nc">AccountProtectionProxy</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">real_account</span><span class="p">,</span> <span class="n">owner_name</span><span class="p">)</span>
@@ -1696,11 +1696,11 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;soap/wsdlDriver&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;soap/wsdlDriver&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="n">wsdl_url</span> <span class="o">=</span> <span class="s1">&#39;http://www.webservicex.net/WeatherForecast.asmx?WSDL&#39;</span>
 </span><span class="line">
-</span><span class="line"><span class="n">proxy</span> <span class="o">=</span> <span class="ss">SOAP</span><span class="p">:</span><span class="ss">:WSDLDriverFactory</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="n">wsdl_url</span> <span class="p">)</span><span class="o">.</span><span class="n">create_rpc_driver</span>
+</span><span class="line"><span class="n">proxy</span> <span class="o">=</span> <span class="no">SOAP</span><span class="o">::</span><span class="no">WSDLDriverFactory</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="n">wsdl_url</span> <span class="p">)</span><span class="o">.</span><span class="n">create_rpc_driver</span>
 </span><span class="line"><span class="n">weather_info</span> <span class="o">=</span> <span class="n">proxy</span><span class="o">.</span><span class="n">GetWeatherByZipCode</span><span class="p">(</span><span class="s1">&#39;ZipCode&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;19128&#39;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -1735,7 +1735,7 @@
 <span class="line-number">23</span>
 <span class="line-number">24</span>
 <span class="line-number">25</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">VirtualAccountProxy</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">VirtualAccountProxy</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">starting_balance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </span><span class="line">    <span class="vi">@starting_balance</span><span class="o">=</span><span class="n">starting_balance</span>
@@ -1775,7 +1775,7 @@
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">VirtualAccountProxy</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">VirtualAccountProxy</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="o">&amp;</span><span class="n">creation_block</span><span class="p">)</span>
 </span><span class="line">    <span class="vi">@creation_block</span> <span class="o">=</span> <span class="n">creation_block</span>
 </span><span class="line">  <span class="k">end</span>
@@ -1812,7 +1812,7 @@
 <span class="line-number">18</span>
 <span class="line-number">19</span>
 <span class="line-number">20</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">VirtualProxy</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">VirtualProxy</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="o">&amp;</span><span class="n">creation_block</span><span class="p">)</span>
 </span><span class="line">    <span class="vi">@creation_block</span> <span class="o">=</span> <span class="n">creation_block</span>
 </span><span class="line">  <span class="k">end</span>
@@ -1863,7 +1863,7 @@
 <span class="line-number">19</span>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># server</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># server</span>
 </span><span class="line"><span class="k">class</span> <span class="nc">MathService</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </span><span class="line">    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
@@ -1948,7 +1948,7 @@
 <span class="line-number">34</span>
 <span class="line-number">35</span>
 <span class="line-number">36</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">WriterDecorator</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">WriterDecorator</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">real_writer</span><span class="p">)</span>
 </span><span class="line">    <span class="vi">@real_writer</span> <span class="o">=</span> <span class="n">real_writer</span>
 </span><span class="line">  <span class="k">end</span>
@@ -2001,7 +2001,7 @@
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;forwardable&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;forwardable&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="k">class</span> <span class="nc">WriterDecorator</span>
 </span><span class="line">  <span class="kp">extend</span> <span class="no">Forwardable</span>
@@ -2033,7 +2033,7 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">w</span> <span class="o">=</span> <span class="no">SimpleWriter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;out&#39;</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">w</span> <span class="o">=</span> <span class="no">SimpleWriter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;out&#39;</span><span class="p">)</span>
 </span><span class="line"><span class="n">w</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="no">NumberingWriter</span><span class="p">)</span>
 </span><span class="line"><span class="n">w</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="no">TimeStampingWriter</span><span class="p">)</span>
 </span><span class="line">
@@ -2064,7 +2064,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">write_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">def</span> <span class="nf">write_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </span><span class="line">  <span class="nb">puts</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </span><span class="line"><span class="k">end</span>
 </span><span class="line">
@@ -2114,7 +2114,7 @@
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 <span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">SimpleLogger</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">SimpleLogger</span>
 </span><span class="line">  <span class="c1"># Lots of code deleted...</span>
 </span><span class="line">
 </span><span class="line">  <span class="vc">@@instance</span> <span class="o">=</span> <span class="no">SimpleLogger</span><span class="o">.</span><span class="n">new</span>
@@ -2142,7 +2142,7 @@
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;singleton&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;singleton&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="k">class</span> <span class="nc">SimpleLogger</span>
 </span><span class="line">  <span class="kp">include</span> <span class="no">Singleton</span>
@@ -2179,7 +2179,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;singleton&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;singleton&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="k">class</span> <span class="nc">Manager</span>
 </span><span class="line">  <span class="kp">include</span> <span class="no">Singleton</span>
@@ -2199,7 +2199,7 @@
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">m</span> <span class="o">=</span> <span class="no">Manager</span><span class="o">.</span><span class="n">new</span> <span class="c1"># =&gt; private method &#39;new&#39; called for Manager:Class</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">m</span> <span class="o">=</span> <span class="no">Manager</span><span class="o">.</span><span class="n">new</span> <span class="c1"># =&gt; private method &#39;new&#39; called for Manager:Class</span>
 </span><span class="line">
 </span><span class="line"><span class="k">class</span> <span class="nc">Manager</span>
 </span><span class="line">  <span class="nb">public_class_method</span> <span class="ss">:new</span>
@@ -2216,7 +2216,7 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">m</span> <span class="o">=</span> <span class="no">Manager</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">clone</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">m</span> <span class="o">=</span> <span class="no">Manager</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">clone</span>
 </span><span class="line"><span class="c1"># =&gt; TypeError: can&#39;t clone instance of singleton Manager</span>
 </span><span class="line">
 </span><span class="line"><span class="no">Foo</span> <span class="o">=</span> <span class="no">Manager</span><span class="o">.</span><span class="n">clone</span>
@@ -2247,7 +2247,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;singleton&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;singleton&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="k">class</span> <span class="nc">DatabaseConnectionManager</span>
 </span><span class="line">  <span class="kp">include</span> <span class="no">Singleton</span>
@@ -2291,7 +2291,7 @@
 <span class="line-number">29</span>
 <span class="line-number">30</span>
 <span class="line-number">31</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">PreferenceManager</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">PreferenceManager</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span>
 </span><span class="line">    <span class="vi">@reader</span> <span class="o">=</span> <span class="no">PrefReader</span><span class="o">.</span><span class="n">new</span>
 </span><span class="line">    <span class="vi">@writer</span> <span class="o">=</span> <span class="no">PrefWriter</span><span class="o">.</span><span class="n">new</span>
@@ -2343,7 +2343,7 @@
 <span class="line-number">15</span>
 <span class="line-number">16</span>
 <span class="line-number">17</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">PreferenceManager</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">PreferenceManager</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span>
 </span><span class="line">    <span class="vi">@reader</span> <span class="o">=</span> <span class="no">PrefReader</span><span class="o">.</span><span class="n">new</span>
 </span><span class="line">    <span class="vi">@writer</span> <span class="o">=</span> <span class="no">PrefWriter</span><span class="o">.</span><span class="n">new</span>
@@ -2377,7 +2377,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;singleton&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;singleton&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="k">class</span> <span class="nc">SimpleLogger</span>
 </span><span class="line">  <span class="c1"># All of the logging functionality in this class...</span>
@@ -2453,7 +2453,7 @@
 <span class="line-number">28</span>
 <span class="line-number">29</span>
 <span class="line-number">30</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Pond</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">Pond</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">number_animals</span><span class="p">,</span> <span class="n">number_plants</span><span class="p">)</span>
 </span><span class="line">    <span class="vi">@animals</span> <span class="o">=</span> <span class="o">[]</span>
 </span><span class="line">    <span class="n">number_animals</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
@@ -2528,7 +2528,7 @@
 <span class="line-number">37</span>
 <span class="line-number">38</span>
 <span class="line-number">39</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Pond</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">Pond</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">number_animals</span><span class="p">,</span> <span class="n">animal_class</span><span class="p">,</span>
 </span><span class="line">                 <span class="n">number_plants</span><span class="p">,</span> <span class="n">plant_class</span><span class="p">)</span>
 </span><span class="line">    <span class="vi">@animal_class</span> <span class="o">=</span> <span class="n">animal_class</span>
@@ -2620,7 +2620,7 @@
 <span class="line-number">39</span>
 <span class="line-number">40</span>
 <span class="line-number">41</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">PondOrganismFactory</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">PondOrganismFactory</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">new_animal</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
 </span><span class="line">    <span class="no">Frog</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
 </span><span class="line">  <span class="k">end</span>
@@ -2687,7 +2687,7 @@
 <span class="line-number">20</span>
 <span class="line-number">21</span>
 <span class="line-number">22</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">OrganismFactory</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">OrganismFactory</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">plant_class</span><span class="p">,</span> <span class="n">animal_class</span><span class="p">)</span>
 </span><span class="line">    <span class="vi">@plant_class</span> <span class="o">=</span> <span class="n">plant_class</span>
 </span><span class="line">    <span class="vi">@animal_class</span> <span class="o">=</span> <span class="n">animal_class</span>
@@ -2735,7 +2735,7 @@
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">adapter</span> <span class="o">=</span> <span class="s2">&quot;mysql&quot;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">adapter</span> <span class="o">=</span> <span class="s2">&quot;mysql&quot;</span>
 </span><span class="line"><span class="n">method_name</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">adapter</span><span class="si">}</span><span class="s2">_connection&quot;</span>
 </span><span class="line"><span class="no">Base</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -2800,7 +2800,7 @@
 <span class="line-number">37</span>
 <span class="line-number">38</span>
 <span class="line-number">39</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">ComputerBuilder</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">ComputerBuilder</span>
 </span><span class="line">  <span class="kp">attr_reader</span> <span class="ss">:computer</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span>
@@ -2852,7 +2852,7 @@
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">computer</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">def</span> <span class="nf">computer</span>
 </span><span class="line">  <span class="k">raise</span> <span class="s2">&quot;Not enough memory&quot;</span> <span class="k">if</span> <span class="vi">@computer</span><span class="o">.</span><span class="n">motherboard</span><span class="o">.</span><span class="n">memory_size</span> <span class="o">&lt;</span> <span class="mi">250</span>
 </span><span class="line">  <span class="k">raise</span> <span class="s2">&quot;Too many drives&quot;</span> <span class="k">if</span> <span class="vi">@computer</span><span class="o">.</span><span class="n">drives</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">4</span>
 </span><span class="line">  <span class="n">hard_disk</span> <span class="o">=</span> <span class="vi">@computer</span><span class="o">.</span><span class="n">drives</span><span class="o">.</span><span class="n">find</span> <span class="p">{</span><span class="o">|</span><span class="n">drive</span><span class="o">|</span> <span class="n">drive</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="ss">:hard_disk</span><span class="p">}</span>
@@ -2873,7 +2873,7 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">LaptopBuilder</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">LaptopBuilder</span>
 </span><span class="line">  <span class="c1"># Lots of code omitted...</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">reset</span>
 </span><span class="line">    <span class="vi">@computer</span> <span class="o">=</span> <span class="no">LaptopComputer</span><span class="o">.</span><span class="n">new</span>
@@ -2901,7 +2901,7 @@
 <span class="line-number">12</span>
 <span class="line-number">13</span>
 <span class="line-number">14</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
 </span><span class="line">  <span class="n">words</span> <span class="o">=</span> <span class="nb">name</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
 </span><span class="line">  <span class="k">return</span> <span class="k">super</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="k">unless</span> <span class="n">words</span><span class="o">.</span><span class="n">shift</span> <span class="o">==</span> <span class="s1">&#39;add&#39;</span>
 </span><span class="line">  <span class="n">words</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">word</span><span class="o">|</span>
@@ -2989,7 +2989,7 @@
 <span class="line-number">37</span>
 <span class="line-number">38</span>
 <span class="line-number">39</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Parser</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">Parser</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </span><span class="line">    <span class="vi">@tokens</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/\(|\)|[\w\.\*]+/</span><span class="p">)</span>
 </span><span class="line">  <span class="k">end</span>
@@ -3116,7 +3116,7 @@
 <span class="line-number">8</span>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">new_animal</span><span class="p">(</span><span class="n">diet</span><span class="p">,</span> <span class="n">awake</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">def</span> <span class="nf">new_animal</span><span class="p">(</span><span class="n">diet</span><span class="p">,</span> <span class="n">awake</span><span class="p">)</span>
 </span><span class="line">  <span class="n">animal</span> <span class="o">=</span> <span class="no">Object</span><span class="o">.</span><span class="n">new</span>
 </span><span class="line">  <span class="k">if</span> <span class="n">diet</span> <span class="o">==</span> <span class="ss">:meat</span>
 </span><span class="line">    <span class="n">animal</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="no">Carnivore</span><span class="p">)</span>
@@ -3124,7 +3124,7 @@
 </span><span class="line">    <span class="n">animal</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="no">Herbivore</span><span class="p">)</span>
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line">
-</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line">  <span class="o">...</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 

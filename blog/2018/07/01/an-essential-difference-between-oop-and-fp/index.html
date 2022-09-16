@@ -233,7 +233,7 @@ it state in OO.</p>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">class</span> <span class="nc">Person</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span></span><span class="k">class</span> <span class="nc">Person</span>
 </span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span>
 </span><span class="line"><span class="k">end</span>
 </span><span class="line">
@@ -250,7 +250,7 @@ there will also come with a data constructor, which holds the values together.</
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span>
 </span><span class="line">
 </span><span class="line"><span class="nf">person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="s">&quot;Di&quot;</span> <span class="mi">18</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -271,7 +271,7 @@ applying this kind of mechanisms the language provides over and over again.</p>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">class</span> <span class="nc">Person</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span></span><span class="k">class</span> <span class="nc">Person</span>
 </span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">gets_older</span><span class="p">;</span> <span class="n">age</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">end</span>
@@ -292,7 +292,7 @@ a bundle of values and operations.</p>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"> <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span> <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>
 </span><span class="line"> <span class="o">|</span><span class="n">_class_</span><span class="kt">:</span> <span class="kt">Person</span>  <span class="o">|</span>   <span class="o">|</span><span class="n">_class_</span><span class="kt">:</span> <span class="kt">Person</span>  <span class="o">|</span>   <span class="o">|</span><span class="n">_class_</span><span class="kt">:</span> <span class="kt">Person</span>  <span class="o">|</span>
 </span><span class="line"> <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>
 </span><span class="line"> <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Bart&quot;</span>     <span class="o">|</span>   <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Lisa&quot;</span>     <span class="o">|</span>   <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Maggie&quot;</span>   <span class="o">|</span>
@@ -309,7 +309,7 @@ a bundle of values and operations.</p>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span>
 </span><span class="line"><span class="nf">person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="s">&quot;Bart&quot;</span> <span class="mi">10</span>
 </span><span class="line">
 </span><span class="line"><span class="nf">getsOlder</span> <span class="ow">::</span> <span class="kt">Person</span> <span class="ow">-&gt;</span> <span class="kt">Person</span>
@@ -335,7 +335,7 @@ in below.</p>
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 <span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"> <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span> <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>
 </span><span class="line"> <span class="o">|</span><span class="n">_type_</span><span class="kt">:</span> <span class="kt">Person</span>   <span class="o">|</span>   <span class="o">|</span><span class="n">_type_</span><span class="kt">:</span> <span class="kt">Person</span>   <span class="o">|</span>   <span class="o">|</span><span class="n">_type_</span><span class="kt">:</span> <span class="kt">Person</span>   <span class="o">|</span>
 </span><span class="line"> <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>
 </span><span class="line"> <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Bart&quot;</span>     <span class="o">|</span>   <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Lisa&quot;</span>     <span class="o">|</span>   <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Maggie&quot;</span>   <span class="o">|</span>
@@ -377,7 +377,7 @@ more general types passed in.</p>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">class</span> <span class="nc">Person</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span></span><span class="k">class</span> <span class="nc">Person</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">gets_older</span><span class="p">;</span> <span class="n">age</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span><span class="line">
@@ -407,7 +407,7 @@ of operations can be applied onto the type (the set of values).</p>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
 <span class="line-number">14</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span> <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Show</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span> <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Show</span><span class="p">)</span>
 </span><span class="line"><span class="kr">data</span> <span class="kt">Duck</span> <span class="ow">=</span> <span class="kt">Duck</span> <span class="kt">Integer</span> <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Show</span><span class="p">)</span>
 </span><span class="line">
 </span><span class="line"><span class="kr">class</span> <span class="kt">Living</span> <span class="n">a</span> <span class="kr">where</span>

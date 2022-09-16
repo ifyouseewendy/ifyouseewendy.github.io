@@ -304,7 +304,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span> <span class="p">};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span> <span class="p">};</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="kc">true</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
 </span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
@@ -326,7 +326,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">prefix</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">prefix</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="p">[</span><span class="nx">prefix</span> <span class="o">+</span> <span class="s2">&quot;bar&quot;</span><span class="p">]</span><span class="o">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span>
@@ -348,7 +348,7 @@
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myArray</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span> <span class="p">];</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myArray</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span> <span class="p">];</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">myArray</span><span class="p">[</span><span class="s2">&quot;3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;baz&quot;</span><span class="p">;</span>
 </span><span class="line">
@@ -375,7 +375,7 @@
 <span class="line-number">14</span>
 <span class="line-number">15</span>
 <span class="line-number">16</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">anotherFunction</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/*..*/</span> <span class="p">}</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">anotherFunction</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/*..*/</span> <span class="p">}</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">var</span> <span class="nx">anotherObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">c</span><span class="o">:</span> <span class="kc">true</span>
@@ -398,7 +398,7 @@
 <p>One subset solution is that objects which are JSON-safe (that is, can be serialized to a JSON string and then re-parsed to an object with the same structure and values) can easily be <em>duplicated</em> with:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span> <span class="nx">someObj</span> <span class="p">)</span> <span class="p">);</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span> <span class="nx">someObj</span> <span class="p">)</span> <span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>A shallow copy is fairly understandable and has far less issues, so ES6 has now defined <code>Object.assign(..)</code> for this task. <code>Object.assign(..)</code> takes a target object as its first parameter, and one or more source objects as its subsequent parameters. It iterates over all the <em>enumerable</em> (see below), <em>owned keys (immediately present)</em> on the source object(s) and copies them (via = assignment only) to target.</p>
@@ -409,7 +409,7 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span> <span class="p">{},</span> <span class="nx">myObject</span> <span class="p">);</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span> <span class="p">{},</span> <span class="nx">myObject</span> <span class="p">);</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">newObj</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>                        <span class="c1">// 2</span>
 </span><span class="line"><span class="nx">newObj</span><span class="p">.</span><span class="nx">b</span> <span class="o">===</span> <span class="nx">anotherObject</span><span class="p">;</span>        <span class="c1">// true</span>
@@ -432,7 +432,7 @@
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
@@ -457,7 +457,7 @@
 <span class="line-number">8</span>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{};</span>
 </span><span class="line">
 </span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span> <span class="nx">myObject</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">value</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -484,7 +484,7 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
@@ -512,7 +512,7 @@
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 <span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="c1">// define a getter for `a`</span>
 </span><span class="line">    <span class="nx">get</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
 </span><span class="line">        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_a_</span><span class="p">;</span>
@@ -542,7 +542,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
@@ -606,7 +606,7 @@
 <span class="line-number">19</span>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="c1">// simple primitives are auto boxing: new Number(1)</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="c1">// simple primitives are auto boxing: new Number(1)</span>
 </span><span class="line"><span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// object created by constructor</span>
@@ -645,7 +645,7 @@
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;wendi&quot;</span> <span class="p">};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;wendi&quot;</span> <span class="p">};</span>
 </span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
 </span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
 </span><span class="line">
@@ -670,7 +670,7 @@
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="s2">&quot;__proto__&quot;</span><span class="p">,</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="s2">&quot;__proto__&quot;</span><span class="p">,</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 </span><span class="line">        <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span> <span class="k">this</span> <span class="p">);</span>
 </span><span class="line">    <span class="p">},</span>
@@ -694,7 +694,7 @@
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// Object {constructor: function}</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// true</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -710,7 +710,7 @@
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="p">{}.</span><span class="nx">prototype</span> <span class="c1">// undefined;</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="p">{}.</span><span class="nx">prototype</span> <span class="c1">// undefined;</span>
 </span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">(){}).</span><span class="nx">prototype</span> <span class="c1">// Object {constructor: function}</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// The example above shows object does not have the prototype property.</span>
@@ -735,7 +735,7 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
 </span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
@@ -759,7 +759,7 @@
 <span class="line-number">10</span>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nb">Object</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span> <span class="p">};</span>
@@ -790,7 +790,7 @@
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 <span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="nb">Object</span><span class="p">()</span>
 </span><span class="line"><span class="nx">hasOwnProperty</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">hasOwnProperty</span><span class="p">()</span>
@@ -836,7 +836,7 @@
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span>
 </span><span class="line">    <span class="c1">// ...</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
@@ -865,7 +865,7 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{}</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{}</span>
 </span><span class="line">
 </span><span class="line"><span class="k">new</span> <span class="nx">foo</span><span class="p">()</span> <span class="c1">// foo {}</span>
 </span><span class="line">
@@ -882,7 +882,7 @@
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">NothingSpecial</span><span class="p">()</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">NothingSpecial</span><span class="p">()</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s2">&quot;Don&#39;t mind me!&quot;</span> <span class="p">);</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
@@ -906,11 +906,11 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
 </span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 </span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">constructor</span>  <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// true</span>
 </span><span class="line">
-</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="p">}</span>
 </span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// false</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -923,7 +923,7 @@
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">}</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">}</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">};</span> <span class="c1">// create a new prototype object</span>
 </span><span class="line">
@@ -949,7 +949,7 @@
 <span class="line-number">11</span>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">}</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">}</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">};</span> <span class="c1">// create a new prototype object</span>
 </span><span class="line">
@@ -983,7 +983,7 @@
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 <span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">New</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">New</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span> <span class="p">{};</span>
 </span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="nx">func</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">        <span class="nx">res</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">=</span> <span class="nx">func</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
@@ -1020,7 +1020,7 @@
 <h3 id="instanceof"><code>instanceof</code></h3>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">a</span> <span class="k">instanceof</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// true</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nx">a</span> <span class="k">instanceof</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// true</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The<code>instanceof</code>operator takes a plain object as its left-hand operand and a<strong>function</strong>as its right-hand operand. The question<code>instanceof</code>answers is:<strong>in the entire</strong><code>[[Prototype]]</code><strong>chain of</strong><code>a</code><strong>, does the object arbitrarily pointed to by</strong><code>Foo.prototype</code><strong>ever appear?</strong></p>
@@ -1039,7 +1039,7 @@
 <span class="line-number">10</span>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="c1">// helper utility to see if `o1` is</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="c1">// helper utility to see if `o1` is</span>
 </span><span class="line"><span class="c1">// related to (delegates to) `o2`</span>
 </span><span class="line"><span class="kd">function</span> <span class="nx">isRelatedTo</span><span class="p">(</span><span class="nx">o1</span><span class="p">,</span> <span class="nx">o2</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="kd">function</span> <span class="nx">F</span><span class="p">(){}</span>
@@ -1056,7 +1056,7 @@
 <h3 id="objectprototypeisprototypeof"><code>Object.prototype.isPrototypeOf()</code></h3>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span> <span class="nx">a</span> <span class="p">);</span> <span class="c1">// true</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span> <span class="nx">a</span> <span class="p">);</span> <span class="c1">// true</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The question<code>isPrototypeOf(..)</code>answers is:<strong>in the entire</strong><code>[[Prototype]]</code><strong>chain of</strong><code>a</code><strong>, does</strong><code>Foo.prototype</code><strong>ever appear?</strong></p>
@@ -1066,7 +1066,7 @@
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="c1">// Simply: does `a` appear anywhere in</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="c1">// Simply: does `a` appear anywhere in</span>
 </span><span class="line"><span class="c1">// `b`s [[Prototype]] chain?</span>
 </span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span> <span class="nx">b</span> <span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -1100,7 +1100,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span>
 </span><span class="line">    <span class="c1">// ...</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
@@ -1140,7 +1140,7 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;wendi&quot;</span> <span class="p">};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;wendi&quot;</span> <span class="p">};</span>
 </span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">name</span> <span class="c1">// &quot;wendi&quot;</span>
@@ -1159,7 +1159,7 @@
 <span class="line-number">8</span>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">something</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 </span><span class="line">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s2">&quot;Tell me something good...&quot;</span> <span class="p">);</span>
 </span><span class="line">    <span class="p">}</span>
@@ -1182,7 +1182,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
 </span><span class="line"><span class="kd">function</span> <span class="nx">Bar</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line">
@@ -1204,7 +1204,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
 </span><span class="line"><span class="kd">function</span> <span class="nx">Bar</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line">
@@ -1226,7 +1226,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
 </span><span class="line"><span class="kd">function</span> <span class="nx">Bar</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line">
@@ -1250,7 +1250,7 @@
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">Bar</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nx">Bar</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span>
 </span><span class="line"><span class="c1">// Cause it ends up Bar is no longer a function object.</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">)</span>
@@ -1272,7 +1272,7 @@
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="c1">// pre-ES6</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="c1">// pre-ES6</span>
 </span><span class="line"><span class="c1">// throws away default existing `Bar.prototype`</span>
 </span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="p">);</span>
 </span><span class="line">
@@ -1290,7 +1290,7 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">createAndLinkObject</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">createAndLinkObject</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="kd">function</span> <span class="nx">F</span><span class="p">(){}</span>
 </span><span class="line">    <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">o</span><span class="p">;</span>
 </span><span class="line">    <span class="k">return</span> <span class="k">new</span> <span class="nx">F</span><span class="p">();</span>
@@ -1323,7 +1323,7 @@
 <span class="line-number">22</span>
 <span class="line-number">23</span>
 <span class="line-number">24</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span> <span class="o">!=</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span> <span class="o">!=</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">  <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="kd">var</span> <span class="nx">Temp</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line">    <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">prototype</span><span class="p">,</span> <span class="nx">propertiesObject</span><span class="p">)</span> <span class="p">{</span>
@@ -1372,7 +1372,7 @@
 <span class="line-number">17</span>
 <span class="line-number">18</span>
 <span class="line-number">19</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kr">class</span> <span class="nx">Task</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kr">class</span> <span class="nx">Task</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">id</span><span class="p">;</span>
 </span><span class="line">
 </span><span class="line">    <span class="c1">// constructor `Task()`</span>
@@ -1415,7 +1415,7 @@
 <span class="line-number">18</span>
 <span class="line-number">19</span>
 <span class="line-number">20</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">Task</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">Task</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">setID</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ID</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">ID</span><span class="p">;</span> <span class="p">},</span>
 </span><span class="line">    <span class="nx">outputID</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="p">);</span> <span class="p">}</span>
 </span><span class="line"><span class="p">};</span>
@@ -1463,7 +1463,7 @@
 <span class="line-number">16</span>
 <span class="line-number">17</span>
 <span class="line-number">18</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">anotherObject</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">anotherObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
@@ -1516,7 +1516,7 @@
 <span class="line-number">19</span>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">(</span><span class="nx">who</span><span class="p">)</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">(</span><span class="nx">who</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="k">this</span><span class="p">.</span><span class="nx">me</span> <span class="o">=</span> <span class="nx">who</span><span class="p">;</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">identify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -1567,7 +1567,7 @@
 <span class="line-number">20</span>
 <span class="line-number">21</span>
 <span class="line-number">22</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">Foo</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">Foo</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">who</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">        <span class="k">this</span><span class="p">.</span><span class="nx">me</span> <span class="o">=</span> <span class="nx">who</span><span class="p">;</span>
 </span><span class="line">    <span class="p">},</span>

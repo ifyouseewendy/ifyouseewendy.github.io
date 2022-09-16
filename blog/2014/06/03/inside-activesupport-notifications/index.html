@@ -318,7 +318,7 @@
 <span class="line-number">17</span>
 <span class="line-number">18</span>
 <span class="line-number">19</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># This class is a registry which holds all of the +Instrumenter+ objects</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># This class is a registry which holds all of the +Instrumenter+ objects</span>
 </span><span class="line"><span class="c1"># in a particular thread local. To access the +Instrumenter+ object for a</span>
 </span><span class="line"><span class="c1"># particular +notifier+, you can call the following method:</span>
 </span><span class="line"><span class="c1">#</span>
@@ -327,7 +327,7 @@
 </span><span class="line"><span class="c1"># The instrumenters for multiple notifiers are held in a single instance of</span>
 </span><span class="line"><span class="c1"># this class.</span>
 </span><span class="line"><span class="k">class</span> <span class="nc">InstrumentationRegistry</span> <span class="c1"># :nodoc:</span>
-</span><span class="line">  <span class="kp">extend</span> <span class="ss">ActiveSupport</span><span class="p">:</span><span class="ss">:PerThreadRegistry</span>
+</span><span class="line">  <span class="kp">extend</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">PerThreadRegistry</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span>
 </span><span class="line">    <span class="vi">@registry</span> <span class="o">=</span> <span class="p">{}</span>
@@ -344,7 +344,7 @@
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">instrumenter</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">def</span> <span class="nf">instrumenter</span>
 </span><span class="line">  <span class="no">InstrumentationRegistry</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">instrumenter_for</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -521,7 +521,7 @@ internals.</p>
 <span class="line-number">21</span>
 <span class="line-number">22</span>
 <span class="line-number">23</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
 </span><span class="line">  <span class="n">timestack</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">current</span><span class="o">[</span><span class="ss">:_timestack</span><span class="o">]</span> <span class="o">||=</span> <span class="o">[]</span>
 </span><span class="line">  <span class="n">timestack</span><span class="o">.</span><span class="n">push</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
 </span><span class="line"><span class="k">end</span>
@@ -579,7 +579,7 @@ internals.</p>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
 </span><span class="line">  <span class="vi">@notifier</span><span class="o">.</span><span class="n">start</span> <span class="nb">name</span><span class="p">,</span> <span class="vi">@id</span><span class="p">,</span> <span class="n">payload</span>
 </span><span class="line"><span class="k">end</span>
 </span><span class="line">
@@ -603,7 +603,7 @@ internals.</p>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="p">{})</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">def</span> <span class="nf">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="p">{})</span>
 </span><span class="line">  <span class="n">start</span> <span class="nb">name</span><span class="p">,</span> <span class="n">payload</span>
 </span><span class="line">  <span class="k">begin</span>
 </span><span class="line">    <span class="k">yield</span> <span class="n">payload</span>
@@ -620,7 +620,7 @@ internals.</p>
 </code></pre>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">instrumenter</span><span class="o">.</span><span class="n">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span> <span class="p">{</span> <span class="k">yield</span> <span class="n">payload</span> <span class="k">if</span> <span class="nb">block_given?</span> <span class="p">}</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">instrumenter</span><span class="o">.</span><span class="n">instrument</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span> <span class="p">{</span> <span class="k">yield</span> <span class="n">payload</span> <span class="k">if</span> <span class="nb">block_given?</span> <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <pre><code>The processing begins with `start`, ends with `finish`, instrumenter delegates it to `@notifier`, and `notifier` turns to `@subscribers` which are listening for the event name. And what does `@subscribers` do with `start` and `finish`? Normally we use subscriber objects defined by `Subscribers::Timed`, which use `start` to save a beginning timestamp, and `finish` to save an ending timestamp, and calling the block user passed.
@@ -647,7 +647,7 @@ Attention on the control flow, the events get sent even if an error occurs in th
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">&lt;&lt;</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">def</span> <span class="nf">&lt;&lt;</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 </span><span class="line">  <span class="vi">@children</span> <span class="o">&lt;&lt;</span> <span class="n">event</span>
 </span><span class="line"><span class="k">end</span>
 </span><span class="line">

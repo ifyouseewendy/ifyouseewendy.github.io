@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2022-01-04T13:27:27-08:00</updated>
+  <updated>2022-09-16T10:18:05-07:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -5855,7 +5855,7 @@ it state in OO.</p>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">class</span> <span class="nc">Person</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span></span><span class="k">class</span> <span class="nc">Person</span>
 </span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span>
 </span><span class="line"><span class="k">end</span>
 </span><span class="line">
@@ -5872,7 +5872,7 @@ there will also come with a data constructor, which holds the values together.</
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span>
 </span><span class="line">
 </span><span class="line"><span class="nf">person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="s">&quot;Di&quot;</span> <span class="mi">18</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -5893,7 +5893,7 @@ applying this kind of mechanisms the language provides over and over again.</p>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">class</span> <span class="nc">Person</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span></span><span class="k">class</span> <span class="nc">Person</span>
 </span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">gets_older</span><span class="p">;</span> <span class="n">age</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">end</span>
@@ -5914,7 +5914,7 @@ a bundle of values and operations.</p>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"> <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span> <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>
 </span><span class="line"> <span class="o">|</span><span class="n">_class_</span><span class="kt">:</span> <span class="kt">Person</span>  <span class="o">|</span>   <span class="o">|</span><span class="n">_class_</span><span class="kt">:</span> <span class="kt">Person</span>  <span class="o">|</span>   <span class="o">|</span><span class="n">_class_</span><span class="kt">:</span> <span class="kt">Person</span>  <span class="o">|</span>
 </span><span class="line"> <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>
 </span><span class="line"> <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Bart&quot;</span>     <span class="o">|</span>   <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Lisa&quot;</span>     <span class="o">|</span>   <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Maggie&quot;</span>   <span class="o">|</span>
@@ -5931,7 +5931,7 @@ a bundle of values and operations.</p>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span>
 </span><span class="line"><span class="nf">person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="s">&quot;Bart&quot;</span> <span class="mi">10</span>
 </span><span class="line">
 </span><span class="line"><span class="nf">getsOlder</span> <span class="ow">::</span> <span class="kt">Person</span> <span class="ow">-&gt;</span> <span class="kt">Person</span>
@@ -5957,7 +5957,7 @@ in below.</p>
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 <span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"> <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span> <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>   <span class="o">+-----------------+</span>
 </span><span class="line"> <span class="o">|</span><span class="n">_type_</span><span class="kt">:</span> <span class="kt">Person</span>   <span class="o">|</span>   <span class="o">|</span><span class="n">_type_</span><span class="kt">:</span> <span class="kt">Person</span>   <span class="o">|</span>   <span class="o">|</span><span class="n">_type_</span><span class="kt">:</span> <span class="kt">Person</span>   <span class="o">|</span>
 </span><span class="line"> <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>   <span class="o">|</span>                 <span class="o">|</span>
 </span><span class="line"> <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Bart&quot;</span>     <span class="o">|</span>   <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Lisa&quot;</span>     <span class="o">|</span>   <span class="o">|</span><span class="n">name</span><span class="kt">:</span> <span class="s">&quot;Maggie&quot;</span>   <span class="o">|</span>
@@ -5999,7 +5999,7 @@ more general types passed in.</p>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">class</span> <span class="nc">Person</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span></span><span class="k">class</span> <span class="nc">Person</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">gets_older</span><span class="p">;</span> <span class="n">age</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span><span class="line">
@@ -6029,7 +6029,7 @@ of operations can be applied onto the type (the set of values).</p>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
 <span class="line-number">14</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span> <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Show</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span><span class="kr">data</span> <span class="kt">Person</span> <span class="ow">=</span> <span class="kt">Person</span> <span class="kt">String</span> <span class="kt">Integer</span> <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Show</span><span class="p">)</span>
 </span><span class="line"><span class="kr">data</span> <span class="kt">Duck</span> <span class="ow">=</span> <span class="kt">Duck</span> <span class="kt">Integer</span> <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Show</span><span class="p">)</span>
 </span><span class="line">
 </span><span class="line"><span class="kr">class</span> <span class="kt">Living</span> <span class="n">a</span> <span class="kr">where</span>
@@ -6111,7 +6111,7 @@ connection.</p>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Node</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">Node</span>
 </span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:left</span><span class="p">,</span> <span class="n">right</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -6139,7 +6139,7 @@ connection.</p>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">BinaryTree</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">BinaryTree</span>
 </span><span class="line">  <span class="kp">attr_reader</span> <span class="ss">:root_node</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">root_value</span><span class="p">)</span>
@@ -6147,7 +6147,7 @@ connection.</p>
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="n">node_value</span><span class="p">)</span>
-</span><span class="line">    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line">    <span class="o">...</span>
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -6155,20 +6155,20 @@ connection.</p>
 <p>So a final representation for the binary tree in Ruby, it’ll be</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">bt</span> <span class="o">=</span> <span class="no">BinaryTree</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">bt</span> <span class="o">=</span> <span class="no">BinaryTree</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>What about in Haskell? At first, we create a type to represent the tree like below, which basically means a binary tree
 is either a leaf, or a node with a value and two nodes, which are both binary trees.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="kr">data</span> <span class="kt">BinaryTree</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">Leaf</span> <span class="o">|</span> <span class="kt">Node</span> <span class="p">(</span><span class="kt">BinaryTree</span> <span class="n">a</span><span class="p">)</span> <span class="n">a</span> <span class="p">(</span><span class="kt">BinaryTree</span> <span class="n">a</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span><span class="kr">data</span> <span class="kt">BinaryTree</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">Leaf</span> <span class="o">|</span> <span class="kt">Node</span> <span class="p">(</span><span class="kt">BinaryTree</span> <span class="n">a</span><span class="p">)</span> <span class="n">a</span> <span class="p">(</span><span class="kt">BinaryTree</span> <span class="n">a</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>To represent the tree,</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="nf">bt</span> <span class="ow">=</span> <span class="kt">Node</span> <span class="p">(</span><span class="kt">Node</span> <span class="kt">Leaf</span> <span class="mi">2</span> <span class="kt">Leaf</span><span class="p">)</span> <span class="mi">1</span> <span class="p">(</span><span class="kt">Node</span> <span class="kt">Leaf</span> <span class="mi">3</span> <span class="kt">Leaf</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span><span class="nf">bt</span> <span class="ow">=</span> <span class="kt">Node</span> <span class="p">(</span><span class="kt">Node</span> <span class="kt">Leaf</span> <span class="mi">2</span> <span class="kt">Leaf</span><span class="p">)</span> <span class="mi">1</span> <span class="p">(</span><span class="kt">Node</span> <span class="kt">Leaf</span> <span class="mi">3</span> <span class="kt">Leaf</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>It’s done! To be honest, I was totally blown away by the second I understand how things work here. It’s neat, elegant
@@ -6359,7 +6359,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span> <span class="p">};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span> <span class="p">};</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="kc">true</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
 </span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
@@ -6381,7 +6381,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">prefix</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">prefix</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="p">[</span><span class="nx">prefix</span> <span class="o">+</span> <span class="s2">&quot;bar&quot;</span><span class="p">]</span><span class="o">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span>
@@ -6403,7 +6403,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myArray</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span> <span class="p">];</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myArray</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span> <span class="p">];</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">myArray</span><span class="p">[</span><span class="s2">&quot;3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;baz&quot;</span><span class="p">;</span>
 </span><span class="line">
@@ -6430,7 +6430,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">14</span>
 <span class="line-number">15</span>
 <span class="line-number">16</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">anotherFunction</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/*..*/</span> <span class="p">}</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">anotherFunction</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/*..*/</span> <span class="p">}</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">var</span> <span class="nx">anotherObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">c</span><span class="o">:</span> <span class="kc">true</span>
@@ -6453,7 +6453,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <p>One subset solution is that objects which are JSON-safe (that is, can be serialized to a JSON string and then re-parsed to an object with the same structure and values) can easily be <em>duplicated</em> with:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span> <span class="nx">someObj</span> <span class="p">)</span> <span class="p">);</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span> <span class="nx">someObj</span> <span class="p">)</span> <span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>A shallow copy is fairly understandable and has far less issues, so ES6 has now defined <code>Object.assign(..)</code> for this task. <code>Object.assign(..)</code> takes a target object as its first parameter, and one or more source objects as its subsequent parameters. It iterates over all the <em>enumerable</em> (see below), <em>owned keys (immediately present)</em> on the source object(s) and copies them (via = assignment only) to target.</p>
@@ -6464,7 +6464,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span> <span class="p">{},</span> <span class="nx">myObject</span> <span class="p">);</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span> <span class="p">{},</span> <span class="nx">myObject</span> <span class="p">);</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">newObj</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>                        <span class="c1">// 2</span>
 </span><span class="line"><span class="nx">newObj</span><span class="p">.</span><span class="nx">b</span> <span class="o">===</span> <span class="nx">anotherObject</span><span class="p">;</span>        <span class="c1">// true</span>
@@ -6487,7 +6487,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
@@ -6512,7 +6512,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{};</span>
 </span><span class="line">
 </span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span> <span class="nx">myObject</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">value</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -6539,7 +6539,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
@@ -6567,7 +6567,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 <span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="c1">// define a getter for `a`</span>
 </span><span class="line">    <span class="nx">get</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
 </span><span class="line">        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_a_</span><span class="p">;</span>
@@ -6597,7 +6597,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
@@ -6661,7 +6661,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">19</span>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="c1">// simple primitives are auto boxing: new Number(1)</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="c1">// simple primitives are auto boxing: new Number(1)</span>
 </span><span class="line"><span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// object created by constructor</span>
@@ -6700,7 +6700,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;wendi&quot;</span> <span class="p">};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;wendi&quot;</span> <span class="p">};</span>
 </span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
 </span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
 </span><span class="line">
@@ -6725,7 +6725,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="s2">&quot;__proto__&quot;</span><span class="p">,</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="s2">&quot;__proto__&quot;</span><span class="p">,</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 </span><span class="line">        <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span> <span class="k">this</span> <span class="p">);</span>
 </span><span class="line">    <span class="p">},</span>
@@ -6749,7 +6749,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// Object {constructor: function}</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// true</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -6765,7 +6765,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="p">{}.</span><span class="nx">prototype</span> <span class="c1">// undefined;</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="p">{}.</span><span class="nx">prototype</span> <span class="c1">// undefined;</span>
 </span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">(){}).</span><span class="nx">prototype</span> <span class="c1">// Object {constructor: function}</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// The example above shows object does not have the prototype property.</span>
@@ -6790,7 +6790,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
 </span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
@@ -6814,7 +6814,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nb">Object</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span> <span class="p">};</span>
@@ -6845,7 +6845,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 <span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="nb">Object</span><span class="p">()</span>
 </span><span class="line"><span class="nx">hasOwnProperty</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">hasOwnProperty</span><span class="p">()</span>
@@ -6891,7 +6891,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span>
 </span><span class="line">    <span class="c1">// ...</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
@@ -6920,7 +6920,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{}</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{}</span>
 </span><span class="line">
 </span><span class="line"><span class="k">new</span> <span class="nx">foo</span><span class="p">()</span> <span class="c1">// foo {}</span>
 </span><span class="line">
@@ -6937,7 +6937,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">NothingSpecial</span><span class="p">()</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">NothingSpecial</span><span class="p">()</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s2">&quot;Don&#39;t mind me!&quot;</span> <span class="p">);</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
@@ -6961,11 +6961,11 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
 </span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 </span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">constructor</span>  <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// true</span>
 </span><span class="line">
-</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="p">}</span>
 </span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// false</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -6978,7 +6978,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">}</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">}</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">};</span> <span class="c1">// create a new prototype object</span>
 </span><span class="line">
@@ -7004,7 +7004,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">}</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">}</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">};</span> <span class="c1">// create a new prototype object</span>
 </span><span class="line">
@@ -7038,7 +7038,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 <span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">New</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">New</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span> <span class="p">{};</span>
 </span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="nx">func</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">        <span class="nx">res</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">=</span> <span class="nx">func</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
@@ -7075,7 +7075,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <h3 id="instanceof"><code>instanceof</code></h3>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">a</span> <span class="k">instanceof</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// true</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nx">a</span> <span class="k">instanceof</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// true</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The<code>instanceof</code>operator takes a plain object as its left-hand operand and a<strong>function</strong>as its right-hand operand. The question<code>instanceof</code>answers is:<strong>in the entire</strong><code>[[Prototype]]</code><strong>chain of</strong><code>a</code><strong>, does the object arbitrarily pointed to by</strong><code>Foo.prototype</code><strong>ever appear?</strong></p>
@@ -7094,7 +7094,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="c1">// helper utility to see if `o1` is</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="c1">// helper utility to see if `o1` is</span>
 </span><span class="line"><span class="c1">// related to (delegates to) `o2`</span>
 </span><span class="line"><span class="kd">function</span> <span class="nx">isRelatedTo</span><span class="p">(</span><span class="nx">o1</span><span class="p">,</span> <span class="nx">o2</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="kd">function</span> <span class="nx">F</span><span class="p">(){}</span>
@@ -7111,7 +7111,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <h3 id="objectprototypeisprototypeof"><code>Object.prototype.isPrototypeOf()</code></h3>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span> <span class="nx">a</span> <span class="p">);</span> <span class="c1">// true</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span> <span class="nx">a</span> <span class="p">);</span> <span class="c1">// true</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The question<code>isPrototypeOf(..)</code>answers is:<strong>in the entire</strong><code>[[Prototype]]</code><strong>chain of</strong><code>a</code><strong>, does</strong><code>Foo.prototype</code><strong>ever appear?</strong></p>
@@ -7121,7 +7121,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="c1">// Simply: does `a` appear anywhere in</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="c1">// Simply: does `a` appear anywhere in</span>
 </span><span class="line"><span class="c1">// `b`s [[Prototype]] chain?</span>
 </span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span> <span class="nx">b</span> <span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -7155,7 +7155,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{</span>
 </span><span class="line">    <span class="c1">// ...</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
@@ -7195,7 +7195,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;wendi&quot;</span> <span class="p">};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;wendi&quot;</span> <span class="p">};</span>
 </span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">name</span> <span class="c1">// &quot;wendi&quot;</span>
@@ -7214,7 +7214,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">something</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 </span><span class="line">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s2">&quot;Tell me something good...&quot;</span> <span class="p">);</span>
 </span><span class="line">    <span class="p">}</span>
@@ -7237,7 +7237,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
 </span><span class="line"><span class="kd">function</span> <span class="nx">Bar</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line">
@@ -7259,7 +7259,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
 </span><span class="line"><span class="kd">function</span> <span class="nx">Bar</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line">
@@ -7281,7 +7281,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span> <span class="p">};</span>
 </span><span class="line"><span class="kd">function</span> <span class="nx">Bar</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line">
@@ -7305,7 +7305,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">Bar</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nx">Bar</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span>
 </span><span class="line"><span class="c1">// Cause it ends up Bar is no longer a function object.</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">)</span>
@@ -7327,7 +7327,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="c1">// pre-ES6</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="c1">// pre-ES6</span>
 </span><span class="line"><span class="c1">// throws away default existing `Bar.prototype`</span>
 </span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="p">);</span>
 </span><span class="line">
@@ -7345,7 +7345,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">createAndLinkObject</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">createAndLinkObject</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="kd">function</span> <span class="nx">F</span><span class="p">(){}</span>
 </span><span class="line">    <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">o</span><span class="p">;</span>
 </span><span class="line">    <span class="k">return</span> <span class="k">new</span> <span class="nx">F</span><span class="p">();</span>
@@ -7378,7 +7378,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">22</span>
 <span class="line-number">23</span>
 <span class="line-number">24</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span> <span class="o">!=</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span> <span class="o">!=</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">  <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="kd">var</span> <span class="nx">Temp</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line">    <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">prototype</span><span class="p">,</span> <span class="nx">propertiesObject</span><span class="p">)</span> <span class="p">{</span>
@@ -7427,7 +7427,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">17</span>
 <span class="line-number">18</span>
 <span class="line-number">19</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kr">class</span> <span class="nx">Task</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kr">class</span> <span class="nx">Task</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">id</span><span class="p">;</span>
 </span><span class="line">
 </span><span class="line">    <span class="c1">// constructor `Task()`</span>
@@ -7470,7 +7470,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">18</span>
 <span class="line-number">19</span>
 <span class="line-number">20</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">Task</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">Task</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">setID</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ID</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">ID</span><span class="p">;</span> <span class="p">},</span>
 </span><span class="line">    <span class="nx">outputID</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="p">);</span> <span class="p">}</span>
 </span><span class="line"><span class="p">};</span>
@@ -7518,7 +7518,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">16</span>
 <span class="line-number">17</span>
 <span class="line-number">18</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">anotherObject</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">anotherObject</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
@@ -7571,7 +7571,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">19</span>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">(</span><span class="nx">who</span><span class="p">)</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">(</span><span class="nx">who</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="k">this</span><span class="p">.</span><span class="nx">me</span> <span class="o">=</span> <span class="nx">who</span><span class="p">;</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">identify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -7622,7 +7622,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
 <span class="line-number">22</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="kd">var</span> <span class="nx">Foo</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">Foo</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">who</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">        <span class="k">this</span><span class="p">.</span><span class="nx">me</span> <span class="o">=</span> <span class="nx">who</span><span class="p">;</span>
 </span><span class="line">    <span class="p">},</span>
@@ -8817,7 +8817,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
 </span><span class="line"><span class="mi">3</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span>
 </span><span class="line">  <span class="no">Thread</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span>
 </span><span class="line">    <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;http://zombo.com&#39;</span><span class="p">)</span>
@@ -8854,7 +8854,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="vi">@counter</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="vi">@counter</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span class="line">
 </span><span class="line"><span class="mi">5</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span>
 </span><span class="line">  <span class="no">Thread</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span>
@@ -8967,7 +8967,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">31</span>
 <span class="line-number">32</span>
 <span class="line-number">33</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># This class represents an ecommerce order</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># This class represents an ecommerce order</span>
 </span><span class="line"><span class="k">class</span> <span class="nc">Order</span>
 </span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:amount</span><span class="p">,</span> <span class="ss">:status</span>
 </span><span class="line">
@@ -9013,7 +9013,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># With this line, it&#39;s possible that another thread</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># With this line, it&#39;s possible that another thread</span>
 </span><span class="line"><span class="c1"># updated the status already and this value is stale</span>
 </span><span class="line"><span class="n">status</span> <span class="o">=</span> <span class="n">order</span><span class="o">.</span><span class="n">status</span>
 </span><span class="line">
@@ -9082,7 +9082,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">32</span>
 <span class="line-number">33</span>
 <span class="line-number">34</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;thread&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;thread&#39;</span>
 </span><span class="line"><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="n">mutex</span>    <span class="o">=</span> <span class="no">Mutex</span><span class="o">.</span><span class="n">new</span>
@@ -9091,7 +9091,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line">
 </span><span class="line"><span class="no">Thread</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span>
 </span><span class="line">  <span class="mi">10</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
-</span><span class="line">    <span class="n">response</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="s1">&#39;dynamic.xkcd.com&#39;</span><span class="p">,</span> <span class="s1">&#39;/random/comic/&#39;</span><span class="p">)</span>
+</span><span class="line">    <span class="n">response</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="s1">&#39;dynamic.xkcd.com&#39;</span><span class="p">,</span> <span class="s1">&#39;/random/comic/&#39;</span><span class="p">)</span>
 </span><span class="line">    <span class="n">random_comic_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">[</span><span class="s1">&#39;Location&#39;</span><span class="o">]</span>
 </span><span class="line">
 </span><span class="line">    <span class="n">mutex</span><span class="o">.</span><span class="n">synchronize</span> <span class="k">do</span>
@@ -9164,7 +9164,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">35</span>
 <span class="line-number">36</span>
 <span class="line-number">37</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;thread&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;thread&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="k">class</span> <span class="nc">BlockingQueue</span>
 </span><span class="line">  <span class="kp">attr_reader</span> <span class="ss">:queue</span><span class="p">,</span> <span class="ss">:mutex</span><span class="p">,</span> <span class="ss">:cv</span>
@@ -9247,10 +9247,10 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">26</span>
 <span class="line-number">27</span>
 <span class="line-number">28</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;hamster/queue&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;hamster/queue&#39;</span>
 </span><span class="line"><span class="nb">require</span> <span class="s1">&#39;atomic&#39;</span>
 </span><span class="line">
-</span><span class="line"><span class="vi">@queue_wrapper</span> <span class="o">=</span> <span class="no">Atomic</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">Hamster</span><span class="p">:</span><span class="ss">:Queue</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+</span><span class="line"><span class="vi">@queue_wrapper</span> <span class="o">=</span> <span class="no">Atomic</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">Hamster</span><span class="o">::</span><span class="no">Queue</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
 </span><span class="line">
 </span><span class="line"><span class="mi">30</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
 </span><span class="line">  <span class="vi">@queue_wrapper</span><span class="o">.</span><span class="n">update</span> <span class="p">{</span> <span class="o">|</span><span class="n">queue</span><span class="o">|</span>
@@ -9312,7 +9312,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># Instead of</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># Instead of</span>
 </span><span class="line"><span class="vg">$redis</span> <span class="o">=</span> <span class="no">Redis</span><span class="o">.</span><span class="n">new</span>
 </span><span class="line"><span class="c1"># use</span>
 </span><span class="line"><span class="no">Thread</span><span class="o">.</span><span class="n">current</span><span class="o">[</span><span class="ss">:redis</span><span class="o">]</span> <span class="o">=</span> <span class="no">Redis</span><span class="o">.</span><span class="n">new</span>
@@ -9377,7 +9377,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">Enumerable</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">module</span> <span class="nn">Enumerable</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">concurrent_each</span>
 </span><span class="line">    <span class="n">threads</span> <span class="o">=</span> <span class="o">[]</span>
 </span><span class="line">    <span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">element</span><span class="o">|</span>
@@ -9411,14 +9411,14 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;celluloid/autostart&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;celluloid/autostart&#39;</span>
 </span><span class="line"><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
 </span><span class="line">
 </span><span class="line"><span class="k">class</span> <span class="nc">XKCDFetcher</span>
 </span><span class="line">  <span class="kp">include</span> <span class="no">Celluloid</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">next</span>
-</span><span class="line">    <span class="n">response</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="s1">&#39;dynamic.xkcd.com&#39;</span><span class="p">,</span> <span class="s1">&#39;/random/comic/&#39;</span><span class="p">)</span>
+</span><span class="line">    <span class="n">response</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="s1">&#39;dynamic.xkcd.com&#39;</span><span class="p">,</span> <span class="s1">&#39;/random/comic/&#39;</span><span class="p">)</span>
 </span><span class="line">    <span class="n">random_comic_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">[</span><span class="s1">&#39;Location&#39;</span><span class="o">]</span>
 </span><span class="line">
 </span><span class="line">    <span class="n">random_comic_url</span>
@@ -9450,7 +9450,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
 <span class="line-number">22</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># this spawns a new thread containing a Celluloid actor</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="c1"># this spawns a new thread containing a Celluloid actor</span>
 </span><span class="line"><span class="n">fetcher</span> <span class="o">=</span> <span class="no">XKCDFetcher</span><span class="o">.</span><span class="n">new</span>
 </span><span class="line">
 </span><span class="line"><span class="c1"># these behave like regular method calls</span>
@@ -9776,7 +9776,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="cp">#include &lt;pthread.h&gt;</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp"></span>
 </span><span class="line"><span class="kt">int</span> <span class="nf">pthread_create</span><span class="p">(</span><span class="n">pthread_t</span> <span class="o">*</span> <span class="kr">thread</span><span class="p">,</span>
 </span><span class="line">                     <span class="k">const</span> <span class="n">pthread_attr_t</span> <span class="o">*</span>  <span class="n">attr</span><span class="p">,</span>
 </span><span class="line">                     <span class="kt">void</span> <span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">start_routine</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
@@ -9797,7 +9797,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <p><strong>Thread Completion</strong></p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="kt">int</span> <span class="nf">pthread_join</span><span class="p">(</span><span class="n">pthread_t</span> <span class="kr">thread</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">value_ptr</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span> <span class="nf">pthread_join</span><span class="p">(</span><span class="n">pthread_t</span> <span class="kr">thread</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">value_ptr</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <ul>
@@ -9821,7 +9821,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="kt">int</span> <span class="nf">pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span> <span class="nf">pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
 </span><span class="line"><span class="kt">int</span> <span class="nf">pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -9848,7 +9848,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">19</span>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="n">pthread_mutex_t</span> <span class="n">lock</span><span class="p">;</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">pthread_mutex_t</span> <span class="n">lock</span><span class="p">;</span>
 </span><span class="line">
 </span><span class="line"><span class="n">Pthread_mutex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
 </span><span class="line">
@@ -9879,7 +9879,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">,</span> <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">,</span> <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
 </span><span class="line"><span class="kt">int</span> <span class="nf">pthread_cond_signal</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -9891,7 +9891,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="n">pthread_mutex_t</span> <span class="n">lock</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">pthread_mutex_t</span> <span class="n">lock</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>
 </span><span class="line"><span class="n">pthread_cond_t</span>  <span class="n">cond</span> <span class="o">=</span> <span class="n">PTHREAD_COND_INITIALIZER</span><span class="p">;</span>
 </span><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
 </span><span class="line"><span class="k">while</span> <span class="p">(</span><span class="n">ready</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
@@ -9905,7 +9905,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
 </span><span class="line"><span class="n">ready</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 </span><span class="line"><span class="n">Pthread_cond_signal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cond</span><span class="p">);</span>
 </span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
@@ -9934,7 +9934,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="c1">// waitingnwhile (ready == 0)</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="c1">// waitingnwhile (ready == 0)</span>
 </span><span class="line">    <span class="p">;</span> <span class="c1">// spin</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// signaling</span>
@@ -9948,7 +9948,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <p>On the link line, you must also explicitly link with the pthreads library, by adding the -pthread flag.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">prompt&gt; gcc -o main main.c -Wall -pthread
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>prompt&gt; gcc -o main main.c -Wall -pthread
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h2 id="chapter-28---locks">Chapter 28 - Locks</h2>
@@ -10216,10 +10216,10 @@ How often this local-to-global transfer occurs is determined by a threshold, whi
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">// grep process is the producer
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>// grep process is the producer
 </span><span class="line">// wc process is the consumer
 </span><span class="line">// between them is an in-kernel bounded buffer
-</span><span class="line">grep foo file.txt | wc -l
+</span><span class="line">grep foo file.txt <span class="p">|</span> wc -l
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Basic operations: <code>put()</code> and <code>get()</code></p>
@@ -11048,10 +11048,10 @@ override in our stylesheet. Every browser provides a default set of styles also 
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span>    <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span>    <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;portrait.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;orientation:portrait&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;print.css&quot;</span>    <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;print&quot;</span><span class="nt">&gt;</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span>    <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span>    <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;all&quot;</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;portrait.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;orientation:portrait&quot;</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;print.css&quot;</span>    <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print&quot;</span><span class="p">&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The third declaration has a dynamic media query which will be evaluated when the page is being loaded. Depending on the orientation of the device when the page is being loaded, portrait.css may or may not be render blocking.</p>
@@ -11238,21 +11238,21 @@ override in our stylesheet. Every browser provides a default set of styles also 
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 <span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;html&gt;</span>
-</span><span class="line">  <span class="nt">&lt;head&gt;</span>
-</span><span class="line">    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;print.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;print&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">  <span class="nt">&lt;/head&gt;</span>
-</span><span class="line">  <span class="nt">&lt;body&gt;</span>
-</span><span class="line">    <span class="nt">&lt;p&gt;</span>
-</span><span class="line">      Hello <span class="nt">&lt;span&gt;</span>web performance<span class="nt">&lt;/span&gt;</span> students!
-</span><span class="line">    <span class="nt">&lt;/p&gt;</span>
-</span><span class="line">    <span class="nt">&lt;div&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;awesome-photo.jpg&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-</span><span class="line">    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class="line">    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;analytics.js&quot;</span> <span class="na">async</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class="line">  <span class="nt">&lt;/body&gt;</span>
-</span><span class="line"><span class="nt">&lt;/html&gt;</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span class="line">  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width&quot;</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;print.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print&quot;</span><span class="p">&gt;</span>
+</span><span class="line">  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span class="line">  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span class="line">      Hello <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>web performance<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> students!
+</span><span class="line">    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;awesome-photo.jpg&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;analytics.js&quot;</span> <span class="na">async</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="line">  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>CRP diagram by <a href="https://discussions.udacity.com/t/quiz-crp-diagrams/16162/11?u=ifyouseewendy">connie_273453529</a></p>

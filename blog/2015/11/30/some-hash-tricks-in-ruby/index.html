@@ -178,7 +178,7 @@ h = Hash.new { | &hellip;">
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="nb">hash</span><span class="p">,</span> <span class="n">key</span><span class="o">|</span> <span class="k">raise</span> <span class="no">ArgumentError</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;No hash key: </span><span class="si">#{</span> <span class="n">key</span> <span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="p">}</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="nb">hash</span><span class="p">,</span> <span class="n">key</span><span class="o">|</span> <span class="k">raise</span> <span class="no">ArgumentError</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;No hash key: </span><span class="si">#{</span> <span class="n">key</span> <span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="p">}</span>
 </span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]=</span><span class="mi">1</span>
 </span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]</span> <span class="c1"># 1</span>
 </span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:x</span><span class="o">]</span> <span class="c1"># raises ArgumentError: No hash key: x</span>
@@ -193,7 +193,7 @@ h = Hash.new { | &hellip;">
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">h</span><span class="o">=</span><span class="p">{}</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">h</span><span class="o">=</span><span class="p">{}</span>
 </span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]</span> <span class="c1"># nil</span>
 </span><span class="line"><span class="n">h</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;new default&quot;</span>
 </span><span class="line"><span class="n">h</span><span class="o">[</span><span class="ss">:a</span><span class="o">]</span> <span class="c1"># &quot;new default&quot;</span>
@@ -206,7 +206,7 @@ h = Hash.new { | &hellip;">
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">factorial</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">{</span><span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="n">k</span><span class="o">|</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">?</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">]*</span><span class="n">k</span> <span class="p">:</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">}</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">factorial</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">{</span><span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="n">k</span><span class="o">|</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">?</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">]*</span><span class="n">k</span> <span class="p">:</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">}</span>
 </span><span class="line"><span class="no">Factorail</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="c1"># =&gt; 24</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -219,7 +219,7 @@ h = Hash.new { | &hellip;">
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">generator</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="nb">hash</span><span class="p">,</span> <span class="n">key</span><span class="o">|</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">generator</span> <span class="o">=</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="nb">hash</span><span class="p">,</span> <span class="n">key</span><span class="o">|</span>
 </span><span class="line">  <span class="nb">hash</span><span class="o">[</span><span class="n">key</span><span class="o">]</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">generator</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span> <span class="o">[</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="o">][</span><span class="nb">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">]</span> <span class="o">=&gt;</span> <span class="s1">&#39;You found me&#39;</span> <span class="p">)</span>
 </span><span class="line"><span class="k">end</span>
 </span><span class="line"><span class="n">dungeon</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="o">&amp;</span><span class="n">generator</span>
@@ -260,7 +260,7 @@ h = Hash.new { | &hellip;">
 <span class="line-number">24</span>
 <span class="line-number">25</span>
 <span class="line-number">26</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">tree_block</span> <span class="o">=</span> <span class="o">-&gt;</span><span class="p">(</span><span class="nb">hash</span><span class="p">,</span><span class="n">k</span><span class="p">){</span> <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tree_block</span><span class="p">)</span> <span class="p">}</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">tree_block</span> <span class="o">=</span> <span class="o">-&gt;</span><span class="p">(</span><span class="nb">hash</span><span class="p">,</span><span class="n">k</span><span class="p">){</span> <span class="nb">hash</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tree_block</span><span class="p">)</span> <span class="p">}</span>
 </span><span class="line"><span class="n">opts</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tree_block</span><span class="p">)</span>
 </span><span class="line">
 </span><span class="line"><span class="n">opts</span><span class="o">[</span><span class="s1">&#39;dev&#39;</span><span class="o">][</span><span class="s1">&#39;db&#39;</span><span class="o">][</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;localhost:2828&quot;</span>
@@ -296,9 +296,9 @@ h = Hash.new { | &hellip;">
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
 </span><span class="line"><span class="n">http</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="n">k</span><span class="o">|</span>
-</span><span class="line">  <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="no">URI</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">.</span><span class="n">body</span>
+</span><span class="line">  <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="no">URI</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">.</span><span class="n">body</span>
 </span><span class="line">  <span class="n">h</span><span class="o">.</span><span class="n">delete</span> <span class="n">h</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">first</span> <span class="k">if</span> <span class="n">h</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="c1"># a caching layer</span>
 </span><span class="line">  <span class="n">h</span>
 </span><span class="line"><span class="k">end</span>
@@ -313,7 +313,7 @@ h = Hash.new { | &hellip;">
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">autohash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="o">|</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">h</span><span class="o">.</span><span class="n">default_proc</span><span class="p">)</span> <span class="p">}</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">autohash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="o">|</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">h</span><span class="o">.</span><span class="n">default_proc</span><span class="p">)</span> <span class="p">}</span>
 </span><span class="line"><span class="n">autohash</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">2</span><span class="o">][</span><span class="mi">3</span><span class="o">][</span><span class="mi">4</span><span class="o">][</span><span class="mi">5</span><span class="o">][</span><span class="mi">6</span><span class="o">][</span><span class="mi">7</span><span class="o">]</span> <span class="o">=</span> <span class="mi">8</span>
 </span><span class="line"><span class="n">autohash</span> <span class="c1"># =&gt; {1=&gt;{2=&gt;{3=&gt;{4=&gt;{5=&gt;{6=&gt;{7=&gt;8}}}}}}}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -337,15 +337,15 @@ h = Hash.new { | &hellip;">
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">klass</span> <span class="o">=</span> <span class="k">case</span> <span class="n">params</span><span class="o">[</span><span class="ss">:student_level</span><span class="o">]</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">klass</span> <span class="o">=</span> <span class="k">case</span> <span class="n">params</span><span class="o">[</span><span class="ss">:student_level</span><span class="o">]</span>
 </span><span class="line">  <span class="k">when</span> <span class="ss">:freshman</span><span class="p">,</span> <span class="ss">:sophomore</span> <span class="k">then</span>
-</span><span class="line">    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Underclassman</span>
+</span><span class="line">    <span class="no">Student</span><span class="o">::</span><span class="no">Underclassman</span>
 </span><span class="line">  <span class="k">when</span> <span class="ss">:junior</span><span class="p">,</span> <span class="ss">:senior</span> <span class="k">then</span>
-</span><span class="line">    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Upperclassman</span>
+</span><span class="line">    <span class="no">Student</span><span class="o">::</span><span class="no">Upperclassman</span>
 </span><span class="line">  <span class="k">when</span> <span class="ss">:graduate</span>
-</span><span class="line">    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Graduate</span>
+</span><span class="line">    <span class="no">Student</span><span class="o">::</span><span class="no">Graduate</span>
 </span><span class="line">  <span class="k">else</span>
-</span><span class="line">    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Unregistered</span>
+</span><span class="line">    <span class="no">Student</span><span class="o">::</span><span class="no">Unregistered</span>
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="n">student</span> <span class="o">=</span> <span class="n">klass</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">birthdate</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">phone</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -362,12 +362,12 @@ h = Hash.new { | &hellip;">
 <span class="line-number">8</span>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">STUDENT_LEVELS</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">Student</span><span class="p">:</span><span class="ss">:Unregistered</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
-</span><span class="line">  <span class="ss">freshman</span><span class="p">:</span> <span class="ss">Student</span><span class="p">:</span><span class="ss">:Underclassman</span><span class="p">,</span>
-</span><span class="line">  <span class="ss">sophomore</span><span class="p">:</span> <span class="ss">Student</span><span class="p">:</span><span class="ss">:Underclassman</span><span class="p">,</span>
-</span><span class="line">  <span class="ss">junior</span><span class="p">:</span>    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Upperclassman</span><span class="p">,</span>
-</span><span class="line">  <span class="ss">senior</span><span class="p">:</span>    <span class="ss">Student</span><span class="p">:</span><span class="ss">:Upperclassman</span><span class="p">,</span>
-</span><span class="line">  <span class="ss">graduate</span><span class="p">:</span>  <span class="ss">Student</span><span class="p">:</span><span class="ss">:Graduate</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="no">STUDENT_LEVELS</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">Student</span><span class="o">::</span><span class="no">Unregistered</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+</span><span class="line">  <span class="ss">freshman</span><span class="p">:</span> <span class="no">Student</span><span class="o">::</span><span class="no">Underclassman</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">sophomore</span><span class="p">:</span> <span class="no">Student</span><span class="o">::</span><span class="no">Underclassman</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">junior</span><span class="p">:</span>    <span class="no">Student</span><span class="o">::</span><span class="no">Upperclassman</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">senior</span><span class="p">:</span>    <span class="no">Student</span><span class="o">::</span><span class="no">Upperclassman</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">graduate</span><span class="p">:</span>  <span class="no">Student</span><span class="o">::</span><span class="no">Graduate</span>
 </span><span class="line"><span class="p">)</span>
 </span><span class="line">
 </span><span class="line"><span class="n">klass</span> <span class="o">=</span> <span class="no">STUDENT_LEVELS</span><span class="o">[</span><span class="n">params</span><span class="o">[</span><span class="ss">:student_level</span><span class="o">]]</span>

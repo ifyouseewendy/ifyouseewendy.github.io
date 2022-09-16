@@ -633,10 +633,10 @@ override in our stylesheet. Every browser provides a default set of styles also 
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span>    <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span>    <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;portrait.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;orientation:portrait&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;print.css&quot;</span>    <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;print&quot;</span><span class="nt">&gt;</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span>    <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span>    <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;all&quot;</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;portrait.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;orientation:portrait&quot;</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;print.css&quot;</span>    <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print&quot;</span><span class="p">&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The third declaration has a dynamic media query which will be evaluated when the page is being loaded. Depending on the orientation of the device when the page is being loaded, portrait.css may or may not be render blocking.</p>
@@ -823,21 +823,21 @@ override in our stylesheet. Every browser provides a default set of styles also 
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 <span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;html&gt;</span>
-</span><span class="line">  <span class="nt">&lt;head&gt;</span>
-</span><span class="line">    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;print.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;print&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">  <span class="nt">&lt;/head&gt;</span>
-</span><span class="line">  <span class="nt">&lt;body&gt;</span>
-</span><span class="line">    <span class="nt">&lt;p&gt;</span>
-</span><span class="line">      Hello <span class="nt">&lt;span&gt;</span>web performance<span class="nt">&lt;/span&gt;</span> students!
-</span><span class="line">    <span class="nt">&lt;/p&gt;</span>
-</span><span class="line">    <span class="nt">&lt;div&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;awesome-photo.jpg&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-</span><span class="line">    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class="line">    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;analytics.js&quot;</span> <span class="na">async</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class="line">  <span class="nt">&lt;/body&gt;</span>
-</span><span class="line"><span class="nt">&lt;/html&gt;</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span class="line">  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width&quot;</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;print.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;print&quot;</span><span class="p">&gt;</span>
+</span><span class="line">  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span class="line">  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span class="line">      Hello <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>web performance<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> students!
+</span><span class="line">    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;awesome-photo.jpg&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;app.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="line">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;analytics.js&quot;</span> <span class="na">async</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="line">  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span class="line"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>CRP diagram by <a href="https://discussions.udacity.com/t/quiz-crp-diagrams/16162/11?u=ifyouseewendy">connie_273453529</a></p>

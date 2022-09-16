@@ -223,7 +223,7 @@ connection.</p>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Node</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">Node</span>
 </span><span class="line">  <span class="kp">attr_accessor</span> <span class="ss">:left</span><span class="p">,</span> <span class="n">right</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -251,7 +251,7 @@ connection.</p>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">BinaryTree</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="k">class</span> <span class="nc">BinaryTree</span>
 </span><span class="line">  <span class="kp">attr_reader</span> <span class="ss">:root_node</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">root_value</span><span class="p">)</span>
@@ -259,7 +259,7 @@ connection.</p>
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="n">node_value</span><span class="p">)</span>
-</span><span class="line">    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line">    <span class="o">...</span>
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -267,20 +267,20 @@ connection.</p>
 <p>So a final representation for the binary tree in Ruby, it’ll be</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">bt</span> <span class="o">=</span> <span class="no">BinaryTree</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">bt</span> <span class="o">=</span> <span class="no">BinaryTree</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>What about in Haskell? At first, we create a type to represent the tree like below, which basically means a binary tree
 is either a leaf, or a node with a value and two nodes, which are both binary trees.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="kr">data</span> <span class="kt">BinaryTree</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">Leaf</span> <span class="o">|</span> <span class="kt">Node</span> <span class="p">(</span><span class="kt">BinaryTree</span> <span class="n">a</span><span class="p">)</span> <span class="n">a</span> <span class="p">(</span><span class="kt">BinaryTree</span> <span class="n">a</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span><span class="kr">data</span> <span class="kt">BinaryTree</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">Leaf</span> <span class="o">|</span> <span class="kt">Node</span> <span class="p">(</span><span class="kt">BinaryTree</span> <span class="n">a</span><span class="p">)</span> <span class="n">a</span> <span class="p">(</span><span class="kt">BinaryTree</span> <span class="n">a</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>To represent the tree,</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="nf">bt</span> <span class="ow">=</span> <span class="kt">Node</span> <span class="p">(</span><span class="kt">Node</span> <span class="kt">Leaf</span> <span class="mi">2</span> <span class="kt">Leaf</span><span class="p">)</span> <span class="mi">1</span> <span class="p">(</span><span class="kt">Node</span> <span class="kt">Leaf</span> <span class="mi">3</span> <span class="kt">Leaf</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span></span><span class="nf">bt</span> <span class="ow">=</span> <span class="kt">Node</span> <span class="p">(</span><span class="kt">Node</span> <span class="kt">Leaf</span> <span class="mi">2</span> <span class="kt">Leaf</span><span class="p">)</span> <span class="mi">1</span> <span class="p">(</span><span class="kt">Node</span> <span class="kt">Leaf</span> <span class="mi">3</span> <span class="kt">Leaf</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>It’s done! To be honest, I was totally blown away by the second I understand how things work here. It’s neat, elegant

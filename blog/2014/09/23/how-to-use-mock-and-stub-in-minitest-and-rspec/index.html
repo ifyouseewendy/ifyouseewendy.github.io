@@ -183,7 +183,7 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="ss">Minitest</span><span class="p">:</span><span class="ss">:Mock</span><span class="o">.</span><span class="n">new</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Mock</span><span class="o">.</span><span class="n">new</span>
 </span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x82ff7b5c&gt;</span>
 </span><span class="line"><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="ss">:hi</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">)</span>
 </span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x82ff7b5c&gt;</span>
@@ -203,7 +203,7 @@
 <span class="line-number">8</span>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span> <span class="o">=</span> <span class="ss">Minitest</span><span class="p">:</span><span class="ss">:Mock</span><span class="o">.</span><span class="n">new</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span> <span class="o">=</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Mock</span><span class="o">.</span><span class="n">new</span>
 </span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x821763e4&gt;</span>
 </span><span class="line"><span class="o">[</span><span class="mi">6</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">bar</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="ss">:hi</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="o">[</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;arg2&#39;</span><span class="o">]</span><span class="p">)</span>
 </span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;Minitest::Mock:0x821763e4&gt;</span>
@@ -231,7 +231,7 @@
 <span class="line-number">8</span>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">double</span><span class="p">()</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">double</span><span class="p">()</span>
 </span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;RSpec::Mocks::Mock:0x82c66b78 @name=nil&gt;</span>
 </span><span class="line"><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">stub</span><span class="p">(</span><span class="ss">:hi</span><span class="p">)</span><span class="o">.</span><span class="n">and_return</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
 </span><span class="line"><span class="o">=&gt;</span> <span class="kp">nil</span>
@@ -249,7 +249,7 @@
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="o">[</span><span class="mi">18</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">double</span><span class="p">()</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="o">[</span><span class="mi">18</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">double</span><span class="p">()</span>
 </span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;RSpec::Mocks::Mock:0x82c66b78 @name=nil&gt;</span>
 </span><span class="line"><span class="o">[</span><span class="mi">19</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">should_receive</span><span class="p">(</span><span class="ss">:hi</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
 </span><span class="line"><span class="o">=&gt;</span> <span class="c1">#&lt;RSpec::Mocks::MessageExpectation:0x818c11f4&gt;</span>

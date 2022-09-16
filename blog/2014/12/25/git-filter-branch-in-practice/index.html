@@ -199,7 +199,7 @@
 <span class="line-number">19</span>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;$GIT_AUTHOR_EMAIL&quot;</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span></span><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;$GIT_AUTHOR_EMAIL&quot;</span>
 </span><span class="line">
 </span><span class="line"><span class="k">if</span> <span class="n">email</span><span class="o">.</span><span class="n">match</span> <span class="sr">/@umeng.com/</span>
 </span><span class="line">  <span class="n">commit</span><span class="o">-</span><span class="n">tree</span>
@@ -209,7 +209,7 @@
 </span><span class="line">  <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="s1">&#39;wendy&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;wendi&#39;</span><span class="p">,</span>
 </span><span class="line">    <span class="s1">&#39;ifyouseewendy&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;wendi&#39;</span><span class="p">,</span>
-</span><span class="line">    <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line">    <span class="o">...</span>
 </span><span class="line">  <span class="p">}</span>
 </span><span class="line">
 </span><span class="line">  <span class="k">if</span> <span class="n">mapping</span><span class="o">[</span><span class="nb">name</span><span class="o">].</span><span class="n">presents?</span>
@@ -227,7 +227,7 @@
 <p><strong>1. Checkout a test branch</strong></p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>git checkout -b update_git_info
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ git checkout -b update_git_info
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><strong>2. Filter author emails</strong></p>
@@ -254,7 +254,7 @@
 <p>change <code>wendy@xx.com</code> and <code>ifyouseewendy@xx.com</code> to <code>wendi@umeng.com</code>.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">wendi wendy ifyouseewendy
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>wendi wendy ifyouseewendy
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><strong>4. Leverage mapping file</strong></p>

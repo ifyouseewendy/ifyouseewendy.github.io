@@ -299,7 +299,7 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="cp">#include &lt;pthread.h&gt;</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp"></span>
 </span><span class="line"><span class="kt">int</span> <span class="nf">pthread_create</span><span class="p">(</span><span class="n">pthread_t</span> <span class="o">*</span> <span class="kr">thread</span><span class="p">,</span>
 </span><span class="line">                     <span class="k">const</span> <span class="n">pthread_attr_t</span> <span class="o">*</span>  <span class="n">attr</span><span class="p">,</span>
 </span><span class="line">                     <span class="kt">void</span> <span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">start_routine</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
@@ -320,7 +320,7 @@
 <p><strong>Thread Completion</strong></p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="kt">int</span> <span class="nf">pthread_join</span><span class="p">(</span><span class="n">pthread_t</span> <span class="kr">thread</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">value_ptr</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span> <span class="nf">pthread_join</span><span class="p">(</span><span class="n">pthread_t</span> <span class="kr">thread</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">value_ptr</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <ul>
@@ -344,7 +344,7 @@
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="kt">int</span> <span class="nf">pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span> <span class="nf">pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
 </span><span class="line"><span class="kt">int</span> <span class="nf">pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -371,7 +371,7 @@
 <span class="line-number">19</span>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="n">pthread_mutex_t</span> <span class="n">lock</span><span class="p">;</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">pthread_mutex_t</span> <span class="n">lock</span><span class="p">;</span>
 </span><span class="line">
 </span><span class="line"><span class="n">Pthread_mutex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
 </span><span class="line">
@@ -402,7 +402,7 @@
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">,</span> <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">,</span> <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
 </span><span class="line"><span class="kt">int</span> <span class="nf">pthread_cond_signal</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -414,7 +414,7 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="n">pthread_mutex_t</span> <span class="n">lock</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">pthread_mutex_t</span> <span class="n">lock</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>
 </span><span class="line"><span class="n">pthread_cond_t</span>  <span class="n">cond</span> <span class="o">=</span> <span class="n">PTHREAD_COND_INITIALIZER</span><span class="p">;</span>
 </span><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
 </span><span class="line"><span class="k">while</span> <span class="p">(</span><span class="n">ready</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
@@ -428,7 +428,7 @@
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
 </span><span class="line"><span class="n">ready</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 </span><span class="line"><span class="n">Pthread_cond_signal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cond</span><span class="p">);</span>
 </span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
@@ -457,7 +457,7 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span class="c1">// waitingnwhile (ready == 0)</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="c1">// waitingnwhile (ready == 0)</span>
 </span><span class="line">    <span class="p">;</span> <span class="c1">// spin</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// signaling</span>
@@ -471,7 +471,7 @@
 <p>On the link line, you must also explicitly link with the pthreads library, by adding the -pthread flag.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">prompt&gt; gcc -o main main.c -Wall -pthread
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>prompt&gt; gcc -o main main.c -Wall -pthread
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h2 id="chapter-28---locks">Chapter 28 - Locks</h2>
@@ -739,10 +739,10 @@ How often this local-to-global transfer occurs is determined by a threshold, whi
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">// grep process is the producer
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>// grep process is the producer
 </span><span class="line">// wc process is the consumer
 </span><span class="line">// between them is an in-kernel bounded buffer
-</span><span class="line">grep foo file.txt | wc -l
+</span><span class="line">grep foo file.txt <span class="p">|</span> wc -l
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Basic operations: <code>put()</code> and <code>get()</code></p>
