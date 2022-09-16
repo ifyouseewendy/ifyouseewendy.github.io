@@ -6,7 +6,7 @@ group :development do
   gem 'rake', '~> 0.9'
   gem 'jekyll', '~> 0.11.0'
   gem 'rdiscount', '~> 2.2.0'
-  gem 'kramdown', '~> 1.4.2'
+  gem 'kramdown', '~> 2.3.1'
   gem 'pygments.rb'
   gem 'haml', '~> 3.1.7'
   gem 'compass', '~> 0.12.7'
