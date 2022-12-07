@@ -3,9 +3,11 @@ GEM
   specs:
     albino (1.3.3)
       posix-spawn (>= 0.3.6)
-    chunky_png (1.3.1)
-    classifier (1.3.4)
-      fast-stemmer (>= 1.0.0)
+    chunky_png (1.4.0)
+    classifier (1.3.5)
+      fast-stemmer (~> 1.0.0)
+      mathn
+      rake
     compass (0.12.7)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -21,39 +23,40 @@ GEM
       kramdown (>= 0.13.2)
       liquid (>= 1.9.0)
       maruku (>= 0.5.9)
-    kramdown (1.4.2)
+    kramdown (2.4.0)
+      rexml
     liquid (2.3.0)
-    maruku (0.7.2)
-    multi_json (1.13.1)
-    posix-spawn (0.3.13)
-    pygments.rb (1.2.1)
-      multi_json (>= 1.0.0)
-    rack (1.5.2)
-    rack-protection (1.5.3)
+    maruku (0.7.3)
+    mathn (0.1.0)
+    posix-spawn (0.3.15)
+    pygments.rb (2.3.1)
+    rack (1.6.13)
+    rack-protection (1.5.5)
       rack
     rake (0.9.6)
-    rb-fsevent (0.9.4)
-    rdiscount (2.2.0.2)
+    rb-fsevent (0.11.2)
+    rdiscount (2.2.7)
+    rexml (3.2.5)
     rubypants (0.2.0)
     sass (3.2.19)
-    sass-globbing (1.1.1)
+    sass-globbing (1.1.5)
       sass (>= 3.1)
-    sinatra (1.4.5)
-      rack (~> 1.4)
+    sinatra (1.4.8)
+      rack (~> 1.5)
       rack-protection (~> 1.4)
-      tilt (~> 1.3, >= 1.3.4)
+      tilt (>= 1.3, < 3)
     stringex (1.4.0)
-    tilt (1.4.1)
+    tilt (2.0.11)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-22
 
 DEPENDENCIES
   compass (~> 0.12.7)
   directory_watcher (= 1.4.1)
   haml (~> 3.1.7)
   jekyll (~> 0.11.0)
-  kramdown (~> 1.4.2)
+  kramdown (~> 2.4)
   liquid (~> 2.3.0)
   pygments.rb
   rake (~> 0.9)
@@ -66,7 +69,7 @@ DEPENDENCIES
   stringex (~> 1.4.0)
 
 RUBY VERSION
-   ruby 2.6.8p205
+   ruby 2.7.7p221
 
 BUNDLED WITH
-   1.17.3
+   2.3.26
