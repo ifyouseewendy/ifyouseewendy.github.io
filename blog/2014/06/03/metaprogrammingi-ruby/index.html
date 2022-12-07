@@ -182,46 +182,46 @@
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#the-object-model">The Object Model</a>    <ul>
-      <li><a href="#instance-variable">Instance variable</a></li>
-      <li><a href="#instance-method">Instance method</a></li>
-      <li><a href="#truth-about-classes">Truth about classes</a></li>
-      <li><a href="#constant">Constant</a></li>
-      <li><a href="#method-lookup">Method lookup</a></li>
-      <li><a href="#refinement">Refinement</a></li>
+  <li><a href="#the-object-model" id="markdown-toc-the-object-model">The Object Model</a>    <ul>
+      <li><a href="#instance-variable" id="markdown-toc-instance-variable">Instance variable</a></li>
+      <li><a href="#instance-method" id="markdown-toc-instance-method">Instance method</a></li>
+      <li><a href="#truth-about-classes" id="markdown-toc-truth-about-classes">Truth about classes</a></li>
+      <li><a href="#constant" id="markdown-toc-constant">Constant</a></li>
+      <li><a href="#method-lookup" id="markdown-toc-method-lookup">Method lookup</a></li>
+      <li><a href="#refinement" id="markdown-toc-refinement">Refinement</a></li>
     </ul>
   </li>
-  <li><a href="#methods">Methods</a>    <ul>
-      <li><a href="#dynamic-dispatch">Dynamic Dispatch</a></li>
-      <li><a href="#dynamic-method">Dynamic Method</a></li>
-      <li><a href="#ghost-method">Ghost Method</a></li>
+  <li><a href="#methods" id="markdown-toc-methods">Methods</a>    <ul>
+      <li><a href="#dynamic-dispatch" id="markdown-toc-dynamic-dispatch">Dynamic Dispatch</a></li>
+      <li><a href="#dynamic-method" id="markdown-toc-dynamic-method">Dynamic Method</a></li>
+      <li><a href="#ghost-method" id="markdown-toc-ghost-method">Ghost Method</a></li>
     </ul>
   </li>
-  <li><a href="#callables">Callables</a>    <ul>
-      <li><a href="#the-callables">the Callables</a></li>
-      <li><a href="#blocks">Blocks</a></li>
-      <li><a href="#proc-objects">Proc Objects</a>        <ul>
-          <li><a href="#methods-1">Methods</a></li>
-          <li><a href="#unbound-methods">Unbound Methods</a></li>
+  <li><a href="#callables" id="markdown-toc-callables">Callables</a>    <ul>
+      <li><a href="#the-callables" id="markdown-toc-the-callables">the Callables</a></li>
+      <li><a href="#blocks" id="markdown-toc-blocks">Blocks</a></li>
+      <li><a href="#proc-objects" id="markdown-toc-proc-objects">Proc Objects</a>        <ul>
+          <li><a href="#methods-1" id="markdown-toc-methods-1">Methods</a></li>
+          <li><a href="#unbound-methods" id="markdown-toc-unbound-methods">Unbound Methods</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#class-definitions">Class Definitions</a>    <ul>
-      <li><a href="#the-current-class">The Current Class</a></li>
-      <li><a href="#class-instance-variables">Class Instance Variables</a></li>
-      <li><a href="#singleton-methods">Singleton Methods</a></li>
-      <li><a href="#singleton-class">Singleton Class</a></li>
-      <li><a href="#method-wrapper">Method Wrapper</a>        <ul>
-          <li><a href="#around-alias">Around Alias</a></li>
-          <li><a href="#refinement-wrapper">Refinement Wrapper</a></li>
-          <li><a href="#prepended-wrapper">Prepended Wrapper</a></li>
-          <li><a href="#an-interesting-quiz-solving-by-around-alias">An interesting quiz solving by Around Alias</a></li>
+  <li><a href="#class-definitions" id="markdown-toc-class-definitions">Class Definitions</a>    <ul>
+      <li><a href="#the-current-class" id="markdown-toc-the-current-class">The Current Class</a></li>
+      <li><a href="#class-instance-variables" id="markdown-toc-class-instance-variables">Class Instance Variables</a></li>
+      <li><a href="#singleton-methods" id="markdown-toc-singleton-methods">Singleton Methods</a></li>
+      <li><a href="#singleton-class" id="markdown-toc-singleton-class">Singleton Class</a></li>
+      <li><a href="#method-wrapper" id="markdown-toc-method-wrapper">Method Wrapper</a>        <ul>
+          <li><a href="#around-alias" id="markdown-toc-around-alias">Around Alias</a></li>
+          <li><a href="#refinement-wrapper" id="markdown-toc-refinement-wrapper">Refinement Wrapper</a></li>
+          <li><a href="#prepended-wrapper" id="markdown-toc-prepended-wrapper">Prepended Wrapper</a></li>
+          <li><a href="#an-interesting-quiz-solving-by-around-alias" id="markdown-toc-an-interesting-quiz-solving-by-around-alias">An interesting quiz solving by Around Alias</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#eval-and-binding">Eval and Binding</a></li>
+  <li><a href="#eval-and-binding" id="markdown-toc-eval-and-binding">Eval and Binding</a></li>
 </ul>
 
 <h1 id="the-object-model">The Object Model</h1>
@@ -1430,7 +1430,7 @@ To avoid this kind of trouble, take care not to introduce too many Ghost Methods
 </span><span class="line">
 </span><span class="line"><span class="k">class</span> <span class="nc">MyClass</span>
 </span><span class="line">  <span class="k">def</span> <span class="nf">name</span><span class="p">;</span> <span class="vi">@name</span><span class="p">;</span> <span class="k">end</span>
-</span><span class="line">  <span class="k">def</span> <span class="nf">name</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="vi">@name</span><span class="o">=</span><span class="n">n</span><span class="p">;</span> <span class="k">end</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">name=</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="vi">@name</span><span class="o">=</span><span class="n">n</span><span class="p">;</span> <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span><span class="line">
 </span><span class="line"><span class="n">obj</span> <span class="o">=</span> <span class="no">MyClass</span><span class="o">.</span><span class="n">new</span>

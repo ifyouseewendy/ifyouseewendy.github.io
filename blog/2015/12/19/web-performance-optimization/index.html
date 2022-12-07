@@ -184,21 +184,21 @@
 <p><strong>TOC</strong></p>
 
 <ul id="markdown-toc">
-  <li><a href="#optimizing-content-efficiency">Optimizing content efficiency</a>    <ul>
-      <li><a href="#eliminating-unnecessary-downloads">Eliminating unnecessary downloads</a></li>
-      <li><a href="#optimizing-encoding-and-transfer-size-of-text-based-assets">Optimizing encoding and transfer size of text-based assets</a></li>
-      <li><a href="#image-optimization">Image optimization</a></li>
-      <li><a href="#web-font-optimization">Web font optimization</a></li>
-      <li><a href="#http-caching">HTTP caching</a></li>
+  <li><a href="#optimizing-content-efficiency" id="markdown-toc-optimizing-content-efficiency">Optimizing content efficiency</a>    <ul>
+      <li><a href="#eliminating-unnecessary-downloads" id="markdown-toc-eliminating-unnecessary-downloads">Eliminating unnecessary downloads</a></li>
+      <li><a href="#optimizing-encoding-and-transfer-size-of-text-based-assets" id="markdown-toc-optimizing-encoding-and-transfer-size-of-text-based-assets">Optimizing encoding and transfer size of text-based assets</a></li>
+      <li><a href="#image-optimization" id="markdown-toc-image-optimization">Image optimization</a></li>
+      <li><a href="#web-font-optimization" id="markdown-toc-web-font-optimization">Web font optimization</a></li>
+      <li><a href="#http-caching" id="markdown-toc-http-caching">HTTP caching</a></li>
     </ul>
   </li>
-  <li><a href="#critical-rendering-path">Critical Rendering Path</a>    <ul>
-      <li><a href="#critical-rendering-path-1">Critical Rendering Path</a></li>
-      <li><a href="#analysing-critical-rendering-path-performance">Analysing Critical Rendering Path Performance</a></li>
-      <li><a href="#optimizing-the-critical-rendering-path">Optimizing the critical rendering path</a></li>
+  <li><a href="#critical-rendering-path" id="markdown-toc-critical-rendering-path">Critical Rendering Path</a>    <ul>
+      <li><a href="#critical-rendering-path-1" id="markdown-toc-critical-rendering-path-1">Critical Rendering Path</a></li>
+      <li><a href="#analysing-critical-rendering-path-performance" id="markdown-toc-analysing-critical-rendering-path-performance">Analysing Critical Rendering Path Performance</a></li>
+      <li><a href="#optimizing-the-critical-rendering-path" id="markdown-toc-optimizing-the-critical-rendering-path">Optimizing the critical rendering path</a></li>
     </ul>
   </li>
-  <li><a href="#browser-rendering-optimization">Browser Rendering Optimization</a></li>
+  <li><a href="#browser-rendering-optimization" id="markdown-toc-browser-rendering-optimization">Browser Rendering Optimization</a></li>
 </ul>
 
 <h2 id="optimizing-content-efficiency">Optimizing content efficiency</h2>
@@ -327,7 +327,7 @@
 <blockquote>
   <p>100 x 100px image is composed of 10,000 pixels<br />
 10,000 pixels x 4 bytes = 40,000 bytes<br />
-40,000 bytes / 1024 = 39 KB  </p>
+40,000 bytes / 1024 = 39 KB</p>
 </blockquote>
 
 <p><strong>Lossless vs lossy image compression</strong></p>
@@ -612,7 +612,7 @@ override in our stylesheet. Every browser provides a default set of styles also 
 
 <p><strong><em>Why do browsers match CSS selectors from right to left?</em></strong></p>
 
-<p>It sounds like that it is done this way to avoid having to look at all the children of parent (which could be many) rather than all the parents of a child which must be one. Even if the DOM is deep it would only look at one node per level rather than multiple in the RTL matching. </p>
+<p>It sounds like that it is done this way to avoid having to look at all the children of parent (which could be many) rather than all the parents of a child which must be one. Even if the DOM is deep it would only look at one node per level rather than multiple in the RTL matching.</p>
 
 <p>from <a href="http://stackoverflow.com/questions/5797014/why-do-browsers-match-css-selectors-from-right-to-left">Why do browsers match CSS selectors from right to left?</a></p>
 

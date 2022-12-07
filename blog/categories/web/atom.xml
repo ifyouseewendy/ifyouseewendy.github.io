@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2022-09-26T13:07:48-07:00</updated>
+  <updated>2022-12-07T13:26:16-08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -38,21 +38,21 @@
 <p><strong>TOC</strong></p>
 
 <ul id="markdown-toc">
-  <li><a href="#optimizing-content-efficiency">Optimizing content efficiency</a>    <ul>
-      <li><a href="#eliminating-unnecessary-downloads">Eliminating unnecessary downloads</a></li>
-      <li><a href="#optimizing-encoding-and-transfer-size-of-text-based-assets">Optimizing encoding and transfer size of text-based assets</a></li>
-      <li><a href="#image-optimization">Image optimization</a></li>
-      <li><a href="#web-font-optimization">Web font optimization</a></li>
-      <li><a href="#http-caching">HTTP caching</a></li>
+  <li><a href="#optimizing-content-efficiency" id="markdown-toc-optimizing-content-efficiency">Optimizing content efficiency</a>    <ul>
+      <li><a href="#eliminating-unnecessary-downloads" id="markdown-toc-eliminating-unnecessary-downloads">Eliminating unnecessary downloads</a></li>
+      <li><a href="#optimizing-encoding-and-transfer-size-of-text-based-assets" id="markdown-toc-optimizing-encoding-and-transfer-size-of-text-based-assets">Optimizing encoding and transfer size of text-based assets</a></li>
+      <li><a href="#image-optimization" id="markdown-toc-image-optimization">Image optimization</a></li>
+      <li><a href="#web-font-optimization" id="markdown-toc-web-font-optimization">Web font optimization</a></li>
+      <li><a href="#http-caching" id="markdown-toc-http-caching">HTTP caching</a></li>
     </ul>
   </li>
-  <li><a href="#critical-rendering-path">Critical Rendering Path</a>    <ul>
-      <li><a href="#critical-rendering-path-1">Critical Rendering Path</a></li>
-      <li><a href="#analysing-critical-rendering-path-performance">Analysing Critical Rendering Path Performance</a></li>
-      <li><a href="#optimizing-the-critical-rendering-path">Optimizing the critical rendering path</a></li>
+  <li><a href="#critical-rendering-path" id="markdown-toc-critical-rendering-path">Critical Rendering Path</a>    <ul>
+      <li><a href="#critical-rendering-path-1" id="markdown-toc-critical-rendering-path-1">Critical Rendering Path</a></li>
+      <li><a href="#analysing-critical-rendering-path-performance" id="markdown-toc-analysing-critical-rendering-path-performance">Analysing Critical Rendering Path Performance</a></li>
+      <li><a href="#optimizing-the-critical-rendering-path" id="markdown-toc-optimizing-the-critical-rendering-path">Optimizing the critical rendering path</a></li>
     </ul>
   </li>
-  <li><a href="#browser-rendering-optimization">Browser Rendering Optimization</a></li>
+  <li><a href="#browser-rendering-optimization" id="markdown-toc-browser-rendering-optimization">Browser Rendering Optimization</a></li>
 </ul>
 
 <h2 id="optimizing-content-efficiency">Optimizing content efficiency</h2>
@@ -181,7 +181,7 @@
 <blockquote>
   <p>100 x 100px image is composed of 10,000 pixels<br />
 10,000 pixels x 4 bytes = 40,000 bytes<br />
-40,000 bytes / 1024 = 39 KB  </p>
+40,000 bytes / 1024 = 39 KB</p>
 </blockquote>
 
 <p><strong>Lossless vs lossy image compression</strong></p>
@@ -466,7 +466,7 @@ override in our stylesheet. Every browser provides a default set of styles also 
 
 <p><strong><em>Why do browsers match CSS selectors from right to left?</em></strong></p>
 
-<p>It sounds like that it is done this way to avoid having to look at all the children of parent (which could be many) rather than all the parents of a child which must be one. Even if the DOM is deep it would only look at one node per level rather than multiple in the RTL matching. </p>
+<p>It sounds like that it is done this way to avoid having to look at all the children of parent (which could be many) rather than all the parents of a child which must be one. Even if the DOM is deep it would only look at one node per level rather than multiple in the RTL matching.</p>
 
 <p>from <a href="http://stackoverflow.com/questions/5797014/why-do-browsers-match-css-selectors-from-right-to-left">Why do browsers match CSS selectors from right to left?</a></p>
 
@@ -483,12 +483,16 @@ override in our stylesheet. Every browser provides a default set of styles also 
 
 <p>By using media queries, our presentation can be tailored to specific use cases such as display vs. print, and also to dynamic conditions such as changes in screen orientation, resize events, and more. When declaring your stylesheet assets, pay close attention to the media type and queries, as they will have big performance impact on the critical rendering path!</p>
 
-<p><code>html
-&lt;link href="style.css"    rel="stylesheet"&gt;
-&lt;link href="style.css"    rel="stylesheet" media="all"&gt;
-&lt;link href="portrait.css" rel="stylesheet" media="orientation:portrait"&gt;
-&lt;link href="print.css"    rel="stylesheet" media="print"&gt;
-</code></p>
+<p>```html</p>
+<link href="style.css" rel="stylesheet" />
+
+<link href="style.css" rel="stylesheet" media="all" />
+
+<link href="portrait.css" rel="stylesheet" media="orientation:portrait" />
+
+<link href="print.css" rel="stylesheet" media="print" />
+
+<p>```</p>
 
 <p>The third declaration has a dynamic media query which will be evaluated when the page is being loaded. Depending on the orientation of the device when the page is being loaded, portrait.css may or may not be render blocking.</p>
 
@@ -881,34 +885,34 @@ end</p>
     <updated>2014-06-22T23:35:39+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2014/06/22/asciicast-of-fundamentals-of-design-by-codeschool</id>
     <content type="html"><![CDATA[<ul id="markdown-toc">
-  <li><a href="#typeface-classifications">Typeface Classifications</a>    <ul>
-      <li><a href="#typefaces">Typefaces</a></li>
-      <li><a href="#principles">Principles</a></li>
+  <li><a href="#typeface-classifications" id="markdown-toc-typeface-classifications">Typeface Classifications</a>    <ul>
+      <li><a href="#typefaces" id="markdown-toc-typefaces">Typefaces</a></li>
+      <li><a href="#principles" id="markdown-toc-principles">Principles</a></li>
     </ul>
   </li>
-  <li><a href="#font-size-leading--weights">Font Size, Leading &amp; Weights</a></li>
-  <li><a href="#line-width--widows">Line-Width &amp; Widows</a>    <ul>
-      <li><a href="#line-width-is-measured-in-cpl">Line Width Is Measured in CPL</a></li>
-      <li><a href="#save-the-orphans--widows">Save the Orphans &amp; Widows.</a></li>
+  <li><a href="#font-size-leading--weights" id="markdown-toc-font-size-leading--weights">Font Size, Leading &amp; Weights</a></li>
+  <li><a href="#line-width--widows" id="markdown-toc-line-width--widows">Line-Width &amp; Widows</a>    <ul>
+      <li><a href="#line-width-is-measured-in-cpl" id="markdown-toc-line-width-is-measured-in-cpl">Line Width Is Measured in CPL</a></li>
+      <li><a href="#save-the-orphans--widows" id="markdown-toc-save-the-orphans--widows">Save the Orphans &amp; Widows.</a></li>
     </ul>
   </li>
-  <li><a href="#color-theory">Color Theory</a>    <ul>
-      <li><a href="#hsl">HSL</a></li>
+  <li><a href="#color-theory" id="markdown-toc-color-theory">Color Theory</a>    <ul>
+      <li><a href="#hsl" id="markdown-toc-hsl">HSL</a></li>
     </ul>
   </li>
-  <li><a href="#color-scheme">Color Scheme</a>    <ul>
-      <li><a href="#colors">Colors</a></li>
-      <li><a href="#schemes">Schemes</a></li>
+  <li><a href="#color-scheme" id="markdown-toc-color-scheme">Color Scheme</a>    <ul>
+      <li><a href="#colors" id="markdown-toc-colors">Colors</a></li>
+      <li><a href="#schemes" id="markdown-toc-schemes">Schemes</a></li>
     </ul>
   </li>
-  <li><a href="#color--type">Color &amp; Type</a></li>
-  <li><a href="#basic-layout">Basic Layout</a></li>
-  <li><a href="#the-grid">The Grid</a>    <ul>
-      <li><a href="#fixed-or-fluid">Fixed or Fluid</a></li>
-      <li><a href="#example">Example</a></li>
+  <li><a href="#color--type" id="markdown-toc-color--type">Color &amp; Type</a></li>
+  <li><a href="#basic-layout" id="markdown-toc-basic-layout">Basic Layout</a></li>
+  <li><a href="#the-grid" id="markdown-toc-the-grid">The Grid</a>    <ul>
+      <li><a href="#fixed-or-fluid" id="markdown-toc-fixed-or-fluid">Fixed or Fluid</a></li>
+      <li><a href="#example" id="markdown-toc-example">Example</a></li>
     </ul>
   </li>
-  <li><a href="#whitespce--balance">Whitespce &amp; Balance</a></li>
+  <li><a href="#whitespce--balance" id="markdown-toc-whitespce--balance">Whitespce &amp; Balance</a></li>
 </ul>
 
 <h2 id="typeface-classifications">Typeface Classifications</h2>
@@ -952,7 +956,7 @@ end</p>
 
 <ul>
   <li>
-    <p>Humanist Sans Serif, suits for government or educational applications.  </p>
+    <p>Humanist Sans Serif, suits for government or educational applications.</p>
 
     <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-14h39m01s9.png" alt="Humanist Sans Serif" /></p>
   </li>
@@ -1025,7 +1029,7 @@ end</p>
 
 <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-13-16h57m24s123.png" alt="orphan" /></p>
 
-<p>No perfect solution.  </p>
+<p>No perfect solution.</p>
 
 <p>Try tweaking with the font size, weight, line width, and leading to fix the problem.</p>
 
@@ -1141,7 +1145,7 @@ end</p>
 
 <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-21h35m30s84.png" alt="codeschool" /></p>
 
-<p>Dont’ be tacky. And treat the image behind the text to make it stand out. </p>
+<p>Dont’ be tacky. And treat the image behind the text to make it stand out.</p>
 
 <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/vlcsnap-2014-06-15-21h29m29s200.png" alt="Treat image behind text" /></p>
 

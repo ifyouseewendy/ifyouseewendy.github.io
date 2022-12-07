@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2022-09-26T13:07:48-07:00</updated>
+  <updated>2022-12-07T13:26:16-08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -36,31 +36,31 @@
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#what-is-ddd">What is DDD?</a></li>
-  <li><a href="#the-ubiquitous-language">The Ubiquitous Language</a></li>
-  <li><a href="#model-driven-design">Model-Driven Design</a>    <ul>
-      <li><a href="#building-blocks">building blocks</a></li>
-      <li><a href="#layered-architecture">Layered Architecture</a></li>
-      <li><a href="#express-model-with-entities-value-objects-and-services">Express Model with Entities, Value Objects and Services</a></li>
-      <li><a href="#struct-model-with-modules">Struct model with Modules</a></li>
-      <li><a href="#manage-a-domain-object">Manage a domain object</a></li>
+  <li><a href="#what-is-ddd" id="markdown-toc-what-is-ddd">What is DDD?</a></li>
+  <li><a href="#the-ubiquitous-language" id="markdown-toc-the-ubiquitous-language">The Ubiquitous Language</a></li>
+  <li><a href="#model-driven-design" id="markdown-toc-model-driven-design">Model-Driven Design</a>    <ul>
+      <li><a href="#building-blocks" id="markdown-toc-building-blocks">building blocks</a></li>
+      <li><a href="#layered-architecture" id="markdown-toc-layered-architecture">Layered Architecture</a></li>
+      <li><a href="#express-model-with-entities-value-objects-and-services" id="markdown-toc-express-model-with-entities-value-objects-and-services">Express Model with Entities, Value Objects and Services</a></li>
+      <li><a href="#struct-model-with-modules" id="markdown-toc-struct-model-with-modules">Struct model with Modules</a></li>
+      <li><a href="#manage-a-domain-object" id="markdown-toc-manage-a-domain-object">Manage a domain object</a></li>
     </ul>
   </li>
-  <li><a href="#refactoring-toward-deeper-insight">Refactoring Toward Deeper Insight</a></li>
-  <li><a href="#preserving-model-integrity">Preserving Model Integrity</a>    <ul>
-      <li><a href="#bounded-context">Bounded Context</a></li>
-      <li><a href="#continuous-integration">Continuous integration</a></li>
-      <li><a href="#context-map">Context map</a></li>
-      <li><a href="#shared-kernel">Shared Kernel</a></li>
-      <li><a href="#customer-supplier">Customer-supplier</a></li>
-      <li><a href="#conformist">Conformist</a></li>
-      <li><a href="#anticorruption-layer">Anticorruption layer</a></li>
-      <li><a href="#separate-ways">Separate ways</a></li>
-      <li><a href="#open-host-service">Open host service</a></li>
-      <li><a href="#distillation">Distillation</a></li>
+  <li><a href="#refactoring-toward-deeper-insight" id="markdown-toc-refactoring-toward-deeper-insight">Refactoring Toward Deeper Insight</a></li>
+  <li><a href="#preserving-model-integrity" id="markdown-toc-preserving-model-integrity">Preserving Model Integrity</a>    <ul>
+      <li><a href="#bounded-context" id="markdown-toc-bounded-context">Bounded Context</a></li>
+      <li><a href="#continuous-integration" id="markdown-toc-continuous-integration">Continuous integration</a></li>
+      <li><a href="#context-map" id="markdown-toc-context-map">Context map</a></li>
+      <li><a href="#shared-kernel" id="markdown-toc-shared-kernel">Shared Kernel</a></li>
+      <li><a href="#customer-supplier" id="markdown-toc-customer-supplier">Customer-supplier</a></li>
+      <li><a href="#conformist" id="markdown-toc-conformist">Conformist</a></li>
+      <li><a href="#anticorruption-layer" id="markdown-toc-anticorruption-layer">Anticorruption layer</a></li>
+      <li><a href="#separate-ways" id="markdown-toc-separate-ways">Separate ways</a></li>
+      <li><a href="#open-host-service" id="markdown-toc-open-host-service">Open host service</a></li>
+      <li><a href="#distillation" id="markdown-toc-distillation">Distillation</a></li>
     </ul>
   </li>
-  <li><a href="#advices">Advices</a></li>
+  <li><a href="#advices" id="markdown-toc-advices">Advices</a></li>
 </ul>
 
 <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-mind-map.png" alt="ddd-mind-map" /></p>
@@ -311,18 +311,18 @@ Compared to the Shared Kernel, but there is an important difference. The custome
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#section">前言</a></li>
-  <li><a href="#section-1">第1章 - 悲观者与乐观者的画像</a></li>
-  <li><a href="#section-2">第2章 - 悲观者的无助源自何处</a></li>
-  <li><a href="#section-3">第3章 - 悲观者严重的挫折</a></li>
-  <li><a href="#section-4">第4章 - 从悲观滑向抑郁</a></li>
-  <li><a href="#section-5">第5章 - 想法决定悲喜人生</a></li>
-  <li><a href="#section-6">第6~11章 - 乐观的好处</a></li>
-  <li><a href="#section-7">第6章 - 乐观奠定成功的事业</a></li>
-  <li><a href="#section-8">第7~8章 - 解释风格对孩子的影响</a></li>
-  <li><a href="#section-9">第12章 - 怎样习得乐观</a></li>
-  <li><a href="#section-10">第15章 - 乐观可以有弹性</a></li>
-  <li><a href="#section-11">总结</a></li>
+  <li><a href="#section" id="markdown-toc-section">前言</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">第1章 - 悲观者与乐观者的画像</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">第2章 - 悲观者的无助源自何处</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">第3章 - 悲观者严重的挫折</a></li>
+  <li><a href="#section-4" id="markdown-toc-section-4">第4章 - 从悲观滑向抑郁</a></li>
+  <li><a href="#section-5" id="markdown-toc-section-5">第5章 - 想法决定悲喜人生</a></li>
+  <li><a href="#section-6" id="markdown-toc-section-6">第6~11章 - 乐观的好处</a></li>
+  <li><a href="#section-7" id="markdown-toc-section-7">第6章 - 乐观奠定成功的事业</a></li>
+  <li><a href="#section-8" id="markdown-toc-section-8">第7~8章 - 解释风格对孩子的影响</a></li>
+  <li><a href="#section-9" id="markdown-toc-section-9">第12章 - 怎样习得乐观</a></li>
+  <li><a href="#section-10" id="markdown-toc-section-10">第15章 - 乐观可以有弹性</a></li>
+  <li><a href="#section-11" id="markdown-toc-section-11">总结</a></li>
 </ul>
 
 <h3 id="section">前言</h3>
@@ -533,15 +533,15 @@ Compared to the Shared Kernel, but there is an important difference. The custome
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#concurrency">Concurrency</a>    <ul>
-      <li><a href="#chapter-26---introduction">Chapter 26 - Introduction</a></li>
-      <li><a href="#chapter-27---interlude-thread-api">Chapter 27 - Interlude: Thread API</a></li>
-      <li><a href="#chapter-28---locks">Chapter 28 - Locks</a></li>
-      <li><a href="#chapter-29---lock-based-concurrent-data-structures">Chapter 29 - Lock-based Concurrent Data Structures</a></li>
-      <li><a href="#chapter-30---condition-variables">Chapter 30 - Condition Variables</a></li>
-      <li><a href="#chapter-31---semaphores">Chapter 31 - Semaphores</a></li>
-      <li><a href="#chapter-32---common-concurrency-problems">Chapter 32 - Common Concurrency Problems</a></li>
-      <li><a href="#chapter-33---event-based-concurrency-advanced">Chapter 33 - Event-based Concurrency (Advanced)</a></li>
+  <li><a href="#concurrency" id="markdown-toc-concurrency">Concurrency</a>    <ul>
+      <li><a href="#chapter-26---introduction" id="markdown-toc-chapter-26---introduction">Chapter 26 - Introduction</a></li>
+      <li><a href="#chapter-27---interlude-thread-api" id="markdown-toc-chapter-27---interlude-thread-api">Chapter 27 - Interlude: Thread API</a></li>
+      <li><a href="#chapter-28---locks" id="markdown-toc-chapter-28---locks">Chapter 28 - Locks</a></li>
+      <li><a href="#chapter-29---lock-based-concurrent-data-structures" id="markdown-toc-chapter-29---lock-based-concurrent-data-structures">Chapter 29 - Lock-based Concurrent Data Structures</a></li>
+      <li><a href="#chapter-30---condition-variables" id="markdown-toc-chapter-30---condition-variables">Chapter 30 - Condition Variables</a></li>
+      <li><a href="#chapter-31---semaphores" id="markdown-toc-chapter-31---semaphores">Chapter 31 - Semaphores</a></li>
+      <li><a href="#chapter-32---common-concurrency-problems" id="markdown-toc-chapter-32---common-concurrency-problems">Chapter 32 - Common Concurrency Problems</a></li>
+      <li><a href="#chapter-33---event-based-concurrency-advanced" id="markdown-toc-chapter-33---event-based-concurrency-advanced">Chapter 33 - Event-based Concurrency (Advanced)</a></li>
     </ul>
   </li>
 </ul>
@@ -1430,49 +1430,49 @@ grep foo file.txt | wc -l
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#introduction">Introduction</a></li>
-  <li><a href="#cpu-virtualisation">CPU Virtualisation</a>    <ul>
-      <li><a href="#process">Process</a>        <ul>
-          <li><a href="#chapter-4---the-abstraction-the-process">Chapter 4 - The Abstraction: The Process</a></li>
-          <li><a href="#chapter-5---interlude-process-api">Chapter 5 - Interlude: Process API</a></li>
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#cpu-virtualisation" id="markdown-toc-cpu-virtualisation">CPU Virtualisation</a>    <ul>
+      <li><a href="#process" id="markdown-toc-process">Process</a>        <ul>
+          <li><a href="#chapter-4---the-abstraction-the-process" id="markdown-toc-chapter-4---the-abstraction-the-process">Chapter 4 - The Abstraction: The Process</a></li>
+          <li><a href="#chapter-5---interlude-process-api" id="markdown-toc-chapter-5---interlude-process-api">Chapter 5 - Interlude: Process API</a></li>
         </ul>
       </li>
-      <li><a href="#mechanism">Mechanism</a>        <ul>
-          <li><a href="#chapter-6---mechanism-limited-direct-execution">Chapter 6 - Mechanism: Limited Direct Execution</a></li>
+      <li><a href="#mechanism" id="markdown-toc-mechanism">Mechanism</a>        <ul>
+          <li><a href="#chapter-6---mechanism-limited-direct-execution" id="markdown-toc-chapter-6---mechanism-limited-direct-execution">Chapter 6 - Mechanism: Limited Direct Execution</a></li>
         </ul>
       </li>
-      <li><a href="#scheduling">Scheduling</a>        <ul>
-          <li><a href="#chapter-7---scheduling-introduction">Chapter 7 - Scheduling: Introduction</a></li>
-          <li><a href="#chapter-8---scheduling-the-multi-level-feedback-queue">Chapter 8 - Scheduling: The Multi-Level Feedback Queue</a></li>
-          <li><a href="#chapter-9---scheduling-proportional-share">Chapter 9 - Scheduling: Proportional Share</a></li>
-          <li><a href="#chapter-10---multiprocessor-scheduling">Chapter 10 - Multiprocessor Scheduling</a></li>
+      <li><a href="#scheduling" id="markdown-toc-scheduling">Scheduling</a>        <ul>
+          <li><a href="#chapter-7---scheduling-introduction" id="markdown-toc-chapter-7---scheduling-introduction">Chapter 7 - Scheduling: Introduction</a></li>
+          <li><a href="#chapter-8---scheduling-the-multi-level-feedback-queue" id="markdown-toc-chapter-8---scheduling-the-multi-level-feedback-queue">Chapter 8 - Scheduling: The Multi-Level Feedback Queue</a></li>
+          <li><a href="#chapter-9---scheduling-proportional-share" id="markdown-toc-chapter-9---scheduling-proportional-share">Chapter 9 - Scheduling: Proportional Share</a></li>
+          <li><a href="#chapter-10---multiprocessor-scheduling" id="markdown-toc-chapter-10---multiprocessor-scheduling">Chapter 10 - Multiprocessor Scheduling</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#memory-virtualisation">Memory Virtualisation</a>    <ul>
-      <li><a href="#address-space">Address Space</a>        <ul>
-          <li><a href="#chapter-13---the-abstraction-address-spaces">Chapter 13 - The Abstraction: Address Spaces</a></li>
-          <li><a href="#chapter-14---interlude-memory-api">Chapter 14 - Interlude: Memory API</a></li>
+  <li><a href="#memory-virtualisation" id="markdown-toc-memory-virtualisation">Memory Virtualisation</a>    <ul>
+      <li><a href="#address-space" id="markdown-toc-address-space">Address Space</a>        <ul>
+          <li><a href="#chapter-13---the-abstraction-address-spaces" id="markdown-toc-chapter-13---the-abstraction-address-spaces">Chapter 13 - The Abstraction: Address Spaces</a></li>
+          <li><a href="#chapter-14---interlude-memory-api" id="markdown-toc-chapter-14---interlude-memory-api">Chapter 14 - Interlude: Memory API</a></li>
         </ul>
       </li>
-      <li><a href="#dynamic-allocation-and-segmentation">Dynamic Allocation and Segmentation</a>        <ul>
-          <li><a href="#chapter-15---mechanism-address-translation">Chapter 15 - Mechanism: Address Translation</a></li>
-          <li><a href="#chapter-16-segmentation">Chapter 16 Segmentation</a></li>
-          <li><a href="#chapter-17---free-space-management">Chapter 17 - Free-Space Management</a></li>
+      <li><a href="#dynamic-allocation-and-segmentation" id="markdown-toc-dynamic-allocation-and-segmentation">Dynamic Allocation and Segmentation</a>        <ul>
+          <li><a href="#chapter-15---mechanism-address-translation" id="markdown-toc-chapter-15---mechanism-address-translation">Chapter 15 - Mechanism: Address Translation</a></li>
+          <li><a href="#chapter-16-segmentation" id="markdown-toc-chapter-16-segmentation">Chapter 16 Segmentation</a></li>
+          <li><a href="#chapter-17---free-space-management" id="markdown-toc-chapter-17---free-space-management">Chapter 17 - Free-Space Management</a></li>
         </ul>
       </li>
-      <li><a href="#paging">Paging</a>        <ul>
-          <li><a href="#chapter-18---paging-introduction">Chapter 18 - Paging: Introduction</a></li>
-          <li><a href="#chapter-19---paging-faster-translations-tlbs">Chapter 19 - Paging: Faster Translations (TLBs)</a></li>
-          <li><a href="#note-on-cache-management">Note on Cache Management</a></li>
-          <li><a href="#chapter-20---paging-smaller-tables">Chapter 20 - Paging: Smaller Tables</a></li>
+      <li><a href="#paging" id="markdown-toc-paging">Paging</a>        <ul>
+          <li><a href="#chapter-18---paging-introduction" id="markdown-toc-chapter-18---paging-introduction">Chapter 18 - Paging: Introduction</a></li>
+          <li><a href="#chapter-19---paging-faster-translations-tlbs" id="markdown-toc-chapter-19---paging-faster-translations-tlbs">Chapter 19 - Paging: Faster Translations (TLBs)</a></li>
+          <li><a href="#note-on-cache-management" id="markdown-toc-note-on-cache-management">Note on Cache Management</a></li>
+          <li><a href="#chapter-20---paging-smaller-tables" id="markdown-toc-chapter-20---paging-smaller-tables">Chapter 20 - Paging: Smaller Tables</a></li>
         </ul>
       </li>
-      <li><a href="#beyond-physical-memory">Beyond Physical Memory</a>        <ul>
-          <li><a href="#chapter-21---beyond-physical-memory-mechanisms">Chapter 21 - Beyond Physical Memory: Mechanisms</a></li>
-          <li><a href="#chapter-22---beyond-physical-memory-policies">Chapter 22 - Beyond Physical Memory: Policies</a></li>
-          <li><a href="#chapter-23---the-vaxvms-virtual-memory-system">Chapter 23 - The VAX/VMS Virtual Memory System</a></li>
+      <li><a href="#beyond-physical-memory" id="markdown-toc-beyond-physical-memory">Beyond Physical Memory</a>        <ul>
+          <li><a href="#chapter-21---beyond-physical-memory-mechanisms" id="markdown-toc-chapter-21---beyond-physical-memory-mechanisms">Chapter 21 - Beyond Physical Memory: Mechanisms</a></li>
+          <li><a href="#chapter-22---beyond-physical-memory-policies" id="markdown-toc-chapter-22---beyond-physical-memory-policies">Chapter 22 - Beyond Physical Memory: Policies</a></li>
+          <li><a href="#chapter-23---the-vaxvms-virtual-memory-system" id="markdown-toc-chapter-23---the-vaxvms-virtual-memory-system">Chapter 23 - The VAX/VMS Virtual Memory System</a></li>
         </ul>
       </li>
     </ul>
@@ -2789,109 +2789,109 @@ Idea</li>
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#object-oriented-design">Object-Oriented Design</a>    <ul>
-      <li><a href="#the-tools-of-design">The Tools of Design</a>        <ul>
-          <li><a href="#design-principles">Design Principles</a></li>
-          <li><a href="#design-patterns">Design Patterns</a></li>
+  <li><a href="#object-oriented-design" id="markdown-toc-object-oriented-design">Object-Oriented Design</a>    <ul>
+      <li><a href="#the-tools-of-design" id="markdown-toc-the-tools-of-design">The Tools of Design</a>        <ul>
+          <li><a href="#design-principles" id="markdown-toc-design-principles">Design Principles</a></li>
+          <li><a href="#design-patterns" id="markdown-toc-design-patterns">Design Patterns</a></li>
         </ul>
       </li>
-      <li><a href="#the-act-of-design">The Act of Design</a>        <ul>
-          <li><a href="#how-design-fails">How Design Fails</a></li>
-          <li><a href="#when-to-design">When to Design</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#guidance">Guidance</a>    <ul>
-      <li><a href="#designing-classes-with-a-single-responsibility">Designing Classes with a Single Responsibility</a>        <ul>
-          <li><a href="#depend-on-behavior-not-data">Depend on Behavior, Not Data</a></li>
-          <li><a href="#enforce-single-responsibility-everywhere">Enforce Single Responsibility Everywhere</a></li>
-        </ul>
-      </li>
-      <li><a href="#manage-dependencies">Manage Dependencies</a>        <ul>
-          <li><a href="#inject-dependencies">Inject Dependencies</a></li>
+      <li><a href="#the-act-of-design" id="markdown-toc-the-act-of-design">The Act of Design</a>        <ul>
+          <li><a href="#how-design-fails" id="markdown-toc-how-design-fails">How Design Fails</a></li>
+          <li><a href="#when-to-design" id="markdown-toc-when-to-design">When to Design</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#after">after</a>    <ul>
-      <li><a href="#isolate-dependencies">Isolate Dependencies</a></li>
-      <li><a href="#remove-argument-order-dependencies">Remove Argument-Order Dependencies</a></li>
-      <li><a href="#managing-dependency-direction">Managing Dependency Direction</a></li>
-      <li><a href="#creating-flexible-interfaces">Creating Flexible Interfaces</a>        <ul>
-          <li><a href="#finding-the-public-interface">Finding the Public Interface</a>            <ul>
-              <li><a href="#focus-messages-between-domain-objects">Focus Messages between Domain Objects</a></li>
-              <li><a href="#use-sequence-diagrams">Use Sequence Diagrams</a></li>
-              <li><a href="#asking-for-what-instead-of-telling-how">Asking for “What” Instead of Telling “How”</a></li>
-              <li><a href="#seeking-context-independence">Seeking Context Independence</a></li>
-            </ul>
-          </li>
-          <li><a href="#the-law-of-demeter">The Law of Demeter</a></li>
+  <li><a href="#guidance" id="markdown-toc-guidance">Guidance</a>    <ul>
+      <li><a href="#designing-classes-with-a-single-responsibility" id="markdown-toc-designing-classes-with-a-single-responsibility">Designing Classes with a Single Responsibility</a>        <ul>
+          <li><a href="#depend-on-behavior-not-data" id="markdown-toc-depend-on-behavior-not-data">Depend on Behavior, Not Data</a></li>
+          <li><a href="#enforce-single-responsibility-everywhere" id="markdown-toc-enforce-single-responsibility-everywhere">Enforce Single Responsibility Everywhere</a></li>
         </ul>
       </li>
-      <li><a href="#reduction-costs-with-duck-typing">Reduction Costs with Duck Typing</a>        <ul>
-          <li><a href="#polymorphism">Polymorphism</a></li>
-          <li><a href="#recognizing-hidden-ducks">Recognizing Hidden Ducks</a></li>
-          <li><a href="#guidance-1">Guidance</a></li>
+      <li><a href="#manage-dependencies" id="markdown-toc-manage-dependencies">Manage Dependencies</a>        <ul>
+          <li><a href="#inject-dependencies" id="markdown-toc-inject-dependencies">Inject Dependencies</a></li>
         </ul>
       </li>
-      <li><a href="#acquiring-behavior-through-inheritance">Acquiring Behavior Through Inheritance</a>        <ul>
-          <li><a href="#inheritance">Inheritance</a></li>
-          <li><a href="#recognizing-where-to-use-inheritance">Recognizing Where to Use Inheritance</a>            <ul>
-              <li><a href="#finding-the-abstraction">Finding the Abstraction</a></li>
+    </ul>
+  </li>
+  <li><a href="#after" id="markdown-toc-after">after</a>    <ul>
+      <li><a href="#isolate-dependencies" id="markdown-toc-isolate-dependencies">Isolate Dependencies</a></li>
+      <li><a href="#remove-argument-order-dependencies" id="markdown-toc-remove-argument-order-dependencies">Remove Argument-Order Dependencies</a></li>
+      <li><a href="#managing-dependency-direction" id="markdown-toc-managing-dependency-direction">Managing Dependency Direction</a></li>
+      <li><a href="#creating-flexible-interfaces" id="markdown-toc-creating-flexible-interfaces">Creating Flexible Interfaces</a>        <ul>
+          <li><a href="#finding-the-public-interface" id="markdown-toc-finding-the-public-interface">Finding the Public Interface</a>            <ul>
+              <li><a href="#focus-messages-between-domain-objects" id="markdown-toc-focus-messages-between-domain-objects">Focus Messages between Domain Objects</a></li>
+              <li><a href="#use-sequence-diagrams" id="markdown-toc-use-sequence-diagrams">Use Sequence Diagrams</a></li>
+              <li><a href="#asking-for-what-instead-of-telling-how" id="markdown-toc-asking-for-what-instead-of-telling-how">Asking for “What” Instead of Telling “How”</a></li>
+              <li><a href="#seeking-context-independence" id="markdown-toc-seeking-context-independence">Seeking Context Independence</a></li>
             </ul>
           </li>
-          <li><a href="#using-templage-methods">Using Templage Methods</a>            <ul>
-              <li><a href="#template-method">Template Method</a></li>
-              <li><a href="#implementing-every-template-method">Implementing Every Template Method</a></li>
+          <li><a href="#the-law-of-demeter" id="markdown-toc-the-law-of-demeter">The Law of Demeter</a></li>
+        </ul>
+      </li>
+      <li><a href="#reduction-costs-with-duck-typing" id="markdown-toc-reduction-costs-with-duck-typing">Reduction Costs with Duck Typing</a>        <ul>
+          <li><a href="#polymorphism" id="markdown-toc-polymorphism">Polymorphism</a></li>
+          <li><a href="#recognizing-hidden-ducks" id="markdown-toc-recognizing-hidden-ducks">Recognizing Hidden Ducks</a></li>
+          <li><a href="#guidance-1" id="markdown-toc-guidance-1">Guidance</a></li>
+        </ul>
+      </li>
+      <li><a href="#acquiring-behavior-through-inheritance" id="markdown-toc-acquiring-behavior-through-inheritance">Acquiring Behavior Through Inheritance</a>        <ul>
+          <li><a href="#inheritance" id="markdown-toc-inheritance">Inheritance</a></li>
+          <li><a href="#recognizing-where-to-use-inheritance" id="markdown-toc-recognizing-where-to-use-inheritance">Recognizing Where to Use Inheritance</a>            <ul>
+              <li><a href="#finding-the-abstraction" id="markdown-toc-finding-the-abstraction">Finding the Abstraction</a></li>
             </ul>
           </li>
-          <li><a href="#manging-coupling">Manging Coupling</a>            <ul>
-              <li><a href="#decoupling-subclasses-using-hook-messages">Decoupling Subclasses Using Hook Messages</a></li>
+          <li><a href="#using-templage-methods" id="markdown-toc-using-templage-methods">Using Templage Methods</a>            <ul>
+              <li><a href="#template-method" id="markdown-toc-template-method">Template Method</a></li>
+              <li><a href="#implementing-every-template-method" id="markdown-toc-implementing-every-template-method">Implementing Every Template Method</a></li>
+            </ul>
+          </li>
+          <li><a href="#manging-coupling" id="markdown-toc-manging-coupling">Manging Coupling</a>            <ul>
+              <li><a href="#decoupling-subclasses-using-hook-messages" id="markdown-toc-decoupling-subclasses-using-hook-messages">Decoupling Subclasses Using Hook Messages</a></li>
             </ul>
           </li>
         </ul>
       </li>
-      <li><a href="#sharing-role-behavior-with-modules">Sharing Role Behavior with Modules</a>        <ul>
-          <li><a href="#understanding-roles">Understanding Roles</a></li>
-          <li><a href="#writing-inheritable-code">Writing Inheritable Code</a>            <ul>
-              <li><a href="#recognize-the-antipatterns">Recognize the Antipatterns</a></li>
-              <li><a href="#insist-on-the-abstraction">Insist on the Abstraction</a></li>
-              <li><a href="#honor-the-contract">Honor the Contract</a></li>
-              <li><a href="#use-the-template-method-pattern">Use the Template Method Pattern</a></li>
-              <li><a href="#preemptively-decouple-classes">Preemptively Decouple Classes</a></li>
-              <li><a href="#create-shallow-hierarchies">Create Shallow Hierarchies</a></li>
+      <li><a href="#sharing-role-behavior-with-modules" id="markdown-toc-sharing-role-behavior-with-modules">Sharing Role Behavior with Modules</a>        <ul>
+          <li><a href="#understanding-roles" id="markdown-toc-understanding-roles">Understanding Roles</a></li>
+          <li><a href="#writing-inheritable-code" id="markdown-toc-writing-inheritable-code">Writing Inheritable Code</a>            <ul>
+              <li><a href="#recognize-the-antipatterns" id="markdown-toc-recognize-the-antipatterns">Recognize the Antipatterns</a></li>
+              <li><a href="#insist-on-the-abstraction" id="markdown-toc-insist-on-the-abstraction">Insist on the Abstraction</a></li>
+              <li><a href="#honor-the-contract" id="markdown-toc-honor-the-contract">Honor the Contract</a></li>
+              <li><a href="#use-the-template-method-pattern" id="markdown-toc-use-the-template-method-pattern">Use the Template Method Pattern</a></li>
+              <li><a href="#preemptively-decouple-classes" id="markdown-toc-preemptively-decouple-classes">Preemptively Decouple Classes</a></li>
+              <li><a href="#create-shallow-hierarchies" id="markdown-toc-create-shallow-hierarchies">Create Shallow Hierarchies</a></li>
             </ul>
           </li>
         </ul>
       </li>
-      <li><a href="#combining-objects-with-composition">Combining Objects with Composition</a>        <ul>
-          <li><a href="#aggregation-a-special-kind-of-composition">Aggregation: A Special Kind of Composition</a></li>
-          <li><a href="#deciding-between-inheritance-and-composition">Deciding Between Inheritance and Composition</a>            <ul>
-              <li><a href="#inheritance-1">Inheritance</a></li>
-              <li><a href="#composition">Composition</a></li>
+      <li><a href="#combining-objects-with-composition" id="markdown-toc-combining-objects-with-composition">Combining Objects with Composition</a>        <ul>
+          <li><a href="#aggregation-a-special-kind-of-composition" id="markdown-toc-aggregation-a-special-kind-of-composition">Aggregation: A Special Kind of Composition</a></li>
+          <li><a href="#deciding-between-inheritance-and-composition" id="markdown-toc-deciding-between-inheritance-and-composition">Deciding Between Inheritance and Composition</a>            <ul>
+              <li><a href="#inheritance-1" id="markdown-toc-inheritance-1">Inheritance</a></li>
+              <li><a href="#composition" id="markdown-toc-composition">Composition</a></li>
             </ul>
           </li>
-          <li><a href="#guidance-2">Guidance</a></li>
+          <li><a href="#guidance-2" id="markdown-toc-guidance-2">Guidance</a></li>
         </ul>
       </li>
-      <li><a href="#designing-cost-effective-tests">Designing Cost-Effective Tests</a>        <ul>
-          <li><a href="#intentional-testing">Intentional Testing</a>            <ul>
-              <li><a href="#knowing-your-intentions">Knowing Your Intentions</a></li>
-              <li><a href="#knowing-what-to-test">Knowing What to Test</a>                <ul>
-                  <li><a href="#remove-the-duplicate">Remove the Duplicate</a></li>
-                  <li><a href="#message-model">Message Model</a></li>
+      <li><a href="#designing-cost-effective-tests" id="markdown-toc-designing-cost-effective-tests">Designing Cost-Effective Tests</a>        <ul>
+          <li><a href="#intentional-testing" id="markdown-toc-intentional-testing">Intentional Testing</a>            <ul>
+              <li><a href="#knowing-your-intentions" id="markdown-toc-knowing-your-intentions">Knowing Your Intentions</a></li>
+              <li><a href="#knowing-what-to-test" id="markdown-toc-knowing-what-to-test">Knowing What to Test</a>                <ul>
+                  <li><a href="#remove-the-duplicate" id="markdown-toc-remove-the-duplicate">Remove the Duplicate</a></li>
+                  <li><a href="#message-model" id="markdown-toc-message-model">Message Model</a></li>
                 </ul>
               </li>
-              <li><a href="#knowing-when-to-test">Knowing When to Test</a></li>
-              <li><a href="#knowing-how-to-test">Knowing How to Test</a></li>
+              <li><a href="#knowing-when-to-test" id="markdown-toc-knowing-when-to-test">Knowing When to Test</a></li>
+              <li><a href="#knowing-how-to-test" id="markdown-toc-knowing-how-to-test">Knowing How to Test</a></li>
             </ul>
           </li>
-          <li><a href="#testing-incoming-messages">Testing Incoming Messages</a></li>
-          <li><a href="#testing-private-methods">Testing Private Methods</a></li>
-          <li><a href="#testing-outgoing-messages">Testing Outgoing Messages</a></li>
-          <li><a href="#testing-duck-types">Testing Duck Types</a></li>
-          <li><a href="#testing-inherited-code">Testing Inherited Code</a></li>
+          <li><a href="#testing-incoming-messages" id="markdown-toc-testing-incoming-messages">Testing Incoming Messages</a></li>
+          <li><a href="#testing-private-methods" id="markdown-toc-testing-private-methods">Testing Private Methods</a></li>
+          <li><a href="#testing-outgoing-messages" id="markdown-toc-testing-outgoing-messages">Testing Outgoing Messages</a></li>
+          <li><a href="#testing-duck-types" id="markdown-toc-testing-duck-types">Testing Duck Types</a></li>
+          <li><a href="#testing-inherited-code" id="markdown-toc-testing-inherited-code">Testing Inherited Code</a></li>
         </ul>
       </li>
     </ul>
@@ -2908,7 +2908,7 @@ Idea</li>
 
 <p>Design is thus an art, the art of arranging code, and design is more the art of preserving changeability than it is the act of achieving perfection. You must not only write code for the feature you plan to deliver today, you must also create code that is amenable to being changed later. It doesn’t guess the future; it preserves your options for accommodating the future. It doesn’t choose; it leaves you room to move.</p>
 
-<p>The trick to getting the most bang for your design buck is to acquire an understanding of the theories of design and to apply these theories appropriately, at the right time, and in the right amounts. </p>
+<p>The trick to getting the most bang for your design buck is to acquire an understanding of the theories of design and to apply these theories appropriately, at the right time, and in the right amounts.</p>
 
 <p>Well-designed applications are constructed of reusable code. Small, trustworthy self-contained objects with minimal context, clear interfaces, and injected dependencies are inherently reusable.</p>
 
@@ -2943,13 +2943,13 @@ Idea</li>
 <ul>
   <li>Lack of it. Successful but undesigned applications carry the seeds of their own destruction; they are easy to write but gradually become impossible to change. “Yes, I can add that feature, but it will break everything.”</li>
   <li>Overdesign. Aware of OO design techniques but do not yet understand how to apply them. “No, I can’t add that feature; it wasn’t designed to do that.”</li>
-  <li>Seperated from the act of programming. Design is a process of progressive discovery that relies on a feedback loop. The iterative techniques of the Agile software movement are thus perfectly suited to the creation of well-designed OO applications. The iterative nature of Agile development allows design to adjust regularly and to evolve naturally. </li>
+  <li>Seperated from the act of programming. Design is a process of progressive discovery that relies on a feedback loop. The iterative techniques of the Agile software movement are thus perfectly suited to the creation of well-designed OO applications. The iterative nature of Agile development allows design to adjust regularly and to evolve naturally.</li>
 </ul>
 
 <h3 id="when-to-design">When to Design</h3>
 
 <blockquote>
-  <p>Agile believes that your customers can’t define the software they want before seeing it, so it’s best to show them sooner rather than later. If this premise is true, then it logically follows that you should build software in tiny increments, gradually iterating your way into an application that meets the customer’s true need. The Agile experience is that this collaboration produces software that differs from what was initially imagined; the resulting software could not have been anticipated by any other means. </p>
+  <p>Agile believes that your customers can’t define the software they want before seeing it, so it’s best to show them sooner rather than later. If this premise is true, then it logically follows that you should build software in tiny increments, gradually iterating your way into an application that meets the customer’s true need. The Agile experience is that this collaboration produces software that differs from what was initially imagined; the resulting software could not have been anticipated by any other means.</p>
 </blockquote>
 
 <p>If Agile is correct, then</p>
@@ -3051,7 +3051,7 @@ end</p>
     ratio * wheel.diameter
   end
 end
-``` </p>
+```</p>
 
 <p>Gear previously had explicit dependencies on the Wheel class and on the type and order of its initialization arguments, but through injection these dependencies have been reduced to a single dependency on the diameter method.</p>
 
@@ -3157,7 +3157,7 @@ class Gear
 
 <p>The best possible situation is for an object to be completely independent of its context. An object that could collaborate with others without knowing who they are or what they do could be reused in novel and unanticipated ways.</p>
 
-<p>The technique for collaborating with others without knowing who they are—dependency injection. </p>
+<p>The technique for collaborating with others without knowing who they are—dependency injection.</p>
 
 <h3 id="the-law-of-demeter">The Law of Demeter</h3>
 
@@ -3213,15 +3213,15 @@ class Gear
 
 <h3 id="recognizing-where-to-use-inheritance">Recognizing Where to Use Inheritance</h3>
 
-<p>The inheritance exactly solves: that of highly related types that share common behavior but differ along some dimension.  </p>
+<p>The inheritance exactly solves: that of highly related types that share common behavior but differ along some dimension.</p>
 
-<p>Inheritance provides a way to define two objects as having a relationship such that when the first receives a message that it does not understand, it automatically forwards, or delegates, the message to the second. It’s as simple as that.  </p>
+<p>Inheritance provides a way to define two objects as having a relationship such that when the first receives a message that it does not understand, it automatically forwards, or delegates, the message to the second. It’s as simple as that.</p>
 
 <p>Duck types cut across classes, they do not use classical inheritance to share common behavior. Duck types share code via Ruby modules.</p>
 
 <h4 id="finding-the-abstraction">Finding the Abstraction</h4>
 
-<p>It almost never makes sense to create an abstract superclass with only one sub-class.  </p>
+<p>It almost never makes sense to create an abstract superclass with only one sub-class.</p>
 
 <p>Creating a hierarchy has costs; the best way to minimize these costs is to maximize your chance of getting the abstraction right before allowing subclasses to depend on it. While the two bikes you know about supply a fair amount of information about the common abstraction, three bikes would supply a great deal more. If you could put this decision off until FastFeet asked for a third kind of bike, your odds of finding the right abstraction would improve dramatically.</p>
 
@@ -3293,7 +3293,7 @@ end
 
 <h3 id="writing-inheritable-code">Writing Inheritable Code</h3>
 
-<p>The usefulness and maintainability of inheritance hierarchies and modules is in direct proportion to the quality of the code. </p>
+<p>The usefulness and maintainability of inheritance hierarchies and modules is in direct proportion to the quality of the code.</p>
 
 <h4 id="recognize-the-antipatterns">Recognize the Antipatterns</h4>
 
@@ -3314,7 +3314,7 @@ end
 
 <p>Subclasses agree to a contract; they promise to be substitutable for their superclasses.</p>
 
-<p>Subclasses that fail to honor their contract are difficult to use. They’re “special” and cannot be freely substituted for their superclasses. These subclasses are declaring that they are not really a kind-of their superclass </p>
+<p>Subclasses that fail to honor their contract are difficult to use. They’re “special” and cannot be freely substituted for their superclasses. These subclasses are declaring that they are not really a kind-of their superclass</p>
 
 <p><strong>Liskov Substitution Principle (LSP)</strong>, which in mathematical terms says that a subtype should be substitutable for its supertype. Named after Barbara Liskov.</p>
 
@@ -3353,7 +3353,7 @@ end
 <h3 id="deciding-between-inheritance-and-composition">Deciding Between Inheritance and Composition</h3>
 
 <ul>
-  <li>Remember that classical inheritance is a code arrangement technique. For the cost of arranging objects in a hierarchy, you get message delegation for free. </li>
+  <li>Remember that classical inheritance is a code arrangement technique. For the cost of arranging objects in a hierarchy, you get message delegation for free.</li>
   <li>Composition is an alternative that reverses these costs and benefits. Composition allows objects to have structural independence, but at the cost of explicit message delegation.</li>
 </ul>
 
@@ -3365,7 +3365,7 @@ end
 
 <p>Inheritance is a better solution when its use provides high rewards for low risk.</p>
 
-<p>Use of inheritance results in code that can be described as open–closed; hierarchies are open for extension while remaining closed for modification. </p>
+<p>Use of inheritance results in code that can be described as open–closed; hierarchies are open for extension while remaining closed for modification.</p>
 
 <p>You need look no farther than the source of object-oriented languages themselves to see the value of organizing code using inheritance.</p>
 
@@ -3417,7 +3417,7 @@ end
 
 <p>An understanding of object-oriented design, good refactoring skills, and the ability to write efficient tests form a <strong>three-legged stool</strong> upon which changeable code rests.</p>
 
-<p>Your overall goal is to create well-designed applications that have acceptable test coverage. </p>
+<p>Your overall goal is to create well-designed applications that have acceptable test coverage.</p>
 
 <h3 id="intentional-testing">Intentional Testing</h3>
 
@@ -3477,7 +3477,7 @@ end
 
 <p><em>What novices do?</em></p>
 
-<p>Novices often write code that is far too coupled; they combine unrelated responsibilities and bind many dependencies into every object. </p>
+<p>Novices often write code that is far too coupled; they combine unrelated responsibilities and bind many dependencies into every object.</p>
 
 <p>It is an unfortunate truth that the most complex code is usually written by the least qualified person.</p>
 
@@ -3504,7 +3504,7 @@ end
   <li>
     <p>Deleting Unused Interfaces</p>
 
-    <p>Do not test an incoming message that has no dependents; delete it. </p>
+    <p>Do not test an incoming message that has no dependents; delete it.</p>
   </li>
   <li>
     <p>Proving the Public Interface</p>
@@ -3537,7 +3537,7 @@ end
   <li>
     <p>Proving Command Messages</p>
 
-    <p>The responsibility for testing a message’s return value lies with its receiver. <strong>Mocks</strong> are tests of behavior, as opposed to tests of state. Instead of making assertions about what a message returns, mocks define an expectation that a message will get sent. </p>
+    <p>The responsibility for testing a message’s return value lies with its receiver. <strong>Mocks</strong> are tests of behavior, as opposed to tests of state. Instead of making assertions about what a message returns, mocks define an expectation that a message will get sent.</p>
   </li>
 </ul>
 

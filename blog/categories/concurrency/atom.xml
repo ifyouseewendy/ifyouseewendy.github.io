@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Concurrency | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/concurrency/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2022-09-26T13:07:48-07:00</updated>
+  <updated>2022-12-07T13:26:16-08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -244,12 +244,12 @@
     <updated>2016-02-16T19:58:54+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-practice</id>
     <content type="html"><![CDATA[<ul id="markdown-toc">
-  <li><a href="#guidance">Guidance</a>    <ul>
-      <li><a href="#safest-path-to-concurrency">Safest path to concurrency</a></li>
-      <li><a href="#writing-thread-safe-code">Writing Thread-safe Code</a></li>
+  <li><a href="#guidance" id="markdown-toc-guidance">Guidance</a>    <ul>
+      <li><a href="#safest-path-to-concurrency" id="markdown-toc-safest-path-to-concurrency">Safest path to concurrency</a></li>
+      <li><a href="#writing-thread-safe-code" id="markdown-toc-writing-thread-safe-code">Writing Thread-safe Code</a></li>
     </ul>
   </li>
-  <li><a href="#into-the-wild">Into the Wild</a></li>
+  <li><a href="#into-the-wild" id="markdown-toc-into-the-wild">Into the Wild</a></li>
 </ul>
 
 <h2 id="guidance">Guidance</h2>
@@ -368,21 +368,21 @@
     <updated>2016-02-16T19:35:19+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-theory</id>
     <content type="html"><![CDATA[<ul id="markdown-toc">
-  <li><a href="#what-is-concurrency">What is concurrency?</a>    <ul>
-      <li><a href="#concurrency-vs-paralelism">Concurrency vs. Paralelism</a></li>
-      <li><a href="#concurrency-plus-communication">Concurrency plus communication</a></li>
+  <li><a href="#what-is-concurrency" id="markdown-toc-what-is-concurrency">What is concurrency?</a>    <ul>
+      <li><a href="#concurrency-vs-paralelism" id="markdown-toc-concurrency-vs-paralelism">Concurrency vs. Paralelism</a></li>
+      <li><a href="#concurrency-plus-communication" id="markdown-toc-concurrency-plus-communication">Concurrency plus communication</a></li>
     </ul>
   </li>
-  <li><a href="#what-does-ruby-support">What does Ruby support?</a>    <ul>
-      <li><a href="#gil">GIL</a></li>
-      <li><a href="#ruby-support">Ruby Support</a></li>
-      <li><a href="#fiber">Fiber</a></li>
+  <li><a href="#what-does-ruby-support" id="markdown-toc-what-does-ruby-support">What does Ruby support?</a>    <ul>
+      <li><a href="#gil" id="markdown-toc-gil">GIL</a></li>
+      <li><a href="#ruby-support" id="markdown-toc-ruby-support">Ruby Support</a></li>
+      <li><a href="#fiber" id="markdown-toc-fiber">Fiber</a></li>
     </ul>
   </li>
-  <li><a href="#how-to-enhance-concurrency-by-ruby">How to enhance concurrency by Ruby?</a>    <ul>
-      <li><a href="#basics">Basics</a></li>
-      <li><a href="#concurrency-model-software-transactional-memory">Concurrency Model: Software Transactional Memory</a></li>
-      <li><a href="#concurrency-model-actor-model">Concurrency Model: Actor Model</a></li>
+  <li><a href="#how-to-enhance-concurrency-by-ruby" id="markdown-toc-how-to-enhance-concurrency-by-ruby">How to enhance concurrency by Ruby?</a>    <ul>
+      <li><a href="#basics" id="markdown-toc-basics">Basics</a></li>
+      <li><a href="#concurrency-model-software-transactional-memory" id="markdown-toc-concurrency-model-software-transactional-memory">Concurrency Model: Software Transactional Memory</a></li>
+      <li><a href="#concurrency-model-actor-model" id="markdown-toc-concurrency-model-actor-model">Concurrency Model: Actor Model</a></li>
     </ul>
   </li>
 </ul>
@@ -625,25 +625,25 @@
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#concurrent--parallel">Concurrent != Parallel</a></li>
-  <li><a href="#the-gil-and-mri">The GIL and MRI</a></li>
-  <li><a href="#thread-execution">Thread Execution</a></li>
-  <li><a href="#mutual-exclusion">Mutual Exclusion</a></li>
-  <li><a href="#create-a-pending-order-for-100">Create a pending order for $100</a></li>
-  <li><a href="#ask-5-threads-to-check-the-status-and-collect">Ask 5 threads to check the status, and collect</a></li>
-  <li><a href="#with-this-line-its-guaranteed-that-this-value-is">With this line, it’s guaranteed that this value is</a>    <ul>
-      <li><a href="#signaling-threads-with-condition-variables">Signaling Threads with Condition Variables</a></li>
-      <li><a href="#thread-safe-data-structures">Thread-safe Data Structures</a></li>
-      <li><a href="#writing-thread-safe-code">Writing Thread-safe Code</a></li>
-      <li><a href="#wrap-your-threads-in-an-abstraction">Wrap Your Threads in an Abstraction</a></li>
+  <li><a href="#concurrent--parallel" id="markdown-toc-concurrent--parallel">Concurrent != Parallel</a></li>
+  <li><a href="#the-gil-and-mri" id="markdown-toc-the-gil-and-mri">The GIL and MRI</a></li>
+  <li><a href="#thread-execution" id="markdown-toc-thread-execution">Thread Execution</a></li>
+  <li><a href="#mutual-exclusion" id="markdown-toc-mutual-exclusion">Mutual Exclusion</a></li>
+  <li><a href="#create-a-pending-order-for-100" id="markdown-toc-create-a-pending-order-for-100">Create a pending order for $100</a></li>
+  <li><a href="#ask-5-threads-to-check-the-status-and-collect" id="markdown-toc-ask-5-threads-to-check-the-status-and-collect">Ask 5 threads to check the status, and collect</a></li>
+  <li><a href="#with-this-line-its-guaranteed-that-this-value-is" id="markdown-toc-with-this-line-its-guaranteed-that-this-value-is">With this line, it’s guaranteed that this value is</a>    <ul>
+      <li><a href="#signaling-threads-with-condition-variables" id="markdown-toc-signaling-threads-with-condition-variables">Signaling Threads with Condition Variables</a></li>
+      <li><a href="#thread-safe-data-structures" id="markdown-toc-thread-safe-data-structures">Thread-safe Data Structures</a></li>
+      <li><a href="#writing-thread-safe-code" id="markdown-toc-writing-thread-safe-code">Writing Thread-safe Code</a></li>
+      <li><a href="#wrap-your-threads-in-an-abstraction" id="markdown-toc-wrap-your-threads-in-an-abstraction">Wrap Your Threads in an Abstraction</a></li>
     </ul>
   </li>
-  <li><a href="#these-behave-like-regular-method-calls">these behave like regular method calls</a></li>
-  <li><a href="#this-will-fire-the-next-method-without">this will fire the <code>next</code> method without</a></li>
-  <li><a href="#celluloid-kicks-off-that-method-asynchronously-and-returns-you-a-celluloidfuture-object">Celluloid kicks off that method asynchronously and returns you a Celluloid::Future object.</a></li>
-  <li><a href="#calling-value-on-that-future-object-will-block-until-the-value-has-been-computed">Calling #value on that future object will block until the value has been computed.</a>    <ul>
-      <li><a href="#into-the-wild">Into The Wild</a></li>
-      <li><a href="#closing">Closing</a></li>
+  <li><a href="#these-behave-like-regular-method-calls" id="markdown-toc-these-behave-like-regular-method-calls">these behave like regular method calls</a></li>
+  <li><a href="#this-will-fire-the-next-method-without" id="markdown-toc-this-will-fire-the-next-method-without">this will fire the <code>next</code> method without</a></li>
+  <li><a href="#celluloid-kicks-off-that-method-asynchronously-and-returns-you-a-celluloidfuture-object" id="markdown-toc-celluloid-kicks-off-that-method-asynchronously-and-returns-you-a-celluloidfuture-object">Celluloid kicks off that method asynchronously and returns you a Celluloid::Future object.</a></li>
+  <li><a href="#calling-value-on-that-future-object-will-block-until-the-value-has-been-computed" id="markdown-toc-calling-value-on-that-future-object-will-block-until-the-value-has-been-computed">Calling #value on that future object will block until the value has been computed.</a>    <ul>
+      <li><a href="#into-the-wild" id="markdown-toc-into-the-wild">Into The Wild</a></li>
+      <li><a href="#closing" id="markdown-toc-closing">Closing</a></li>
     </ul>
   </li>
 </ul>
@@ -1186,15 +1186,15 @@ end
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#concurrency">Concurrency</a>    <ul>
-      <li><a href="#chapter-26---introduction">Chapter 26 - Introduction</a></li>
-      <li><a href="#chapter-27---interlude-thread-api">Chapter 27 - Interlude: Thread API</a></li>
-      <li><a href="#chapter-28---locks">Chapter 28 - Locks</a></li>
-      <li><a href="#chapter-29---lock-based-concurrent-data-structures">Chapter 29 - Lock-based Concurrent Data Structures</a></li>
-      <li><a href="#chapter-30---condition-variables">Chapter 30 - Condition Variables</a></li>
-      <li><a href="#chapter-31---semaphores">Chapter 31 - Semaphores</a></li>
-      <li><a href="#chapter-32---common-concurrency-problems">Chapter 32 - Common Concurrency Problems</a></li>
-      <li><a href="#chapter-33---event-based-concurrency-advanced">Chapter 33 - Event-based Concurrency (Advanced)</a></li>
+  <li><a href="#concurrency" id="markdown-toc-concurrency">Concurrency</a>    <ul>
+      <li><a href="#chapter-26---introduction" id="markdown-toc-chapter-26---introduction">Chapter 26 - Introduction</a></li>
+      <li><a href="#chapter-27---interlude-thread-api" id="markdown-toc-chapter-27---interlude-thread-api">Chapter 27 - Interlude: Thread API</a></li>
+      <li><a href="#chapter-28---locks" id="markdown-toc-chapter-28---locks">Chapter 28 - Locks</a></li>
+      <li><a href="#chapter-29---lock-based-concurrent-data-structures" id="markdown-toc-chapter-29---lock-based-concurrent-data-structures">Chapter 29 - Lock-based Concurrent Data Structures</a></li>
+      <li><a href="#chapter-30---condition-variables" id="markdown-toc-chapter-30---condition-variables">Chapter 30 - Condition Variables</a></li>
+      <li><a href="#chapter-31---semaphores" id="markdown-toc-chapter-31---semaphores">Chapter 31 - Semaphores</a></li>
+      <li><a href="#chapter-32---common-concurrency-problems" id="markdown-toc-chapter-32---common-concurrency-problems">Chapter 32 - Common Concurrency Problems</a></li>
+      <li><a href="#chapter-33---event-based-concurrency-advanced" id="markdown-toc-chapter-33---event-based-concurrency-advanced">Chapter 33 - Event-based Concurrency (Advanced)</a></li>
     </ul>
   </li>
 </ul>

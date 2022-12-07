@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2022-09-26T13:07:48-07:00</updated>
+  <updated>2022-12-07T13:26:16-08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -689,96 +689,96 @@
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#summary">Summary</a></li>
-  <li><a href="#intro">0 Intro</a>    <ul>
-      <li><a href="#what-a-compiler-does">0.1 What a compiler does</a></li>
-      <li><a href="#economy-of-programming-language">0.2 Economy of programming language</a></li>
+  <li><a href="#summary" id="markdown-toc-summary">Summary</a></li>
+  <li><a href="#intro" id="markdown-toc-intro">0 Intro</a>    <ul>
+      <li><a href="#what-a-compiler-does" id="markdown-toc-what-a-compiler-does">0.1 What a compiler does</a></li>
+      <li><a href="#economy-of-programming-language" id="markdown-toc-economy-of-programming-language">0.2 Economy of programming language</a></li>
     </ul>
   </li>
-  <li><a href="#lexical-analysis">1 Lexical Analysis</a>    <ul>
-      <li><a href="#intro-1">1.1 Intro</a></li>
-      <li><a href="#regular-language">1.2 Regular Language</a></li>
-      <li><a href="#formal-language">1.3 Formal Language</a></li>
-      <li><a href="#lexcial-specification">1.4 Lexcial Specification</a></li>
-      <li><a href="#finite-automata">1.5 Finite Automata</a></li>
+  <li><a href="#lexical-analysis" id="markdown-toc-lexical-analysis">1 Lexical Analysis</a>    <ul>
+      <li><a href="#intro-1" id="markdown-toc-intro-1">1.1 Intro</a></li>
+      <li><a href="#regular-language" id="markdown-toc-regular-language">1.2 Regular Language</a></li>
+      <li><a href="#formal-language" id="markdown-toc-formal-language">1.3 Formal Language</a></li>
+      <li><a href="#lexcial-specification" id="markdown-toc-lexcial-specification">1.4 Lexcial Specification</a></li>
+      <li><a href="#finite-automata" id="markdown-toc-finite-automata">1.5 Finite Automata</a></li>
     </ul>
   </li>
-  <li><a href="#parsing">2 Parsing</a>    <ul>
-      <li><a href="#intro-2">2.1 Intro</a></li>
-      <li><a href="#context-free-grammars">2.2 Context Free Grammars</a>        <ul>
-          <li><a href="#cfg---intro">2.2.1 CFG - Intro</a></li>
-          <li><a href="#cfg---deriviations">2.2.2 CFG - DERIVIATIONS</a></li>
-          <li><a href="#cfg---ambiguity">2.2.3 CFG - AMBIGUITY</a></li>
-          <li><a href="#cfg---error-handling">2.2.4 CFG - ERROR HANDLING</a></li>
+  <li><a href="#parsing" id="markdown-toc-parsing">2 Parsing</a>    <ul>
+      <li><a href="#intro-2" id="markdown-toc-intro-2">2.1 Intro</a></li>
+      <li><a href="#context-free-grammars" id="markdown-toc-context-free-grammars">2.2 Context Free Grammars</a>        <ul>
+          <li><a href="#cfg---intro" id="markdown-toc-cfg---intro">2.2.1 CFG - Intro</a></li>
+          <li><a href="#cfg---deriviations" id="markdown-toc-cfg---deriviations">2.2.2 CFG - DERIVIATIONS</a></li>
+          <li><a href="#cfg---ambiguity" id="markdown-toc-cfg---ambiguity">2.2.3 CFG - AMBIGUITY</a></li>
+          <li><a href="#cfg---error-handling" id="markdown-toc-cfg---error-handling">2.2.4 CFG - ERROR HANDLING</a></li>
         </ul>
       </li>
-      <li><a href="#abstract-syntax-tree">2.3 Abstract Syntax Tree</a></li>
-      <li><a href="#recursive-descent-parsing">2.4 Recursive-Descent Parsing</a></li>
-      <li><a href="#predictive-parsing">2.5 Predictive Parsing</a></li>
-      <li><a href="#bottom-up-parsing">2.6 Bottom-up Parsing</a>        <ul>
-          <li><a href="#shift--reduce">SHIFT &amp; REDUCE</a></li>
-          <li><a href="#handles">HANDLES</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#semantic-analysis">3 Semantic Analysis</a>    <ul>
-      <li><a href="#identifiers">3.1 Identifiers</a>        <ul>
-          <li><a href="#scope">SCOPE</a></li>
-          <li><a href="#symbol-tables">SYMBOL TABLES</a></li>
-        </ul>
-      </li>
-      <li><a href="#types">3.2 Types</a>        <ul>
-          <li><a href="#type-checking">3.2.1 TYPE CHECKING</a></li>
-          <li><a href="#type-environment">3.2.2 TYPE ENVIRONMENT</a></li>
-          <li><a href="#subtype-methods-and-implementation">3.2.3 SUBTYPE, METHODS and IMPLEMENTATION</a></li>
-          <li><a href="#static-vs-dynamic">3.2.4 STATIC VS. DYNAMIC</a></li>
-          <li><a href="#selftype">3.2.5 SELF_TYPE</a></li>
+      <li><a href="#abstract-syntax-tree" id="markdown-toc-abstract-syntax-tree">2.3 Abstract Syntax Tree</a></li>
+      <li><a href="#recursive-descent-parsing" id="markdown-toc-recursive-descent-parsing">2.4 Recursive-Descent Parsing</a></li>
+      <li><a href="#predictive-parsing" id="markdown-toc-predictive-parsing">2.5 Predictive Parsing</a></li>
+      <li><a href="#bottom-up-parsing" id="markdown-toc-bottom-up-parsing">2.6 Bottom-up Parsing</a>        <ul>
+          <li><a href="#shift--reduce" id="markdown-toc-shift--reduce">SHIFT &amp; REDUCE</a></li>
+          <li><a href="#handles" id="markdown-toc-handles">HANDLES</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#runtime-organizations">4 Runtime Organizations</a>    <ul>
-      <li><a href="#activations">4.1 Activations</a></li>
-      <li><a href="#activation-records">4.2 Activation Records</a></li>
-      <li><a href="#global--heaps">4.3 Global &amp;&amp; Heaps</a></li>
-      <li><a href="#alignment">4.4 Alignment</a></li>
+  <li><a href="#semantic-analysis" id="markdown-toc-semantic-analysis">3 Semantic Analysis</a>    <ul>
+      <li><a href="#identifiers" id="markdown-toc-identifiers">3.1 Identifiers</a>        <ul>
+          <li><a href="#scope" id="markdown-toc-scope">SCOPE</a></li>
+          <li><a href="#symbol-tables" id="markdown-toc-symbol-tables">SYMBOL TABLES</a></li>
+        </ul>
+      </li>
+      <li><a href="#types" id="markdown-toc-types">3.2 Types</a>        <ul>
+          <li><a href="#type-checking" id="markdown-toc-type-checking">3.2.1 TYPE CHECKING</a></li>
+          <li><a href="#type-environment" id="markdown-toc-type-environment">3.2.2 TYPE ENVIRONMENT</a></li>
+          <li><a href="#subtype-methods-and-implementation" id="markdown-toc-subtype-methods-and-implementation">3.2.3 SUBTYPE, METHODS and IMPLEMENTATION</a></li>
+          <li><a href="#static-vs-dynamic" id="markdown-toc-static-vs-dynamic">3.2.4 STATIC VS. DYNAMIC</a></li>
+          <li><a href="#selftype" id="markdown-toc-selftype">3.2.5 SELF_TYPE</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
-  <li><a href="#code-generation">5 Code Generation</a>    <ul>
-      <li><a href="#stack-machines">5.1 Stack Machines</a>        <ul>
-          <li><a href="#stack-machine-vs-register-machine">5.1.1 Stack machine vs Register machine</a></li>
-          <li><a href="#n-register-stack-machine">5.1.2 n-register stack machine</a></li>
-        </ul>
-      </li>
-      <li><a href="#intro-3">5.2 Intro</a></li>
-      <li><a href="#code-gen">5.3 Code Gen</a></li>
-      <li><a href="#code-gen---object-layout">5.4 Code Gen - Object Layout</a></li>
-      <li><a href="#evaluation-semantics">5.5 Evaluation Semantics</a></li>
-      <li><a href="#operational-semantics">5.6 Operational Semantics</a></li>
-      <li><a href="#intermediate-language">5.7 Intermediate language</a></li>
+  <li><a href="#runtime-organizations" id="markdown-toc-runtime-organizations">4 Runtime Organizations</a>    <ul>
+      <li><a href="#activations" id="markdown-toc-activations">4.1 Activations</a></li>
+      <li><a href="#activation-records" id="markdown-toc-activation-records">4.2 Activation Records</a></li>
+      <li><a href="#global--heaps" id="markdown-toc-global--heaps">4.3 Global &amp;&amp; Heaps</a></li>
+      <li><a href="#alignment" id="markdown-toc-alignment">4.4 Alignment</a></li>
     </ul>
   </li>
-  <li><a href="#optimization">6 Optimization</a>    <ul>
-      <li><a href="#intro-4">6.1 Intro</a></li>
-      <li><a href="#local-optimization">6.2 Local Optimization</a></li>
-      <li><a href="#global-optimization">6.3 Global Optimization</a>        <ul>
-          <li><a href="#dataflow-analysis">6.3.1 Dataflow analysis</a></li>
-          <li><a href="#global-constant-propogation">6.3.2 Global constant propogation</a></li>
-          <li><a href="#liveness-analysis">6.3.3 Liveness Analysis</a></li>
+  <li><a href="#code-generation" id="markdown-toc-code-generation">5 Code Generation</a>    <ul>
+      <li><a href="#stack-machines" id="markdown-toc-stack-machines">5.1 Stack Machines</a>        <ul>
+          <li><a href="#stack-machine-vs-register-machine" id="markdown-toc-stack-machine-vs-register-machine">5.1.1 Stack machine vs Register machine</a></li>
+          <li><a href="#n-register-stack-machine" id="markdown-toc-n-register-stack-machine">5.1.2 n-register stack machine</a></li>
         </ul>
       </li>
-      <li><a href="#register-allocation">6.4 Register Allocation</a>        <ul>
-          <li><a href="#graph-coloring">6.4.2 Graph Coloring</a></li>
+      <li><a href="#intro-3" id="markdown-toc-intro-3">5.2 Intro</a></li>
+      <li><a href="#code-gen" id="markdown-toc-code-gen">5.3 Code Gen</a></li>
+      <li><a href="#code-gen---object-layout" id="markdown-toc-code-gen---object-layout">5.4 Code Gen - Object Layout</a></li>
+      <li><a href="#evaluation-semantics" id="markdown-toc-evaluation-semantics">5.5 Evaluation Semantics</a></li>
+      <li><a href="#operational-semantics" id="markdown-toc-operational-semantics">5.6 Operational Semantics</a></li>
+      <li><a href="#intermediate-language" id="markdown-toc-intermediate-language">5.7 Intermediate language</a></li>
+    </ul>
+  </li>
+  <li><a href="#optimization" id="markdown-toc-optimization">6 Optimization</a>    <ul>
+      <li><a href="#intro-4" id="markdown-toc-intro-4">6.1 Intro</a></li>
+      <li><a href="#local-optimization" id="markdown-toc-local-optimization">6.2 Local Optimization</a></li>
+      <li><a href="#global-optimization" id="markdown-toc-global-optimization">6.3 Global Optimization</a>        <ul>
+          <li><a href="#dataflow-analysis" id="markdown-toc-dataflow-analysis">6.3.1 Dataflow analysis</a></li>
+          <li><a href="#global-constant-propogation" id="markdown-toc-global-constant-propogation">6.3.2 Global constant propogation</a></li>
+          <li><a href="#liveness-analysis" id="markdown-toc-liveness-analysis">6.3.3 Liveness Analysis</a></li>
         </ul>
       </li>
-      <li><a href="#managing-cache">6.5 Managing Cache</a></li>
-      <li><a href="#automatic-memory-management-gc">6.6 Automatic Memory Management (GC)</a>        <ul>
-          <li><a href="#intro-5">6.6.1 Intro</a></li>
-          <li><a href="#mark-and-sweep">6.6.2 Mark and Sweep</a></li>
-          <li><a href="#stop-and-copy">6.6.3 Stop and Copy</a></li>
-          <li><a href="#reference-counting">6.6.4 Reference Counting</a></li>
-          <li><a href="#advanced-gc-algorithm">6.6.5 Advanced GC Algorithm</a></li>
+      <li><a href="#register-allocation" id="markdown-toc-register-allocation">6.4 Register Allocation</a>        <ul>
+          <li><a href="#graph-coloring" id="markdown-toc-graph-coloring">6.4.2 Graph Coloring</a></li>
+        </ul>
+      </li>
+      <li><a href="#managing-cache" id="markdown-toc-managing-cache">6.5 Managing Cache</a></li>
+      <li><a href="#automatic-memory-management-gc" id="markdown-toc-automatic-memory-management-gc">6.6 Automatic Memory Management (GC)</a>        <ul>
+          <li><a href="#intro-5" id="markdown-toc-intro-5">6.6.1 Intro</a></li>
+          <li><a href="#mark-and-sweep" id="markdown-toc-mark-and-sweep">6.6.2 Mark and Sweep</a></li>
+          <li><a href="#stop-and-copy" id="markdown-toc-stop-and-copy">6.6.3 Stop and Copy</a></li>
+          <li><a href="#reference-counting" id="markdown-toc-reference-counting">6.6.4 Reference Counting</a></li>
+          <li><a href="#advanced-gc-algorithm" id="markdown-toc-advanced-gc-algorithm">6.6.5 Advanced GC Algorithm</a></li>
         </ul>
       </li>
     </ul>
@@ -4904,7 +4904,7 @@ and WebAssembly. It’s really fun.</li>
 
 <ul>
   <li>工作又进入了熟悉的节奏，兴致匆匆到座位，忙忙碌碌，转眼就到了下班时间。面对干不完的活，每天推进一点点，享受这个过程，也时刻提醒自己不要焦虑。</li>
-  <li>周中读完了<em><a href="https://www.goodreads.com/book/show/39288400-the-subtle-art-of-not-giving-a-f-uck">The Subtle Art of Not Giving a F*uck</a></em>，非常顺畅。作者用简洁的文字写了很多有趣的观点，非常受用。</li>
+  <li>周中读完了_<a href="https://www.goodreads.com/book/show/39288400-the-subtle-art-of-not-giving-a-f-uck">The Subtle Art of Not Giving a F*uck</a>_，非常顺畅。作者用简洁的文字写了很多有趣的观点，非常受用。</li>
   <li>这周看了好几部电影：<a href="https://movie.douban.com/subject/3882427/"><em>我在雨中等你</em></a>，看的我有点愤怒。电影一味展示、拼贴世俗的美好，让人误以为那就是自己要去的地方。哭过笑过，发现还是不知道怎么迈出第一步改变生活。更多时候我们要的不是愿景，而是学会如何面对和接受生活的不幸。更难的是，找寻自己眼中的美好。<a href="https://movie.douban.com/subject/1291875/"><em>阳光灿烂的日子</em></a>。这周睡前重读了_动物凶猛_，王朔的笔触让人愉悦却也悲伤。再看电影，我更多感受到的是那个年代，它是不是这个国家的青春期呢？<a href="https://movie.douban.com/subject/1296436"><em>有话好好说</em></a>。顺着姜文，喜福说这部没看过。姜文的磕巴痴汉形象，和俩人在饭店大段大段的对话，实在是经典。<a href="https://www.imdb.com/title/tt6333072/"><em>Joshua</em></a>，这部当然是要被禁掉，再回想去年发生的，某种程度上也是必然。</li>
   <li>占东推荐了 <a href="https://www.acquired.fm/">Acquired</a> 这个播客（不知道是不是疯投圈的模版），回述这些创业公司历史，听完了 Tiktok, Shopify 和 Alibaba，超级有趣。</li>
 </ul>
@@ -5013,31 +5013,31 @@ and WebAssembly. It’s really fun.</li>
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#what-is-ddd">What is DDD?</a></li>
-  <li><a href="#the-ubiquitous-language">The Ubiquitous Language</a></li>
-  <li><a href="#model-driven-design">Model-Driven Design</a>    <ul>
-      <li><a href="#building-blocks">building blocks</a></li>
-      <li><a href="#layered-architecture">Layered Architecture</a></li>
-      <li><a href="#express-model-with-entities-value-objects-and-services">Express Model with Entities, Value Objects and Services</a></li>
-      <li><a href="#struct-model-with-modules">Struct model with Modules</a></li>
-      <li><a href="#manage-a-domain-object">Manage a domain object</a></li>
+  <li><a href="#what-is-ddd" id="markdown-toc-what-is-ddd">What is DDD?</a></li>
+  <li><a href="#the-ubiquitous-language" id="markdown-toc-the-ubiquitous-language">The Ubiquitous Language</a></li>
+  <li><a href="#model-driven-design" id="markdown-toc-model-driven-design">Model-Driven Design</a>    <ul>
+      <li><a href="#building-blocks" id="markdown-toc-building-blocks">building blocks</a></li>
+      <li><a href="#layered-architecture" id="markdown-toc-layered-architecture">Layered Architecture</a></li>
+      <li><a href="#express-model-with-entities-value-objects-and-services" id="markdown-toc-express-model-with-entities-value-objects-and-services">Express Model with Entities, Value Objects and Services</a></li>
+      <li><a href="#struct-model-with-modules" id="markdown-toc-struct-model-with-modules">Struct model with Modules</a></li>
+      <li><a href="#manage-a-domain-object" id="markdown-toc-manage-a-domain-object">Manage a domain object</a></li>
     </ul>
   </li>
-  <li><a href="#refactoring-toward-deeper-insight">Refactoring Toward Deeper Insight</a></li>
-  <li><a href="#preserving-model-integrity">Preserving Model Integrity</a>    <ul>
-      <li><a href="#bounded-context">Bounded Context</a></li>
-      <li><a href="#continuous-integration">Continuous integration</a></li>
-      <li><a href="#context-map">Context map</a></li>
-      <li><a href="#shared-kernel">Shared Kernel</a></li>
-      <li><a href="#customer-supplier">Customer-supplier</a></li>
-      <li><a href="#conformist">Conformist</a></li>
-      <li><a href="#anticorruption-layer">Anticorruption layer</a></li>
-      <li><a href="#separate-ways">Separate ways</a></li>
-      <li><a href="#open-host-service">Open host service</a></li>
-      <li><a href="#distillation">Distillation</a></li>
+  <li><a href="#refactoring-toward-deeper-insight" id="markdown-toc-refactoring-toward-deeper-insight">Refactoring Toward Deeper Insight</a></li>
+  <li><a href="#preserving-model-integrity" id="markdown-toc-preserving-model-integrity">Preserving Model Integrity</a>    <ul>
+      <li><a href="#bounded-context" id="markdown-toc-bounded-context">Bounded Context</a></li>
+      <li><a href="#continuous-integration" id="markdown-toc-continuous-integration">Continuous integration</a></li>
+      <li><a href="#context-map" id="markdown-toc-context-map">Context map</a></li>
+      <li><a href="#shared-kernel" id="markdown-toc-shared-kernel">Shared Kernel</a></li>
+      <li><a href="#customer-supplier" id="markdown-toc-customer-supplier">Customer-supplier</a></li>
+      <li><a href="#conformist" id="markdown-toc-conformist">Conformist</a></li>
+      <li><a href="#anticorruption-layer" id="markdown-toc-anticorruption-layer">Anticorruption layer</a></li>
+      <li><a href="#separate-ways" id="markdown-toc-separate-ways">Separate ways</a></li>
+      <li><a href="#open-host-service" id="markdown-toc-open-host-service">Open host service</a></li>
+      <li><a href="#distillation" id="markdown-toc-distillation">Distillation</a></li>
     </ul>
   </li>
-  <li><a href="#advices">Advices</a></li>
+  <li><a href="#advices" id="markdown-toc-advices">Advices</a></li>
 </ul>
 
 <p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/ddd/ddd-mind-map.png" alt="ddd-mind-map" /></p>
@@ -6237,64 +6237,64 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#objects-in-js">Objects in JS</a>    <ul>
-      <li><a href="#type">1. Type</a></li>
-      <li><a href="#contents">2. Contents</a>        <ul>
-          <li><a href="#properties">Properties</a></li>
-          <li><a href="#computed-property-names">Computed Property Names</a></li>
-          <li><a href="#arrays">Arrays</a></li>
-          <li><a href="#duplicating-objects">Duplicating Objects</a></li>
-          <li><a href="#property-descriptors">Property Descriptors</a></li>
-          <li><a href="#get--">[ [ Get ] ]</a></li>
-          <li><a href="#existence">Existence</a></li>
+  <li><a href="#objects-in-js" id="markdown-toc-objects-in-js">Objects in JS</a>    <ul>
+      <li><a href="#type" id="markdown-toc-type">1. Type</a></li>
+      <li><a href="#contents" id="markdown-toc-contents">2. Contents</a>        <ul>
+          <li><a href="#properties" id="markdown-toc-properties">Properties</a></li>
+          <li><a href="#computed-property-names" id="markdown-toc-computed-property-names">Computed Property Names</a></li>
+          <li><a href="#arrays" id="markdown-toc-arrays">Arrays</a></li>
+          <li><a href="#duplicating-objects" id="markdown-toc-duplicating-objects">Duplicating Objects</a></li>
+          <li><a href="#property-descriptors" id="markdown-toc-property-descriptors">Property Descriptors</a></li>
+          <li><a href="#get--" id="markdown-toc-get--">[ [ Get ] ]</a></li>
+          <li><a href="#existence" id="markdown-toc-existence">Existence</a></li>
         </ul>
       </li>
-      <li><a href="#iteration">3. Iteration</a></li>
+      <li><a href="#iteration" id="markdown-toc-iteration">3. Iteration</a></li>
     </ul>
   </li>
-  <li><a href="#prototypes">Prototypes</a>    <ul>
-      <li><a href="#my-understanding">1. My understanding</a></li>
-      <li><a href="#what-is-a-prototype">2. What is a prototype?</a></li>
-      <li><a href="#how-to-get-an-objects-prototype">3. How to get an object’s prototype?</a></li>
-      <li><a href="#what-is-the-prototype-">4. What is the <code>prototype</code> ?</a></li>
-      <li><a href="#whats-the-difference-between-proto-and-prototype">5. What’s the difference between <code>__proto__</code> and <code>prototype</code>?</a></li>
-      <li><a href="#whats-process-of-method-lookup-via-prototype-chain">6. What’s process of method lookup via prototype chain?</a></li>
+  <li><a href="#prototypes" id="markdown-toc-prototypes">Prototypes</a>    <ul>
+      <li><a href="#my-understanding" id="markdown-toc-my-understanding">1. My understanding</a></li>
+      <li><a href="#what-is-a-prototype" id="markdown-toc-what-is-a-prototype">2. What is a prototype?</a></li>
+      <li><a href="#how-to-get-an-objects-prototype" id="markdown-toc-how-to-get-an-objects-prototype">3. How to get an object’s prototype?</a></li>
+      <li><a href="#what-is-the-prototype-" id="markdown-toc-what-is-the-prototype-">4. What is the <code>prototype</code> ?</a></li>
+      <li><a href="#whats-the-difference-between-proto-and-prototype" id="markdown-toc-whats-the-difference-between-proto-and-prototype">5. What’s the difference between <code>__proto__</code> and <code>prototype</code>?</a></li>
+      <li><a href="#whats-process-of-method-lookup-via-prototype-chain" id="markdown-toc-whats-process-of-method-lookup-via-prototype-chain">6. What’s process of method lookup via prototype chain?</a></li>
     </ul>
   </li>
-  <li><a href="#class">“Class”</a>    <ul>
-      <li><a href="#misconception">1. Misconception</a></li>
-      <li><a href="#constructors">2. “Constructors”</a>        <ul>
-          <li><a href="#does-constructor-mean-was-constructed-by-no">Does “constructor” mean “was constructed by”? NO!</a></li>
-          <li><a href="#what-is-exactly-a-constructor">What is exactly a “constructor”?</a></li>
-          <li><a href="#do-we-have-to-capitalize-the-constructor-function-no">Do we have to capitalize the constructor function? NO!</a></li>
-          <li><a href="#is-constructorreliable-to-be-used-as-a-reference-no">Is <code>.constructor</code>reliable to be used as a reference? NO!</a></li>
+  <li><a href="#class" id="markdown-toc-class">“Class”</a>    <ul>
+      <li><a href="#misconception" id="markdown-toc-misconception">1. Misconception</a></li>
+      <li><a href="#constructors" id="markdown-toc-constructors">2. “Constructors”</a>        <ul>
+          <li><a href="#does-constructor-mean-was-constructed-by-no" id="markdown-toc-does-constructor-mean-was-constructed-by-no">Does “constructor” mean “was constructed by”? NO!</a></li>
+          <li><a href="#what-is-exactly-a-constructor" id="markdown-toc-what-is-exactly-a-constructor">What is exactly a “constructor”?</a></li>
+          <li><a href="#do-we-have-to-capitalize-the-constructor-function-no" id="markdown-toc-do-we-have-to-capitalize-the-constructor-function-no">Do we have to capitalize the constructor function? NO!</a></li>
+          <li><a href="#is-constructorreliable-to-be-used-as-a-reference-no" id="markdown-toc-is-constructorreliable-to-be-used-as-a-reference-no">Is <code>.constructor</code>reliable to be used as a reference? NO!</a></li>
         </ul>
       </li>
-      <li><a href="#what-happened-when-we-callnew-">3. What happened when we call<code>new</code> ?</a></li>
-      <li><a href="#introspection">4. Introspection</a>        <ul>
-          <li><a href="#instanceof"><code>instanceof</code></a></li>
-          <li><a href="#objectprototypeisprototypeof"><code>Object.prototype.isPrototypeOf()</code></a></li>
+      <li><a href="#what-happened-when-we-callnew-" id="markdown-toc-what-happened-when-we-callnew-">3. What happened when we call<code>new</code> ?</a></li>
+      <li><a href="#introspection" id="markdown-toc-introspection">4. Introspection</a>        <ul>
+          <li><a href="#instanceof" id="markdown-toc-instanceof"><code>instanceof</code></a></li>
+          <li><a href="#objectprototypeisprototypeof" id="markdown-toc-objectprototypeisprototypeof"><code>Object.prototype.isPrototypeOf()</code></a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#behavior-delegation">Behavior Delegation</a>    <ul>
-      <li><a href="#my-understanding-1">1. My understanding</a></li>
-      <li><a href="#background">2. Background</a>        <ul>
-          <li><a href="#compared-to-traditional-inheritance">Compared to traditional inheritance</a></li>
-          <li><a href="#prototypal-inheritance--differential-inheritance">Prototypal Inheritance &amp;&amp; Differential Inheritance</a></li>
+  <li><a href="#behavior-delegation" id="markdown-toc-behavior-delegation">Behavior Delegation</a>    <ul>
+      <li><a href="#my-understanding-1" id="markdown-toc-my-understanding-1">1. My understanding</a></li>
+      <li><a href="#background" id="markdown-toc-background">2. Background</a>        <ul>
+          <li><a href="#compared-to-traditional-inheritance" id="markdown-toc-compared-to-traditional-inheritance">Compared to traditional inheritance</a></li>
+          <li><a href="#prototypal-inheritance--differential-inheritance" id="markdown-toc-prototypal-inheritance--differential-inheritance">Prototypal Inheritance &amp;&amp; Differential Inheritance</a></li>
         </ul>
       </li>
-      <li><a href="#create-delegations-by-objectcreate">3. Create delegations by <code>Object.create</code></a>        <ul>
-          <li><a href="#how-to-make-plain-object-delegations">How to make plain object delegations?</a></li>
-          <li><a href="#how-to-make-delegations-to-perform-prototypal-inheritance">How to make delegations to perform “prototypal inheritance”?</a></li>
-          <li><a href="#how-to-envision-your-own-objectcreate">How to envision your own <code>Object.create</code>?</a></li>
+      <li><a href="#create-delegations-by-objectcreate" id="markdown-toc-create-delegations-by-objectcreate">3. Create delegations by <code>Object.create</code></a>        <ul>
+          <li><a href="#how-to-make-plain-object-delegations" id="markdown-toc-how-to-make-plain-object-delegations">How to make plain object delegations?</a></li>
+          <li><a href="#how-to-make-delegations-to-perform-prototypal-inheritance" id="markdown-toc-how-to-make-delegations-to-perform-prototypal-inheritance">How to make delegations to perform “prototypal inheritance”?</a></li>
+          <li><a href="#how-to-envision-your-own-objectcreate" id="markdown-toc-how-to-envision-your-own-objectcreate">How to envision your own <code>Object.create</code>?</a></li>
         </ul>
       </li>
-      <li><a href="#towards-delegation-oriented-design">4. Towards Delegation-Oriented Design</a>        <ul>
-          <li><a href="#avoid-shadowing-naming-things-the-same-if-at-all-possible">Avoid shadowing (naming things the same) if at all possible</a></li>
-          <li><a href="#save-state-on-delegators">Save state on delegators</a></li>
-          <li><a href="#comparison">Comparison</a></li>
+      <li><a href="#towards-delegation-oriented-design" id="markdown-toc-towards-delegation-oriented-design">4. Towards Delegation-Oriented Design</a>        <ul>
+          <li><a href="#avoid-shadowing-naming-things-the-same-if-at-all-possible" id="markdown-toc-avoid-shadowing-naming-things-the-same-if-at-all-possible">Avoid shadowing (naming things the same) if at all possible</a></li>
+          <li><a href="#save-state-on-delegators" id="markdown-toc-save-state-on-delegators">Save state on delegators</a></li>
+          <li><a href="#comparison" id="markdown-toc-comparison">Comparison</a></li>
         </ul>
       </li>
     </ul>
@@ -6362,7 +6362,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span> <span class="p">};</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="kc">true</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
-</span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="mf">3</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
 </span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="nx">myObject</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;baz&quot;</span><span class="p">;</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">myObject</span><span class="p">[</span><span class="s2">&quot;true&quot;</span><span class="p">];</span>                <span class="c1">// &quot;foo&quot;</span>
@@ -6403,13 +6403,13 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myArray</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span> <span class="p">];</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myArray</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="mf">42</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span> <span class="p">];</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">myArray</span><span class="p">[</span><span class="s2">&quot;3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;baz&quot;</span><span class="p">;</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">myArray</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>    <span class="c1">// 4</span>
 </span><span class="line">
-</span><span class="line"><span class="nx">myArray</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>        <span class="c1">// &quot;baz&quot;</span>
+</span><span class="line"><span class="nx">myArray</span><span class="p">[</span><span class="mf">3</span><span class="p">];</span>        <span class="c1">// &quot;baz&quot;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h3 id="duplicating-objects">Duplicating Objects</h3>
@@ -6439,7 +6439,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line"><span class="kd">var</span> <span class="nx">anotherArray</span> <span class="o">=</span> <span class="p">[];</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span>
 </span><span class="line">    <span class="nx">b</span><span class="o">:</span> <span class="nx">anotherObject</span><span class="p">,</span>    <span class="c1">// reference, not a copy!</span>
 </span><span class="line">    <span class="nx">c</span><span class="o">:</span> <span class="nx">anotherArray</span><span class="p">,</span>    <span class="c1">// another reference!</span>
 </span><span class="line">    <span class="nx">d</span><span class="o">:</span> <span class="nx">anotherFunction</span>
@@ -6453,7 +6453,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <p>One subset solution is that objects which are JSON-safe (that is, can be serialized to a JSON string and then re-parsed to an object with the same structure and values) can easily be <em>duplicated</em> with:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span> <span class="nx">someObj</span> <span class="p">)</span> <span class="p">);</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span> <span class="nx">someObj</span> <span class="p">)</span> <span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>A shallow copy is fairly understandable and has far less issues, so ES6 has now defined <code>Object.assign(..)</code> for this task. <code>Object.assign(..)</code> takes a target object as its first parameter, and one or more source objects as its subsequent parameters. It iterates over all the <em>enumerable</em> (see below), <em>owned keys (immediately present)</em> on the source object(s) and copies them (via = assignment only) to target.</p>
@@ -6488,7 +6488,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
 </pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
+</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mf">2</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
 </span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">getOwnPropertyDescriptor</span><span class="p">(</span> <span class="nx">myObject</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="p">);</span>
@@ -6515,7 +6515,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{};</span>
 </span><span class="line">
 </span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span> <span class="nx">myObject</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">value</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">value</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span>
 </span><span class="line">    <span class="nx">writable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
 </span><span class="line">    <span class="nx">configurable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
 </span><span class="line">    <span class="nx">enumerable</span><span class="o">:</span> <span class="kc">true</span>
@@ -6540,7 +6540,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 </pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
+</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mf">2</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span> <span class="c1">// 2</span>
@@ -6575,11 +6575,11 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line">
 </span><span class="line">    <span class="c1">// define a setter for `a`</span>
 </span><span class="line">    <span class="nx">set</span> <span class="nx">a</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="k">this</span><span class="p">.</span><span class="nx">_a_</span> <span class="o">=</span> <span class="nx">val</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class="line">        <span class="k">this</span><span class="p">.</span><span class="nx">_a_</span> <span class="o">=</span> <span class="nx">val</span> <span class="o">*</span> <span class="mf">2</span><span class="p">;</span>
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
-</span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="mf">2</span><span class="p">;</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span> <span class="c1">// 4</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -6598,11 +6598,11 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
 </pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
+</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mf">2</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
-</span><span class="line"><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="k">in</span> <span class="nx">myObject</span><span class="p">);</span>                <span class="c1">// true</span>
-</span><span class="line"><span class="p">(</span><span class="s2">&quot;b&quot;</span> <span class="k">in</span> <span class="nx">myObject</span><span class="p">);</span>                <span class="c1">// false</span>
+</span><span class="line"><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="ow">in</span> <span class="nx">myObject</span><span class="p">);</span>                <span class="c1">// true</span>
+</span><span class="line"><span class="p">(</span><span class="s2">&quot;b&quot;</span> <span class="ow">in</span> <span class="nx">myObject</span><span class="p">);</span>                <span class="c1">// false</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span> <span class="s2">&quot;a&quot;</span> <span class="p">);</span>    <span class="c1">// true</span>
 </span><span class="line"><span class="nx">myObject</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span> <span class="s2">&quot;b&quot;</span> <span class="p">);</span>    <span class="c1">// false</span>
@@ -6612,7 +6612,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 
 <p><code>hasOwnProperty(..)</code>is accessible for all normal objects via delegation to<code>Object.prototype</code>(see Chapter 5). But it’s possible to create an object that does not link to<code>Object.prototype</code>(via<code>Object.create(null)</code>– see Chapter 5). In this case, a method call like<code>myObject.hasOwnProperty(..)</code>would fail.</p>
 
-<p>In that scenario, a more robust way of performing such a check is<code>Object.prototype.hasOwnProperty.call(myObject,"a")</code>, which borrows the base<code>hasOwnProperty(..)</code>method and uses_explicit<em><code>this</code>_binding</em>(see Chapter 2) to apply it against our<code>myObject</code>.</p>
+<p>In that scenario, a more robust way of performing such a check is<code>Object.prototype.hasOwnProperty.call(myObject,"a")</code>, which borrows the base<code>hasOwnProperty(..)</code>method and uses_explicit_<code>this</code><em>binding</em>(see Chapter 2) to apply it against our<code>myObject</code>.</p>
 
 <h2 id="iteration">3. Iteration</h2>
 
@@ -6662,10 +6662,10 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
 </pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="c1">// simple primitives are auto boxing: new Number(1)</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span> <span class="mf">1</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// object created by constructor</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s2">&quot;2017-07-01&quot;</span><span class="p">);</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">date</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s2">&quot;2017-07-01&quot;</span><span class="p">);</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// object literal</span>
 </span><span class="line"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1">// is equivalent to: Object.create(Object.prototype);</span>
@@ -6705,7 +6705,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Foo</span><span class="p">();</span>
 </span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span>
 </span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -6751,7 +6751,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">3</span>
 </pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// Object {constructor: function}</span>
-</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// true</span>
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kr">constructor</span> <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// true</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>I’d love to consider this property as the place to store the properties (including methods) of a function object. That’s also the reason why utility functions in JS are defined like <code>Array.prototype.forEach()</code> , <code>Function.prototype.bind()</code>, <code>Object.prototype.toString().</code></p>
@@ -6770,8 +6770,8 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line">
 </span><span class="line"><span class="c1">// The example above shows object does not have the prototype property.</span>
 </span><span class="line"><span class="c1">// But we have Object.prototype, which implies an interesting fact that</span>
-</span><span class="line"><span class="k">typeof</span> <span class="nb">Object</span> <span class="o">===</span> <span class="s2">&quot;function&quot;</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+</span><span class="line"><span class="ow">typeof</span> <span class="nb">Object</span> <span class="o">===</span> <span class="s2">&quot;function&quot;</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Object</span><span class="p">();</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h2 id="whats-the-difference-between-proto-and-prototype">5. What’s the difference between <code>__proto__</code> and <code>prototype</code>?</h2>
@@ -6791,7 +6791,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 </pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Foo</span><span class="p">();</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
@@ -6819,7 +6819,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line"><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span> <span class="p">};</span>
 </span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Foo</span><span class="p">();</span>
 </span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">baz</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> <span class="k">this</span><span class="p">.</span><span class="nx">bar</span><span class="p">();</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;baz&quot;</span><span class="p">);</span> <span class="p">};</span>
 </span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">baz</span><span class="p">();</span>
 </span><span class="line">
@@ -6847,7 +6847,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">15</span>
 </pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span>
 </span><span class="line">
-</span><span class="line"><span class="nx">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="nb">Object</span><span class="p">()</span>
+</span><span class="line"><span class="kr">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="nb">Object</span><span class="p">()</span>
 </span><span class="line"><span class="nx">hasOwnProperty</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">hasOwnProperty</span><span class="p">()</span>
 </span><span class="line"><span class="nx">isPrototypeOf</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">isPrototypeOf</span><span class="p">()</span>
 </span><span class="line"><span class="nx">propertyIsEnumerable</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">propertyIsEnumerable</span><span class="p">()</span>
@@ -6895,10 +6895,10 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line">    <span class="c1">// ...</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
-</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// true</span>
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kr">constructor</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// true</span>
 </span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
-</span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// true</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="kr">constructor</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// true</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The<code>Foo.prototype</code>object by default (at declaration time on line 1 of the snippet!) gets a public, non-enumerable property called<code>.constructor</code>, and this property is a reference back to the function (<code>Foo</code>in this case) that the object is associated with.</p>
@@ -6922,7 +6922,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">5</span>
 </pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{}</span>
 </span><span class="line">
-</span><span class="line"><span class="k">new</span> <span class="nx">foo</span><span class="p">()</span> <span class="c1">// foo {}</span>
+</span><span class="line"><span class="ow">new</span> <span class="nx">foo</span><span class="p">()</span> <span class="c1">// foo {}</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// Object {constructor: function}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -6941,7 +6941,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s2">&quot;Don&#39;t mind me!&quot;</span> <span class="p">);</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NothingSpecial</span><span class="p">();</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">NothingSpecial</span><span class="p">();</span>
 </span><span class="line"><span class="c1">// &quot;Don&#39;t mind me!&quot;</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">a</span><span class="p">;</span> <span class="c1">// {}</span>
@@ -6962,11 +6962,11 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 </pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">Foo</span><span class="p">()</span> <span class="p">{}</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
-</span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">constructor</span>  <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// true</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="kr">constructor</span>  <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// true</span>
 </span><span class="line">
-</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="p">}</span>
-</span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// false</span>
+</span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kr">constructor</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="nx">a</span><span class="p">.</span><span class="kr">constructor</span> <span class="o">===</span> <span class="nx">Foo</span> <span class="c1">// false</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>If you create a new object, and replace a function’s default<code>.prototype</code>object reference, the new object will not by default magically get a<code>.constructor</code>on it.</p>
@@ -6982,9 +6982,9 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line">
 </span><span class="line"><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span> <span class="cm">/* .. */</span> <span class="p">};</span> <span class="c1">// create a new prototype object</span>
 </span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">a1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
-</span><span class="line"><span class="nx">a1</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// false!</span>
-</span><span class="line"><span class="nx">a1</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">;</span> <span class="c1">// true!</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">a1</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="nx">a1</span><span class="p">.</span><span class="kr">constructor</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// false!</span>
+</span><span class="line"><span class="nx">a1</span><span class="p">.</span><span class="kr">constructor</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">;</span> <span class="c1">// true!</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>What’s happening?<code>a1</code>has no<code>.constructor</code>property, so it delegates up the<code>[[Prototype]]</code>chain to<code>Foo.prototype</code>. But that object doesn’t have a<code>.constructor</code>either (like the default<code>Foo.prototype</code>object would have had!), so it keeps delegating, this time up to<code>Object.prototype</code>, the top of the delegation chain.<em>That</em> object indeed has a<code>.constructor</code>on it, which points to the built-in<code>Object(..)</code>function.</p>
@@ -7043,16 +7043,16 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="nx">func</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">        <span class="nx">res</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">=</span> <span class="nx">func</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
 </span><span class="line">    <span class="p">}</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">ret</span> <span class="o">=</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
-</span><span class="line">    <span class="k">if</span> <span class="p">((</span><span class="k">typeof</span> <span class="nx">ret</span> <span class="o">===</span> <span class="s2">&quot;object&quot;</span> <span class="o">||</span> <span class="k">typeof</span> <span class="nx">ret</span> <span class="o">===</span> <span class="s2">&quot;function&quot;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">ret</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">ret</span> <span class="o">=</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mf">1</span><span class="p">));</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">((</span><span class="ow">typeof</span> <span class="nx">ret</span> <span class="o">===</span> <span class="s2">&quot;object&quot;</span> <span class="o">||</span> <span class="ow">typeof</span> <span class="nx">ret</span> <span class="o">===</span> <span class="s2">&quot;function&quot;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">ret</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">        <span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line">    <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">New</span><span class="p">(</span><span class="nx">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">New</span><span class="p">(</span><span class="nx">A</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">);</span>
 </span><span class="line"><span class="c1">// equals to</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">A</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <ol>
@@ -7075,7 +7075,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <h3 id="instanceof"><code>instanceof</code></h3>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nx">a</span> <span class="k">instanceof</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// true</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="nx">a</span> <span class="ow">instanceof</span> <span class="nx">Foo</span><span class="p">;</span> <span class="c1">// true</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The<code>instanceof</code>operator takes a plain object as its left-hand operand and a<strong>function</strong>as its right-hand operand. The question<code>instanceof</code>answers is:<strong>in the entire</strong><code>[[Prototype]]</code><strong>chain of</strong><code>a</code><strong>, does the object arbitrarily pointed to by</strong><code>Foo.prototype</code><strong>ever appear?</strong></p>
@@ -7099,7 +7099,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line"><span class="kd">function</span> <span class="nx">isRelatedTo</span><span class="p">(</span><span class="nx">o1</span><span class="p">,</span> <span class="nx">o2</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="kd">function</span> <span class="nx">F</span><span class="p">(){}</span>
 </span><span class="line">    <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">o2</span><span class="p">;</span>
-</span><span class="line">    <span class="k">return</span> <span class="nx">o1</span> <span class="k">instanceof</span> <span class="nx">F</span><span class="p">;</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">o1</span> <span class="ow">instanceof</span> <span class="nx">F</span><span class="p">;</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{};</span>
@@ -7159,8 +7159,8 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line">    <span class="c1">// ...</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Foo</span><span class="p">();</span>
 </span><span class="line">
 </span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span> <span class="nx">a</span> <span class="p">)</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span> <span class="c1">// true</span>
 </span><span class="line"><span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span> <span class="nx">b</span> <span class="p">)</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span> <span class="c1">// true</span>
@@ -7244,7 +7244,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
 </span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="c1">// true</span>
 </span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bar</span><span class="p">();</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Bar</span><span class="p">();</span>
 </span><span class="line"><span class="nx">b</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span> <span class="c1">// foo</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -7314,7 +7314,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
 </span><span class="line"><span class="c1">// It just makes Bar.prototype be another reference to Foo.prototype</span>
 </span><span class="line">
-</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+</span><span class="line"><span class="nx">Bar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Foo</span><span class="p">();</span>
 </span><span class="line"><span class="c1">// It creates a new object, but Foo might have unexpected behaviours in constructor calling</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -7348,7 +7348,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">function</span> <span class="nx">createAndLinkObject</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="kd">function</span> <span class="nx">F</span><span class="p">(){}</span>
 </span><span class="line">    <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">o</span><span class="p">;</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">new</span> <span class="nx">F</span><span class="p">();</span>
+</span><span class="line">    <span class="k">return</span> <span class="ow">new</span> <span class="nx">F</span><span class="p">();</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -7378,17 +7378,17 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">22</span>
 <span class="line-number">23</span>
 <span class="line-number">24</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span> <span class="o">!=</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="k">if</span> <span class="p">(</span><span class="ow">typeof</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span> <span class="o">!=</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">  <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="kd">var</span> <span class="nx">Temp</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
 </span><span class="line">    <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">prototype</span><span class="p">,</span> <span class="nx">propertiesObject</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">      <span class="k">if</span><span class="p">(</span><span class="nx">prototype</span> <span class="o">!==</span> <span class="nb">Object</span><span class="p">(</span><span class="nx">prototype</span><span class="p">))</span> <span class="p">{</span>
-</span><span class="line">        <span class="k">throw</span> <span class="nx">TypeError</span><span class="p">(</span>
+</span><span class="line">        <span class="k">throw</span> <span class="ne">TypeError</span><span class="p">(</span>
 </span><span class="line">          <span class="s1">&#39;Argument must be an object, or null&#39;</span>
 </span><span class="line">        <span class="p">);</span>
 </span><span class="line">      <span class="p">}</span>
 </span><span class="line">      <span class="nx">Temp</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">prototype</span> <span class="o">||</span> <span class="p">{};</span>
-</span><span class="line">      <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Temp</span><span class="p">();</span>
+</span><span class="line">      <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Temp</span><span class="p">();</span>
 </span><span class="line">      <span class="nx">Temp</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
 </span><span class="line">      <span class="k">if</span> <span class="p">(</span><span class="nx">propertiesObject</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">        <span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperties</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">propertiesObject</span><span class="p">);</span>
@@ -7427,7 +7427,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">17</span>
 <span class="line-number">18</span>
 <span class="line-number">19</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kr">class</span> <span class="nx">Task</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">class</span> <span class="nx">Task</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">id</span><span class="p">;</span>
 </span><span class="line">
 </span><span class="line">    <span class="c1">// constructor `Task()`</span>
@@ -7435,15 +7435,15 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line">    <span class="nx">outputTask</span><span class="p">()</span> <span class="p">{</span> <span class="nx">output</span><span class="p">(</span> <span class="nx">id</span> <span class="p">);</span> <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
-</span><span class="line"><span class="kr">class</span> <span class="nx">XYZ</span> <span class="nx">inherits</span> <span class="nx">Task</span> <span class="p">{</span>
+</span><span class="line"><span class="kd">class</span> <span class="nx">XYZ</span> <span class="nx">inherits</span> <span class="nx">Task</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">label</span><span class="p">;</span>
 </span><span class="line">
 </span><span class="line">    <span class="c1">// constructor `XYZ()`</span>
-</span><span class="line">    <span class="nx">XYZ</span><span class="p">(</span><span class="nx">ID</span><span class="p">,</span><span class="nx">Label</span><span class="p">)</span> <span class="p">{</span> <span class="kr">super</span><span class="p">(</span> <span class="nx">ID</span> <span class="p">);</span> <span class="nx">label</span> <span class="o">=</span> <span class="nx">Label</span><span class="p">;</span> <span class="p">}</span>
-</span><span class="line">    <span class="nx">outputTask</span><span class="p">()</span> <span class="p">{</span> <span class="kr">super</span><span class="p">();</span> <span class="nx">output</span><span class="p">(</span> <span class="nx">label</span> <span class="p">);</span> <span class="p">}</span>
+</span><span class="line">    <span class="nx">XYZ</span><span class="p">(</span><span class="nx">ID</span><span class="p">,</span><span class="nx">Label</span><span class="p">)</span> <span class="p">{</span> <span class="k">super</span><span class="p">(</span> <span class="nx">ID</span> <span class="p">);</span> <span class="nx">label</span> <span class="o">=</span> <span class="nx">Label</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">    <span class="nx">outputTask</span><span class="p">()</span> <span class="p">{</span> <span class="k">super</span><span class="p">();</span> <span class="nx">output</span><span class="p">(</span> <span class="nx">label</span> <span class="p">);</span> <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span><span class="line">
-</span><span class="line"><span class="kr">class</span> <span class="nx">ABC</span> <span class="nx">inherits</span> <span class="nx">Task</span> <span class="p">{</span>
+</span><span class="line"><span class="kd">class</span> <span class="nx">ABC</span> <span class="nx">inherits</span> <span class="nx">Task</span> <span class="p">{</span>
 </span><span class="line">    <span class="c1">// ...</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -7519,7 +7519,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">17</span>
 <span class="line-number">18</span>
 </pre></td><td class="code"><pre><code class="js"><span class="line"><span></span><span class="kd">var</span> <span class="nx">anotherObject</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mi">2</span>
+</span><span class="line">    <span class="nx">a</span><span class="o">:</span> <span class="mf">2</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span> <span class="nx">anotherObject</span> <span class="p">);</span>
@@ -7587,8 +7587,8 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </span><span class="line">    <span class="nx">alert</span><span class="p">(</span> <span class="s2">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">identify</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="p">);</span>
 </span><span class="line"><span class="p">};</span>
 </span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">b1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bar</span><span class="p">(</span> <span class="s2">&quot;b1&quot;</span> <span class="p">);</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">b2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bar</span><span class="p">(</span> <span class="s2">&quot;b2&quot;</span> <span class="p">);</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">b1</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Bar</span><span class="p">(</span> <span class="s2">&quot;b1&quot;</span> <span class="p">);</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">b2</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Bar</span><span class="p">(</span> <span class="s2">&quot;b2&quot;</span> <span class="p">);</span>
 </span><span class="line">
 </span><span class="line"><span class="nx">b1</span><span class="p">.</span><span class="nx">speak</span><span class="p">();</span>
 </span><span class="line"><span class="nx">b2</span><span class="p">.</span><span class="nx">speak</span><span class="p">();</span>
@@ -7676,18 +7676,18 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#section">前言</a></li>
-  <li><a href="#section-1">第1章 - 悲观者与乐观者的画像</a></li>
-  <li><a href="#section-2">第2章 - 悲观者的无助源自何处</a></li>
-  <li><a href="#section-3">第3章 - 悲观者严重的挫折</a></li>
-  <li><a href="#section-4">第4章 - 从悲观滑向抑郁</a></li>
-  <li><a href="#section-5">第5章 - 想法决定悲喜人生</a></li>
-  <li><a href="#section-6">第6~11章 - 乐观的好处</a></li>
-  <li><a href="#section-7">第6章 - 乐观奠定成功的事业</a></li>
-  <li><a href="#section-8">第7~8章 - 解释风格对孩子的影响</a></li>
-  <li><a href="#section-9">第12章 - 怎样习得乐观</a></li>
-  <li><a href="#section-10">第15章 - 乐观可以有弹性</a></li>
-  <li><a href="#section-11">总结</a></li>
+  <li><a href="#section" id="markdown-toc-section">前言</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">第1章 - 悲观者与乐观者的画像</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">第2章 - 悲观者的无助源自何处</a></li>
+  <li><a href="#section-3" id="markdown-toc-section-3">第3章 - 悲观者严重的挫折</a></li>
+  <li><a href="#section-4" id="markdown-toc-section-4">第4章 - 从悲观滑向抑郁</a></li>
+  <li><a href="#section-5" id="markdown-toc-section-5">第5章 - 想法决定悲喜人生</a></li>
+  <li><a href="#section-6" id="markdown-toc-section-6">第6~11章 - 乐观的好处</a></li>
+  <li><a href="#section-7" id="markdown-toc-section-7">第6章 - 乐观奠定成功的事业</a></li>
+  <li><a href="#section-8" id="markdown-toc-section-8">第7~8章 - 解释风格对孩子的影响</a></li>
+  <li><a href="#section-9" id="markdown-toc-section-9">第12章 - 怎样习得乐观</a></li>
+  <li><a href="#section-10" id="markdown-toc-section-10">第15章 - 乐观可以有弹性</a></li>
+  <li><a href="#section-11" id="markdown-toc-section-11">总结</a></li>
 </ul>
 
 <h3 id="section">前言</h3>
@@ -8393,12 +8393,12 @@ the types in Haskell, maybe because it is a standalone type system?</li>
     <updated>2016-02-16T19:58:54+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-practice</id>
     <content type="html"><![CDATA[<ul id="markdown-toc">
-  <li><a href="#guidance">Guidance</a>    <ul>
-      <li><a href="#safest-path-to-concurrency">Safest path to concurrency</a></li>
-      <li><a href="#writing-thread-safe-code">Writing Thread-safe Code</a></li>
+  <li><a href="#guidance" id="markdown-toc-guidance">Guidance</a>    <ul>
+      <li><a href="#safest-path-to-concurrency" id="markdown-toc-safest-path-to-concurrency">Safest path to concurrency</a></li>
+      <li><a href="#writing-thread-safe-code" id="markdown-toc-writing-thread-safe-code">Writing Thread-safe Code</a></li>
     </ul>
   </li>
-  <li><a href="#into-the-wild">Into the Wild</a></li>
+  <li><a href="#into-the-wild" id="markdown-toc-into-the-wild">Into the Wild</a></li>
 </ul>
 
 <h2 id="guidance">Guidance</h2>
@@ -8517,21 +8517,21 @@ the types in Haskell, maybe because it is a standalone type system?</li>
     <updated>2016-02-16T19:35:19+08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2016/02/16/ruby-concurrency-in-theory</id>
     <content type="html"><![CDATA[<ul id="markdown-toc">
-  <li><a href="#what-is-concurrency">What is concurrency?</a>    <ul>
-      <li><a href="#concurrency-vs-paralelism">Concurrency vs. Paralelism</a></li>
-      <li><a href="#concurrency-plus-communication">Concurrency plus communication</a></li>
+  <li><a href="#what-is-concurrency" id="markdown-toc-what-is-concurrency">What is concurrency?</a>    <ul>
+      <li><a href="#concurrency-vs-paralelism" id="markdown-toc-concurrency-vs-paralelism">Concurrency vs. Paralelism</a></li>
+      <li><a href="#concurrency-plus-communication" id="markdown-toc-concurrency-plus-communication">Concurrency plus communication</a></li>
     </ul>
   </li>
-  <li><a href="#what-does-ruby-support">What does Ruby support?</a>    <ul>
-      <li><a href="#gil">GIL</a></li>
-      <li><a href="#ruby-support">Ruby Support</a></li>
-      <li><a href="#fiber">Fiber</a></li>
+  <li><a href="#what-does-ruby-support" id="markdown-toc-what-does-ruby-support">What does Ruby support?</a>    <ul>
+      <li><a href="#gil" id="markdown-toc-gil">GIL</a></li>
+      <li><a href="#ruby-support" id="markdown-toc-ruby-support">Ruby Support</a></li>
+      <li><a href="#fiber" id="markdown-toc-fiber">Fiber</a></li>
     </ul>
   </li>
-  <li><a href="#how-to-enhance-concurrency-by-ruby">How to enhance concurrency by Ruby?</a>    <ul>
-      <li><a href="#basics">Basics</a></li>
-      <li><a href="#concurrency-model-software-transactional-memory">Concurrency Model: Software Transactional Memory</a></li>
-      <li><a href="#concurrency-model-actor-model">Concurrency Model: Actor Model</a></li>
+  <li><a href="#how-to-enhance-concurrency-by-ruby" id="markdown-toc-how-to-enhance-concurrency-by-ruby">How to enhance concurrency by Ruby?</a>    <ul>
+      <li><a href="#basics" id="markdown-toc-basics">Basics</a></li>
+      <li><a href="#concurrency-model-software-transactional-memory" id="markdown-toc-concurrency-model-software-transactional-memory">Concurrency Model: Software Transactional Memory</a></li>
+      <li><a href="#concurrency-model-actor-model" id="markdown-toc-concurrency-model-actor-model">Concurrency Model: Actor Model</a></li>
     </ul>
   </li>
 </ul>
@@ -8774,16 +8774,16 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#concurrent--parallel">Concurrent != Parallel</a></li>
-  <li><a href="#the-gil-and-mri">The GIL and MRI</a></li>
-  <li><a href="#thread-execution">Thread Execution</a></li>
-  <li><a href="#mutual-exclusion">Mutual Exclusion</a></li>
-  <li><a href="#signaling-threads-with-condition-variables">Signaling Threads with Condition Variables</a></li>
-  <li><a href="#thread-safe-data-structures">Thread-safe Data Structures</a></li>
-  <li><a href="#writing-thread-safe-code">Writing Thread-safe Code</a></li>
-  <li><a href="#wrap-your-threads-in-an-abstraction">Wrap Your Threads in an Abstraction</a></li>
-  <li><a href="#into-the-wild">Into The Wild</a></li>
-  <li><a href="#closing">Closing</a></li>
+  <li><a href="#concurrent--parallel" id="markdown-toc-concurrent--parallel">Concurrent != Parallel</a></li>
+  <li><a href="#the-gil-and-mri" id="markdown-toc-the-gil-and-mri">The GIL and MRI</a></li>
+  <li><a href="#thread-execution" id="markdown-toc-thread-execution">Thread Execution</a></li>
+  <li><a href="#mutual-exclusion" id="markdown-toc-mutual-exclusion">Mutual Exclusion</a></li>
+  <li><a href="#signaling-threads-with-condition-variables" id="markdown-toc-signaling-threads-with-condition-variables">Signaling Threads with Condition Variables</a></li>
+  <li><a href="#thread-safe-data-structures" id="markdown-toc-thread-safe-data-structures">Thread-safe Data Structures</a></li>
+  <li><a href="#writing-thread-safe-code" id="markdown-toc-writing-thread-safe-code">Writing Thread-safe Code</a></li>
+  <li><a href="#wrap-your-threads-in-an-abstraction" id="markdown-toc-wrap-your-threads-in-an-abstraction">Wrap Your Threads in an Abstraction</a></li>
+  <li><a href="#into-the-wild" id="markdown-toc-into-the-wild">Into The Wild</a></li>
+  <li><a href="#closing" id="markdown-toc-closing">Closing</a></li>
 </ul>
 
 <h2 id="concurrent--parallel">Concurrent != Parallel</h2>
@@ -9659,15 +9659,15 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#concurrency">Concurrency</a>    <ul>
-      <li><a href="#chapter-26---introduction">Chapter 26 - Introduction</a></li>
-      <li><a href="#chapter-27---interlude-thread-api">Chapter 27 - Interlude: Thread API</a></li>
-      <li><a href="#chapter-28---locks">Chapter 28 - Locks</a></li>
-      <li><a href="#chapter-29---lock-based-concurrent-data-structures">Chapter 29 - Lock-based Concurrent Data Structures</a></li>
-      <li><a href="#chapter-30---condition-variables">Chapter 30 - Condition Variables</a></li>
-      <li><a href="#chapter-31---semaphores">Chapter 31 - Semaphores</a></li>
-      <li><a href="#chapter-32---common-concurrency-problems">Chapter 32 - Common Concurrency Problems</a></li>
-      <li><a href="#chapter-33---event-based-concurrency-advanced">Chapter 33 - Event-based Concurrency (Advanced)</a></li>
+  <li><a href="#concurrency" id="markdown-toc-concurrency">Concurrency</a>    <ul>
+      <li><a href="#chapter-26---introduction" id="markdown-toc-chapter-26---introduction">Chapter 26 - Introduction</a></li>
+      <li><a href="#chapter-27---interlude-thread-api" id="markdown-toc-chapter-27---interlude-thread-api">Chapter 27 - Interlude: Thread API</a></li>
+      <li><a href="#chapter-28---locks" id="markdown-toc-chapter-28---locks">Chapter 28 - Locks</a></li>
+      <li><a href="#chapter-29---lock-based-concurrent-data-structures" id="markdown-toc-chapter-29---lock-based-concurrent-data-structures">Chapter 29 - Lock-based Concurrent Data Structures</a></li>
+      <li><a href="#chapter-30---condition-variables" id="markdown-toc-chapter-30---condition-variables">Chapter 30 - Condition Variables</a></li>
+      <li><a href="#chapter-31---semaphores" id="markdown-toc-chapter-31---semaphores">Chapter 31 - Semaphores</a></li>
+      <li><a href="#chapter-32---common-concurrency-problems" id="markdown-toc-chapter-32---common-concurrency-problems">Chapter 32 - Common Concurrency Problems</a></li>
+      <li><a href="#chapter-33---event-based-concurrency-advanced" id="markdown-toc-chapter-33---event-based-concurrency-advanced">Chapter 33 - Event-based Concurrency (Advanced)</a></li>
     </ul>
   </li>
 </ul>
@@ -9776,11 +9776,11 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp"></span>
-</span><span class="line"><span class="kt">int</span> <span class="nf">pthread_create</span><span class="p">(</span><span class="n">pthread_t</span> <span class="o">*</span> <span class="kr">thread</span><span class="p">,</span>
-</span><span class="line">                     <span class="k">const</span> <span class="n">pthread_attr_t</span> <span class="o">*</span>  <span class="n">attr</span><span class="p">,</span>
-</span><span class="line">                     <span class="kt">void</span> <span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">start_routine</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
-</span><span class="line">                     <span class="kt">void</span> <span class="o">*</span>  <span class="n">arg</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;pthread.h&gt;</span><span class="cp"></span>
+</span><span class="line"><span class="kt">int</span><span class="w"> </span><span class="nf">pthread_create</span><span class="p">(</span><span class="n">pthread_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">thread</span><span class="p">,</span><span class="w"></span>
+</span><span class="line"><span class="w">                     </span><span class="k">const</span><span class="w"> </span><span class="n">pthread_attr_t</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="n">attr</span><span class="p">,</span><span class="w"></span>
+</span><span class="line"><span class="w">                     </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">start_routine</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">),</span><span class="w"></span>
+</span><span class="line"><span class="w">                     </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="n">arg</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <ul>
@@ -9797,7 +9797,7 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <p><strong>Thread Completion</strong></p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span> <span class="nf">pthread_join</span><span class="p">(</span><span class="n">pthread_t</span> <span class="kr">thread</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">value_ptr</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">pthread_join</span><span class="p">(</span><span class="n">pthread_t</span><span class="w"> </span><span class="kr">thread</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">**</span><span class="n">value_ptr</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <ul>
@@ -9821,8 +9821,8 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span> <span class="nf">pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
-</span><span class="line"><span class="kt">int</span> <span class="nf">pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="kt">int</span><span class="w"> </span><span class="nf">pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>When you have a region of code you realize is a critical section, and thus needs to be pro- tected by locks in order to operate as desired.</p>
@@ -9848,27 +9848,27 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">19</span>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">pthread_mutex_t</span> <span class="n">lock</span><span class="p">;</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="n">lock</span><span class="p">;</span><span class="w"></span>
 </span><span class="line">
-</span><span class="line"><span class="n">Pthread_mutex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</span><span class="line"><span class="n">Pthread_mutex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
 </span><span class="line">
-</span><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
-</span><span class="line"><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// or whatever your critical section is</span>
-</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">olock</span><span class="p">);</span>
+</span><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// or whatever your critical section is</span>
+</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">olock</span><span class="p">);</span><span class="w"></span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// Always check for failure</span>
-</span><span class="line"><span class="kt">void</span> <span class="nf">Pthread_mutex_init</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">pthread_mutex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span> <span class="c1">// dynamic initialisation, or PTHREAD_MUTEX_INITIALIZER</span>
-</span><span class="line">    <span class="n">assert</span><span class="p">(</span><span class="n">rc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// always check success!</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line"><span class="kt">void</span> <span class="nf">Pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
-</span><span class="line">    <span class="n">assert</span><span class="p">(</span><span class="n">rc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line"><span class="kt">void</span> <span class="nf">Pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
-</span><span class="line">    <span class="n">assert</span><span class="p">(</span><span class="n">rc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
-</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="kt">void</span><span class="w"> </span><span class="nf">Pthread_mutex_init</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pthread_mutex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// dynamic initialisation, or PTHREAD_MUTEX_INITIALIZER</span>
+</span><span class="line"><span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">rc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// always check success!</span>
+</span><span class="line"><span class="p">}</span><span class="w"></span>
+</span><span class="line"><span class="kt">void</span><span class="w"> </span><span class="nf">Pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">rc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="p">}</span><span class="w"></span>
+</span><span class="line"><span class="kt">void</span><span class="w"> </span><span class="nf">Pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">rc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="p">}</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><strong>Condition Variables</strong></p>
@@ -9879,8 +9879,8 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">,</span> <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
-</span><span class="line"><span class="kt">int</span> <span class="nf">pthread_cond_signal</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span><span class="w"> </span><span class="o">*</span><span class="n">cond</span><span class="p">,</span><span class="w"> </span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="kt">int</span><span class="w"> </span><span class="nf">pthread_cond_signal</span><span class="p">(</span><span class="n">pthread_cond_t</span><span class="w"> </span><span class="o">*</span><span class="n">cond</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>pthread_cond_wait(), puts the calling thread to sleep, ad thus waits for some other thread to signal it, usually when something in the program has changed that the now-sleeping thread might care about.</p>
@@ -9891,12 +9891,12 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">pthread_mutex_t</span> <span class="n">lock</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>
-</span><span class="line"><span class="n">pthread_cond_t</span>  <span class="n">cond</span> <span class="o">=</span> <span class="n">PTHREAD_COND_INITIALIZER</span><span class="p">;</span>
-</span><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
-</span><span class="line"><span class="k">while</span> <span class="p">(</span><span class="n">ready</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class="line">    <span class="n">Pthread_cond_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cond</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
-</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="n">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span><span class="w"></span>
+</span><span class="line"><span class="n">pthread_cond_t</span><span class="w">  </span><span class="n">cond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PTHREAD_COND_INITIALIZER</span><span class="p">;</span><span class="w"></span>
+</span><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">ready</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="n">Pthread_cond_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cond</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>After initialization of the relevant lock and condition, a thread checks to see if the variable ready has yet been set to something other than zero. If not, the thread simply calls the wait routine in order to sleep until some other thread wakes it.</p>
@@ -9905,10 +9905,10 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
-</span><span class="line"><span class="n">ready</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class="line"><span class="n">Pthread_cond_signal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cond</span><span class="p">);</span>
-</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="n">ready</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+</span><span class="line"><span class="n">Pthread_cond_signal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cond</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Notice 1</p>
@@ -9935,10 +9935,10 @@ the types in Haskell, maybe because it is a standalone type system?</li>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 </pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="c1">// waitingnwhile (ready == 0)</span>
-</span><span class="line">    <span class="p">;</span> <span class="c1">// spin</span>
+</span><span class="line"><span class="w">    </span><span class="p">;</span><span class="w"> </span><span class="c1">// spin</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// signaling</span>
-</span><span class="line"><span class="n">ready</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class="line"><span class="n">ready</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>First, it performs poorly in many cases (spinning for a long time just wastes CPU cycles). Second, it is error prone.</p>
@@ -10218,7 +10218,7 @@ How often this local-to-global transfer occurs is determined by a threshold, whi
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>// grep process is the producer
 </span><span class="line">// wc process is the consumer
-</span><span class="line">// between them is an in-kernel bounded buffer
+</span><span class="line">// between them is an <span class="k">in</span>-kernel bounded buffer
 </span><span class="line">grep foo file.txt <span class="p">|</span> wc -l
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -10599,21 +10599,21 @@ How often this local-to-global transfer occurs is determined by a threshold, whi
 <p><strong>TOC</strong></p>
 
 <ul id="markdown-toc">
-  <li><a href="#optimizing-content-efficiency">Optimizing content efficiency</a>    <ul>
-      <li><a href="#eliminating-unnecessary-downloads">Eliminating unnecessary downloads</a></li>
-      <li><a href="#optimizing-encoding-and-transfer-size-of-text-based-assets">Optimizing encoding and transfer size of text-based assets</a></li>
-      <li><a href="#image-optimization">Image optimization</a></li>
-      <li><a href="#web-font-optimization">Web font optimization</a></li>
-      <li><a href="#http-caching">HTTP caching</a></li>
+  <li><a href="#optimizing-content-efficiency" id="markdown-toc-optimizing-content-efficiency">Optimizing content efficiency</a>    <ul>
+      <li><a href="#eliminating-unnecessary-downloads" id="markdown-toc-eliminating-unnecessary-downloads">Eliminating unnecessary downloads</a></li>
+      <li><a href="#optimizing-encoding-and-transfer-size-of-text-based-assets" id="markdown-toc-optimizing-encoding-and-transfer-size-of-text-based-assets">Optimizing encoding and transfer size of text-based assets</a></li>
+      <li><a href="#image-optimization" id="markdown-toc-image-optimization">Image optimization</a></li>
+      <li><a href="#web-font-optimization" id="markdown-toc-web-font-optimization">Web font optimization</a></li>
+      <li><a href="#http-caching" id="markdown-toc-http-caching">HTTP caching</a></li>
     </ul>
   </li>
-  <li><a href="#critical-rendering-path">Critical Rendering Path</a>    <ul>
-      <li><a href="#critical-rendering-path-1">Critical Rendering Path</a></li>
-      <li><a href="#analysing-critical-rendering-path-performance">Analysing Critical Rendering Path Performance</a></li>
-      <li><a href="#optimizing-the-critical-rendering-path">Optimizing the critical rendering path</a></li>
+  <li><a href="#critical-rendering-path" id="markdown-toc-critical-rendering-path">Critical Rendering Path</a>    <ul>
+      <li><a href="#critical-rendering-path-1" id="markdown-toc-critical-rendering-path-1">Critical Rendering Path</a></li>
+      <li><a href="#analysing-critical-rendering-path-performance" id="markdown-toc-analysing-critical-rendering-path-performance">Analysing Critical Rendering Path Performance</a></li>
+      <li><a href="#optimizing-the-critical-rendering-path" id="markdown-toc-optimizing-the-critical-rendering-path">Optimizing the critical rendering path</a></li>
     </ul>
   </li>
-  <li><a href="#browser-rendering-optimization">Browser Rendering Optimization</a></li>
+  <li><a href="#browser-rendering-optimization" id="markdown-toc-browser-rendering-optimization">Browser Rendering Optimization</a></li>
 </ul>
 
 <h2 id="optimizing-content-efficiency">Optimizing content efficiency</h2>
@@ -10742,7 +10742,7 @@ How often this local-to-global transfer occurs is determined by a threshold, whi
 <blockquote>
   <p>100 x 100px image is composed of 10,000 pixels<br />
 10,000 pixels x 4 bytes = 40,000 bytes<br />
-40,000 bytes / 1024 = 39 KB  </p>
+40,000 bytes / 1024 = 39 KB</p>
 </blockquote>
 
 <p><strong>Lossless vs lossy image compression</strong></p>
@@ -11027,7 +11027,7 @@ override in our stylesheet. Every browser provides a default set of styles also 
 
 <p><strong><em>Why do browsers match CSS selectors from right to left?</em></strong></p>
 
-<p>It sounds like that it is done this way to avoid having to look at all the children of parent (which could be many) rather than all the parents of a child which must be one. Even if the DOM is deep it would only look at one node per level rather than multiple in the RTL matching. </p>
+<p>It sounds like that it is done this way to avoid having to look at all the children of parent (which could be many) rather than all the parents of a child which must be one. Even if the DOM is deep it would only look at one node per level rather than multiple in the RTL matching.</p>
 
 <p>from <a href="http://stackoverflow.com/questions/5797014/why-do-browsers-match-css-selectors-from-right-to-left">Why do browsers match CSS selectors from right to left?</a></p>
 

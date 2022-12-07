@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2022-09-26T13:07:48-07:00</updated>
+  <updated>2022-12-07T13:26:16-08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -36,64 +36,64 @@
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#objects-in-js">Objects in JS</a>    <ul>
-      <li><a href="#type">1. Type</a></li>
-      <li><a href="#contents">2. Contents</a>        <ul>
-          <li><a href="#properties">Properties</a></li>
-          <li><a href="#computed-property-names">Computed Property Names</a></li>
-          <li><a href="#arrays">Arrays</a></li>
-          <li><a href="#duplicating-objects">Duplicating Objects</a></li>
-          <li><a href="#property-descriptors">Property Descriptors</a></li>
-          <li><a href="#get--">[ [ Get ] ]</a></li>
-          <li><a href="#existence">Existence</a></li>
+  <li><a href="#objects-in-js" id="markdown-toc-objects-in-js">Objects in JS</a>    <ul>
+      <li><a href="#type" id="markdown-toc-type">1. Type</a></li>
+      <li><a href="#contents" id="markdown-toc-contents">2. Contents</a>        <ul>
+          <li><a href="#properties" id="markdown-toc-properties">Properties</a></li>
+          <li><a href="#computed-property-names" id="markdown-toc-computed-property-names">Computed Property Names</a></li>
+          <li><a href="#arrays" id="markdown-toc-arrays">Arrays</a></li>
+          <li><a href="#duplicating-objects" id="markdown-toc-duplicating-objects">Duplicating Objects</a></li>
+          <li><a href="#property-descriptors" id="markdown-toc-property-descriptors">Property Descriptors</a></li>
+          <li><a href="#get--" id="markdown-toc-get--">[ [ Get ] ]</a></li>
+          <li><a href="#existence" id="markdown-toc-existence">Existence</a></li>
         </ul>
       </li>
-      <li><a href="#iteration">3. Iteration</a></li>
+      <li><a href="#iteration" id="markdown-toc-iteration">3. Iteration</a></li>
     </ul>
   </li>
-  <li><a href="#prototypes">Prototypes</a>    <ul>
-      <li><a href="#my-understanding">1. My understanding</a></li>
-      <li><a href="#what-is-a-prototype">2. What is a prototype?</a></li>
-      <li><a href="#how-to-get-an-objects-prototype">3. How to get an object’s prototype?</a></li>
-      <li><a href="#what-is-the-prototype-">4. What is the <code>prototype</code> ?</a></li>
-      <li><a href="#whats-the-difference-between-proto-and-prototype">5. What’s the difference between <code>__proto__</code> and <code>prototype</code>?</a></li>
-      <li><a href="#whats-process-of-method-lookup-via-prototype-chain">6. What’s process of method lookup via prototype chain?</a></li>
+  <li><a href="#prototypes" id="markdown-toc-prototypes">Prototypes</a>    <ul>
+      <li><a href="#my-understanding" id="markdown-toc-my-understanding">1. My understanding</a></li>
+      <li><a href="#what-is-a-prototype" id="markdown-toc-what-is-a-prototype">2. What is a prototype?</a></li>
+      <li><a href="#how-to-get-an-objects-prototype" id="markdown-toc-how-to-get-an-objects-prototype">3. How to get an object’s prototype?</a></li>
+      <li><a href="#what-is-the-prototype-" id="markdown-toc-what-is-the-prototype-">4. What is the <code>prototype</code> ?</a></li>
+      <li><a href="#whats-the-difference-between-proto-and-prototype" id="markdown-toc-whats-the-difference-between-proto-and-prototype">5. What’s the difference between <code>__proto__</code> and <code>prototype</code>?</a></li>
+      <li><a href="#whats-process-of-method-lookup-via-prototype-chain" id="markdown-toc-whats-process-of-method-lookup-via-prototype-chain">6. What’s process of method lookup via prototype chain?</a></li>
     </ul>
   </li>
-  <li><a href="#class">“Class”</a>    <ul>
-      <li><a href="#misconception">1. Misconception</a></li>
-      <li><a href="#constructors">2. “Constructors”</a>        <ul>
-          <li><a href="#does-constructor-mean-was-constructed-by-no">Does “constructor” mean “was constructed by”? NO!</a></li>
-          <li><a href="#what-is-exactly-a-constructor">What is exactly a “constructor”?</a></li>
-          <li><a href="#do-we-have-to-capitalize-the-constructor-function-no">Do we have to capitalize the constructor function? NO!</a></li>
-          <li><a href="#is-constructorreliable-to-be-used-as-a-reference-no">Is <code>.constructor</code>reliable to be used as a reference? NO!</a></li>
+  <li><a href="#class" id="markdown-toc-class">“Class”</a>    <ul>
+      <li><a href="#misconception" id="markdown-toc-misconception">1. Misconception</a></li>
+      <li><a href="#constructors" id="markdown-toc-constructors">2. “Constructors”</a>        <ul>
+          <li><a href="#does-constructor-mean-was-constructed-by-no" id="markdown-toc-does-constructor-mean-was-constructed-by-no">Does “constructor” mean “was constructed by”? NO!</a></li>
+          <li><a href="#what-is-exactly-a-constructor" id="markdown-toc-what-is-exactly-a-constructor">What is exactly a “constructor”?</a></li>
+          <li><a href="#do-we-have-to-capitalize-the-constructor-function-no" id="markdown-toc-do-we-have-to-capitalize-the-constructor-function-no">Do we have to capitalize the constructor function? NO!</a></li>
+          <li><a href="#is-constructorreliable-to-be-used-as-a-reference-no" id="markdown-toc-is-constructorreliable-to-be-used-as-a-reference-no">Is <code>.constructor</code>reliable to be used as a reference? NO!</a></li>
         </ul>
       </li>
-      <li><a href="#what-happened-when-we-callnew-">3. What happened when we call<code>new</code> ?</a></li>
-      <li><a href="#introspection">4. Introspection</a>        <ul>
-          <li><a href="#instanceof"><code>instanceof</code></a></li>
-          <li><a href="#objectprototypeisprototypeof"><code>Object.prototype.isPrototypeOf()</code></a></li>
+      <li><a href="#what-happened-when-we-callnew-" id="markdown-toc-what-happened-when-we-callnew-">3. What happened when we call<code>new</code> ?</a></li>
+      <li><a href="#introspection" id="markdown-toc-introspection">4. Introspection</a>        <ul>
+          <li><a href="#instanceof" id="markdown-toc-instanceof"><code>instanceof</code></a></li>
+          <li><a href="#objectprototypeisprototypeof" id="markdown-toc-objectprototypeisprototypeof"><code>Object.prototype.isPrototypeOf()</code></a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#behavior-delegation">Behavior Delegation</a>    <ul>
-      <li><a href="#my-understanding-1">1. My understanding</a></li>
-      <li><a href="#background">2. Background</a>        <ul>
-          <li><a href="#compared-to-traditional-inheritance">Compared to traditional inheritance</a></li>
-          <li><a href="#prototypal-inheritance--differential-inheritance">Prototypal Inheritance &amp;&amp; Differential Inheritance</a></li>
+  <li><a href="#behavior-delegation" id="markdown-toc-behavior-delegation">Behavior Delegation</a>    <ul>
+      <li><a href="#my-understanding-1" id="markdown-toc-my-understanding-1">1. My understanding</a></li>
+      <li><a href="#background" id="markdown-toc-background">2. Background</a>        <ul>
+          <li><a href="#compared-to-traditional-inheritance" id="markdown-toc-compared-to-traditional-inheritance">Compared to traditional inheritance</a></li>
+          <li><a href="#prototypal-inheritance--differential-inheritance" id="markdown-toc-prototypal-inheritance--differential-inheritance">Prototypal Inheritance &amp;&amp; Differential Inheritance</a></li>
         </ul>
       </li>
-      <li><a href="#create-delegations-by-objectcreate">3. Create delegations by <code>Object.create</code></a>        <ul>
-          <li><a href="#how-to-make-plain-object-delegations">How to make plain object delegations?</a></li>
-          <li><a href="#how-to-make-delegations-to-perform-prototypal-inheritance">How to make delegations to perform “prototypal inheritance”?</a></li>
-          <li><a href="#how-to-envision-your-own-objectcreate">How to envision your own <code>Object.create</code>?</a></li>
+      <li><a href="#create-delegations-by-objectcreate" id="markdown-toc-create-delegations-by-objectcreate">3. Create delegations by <code>Object.create</code></a>        <ul>
+          <li><a href="#how-to-make-plain-object-delegations" id="markdown-toc-how-to-make-plain-object-delegations">How to make plain object delegations?</a></li>
+          <li><a href="#how-to-make-delegations-to-perform-prototypal-inheritance" id="markdown-toc-how-to-make-delegations-to-perform-prototypal-inheritance">How to make delegations to perform “prototypal inheritance”?</a></li>
+          <li><a href="#how-to-envision-your-own-objectcreate" id="markdown-toc-how-to-envision-your-own-objectcreate">How to envision your own <code>Object.create</code>?</a></li>
         </ul>
       </li>
-      <li><a href="#towards-delegation-oriented-design">4. Towards Delegation-Oriented Design</a>        <ul>
-          <li><a href="#avoid-shadowing-naming-things-the-same-if-at-all-possible">Avoid shadowing (naming things the same) if at all possible</a></li>
-          <li><a href="#save-state-on-delegators">Save state on delegators</a></li>
-          <li><a href="#comparison">Comparison</a></li>
+      <li><a href="#towards-delegation-oriented-design" id="markdown-toc-towards-delegation-oriented-design">4. Towards Delegation-Oriented Design</a>        <ul>
+          <li><a href="#avoid-shadowing-naming-things-the-same-if-at-all-possible" id="markdown-toc-avoid-shadowing-naming-things-the-same-if-at-all-possible">Avoid shadowing (naming things the same) if at all possible</a></li>
+          <li><a href="#save-state-on-delegators" id="markdown-toc-save-state-on-delegators">Save state on delegators</a></li>
+          <li><a href="#comparison" id="markdown-toc-comparison">Comparison</a></li>
         </ul>
       </li>
     </ul>
@@ -324,7 +324,7 @@ myObject.hasOwnProperty( “b” );    // false
 
 <p><code>hasOwnProperty(..)</code>is accessible for all normal objects via delegation to<code>Object.prototype</code>(see Chapter 5). But it’s possible to create an object that does not link to<code>Object.prototype</code>(via<code>Object.create(null)</code>– see Chapter 5). In this case, a method call like<code>myObject.hasOwnProperty(..)</code>would fail.</p>
 
-<p>In that scenario, a more robust way of performing such a check is<code>Object.prototype.hasOwnProperty.call(myObject,"a")</code>, which borrows the base<code>hasOwnProperty(..)</code>method and uses_explicit<em><code>this</code>_binding</em>(see Chapter 2) to apply it against our<code>myObject</code>.</p>
+<p>In that scenario, a more robust way of performing such a check is<code>Object.prototype.hasOwnProperty.call(myObject,"a")</code>, which borrows the base<code>hasOwnProperty(..)</code>method and uses_explicit_<code>this</code><em>binding</em>(see Chapter 2) to apply it against our<code>myObject</code>.</p>
 
 <h2 id="iteration">3. Iteration</h2>
 
@@ -873,7 +873,7 @@ if (typeof Object.create != ‘function’) {
       Temp.prototype = null;
       if (propertiesObject !== undefined) {
         Object.defineProperties(result, propertiesObject); 
-      } </p>
+      }</p>
 
 <pre><code>  // to imitate the case of Object.create(null)
   if(prototype === null) {

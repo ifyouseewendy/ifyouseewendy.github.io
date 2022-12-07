@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2022-09-26T13:07:48-07:00</updated>
+  <updated>2022-12-07T13:26:16-08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -55,108 +55,60 @@
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#basics">Basics</a>    <ul>
-      <li><a href="#meta">Meta</a></li>
-      <li><a href="#git-object-model">Git Object Model</a>        <ul>
-          <li><a href="#the-sha-1">The SHA-1</a></li>
-          <li><a href="#the-objects">The Objects</a></li>
+  <li><a href="#basics" id="markdown-toc-basics">Basics</a>    <ul>
+      <li><a href="#meta" id="markdown-toc-meta">Meta</a></li>
+      <li><a href="#git-object-model" id="markdown-toc-git-object-model">Git Object Model</a>        <ul>
+          <li><a href="#the-sha-1" id="markdown-toc-the-sha-1">The SHA-1</a></li>
+          <li><a href="#the-objects" id="markdown-toc-the-objects">The Objects</a></li>
         </ul>
       </li>
-      <li><a href="#staged">Staged</a></li>
-      <li><a href="#branching">Branching</a></li>
-      <li><a href="#tags">Tags</a></li>
+      <li><a href="#staged" id="markdown-toc-staged">Staged</a></li>
+      <li><a href="#branching" id="markdown-toc-branching">Branching</a></li>
+      <li><a href="#tags" id="markdown-toc-tags">Tags</a></li>
     </ul>
   </li>
-  <li><a href="#configuration">Configuration</a>    <ul>
-      <li><a href="#ignoring-files">Ignoring Files</a></li>
-      <li><a href="#commit-template">Commit Template</a></li>
-      <li><a href="#git-attributes">Git Attributes</a></li>
+  <li><a href="#configuration" id="markdown-toc-configuration">Configuration</a>    <ul>
+      <li><a href="#ignoring-files" id="markdown-toc-ignoring-files">Ignoring Files</a></li>
+      <li><a href="#commit-template" id="markdown-toc-commit-template">Commit Template</a></li>
+      <li><a href="#git-attributes" id="markdown-toc-git-attributes">Git Attributes</a></li>
     </ul>
   </li>
-  <li><a href="#porcelain">Porcelain</a>    <ul>
-      <li><a href="#branch">Branch</a>        <ul>
-          <li><a href="#inspecting-a-remote">Inspecting a Remote</a></li>
-          <li><a href="#checkout-and-track-a-remote-branch">Checkout and Track a Remote Branch</a></li>
+  <li><a href="#porcelain" id="markdown-toc-porcelain">Porcelain</a>    <ul>
+      <li><a href="#branch" id="markdown-toc-branch">Branch</a>        <ul>
+          <li><a href="#inspecting-a-remote" id="markdown-toc-inspecting-a-remote">Inspecting a Remote</a></li>
+          <li><a href="#checkout-and-track-a-remote-branch" id="markdown-toc-checkout-and-track-a-remote-branch">Checkout and Track a Remote Branch</a></li>
         </ul>
       </li>
-      <li><a href="#tag">Tag</a>        <ul>
-          <li><a href="#share-tags">Share tags</a></li>
-          <li><a href="#sign-tags">Sign tags</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#set-git-config">Set Git config</a></li>
-  <li><a href="#sign">Sign</a>    <ul>
-      <li><a href="#distributing-the-public-pgp-key">Distributing the Public PGP Key</a></li>
-      <li><a href="#generate-a-build-number">Generate a Build Number</a></li>
-      <li><a href="#prepare-a-release">Prepare a Release</a></li>
-      <li><a href="#rebasing">Rebasing</a></li>
-      <li><a href="#merge-base">Merge Base</a></li>
-      <li><a href="#merge-stage">Merge Stage</a></li>
-      <li><a href="#ancestry-references">Ancestry References</a></li>
-      <li><a href="#commit-ranges">Commit Ranges</a></li>
-    </ul>
-  </li>
-  <li><a href="#reachable-by-either-of-two-references-but-not-by-both-of-them">reachable by either of two references but not by both of them.</a>    <ul>
-      <li><a href="#log">Log</a>        <ul>
-          <li><a href="#summarize-or-get-a-quick-changelog">Summarize or Get a Quick Changelog</a></li>
-        </ul>
-      </li>
-      <li><a href="#stash">Stash</a>        <ul>
-          <li><a href="#reapply-the-staged-changes">Reapply the Staged Changes</a></li>
-          <li><a href="#create-a-branch-from-stash">Create a Branch from Stash</a></li>
-        </ul>
-      </li>
-      <li><a href="#create-new-empty-branches">Create New Empty Branches</a></li>
-      <li><a href="#filter-branch">Filter Branch</a>        <ul>
-          <li><a href="#removing-a-file-from-every-commit">Removing a File from Every Commit</a></li>
-          <li><a href="#making-a-subdirectory-the-new-root">Making a Subdirectory the New Root</a></li>
-          <li><a href="#changing-e-mail-addresses-globally">Changing E-Mail Addresses Globally</a></li>
-          <li><a href="#realworld-example">Realworld Example</a></li>
-        </ul>
-      </li>
-      <li><a href="#blame">Blame</a></li>
-      <li><a href="#bisect">Bisect</a>        <ul>
-          <li><a href="#auto-check-by-script">Auto Check By Script</a></li>
-        </ul>
-      </li>
-      <li><a href="#submodules">Submodules</a>        <ul>
-          <li><a href="#maintain-a-repo-which-contains-a-submodule">Maintain a repo which contains a submodule</a></li>
-          <li><a href="#maintain-a-cloned-repo-which-contains-a-submodule">Maintain a cloned repo which contains a submodule</a></li>
-          <li><a href="#a-demo-workflow">A Demo Workflow</a></li>
-          <li><a href="#cautions">Cautions</a></li>
-        </ul>
-      </li>
-      <li><a href="#subtree-merging-a-submodule-substitution">Subtree Merging (A Submodule Substitution)</a>        <ul>
-          <li><a href="#use-git-merge-subtree-strategy">Use git-merge Subtree Strategy</a></li>
-          <li><a href="#use-git-subtree">Use git-subtree</a></li>
-        </ul>
-      </li>
-      <li><a href="#git-internals">Git Internals</a>        <ul>
-          <li><a href="#plumbing-objects">Plumbing Objects</a>            <ul>
-              <li><a href="#blob-object">Blob Object</a></li>
-              <li><a href="#tree-objects">Tree Objects</a></li>
-              <li><a href="#commit-objects">Commit Objects</a></li>
-              <li><a href="#object-storage">Object Storage</a></li>
-            </ul>
-          </li>
+      <li><a href="#tag" id="markdown-toc-tag">Tag</a>        <ul>
+          <li><a href="#share-tags" id="markdown-toc-share-tags">Share tags</a></li>
+          <li><a href="#sign-tags" id="markdown-toc-sign-tags">Sign tags</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#putrawobjectwhat-is-up-doc-blob">put_raw_object(“what is up, doc?”, ‘blob’)</a>    <ul>
-      <li><a href="#index">Index</a></li>
-      <li><a href="#packfile">Packfile</a></li>
-      <li><a href="#the-refspec">The Refspec</a>        <ul>
-          <li><a href="#fetching">fetching</a></li>
+  <li><a href="#set-git-config" id="markdown-toc-set-git-config">Set Git config</a></li>
+  <li><a href="#sign" id="markdown-toc-sign">Sign</a>    <ul>
+      <li><a href="#distributing-the-public-pgp-key" id="markdown-toc-distributing-the-public-pgp-key">Distributing the Public PGP Key</a></li>
+      <li><a href="#generate-a-build-number" id="markdown-toc-generate-a-build-number">Generate a Build Number</a></li>
+      <li><a href="#prepare-a-release" id="markdown-toc-prepare-a-release">Prepare a Release</a></li>
+      <li><a href="#rebasing" id="markdown-toc-rebasing">Rebasing</a></li>
+      <li><a href="#merge-base" id="markdown-toc-merge-base">Merge Base</a></li>
+      <li><a href="#merge-stage" id="markdown-toc-merge-stage">Merge Stage</a></li>
+      <li><a href="#ancestry-references" id="markdown-toc-ancestry-references">Ancestry References</a></li>
+      <li><a href="#commit-ranges" id="markdown-toc-commit-ranges">Commit Ranges</a></li>
+    </ul>
+  </li>
+  <li><a href="#reachable-by-either-of-two-references-but-not-by-both-of-them" id="markdown-toc-reachable-by-either-of-two-references-but-not-by-both-of-them">reachable by either of two references but not by both of them.</a>    <ul>
+      <li><a href="#log" id="markdown-toc-log">Log</a>        <ul>
+          <li><a href="#summarize-or-get-a-quick-changelog" id="markdown-toc-summarize-or-get-a-quick-changelog">Summarize or Get a Quick Changelog</a></li>
         </ul>
       </li>
-      <li><a href="#data-recovery">Data Recovery</a>        <ul>
-          <li><a href="#reflog">reflog</a></li>
-          <li><a href="#fsck">fsck</a></li>
+      <li><a href="#stash" id="markdown-toc-stash">Stash</a>        <ul>
+          <li><a href="#reapply-the-staged-changes" id="markdown-toc-reapply-the-staged-changes">Reapply the Staged Changes</a></li>
+          <li><a href="#create-a-branch-from-stash" id="markdown-toc-create-a-branch-from-stash">Create a Branch from Stash</a></li>
         </ul>
       </li>
+      <li><a href="#create-new-empty-branches" id="markdown-toc-create-new-empty-branches">Create New Empty Branches</a></li>
     </ul>
   </li>
 </ul>
@@ -213,8 +165,8 @@ $ git show –pretty=raw HEAD
 commit 6cc1a668111eb54ef4dbe976fff24f2e3d8b95f9
 tree 36df675d7ae80e7eef0faac893b266801a4fa94a
 parent d448c30aa03fba2884ab87c21081ef0f74d24f7e
-author wendi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#119;&#101;&#110;&#100;&#105;&#064;&#117;&#109;&#101;&#110;&#103;&#046;&#099;&#111;&#109;">&#119;&#101;&#110;&#100;&#105;&#064;&#117;&#109;&#101;&#110;&#103;&#046;&#099;&#111;&#109;</a> 1409022714 +0800
-committer wendi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#119;&#101;&#110;&#100;&#105;&#064;&#117;&#109;&#101;&#110;&#103;&#046;&#099;&#111;&#109;">&#119;&#101;&#110;&#100;&#105;&#064;&#117;&#109;&#101;&#110;&#103;&#046;&#099;&#111;&#109;</a> 1409022733 +0800</p>
+author wendi <a href="mailto:wendi@umeng.com">wendi@umeng.com</a> 1409022714 +0800
+committer wendi <a href="mailto:wendi@umeng.com">wendi@umeng.com</a> 1409022733 +0800</p>
 
 <pre><code>Update error type service url ```
 </code></pre>
@@ -243,7 +195,7 @@ committer wendi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#119;&#101;&#110;
 
 <h3 id="tags">Tags</h3>
 
-<p>The tag object is very much like a commit object, but <strong>a tag object points to a commit rather than a tree. It’s like a branch reference, but it never moves</strong> — it always points to the same commit but gives it a friendlier name. </p>
+<p>The tag object is very much like a commit object, but <strong>a tag object points to a commit rather than a tree. It’s like a branch reference, but it never moves</strong> — it always points to the same commit but gives it a friendlier name.</p>
 
 <p>You can tag any Git object. For example, the maintainer adds the GPG public key as a blob object and then tagged it.</p>
 
@@ -253,7 +205,7 @@ committer wendi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#119;&#101;&#110;
 
 <p><strong>Annotated</strong></p>
 
-<p>Annotated tags, however, are stored as full objects in the Git database. They’re checksummed; contain the tagger name, e-mail, and date; have a tagging message; and can be signed and verified with GNU Privacy Guard (GPG). </p>
+<p>Annotated tags, however, are stored as full objects in the Git database. They’re checksummed; contain the tagger name, e-mail, and date; have a tagging message; and can be signed and verified with GNU Privacy Guard (GPG).</p>
 
 <h2 id="configuration">Configuration</h2>
 
@@ -360,8 +312,8 @@ $ gpg –gen-key</p>
 /Users/wendi/.gnupg/pubring.gpg
 ——————————-
 pub   2048R/FXXXXXXX 2014-12-19
-uid                  Di Wen (wendi) <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#105;&#102;&#121;&#111;&#117;&#115;&#101;&#101;&#119;&#101;&#110;&#100;&#121;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#105;&#102;&#121;&#111;&#117;&#115;&#101;&#101;&#119;&#101;&#110;&#100;&#121;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>
-sub   2048R/XXXXXXX 2014-12-19 </p>
+uid                  Di Wen (wendi) <a href="mailto:ifyouseewendy@gmail.com">ifyouseewendy@gmail.com</a>
+sub   2048R/XXXXXXX 2014-12-19</p>
 
 <h1 id="set-git-config">Set Git config</h1>
 <p>$ git config –global user.signingkey FXXXXXXX</p>
@@ -462,7 +414,7 @@ da07c4b40491581a0d6f877373a5cbeb1ea8c800</p>
 
 <p>$ git show <code>git merge-base master test</code>
 commit da07c4b40491581a0d6f877373a5cbeb1ea8c800
-Author: wendi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#105;&#102;&#121;&#111;&#117;&#115;&#101;&#101;&#119;&#101;&#110;&#100;&#121;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#105;&#102;&#121;&#111;&#117;&#115;&#101;&#101;&#119;&#101;&#110;&#100;&#121;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>
+Author: wendi <a href="mailto:ifyouseewendy@gmail.com">ifyouseewendy@gmail.com</a>
 Date:   Fri Dec 19 12:56:08 2014 +0800</p>
 
 <pre><code>Add README
@@ -641,45 +593,45 @@ Changes to be committed:
        (as described above) are used by default.</p>
 </blockquote>
 
-<p><code>sh
+<p>```sh
 $ git symbolic-ref HEAD refs/heads/newbranch
   # no branch is created,
   # and all files are deleted to index.
 $ rm .git/index
-git clean -fdx
-&lt;do work&gt;
+git clean -fdx</p>
+<do work="">
 git add your files
 git commit -m 'Initial commit'
   # branch 'newbranch' is created.
-</code></p>
+```
 
-<h3 id="filter-branch">Filter Branch</h3>
+### Filter Branch
 
-<h4 id="removing-a-file-from-every-commit">Removing a File from Every Commit</h4>
+#### Removing a File from Every Commit
 
-<p>The <code>--tree-filter</code> option runs the specified command after each checkout of the project and then recommits the results.</p>
+The `--tree-filter` option runs the specified command after each checkout of the project and then recommits the results.
 
-<p><code>sh
+```sh
 $ git filter-branch --tree-filter ’rm -f passwords.txt’ HEAD
 Rewrite 6b9b3cf04e7c5686a9cb838c3f36a8cb6a0fc2bd (21/21)
 Ref ’refs/heads/master’ was rewritten
-</code></p>
+```
 
-<h4 id="making-a-subdirectory-the-new-root">Making a Subdirectory the New Root</h4>
+#### Making a Subdirectory the New Root
 
-<p>Use <code>--subdirectory-filter</code> option.</p>
+Use `--subdirectory-filter` option.
 
-<p><code>sh
+```sh
 $ git filter-branch --subdirectory-filter trunk HEAD
 Rewrite 856f0bf61e41a27326cdae8f09fe708d679f596f (12/12)
 Ref ’refs/heads/master’ was rewritten
-</code></p>
+```
 
-<h4 id="changing-e-mail-addresses-globally">Changing E-Mail Addresses Globally</h4>
+#### Changing E-Mail Addresses Globally
 
-<p>Use <code>--commit-filter</code> option.</p>
+Use `--commit-filter` option.
 
-<p><code>sh
+```sh
 $ git filter-branch --commit-filter ’
         if [ "$GIT_AUTHOR_EMAIL" = "schacon@localhost" ];
         then
@@ -688,106 +640,105 @@ $ git filter-branch --commit-filter ’
                 git commit-tree "$@";
         else
         fi’ HEAD
-</code></p>
+```
 
-<h4 id="realworld-example">Realworld Example</h4>
+#### Realworld Example
 
-<p>Check this post, <a href="http://blog.ifyouseewendy.com/blog/2014/12/25/git-filter-branch-in-practice/">Git Filter Branch in Practice</a></p>
+Check this post, [Git Filter Branch in Practice](http://blog.ifyouseewendy.com/blog/2014/12/25/git-filter-branch-in-practice/)
 
-<h3 id="blame">Blame</h3>
+### Blame
 
-<p>If you pass <code>-C</code> to git blame, Git analyzes the file you’re annotating and tries to figure out where snippets of code within it originally came from if they were copied from elsewhere.</p>
+If you pass `-C` to git blame, Git analyzes the file you’re annotating and tries to figure out where snippets of code within it originally came from if they were copied from elsewhere.
 
-<p><code>sh
+```sh
 $ git blame -C -L 141,153 GITPackUpload.m
 f344f58d GITServerHandler.m (Scott 2009-01-04 141)
 f344f58d GITServerHandler.m (Scott 2009-01-04 142) - (void) gatherObjectShasFromC
 f344f58d GITServerHandler.m (Scott 2009-01-04 143) {
 70befddd GITPackUpload.m    (Scott 2009-03-22 144)     //NSLog(@"GATHER COMMI
 ad11ac80 GITPackUpload.m    (Scott 2009-03-22 144)
-</code></p>
+```
 
-<h3 id="bisect">Bisect</h3>
+### Bisect
 
-<p>First you run <code>git bisect start</code> to get things going, and then you use <code>git bisect bad</code> to tell the system that the current commit you’re on is broken. Then, you must tell bisect when the last known good state was, using <code>git bisect good [good commit]</code>.</p>
+First you run `git bisect start` to get things going, and then you use `git bisect bad` to tell the system that the current commit you’re on is broken. Then, you must tell bisect when the last known good state was, using `git bisect good [good commit]`.
 
-<h4 id="auto-check-by-script">Auto Check By Script</h4>
+#### Auto Check By Script
 
-<p><code>sh
+```sh
 $ git bisect run test-error.sh
-</code></p>
+```
 
-<p>Doing so automatically runs <code>test-error.sh</code> on each checked-out commit until Git finds the first broken commit. You can also run something like make or make tests or whatever you have that runs automated tests for you.</p>
+Doing so automatically runs `test-error.sh` on each checked-out commit until Git finds the first broken commit. You can also run something like make or make tests or whatever you have that runs automated tests for you.
 
-<h3 id="submodules">Submodules</h3>
+### Submodules
 
-<h4 id="maintain-a-repo-which-contains-a-submodule">Maintain a repo which contains a submodule</h4>
+#### Maintain a repo which contains a submodule
 
-<blockquote>
-  <p>Add a submodule into your existing git repo.</p>
-</blockquote>
+&gt; Add a submodule into your existing git repo.
 
-<p>Add a submodule.</p>
+Add a submodule.
 
-<p>```sh
-$ git submodule add git://github.com/chneukirchen/rack.git rack</p>
+```sh
+$ git submodule add git://github.com/chneukirchen/rack.git rack
 
-<p>$ git status
+$ git status
 # On branch master
 # Changes to be committed:
 # # # # #
-(use “git reset HEAD <file>..." to unstage)
+(use "git reset HEAD <file>..." to unstage)
    new file:   .gitmodules
-   new file:   rack</file></p>
+   new file:   rack
+   
+$ git commit -m 'Add rack submodule'
+```
 
-<p>$ git commit -m ‘Add rack submodule’
-```</p>
+As `.git/config` and `.gitmodules` have been registered, when you want to update the submodule, just enter into the submodule dir and do git opertations.
 
-<p>As <code>.git/config</code> and <code>.gitmodules</code> have been registered, when you want to update the submodule, just enter into the submodule dir and do git opertations.</p>
-
-<p><code>sh
+```sh
 $ cd rack
 $ touch aa &amp;&amp; git add . &amp;&amp; git commit -m 'Add aa'
 [master 060998f] Add aa
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 aa
 $ git push
-</code></p>
+```
 
-<p>When you make changes and commit in that subdirectory, the superproject notices that the <em>HEAD</em> there has changed and records the exact commit you’re currently working off of. So, update your superproject from time to time with a pointer to the latest commit in that subproject.</p>
+When you make changes and commit in that subdirectory, the superproject notices that the *HEAD* there has changed and records the exact commit you’re currently working off of. So, update your superproject from time to time with a pointer to the latest commit in that subproject.
 
-<p>```sh
+```sh
 $ cd ..
 $ git status
 On branch master
 Changes not staged for commit:
-  (use “git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)</file></file></p>
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
 
-<pre><code>    modified:   rack (new commits) $ git commit -am 'Update rack' $ git push ```
-</code></pre>
+        modified:   rack (new commits)
+$ git commit -am 'Update rack'
+$ git push
+```
 
-<h4 id="maintain-a-cloned-repo-which-contains-a-submodule">Maintain a cloned repo which contains a submodule</h4>
+#### Maintain a cloned repo which contains a submodule
 
-<p><code>sh
+```sh
 $ git clone git://github.com/schacon/myproject.git
 $ cd myproject/rack
 $ ls
 # empty
-</code></p>
+```
 
-<p>Setup with two commands:</p>
+Setup with two commands:
 
-<ol>
-  <li><code>git submodule init</code>. Initialize your local configurtaion (<code>.gitmodules</code> to  <code>.git/config</code>)</li>
-  <li><code>git submodule update</code>. Fetch all the data from that project and check out the appropriate commit listed in your superproject.</li>
-</ol>
+1. `git submodule init`. Initialize your local configurtaion (`.gitmodules` to  `.git/config`)
+2. `git submodule update`. Fetch all the data from that project and check out the appropriate commit listed in your superproject.
 
-<h4 id="a-demo-workflow">A Demo Workflow</h4>
 
-<p>Create the submodules:</p>
+#### A Demo Workflow
 
-<p><code>sh
+Create the submodules:
+
+```sh
 $ mkdir ~/git
 $ cd ~/git
 $ for i in a b c d
@@ -800,11 +751,11 @@ do
     git commit -m "Initial commit, submodule $i"
     cd ..
 done
-</code></p>
+```
 
-<p>Create the superproject and add all the submodules:</p>
+Create the superproject and add all the submodules:
 
-<p><code>sh
+```sh
 $ mkdir super
 $ cd super
 $ git init
@@ -812,85 +763,88 @@ $ for i in a b c d
 do
     git submodule add ~/git/$i
 done
-</code></p>
+```
 
-<p>See what files git-submodule created:</p>
+See what files git-submodule created:
 
-<p><code>sh
+```sh
 $ ls -a
 .  ..  .git  .gitmodules  a  b  c  d
-</code></p>
+```
 
-<p>The <code>git-submodule add</code> command does a couple of things:</p>
+The `git-submodule add` command does a couple of things:
 
-<ul>
-  <li>It clones the submodule under the current directory and by default checks out the master branch.</li>
-  <li>It adds the submodule’s clone path to the gitmodules file and adds this file to the index, ready to be committed.</li>
-  <li>It adds the submodule’s current commit ID to the index, ready to be committed.</li>
-</ul>
++ It clones the submodule under the current directory and by default checks out the master branch.
++ It adds the submodule's clone path to the gitmodules file and adds this file to the index, ready to be committed.
++ It adds the submodule's current commit ID to the index, ready to be committed.
 
-<p>Commit the superproject:</p>
 
-<p><code>sh
+Commit the superproject:
+
+
+```sh
 $ git commit -m "Add submodules a, b, c and d."
-</code></p>
+```
 
-<p>Clone the superproject:</p>
 
-<p><code>sh
+Clone the superproject:
+
+```sh
 $ cd ..
 $ git clone super cloned
 $ cd cloned
-</code></p>
+```
 
-<p>Check submodule status:</p>
+Check submodule status:
 
-<p><code>sh
+```sh
 $ git submodule status
 -d266b9873ad50488163457f025db7cdd9683d88b a
 -e81d457da15309b4fef4249aba9b50187999670d b
 -c1536a972b9affea0f16e0680ba87332dc059146 c
 -d96249ff5d57de5de093e6baff9e0aafa5276a74 d
-</code></p>
+```
 
-<p>Register the submodule into <code>.git/config</code>:</p>
+Register the submodule into `.git/config`:
 
-<p><code>sh
+```sh
 $ git submodule init
-</code></p>
+```
 
-<p>Clone the submodules and check out the commits specified in the superproject:</p>
+Clone the submodules and check out the commits specified in the superproject:
 
-<p><code>sh
+```sh
 $ git submodule update
 $ cd a
 $ ls -a
 .  ..  .git  a.txt
-</code></p>
+```
 
-<p>One major difference between <code>git-submodule update</code> and <code>git-submodule add</code> is that git-submodule update checks out a specific commit, rather than the tip of a branch. It’s like checking out a tag: <strong>the head is detached</strong>, so you’re not working on a branch. </p>
 
-<p>A detached head, means the <em>HEAD</em> file points directly to a commit, not to a symbolic reference.</p>
+One major difference between `git-submodule update` and `git-submodule add` is that git-submodule update checks out a specific commit, rather than the tip of a branch. It's like checking out a tag: **the head is detached**, so you're not working on a branch. 
 
-<p><code>sh
+A detached head, means the *HEAD* file points directly to a commit, not to a symbolic reference.
+
+```sh
 $ git branch
 * (no branch)
 master
-</code></p>
+```
 
-<p>Check out or create a new branch:</p>
+Check out or create a new branch:
 
-<p><code>sh
+
+```sh
 $ git checkout master
-</code></p>
+```
 
-<p><code>sh
+```sh
 $ git checkout -b fix-up
-</code></p>
+```
 
-<p>Do work and commit:</p>
+Do work and commit:
 
-<p><code>sh
+```sh
 $ echo "adding a line again" &gt;&gt; a.txt
 $ git commit -a -m "Updated the submodule from within the superproject."
 $ git push
@@ -906,13 +860,14 @@ index d266b98..261dfac 160000
 $ git add a
 $ git commit -m "Updated submodule a."
 $ git push
-</code></p>
+```
 
-<h4 id="cautions">Cautions</h4>
+#### Cautions
 
-<p><em>Always publish the submodule change before publishing the change to the superproject that references it. If you forget to publish the submodule change, others won’t be able to clone the repository:</em></p>
 
-<p><code>sh
+*Always publish the submodule change before publishing the change to the superproject that references it. If you forget to publish the submodule change, others won't be able to clone the repository:*
+
+```sh
 $ cd ~/git/super/a
 $ echo i added another line to this file &gt;&gt; a.txt
 $ git commit -a -m "doing it wrong this time"
@@ -926,11 +881,13 @@ $ git submodule update
 error: pathspec '261dfac35cb99d380eb966e102c1197139f7fa24' did not match any file(s) known to git.
 Did you forget to 'git add'?
 Unable to checkout '261dfac35cb99d380eb966e102c1197139f7fa24' in submodule path 'a'
-</code></p>
+```
 
-<p><em>It’s not safe to run git submodule update if you’ve made and committed changes within a submodule without checking out a branch first. They will be silently overwritten</em>:</p>
 
-<p><code>sh
+*It's not safe to run git submodule update if you've made and committed changes within a submodule without checking out a branch first. They will be silently overwritten*:
+
+
+```sh
 $ cat a.txt
 module a
 $ echo line added from private2 &gt;&gt; a.txt
@@ -941,25 +898,25 @@ Submodule path 'a': checked out 'd266b9873ad50488163457f025db7cdd9683d88b'
 $ cd a
 $ cat a.txt
 module a
-</code></p>
+```
 
-<h3 id="subtree-merging-a-submodule-substitution">Subtree Merging (A Submodule Substitution)</h3>
+### Subtree Merging (A Submodule Substitution)
 
-<h4 id="use-git-merge-subtree-strategy">Use git-merge Subtree Strategy</h4>
+#### Use git-merge Subtree Strategy
 
-<p><strong>Add a subtree</strong></p>
+**Add a subtree**
 
-<p>First, add the Rack project as a remote reference in your own project and then check it out into its own branch.</p>
+First, add the Rack project as a remote reference in your own project and then check it out into its own branch.
 
-<p><code>sh
+```sh
 $ git remote add rack_remote git@github.com:schacon/rack.git
 $ git fetch rack_remote
 $ git checkout -b rack_branch rack_remote/master
-</code></p>
+```
 
-<p>Now you have the root of the Rack project in your <code>rack_branch</code> branch and your own project in the <code>master</code> branch.</p>
+Now you have the root of the Rack project in your `rack_branch` branch and your own project in the `master` branch.
 
-<p><code>sh
+```sh
 $ ls
 AUTHORS        KNOWN-ISSUES   Rakefile
 COPYING        README         bin
@@ -967,210 +924,197 @@ $ git checkout master
 Switched to branch "master"
 $ ls
 README
-</code></p>
+```
 
-<p>Use <code>git read-tree</code> to read the root tree of one branch into your current staging area and working directory. You just switched back to your <code>master</code> branch, and you pull the <code>rack_branch</code> into the <em>rack</em> subdirectory of your <code>master</code> branch of your main project.</p>
+Use `git read-tree` to read the root tree of one branch into your current staging area and working directory. You just switched back to your `master` branch, and you pull the `rack_branch` into the *rack* subdirectory of your `master` branch of your main project.
 
-<p><code>sh
+```sh
 $ git read-tree --prefix=rack/ -u rack_branch
-</code></p>
+```
 
-<p>When you commit, it looks like you have all the Rack files under that subdirectory — as though you copied them in from a tarball. </p>
+When you commit, it looks like you have all the Rack files under that subdirectory — as though you copied them in from a tarball. 
 
-<p><strong>Update and merge subtree</strong></p>
+**Update and merge subtree**
 
-<p>If the Rack project updates, you can pull in upstream changes by switching to that branch and pulling:</p>
+If the Rack project updates, you can pull in upstream changes by switching to that branch and pulling:
 
-<p><code>sh
+```sh
 $ git checkout rack_branch
 $ git pull
-</code></p>
+```
 
-<p>Then, you can merge those changes back into your master branch. You can use <code>git merge -s subtree</code> and it will work fine; but Git will also merge the histories together, which you probably don’t want. To pull in the changes and prepopulate the commit message, use the <code>--squash</code> and <code>--no-commit</code> options as well as the <code>-s subtree</code> strategy option:</p>
+Then, you can merge those changes back into your master branch. You can use `git merge -s subtree` and it will work fine; but Git will also merge the histories together, which you probably don’t want. To pull in the changes and prepopulate the commit message, use the `--squash` and `--no-commit` options as well as the `-s subtree` strategy option:
 
-<p><code>sh
+```sh
 $ git checkout master
 $ git merge --squash -s subtree --no-commit rack_branch
 Squash commit -- not updating HEAD
 Automatic merge went well; stopped before committing as requested
-</code></p>
+```
 
-<p>All the changes from your Rack project are merged in and ready to be committed locally. You can also do the opposite — make changes in the <code>rack</code> subdirectory of your master branch and then merge them into your <code>rack_branch</code> branch later to submit them to the maintainers or push them upstream.</p>
+All the changes from your Rack project are merged in and ready to be committed locally. You can also do the opposite — make changes in the `rack` subdirectory of your master branch and then merge them into your `rack_branch` branch later to submit them to the maintainers or push them upstream.
 
-<p><strong>Diff a subtree</strong></p>
+**Diff a subtree**
 
-<p>To get a diff between what you have in your rack subdirectory and the code in your rack branch branch — to see if you need to merge them — you can’t use the normal diff command. Instead, you must run git diff-tree with the branch you want to compare to:</p>
+To get a diff between what you have in your rack subdirectory and the code in your rack branch branch — to see if you need to merge them — you can’t use the normal diff command. Instead, you must run git diff-tree with the branch you want to compare to:
 
-<p><code>sh
+```sh
 $ git diff-tree -p rack_branch
 $ git diff-tree -p rack_remote/master
-</code></p>
+```
 
-<h4 id="use-git-subtree">Use git-subtree</h4>
+#### Use git-subtree
 
-<ul>
-  <li><a href="http://blogs.atlassian.com/2013/05/alternatives-to-git-submodule-git-subtree/">alternatives-to-git-submodule-git-subtree</a> by Atlassian Blog</li>
-  <li><a href="https://hpc.uni.lu/blog/2014/understanding-git-subtree/">Understanding Git Subtree</a> by HPC @ Uni.lu</li>
-</ul>
++ [alternatives-to-git-submodule-git-subtree](http://blogs.atlassian.com/2013/05/alternatives-to-git-submodule-git-subtree/) by Atlassian Blog
++ [Understanding Git Subtree](https://hpc.uni.lu/blog/2014/understanding-git-subtree/) by HPC @ Uni.lu
 
-<h2 id="git-internals">Git Internals</h2>
 
-<p>Git is fundamentally a <strong>content-addressable filesystem</strong> with a VCS user interface written on top of it.</p>
+## Git Internals
 
-<ul>
-  <li>Plumbing, verbs that do low-level work and were designed to be chained together UNIX style or called from scripts.</li>
-  <li>Porcelain, the more user-friendly commands.</li>
-</ul>
+Git is fundamentally a **content-addressable filesystem** with a VCS user interface written on top of it.
 
-<h3 id="plumbing-objects">Plumbing Objects</h3>
++ Plumbing, verbs that do low-level work and were designed to be chained together UNIX style or called from scripts.
++ Porcelain, the more user-friendly commands.
 
-<h4 id="blob-object">Blob Object</h4>
+### Plumbing Objects
 
-<p>Git is a content-addressable filesystem, at the core of Git is a simple key-value data store. You can insert any kind of content into it, and it will give you back a key that you can use to retrieve the content again at any time.</p>
+#### Blob Object
 
-<p><strong>Create</strong></p>
+Git is a content-addressable filesystem, at the core of Git is a simple key-value data store. You can insert any kind of content into it, and it will give you back a key that you can use to retrieve the content again at any time.
 
-<p><code>sh
+**Create**
+
+```sh
 $ echo 'test content' | git hash-object -w --stdin
 d670460b4b4aece5915caf5c68d12f560a9fe3e4
-</code></p>
+```
 
-<p>The <code>-w</code> tells hash-object to store the object; otherwise, the command simply tells you what the key would be.</p>
+The `-w` tells hash-object to store the object; otherwise, the command simply tells you what the key would be.
 
-<p><strong>Check</strong></p>
+**Check**
 
-<p><code>sh
+```sh
 $ find .git/objects -type f
 .git/objects/d6/70460b4b4aece5915caf5c68d12f560a9fe3e4
-</code></p>
+```
 
-<p><strong>View</strong></p>
+**View**
 
-<p>```sh
+```sh
 $ git cat-file -p d670460b4b4aece5915caf5c68d12f560a9fe3e4
-test content</p>
+test content
 
-<p>$ git cat-file -t d670460b4b4aece5915caf5c68d12f560a9fe3e4
+$ git cat-file -t d670460b4b4aece5915caf5c68d12f560a9fe3e4
 blob
-```</p>
+```
 
-<h4 id="tree-objects">Tree Objects</h4>
+#### Tree Objects
 
-<p>Basically, tree objects are used to specify snapshots.</p>
+Basically, tree objects are used to specify snapshots.
 
-<p>Tree object solves the problem of storing the filename and also allows you to store a group of files together.</p>
+Tree object solves the problem of storing the filename and also allows you to store a group of files together.
 
-<p><strong>View</strong></p>
+**View**
 
-<p><code>sh
+```sh
 $ git cat-file -p masterˆ{tree}
 100644 blob a906cb2a4a904a152e80877d4088654daad0c859    README
 100644 blob 8f94139338f9404f26296befa88755fc2598c289    Rakefile
 040000 tree 99f1a6d12cb4b6f19c8655fca46c3ecf317074e0    lib
-</code></p>
+```
 
-<p><strong>Create</strong>.</p>
+**Create**.
 
-<p>Git normally creates a tree by taking the state of your staging area or index and writing a tree object from it. </p>
+Git normally creates a tree by taking the state of your staging area or index and writing a tree object from it. 
 
-<ul>
-  <li>
-    <p>Use <code>update-index</code> to create an index.</p>
++ Use `update-index` to create an index.
 
-    <ul>
-      <li><code>--add</code>, because the file doesn’t yet exist in your staging area.</li>
-      <li><code>--cacheinfo</code>, because the file you’re adding isn’t in your directory but is in your database.</li>
-      <li><code>100644</code>, which means it’s a normal file. Other options are <code>100755</code>, which means it’s an executable file; and <code>120000</code>, which specifies a symbolic link.</li>
-    </ul>
-  </li>
-</ul>
+    + `--add`, because the file doesn’t yet exist in your staging area.
+    + `--cacheinfo`, because the file you’re adding isn’t in your directory but is in your database.
+    + `100644`, which means it’s a normal file. Other options are `100755`, which means it’s an executable file; and `120000`, which specifies a symbolic link.
 
-<p><code>sh
+```sh
 $ git update-index --add --cacheinfo 100644 \
   83baae61804e65cc73a7201a7252750c76066a30 test.tx
-</code></p>
+```
 
-<ul>
-  <li>Use <code>read-tree</code> to read an existing tree into your staging area as a subtree by using the <code>--prefix</code> option.</li>
-</ul>
++ Use `read-tree` to read an existing tree into your staging area as a subtree by using the `--prefix` option.
 
-<p>```sh
+```sh
 $ git cat-file -p d8329fc1cc938780ffdd9f94e0d364e0ea74f579
-100644 blob 83baae61804e65cc73a7201a7252750c76066a30    test.txt </p>
+100644 blob 83baae61804e65cc73a7201a7252750c76066a30    test.txt 
 
-<p>$ git read-tree –prefix=bak d8329fc1cc938780ffdd9f94e0d364e0ea74f579
-```</p>
+$ git read-tree --prefix=bak d8329fc1cc938780ffdd9f94e0d364e0ea74f579
+```
 
-<p>Use the <code>write-tree</code> command to write the staging area out to a tree object. No <code>-w</code> option is needed — calling <code>write-tree</code> automatically creates a tree object from the state of the index if that tree doesn’t yet exist:</p>
+Use the `write-tree` command to write the staging area out to a tree object. No `-w` option is needed — calling `write-tree` automatically creates a tree object from the state of the index if that tree doesn’t yet exist:
 
-<p><code>sh
+```sh
 $ git write-tree
 d8329fc1cc938780ffdd9f94e0d364e0ea74f579
-</code></p>
+```
 
-<h4 id="commit-objects">Commit Objects</h4>
+#### Commit Objects
 
-<p>You have three trees that specify the different snapshots of your project that you want to track, but the earlier problem remains: you must remember all three SHA–1 values in order to recall the snapshots. You also don’t have any information about who saved the snapshots, when they were saved, or why they were saved. This is the basic information that the commit object stores for you.</p>
+You have three trees that specify the different snapshots of your project that you want to track, but the earlier problem remains: you must remember all three SHA–1 values in order to recall the snapshots. You also don’t have any information about who saved the snapshots, when they were saved, or why they were saved. This is the basic information that the commit object stores for you.
 
-<p><strong>Create</strong></p>
+**Create**
 
-<p>Use <code>commit-tree</code>.</p>
+Use `commit-tree`.
 
-<p>```sh
+```sh
 $ echo ’first commit’ | git commit-tree d8329f
-fdf4fc3344e67ab068f836878b6c4951e3b15f3d</p>
+fdf4fc3344e67ab068f836878b6c4951e3b15f3d
 
-<p>$ echo ’second commit’ | git commit-tree 0155eb -p fdf4fc3
+$ echo ’second commit’ | git commit-tree 0155eb -p fdf4fc3
 cac0cab538b970a37ea1e769cbbde608743bc96d
-```</p>
+```
 
-<p><strong>View</strong></p>
+**View**
 
-<p>```sh
+```sh
 $ git cat-file -p fdf4fc3
 tree d8329fc1cc938780ffdd9f94e0d364e0ea74f579
-author Scott Chacon <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#099;&#104;&#097;&#099;&#111;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#115;&#099;&#104;&#097;&#099;&#111;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a> 1243040974 -0700
-committer Scott Chacon <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#099;&#104;&#097;&#099;&#111;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#115;&#099;&#104;&#097;&#099;&#111;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a> 1243040974 -0700</p>
+author Scott Chacon &lt;schacon@gmail.com&gt; 1243040974 -0700
+committer Scott Chacon &lt;schacon@gmail.com&gt; 1243040974 -0700
 
-<p>first commit
-```</p>
+first commit
+```
 
-<h4 id="object-storage">Object Storage</h4>
+#### Object Storage
 
-<p>```rb git_object_storage.rb https://gist.github.com/ifyouseewendy/ec7a4d8df55a2de70af1
-require ‘digest/sha1’
-require ‘zlib’
-require ‘fileutils’</p>
-
-<h1 id="putrawobjectwhat-is-up-doc-blob">put_raw_object(“what is up, doc?”, ‘blob’)</h1>
-<p>def put_raw_object(content, type)
+```rb git_object_storage.rb https://gist.github.com/ifyouseewendy/ec7a4d8df55a2de70af1
+require 'digest/sha1'
+require 'zlib'
+require 'fileutils'
+ 
+# put_raw_object("what is up, doc?", 'blob')
+def put_raw_object(content, type)
   # Generate SHA-1
-  header = “#{type} #{content.length}\0”   # =&gt; “blob 16\000”
-  store = header + content              # =&gt; “blob 16\000what is up, doc?”
-  sha1 = Digest::SHA1.hexdigest(store)  # =&gt; “bd9dbf5aae1a3862dd1526723246b20206e5fc37”</p>
-
-<p># p sha1</p>
-
-<p># Compress with Zlib
-  zlib_content = Zlib::Deflate.deflate(store)</p>
-
-<p># Write to disk
-  path = ‘.git/objects/’ + sha1[0,2] + ‘/’ + sha1[2,38] # =&gt; “.git/objects/bd/9dbf5aae1a3862dd1526723246b20206e5fc37”
-  FileUtils.mkdir_p(File.dirname(path))                 # =&gt; “.git/objects/bd”
-  File.open(path, ‘w’){|f| f.write zlib_content }
+  header = "#{type} #{content.length}\0"   # =&gt; "blob 16\000"
+  store = header + content              # =&gt; "blob 16\000what is up, doc?"
+  sha1 = Digest::SHA1.hexdigest(store)  # =&gt; "bd9dbf5aae1a3862dd1526723246b20206e5fc37"
+  
+  # p sha1
+  
+  # Compress with Zlib
+  zlib_content = Zlib::Deflate.deflate(store)
+  
+  # Write to disk
+  path = '.git/objects/' + sha1[0,2] + '/' + sha1[2,38] # =&gt; ".git/objects/bd/9dbf5aae1a3862dd1526723246b20206e5fc37"
+  FileUtils.mkdir_p(File.dirname(path))                 # =&gt; ".git/objects/bd"
+  File.open(path, 'w'){|f| f.write zlib_content }
 end
-```</p>
+```
 
-<p><strong><em>What Git does when you run the git add and git commit commands?</em></strong></p>
+***What Git does when you run the git add and git commit commands?***
 
-<ol>
-  <li>stores blobs for the files that have changed</li>
-  <li>updates the index</li>
-  <li>writes out trees</li>
-  <li>writes commit objects that reference the top-level trees and the commits that came immediately before them.</li>
-</ol>
+1. stores blobs for the files that have changed
+2. updates the index
+3. writes out trees
+4. writes commit objects that reference the top-level trees and the commits that came immediately before them.
 
-<p><code>sh
+```sh
 $ find .git/objects -type f
 .git/objects/01/55eb4229851634a0f03eb265b69f5a2d56f341 # tree 2
 .git/objects/1a/410efbd13591db07496601ebc7a059dd55cfe9 # commit 3
@@ -1181,15 +1125,16 @@ $ find .git/objects -type f
 .git/objects/d8/329fc1cc938780ffdd9f94e0d364e0ea74f579 # tree 1
 .git/objects/fa/49b077972391ad58037050f2a75f74e3671e92 # new.txt
 .git/objects/fd/f4fc3344e67ab068f836878b6c4951e3b15f3d # commit 1
-</code></p>
+```
 
-<p><img src="https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/pro_git_figure_9_3.png" alt="figure 9.3" /></p>
+![figure 9.3](https://github.com/ifyouseewendy/ifyouseewendy.github.io/raw/source/image-repo/pro_git_figure_9_3.png)
 
-<h3 id="index">Index</h3>
+### Index
 
-<p>The index is a binary file (generally kept in .git/index) containing a sorted list of path names.</p>
+The index is a binary file (generally kept in .git/index) containing a sorted list of path names.
 
-<p><code>sh
+
+```sh
 $ git ls-files --stage
 100644 63c918c667fa005ff12ad89437f2fdc80926e21c 0
 100644 5529b198e8d14decbe4ad99db3f7fb632de0439d 0
@@ -1208,142 +1153,127 @@ Documentation/Makefile
 xdiff/xtypes.h
 xdiff/xutils.c
 xdiff/xutils.h
-</code></p>
+```
 
-<ol>
-  <li>
-    <p>The index contains all the information necessary to generate a single (uniquely determined) tree object.</p>
-  </li>
-  <li>
-    <p>The index enables fast comparisons between the tree object it defines and the working tree.</p>
-  </li>
-  <li>
-    <p>It can efficiently represent information about merge conflicts between different tree objects.</p>
-  </li>
-</ol>
+1. The index contains all the information necessary to generate a single (uniquely determined) tree object.
 
-<h3 id="packfile">Packfile</h3>
+2. The index enables fast comparisons between the tree object it defines and the working tree.
 
-<ul>
-  <li><strong>Loose objects</strong> are the simpler format. It is simply the compressed data (snapshots) stored in a single file on disk.</li>
-  <li><strong>Packed Objects</strong>. In order to save that space, Git utilizes the packfile. This is a format where Git will only save the part that has changed in the second file, with a pointer to the file it is similar to. Triggered by
-    <ul>
-      <li>run the <code>git gc</code> command manually</li>
-      <li>push to a remote server</li>
-    </ul>
-  </li>
-</ul>
+3. It can efficiently represent information about merge conflicts between different tree objects.
 
-<p>When Git packs objects, it looks for files that are named and sized similarly, and stores just the deltas from one version of the file to the next.</p>
+### Packfile
 
-<p>What is also interesting is that the second version of the file is the one that is stored intact, whereas the original version is stored as a delta — this is because you’re most likely to need faster access to the most recent version of the file.</p>
++ **Loose objects** are the simpler format. It is simply the compressed data (snapshots) stored in a single file on disk.
++ **Packed Objects**. In order to save that space, Git utilizes the packfile. This is a format where Git will only save the part that has changed in the second file, with a pointer to the file it is similar to. Triggered by
+    - run the `git gc` command manually
+    - push to a remote server
 
-<h3 id="the-refspec">The Refspec</h3>
+When Git packs objects, it looks for files that are named and sized similarly, and stores just the deltas from one version of the file to the next.
 
-<p>Recorded in <code>.git/config</code>.</p>
+What is also interesting is that the second version of the file is the one that is stored intact, whereas the original version is stored as a delta — this is because you’re most likely to need faster access to the most recent version of the file.
 
-<p><code>
+### The Refspec
+
+Recorded in `.git/config`.
+
+```
 [remote "origin"]
     url = git@github.com:schacon/simplegit-progit.git   
     fetch = +refs/heads/*:refs/remotes/origin/*
     push = refs/heads/master:refs/heads/master
-</code></p>
+```
 
-<p>The format of the refspec is an optional <code>+</code>, followed by <code>&lt;src&gt;:&lt;dst&gt;</code>.</p>
+The format of the refspec is an optional `+`, followed by `<src>:<dst>`.
 
-<ul>
-  <li><code>+</code> tells Git to update the reference even if it isn’t a fast-forward.</li>
-  <li><code>&lt;src&gt;</code> is the pattern for references on the remote side.</li>
-  <li><code>&lt;dst&gt;</code> is where those references will be written locally. </li>
-</ul>
++ `+` tells Git to update the reference even if it isn’t a fast-forward.
++ `<src>` is the pattern for references on the remote side.
++ `<dst>` is where those references will be written locally. 
 
-<h4 id="fetching">fetching</h4>
+#### fetching
 
-<p>If you want Git instead to pull down only the master branch each time, and not every other branch on the remote server, you can change the fetch line to</p>
+If you want Git instead to pull down only the master branch each time, and not every other branch on the remote server, you can change the fetch line to
 
-<p><code>
+```
 fetch = +refs/heads/master:refs/remotes/origin/master
-</code></p>
+```
 
-<p>You can also specify multiple refspecs for fetching in your configuration file.</p>
+You can also specify multiple refspecs for fetching in your configuration file.
 
-<p><code>
+```
 fetch = +refs/heads/master:refs/remotes/origin/master
 fetch = +refs/heads/experiment:refs/remotes/origin/experiment
-</code></p>
+```
 
-<p>You can use namespacing to accomplish something like that. If you have a QA team that pushes a series of branches, and you want to get the master branch and any of the QA team’s branches but nothing else, you can use a config section like this:</p>
+You can use namespacing to accomplish something like that. If you have a QA team that pushes a series of branches, and you want to get the master branch and any of the QA team’s branches but nothing else, you can use a config section like this:
 
-<p>```
-[remote “origin”]
+```
+[remote "origin"]
     url = git@github.com:schacon/simplegit-progit.git
     fetch = +refs/heads/master:refs/remotes/origin/master
-    fetch = +refs/heads/qa/<em>:refs/remotes/origin/qa/</em></p>
+    fetch = +refs/heads/qa/*:refs/remotes/origin/qa/*
+    
+    # You can’t use partial globs in the pattern
+    # fetch = +refs/heads/qa*:refs/remotes/origin/qa*
+```
 
-<pre><code># You can’t use partial globs in the pattern
-# fetch = +refs/heads/qa*:refs/remotes/origin/qa* ```
-</code></pre>
+If you want to do something one time, you can specify the refspec on the command line, too. Multiple refspecs are accepted.
 
-<p>If you want to do something one time, you can specify the refspec on the command line, too. Multiple refspecs are accepted.</p>
-
-<p><code>sh
+```sh
 $ git fetch origin master:refs/remotes/origin/mymaster \
    topic:refs/remotes/origin/topic
 From git@github.com:schacon/simplegit
  ! [rejected]        master     -&gt; origin/mymaster  (non fast forward)
  * [new branch]      topic      -&gt; origin/topic
-</code></p>
+```
 
-<h3 id="data-recovery">Data Recovery</h3>
+### Data Recovery
 
-<h4 id="reflog">reflog</h4>
+#### reflog
 
-<p>As you’re working, Git silently records what your HEAD is every time you change it. Each time you commit or change branches, the reflog is updated. The reflog is also updated by the <code>git update-ref</code> command, which is another reason to use it instead of just writing the SHA value to your ref files.</p>
+As you’re working, Git silently records what your HEAD is every time you change it. Each time you commit or change branches, the reflog is updated. The reflog is also updated by the `git update-ref` command, which is another reason to use it instead of just writing the SHA value to your ref files.
 
-<p><code>sh
+```sh
 $ git reflog
 1a410ef HEAD@{0}: 1a410efbd13591db07496601ebc7a059dd55cfe9: updating HEAD
 ab1afef HEAD@{1}: ab1afef80fac8e34258ff41fc1b867c702daa24b: updating HEAD
-</code></p>
+```
 
-<p>To see the same information in a much more useful way, we can run <code>git log -g</code> or <code>git log --walk-reflogs</code>, which will give you a normal log output for your reflog.</p>
+To see the same information in a much more useful way, we can run `git log -g` or `git log --walk-reflogs`, which will give you a normal log output for your reflog.
 
-<p>```sh
+```sh
 $ git log -g
 commit 1a410efbd13591db07496601ebc7a059dd55cfe9
-Reflog: HEAD@{0} (Scott Chacon <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#099;&#104;&#097;&#099;&#111;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#115;&#099;&#104;&#097;&#099;&#111;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>)
+Reflog: HEAD@{0} (Scott Chacon &lt;schacon@gmail.com&gt;)
 Reflog message: updating HEAD
-Author: Scott Chacon <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#099;&#104;&#097;&#099;&#111;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#115;&#099;&#104;&#097;&#099;&#111;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>
-Date:   Fri May 22 18:22:37 2009 -0700</p>
+Author: Scott Chacon &lt;schacon@gmail.com&gt;
+Date:   Fri May 22 18:22:37 2009 -0700
 
-<pre><code>third commit
-</code></pre>
+    third commit
 
-<p>commit ab1afef80fac8e34258ff41fc1b867c702daa24b
-Reflog: HEAD@{1} (Scott Chacon <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#099;&#104;&#097;&#099;&#111;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#115;&#099;&#104;&#097;&#099;&#111;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>)
+commit ab1afef80fac8e34258ff41fc1b867c702daa24b
+Reflog: HEAD@{1} (Scott Chacon &lt;schacon@gmail.com&gt;)
 Reflog message: updating HEAD
-Author: Scott Chacon <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#099;&#104;&#097;&#099;&#111;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#115;&#099;&#104;&#097;&#099;&#111;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>
-Date:   Fri May 22 18:15:24 2009 -0700</p>
+Author: Scott Chacon &lt;schacon@gmail.com&gt;
+Date:   Fri May 22 18:15:24 2009 -0700
 
-<pre><code>modified repo a bit ```
-</code></pre>
+    modified repo a bit
+```
 
-<h4 id="fsck">fsck</h4>
+#### fsck
 
-<blockquote>
-  <p>File System Consistency Check</p>
-</blockquote>
+&gt; File System Consistency Check
 
-<p>Suppose your loss was for some reason not in the reflog, you can use the <code>git fsck</code> utility, which checks your database for integrity. If you run it with the <code>--full</code> option, it shows you all objects that aren’t pointed to by another object:</p>
+Suppose your loss was for some reason not in the reflog, you can use the `git fsck` utility, which checks your database for integrity. If you run it with the `--full` option, it shows you all objects that aren’t pointed to by another object:
 
-<p><code>sh
+```sh
 $ git fsck --full
 dangling blob d670460b4b4aece5915caf5c68d12f560a9fe3e4
 dangling commit ab1afef80fac8e34258ff41fc1b867c702daa24b
 dangling tree aea790b9a58f6cf6f2804eeac9f0abbe9631e4c9
 dangling blob 7108f7ecb345ee9d0084193f147cdad4d2998293
-</code></p>
+```
 
+</dst></src></dst></src></file></file></file></do>
 ]]></content>
   </entry>
   
@@ -1364,7 +1294,7 @@ Example :<br />
 + Ref: Extract empathy stuff to an abstract class.<br />
 + Fix: RUL-42 or #42 Starvation need to be initialised before Energy to avoid the nullpointer in People.<br />
 + Rem: freeSpeech is not used anymore.<br />
-+ Rea: Removed old TODO and extra space in header.  </p>
++ Rea: Removed old TODO and extra space in header.</p>
 </blockquote>
 
 <p>And I want to give it a try by,</p>

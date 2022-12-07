@@ -182,26 +182,26 @@
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#git-object-model">Git Object Model</a>    <ul>
-      <li><a href="#the-sha">The SHA</a></li>
-      <li><a href="#the-objects">The Objects</a></li>
-      <li><a href="#different-from-svn">Different from SVN</a></li>
+  <li><a href="#git-object-model" id="markdown-toc-git-object-model">Git Object Model</a>    <ul>
+      <li><a href="#the-sha" id="markdown-toc-the-sha">The SHA</a></li>
+      <li><a href="#the-objects" id="markdown-toc-the-objects">The Objects</a></li>
+      <li><a href="#different-from-svn" id="markdown-toc-different-from-svn">Different from SVN</a></li>
     </ul>
   </li>
-  <li><a href="#advanced-git">Advanced Git</a>    <ul>
-      <li><a href="#create-new-empty-branches">Create New Empty Branches</a></li>
-      <li><a href="#modifying-your-history">Modifying Your History</a></li>
-      <li><a href="#advanced-merging">Advanced Merging</a></li>
-      <li><a href="#git-and-email">Git and Email</a></li>
-      <li><a href="#client-side-hookds">Client Side Hookds</a></li>
-      <li><a href="#submodules">Submodules</a></li>
+  <li><a href="#advanced-git" id="markdown-toc-advanced-git">Advanced Git</a>    <ul>
+      <li><a href="#create-new-empty-branches" id="markdown-toc-create-new-empty-branches">Create New Empty Branches</a></li>
+      <li><a href="#modifying-your-history" id="markdown-toc-modifying-your-history">Modifying Your History</a></li>
+      <li><a href="#advanced-merging" id="markdown-toc-advanced-merging">Advanced Merging</a></li>
+      <li><a href="#git-and-email" id="markdown-toc-git-and-email">Git and Email</a></li>
+      <li><a href="#client-side-hookds" id="markdown-toc-client-side-hookds">Client Side Hookds</a></li>
+      <li><a href="#submodules" id="markdown-toc-submodules">Submodules</a></li>
     </ul>
   </li>
-  <li><a href="#internals-and-plumbing">Internals and Plumbing</a>    <ul>
-      <li><a href="#how-git-stores-objects">How Git Stores Objects</a></li>
-      <li><a href="#the-git-index">The Git Index</a></li>
-      <li><a href="#the-packfile-index">The Packfile Index</a></li>
-      <li><a href="#raw-git">Raw Git</a></li>
+  <li><a href="#internals-and-plumbing" id="markdown-toc-internals-and-plumbing">Internals and Plumbing</a>    <ul>
+      <li><a href="#how-git-stores-objects" id="markdown-toc-how-git-stores-objects">How Git Stores Objects</a></li>
+      <li><a href="#the-git-index" id="markdown-toc-the-git-index">The Git Index</a></li>
+      <li><a href="#the-packfile-index" id="markdown-toc-the-packfile-index">The Packfile Index</a></li>
+      <li><a href="#raw-git" id="markdown-toc-raw-git">Raw Git</a></li>
     </ul>
   </li>
 </ul>
@@ -368,7 +368,7 @@
 <span class="line-number">12</span>
 </pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ mkdir ~/git
 </span><span class="line">$ <span class="nb">cd</span> ~/git
-</span><span class="line">$ <span class="k">for</span> i in a b c d
+</span><span class="line">$ <span class="k">for</span> i <span class="k">in</span> a b c d
 </span><span class="line"><span class="k">do</span>
 </span><span class="line">    mkdir <span class="nv">$i</span>
 </span><span class="line">    <span class="nb">cd</span> <span class="nv">$i</span>
@@ -392,7 +392,7 @@
 </pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>$ mkdir super
 </span><span class="line">$ <span class="nb">cd</span> super
 </span><span class="line">$ git init
-</span><span class="line">$ <span class="k">for</span> i in a b c d
+</span><span class="line">$ <span class="k">for</span> i <span class="k">in</span> a b c d
 </span><span class="line"><span class="k">do</span>
 </span><span class="line">    git submodule add ~/git/<span class="nv">$i</span>
 </span><span class="line"><span class="k">done</span>
@@ -545,7 +545,7 @@
 </span><span class="line">$ git submodule update
 </span><span class="line">error: pathspec <span class="s1">&#39;261dfac35cb99d380eb966e102c1197139f7fa24&#39;</span> did not match any file<span class="o">(</span>s<span class="o">)</span> known to git.
 </span><span class="line">Did you forget to <span class="s1">&#39;git add&#39;</span>?
-</span><span class="line">Unable to checkout <span class="s1">&#39;261dfac35cb99d380eb966e102c1197139f7fa24&#39;</span> in submodule path <span class="s1">&#39;a&#39;</span>
+</span><span class="line">Unable to checkout <span class="s1">&#39;261dfac35cb99d380eb966e102c1197139f7fa24&#39;</span> <span class="k">in</span> submodule path <span class="s1">&#39;a&#39;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><em>It’s not safe to run git submodule update if you’ve made and committed changes within a submodule without checking out a branch first. They will be silently overwritten</em>:</p>

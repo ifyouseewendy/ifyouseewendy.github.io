@@ -182,15 +182,15 @@
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#zero-to-it-works">1. Zero to “It Works!”</a></li>
-  <li><a href="#your-first-controller">2. Your First Controller</a></li>
-  <li><a href="#rails-automatic-loading">3. Rails Automatic Loading</a></li>
-  <li><a href="#rendering-views">4. Rendering Views</a></li>
-  <li><a href="#basic-models">5. Basic Models</a></li>
-  <li><a href="#request-response">6. Request, Response</a></li>
-  <li><a href="#the-littlest-orm">7. The Littlest ORM</a></li>
-  <li><a href="#rack-middleware">8. Rack Middleware</a></li>
-  <li><a href="#real-routing">9. Real Routing</a></li>
+  <li><a href="#zero-to-it-works" id="markdown-toc-zero-to-it-works">1. Zero to “It Works!”</a></li>
+  <li><a href="#your-first-controller" id="markdown-toc-your-first-controller">2. Your First Controller</a></li>
+  <li><a href="#rails-automatic-loading" id="markdown-toc-rails-automatic-loading">3. Rails Automatic Loading</a></li>
+  <li><a href="#rendering-views" id="markdown-toc-rendering-views">4. Rendering Views</a></li>
+  <li><a href="#basic-models" id="markdown-toc-basic-models">5. Basic Models</a></li>
+  <li><a href="#request-response" id="markdown-toc-request-response">6. Request, Response</a></li>
+  <li><a href="#the-littlest-orm" id="markdown-toc-the-littlest-orm">7. The Littlest ORM</a></li>
+  <li><a href="#rack-middleware" id="markdown-toc-rack-middleware">8. Rack Middleware</a></li>
+  <li><a href="#real-routing" id="markdown-toc-real-routing">9. Real Routing</a></li>
 </ul>
 
 <p>My re-building source code</p>
@@ -274,8 +274,8 @@
 </span><span class="line"><span class="k">module</span> <span class="nn">Rulers</span>
 </span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">to_underscore</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
 </span><span class="line">    <span class="n">string</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/::/</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">.</span>
-</span><span class="line">    <span class="nb">gsub</span><span class="p">(</span><span class="sr">/([A-Z]+)([A-Z][a-z])/</span><span class="p">,</span><span class="s1">&#39;\1_\2&#39;</span><span class="p">)</span><span class="o">.</span>
-</span><span class="line">    <span class="nb">gsub</span><span class="p">(</span><span class="sr">/([a-z\d])([A-Z])/</span><span class="p">,</span><span class="s1">&#39;\1_\2&#39;</span><span class="p">)</span><span class="o">.</span>
+</span><span class="line">    <span class="nb">gsub</span><span class="p">(</span><span class="sr">/([A-Z]+)([A-Z][a-z])/</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\1</span><span class="s1">_</span><span class="se">\2</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span>
+</span><span class="line">    <span class="nb">gsub</span><span class="p">(</span><span class="sr">/([a-z\d])([A-Z])/</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\1</span><span class="s1">_</span><span class="se">\2</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span>
 </span><span class="line">    <span class="n">tr</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span>
 </span><span class="line">    <span class="n">downcase</span>
 </span><span class="line">  <span class="k">end</span>
@@ -1275,7 +1275,7 @@ of calling your framework.</li>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Define <code>route</code> to save rules in an instance of RouteObject, and use <code>get_rack_app</code> to route to controller actions. </p>
+<p>Define <code>route</code> to save rules in an instance of RouteObject, and use <code>get_rack_app</code> to route to controller actions.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>

@@ -180,7 +180,7 @@
   <p>From <a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#method-i-column">ActiveRecord::ConnectionAdapters::TableDefinition#column</a></p>
 </blockquote>
 
-<p>Instantiates a new column for the table. The type parameter is normally one of the migrations native types, which is one of the following: </p>
+<p>Instantiates a new column for the table. The type parameter is normally one of the migrations native types, which is one of the following:</p>
 
 <ul>
   <li><code>:primary_key</code></li>
@@ -498,12 +498,12 @@
 </span><span class="line">
 </span><span class="line">        <span class="sb">`</span>rails generate model product supplier:references<span class="o">{</span>polymorphic<span class="o">}</span><span class="sb">`</span>
 </span><span class="line">
-</span><span class="line">    For integer, string, text and binary fields, an integer in curly braces will
+</span><span class="line">    For integer, string, text and binary fields, an integer <span class="k">in</span> curly braces will
 </span><span class="line">    be <span class="nb">set</span> as the limit:
 </span><span class="line">
 </span><span class="line">        <span class="sb">`</span>rails generate model user pseudo:string<span class="o">{</span><span class="m">30</span><span class="o">}</span><span class="sb">`</span>
 </span><span class="line">
-</span><span class="line">    For decimal, two integers separated by a comma in curly braces will be used
+</span><span class="line">    For decimal, two integers separated by a comma <span class="k">in</span> curly braces will be used
 </span><span class="line">    <span class="k">for</span> precision and scale:
 </span><span class="line">
 </span><span class="line">        <span class="sb">`</span>rails generate model product <span class="s1">&#39;price:decimal{10,2}&#39;</span><span class="sb">`</span>

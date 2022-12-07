@@ -176,7 +176,7 @@ Example :<br />
 + Ref: Extract empathy stuff to an abstract class.<br />
 + Fix: RUL-42 or #42 Starvation need to be initialised before Energy to avoid the nullpointer in People.<br />
 + Rem: freeSpeech is not used anymore.<br />
-+ Rea: Removed old TODO and extra space in header.  </p>
++ Rea: Removed old TODO and extra space in header.</p>
 </blockquote>
 
 <p>And I want to give it a try by,</p>
@@ -326,7 +326,7 @@ Example :<br />
 </span><span class="line"><span class="n">message_file</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
 </span><span class="line"><span class="n">lines</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="n">message_file</span><span class="p">)</span><span class="o">.</span><span class="n">reject</span><span class="p">{</span><span class="o">|</span><span class="n">l</span><span class="o">|</span> <span class="n">l</span> <span class="o">=~</span> <span class="sr">/^#/</span><span class="p">}</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:strip</span><span class="p">)</span><span class="o">.</span><span class="n">reject</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:empty?</span><span class="p">)</span>
 </span><span class="line">
-</span><span class="line"><span class="n">subject_regex</span> <span class="o">=</span> <span class="s1">&#39;[Add|Mod|Rem|Ren|Fix|Ref|Opt]:\s\S+&#39;</span>
+</span><span class="line"><span class="n">subject_regex</span> <span class="o">=</span> <span class="s1">&#39;[Add|Mod|Rem|Ren|Fix|Ref|Opt]:</span><span class="se">\s</span><span class="s1">\S+&#39;</span>
 </span><span class="line"><span class="n">regex</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">?</span> <span class="sr">/</span><span class="si">#{</span><span class="n">subject_regex</span><span class="si">}</span><span class="sr">\*$/</span> <span class="p">:</span> <span class="sr">/</span><span class="si">#{</span><span class="n">subject_regex</span><span class="si">}</span><span class="sr">/</span>
 </span><span class="line">
 </span><span class="line"><span class="k">unless</span> <span class="n">lines</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=~</span> <span class="n">regex</span>

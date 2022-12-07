@@ -182,15 +182,15 @@
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#concurrency">Concurrency</a>    <ul>
-      <li><a href="#chapter-26---introduction">Chapter 26 - Introduction</a></li>
-      <li><a href="#chapter-27---interlude-thread-api">Chapter 27 - Interlude: Thread API</a></li>
-      <li><a href="#chapter-28---locks">Chapter 28 - Locks</a></li>
-      <li><a href="#chapter-29---lock-based-concurrent-data-structures">Chapter 29 - Lock-based Concurrent Data Structures</a></li>
-      <li><a href="#chapter-30---condition-variables">Chapter 30 - Condition Variables</a></li>
-      <li><a href="#chapter-31---semaphores">Chapter 31 - Semaphores</a></li>
-      <li><a href="#chapter-32---common-concurrency-problems">Chapter 32 - Common Concurrency Problems</a></li>
-      <li><a href="#chapter-33---event-based-concurrency-advanced">Chapter 33 - Event-based Concurrency (Advanced)</a></li>
+  <li><a href="#concurrency" id="markdown-toc-concurrency">Concurrency</a>    <ul>
+      <li><a href="#chapter-26---introduction" id="markdown-toc-chapter-26---introduction">Chapter 26 - Introduction</a></li>
+      <li><a href="#chapter-27---interlude-thread-api" id="markdown-toc-chapter-27---interlude-thread-api">Chapter 27 - Interlude: Thread API</a></li>
+      <li><a href="#chapter-28---locks" id="markdown-toc-chapter-28---locks">Chapter 28 - Locks</a></li>
+      <li><a href="#chapter-29---lock-based-concurrent-data-structures" id="markdown-toc-chapter-29---lock-based-concurrent-data-structures">Chapter 29 - Lock-based Concurrent Data Structures</a></li>
+      <li><a href="#chapter-30---condition-variables" id="markdown-toc-chapter-30---condition-variables">Chapter 30 - Condition Variables</a></li>
+      <li><a href="#chapter-31---semaphores" id="markdown-toc-chapter-31---semaphores">Chapter 31 - Semaphores</a></li>
+      <li><a href="#chapter-32---common-concurrency-problems" id="markdown-toc-chapter-32---common-concurrency-problems">Chapter 32 - Common Concurrency Problems</a></li>
+      <li><a href="#chapter-33---event-based-concurrency-advanced" id="markdown-toc-chapter-33---event-based-concurrency-advanced">Chapter 33 - Event-based Concurrency (Advanced)</a></li>
     </ul>
   </li>
 </ul>
@@ -299,11 +299,11 @@
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp"></span>
-</span><span class="line"><span class="kt">int</span> <span class="nf">pthread_create</span><span class="p">(</span><span class="n">pthread_t</span> <span class="o">*</span> <span class="kr">thread</span><span class="p">,</span>
-</span><span class="line">                     <span class="k">const</span> <span class="n">pthread_attr_t</span> <span class="o">*</span>  <span class="n">attr</span><span class="p">,</span>
-</span><span class="line">                     <span class="kt">void</span> <span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">start_routine</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
-</span><span class="line">                     <span class="kt">void</span> <span class="o">*</span>  <span class="n">arg</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;pthread.h&gt;</span><span class="cp"></span>
+</span><span class="line"><span class="kt">int</span><span class="w"> </span><span class="nf">pthread_create</span><span class="p">(</span><span class="n">pthread_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">thread</span><span class="p">,</span><span class="w"></span>
+</span><span class="line"><span class="w">                     </span><span class="k">const</span><span class="w"> </span><span class="n">pthread_attr_t</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="n">attr</span><span class="p">,</span><span class="w"></span>
+</span><span class="line"><span class="w">                     </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">start_routine</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">),</span><span class="w"></span>
+</span><span class="line"><span class="w">                     </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="n">arg</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <ul>
@@ -320,7 +320,7 @@
 <p><strong>Thread Completion</strong></p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span> <span class="nf">pthread_join</span><span class="p">(</span><span class="n">pthread_t</span> <span class="kr">thread</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">value_ptr</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">pthread_join</span><span class="p">(</span><span class="n">pthread_t</span><span class="w"> </span><span class="kr">thread</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">**</span><span class="n">value_ptr</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <ul>
@@ -344,8 +344,8 @@
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span> <span class="nf">pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
-</span><span class="line"><span class="kt">int</span> <span class="nf">pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="kt">int</span><span class="w"> </span><span class="nf">pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>When you have a region of code you realize is a critical section, and thus needs to be pro- tected by locks in order to operate as desired.</p>
@@ -371,27 +371,27 @@
 <span class="line-number">19</span>
 <span class="line-number">20</span>
 <span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">pthread_mutex_t</span> <span class="n">lock</span><span class="p">;</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="n">lock</span><span class="p">;</span><span class="w"></span>
 </span><span class="line">
-</span><span class="line"><span class="n">Pthread_mutex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</span><span class="line"><span class="n">Pthread_mutex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
 </span><span class="line">
-</span><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
-</span><span class="line"><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// or whatever your critical section is</span>
-</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">olock</span><span class="p">);</span>
+</span><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// or whatever your critical section is</span>
+</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">olock</span><span class="p">);</span><span class="w"></span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// Always check for failure</span>
-</span><span class="line"><span class="kt">void</span> <span class="nf">Pthread_mutex_init</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">pthread_mutex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span> <span class="c1">// dynamic initialisation, or PTHREAD_MUTEX_INITIALIZER</span>
-</span><span class="line">    <span class="n">assert</span><span class="p">(</span><span class="n">rc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// always check success!</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line"><span class="kt">void</span> <span class="nf">Pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
-</span><span class="line">    <span class="n">assert</span><span class="p">(</span><span class="n">rc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line"><span class="kt">void</span> <span class="nf">Pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
-</span><span class="line">    <span class="n">assert</span><span class="p">(</span><span class="n">rc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
-</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="kt">void</span><span class="w"> </span><span class="nf">Pthread_mutex_init</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pthread_mutex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// dynamic initialisation, or PTHREAD_MUTEX_INITIALIZER</span>
+</span><span class="line"><span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">rc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// always check success!</span>
+</span><span class="line"><span class="p">}</span><span class="w"></span>
+</span><span class="line"><span class="kt">void</span><span class="w"> </span><span class="nf">Pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">rc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="p">}</span><span class="w"></span>
+</span><span class="line"><span class="kt">void</span><span class="w"> </span><span class="nf">Pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">rc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="p">}</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><strong>Condition Variables</strong></p>
@@ -402,8 +402,8 @@
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">,</span> <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
-</span><span class="line"><span class="kt">int</span> <span class="nf">pthread_cond_signal</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span><span class="w"> </span><span class="o">*</span><span class="n">cond</span><span class="p">,</span><span class="w"> </span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="kt">int</span><span class="w"> </span><span class="nf">pthread_cond_signal</span><span class="p">(</span><span class="n">pthread_cond_t</span><span class="w"> </span><span class="o">*</span><span class="n">cond</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>pthread_cond_wait(), puts the calling thread to sleep, ad thus waits for some other thread to signal it, usually when something in the program has changed that the now-sleeping thread might care about.</p>
@@ -414,12 +414,12 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">pthread_mutex_t</span> <span class="n">lock</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>
-</span><span class="line"><span class="n">pthread_cond_t</span>  <span class="n">cond</span> <span class="o">=</span> <span class="n">PTHREAD_COND_INITIALIZER</span><span class="p">;</span>
-</span><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
-</span><span class="line"><span class="k">while</span> <span class="p">(</span><span class="n">ready</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class="line">    <span class="n">Pthread_cond_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cond</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
-</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="n">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span><span class="w"></span>
+</span><span class="line"><span class="n">pthread_cond_t</span><span class="w">  </span><span class="n">cond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PTHREAD_COND_INITIALIZER</span><span class="p">;</span><span class="w"></span>
+</span><span class="line"><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">ready</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="n">Pthread_cond_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cond</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>After initialization of the relevant lock and condition, a thread checks to see if the variable ready has yet been set to something other than zero. If not, the thread simply calls the wait routine in order to sleep until some other thread wakes it.</p>
@@ -428,10 +428,10 @@
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
-</span><span class="line"><span class="n">ready</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class="line"><span class="n">Pthread_cond_signal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cond</span><span class="p">);</span>
-</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+</pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="n">Pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="n">ready</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+</span><span class="line"><span class="n">Pthread_cond_signal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cond</span><span class="p">);</span><span class="w"></span>
+</span><span class="line"><span class="n">Pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Notice 1</p>
@@ -458,10 +458,10 @@
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 </pre></td><td class="code"><pre><code class="c"><span class="line"><span></span><span class="c1">// waitingnwhile (ready == 0)</span>
-</span><span class="line">    <span class="p">;</span> <span class="c1">// spin</span>
+</span><span class="line"><span class="w">    </span><span class="p">;</span><span class="w"> </span><span class="c1">// spin</span>
 </span><span class="line">
 </span><span class="line"><span class="c1">// signaling</span>
-</span><span class="line"><span class="n">ready</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class="line"><span class="n">ready</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>First, it performs poorly in many cases (spinning for a long time just wastes CPU cycles). Second, it is error prone.</p>
@@ -741,7 +741,7 @@ How often this local-to-global transfer occurs is determined by a threshold, whi
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class="sh"><span class="line"><span></span>// grep process is the producer
 </span><span class="line">// wc process is the consumer
-</span><span class="line">// between them is an in-kernel bounded buffer
+</span><span class="line">// between them is an <span class="k">in</span>-kernel bounded buffer
 </span><span class="line">grep foo file.txt <span class="p">|</span> wc -l
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 

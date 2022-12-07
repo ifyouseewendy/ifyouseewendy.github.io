@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OS | Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/blog/categories/os/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2022-09-26T13:07:48-07:00</updated>
+  <updated>2022-12-07T13:26:16-08:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -36,15 +36,15 @@
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#concurrency">Concurrency</a>    <ul>
-      <li><a href="#chapter-26---introduction">Chapter 26 - Introduction</a></li>
-      <li><a href="#chapter-27---interlude-thread-api">Chapter 27 - Interlude: Thread API</a></li>
-      <li><a href="#chapter-28---locks">Chapter 28 - Locks</a></li>
-      <li><a href="#chapter-29---lock-based-concurrent-data-structures">Chapter 29 - Lock-based Concurrent Data Structures</a></li>
-      <li><a href="#chapter-30---condition-variables">Chapter 30 - Condition Variables</a></li>
-      <li><a href="#chapter-31---semaphores">Chapter 31 - Semaphores</a></li>
-      <li><a href="#chapter-32---common-concurrency-problems">Chapter 32 - Common Concurrency Problems</a></li>
-      <li><a href="#chapter-33---event-based-concurrency-advanced">Chapter 33 - Event-based Concurrency (Advanced)</a></li>
+  <li><a href="#concurrency" id="markdown-toc-concurrency">Concurrency</a>    <ul>
+      <li><a href="#chapter-26---introduction" id="markdown-toc-chapter-26---introduction">Chapter 26 - Introduction</a></li>
+      <li><a href="#chapter-27---interlude-thread-api" id="markdown-toc-chapter-27---interlude-thread-api">Chapter 27 - Interlude: Thread API</a></li>
+      <li><a href="#chapter-28---locks" id="markdown-toc-chapter-28---locks">Chapter 28 - Locks</a></li>
+      <li><a href="#chapter-29---lock-based-concurrent-data-structures" id="markdown-toc-chapter-29---lock-based-concurrent-data-structures">Chapter 29 - Lock-based Concurrent Data Structures</a></li>
+      <li><a href="#chapter-30---condition-variables" id="markdown-toc-chapter-30---condition-variables">Chapter 30 - Condition Variables</a></li>
+      <li><a href="#chapter-31---semaphores" id="markdown-toc-chapter-31---semaphores">Chapter 31 - Semaphores</a></li>
+      <li><a href="#chapter-32---common-concurrency-problems" id="markdown-toc-chapter-32---common-concurrency-problems">Chapter 32 - Common Concurrency Problems</a></li>
+      <li><a href="#chapter-33---event-based-concurrency-advanced" id="markdown-toc-chapter-33---event-based-concurrency-advanced">Chapter 33 - Event-based Concurrency (Advanced)</a></li>
     </ul>
   </li>
 </ul>
@@ -933,49 +933,49 @@ grep foo file.txt | wc -l
 </table>
 
 <ul id="markdown-toc">
-  <li><a href="#introduction">Introduction</a></li>
-  <li><a href="#cpu-virtualisation">CPU Virtualisation</a>    <ul>
-      <li><a href="#process">Process</a>        <ul>
-          <li><a href="#chapter-4---the-abstraction-the-process">Chapter 4 - The Abstraction: The Process</a></li>
-          <li><a href="#chapter-5---interlude-process-api">Chapter 5 - Interlude: Process API</a></li>
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#cpu-virtualisation" id="markdown-toc-cpu-virtualisation">CPU Virtualisation</a>    <ul>
+      <li><a href="#process" id="markdown-toc-process">Process</a>        <ul>
+          <li><a href="#chapter-4---the-abstraction-the-process" id="markdown-toc-chapter-4---the-abstraction-the-process">Chapter 4 - The Abstraction: The Process</a></li>
+          <li><a href="#chapter-5---interlude-process-api" id="markdown-toc-chapter-5---interlude-process-api">Chapter 5 - Interlude: Process API</a></li>
         </ul>
       </li>
-      <li><a href="#mechanism">Mechanism</a>        <ul>
-          <li><a href="#chapter-6---mechanism-limited-direct-execution">Chapter 6 - Mechanism: Limited Direct Execution</a></li>
+      <li><a href="#mechanism" id="markdown-toc-mechanism">Mechanism</a>        <ul>
+          <li><a href="#chapter-6---mechanism-limited-direct-execution" id="markdown-toc-chapter-6---mechanism-limited-direct-execution">Chapter 6 - Mechanism: Limited Direct Execution</a></li>
         </ul>
       </li>
-      <li><a href="#scheduling">Scheduling</a>        <ul>
-          <li><a href="#chapter-7---scheduling-introduction">Chapter 7 - Scheduling: Introduction</a></li>
-          <li><a href="#chapter-8---scheduling-the-multi-level-feedback-queue">Chapter 8 - Scheduling: The Multi-Level Feedback Queue</a></li>
-          <li><a href="#chapter-9---scheduling-proportional-share">Chapter 9 - Scheduling: Proportional Share</a></li>
-          <li><a href="#chapter-10---multiprocessor-scheduling">Chapter 10 - Multiprocessor Scheduling</a></li>
+      <li><a href="#scheduling" id="markdown-toc-scheduling">Scheduling</a>        <ul>
+          <li><a href="#chapter-7---scheduling-introduction" id="markdown-toc-chapter-7---scheduling-introduction">Chapter 7 - Scheduling: Introduction</a></li>
+          <li><a href="#chapter-8---scheduling-the-multi-level-feedback-queue" id="markdown-toc-chapter-8---scheduling-the-multi-level-feedback-queue">Chapter 8 - Scheduling: The Multi-Level Feedback Queue</a></li>
+          <li><a href="#chapter-9---scheduling-proportional-share" id="markdown-toc-chapter-9---scheduling-proportional-share">Chapter 9 - Scheduling: Proportional Share</a></li>
+          <li><a href="#chapter-10---multiprocessor-scheduling" id="markdown-toc-chapter-10---multiprocessor-scheduling">Chapter 10 - Multiprocessor Scheduling</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#memory-virtualisation">Memory Virtualisation</a>    <ul>
-      <li><a href="#address-space">Address Space</a>        <ul>
-          <li><a href="#chapter-13---the-abstraction-address-spaces">Chapter 13 - The Abstraction: Address Spaces</a></li>
-          <li><a href="#chapter-14---interlude-memory-api">Chapter 14 - Interlude: Memory API</a></li>
+  <li><a href="#memory-virtualisation" id="markdown-toc-memory-virtualisation">Memory Virtualisation</a>    <ul>
+      <li><a href="#address-space" id="markdown-toc-address-space">Address Space</a>        <ul>
+          <li><a href="#chapter-13---the-abstraction-address-spaces" id="markdown-toc-chapter-13---the-abstraction-address-spaces">Chapter 13 - The Abstraction: Address Spaces</a></li>
+          <li><a href="#chapter-14---interlude-memory-api" id="markdown-toc-chapter-14---interlude-memory-api">Chapter 14 - Interlude: Memory API</a></li>
         </ul>
       </li>
-      <li><a href="#dynamic-allocation-and-segmentation">Dynamic Allocation and Segmentation</a>        <ul>
-          <li><a href="#chapter-15---mechanism-address-translation">Chapter 15 - Mechanism: Address Translation</a></li>
-          <li><a href="#chapter-16-segmentation">Chapter 16 Segmentation</a></li>
-          <li><a href="#chapter-17---free-space-management">Chapter 17 - Free-Space Management</a></li>
+      <li><a href="#dynamic-allocation-and-segmentation" id="markdown-toc-dynamic-allocation-and-segmentation">Dynamic Allocation and Segmentation</a>        <ul>
+          <li><a href="#chapter-15---mechanism-address-translation" id="markdown-toc-chapter-15---mechanism-address-translation">Chapter 15 - Mechanism: Address Translation</a></li>
+          <li><a href="#chapter-16-segmentation" id="markdown-toc-chapter-16-segmentation">Chapter 16 Segmentation</a></li>
+          <li><a href="#chapter-17---free-space-management" id="markdown-toc-chapter-17---free-space-management">Chapter 17 - Free-Space Management</a></li>
         </ul>
       </li>
-      <li><a href="#paging">Paging</a>        <ul>
-          <li><a href="#chapter-18---paging-introduction">Chapter 18 - Paging: Introduction</a></li>
-          <li><a href="#chapter-19---paging-faster-translations-tlbs">Chapter 19 - Paging: Faster Translations (TLBs)</a></li>
-          <li><a href="#note-on-cache-management">Note on Cache Management</a></li>
-          <li><a href="#chapter-20---paging-smaller-tables">Chapter 20 - Paging: Smaller Tables</a></li>
+      <li><a href="#paging" id="markdown-toc-paging">Paging</a>        <ul>
+          <li><a href="#chapter-18---paging-introduction" id="markdown-toc-chapter-18---paging-introduction">Chapter 18 - Paging: Introduction</a></li>
+          <li><a href="#chapter-19---paging-faster-translations-tlbs" id="markdown-toc-chapter-19---paging-faster-translations-tlbs">Chapter 19 - Paging: Faster Translations (TLBs)</a></li>
+          <li><a href="#note-on-cache-management" id="markdown-toc-note-on-cache-management">Note on Cache Management</a></li>
+          <li><a href="#chapter-20---paging-smaller-tables" id="markdown-toc-chapter-20---paging-smaller-tables">Chapter 20 - Paging: Smaller Tables</a></li>
         </ul>
       </li>
-      <li><a href="#beyond-physical-memory">Beyond Physical Memory</a>        <ul>
-          <li><a href="#chapter-21---beyond-physical-memory-mechanisms">Chapter 21 - Beyond Physical Memory: Mechanisms</a></li>
-          <li><a href="#chapter-22---beyond-physical-memory-policies">Chapter 22 - Beyond Physical Memory: Policies</a></li>
-          <li><a href="#chapter-23---the-vaxvms-virtual-memory-system">Chapter 23 - The VAX/VMS Virtual Memory System</a></li>
+      <li><a href="#beyond-physical-memory" id="markdown-toc-beyond-physical-memory">Beyond Physical Memory</a>        <ul>
+          <li><a href="#chapter-21---beyond-physical-memory-mechanisms" id="markdown-toc-chapter-21---beyond-physical-memory-mechanisms">Chapter 21 - Beyond Physical Memory: Mechanisms</a></li>
+          <li><a href="#chapter-22---beyond-physical-memory-policies" id="markdown-toc-chapter-22---beyond-physical-memory-policies">Chapter 22 - Beyond Physical Memory: Policies</a></li>
+          <li><a href="#chapter-23---the-vaxvms-virtual-memory-system" id="markdown-toc-chapter-23---the-vaxvms-virtual-memory-system">Chapter 23 - The VAX/VMS Virtual Memory System</a></li>
         </ul>
       </li>
     </ul>
