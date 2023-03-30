@@ -6,6 +6,12 @@ comments: true
 categories: ['Life']
 ---
 
+# W12 (03/20 - 03/26)
+* 五月让人充满的期待。方小姐收到了学校的 offer，坐等拿学签五月份登陆；山汇老婆孩子终于能团聚；Stefan 和 Clare 来温哥华玩耍；我们全家订了五月底的回国机票，一个月的假期，六月底回来。
+* 周六大部队今年第一次 Whistler 汇合，公瑾带我们尝试了双黑野路小树林，最后一程从 Blackcomb Bowl 直到山底缆车，全程10km，滑行净时间 27 分钟，尤其老天赏脸，这一路拨云见日，太美了。
+
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202303291727784.jpeg)
+
 # W11 (03/13 - 03/19)
 
 * 周三找 Jarrod 做了一节网球 assessment，ground stroke 3.5，serving & volley 3.0，整体就算是 3.0 水平了。我很开心，去年夏天捡起网球，参加课程，跟教练练习，认识新朋友，整个过程我都很享受。我没有一味追求最快的进步，我希望每周都能稳定、有条不紊地乐在其中。
