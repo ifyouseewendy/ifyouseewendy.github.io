@@ -4,7 +4,7 @@
   <title><![CDATA[Wendi's Blog]]></title>
   <link href="http://blog.ifyouseewendy.com/atom.xml" rel="self"/>
   <link href="http://blog.ifyouseewendy.com/"/>
-  <updated>2023-05-01T12:05:33-07:00</updated>
+  <updated>2023-05-13T13:39:10-07:00</updated>
   <id>http://blog.ifyouseewendy.com/</id>
   <author>
     <name><![CDATA[wendi]]></name>
@@ -18,7 +18,16 @@
     <link href="http://blog.ifyouseewendy.com/blog/2023/03/06/what-ive-done-in-2023/"/>
     <updated>2023-03-06T15:06:49-08:00</updated>
     <id>http://blog.ifyouseewendy.com/blog/2023/03/06/what-ive-done-in-2023</id>
-    <content type="html"><![CDATA[<h1 id="w17-0424---0430">W17 (04/24 - 04/30)</h1>
+    <content type="html"><![CDATA[<h1 id="w18-0501---0507">W18 (05/01 - 05/07)</h1>
+
+<ul>
+  <li>下周全公司去 Montreal 团建（网友见面），这周心里长草，无心工作。一是在疯狂练习网球，另外在商量回国行程，做各种准备。基本敲定了路线，上海，嵊州，重庆，四平，北京。28天的时间，原本以为很充足，但是仔细一算完全不够。为了节省旅途，把两波朋友先后安排在了重庆，九天，变成了我行程最长的一段。另外，我应该要备着马应龙了。</li>
+  <li>周五是喜福三十三岁生日，全家人的节日。晚上在麻六给川渝之行热了个身，回来一起吃蛋糕，打麻将。安妮看大家过生日的样子特别搞笑，蜡烛点起来，坐在妈妈腿上，跟大家拍手唱歌，蒙的不行，直到蜡烛吹灭，她分来一小块蛋糕，露出甜甜的微笑。</li>
+  <li>安妮这一个月一直小病不断，摸不清是不是幼儿园传染来的手足口，低烧了一周，终于好了，但是鼻涕就没断过。周六带她去 Oh My Land ，是属于我俩的独有时间，在游乐场我疲于奔命，跟着她跑东跑西，但是到来回路上我是车里的司机，她不吝啬哭泣和喊叫，也给我同样多的回应和欢笑。
+<img src="https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202305131337247.jpeg" alt="" /></li>
+</ul>
+
+<h1 id="w17-0424---0430">W17 (04/24 - 04/30)</h1>
 
 <ul>
   <li>这一周工作都在忙 auth attack，两个 incident，还有各种后续。我也是边做边学，一点点把各种 security 相关的知识补全。虽然说不上那么感兴趣，但还是挺有趣的。</li>
