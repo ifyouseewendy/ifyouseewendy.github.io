@@ -6,6 +6,11 @@ comments: true
 categories: ['Life']
 ---
 
+# W44 (11/06 - 11/12)
+* 这周因为搞出了线上事故工作异常忙碌，到了周五才算是消停下来。下周公司去 Miami 团建，我选择在家休养。一周的假期在即，我的计划是休息、打球、陪占东一家来玩。
+* 网球在逐步提高，伤病也在稳步地积累。到现在为止，左肩膀，右手腕，脚底板，加上这周的右臀，奇怪的部位轮番作痛。除了静养没什么好办法。莫非这就是三十多岁的身体，不休息就让你被迫休息。
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202311141037878.jpeg)
+
 # W43 (10/30 - 11/05)
 * 周一是万圣节，全家出动，带着安妮跟着幸福去挨家挨户要糖。我们阿妮的装扮是只 baby shark，完美契合她肥嘟嘟的脸。第一次参与这个节日，从胆小害怕，到挑衅地指着大乌鸦人说”我认识你，大鸦鸦“，从 happy birthday, new year 到 happy halloween，从一个街区走到另一个街区，在秋日的夜晚奔走一个半小时。我们大人也在一声声祝福中感受到了热闹和快乐。
 ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202311062050146.jpeg)
