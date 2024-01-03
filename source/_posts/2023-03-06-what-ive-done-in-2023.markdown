@@ -6,6 +6,17 @@ comments: true
 categories: ['Life']
 ---
 
+Favourite Podcasts
+
+* [Acquired - Ethereum (with Packy McCormick)](https://www.acquired.fm/episodes/ethereum)I
+* [基本无害 - Ep72 和Kyth、重轻聊聊《风骚律师（Better Call Saul）》](https://www.xiaoyuzhoufm.com/episode/62a52f60491e0b04ff0e9fe2)
+* [谐星聊天会 - 博世08. 今晚月色这么美，企鹅又想北极熊了吧？](https://www.xiaoyuzhoufm.com/episode/62f3822c03da6b049bdc0700?s=eyJ1IjogIjYyYWI4MzUwZWRjZTY3MTA0YWRkYTM0MiJ9)
+* [半拿铁 - No.54 苹果简史1：嬉皮士、迷幻剂和不洗澡的男人](https://www.xiaoyuzhoufm.com/episode/64804a7d6752b5f9de296733)
+* [Acquired - Costco](https://www.acquired.fm/episodes/costco)
+* [大内密谈 - vol.1065 圆梦!星际夺冠之后的聊天!](https://www.xiaoyuzhoufm.com/episode/64002aa8ffd9560a519fb2d4)
+* [日谈公园 - vol.472 和重轻聊聊陈奕迅，以及我们的快乐时代](https://podcasts.apple.com/mx/podcast/vol-472-%E5%92%8C%E9%87%8D%E8%BD%BB%E8%81%8A%E8%81%8A%E9%99%88%E5%A5%95%E8%BF%85-%E4%BB%A5%E5%8F%8A%E6%88%91%E4%BB%AC%E7%9A%84%E5%BF%AB%E4%B9%90%E6%97%B6%E4%BB%A3/id1166949390?i=1000576461467)
+* [不在场 - S2E2 平凡故事](https://buzaichang.xyz/episodes/homesick)
+
 # W51-52 (12/18 - 18/31)
 * 12.18 第一次参加安妮幼儿园的开放日，主题是迎接圣诞。一个小时的时间，半小时用在参观和寒暄，半小时用来组织这些不到三岁的小朋友靠墙站成一排，最后用了三分钟唱跳了一首 Snowflake。安妮基本属于错愕但是听话的状态，一开始懵懵地对望着这么多家长的眼睛，后来放开跟着蹲下、站起，嘴里也嘟囔了两句歌词。结束后，害羞地冲进我怀里。
 * 圣诞节是在幸福家还有山汇一家一起渡过的。四个小朋友，围坐在圣诞树旁，可爱至极。
