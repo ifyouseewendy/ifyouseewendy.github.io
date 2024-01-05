@@ -8,7 +8,7 @@ categories: ['Life']
 
 Favourite Podcasts
 
-* [Acquired - Ethereum (with Packy McCormick)](https://www.acquired.fm/episodes/ethereum)I
+* [Acquired - Ethereum (with Packy McCormick)](https://www.acquired.fm/episodes/ethereum)
 * [基本无害 - Ep72 和Kyth、重轻聊聊《风骚律师（Better Call Saul）》](https://www.xiaoyuzhoufm.com/episode/62a52f60491e0b04ff0e9fe2)
 * [谐星聊天会 - 博世08. 今晚月色这么美，企鹅又想北极熊了吧？](https://www.xiaoyuzhoufm.com/episode/62f3822c03da6b049bdc0700?s=eyJ1IjogIjYyYWI4MzUwZWRjZTY3MTA0YWRkYTM0MiJ9)
 * [半拿铁 - No.54 苹果简史1：嬉皮士、迷幻剂和不洗澡的男人](https://www.xiaoyuzhoufm.com/episode/64804a7d6752b5f9de296733)
