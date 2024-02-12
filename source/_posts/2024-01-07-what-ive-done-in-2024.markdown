@@ -6,6 +6,12 @@ comments: true
 categories: ['Life']
 ---
 
+# W6 (02/05 - 02/11)
+* 春节快乐。周五除夕夜和山汇幸福家一起，周六和路易斯家水族馆，周日小白和于天航家来家里吃饭。连着吃吃喝喝，热热闹闹过年。想起第一年搬到这里，我和喜福自己庆祝，很感恩一点点有爸妈、有孩子、有朋友陪伴。
+* 最近的网球练习有点恶性循环，也可能是和越来越厉害的朋友练球， 好久没赢过练习赛。尤其因为打的多，身体吃不消，状态下滑，就打的更不好。趁着过年强迫自己休息，看视频云练习。
+* 这周同时有[IEM Katowice Sc2 2024](https://liquipedia.net/starcraft2/IEM_Katowice/2024)，每天都在追着看比赛，见证了 Serral 碾压局全程 20-1 的胜率夺冠。
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202402121456627.JPG)
+
 # W5 (01/29 - 02/04)
 * 每天翻一翻，看完了 [The Inner Game of Tennis](https://www.goodreads.com/en/book/show/905)。这实际上是一本披着网球外衣的使用冥想思路的学习书。1997年出版，竟写出了如此洞察力。大体上有这么些思路
 	* Self 1 is the ego or think mind, whereas Self 2 is the body or execution mind. 
@@ -14,7 +20,6 @@ categories: ['Life']
 	* Competition is about overcoming obstacles and taking challenges. It's not a zero-sum game. Everyone gets better by stretching their ability and providing the best to each other. It turns competition into cooperation.
 * 周末冒出了久违的晴天，带着安妮遛狗，还有去公园玩耍。自从安妮能独立走路，不需要太多抱抱之后，我好喜欢带她去散步。她虽然走的心不在焉，但是每一步都在自己的世纪里徜徉，而不像大人，每一步都迈向一个目的地。跟着她，我也会慢下来，尝试用她的视角体会眼前。
 ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202402051141438.JPG)
-
 
 # W4 (01/22 - 01/28)
 * 这周休假。没什么计划，只是 chill。处理各种签证，给妈妈、给我、给老姑；看了些书，第一次读奥斯卡·王尔德，[夜莺与玫瑰](https://book.douban.com/subject/34438689/)“影子是灵魂的肉体”，写给成人的童话，以后我要读给安妮听；打了八次网球，身体酸爽也处在酸痛边缘；看了好多场澳网比赛，虽然我🐔脆败，但是见证 Sinner 封王实至名归。
