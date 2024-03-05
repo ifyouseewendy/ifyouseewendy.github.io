@@ -6,6 +6,11 @@ comments: true
 categories: ["Life"]
 ---
 
+# W9 (02/26 - 03/03)
+
+- 异常忙碌的周末。周日是于总家宝宝百天，周六是在我家，叫朋友一起给第二个宝宝做 gender reveal（[视频链接](https://www.youtube.com/watch?v=LocxWd1iNfw&ab_channel=JasmineYuan)）。仪式很简单，主要是找机会叫大家一起开心。结果揭晓，第二个也是姑娘，我跟喜福很高兴，但回想跟第一个相比，已经平静了很多。总之，期待你来噢。
+  ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202403041731137.JPG)
+
 # W8 (02/19 - 02/25)
 
 - 这几个月工作最忙碌的一周了，各种事情接踵而至，每天都刷刷地过，在晚上打网球复活。
