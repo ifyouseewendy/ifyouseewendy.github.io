@@ -6,6 +6,11 @@ comments: true
 categories: ["Life"]
 ---
 
+# W14 (04/01 - 04/07)
+
+- 阿妮周末已经不舍得睡午觉了，从起床到睡觉，除了偶尔的眼神迷茫，更多时候是全神贯注地兴高采烈。周末的两天， 早饭，遛狗，社区的小课，午饭，公园，宜家，最后叫朋友来家里玩到疯癫，就这样晚上叫她洗澡还要拖延，脱一件衣服办一件衣服的事儿，照照镜子，蹬蹬滑板车，吼吼嗓子。生活是夺么美好啊。
+  ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202404081047468.JPG)
+
 # W13 (03/25 - 03/31)
 
 - 这周给自己提前放了个假，认真工作半天，认真划水半天。开了个新游戏，[Desperados III](https://store.playstation.com/en-us/product/UP4389-CUSA11318_00-THQNORDUSDESP000)，一下被拽回了童年，跟盟军敢死队完全一个类型，只不过发生在西部世界。玩上就停不下来。
