@@ -6,6 +6,10 @@ comments: true
 categories: ["Life"]
 ---
 
+# W48 (11/25 - 12/01)
+
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202412021337387.JPG)
+
 # W47 (11/18 - 11/24)
 
 - 2024 的第一场雪，被我在打完网球的夜里捕捉。我对雪有种天然的喜爱，莫名会兴奋起来，它带给我很多家乡的回忆。我想不到太多具体的事，只是单纯的一种感受。
