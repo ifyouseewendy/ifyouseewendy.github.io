@@ -6,6 +6,38 @@ comments: true
 categories: ["Life"]
 ---
 
+# Favourites
+
+- Podcast
+  - [忽左忽右 - 288 嘻哈之死：图帕克谋杀案背后的说唱战争](https://www.xiaoyuzhoufm.com/episode/657834cf33be65a50f89191e)
+  - [重读共和国史讲座系列 - 第三讲：沈志华，中国出兵朝鲜 - 共和国的第一次战争](https://overcast.fm/+_5eJ1nQN0)
+  - [重读共和国史讲座系列 - 第八讲：高华，林彪事件再探](https://podcasters.spotify.com/pod/show/hkust/episodes/ep-e1vvg83)
+  - [听听历史 - 张鸣-辛亥·摇晃的中国](https://castbox.fm/episode/077.%E5%BC%A0%E9%B8%A3-%E8%BE%9B%E4%BA%A5%C2%B7%E6%91%87%E6%99%83%E7%9A%84%E4%B8%AD%E5%9B%BD-id2289622-id181473362?utm_campaign=i_share_ep&utm_medium=dlink&utm_source=i_share&country=us)
+  * [听听历史 - 张鸣 近代中国的政体国体选择](https://castbox.fm/episode/%E5%BC%A0%E9%B8%A3-%E8%BF%91%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%9A%84%E6%94%BF%E4%BD%93%E5%9B%BD%E4%BD%93%E9%80%89%E6%8B%A9-id3160490-id374780741?utm_campaign=i_share_ep&utm_medium=dlink&utm_source=i_share&country=us)
+  * [史里芬的魔幻之旅第二季 - 第一站：现场揭秘！成功学大师到底是咋赚钱的](https://www.xiaoyuzhoufm.com/episode/64e8d1b380c9ec4c5f495c10)
+  * [机核 - 游戏帝国](https://www.xiaoyuzhoufm.com/podcast/63a024ed9acee6cd2f84dacd)
+  - [机核 - 通过赛博朋克了解一段二十世纪音乐史](https://www.gcores.com/radios/177230)
+  - [半拿铁 - Theranos：硅谷「血」案与世纪骗局](https://www.xiaoyuzhoufm.com/episode/661f7e5f5dae7932c60f61b6)
+  - [游戏帝国S2 - Vol.8 蒸汽王朝 Valve 下](https://www.xiaoyuzhoufm.com/episode/666ff0c1c26e396a365dcaae)
+  - [野史下酒 - 决战中途岛！命运的5分钟](https://www.xiaoyuzhoufm.com/episode/65e0135205414b70bc4340f6)
+  - [不开玩笑 - 157. 聊国产影视剧太emo，不如聊聊张艺谋](https://www.xiaoyuzhoufm.com/episode/6708d23e6c7f81778648f22a)
+- Game
+  - [The Red Dead Redemption 2](https://www.douban.com/game/26815212/)
+  - [黑神话·悟空](https://www.douban.com/game/35184766/)
+- Movie
+  - [东京教父](https://movie.douban.com/subject/1310177/) 这是当代圣经吗？预言式电影，说啥来啥。魔幻超现实，又服务剧情无比浪漫，这才是好看的动画电影
+  - [首尔之春](https://movie.douban.com/subject/35712804/) 想到播客里有人提到河森堡的微博，大意是　“你以为社会是一台精密仪器，各行精英谨慎周密地维持其运转，但经历越多越发现这个社会就是个草台班子， 一小撮精英带一大帮混子，尽最大努力维持着社会的底线而已”
+- Book
+  - [The Inner Game of Tennis](https://www.goodreads.com/en/book/show/905) 这实际上是一本披着网球外衣的使用冥想思路的学习书。1997年出版，竟写出了如此洞察力。大体上有这么些思路
+    - Self 1 is the ego or think mind, whereas Self 2 is the body or execution mind.
+    - Quiet Self 1 by stop judging and trusting Self 2
+    - How to help Self 2 learn? by image, by sound, by feel
+    - Competition is about overcoming obstacles and taking challenges. It's not a zero-sum game. Everyone gets better by stretching their ability and providing the best to each other. It turns competition into cooperation.
+  - [长日将尽](https://book.douban.com/subject/36536552/)。笔触细腻的不行，主题非常特别，关于记忆、过去和自我欺骗。第一次见识“不可靠叙述”，跟随“我”在各种时空穿梭，然后发现破绽，开始怀疑，最后试图理解背后的真相。"每个人对于自我和过去的认知都是笼罩在自我欺骗与否认真相的层层迷雾之中。"
+  - [你当像鸟飞往你的山](https://book.douban.com/subject/33440205/)，以为是小说，没想到是传记。中文书名的翻译非常棒，flee as a bird to your mountain。我们都困在各自的山里，享受着山间的美好与自在，却也偶尔向往远方。一点点怀疑与开放的心态，非常多的努力与执着，以及莫名的运气指引下的一个个决定，终能越过山丘，完成自我重塑。
+- Tennis \* 2024 是我全情投入网球的一年，每周五次，就这样热火朝天地打了一年。我没有想着去坚持，因为享受着每一次的过程。结果上看，我在缓慢且有效地进步，当然期望着更高，但是越深入越敬畏，深知这是一份需要倾注多年的运动，也让我对未来充满着期待。
+  ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202501021042036.png)
+
 # W52 (12/22- 12/28)
 
 - 圣诞周几乎和所有认识的朋友都聚了一遍。安妮 16 天超长假期，对于她每天都是新的一天，值得期待的一天，对于我们，每天都跟昨天一样，在干嘛，在带娃。不过，安妮也有一些长足的进步，例如慢慢能独处一小段时间，嘴上的 please 和 sorry 在变多，两个礼拜前开始独自在房间睡觉。
