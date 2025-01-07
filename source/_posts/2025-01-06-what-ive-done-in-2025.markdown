@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "What I've Done in 2025"
-date: 2024-01-06 15:06:49 -0800
+date: 2025-01-06 15:06:49 -0800
 comments: true
 categories: ["Life"]
 ---
