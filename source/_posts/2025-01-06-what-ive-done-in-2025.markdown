@@ -6,6 +6,10 @@ comments: true
 categories: ["Life"]
 ---
 
+# W8 (02/17 - 02/23)
+
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202502242040501.JPG)
+
 # W7 (02/10 - 02/16)
 
 - 把姑奶奶送回国，阿妮又难过的哭了。好不容易适应，不再喊“我想阿婆了”之后，又开始要“我想姑奶奶了”。没办法， 跟爱的人分离也是她成长的一部分。
