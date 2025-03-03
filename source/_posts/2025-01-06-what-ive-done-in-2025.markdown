@@ -6,6 +6,12 @@ comments: true
 categories: ["Life"]
 ---
 
+# W9 (02/24 - 02/30)
+
+- 天气突然变暖，十多度伴随大太阳非常舒服，全家人都多了不少户外时间。Ella 每天都被推出去遛弯，Annie 去骑车去游乐场去动物园，我也久违地在户外打了场网球。
+- 最近生活的插曲是要不要换房子，起因是家附近有 open house，周末没事做全家出动去看了两次。到第三次的时候，喜福和妈妈眼睛都发了光，“我愿意为此奋斗终生”。回头我们也联系了经纪，包括第二天再去看房。后来在我的提议下逐渐冷却。这么重大的投资，不该是看了两三次头脑发热的结果，而且目之所及这可能是最后一次 upgrade，当下的居住条件本来就没有很差，那更应该谨慎一些，等到所有条件都完美才值得做决定。之后我们有很长时间，去寻找和定义自己眼中的理想，环境、大小、学区，到底哪些是主要和次要。
+  ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202503030944113.jpeg)
+
 # W8 (02/17 - 02/23)
 
 ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202502242040501.JPG)
