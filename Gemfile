@@ -10,7 +10,7 @@ group :development do
   gem 'kramdown', '~> 2.4'
   gem 'liquid', '~> 2.3.0'
   gem 'pygments.rb'
-  gem 'rake', '~> 0.9'
+  gem 'rake', '~> 12.3'
   gem 'rb-fsevent', '~> 0.9'
   gem 'rdiscount', '~> 2.2.0'
   gem 'rubypants', '~> 0.2.0'
