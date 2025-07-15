@@ -6,6 +6,11 @@ comments: true
 categories: ["Life"]
 ---
 
+# W28 (07/07 - 07/13)
+
+- 我们家 Ella 一周岁啦！全家人的节日，大家一起庆祝。给 Ella 穿上裙子，和姐姐一起美美地拍照。这两周学会走路之后，已经不满足于踉跄前行，小步子迈的越来越矫健，开始加快速度，不惜东倒西歪地摔倒。小脑袋也开始运转，一些简单的话，外加嗯嗯啊啊和小手指东指西，已经能跟大家基本的沟通了。这么一想，你还是慢一点吧，爸爸喜欢看你懵懵懂懂的样子。感谢这一年，有你的陪伴。
+  ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202507142100382.jpeg)
+
 # W27 (06/30 - 07/06)
 
 - Canada Day 全家出游，在 Burnaby Heights 露营，烧饭，遛娃，打 pickle ball。周末小白公瑾过来一起摘蓝莓，逛公园。
