@@ -6,6 +6,12 @@ comments: true
 categories: ["Life"]
 ---
 
+# W30 (07/21 - 07/27)
+
+- 最近上班还是挺认真的，在有限的时间内，效率很高。其他时间基本都在网球上，保持状态，为下个月的两个比赛做准备。
+- 周末全家人去了 Centennial Beach，野餐，在海边散步，Annie 挖沙子，Ella 吃石头，两个人分工明确。回家路上，都精力耗尽。这周末的两天麻将局，喜福一改这么多年的 loser 形象，突然之间就站了起来，也就赢了2500 块吧。现在走路都是飘的。
+  ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202507281441839.jpeg)
+
 # W29 (07/14 - 07/20)
 
 ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202507211609945.jpeg)
