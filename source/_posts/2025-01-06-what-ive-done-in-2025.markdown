@@ -6,7 +6,11 @@ comments: true
 categories: ["Life"]
 ---
 
-# W36 (09/01 - 09/06)
+# W37 (09/08 - 09/14)
+
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202509151603995.jpeg)
+
+# W36 (09/01 - 09/07)
 
 - 长周末带着安妮四处闲逛，顺便享受最后和老爸在一起的时间。周三送爸爸回国，家里的带娃任务要重新洗牌，尤其要安慰好难过的老妈。Ella 最近突然间长大了，能听懂大家的话了，当然也难说那些执拗的时候是没听懂，还是听懂了却视而不见。安妮越发像个姐姐，也不知道什么时候开始在别人家作客，看着一盒牛角包，能说出“好香啊，但是我不吃”的客套话，最后得偿所愿啃的满嘴奶油大声说“真香”。是啊，我也想过你的日子，每天哈哈哈哈，周末时候累的啊，晚八睡到早八。
   ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202509081427410.jpeg)
