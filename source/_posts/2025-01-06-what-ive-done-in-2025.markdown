@@ -6,6 +6,15 @@ comments: true
 categories: ["Life"]
 ---
 
+# W39 (09/22 - 09/28)
+* Annie 的游泳课 Preschool 3 顺利过了，不知道从什么时候开始学会了憋气，所以自然就有了水下扑腾的动作，大家都说进步很大。这个游泳的过程挺有意思的，我们从没有费心思教她什么，只是隔一段时间就去社区安排的课，每节课二十五分钟，都没有带她准备，换衣服洗澡的时间长，而且娱乐为主，老师有一半时间都是带着孩子们玩水。但是这一年下来，进步明显，她也喜欢、愿意去上课。这样的节奏对于大人和小朋友都非常舒适。当然了，总归有一天会遇到瓶颈，安妮不急，我们也不急，到时候大家一起面对。
+* Ella 喜欢上了去 Walmart 的玩具区，每次到那里都是看着玩具眼镜发直，拿拿这个，碰碰那个，跑来跑去玩个不停。她好像比姐姐更喜欢音乐和律动，经常在家里的小乐园和妈妈的房间，按个出声的玩具，自己开始扭，随时随地嗨起来，然后对你挤眉弄眼开心地笑。
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202509291019384.jpeg)
+
+# W38 (09/15 - 09/21)
+* 彻底进入秋天，是那种夏天尾巴带着晴天的秋天，很美好。每天固定带娃遛狗打球，对了，还有等了几年的 Hollow Knight 续作，Silksong，有空就会推进下进度。
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202509221200197.jpeg)
+
 # W37 (09/08 - 09/14)
 
 ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202509151603995.jpeg)
