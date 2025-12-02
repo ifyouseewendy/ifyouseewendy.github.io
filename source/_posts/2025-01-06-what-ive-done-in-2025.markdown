@@ -5,7 +5,13 @@ date: 2025-01-06 15:06:49 -0800
 comments: true
 categories: ["Life"]
 ---
+# W48 (11/24 - 11/30)
+* Elala 进入了嘟嘟囔囔的阶段，反正问题你随便问，我也随便答。圆圆的脑袋，配上小小的身体，可能是最可爱的阶段。姐姐的小跟屁虫，先跟着，再抢，有时候俩人一起玩玩具，是我们最幸福的时光。
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202512021152800.jpeg)
 
+# W47 (11/17 - 11/23)
+* 第一次带阿妮去现场看足球，MLS west semi-final, Vancouver Whitecap vs LA FC。安妮从懵逼，到呐喊摇毛巾，到热闹看够，想早点回家。89 分钟 2:1 离场，刚走到体育馆外边，听到掌声雷动，以为是 3:1 稳了，一看手机原来是孙兴慜 96 分钟任意球绝平...乘着空荡荡的地铁，错过了第一次点球大战。
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202512021152877.jpeg)
 
 # W46 (11/10 - 11/16)
 * 37 岁生日。安妮带我去沃尔玛用她攒的钱让我挑礼物。她拿着一沓钞票，勉强认识上面的数字，拘谨地买单又不安的神情好好笑。日子飞快，我在扮演成年人的道路上愈发纯熟，还有三年到四十，我也毫无期待，因为现在就是最好的时光。
