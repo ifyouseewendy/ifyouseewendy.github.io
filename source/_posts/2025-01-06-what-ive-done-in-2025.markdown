@@ -5,6 +5,14 @@ date: 2025-01-06 15:06:49 -0800
 comments: true
 categories: ["Life"]
 ---
+# W50 (12/08 - 12/14)
+* 喜福准了一个多月的面试，终于结束。她这么 chill 的人，被调动起来真是不容易，一旦全情投入，纪律性非常高，每天都在认真付出。不论结果如何，为她的努力感到骄傲。
+* 我也难得最近一个月发疯地工作，单纯是认为接到有挑战的项目，遇到一些有意思的问题。每天闲下来就会思考如何推进，一个月的时间，我享受这种全神贯注的工作状态，时间飞速流过，坐下来就很起来。但是我也厌恶自己没法关注当下，好像一切都发生在眼前，又好像一切都发生在脑后。圣诞假期前，继续冲刺，然后停下来，认真休息。
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202512152051774.jpeg)
+
+# W49 (12/01 - 12/07)
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202512152051447.jpeg)
+
 # W48 (11/24 - 11/30)
 * Elala 进入了嘟嘟囔囔的阶段，反正问题你随便问，我也随便答。圆圆的脑袋，配上小小的身体，可能是最可爱的阶段。姐姐的小跟屁虫，先跟着，再抢，有时候俩人一起玩玩具，是我们最幸福的时光。
 ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202512021152800.jpeg)
