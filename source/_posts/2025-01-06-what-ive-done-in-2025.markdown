@@ -5,6 +5,14 @@ date: 2025-01-06 15:06:49 -0800
 comments: true
 categories: ["Life"]
 ---
+
+# W52 (12/22 - 12/29) - Cancun Trip
+* 跟小哥和小白三家的圣诞旅行如期而至，在 Cancun，在海边，换个地方遛娃。从头到尾最开心的非 Annie 和 Jeremy 莫属，每天都是满电开机，吃喝玩乐粘在一起，直到晚上倒床秒睡。我们家的 Ella 在倒数第三天开始发烧起疹子，后来不放心半夜跟喜福一起带她去急诊走了一趟，最后虚惊一场，开了些抗生素就稳定了状况，只是全程跟着心累疲惫。我们大人的活动除了去 Xcaret 漂流，每天一起大餐外，就是闲暇里一起打四人斗地主。创造了三分十炸，小哥输每人三千刀的佳话。
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202601011038132.jpeg)
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202601011038321.jpeg)
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202601011037327.jpeg)
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202601011037331.jpeg)
+
 # W51 (12/15 - 12/21)
 * 爸等了三个月的签证终于有消息，最快速度买机票，火速团圆。第一天到了就兴冲冲跑到 daycare，盼望着他的心头肉 Ella 能记得他。结果 Ella 开心地冲出来，奔着爷爷怀里，可是走近才发现这人...不太熟悉，转身，后退，扑倒了老师怀里，哇哇大哭。哈哈哈，小朋友的世界如此残酷，诚不我欺。
 * Annie 一年一度的圣诞演出，今年从去年在旁边看热闹的小朋友，变成了班里的大朋友，成了半个主角。表现很好。Ella 在前排四处张望，直到看到了观众席的全家人，眼看他鼻鼻抽动，嘴角下坠，眼睛眯成了缝，还好在老师的指令下强忍到了演出结束。
@@ -168,7 +176,7 @@ categories: ["Life"]
 ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202505221314917.jpeg)
 ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202505221314009.jpeg)
 
-# W19 (05/05 - 05/11)
+# W19 (05/05 - 05/11) - Seattle Trip
 
 - 公司在西雅图团建，我带着喜福和安妮一起开车旅行。我每天密集地开会，好久没见到这么多活人。最先不适应的是双脚，它们早就忘记了一天都套着鞋是什么难以忍受的感觉。喜福带着安妮去见朋友，去游乐场，去好吃好喝。安妮认识了不少朋友，用她直白有效的开场白 ”what's your name?“ 贴脸输出。很多美国小朋友不堪其扰，被这种莫名的真诚和突如其来的莽撞冲击，下意识说出了自己的名字，这时候 "my name is Annie, let's play together"，拽着人家就开始奔跑，欢声笑语。
   ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202505221156995.jpeg)
