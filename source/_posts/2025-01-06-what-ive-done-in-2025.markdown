@@ -5,6 +5,26 @@ date: 2025-01-06 15:06:49 -0800
 comments: true
 categories: ["Life"]
 ---
+# Favourites
+
+* Podcast
+	* [原型 Vol.3 | 蜂巢生命](https://www.xiaoyuzhoufm.com/episode/673b087b43dc3a43878d38c0)
+	* [谐星聊天会 - 红色火箭02. 启动我心爱的小灵通，它永远不会接通](https://www.xiaoyuzhoufm.com/episode/691343e821e6d1bd3403dd92)
+	* [罗永浩的十字路口 - 导演毕赣×罗永浩！清醒、深刻、独一无二的造梦者](https://www.xiaoyuzhoufm.com/episode/69286665f2b167179817c7e4)
+* Game
+	* [Balatro](https://apps.apple.com/us/app/balatro/id6502453075)
+	* [Hollow Knight: Silksong](https://hollowknightsilksong.com/)
+* Movie
+	* [好东西](https://movie.douban.com/subject/36154853/) 字字珠玑，被女拳狠狠砸完还要拍手叫好。
+	* [Yellow Stone](https://movie.douban.com/subject/27036727/) 你以为在讲剧情，实际在歌颂一种生活方式。烂尾的严重。
+	* [Mulholland Drive](https://movie.douban.com/subject/1292217/) 忘记看了多少遍了，这次在剧院大荧幕纪念林奇。
+* Book
+	* [檀香刑](https://book.douban.com/subject/26905337/) 大俗中写出了大雅，精细精妙，叹为观止。我看到马尔克斯和朴赞郁，在我脑中奇妙翻腾。
+* Tennis
+	* 三年半时间，摸到了4.0的门槛，我很开心。再接再厉。
+* Travel
+	* 05/05 - 05/09 Seattle
+	* 12/22 - 12/29 Cancun
 
 # W52 (12/22 - 12/29) - Cancun Trip
 * 跟小哥和小白三家的圣诞旅行如期而至，在 Cancun，在海边，换个地方遛娃。从头到尾最开心的非 Annie 和 Jeremy 莫属，每天都是满电开机，吃喝玩乐粘在一起，直到晚上倒床秒睡。我们家的 Ella 在倒数第三天开始发烧起疹子，后来不放心半夜跟喜福一起带她去急诊走了一趟，最后虚惊一场，开了些抗生素就稳定了状况，只是全程跟着心累疲惫。我们大人的活动除了去 Xcaret 漂流，每天一起大餐外，就是闲暇里一起打四人斗地主。创造了三分十炸，小哥输每人三千刀的佳话。

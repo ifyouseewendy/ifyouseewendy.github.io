@@ -35,7 +35,7 @@ categories: ["Life"]
     - Competition is about overcoming obstacles and taking challenges. It's not a zero-sum game. Everyone gets better by stretching their ability and providing the best to each other. It turns competition into cooperation.
   - [长日将尽](https://book.douban.com/subject/36536552/)。笔触细腻的不行，主题非常特别，关于记忆、过去和自我欺骗。第一次见识“不可靠叙述”，跟随“我”在各种时空穿梭，然后发现破绽，开始怀疑，最后试图理解背后的真相。"每个人对于自我和过去的认知都是笼罩在自我欺骗与否认真相的层层迷雾之中。"
   - [你当像鸟飞往你的山](https://book.douban.com/subject/33440205/)，以为是小说，没想到是传记。中文书名的翻译非常棒，flee as a bird to your mountain。我们都困在各自的山里，享受着山间的美好与自在，却也偶尔向往远方。一点点怀疑与开放的心态，非常多的努力与执着，以及莫名的运气指引下的一个个决定，终能越过山丘，完成自我重塑。
-- Tennis \* 2024 是我全情投入网球的一年，每周五次，就这样热火朝天地打了一年。我没有想着去坚持，因为享受着每一次的过程。结果上看，我在缓慢且有效地进步，当然期望着更高，但是越深入越敬畏，深知这是一份需要倾注多年的运动，也让我对未来充满着期待。
+- Tennis 2024 是我全情投入网球的一年，每周五次，就这样热火朝天地打了一年。我没有想着去坚持，因为享受着每一次的过程。结果上看，我在缓慢且有效地进步，当然期望着更高，但是越深入越敬畏，深知这是一份需要倾注多年的运动，也让我对未来充满着期待。
   ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202501021042036.png)
 
 # W52 (12/22- 12/28)
