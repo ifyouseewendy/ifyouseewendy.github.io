@@ -8,7 +8,7 @@ categories: ["Life"]
 # Favourites
 
 * Podcast
-	* [原型 Vol.3 | 蜂巢生命](https://www.xiaoyuzhoufm.com/episode/673b087b43dc3a43878d38c0)
+	* [原型 Vol.3 蜂巢生命](https://www.xiaoyuzhoufm.com/episode/673b087b43dc3a43878d38c0)
 	* [谐星聊天会 - 红色火箭02. 启动我心爱的小灵通，它永远不会接通](https://www.xiaoyuzhoufm.com/episode/691343e821e6d1bd3403dd92)
 	* [罗永浩的十字路口 - 导演毕赣×罗永浩！清醒、深刻、独一无二的造梦者](https://www.xiaoyuzhoufm.com/episode/69286665f2b167179817c7e4)
 * Game
