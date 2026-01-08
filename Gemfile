@@ -5,7 +5,7 @@ ruby '2.7.7'
 group :development do
   gem 'compass', '~> 0.12.7'
   gem 'directory_watcher', '1.4.1'
-  gem 'haml', '~> 3.1.7'
+  gem 'haml', '~> 5.0.0'
   gem 'jekyll', '~> 0.11.0'
   gem 'kramdown', '~> 2.4'
   gem 'liquid', '~> 2.3.0'
