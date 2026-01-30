@@ -5,6 +5,10 @@ date: 2026-01-06 15:06:49 -0800
 comments: true
 categories: ["Life"]
 ---
+
+# W4 (01/19 - 01/25)
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202601292240310.jpeg)
+
 # W3 (01/12 - 01/18)
 * 难得迎来好多大晴天，每天都想出门享受阳光。老姑放寒假来玩，家里人手充沛，每天都热热闹闹。
 * 周末全家去徒步，Ella 又是走一半就睡了过去，怎么叫都叫不起来。Annie 这回长大了，可以跟着大人一起”探险“走完全程。
