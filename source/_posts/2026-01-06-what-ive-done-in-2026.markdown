@@ -5,6 +5,10 @@ date: 2026-01-06 15:06:49 -0800
 comments: true
 categories: ["Life"]
 ---
+# W7 (02/09 - 02/15)
+* Ella 最近的成长在于大声喊 Annie。跟我们脾气不好，但是对姐姐是妥妥的跟屁虫，怎样都行，有姐姐带就是开心。看到视频，安妮这么大的时候已经能连续蹦出几个词，Ella 还不会，但是她有标志性的双脚蹦，结实的大腿给了她脱离地面的底气，来一段欢快的音乐，总爱跳给你看。
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202602172152103.jpeg)
+
 # W6 (02/02 - 02/08)
 * 最近被 AI 彻底折服。每天都是惊喜，牛逼，然后恐慌，平静，自我安慰。工作的流程彻底转化，每一个任务都尽可能让 AI 完成，把能用的数据都提供好，能复用的技能都配置好，然后等待 AI 出结果，再做相应的完善。不出一两年我的这个工作水准，基本上就可以完全被 AI 替代了吧上。太快了。
 ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202602091525540.jpeg)
