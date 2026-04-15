@@ -5,6 +5,12 @@ date: 2026-01-06 15:06:49 -0800
 comments: true
 categories: ["Life"]
 ---
+# W15 (04/06 - 04/12)
+ * 两位妈妈的生日，在不同地方，同时庆祝。
+ * 打完了回国之前两场 Vancouver Men's Tennis League B2 比赛。两场都是有惊无险，表现不错，对自己很满意。
+ * Ella 周日陪我去遛狗，我们在狗公园走了一个多小时，带她走了各种小路，看了湖里的乌龟，全程也没闹，没要抱抱，只是牵手走路。完事儿到停车产我意犹未尽，带着 Ella 和 Nikki 又走回了家。两个小时，看了下地图，有六公里了。Ella 真棒！
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202604151609006.jpeg)
+
 # W14 (03/30 - 04/05)
 * 复活节四天长周末。春天突如其来，如此的美好。Ella 爱上了和我去遛 Nikki，每天都等带她一起。姐姐有朋友来的时候会一起，那一段 trail 成了全家人最常走的路。周末大家一起去了 Gnome's Home Trail，预计有两公里多，Ella 走走停停要抱抱，跟我刚了二十分钟，直到擦干眼泪，主动抬起她的小手让我牵着走完了全程，你非常棒！ 
 ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202604071605822.jpeg)
