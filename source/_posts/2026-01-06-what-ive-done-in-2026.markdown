@@ -5,6 +5,10 @@ date: 2026-01-06 15:06:49 -0800
 comments: true
 categories: ["Life"]
 ---
+# W22 (05/25 - 05/31)
+* 给喜福补过了生日，其乐融融。Nikki 的耳朵感染严重，保持村姑的模样，再接再厉。Ella 是个淘气鬼，姐姐最好的跟屁虫。Annie 开始了花样滑冰的训练，错过了之前的七八节课，明显跟不上节奏，只能慢慢承受，一点点追赶。
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202606010900518.jpeg)
+
 # W21 (05/18 - 05/24)
 * 回归正常的生活节奏，带娃陪你们一起浪费时间慢慢长大，打球连续六天为夏天的比赛做准备，工作为lay off之后各种糟心事烦心。最好的是天气，在这个季节，一成不变的美好。
 ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202605260941069.jpeg)
