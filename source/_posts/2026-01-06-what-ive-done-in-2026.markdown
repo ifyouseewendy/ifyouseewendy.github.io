@@ -5,6 +5,11 @@ date: 2026-01-06 15:06:49 -0800
 comments: true
 categories: ["Life"]
 ---
+# W40 (09/28 - 10/04)
+* 美好的秋天，可能是我最爱的季节。和煦的阳光下，各种颜色，层出不穷。唯一让人不悦的是，我应该得了新冠，三周了没有味觉和嗅觉，味同嚼蜡。
+* 妈妈给买的新滑冰服到了，很漂亮，blingbling那种。滑冰想给她换上，她有点不情愿，跟我们说“跟两个小朋友是一样的”。我们心想怎么可能，这是中国运来的啊。结果老师上课，三个淡蓝色衣服身高也相似的小朋友，凑到了一起，不知道她们说了些啥，可能是欢笑，也可能是尴笑。小孩子大了，要因为撞衫而感到尴尬了。
+![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202610051547916.JPG)
+
 # W39 (09/21 - 09/27)
 * 安妮开始完整的 kindergarten，包括 before and after school。其实有时候看到小小的她，每天也在四处奔波穿梭在各种活动之后，有点想多给她一些奖励，但这就是长大的过程吧，她到了这个年纪，可以独自面对很多事情，而且她有在做的很好。
 ![](https://raw.githubusercontent.com/ifyouseewendy/image-repo/master/PicGo/202609291414768.jpeg)
